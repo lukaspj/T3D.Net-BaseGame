@@ -1,0 +1,13 @@
+.idea/
+.torsion
+*/bin/
+*/obj/
+*.pdb
+*.ilk
+*.dll
+!BaseGame_DEBUG.dll
+engineApi.xml
+*.log
+
+*exe.config
+*.exe
