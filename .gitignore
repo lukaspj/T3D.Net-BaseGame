@@ -1,5 +1,6 @@
 .idea/
-.torsion
+*.torsion.opt
+
 */bin/
 */obj/
 *.pdb
