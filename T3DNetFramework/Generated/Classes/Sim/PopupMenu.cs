@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class PopupMenu : SimObject {
 
 
 
-        public PopupMenu(bool pRegister = false) 
+        public PopupMenu(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public PopupMenu(string pName, bool pRegister) 
+
+        public PopupMenu(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public PopupMenu(string pName) 
+
+        public PopupMenu(string pName)
             : this(pName, false) {
         }
-        
-        public PopupMenu(string pName, string pParent, bool pRegister = false) 
+
+        public PopupMenu(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public PopupMenu(string pName, SimObject pParent, bool pRegister = false) 
+
+        public PopupMenu(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public PopupMenu(SimObject pObj) 
+
+        public PopupMenu(SimObject pObj)
             : base(pObj) {
         }
-        
-        public PopupMenu(IntPtr pObj) 
+
+        public PopupMenu(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,21 +69,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ShowPopup__Args
                 {
-				   
+
 				   internal string canvasName;
-				   
+
 				   internal int x;
-				   
+
 				   internal int y;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ShowPopup(IntPtr _this, string canvasName, int x, int y);
                 internal delegate void _ShowPopup(IntPtr _this, ShowPopup__Args args);
                 private static _ShowPopup _ShowPopupFunc;
@@ -95,11 +95,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_showPopup"), typeof(_ShowPopup));
                     }
-                    
+
                     return _ShowPopupFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ClearItems__Args
@@ -107,7 +107,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ClearItems(IntPtr _this);
                 internal delegate void _ClearItems(IntPtr _this, ClearItems__Args args);
                 private static _ClearItems _ClearItemsFunc;
@@ -119,11 +119,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_clearItems"), typeof(_ClearItems));
                     }
-                    
+
                     return _ClearItemsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetItemCount__Args
@@ -131,7 +131,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetItemCount(IntPtr _this);
                 internal delegate int _GetItemCount(IntPtr _this, GetItemCount__Args args);
                 private static _GetItemCount _GetItemCountFunc;
@@ -143,16 +143,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_getItemCount"), typeof(_GetItemCount));
                     }
-                    
+
                     return _GetItemCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsItemChecked__Args
                 {
-				   
+
 				   internal int pos;
                 }
 
@@ -169,25 +169,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_isItemChecked"), typeof(_IsItemChecked));
                     }
-                    
+
                     return _IsItemCheckedFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct CheckRadioItem__Args
                 {
-				   
+
 				   internal int firstPos;
-				   
+
 				   internal int lastPos;
-				   
+
 				   internal int checkPos;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _CheckRadioItem(IntPtr _this, int firstPos, int lastPos, int checkPos);
                 internal delegate void _CheckRadioItem(IntPtr _this, CheckRadioItem__Args args);
                 private static _CheckRadioItem _CheckRadioItemFunc;
@@ -199,23 +199,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_checkRadioItem"), typeof(_CheckRadioItem));
                     }
-                    
+
                     return _CheckRadioItemFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct CheckItem__Args
                 {
-				   
+
 				   internal int pos;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool _checked;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _CheckItem(IntPtr _this, int pos, [MarshalAs(UnmanagedType.I1)]bool _checked);
                 internal delegate void _CheckItem(IntPtr _this, CheckItem__Args args);
                 private static _CheckItem _CheckItemFunc;
@@ -227,23 +227,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_checkItem"), typeof(_CheckItem));
                     }
-                    
+
                     return _CheckItemFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct EnableItem__Args
                 {
-				   
+
 				   internal int pos;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool enabled;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _EnableItem(IntPtr _this, int pos, [MarshalAs(UnmanagedType.I1)]bool enabled);
                 internal delegate void _EnableItem(IntPtr _this, EnableItem__Args args);
                 private static _EnableItem _EnableItemFunc;
@@ -255,22 +255,22 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_enableItem"), typeof(_EnableItem));
                     }
-                    
+
                     return _EnableItemFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetItem__Args
                 {
-				   
+
 				   internal int pos;
-				   
+
 				   internal string title;
-				   
+
 				   internal string accelerator;
-				   
+
 				   internal string cmd;
                 }
 
@@ -287,16 +287,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_setItem"), typeof(_SetItem));
                     }
-                    
+
                     return _SetItemFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct InsertSubMenu__Args
                 {
-				   
+
 				   internal int pos;
 				   [MarshalAs(UnmanagedType.LPUTF8Str)]
 				   internal string title;
@@ -305,7 +305,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _InsertSubMenu(IntPtr _this, int pos, [MarshalAs(UnmanagedType.LPUTF8Str)]string title, [MarshalAs(UnmanagedType.LPUTF8Str)]string subMenu);
                 internal delegate int _InsertSubMenu(IntPtr _this, InsertSubMenu__Args args);
                 private static _InsertSubMenu _InsertSubMenuFunc;
@@ -317,21 +317,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_insertSubMenu"), typeof(_InsertSubMenu));
                     }
-                    
+
                     return _InsertSubMenuFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveItem__Args
                 {
-				   
+
 				   internal int pos;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _RemoveItem(IntPtr _this, int pos);
                 internal delegate void _RemoveItem(IntPtr _this, RemoveItem__Args args);
                 private static _RemoveItem _RemoveItemFunc;
@@ -343,27 +343,27 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_removeItem"), typeof(_RemoveItem));
                     }
-                    
+
                     return _RemoveItemFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct InsertItem__Args
                 {
-				   
+
 				   internal int pos;
-				   
+
 				   internal string title;
-				   
+
 				   internal string accelerator;
-				   
+
 				   internal string cmd;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _InsertItem(IntPtr _this, int pos, string title, string accelerator, string cmd);
                 internal delegate int _InsertItem(IntPtr _this, InsertItem__Args args);
                 private static _InsertItem _InsertItemFunc;
@@ -375,11 +375,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_insertItem"), typeof(_InsertItem));
                     }
-                    
+
                     return _InsertItemFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -387,7 +387,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -399,11 +399,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -411,7 +411,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -423,7 +423,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPopupMenu_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -431,92 +431,92 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void ShowPopup(string canvasName, int x = -1, int y = -1) {
-        
+
                                                                                     InternalUnsafeMethods.ShowPopup__Args _args = new InternalUnsafeMethods.ShowPopup__Args() {
                         canvasName = canvasName,
                         x = x,
                         y = y,
                      };
                      InternalUnsafeMethods.ShowPopup()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ClearItems() {
-        
+
                      InternalUnsafeMethods.ClearItems__Args _args = new InternalUnsafeMethods.ClearItems__Args() {
                      };
                      InternalUnsafeMethods.ClearItems()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public int GetItemCount() {
-        
+
                      InternalUnsafeMethods.GetItemCount__Args _args = new InternalUnsafeMethods.GetItemCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetItemCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool IsItemChecked(int pos) {
-        
+
                                           InternalUnsafeMethods.IsItemChecked__Args _args = new InternalUnsafeMethods.IsItemChecked__Args() {
                         pos = pos,
                      };
                      bool _engineResult = InternalUnsafeMethods.IsItemChecked()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void CheckRadioItem(int firstPos, int lastPos, int checkPos) {
-        
+
                                                                                     InternalUnsafeMethods.CheckRadioItem__Args _args = new InternalUnsafeMethods.CheckRadioItem__Args() {
                         firstPos = firstPos,
                         lastPos = lastPos,
                         checkPos = checkPos,
                      };
                      InternalUnsafeMethods.CheckRadioItem()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public void CheckItem(int pos, bool _checked) {
-        
+
                                                                InternalUnsafeMethods.CheckItem__Args _args = new InternalUnsafeMethods.CheckItem__Args() {
                         pos = pos,
                         _checked = _checked,
                      };
                      InternalUnsafeMethods.CheckItem()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void EnableItem(int pos, bool enabled) {
-        
+
                                                                InternalUnsafeMethods.EnableItem__Args _args = new InternalUnsafeMethods.EnableItem__Args() {
                         pos = pos,
                         enabled = enabled,
                      };
                      InternalUnsafeMethods.EnableItem()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool SetItem(int pos, string title, string accelerator, string cmd = "") {
-        
+
                                                                                                          InternalUnsafeMethods.SetItem__Args _args = new InternalUnsafeMethods.SetItem__Args() {
                         pos = pos,
                         title = title,
@@ -524,39 +524,39 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         cmd = cmd,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetItem()(ObjectPtr, _args);
-                                                                                                                     
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int InsertSubMenu(int pos, string title, string subMenu) {
-        
+
                                                                                     InternalUnsafeMethods.InsertSubMenu__Args _args = new InternalUnsafeMethods.InsertSubMenu__Args() {
                         pos = pos,
                         title = title,
                         subMenu = subMenu,
                      };
                      int _engineResult = InternalUnsafeMethods.InsertSubMenu()(ObjectPtr, _args);
-                                                                                                
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void RemoveItem(int pos) {
-        
+
                                           InternalUnsafeMethods.RemoveItem__Args _args = new InternalUnsafeMethods.RemoveItem__Args() {
                         pos = pos,
                      };
                      InternalUnsafeMethods.RemoveItem()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public int InsertItem(int pos, string title = "", string accelerator = "", string cmd = "") {
-        
+
                                                                                                          InternalUnsafeMethods.InsertItem__Args _args = new InternalUnsafeMethods.InsertItem__Args() {
                         pos = pos,
                         title = title,
@@ -564,20 +564,20 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         cmd = cmd,
                      };
                      int _engineResult = InternalUnsafeMethods.InsertItem()(ObjectPtr, _args);
-                                                                                                                     
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

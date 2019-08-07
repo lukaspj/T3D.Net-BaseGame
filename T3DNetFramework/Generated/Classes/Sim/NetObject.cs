@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class NetObject : SimGroup {
 
 
 
-        public NetObject(bool pRegister = false) 
+        public NetObject(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public NetObject(string pName, bool pRegister) 
+
+        public NetObject(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public NetObject(string pName) 
+
+        public NetObject(string pName)
             : this(pName, false) {
         }
-        
-        public NetObject(string pName, string pParent, bool pRegister = false) 
+
+        public NetObject(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public NetObject(string pName, SimObject pParent, bool pRegister = false) 
+
+        public NetObject(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public NetObject(SimObject pObj) 
+
+        public NetObject(SimObject pObj)
             : base(pObj) {
         }
-        
-        public NetObject(IntPtr pObj) 
+
+        public NetObject(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ClearScopeAlways__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ClearScopeAlways(IntPtr _this);
                 internal delegate void _ClearScopeAlways(IntPtr _this, ClearScopeAlways__Args args);
                 private static _ClearScopeAlways _ClearScopeAlwaysFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_clearScopeAlways"), typeof(_ClearScopeAlways));
                     }
-                    
+
                     return _ClearScopeAlwaysFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsServerObject__Args
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_isServerObject"), typeof(_IsServerObject));
                     }
-                    
+
                     return _IsServerObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsClientObject__Args
@@ -137,11 +137,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_isClientObject"), typeof(_IsClientObject));
                     }
-                    
+
                     return _IsClientObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetServerObject__Args
@@ -149,7 +149,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetServerObject(IntPtr _this);
                 internal delegate int _GetServerObject(IntPtr _this, GetServerObject__Args args);
                 private static _GetServerObject _GetServerObjectFunc;
@@ -161,11 +161,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_getServerObject"), typeof(_GetServerObject));
                     }
-                    
+
                     return _GetServerObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetClientObject__Args
@@ -173,7 +173,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetClientObject(IntPtr _this);
                 internal delegate int _GetClientObject(IntPtr _this, GetClientObject__Args args);
                 private static _GetClientObject _GetClientObjectFunc;
@@ -185,11 +185,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_getClientObject"), typeof(_GetClientObject));
                     }
-                    
+
                     return _GetClientObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetGhostID__Args
@@ -197,7 +197,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetGhostID(IntPtr _this);
                 internal delegate int _GetGhostID(IntPtr _this, GetGhostID__Args args);
                 private static _GetGhostID _GetGhostIDFunc;
@@ -209,11 +209,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_getGhostID"), typeof(_GetGhostID));
                     }
-                    
+
                     return _GetGhostIDFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetScopeAlways__Args
@@ -221,7 +221,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetScopeAlways(IntPtr _this);
                 internal delegate void _SetScopeAlways(IntPtr _this, SetScopeAlways__Args args);
                 private static _SetScopeAlways _SetScopeAlwaysFunc;
@@ -233,21 +233,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_setScopeAlways"), typeof(_SetScopeAlways));
                     }
-                    
+
                     return _SetScopeAlwaysFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ClearScopeToClient__Args
                 {
-				   
+
 				   internal IntPtr client;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ClearScopeToClient(IntPtr _this, IntPtr client);
                 internal delegate void _ClearScopeToClient(IntPtr _this, ClearScopeToClient__Args args);
                 private static _ClearScopeToClient _ClearScopeToClientFunc;
@@ -259,21 +259,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_clearScopeToClient"), typeof(_ClearScopeToClient));
                     }
-                    
+
                     return _ClearScopeToClientFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ScopeToClient__Args
                 {
-				   
+
 				   internal IntPtr client;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ScopeToClient(IntPtr _this, IntPtr client);
                 internal delegate void _ScopeToClient(IntPtr _this, ScopeToClient__Args args);
                 private static _ScopeToClient _ScopeToClientFunc;
@@ -285,11 +285,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_scopeToClient"), typeof(_ScopeToClient));
                     }
-                    
+
                     return _ScopeToClientFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -297,7 +297,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -309,11 +309,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -321,7 +321,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -333,7 +333,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNetObject_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -341,112 +341,112 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void ClearScopeAlways() {
-        
+
                      InternalUnsafeMethods.ClearScopeAlways__Args _args = new InternalUnsafeMethods.ClearScopeAlways__Args() {
                      };
                      InternalUnsafeMethods.ClearScopeAlways()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool IsServerObject() {
-        
+
                      InternalUnsafeMethods.IsServerObject__Args _args = new InternalUnsafeMethods.IsServerObject__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsServerObject()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool IsClientObject() {
-        
+
                      InternalUnsafeMethods.IsClientObject__Args _args = new InternalUnsafeMethods.IsClientObject__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsClientObject()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetServerObject() {
-        
+
                      InternalUnsafeMethods.GetServerObject__Args _args = new InternalUnsafeMethods.GetServerObject__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetServerObject()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetClientObject() {
-        
+
                      InternalUnsafeMethods.GetClientObject__Args _args = new InternalUnsafeMethods.GetClientObject__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetClientObject()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetGhostID() {
-        
+
                      InternalUnsafeMethods.GetGhostID__Args _args = new InternalUnsafeMethods.GetGhostID__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetGhostID()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetScopeAlways() {
-        
+
                      InternalUnsafeMethods.SetScopeAlways__Args _args = new InternalUnsafeMethods.SetScopeAlways__Args() {
                      };
                      InternalUnsafeMethods.SetScopeAlways()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ClearScopeToClient(NetConnection client) {
-        
+
                                           InternalUnsafeMethods.ClearScopeToClient__Args _args = new InternalUnsafeMethods.ClearScopeToClient__Args() {
                         client = client.ObjectPtr,
                      };
                      InternalUnsafeMethods.ClearScopeToClient()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ScopeToClient(NetConnection client) {
-        
+
                                           InternalUnsafeMethods.ScopeToClient__Args _args = new InternalUnsafeMethods.ScopeToClient__Args() {
                         client = client.ObjectPtr,
                      };
                      InternalUnsafeMethods.ScopeToClient()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class TSStatic : SceneObject {
 
 
 
-        public TSStatic(bool pRegister = false) 
+        public TSStatic(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public TSStatic(string pName, bool pRegister) 
+
+        public TSStatic(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public TSStatic(string pName) 
+
+        public TSStatic(string pName)
             : this(pName, false) {
         }
-        
-        public TSStatic(string pName, string pParent, bool pRegister = false) 
+
+        public TSStatic(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public TSStatic(string pName, SimObject pParent, bool pRegister = false) 
+
+        public TSStatic(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public TSStatic(SimObject pObj) 
+
+        public TSStatic(SimObject pObj)
             : base(pObj) {
         }
-        
-        public TSStatic(IntPtr pObj) 
+
+        public TSStatic(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetModelFile__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetModelFile(IntPtr _this);
                 internal delegate IntPtr _GetModelFile(IntPtr _this, GetModelFile__Args args);
                 private static _GetModelFile _GetModelFileFunc;
@@ -89,25 +89,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSStatic_getModelFile"), typeof(_GetModelFile));
                     }
-                    
+
                     return _GetModelFileFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ChangeMaterial__Args
                 {
-				   
+
 				   internal string mapTo;
-				   
+
 				   internal IntPtr oldMat;
-				   
+
 				   internal IntPtr newMat;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ChangeMaterial(IntPtr _this, string mapTo, IntPtr oldMat, IntPtr newMat);
                 internal delegate void _ChangeMaterial(IntPtr _this, ChangeMaterial__Args args);
                 private static _ChangeMaterial _ChangeMaterialFunc;
@@ -119,11 +119,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSStatic_changeMaterial"), typeof(_ChangeMaterial));
                     }
-                    
+
                     return _ChangeMaterialFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTargetCount__Args
@@ -131,7 +131,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetTargetCount(IntPtr _this);
                 internal delegate int _GetTargetCount(IntPtr _this, GetTargetCount__Args args);
                 private static _GetTargetCount _GetTargetCountFunc;
@@ -143,21 +143,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSStatic_getTargetCount"), typeof(_GetTargetCount));
                     }
-                    
+
                     return _GetTargetCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTargetName__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetTargetName(IntPtr _this, int index);
                 internal delegate IntPtr _GetTargetName(IntPtr _this, GetTargetName__Args args);
                 private static _GetTargetName _GetTargetNameFunc;
@@ -169,11 +169,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSStatic_getTargetName"), typeof(_GetTargetName));
                     }
-                    
+
                     return _GetTargetNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -181,7 +181,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -193,11 +193,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSStatic_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -205,7 +205,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -217,7 +217,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSStatic_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -225,62 +225,62 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public string GetModelFile() {
-        
+
                      InternalUnsafeMethods.GetModelFile__Args _args = new InternalUnsafeMethods.GetModelFile__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetModelFile()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void ChangeMaterial(string mapTo = "", Material oldMat = null, Material newMat = null) {
-        
+
                                                                                     InternalUnsafeMethods.ChangeMaterial__Args _args = new InternalUnsafeMethods.ChangeMaterial__Args() {
                         mapTo = mapTo,
                         oldMat = oldMat.ObjectPtr,
                         newMat = newMat.ObjectPtr,
                      };
                      InternalUnsafeMethods.ChangeMaterial()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public int GetTargetCount() {
-        
+
                      InternalUnsafeMethods.GetTargetCount__Args _args = new InternalUnsafeMethods.GetTargetCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetTargetCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetTargetName(int index = 0) {
-        
+
                                           InternalUnsafeMethods.GetTargetName__Args _args = new InternalUnsafeMethods.GetTargetName__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetTargetName()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

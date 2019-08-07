@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class SFXState : SimDataBlock {
 
 
 
-        public SFXState(bool pRegister = false) 
+        public SFXState(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public SFXState(string pName, bool pRegister) 
+
+        public SFXState(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public SFXState(string pName) 
+
+        public SFXState(string pName)
             : this(pName, false) {
         }
-        
-        public SFXState(string pName, string pParent, bool pRegister = false) 
+
+        public SFXState(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public SFXState(string pName, SimObject pParent, bool pRegister = false) 
+
+        public SFXState(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public SFXState(SimObject pObj) 
+
+        public SFXState(SimObject pObj)
             : base(pObj) {
         }
-        
-        public SFXState(IntPtr pObj) 
+
+        public SFXState(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Enable__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Enable(IntPtr _this);
                 internal delegate void _Enable(IntPtr _this, Enable__Args args);
                 private static _Enable _EnableFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnSFXState_enable"), typeof(_Enable));
                     }
-                    
+
                     return _EnableFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Disable__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Disable(IntPtr _this);
                 internal delegate void _Disable(IntPtr _this, Disable__Args args);
                 private static _Disable _DisableFunc;
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnSFXState_disable"), typeof(_Disable));
                     }
-                    
+
                     return _DisableFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsDisabled__Args
@@ -137,11 +137,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnSFXState_isDisabled"), typeof(_IsDisabled));
                     }
-                    
+
                     return _IsDisabledFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Deactivate__Args
@@ -149,7 +149,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Deactivate(IntPtr _this);
                 internal delegate void _Deactivate(IntPtr _this, Deactivate__Args args);
                 private static _Deactivate _DeactivateFunc;
@@ -161,11 +161,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnSFXState_deactivate"), typeof(_Deactivate));
                     }
-                    
+
                     return _DeactivateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Activate__Args
@@ -173,7 +173,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Activate(IntPtr _this);
                 internal delegate void _Activate(IntPtr _this, Activate__Args args);
                 private static _Activate _ActivateFunc;
@@ -185,11 +185,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnSFXState_activate"), typeof(_Activate));
                     }
-                    
+
                     return _ActivateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsActive__Args
@@ -209,11 +209,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnSFXState_isActive"), typeof(_IsActive));
                     }
-                    
+
                     return _IsActiveFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnDeactivate__Args
@@ -221,7 +221,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnDeactivate(IntPtr _this);
                 internal delegate void _OnDeactivate(IntPtr _this, OnDeactivate__Args args);
                 private static _OnDeactivate _OnDeactivateFunc;
@@ -233,11 +233,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbSFXState_onDeactivate"), typeof(_OnDeactivate));
                     }
-                    
+
                     return _OnDeactivateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnActivate__Args
@@ -245,7 +245,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnActivate(IntPtr _this);
                 internal delegate void _OnActivate(IntPtr _this, OnActivate__Args args);
                 private static _OnActivate _OnActivateFunc;
@@ -257,11 +257,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbSFXState_onActivate"), typeof(_OnActivate));
                     }
-                    
+
                     return _OnActivateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -269,7 +269,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -281,11 +281,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnSFXState_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -293,7 +293,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -305,7 +305,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnSFXState_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -313,97 +313,97 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void Enable() {
-        
+
                      InternalUnsafeMethods.Enable__Args _args = new InternalUnsafeMethods.Enable__Args() {
                      };
                      InternalUnsafeMethods.Enable()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Disable() {
-        
+
                      InternalUnsafeMethods.Disable__Args _args = new InternalUnsafeMethods.Disable__Args() {
                      };
                      InternalUnsafeMethods.Disable()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool IsDisabled() {
-        
+
                      InternalUnsafeMethods.IsDisabled__Args _args = new InternalUnsafeMethods.IsDisabled__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsDisabled()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void Deactivate() {
-        
+
                      InternalUnsafeMethods.Deactivate__Args _args = new InternalUnsafeMethods.Deactivate__Args() {
                      };
                      InternalUnsafeMethods.Deactivate()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Activate() {
-        
+
                      InternalUnsafeMethods.Activate__Args _args = new InternalUnsafeMethods.Activate__Args() {
                      };
                      InternalUnsafeMethods.Activate()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool IsActive() {
-        
+
                      InternalUnsafeMethods.IsActive__Args _args = new InternalUnsafeMethods.IsActive__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsActive()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void OnDeactivate() {
-        
+
                      InternalUnsafeMethods.OnDeactivate__Args _args = new InternalUnsafeMethods.OnDeactivate__Args() {
                      };
                      InternalUnsafeMethods.OnDeactivate()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnActivate() {
-        
+
                      InternalUnsafeMethods.OnActivate__Args _args = new InternalUnsafeMethods.OnActivate__Args() {
                      };
                      InternalUnsafeMethods.OnActivate()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 
@@ -411,9 +411,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<SFXState> IncludedStates {
             get => new DynamicFieldVector<SFXState>(
-                    this, 
-                    "includedStates", 
-                    4, 
+                    this,
+                    "includedStates",
+                    4,
                     val => GenericMarshal.StringTo<SFXState>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -422,9 +422,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<SFXState> ExcludedStates {
             get => new DynamicFieldVector<SFXState>(
-                    this, 
-                    "excludedStates", 
-                    4, 
+                    this,
+                    "excludedStates",
+                    4,
                     val => GenericMarshal.StringTo<SFXState>(val),
                     obj => GenericMarshal.ToString(obj)
                 );

@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiColorPickerCtrl : GuiControl {
 
 
 
-        public GuiColorPickerCtrl(bool pRegister = false) 
+        public GuiColorPickerCtrl(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiColorPickerCtrl(string pName, bool pRegister) 
+
+        public GuiColorPickerCtrl(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiColorPickerCtrl(string pName) 
+
+        public GuiColorPickerCtrl(string pName)
             : this(pName, false) {
         }
-        
-        public GuiColorPickerCtrl(string pName, string pParent, bool pRegister = false) 
+
+        public GuiColorPickerCtrl(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiColorPickerCtrl(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiColorPickerCtrl(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiColorPickerCtrl(SimObject pObj) 
+
+        public GuiColorPickerCtrl(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiColorPickerCtrl(IntPtr pObj) 
+
+        public GuiColorPickerCtrl(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,17 +69,17 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetSelectorColor__Args
                 {
-				   
+
 				   internal IntPtr color;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetSelectorColor(IntPtr _this, IntPtr color);
                 internal delegate void _SetSelectorColor(IntPtr _this, SetSelectorColor__Args args);
                 private static _SetSelectorColor _SetSelectorColorFunc;
@@ -91,11 +91,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiColorPickerCtrl_setSelectorColor"), typeof(_SetSelectorColor));
                     }
-                    
+
                     return _SetSelectorColorFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct UpdateColor__Args
@@ -103,7 +103,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _UpdateColor(IntPtr _this);
                 internal delegate void _UpdateColor(IntPtr _this, UpdateColor__Args args);
                 private static _UpdateColor _UpdateColorFunc;
@@ -115,21 +115,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiColorPickerCtrl_updateColor"), typeof(_UpdateColor));
                     }
-                    
+
                     return _UpdateColorFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetSelectorPos__Args
                 {
-				   
+
 				   internal IntPtr newPos;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetSelectorPos(IntPtr _this, IntPtr newPos);
                 internal delegate void _SetSelectorPos(IntPtr _this, SetSelectorPos__Args args);
                 private static _SetSelectorPos _SetSelectorPosFunc;
@@ -141,11 +141,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiColorPickerCtrl_setSelectorPos"), typeof(_SetSelectorPos));
                     }
-                    
+
                     return _SetSelectorPosFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSelectorPos__Args
@@ -153,7 +153,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point2I.InternalStruct _GetSelectorPos(IntPtr _this);
                 internal delegate Point2I.InternalStruct _GetSelectorPos(IntPtr _this, GetSelectorPos__Args args);
                 private static _GetSelectorPos _GetSelectorPosFunc;
@@ -165,11 +165,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiColorPickerCtrl_getSelectorPos"), typeof(_GetSelectorPos));
                     }
-                    
+
                     return _GetSelectorPosFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -177,7 +177,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -189,11 +189,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiColorPickerCtrl_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -201,7 +201,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -213,7 +213,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiColorPickerCtrl_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -221,58 +221,58 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void SetSelectorColor(LinearColorF color) {
-        
+
                      color.Alloc();                     InternalUnsafeMethods.SetSelectorColor__Args _args = new InternalUnsafeMethods.SetSelectorColor__Args() {
                         color = color.internalStructPtr,
                      };
                      InternalUnsafeMethods.SetSelectorColor()(ObjectPtr, _args);
-                                          color.Free();            
+                                          color.Free();
                   }
-	
 
-			
+
+
                   public void UpdateColor() {
-        
+
                      InternalUnsafeMethods.UpdateColor__Args _args = new InternalUnsafeMethods.UpdateColor__Args() {
                      };
                      InternalUnsafeMethods.UpdateColor()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetSelectorPos(Point2I newPos) {
-        
+
                      newPos.Alloc();                     InternalUnsafeMethods.SetSelectorPos__Args _args = new InternalUnsafeMethods.SetSelectorPos__Args() {
                         newPos = newPos.internalStructPtr,
                      };
                      InternalUnsafeMethods.SetSelectorPos()(ObjectPtr, _args);
-                                          newPos.Free();            
+                                          newPos.Free();
                   }
-	
 
-			
+
+
                   public Point2I GetSelectorPos() {
-        
+
                      InternalUnsafeMethods.GetSelectorPos__Args _args = new InternalUnsafeMethods.GetSelectorPos__Args() {
                      };
                      Point2I.InternalStruct _engineResult = InternalUnsafeMethods.GetSelectorPos()(ObjectPtr, _args);
-                                 
+
                      return new Point2I(_engineResult);
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

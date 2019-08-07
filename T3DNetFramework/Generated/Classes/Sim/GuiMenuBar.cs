@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiMenuBar : GuiTickCtrl {
 
 
 
-        public GuiMenuBar(bool pRegister = false) 
+        public GuiMenuBar(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiMenuBar(string pName, bool pRegister) 
+
+        public GuiMenuBar(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiMenuBar(string pName) 
+
+        public GuiMenuBar(string pName)
             : this(pName, false) {
         }
-        
-        public GuiMenuBar(string pName, string pParent, bool pRegister = false) 
+
+        public GuiMenuBar(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiMenuBar(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiMenuBar(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiMenuBar(SimObject pObj) 
+
+        public GuiMenuBar(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiMenuBar(IntPtr pObj) 
+
+        public GuiMenuBar(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,17 +69,17 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct FindMenu__Args
                 {
-				   
+
 				   internal string barTitle;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _FindMenu(IntPtr _this, string barTitle);
                 internal delegate int _FindMenu(IntPtr _this, FindMenu__Args args);
                 private static _FindMenu _FindMenuFunc;
@@ -91,23 +91,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMenuBar_findMenu"), typeof(_FindMenu));
                     }
-                    
+
                     return _FindMenuFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Insert__Args
                 {
-				   
+
 				   internal IntPtr pObject;
-				   
+
 				   internal int pos;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Insert(IntPtr _this, IntPtr pObject, int pos);
                 internal delegate void _Insert(IntPtr _this, Insert__Args args);
                 private static _Insert _InsertFunc;
@@ -119,21 +119,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMenuBar_insert"), typeof(_Insert));
                     }
-                    
+
                     return _InsertFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMenu__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetMenu(IntPtr _this, int index);
                 internal delegate int _GetMenu(IntPtr _this, GetMenu__Args args);
                 private static _GetMenu _GetMenuFunc;
@@ -145,11 +145,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMenuBar_getMenu"), typeof(_GetMenu));
                     }
-                    
+
                     return _GetMenuFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMenuCount__Args
@@ -157,7 +157,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetMenuCount(IntPtr _this);
                 internal delegate int _GetMenuCount(IntPtr _this, GetMenuCount__Args args);
                 private static _GetMenuCount _GetMenuCountFunc;
@@ -169,11 +169,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMenuBar_getMenuCount"), typeof(_GetMenuCount));
                     }
-                    
+
                     return _GetMenuCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveFromCanvas__Args
@@ -181,7 +181,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _RemoveFromCanvas(IntPtr _this);
                 internal delegate void _RemoveFromCanvas(IntPtr _this, RemoveFromCanvas__Args args);
                 private static _RemoveFromCanvas _RemoveFromCanvasFunc;
@@ -193,23 +193,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMenuBar_removeFromCanvas"), typeof(_RemoveFromCanvas));
                     }
-                    
+
                     return _RemoveFromCanvasFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AttachToCanvas__Args
                 {
-				   
+
 				   internal string canvas;
-				   
+
 				   internal int pos;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _AttachToCanvas(IntPtr _this, string canvas, int pos);
                 internal delegate void _AttachToCanvas(IntPtr _this, AttachToCanvas__Args args);
                 private static _AttachToCanvas _AttachToCanvasFunc;
@@ -221,27 +221,27 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMenuBar_attachToCanvas"), typeof(_AttachToCanvas));
                     }
-                    
+
                     return _AttachToCanvasFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnMenuItemSelect__Args
                 {
-				   
+
 				   internal int menuId;
-				   
+
 				   internal string menuText;
-				   
+
 				   internal int menuItemId;
-				   
+
 				   internal string menuItemText;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnMenuItemSelect(IntPtr _this, int menuId, string menuText, int menuItemId, string menuItemText);
                 internal delegate void _OnMenuItemSelect(IntPtr _this, OnMenuItemSelect__Args args);
                 private static _OnMenuItemSelect _OnMenuItemSelectFunc;
@@ -253,23 +253,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiMenuBar_onMenuItemSelect"), typeof(_OnMenuItemSelect));
                     }
-                    
+
                     return _OnMenuItemSelectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnMenuSelect__Args
                 {
-				   
+
 				   internal int menuId;
-				   
+
 				   internal string menuText;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnMenuSelect(IntPtr _this, int menuId, string menuText);
                 internal delegate void _OnMenuSelect(IntPtr _this, OnMenuSelect__Args args);
                 private static _OnMenuSelect _OnMenuSelectFunc;
@@ -281,11 +281,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiMenuBar_onMenuSelect"), typeof(_OnMenuSelect));
                     }
-                    
+
                     return _OnMenuSelectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnMouseInMenu__Args
@@ -295,7 +295,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnMouseInMenu(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool isInMenu);
                 internal delegate void _OnMouseInMenu(IntPtr _this, OnMouseInMenu__Args args);
                 private static _OnMouseInMenu _OnMouseInMenuFunc;
@@ -307,11 +307,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiMenuBar_onMouseInMenu"), typeof(_OnMouseInMenu));
                     }
-                    
+
                     return _OnMouseInMenuFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -319,7 +319,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -331,11 +331,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMenuBar_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -343,7 +343,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -355,7 +355,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMenuBar_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -363,78 +363,78 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public int FindMenu(string barTitle = "") {
-        
+
                                           InternalUnsafeMethods.FindMenu__Args _args = new InternalUnsafeMethods.FindMenu__Args() {
                         barTitle = barTitle,
                      };
                      int _engineResult = InternalUnsafeMethods.FindMenu()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void Insert(SimObject pObject = null, int pos = -1) {
-        
+
                                                                InternalUnsafeMethods.Insert__Args _args = new InternalUnsafeMethods.Insert__Args() {
                         pObject = pObject.ObjectPtr,
                         pos = pos,
                      };
                      InternalUnsafeMethods.Insert()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public int GetMenu(int index = 0) {
-        
+
                                           InternalUnsafeMethods.GetMenu__Args _args = new InternalUnsafeMethods.GetMenu__Args() {
                         index = index,
                      };
                      int _engineResult = InternalUnsafeMethods.GetMenu()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetMenuCount() {
-        
+
                      InternalUnsafeMethods.GetMenuCount__Args _args = new InternalUnsafeMethods.GetMenuCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetMenuCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void RemoveFromCanvas() {
-        
+
                      InternalUnsafeMethods.RemoveFromCanvas__Args _args = new InternalUnsafeMethods.RemoveFromCanvas__Args() {
                      };
                      InternalUnsafeMethods.RemoveFromCanvas()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void AttachToCanvas(string canvas, int pos) {
-        
+
                                                                InternalUnsafeMethods.AttachToCanvas__Args _args = new InternalUnsafeMethods.AttachToCanvas__Args() {
                         canvas = canvas,
                         pos = pos,
                      };
                      InternalUnsafeMethods.AttachToCanvas()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnMenuItemSelect(int menuId, string menuText, int menuItemId, string menuItemText) {
-        
+
                                                                                                          InternalUnsafeMethods.OnMenuItemSelect__Args _args = new InternalUnsafeMethods.OnMenuItemSelect__Args() {
                         menuId = menuId,
                         menuText = menuText,
@@ -442,42 +442,42 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         menuItemText = menuItemText,
                      };
                      InternalUnsafeMethods.OnMenuItemSelect()(ObjectPtr, _args);
-                                                                                                                     
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnMenuSelect(int menuId, string menuText) {
-        
+
                                                                InternalUnsafeMethods.OnMenuSelect__Args _args = new InternalUnsafeMethods.OnMenuSelect__Args() {
                         menuId = menuId,
                         menuText = menuText,
                      };
                      InternalUnsafeMethods.OnMenuSelect()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnMouseInMenu(bool isInMenu) {
-        
+
                                           InternalUnsafeMethods.OnMouseInMenu__Args _args = new InternalUnsafeMethods.OnMouseInMenu__Args() {
                         isInMenu = isInMenu,
                      };
                      InternalUnsafeMethods.OnMouseInMenu()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

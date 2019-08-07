@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class VehicleData : ShapeBaseData {
 
 
 
-        public VehicleData(bool pRegister = false) 
+        public VehicleData(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public VehicleData(string pName, bool pRegister) 
+
+        public VehicleData(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public VehicleData(string pName) 
+
+        public VehicleData(string pName)
             : this(pName, false) {
         }
-        
-        public VehicleData(string pName, string pParent, bool pRegister = false) 
+
+        public VehicleData(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public VehicleData(string pName, SimObject pParent, bool pRegister = false) 
+
+        public VehicleData(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public VehicleData(SimObject pObj) 
+
+        public VehicleData(SimObject pObj)
             : base(pObj) {
         }
-        
-        public VehicleData(IntPtr pObj) 
+
+        public VehicleData(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,19 +69,19 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnLeaveLiquid__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal string type;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnLeaveLiquid(IntPtr _this, IntPtr obj, string type);
                 internal delegate void _OnLeaveLiquid(IntPtr _this, OnLeaveLiquid__Args args);
                 private static _OnLeaveLiquid _OnLeaveLiquidFunc;
@@ -93,25 +93,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbVehicleData_onLeaveLiquid"), typeof(_OnLeaveLiquid));
                     }
-                    
+
                     return _OnLeaveLiquidFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnEnterLiquid__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal float coverage;
-				   
+
 				   internal string type;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnEnterLiquid(IntPtr _this, IntPtr obj, float coverage, string type);
                 internal delegate void _OnEnterLiquid(IntPtr _this, OnEnterLiquid__Args args);
                 private static _OnEnterLiquid _OnEnterLiquidFunc;
@@ -123,11 +123,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbVehicleData_onEnterLiquid"), typeof(_OnEnterLiquid));
                     }
-                    
+
                     return _OnEnterLiquidFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -135,7 +135,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -147,11 +147,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnVehicleData_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -159,7 +159,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -171,7 +171,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnVehicleData_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -179,40 +179,40 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void OnLeaveLiquid(Vehicle obj, string type) {
-        
+
                                                                InternalUnsafeMethods.OnLeaveLiquid__Args _args = new InternalUnsafeMethods.OnLeaveLiquid__Args() {
                         obj = obj.ObjectPtr,
                         type = type,
                      };
                      InternalUnsafeMethods.OnLeaveLiquid()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnEnterLiquid(Vehicle obj, float coverage, string type) {
-        
+
                                                                                     InternalUnsafeMethods.OnEnterLiquid__Args _args = new InternalUnsafeMethods.OnEnterLiquid__Args() {
                         obj = obj.ObjectPtr,
                         coverage = coverage,
                         type = type,
                      };
                      InternalUnsafeMethods.OnEnterLiquid()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 
@@ -400,9 +400,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<ParticleEmitterData> DamageEmitter {
             get => new DynamicFieldVector<ParticleEmitterData>(
-                    this, 
-                    "damageEmitter", 
-                    3, 
+                    this,
+                    "damageEmitter",
+                    3,
                     val => GenericMarshal.StringTo<ParticleEmitterData>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -411,9 +411,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<Point3F> DamageEmitterOffset {
             get => new DynamicFieldVector<Point3F>(
-                    this, 
-                    "damageEmitterOffset", 
-                    2, 
+                    this,
+                    "damageEmitterOffset",
+                    2,
                     val => GenericMarshal.StringTo<Point3F>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -422,9 +422,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> DamageLevelTolerance {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "damageLevelTolerance", 
-                    2, 
+                    this,
+                    "damageLevelTolerance",
+                    2,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -439,9 +439,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<ParticleEmitterData> SplashEmitter {
             get => new DynamicFieldVector<ParticleEmitterData>(
-                    this, 
-                    "splashEmitter", 
-                    2, 
+                    this,
+                    "splashEmitter",
+                    2,
                     val => GenericMarshal.StringTo<ParticleEmitterData>(val),
                     obj => GenericMarshal.ToString(obj)
                 );

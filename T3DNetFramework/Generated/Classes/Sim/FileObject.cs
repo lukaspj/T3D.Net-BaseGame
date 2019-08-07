@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class FileObject : SimObject {
 
 
 
-        public FileObject(bool pRegister = false) 
+        public FileObject(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public FileObject(string pName, bool pRegister) 
+
+        public FileObject(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public FileObject(string pName) 
+
+        public FileObject(string pName)
             : this(pName, false) {
         }
-        
-        public FileObject(string pName, string pParent, bool pRegister = false) 
+
+        public FileObject(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public FileObject(string pName, SimObject pParent, bool pRegister = false) 
+
+        public FileObject(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public FileObject(SimObject pObj) 
+
+        public FileObject(SimObject pObj)
             : base(pObj) {
         }
-        
-        public FileObject(IntPtr pObj) 
+
+        public FileObject(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,19 +69,19 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct WriteObject__Args
                 {
-				   
+
 				   internal string simName;
-				   
+
 				   internal string objName;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _WriteObject(IntPtr _this, string simName, string objName);
                 internal delegate void _WriteObject(IntPtr _this, WriteObject__Args args);
                 private static _WriteObject _WriteObjectFunc;
@@ -93,11 +93,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_writeObject"), typeof(_WriteObject));
                     }
-                    
+
                     return _WriteObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Close__Args
@@ -105,7 +105,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Close(IntPtr _this);
                 internal delegate void _Close(IntPtr _this, Close__Args args);
                 private static _Close _CloseFunc;
@@ -117,21 +117,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_close"), typeof(_Close));
                     }
-                    
+
                     return _CloseFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct WriteLine__Args
                 {
-				   
+
 				   internal string text;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _WriteLine(IntPtr _this, string text);
                 internal delegate void _WriteLine(IntPtr _this, WriteLine__Args args);
                 private static _WriteLine _WriteLineFunc;
@@ -143,11 +143,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_writeLine"), typeof(_WriteLine));
                     }
-                    
+
                     return _WriteLineFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct PeekLine__Args
@@ -155,7 +155,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _PeekLine(IntPtr _this);
                 internal delegate IntPtr _PeekLine(IntPtr _this, PeekLine__Args args);
                 private static _PeekLine _PeekLineFunc;
@@ -167,11 +167,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_peekLine"), typeof(_PeekLine));
                     }
-                    
+
                     return _PeekLineFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ReadLine__Args
@@ -179,7 +179,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _ReadLine(IntPtr _this);
                 internal delegate IntPtr _ReadLine(IntPtr _this, ReadLine__Args args);
                 private static _ReadLine _ReadLineFunc;
@@ -191,11 +191,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_readLine"), typeof(_ReadLine));
                     }
-                    
+
                     return _ReadLineFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsEOF__Args
@@ -215,16 +215,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_isEOF"), typeof(_IsEOF));
                     }
-                    
+
                     return _IsEOFFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OpenForAppend__Args
                 {
-				   
+
 				   internal string filename;
                 }
 
@@ -241,16 +241,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_openForAppend"), typeof(_OpenForAppend));
                     }
-                    
+
                     return _OpenForAppendFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OpenForWrite__Args
                 {
-				   
+
 				   internal string filename;
                 }
 
@@ -267,16 +267,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_openForWrite"), typeof(_OpenForWrite));
                     }
-                    
+
                     return _OpenForWriteFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OpenForRead__Args
                 {
-				   
+
 				   internal string filename;
                 }
 
@@ -293,11 +293,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_openForRead"), typeof(_OpenForRead));
                     }
-                    
+
                     return _OpenForReadFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -305,7 +305,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -317,11 +317,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -329,7 +329,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -341,7 +341,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnFileObject_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -349,117 +349,117 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void WriteObject(string simName, string objName = "") {
-        
+
                                                                InternalUnsafeMethods.WriteObject__Args _args = new InternalUnsafeMethods.WriteObject__Args() {
                         simName = simName,
                         objName = objName,
                      };
                      InternalUnsafeMethods.WriteObject()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Close() {
-        
+
                      InternalUnsafeMethods.Close__Args _args = new InternalUnsafeMethods.Close__Args() {
                      };
                      InternalUnsafeMethods.Close()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void WriteLine(string text) {
-        
+
                                           InternalUnsafeMethods.WriteLine__Args _args = new InternalUnsafeMethods.WriteLine__Args() {
                         text = text,
                      };
                      InternalUnsafeMethods.WriteLine()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public string PeekLine() {
-        
+
                      InternalUnsafeMethods.PeekLine__Args _args = new InternalUnsafeMethods.PeekLine__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.PeekLine()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string ReadLine() {
-        
+
                      InternalUnsafeMethods.ReadLine__Args _args = new InternalUnsafeMethods.ReadLine__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.ReadLine()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public bool IsEOF() {
-        
+
                      InternalUnsafeMethods.IsEOF__Args _args = new InternalUnsafeMethods.IsEOF__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsEOF()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool OpenForAppend(string filename) {
-        
+
                                           InternalUnsafeMethods.OpenForAppend__Args _args = new InternalUnsafeMethods.OpenForAppend__Args() {
                         filename = filename,
                      };
                      bool _engineResult = InternalUnsafeMethods.OpenForAppend()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool OpenForWrite(string filename) {
-        
+
                                           InternalUnsafeMethods.OpenForWrite__Args _args = new InternalUnsafeMethods.OpenForWrite__Args() {
                         filename = filename,
                      };
                      bool _engineResult = InternalUnsafeMethods.OpenForWrite()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool OpenForRead(string filename) {
-        
+
                                           InternalUnsafeMethods.OpenForRead__Args _args = new InternalUnsafeMethods.OpenForRead__Args() {
                         filename = filename,
                      };
                      bool _engineResult = InternalUnsafeMethods.OpenForRead()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

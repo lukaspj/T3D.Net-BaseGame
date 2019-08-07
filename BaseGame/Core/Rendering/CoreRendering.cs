@@ -1,8 +1,8 @@
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Functions;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Functions;
+using T3DNetFramework.Interop;
 
-namespace Game.Core.Rendering
+namespace BaseGame.Core.Rendering
 {
    [ConsoleClass("Core_Rendering")]
    public class CoreRendering : SimSet
@@ -13,13 +13,12 @@ namespace Game.Core.Rendering
          Global.SetConsoleString("Core::WarningTexturePath", "core/rendering/images/warnMat");
          Global.SetConsoleString("Core::CommonShaderPath", "core/rendering/shaders");
 
-         Global.Exec("core/rendering/scripts/renderManager.cs");
-         Global.Exec("core/rendering/scripts/gfxData/clouds.cs");
-         Global.Exec("core/rendering/scripts/gfxData/commonMaterialData.cs");
-         Global.Exec("core/rendering/scripts/gfxData/scatterSky.cs");
-         Global.Exec("core/rendering/scripts/gfxData/shaders.cs");
-         Global.Exec("core/rendering/scripts/gfxData/terrainBlock.cs");
-         Global.Exec("core/rendering/scripts/gfxData/water.cs");
+         GfxData.Clouds.Init();
+         GfxData.CommonMaterialData.Init();
+         GfxData.ScatterSky.Init();
+         GfxData.Shaders.Init();
+         GfxData.TerrainBlock.Init();
+         GfxData.Water.Init();
       }
 
       public void onDestroy() {

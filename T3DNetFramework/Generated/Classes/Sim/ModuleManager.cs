@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class ModuleManager : SimObject {
 
 
 
-        public ModuleManager(bool pRegister = false) 
+        public ModuleManager(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public ModuleManager(string pName, bool pRegister) 
+
+        public ModuleManager(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public ModuleManager(string pName) 
+
+        public ModuleManager(string pName)
             : this(pName, false) {
         }
-        
-        public ModuleManager(string pName, string pParent, bool pRegister = false) 
+
+        public ModuleManager(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public ModuleManager(string pName, SimObject pParent, bool pRegister = false) 
+
+        public ModuleManager(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public ModuleManager(SimObject pObj) 
+
+        public ModuleManager(SimObject pObj)
             : base(pObj) {
         }
-        
-        public ModuleManager(IntPtr pObj) 
+
+        public ModuleManager(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IgnoreLoadedGroups__Args
@@ -127,7 +127,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _IgnoreLoadedGroups(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool doIgnore);
                 internal delegate void _IgnoreLoadedGroups(IntPtr _this, IgnoreLoadedGroups__Args args);
                 private static _IgnoreLoadedGroups _IgnoreLoadedGroupsFunc;
@@ -139,21 +139,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_ignoreLoadedGroups"), typeof(_IgnoreLoadedGroups));
                     }
-                    
+
                     return _IgnoreLoadedGroupsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveListener__Args
                 {
-				   
+
 				   internal string listenerObject;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _RemoveListener(IntPtr _this, string listenerObject);
                 internal delegate void _RemoveListener(IntPtr _this, RemoveListener__Args args);
                 private static _RemoveListener _RemoveListenerFunc;
@@ -165,21 +165,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_removeListener"), typeof(_RemoveListener));
                     }
-                    
+
                     return _RemoveListenerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddListener__Args
                 {
-				   
+
 				   internal string listenerObject;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _AddListener(IntPtr _this, string listenerObject);
                 internal delegate void _AddListener(IntPtr _this, AddListener__Args args);
                 private static _AddListener _AddListenerFunc;
@@ -191,16 +191,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_addListener"), typeof(_AddListener));
                     }
-                    
+
                     return _AddListenerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct MergeModules__Args
                 {
-				   
+
 				   internal string pMergeTargetPath;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool removeMergeDefinition;
@@ -221,16 +221,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_mergeModules"), typeof(_MergeModules));
                     }
-                    
+
                     return _MergeModulesFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct CanMergeModules__Args
                 {
-				   
+
 				   internal string mergeSourcePath;
                 }
 
@@ -247,11 +247,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_canMergeModules"), typeof(_CanMergeModules));
                     }
-                    
+
                     return _CanMergeModulesFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsModuleMergeAvailable__Args
@@ -271,18 +271,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_isModuleMergeAvailable"), typeof(_IsModuleMergeAvailable));
                     }
-                    
+
                     return _IsModuleMergeAvailableFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SynchronizeDependencies__Args
                 {
-				   
+
 				   internal string rootModuleDefinition;
-				   
+
 				   internal string pTargetDependencyFolder;
                 }
 
@@ -299,18 +299,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_synchronizeDependencies"), typeof(_SynchronizeDependencies));
                     }
-                    
+
                     return _SynchronizeDependenciesFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RenameModule__Args
                 {
-				   
+
 				   internal string sourceModuleDefinition;
-				   
+
 				   internal string pNewModuleName;
                 }
 
@@ -327,27 +327,27 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_renameModule"), typeof(_RenameModule));
                     }
-                    
+
                     return _RenameModuleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct CopyModule__Args
                 {
-				   
+
 				   internal string sourceModuleDefinition;
-				   
+
 				   internal string pTargetModuleId;
-				   
+
 				   internal string pTargetPath;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool useVersionPathing;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _CopyModule(IntPtr _this, string sourceModuleDefinition, string pTargetModuleId, string pTargetPath, [MarshalAs(UnmanagedType.I1)]bool useVersionPathing);
                 internal delegate IntPtr _CopyModule(IntPtr _this, CopyModule__Args args);
                 private static _CopyModule _CopyModuleFunc;
@@ -359,23 +359,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_copyModule"), typeof(_CopyModule));
                     }
-                    
+
                     return _CopyModuleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct FindModuleTypes__Args
                 {
-				   
+
 				   internal string pModuleType;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool loadedOnly;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _FindModuleTypes(IntPtr _this, string pModuleType, [MarshalAs(UnmanagedType.I1)]bool loadedOnly);
                 internal delegate IntPtr _FindModuleTypes(IntPtr _this, FindModuleTypes__Args args);
                 private static _FindModuleTypes _FindModuleTypesFunc;
@@ -387,11 +387,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_findModuleTypes"), typeof(_FindModuleTypes));
                     }
-                    
+
                     return _FindModuleTypesFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct FindModules__Args
@@ -401,7 +401,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _FindModules(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool loadedOnly);
                 internal delegate IntPtr _FindModules(IntPtr _this, FindModules__Args args);
                 private static _FindModules _FindModulesFunc;
@@ -413,23 +413,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_findModules"), typeof(_FindModules));
                     }
-                    
+
                     return _FindModulesFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct FindModule__Args
                 {
-				   
+
 				   internal string pModuleId;
-				   
+
 				   internal uint pVersionId;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _FindModule(IntPtr _this, string pModuleId, uint pVersionId);
                 internal delegate IntPtr _FindModule(IntPtr _this, FindModule__Args args);
                 private static _FindModule _FindModuleFunc;
@@ -441,16 +441,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_findModule"), typeof(_FindModule));
                     }
-                    
+
                     return _FindModuleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct UnloadExplicit__Args
                 {
-				   
+
 				   internal string pModuleId;
                 }
 
@@ -467,18 +467,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_unloadExplicit"), typeof(_UnloadExplicit));
                     }
-                    
+
                     return _UnloadExplicitFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct LoadExplicit__Args
                 {
-				   
+
 				   internal string pModuleId;
-				   
+
 				   internal int pVersionId;
                 }
 
@@ -495,16 +495,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_loadExplicit"), typeof(_LoadExplicit));
                     }
-                    
+
                     return _LoadExplicitFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct UnloadGroup__Args
                 {
-				   
+
 				   internal string pModuleGroup;
                 }
 
@@ -521,16 +521,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_unloadGroup"), typeof(_UnloadGroup));
                     }
-                    
+
                     return _UnloadGroupFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct LoadGroup__Args
                 {
-				   
+
 				   internal string pModuleGroup;
                 }
 
@@ -547,16 +547,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_loadGroup"), typeof(_LoadGroup));
                     }
-                    
+
                     return _LoadGroupFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct UnregisterModule__Args
                 {
-				   
+
 				   internal string pModuleId;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool versionId;
@@ -575,18 +575,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_unregisterModule"), typeof(_UnregisterModule));
                     }
-                    
+
                     return _UnregisterModuleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RegisterModule__Args
                 {
-				   
+
 				   internal string pModulePath;
-				   
+
 				   internal string pModuleFile;
                 }
 
@@ -603,16 +603,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_registerModule"), typeof(_RegisterModule));
                     }
-                    
+
                     return _RegisterModuleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ScanModules__Args
                 {
-				   
+
 				   internal string pRootPath;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool rootOnly;
@@ -631,16 +631,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_scanModules"), typeof(_ScanModules));
                     }
-                    
+
                     return _ScanModulesFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetModuleExtension__Args
                 {
-				   
+
 				   internal string moduleExtension;
                 }
 
@@ -657,7 +657,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleManager_setModuleExtension"), typeof(_SetModuleExtension));
                     }
-                    
+
                     return _SetModuleExtensionFunc;
                 }
 
@@ -665,117 +665,117 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
 
 
 
-			
+
+
                   public void IgnoreLoadedGroups(bool doIgnore = false) {
-        
+
                                           InternalUnsafeMethods.IgnoreLoadedGroups__Args _args = new InternalUnsafeMethods.IgnoreLoadedGroups__Args() {
                         doIgnore = doIgnore,
                      };
                      InternalUnsafeMethods.IgnoreLoadedGroups()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void RemoveListener(string listenerObject = "") {
-        
+
                                           InternalUnsafeMethods.RemoveListener__Args _args = new InternalUnsafeMethods.RemoveListener__Args() {
                         listenerObject = listenerObject,
                      };
                      InternalUnsafeMethods.RemoveListener()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void AddListener(string listenerObject = "") {
-        
+
                                           InternalUnsafeMethods.AddListener__Args _args = new InternalUnsafeMethods.AddListener__Args() {
                         listenerObject = listenerObject,
                      };
                      InternalUnsafeMethods.AddListener()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool MergeModules(string pMergeTargetPath = "", bool removeMergeDefinition = false, bool registerNewModules = false) {
-        
+
                                                                                     InternalUnsafeMethods.MergeModules__Args _args = new InternalUnsafeMethods.MergeModules__Args() {
                         pMergeTargetPath = pMergeTargetPath,
                         removeMergeDefinition = removeMergeDefinition,
                         registerNewModules = registerNewModules,
                      };
                      bool _engineResult = InternalUnsafeMethods.MergeModules()(ObjectPtr, _args);
-                                                                                                
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool CanMergeModules(string mergeSourcePath = "") {
-        
+
                                           InternalUnsafeMethods.CanMergeModules__Args _args = new InternalUnsafeMethods.CanMergeModules__Args() {
                         mergeSourcePath = mergeSourcePath,
                      };
                      bool _engineResult = InternalUnsafeMethods.CanMergeModules()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool IsModuleMergeAvailable() {
-        
+
                      InternalUnsafeMethods.IsModuleMergeAvailable__Args _args = new InternalUnsafeMethods.IsModuleMergeAvailable__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsModuleMergeAvailable()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SynchronizeDependencies(string rootModuleDefinition = "", string pTargetDependencyFolder = "") {
-        
+
                                                                InternalUnsafeMethods.SynchronizeDependencies__Args _args = new InternalUnsafeMethods.SynchronizeDependencies__Args() {
                         rootModuleDefinition = rootModuleDefinition,
                         pTargetDependencyFolder = pTargetDependencyFolder,
                      };
                      bool _engineResult = InternalUnsafeMethods.SynchronizeDependencies()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RenameModule(string sourceModuleDefinition = "", string pNewModuleName = "") {
-        
+
                                                                InternalUnsafeMethods.RenameModule__Args _args = new InternalUnsafeMethods.RenameModule__Args() {
                         sourceModuleDefinition = sourceModuleDefinition,
                         pNewModuleName = pNewModuleName,
                      };
                      bool _engineResult = InternalUnsafeMethods.RenameModule()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string CopyModule(string sourceModuleDefinition = "", string pTargetModuleId = "", string pTargetPath = "", bool useVersionPathing = false) {
-        
+
                                                                                                          InternalUnsafeMethods.CopyModule__Args _args = new InternalUnsafeMethods.CopyModule__Args() {
                         sourceModuleDefinition = sourceModuleDefinition,
                         pTargetModuleId = pTargetModuleId,
@@ -783,148 +783,148 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         useVersionPathing = useVersionPathing,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.CopyModule()(ObjectPtr, _args);
-                                                                                                                     
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string FindModuleTypes(string pModuleType = "", bool loadedOnly = false) {
-        
+
                                                                InternalUnsafeMethods.FindModuleTypes__Args _args = new InternalUnsafeMethods.FindModuleTypes__Args() {
                         pModuleType = pModuleType,
                         loadedOnly = loadedOnly,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.FindModuleTypes()(ObjectPtr, _args);
-                                                                           
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string FindModules(bool loadedOnly = false) {
-        
+
                                           InternalUnsafeMethods.FindModules__Args _args = new InternalUnsafeMethods.FindModules__Args() {
                         loadedOnly = loadedOnly,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.FindModules()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string FindModule(string pModuleId = "", uint pVersionId = 0) {
-        
+
                                                                InternalUnsafeMethods.FindModule__Args _args = new InternalUnsafeMethods.FindModule__Args() {
                         pModuleId = pModuleId,
                         pVersionId = pVersionId,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.FindModule()(ObjectPtr, _args);
-                                                                           
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public bool UnloadExplicit(string pModuleId = "") {
-        
+
                                           InternalUnsafeMethods.UnloadExplicit__Args _args = new InternalUnsafeMethods.UnloadExplicit__Args() {
                         pModuleId = pModuleId,
                      };
                      bool _engineResult = InternalUnsafeMethods.UnloadExplicit()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool LoadExplicit(string pModuleId = "", int pVersionId = -1) {
-        
+
                                                                InternalUnsafeMethods.LoadExplicit__Args _args = new InternalUnsafeMethods.LoadExplicit__Args() {
                         pModuleId = pModuleId,
                         pVersionId = pVersionId,
                      };
                      bool _engineResult = InternalUnsafeMethods.LoadExplicit()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool UnloadGroup(string pModuleGroup = "") {
-        
+
                                           InternalUnsafeMethods.UnloadGroup__Args _args = new InternalUnsafeMethods.UnloadGroup__Args() {
                         pModuleGroup = pModuleGroup,
                      };
                      bool _engineResult = InternalUnsafeMethods.UnloadGroup()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool LoadGroup(string pModuleGroup = "") {
-        
+
                                           InternalUnsafeMethods.LoadGroup__Args _args = new InternalUnsafeMethods.LoadGroup__Args() {
                         pModuleGroup = pModuleGroup,
                      };
                      bool _engineResult = InternalUnsafeMethods.LoadGroup()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool UnregisterModule(string pModuleId = "", bool versionId = false) {
-        
+
                                                                InternalUnsafeMethods.UnregisterModule__Args _args = new InternalUnsafeMethods.UnregisterModule__Args() {
                         pModuleId = pModuleId,
                         versionId = versionId,
                      };
                      bool _engineResult = InternalUnsafeMethods.UnregisterModule()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RegisterModule(string pModulePath = "", string pModuleFile = "") {
-        
+
                                                                InternalUnsafeMethods.RegisterModule__Args _args = new InternalUnsafeMethods.RegisterModule__Args() {
                         pModulePath = pModulePath,
                         pModuleFile = pModuleFile,
                      };
                      bool _engineResult = InternalUnsafeMethods.RegisterModule()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool ScanModules(string pRootPath = "", bool rootOnly = false) {
-        
+
                                                                InternalUnsafeMethods.ScanModules__Args _args = new InternalUnsafeMethods.ScanModules__Args() {
                         pRootPath = pRootPath,
                         rootOnly = rootOnly,
                      };
                      bool _engineResult = InternalUnsafeMethods.ScanModules()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetModuleExtension(string moduleExtension = "") {
-        
+
                                           InternalUnsafeMethods.SetModuleExtension__Args _args = new InternalUnsafeMethods.SetModuleExtension__Args() {
                         moduleExtension = moduleExtension,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetModuleExtension()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
+
 
 
 

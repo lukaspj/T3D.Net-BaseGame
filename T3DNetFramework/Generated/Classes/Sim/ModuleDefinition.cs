@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class ModuleDefinition : SimSet {
 
 
 
-        public ModuleDefinition(bool pRegister = false) 
+        public ModuleDefinition(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public ModuleDefinition(string pName, bool pRegister) 
+
+        public ModuleDefinition(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public ModuleDefinition(string pName) 
+
+        public ModuleDefinition(string pName)
             : this(pName, false) {
         }
-        
-        public ModuleDefinition(string pName, string pParent, bool pRegister = false) 
+
+        public ModuleDefinition(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public ModuleDefinition(string pName, SimObject pParent, bool pRegister = false) 
+
+        public ModuleDefinition(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public ModuleDefinition(SimObject pObj) 
+
+        public ModuleDefinition(SimObject pObj)
             : base(pObj) {
         }
-        
-        public ModuleDefinition(IntPtr pObj) 
+
+        public ModuleDefinition(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleDefinition_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -113,16 +113,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleDefinition_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveDependency__Args
                 {
-				   
+
 				   internal string pModuleId;
                 }
 
@@ -139,18 +139,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleDefinition_removeDependency"), typeof(_RemoveDependency));
                     }
-                    
+
                     return _RemoveDependencyFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddDependency__Args
                 {
-				   
+
 				   internal string pModuleId;
-				   
+
 				   internal uint versionId;
                 }
 
@@ -167,21 +167,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleDefinition_addDependency"), typeof(_AddDependency));
                     }
-                    
+
                     return _AddDependencyFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetDependency__Args
                 {
-				   
+
 				   internal uint dependencyIndex;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetDependency(IntPtr _this, uint dependencyIndex);
                 internal delegate IntPtr _GetDependency(IntPtr _this, GetDependency__Args args);
                 private static _GetDependency _GetDependencyFunc;
@@ -193,11 +193,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleDefinition_getDependency"), typeof(_GetDependency));
                     }
-                    
+
                     return _GetDependencyFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetDependencyCount__Args
@@ -205,7 +205,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetDependencyCount(IntPtr _this);
                 internal delegate int _GetDependencyCount(IntPtr _this, GetDependencyCount__Args args);
                 private static _GetDependencyCount _GetDependencyCountFunc;
@@ -217,11 +217,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleDefinition_getDependencyCount"), typeof(_GetDependencyCount));
                     }
-                    
+
                     return _GetDependencyCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetModuleManager__Args
@@ -229,7 +229,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetModuleManager(IntPtr _this);
                 internal delegate int _GetModuleManager(IntPtr _this, GetModuleManager__Args args);
                 private static _GetModuleManager _GetModuleManagerFunc;
@@ -241,11 +241,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleDefinition_getModuleManager"), typeof(_GetModuleManager));
                     }
-                    
+
                     return _GetModuleManagerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Save__Args
@@ -265,7 +265,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnModuleDefinition_save"), typeof(_Save));
                     }
-                    
+
                     return _SaveFunc;
                 }
 
@@ -273,87 +273,87 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
 
 
 
-			
+
+
                   public bool RemoveDependency(string pModuleId = "") {
-        
+
                                           InternalUnsafeMethods.RemoveDependency__Args _args = new InternalUnsafeMethods.RemoveDependency__Args() {
                         pModuleId = pModuleId,
                      };
                      bool _engineResult = InternalUnsafeMethods.RemoveDependency()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool AddDependency(string pModuleId = "", uint versionId = 0) {
-        
+
                                                                InternalUnsafeMethods.AddDependency__Args _args = new InternalUnsafeMethods.AddDependency__Args() {
                         pModuleId = pModuleId,
                         versionId = versionId,
                      };
                      bool _engineResult = InternalUnsafeMethods.AddDependency()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetDependency(uint dependencyIndex = 0) {
-        
+
                                           InternalUnsafeMethods.GetDependency__Args _args = new InternalUnsafeMethods.GetDependency__Args() {
                         dependencyIndex = dependencyIndex,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetDependency()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetDependencyCount() {
-        
+
                      InternalUnsafeMethods.GetDependencyCount__Args _args = new InternalUnsafeMethods.GetDependencyCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetDependencyCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetModuleManager() {
-        
+
                      InternalUnsafeMethods.GetModuleManager__Args _args = new InternalUnsafeMethods.GetModuleManager__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetModuleManager()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool Save() {
-        
+
                      InternalUnsafeMethods.Save__Args _args = new InternalUnsafeMethods.Save__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.Save()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
+
 
 
 

@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class MissionArea : NetObject {
 
 
 
-        public MissionArea(bool pRegister = false) 
+        public MissionArea(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public MissionArea(string pName, bool pRegister) 
+
+        public MissionArea(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public MissionArea(string pName) 
+
+        public MissionArea(string pName)
             : this(pName, false) {
         }
-        
-        public MissionArea(string pName, string pParent, bool pRegister = false) 
+
+        public MissionArea(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public MissionArea(string pName, SimObject pParent, bool pRegister = false) 
+
+        public MissionArea(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public MissionArea(SimObject pObj) 
+
+        public MissionArea(SimObject pObj)
             : base(pObj) {
         }
-        
-        public MissionArea(IntPtr pObj) 
+
+        public MissionArea(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct PostApply__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _PostApply(IntPtr _this);
                 internal delegate void _PostApply(IntPtr _this, PostApply__Args args);
                 private static _PostApply _PostApplyFunc;
@@ -89,27 +89,27 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnMissionArea_postApply"), typeof(_PostApply));
                     }
-                    
+
                     return _PostApplyFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetArea__Args
                 {
-				   
+
 				   internal int x;
-				   
+
 				   internal int y;
-				   
+
 				   internal int width;
-				   
+
 				   internal int height;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetArea(IntPtr _this, int x, int y, int width, int height);
                 internal delegate void _SetArea(IntPtr _this, SetArea__Args args);
                 private static _SetArea _SetAreaFunc;
@@ -121,11 +121,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnMissionArea_setArea"), typeof(_SetArea));
                     }
-                    
+
                     return _SetAreaFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetArea__Args
@@ -133,7 +133,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetArea(IntPtr _this);
                 internal delegate IntPtr _GetArea(IntPtr _this, GetArea__Args args);
                 private static _GetArea _GetAreaFunc;
@@ -145,11 +145,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnMissionArea_getArea"), typeof(_GetArea));
                     }
-                    
+
                     return _GetAreaFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -157,7 +157,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -169,11 +169,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnMissionArea_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -181,7 +181,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -193,7 +193,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnMissionArea_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -201,19 +201,19 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void PostApply() {
-        
+
                      InternalUnsafeMethods.PostApply__Args _args = new InternalUnsafeMethods.PostApply__Args() {
                      };
                      InternalUnsafeMethods.PostApply()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetArea(int x, int y, int width, int height) {
-        
+
                                                                                                          InternalUnsafeMethods.SetArea__Args _args = new InternalUnsafeMethods.SetArea__Args() {
                         x = x,
                         y = y,
@@ -221,30 +221,30 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         height = height,
                      };
                      InternalUnsafeMethods.SetArea()(ObjectPtr, _args);
-                                                                                                                     
-                  }
-	
 
-			
+                  }
+
+
+
                   public string GetArea() {
-        
+
                      InternalUnsafeMethods.GetArea__Args _args = new InternalUnsafeMethods.GetArea__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetArea()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

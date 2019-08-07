@@ -1,7 +1,7 @@
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Enums.Global;
 
-namespace Game.Core.Rendering.GfxData
+namespace BaseGame.Core.Rendering.GfxData
 {
    public class CommonMaterialData
    {

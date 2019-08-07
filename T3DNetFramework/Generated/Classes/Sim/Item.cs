@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class Item : ShapeBase {
 
 
 
-        public Item(bool pRegister = false) 
+        public Item(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public Item(string pName, bool pRegister) 
+
+        public Item(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public Item(string pName) 
+
+        public Item(string pName)
             : this(pName, false) {
         }
-        
-        public Item(string pName, string pParent, bool pRegister = false) 
+
+        public Item(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public Item(string pName, SimObject pParent, bool pRegister = false) 
+
+        public Item(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public Item(SimObject pObj) 
+
+        public Item(SimObject pObj)
             : base(pObj) {
         }
-        
-        public Item(IntPtr pObj) 
+
+        public Item(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetLastStickyNormal__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetLastStickyNormal(IntPtr _this);
                 internal delegate IntPtr _GetLastStickyNormal(IntPtr _this, GetLastStickyNormal__Args args);
                 private static _GetLastStickyNormal _GetLastStickyNormalFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnItem_getLastStickyNormal"), typeof(_GetLastStickyNormal));
                     }
-                    
+
                     return _GetLastStickyNormalFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetLastStickyPos__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetLastStickyPos(IntPtr _this);
                 internal delegate IntPtr _GetLastStickyPos(IntPtr _this, GetLastStickyPos__Args args);
                 private static _GetLastStickyPos _GetLastStickyPosFunc;
@@ -113,16 +113,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnItem_getLastStickyPos"), typeof(_GetLastStickyPos));
                     }
-                    
+
                     return _GetLastStickyPosFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetCollisionTimeout__Args
                 {
-				   
+
 				   internal int ignoreColObj;
                 }
 
@@ -139,11 +139,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnItem_setCollisionTimeout"), typeof(_SetCollisionTimeout));
                     }
-                    
+
                     return _SetCollisionTimeoutFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsRotating__Args
@@ -163,11 +163,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnItem_isRotating"), typeof(_IsRotating));
                     }
-                    
+
                     return _IsRotatingFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsAtRest__Args
@@ -187,11 +187,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnItem_isAtRest"), typeof(_IsAtRest));
                     }
-                    
+
                     return _IsAtRestFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsStatic__Args
@@ -211,23 +211,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnItem_isStatic"), typeof(_IsStatic));
                     }
-                    
+
                     return _IsStaticFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnLeaveLiquid__Args
                 {
-				   
+
 				   internal string objID;
-				   
+
 				   internal string liquidType;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnLeaveLiquid(IntPtr _this, string objID, string liquidType);
                 internal delegate void _OnLeaveLiquid(IntPtr _this, OnLeaveLiquid__Args args);
                 private static _OnLeaveLiquid _OnLeaveLiquidFunc;
@@ -239,25 +239,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbItem_onLeaveLiquid"), typeof(_OnLeaveLiquid));
                     }
-                    
+
                     return _OnLeaveLiquidFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnEnterLiquid__Args
                 {
-				   
+
 				   internal string objID;
-				   
+
 				   internal float waterCoverage;
-				   
+
 				   internal string liquidType;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnEnterLiquid(IntPtr _this, string objID, float waterCoverage, string liquidType);
                 internal delegate void _OnEnterLiquid(IntPtr _this, OnEnterLiquid__Args args);
                 private static _OnEnterLiquid _OnEnterLiquidFunc;
@@ -269,21 +269,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbItem_onEnterLiquid"), typeof(_OnEnterLiquid));
                     }
-                    
+
                     return _OnEnterLiquidFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnStickyCollision__Args
                 {
-				   
+
 				   internal string objID;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnStickyCollision(IntPtr _this, string objID);
                 internal delegate void _OnStickyCollision(IntPtr _this, OnStickyCollision__Args args);
                 private static _OnStickyCollision _OnStickyCollisionFunc;
@@ -295,11 +295,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbItem_onStickyCollision"), typeof(_OnStickyCollision));
                     }
-                    
+
                     return _OnStickyCollisionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -307,7 +307,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -319,11 +319,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnItem_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -331,7 +331,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -343,7 +343,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnItem_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -351,118 +351,118 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public string GetLastStickyNormal() {
-        
+
                      InternalUnsafeMethods.GetLastStickyNormal__Args _args = new InternalUnsafeMethods.GetLastStickyNormal__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetLastStickyNormal()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string GetLastStickyPos() {
-        
+
                      InternalUnsafeMethods.GetLastStickyPos__Args _args = new InternalUnsafeMethods.GetLastStickyPos__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetLastStickyPos()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public bool SetCollisionTimeout(int ignoreColObj) {
-        
+
                                           InternalUnsafeMethods.SetCollisionTimeout__Args _args = new InternalUnsafeMethods.SetCollisionTimeout__Args() {
                         ignoreColObj = ignoreColObj,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetCollisionTimeout()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool IsRotating() {
-        
+
                      InternalUnsafeMethods.IsRotating__Args _args = new InternalUnsafeMethods.IsRotating__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsRotating()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool IsAtRest() {
-        
+
                      InternalUnsafeMethods.IsAtRest__Args _args = new InternalUnsafeMethods.IsAtRest__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsAtRest()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool IsStatic() {
-        
+
                      InternalUnsafeMethods.IsStatic__Args _args = new InternalUnsafeMethods.IsStatic__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsStatic()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void OnLeaveLiquid(string objID, string liquidType) {
-        
+
                                                                InternalUnsafeMethods.OnLeaveLiquid__Args _args = new InternalUnsafeMethods.OnLeaveLiquid__Args() {
                         objID = objID,
                         liquidType = liquidType,
                      };
                      InternalUnsafeMethods.OnLeaveLiquid()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnEnterLiquid(string objID, float waterCoverage, string liquidType) {
-        
+
                                                                                     InternalUnsafeMethods.OnEnterLiquid__Args _args = new InternalUnsafeMethods.OnEnterLiquid__Args() {
                         objID = objID,
                         waterCoverage = waterCoverage,
                         liquidType = liquidType,
                      };
                      InternalUnsafeMethods.OnEnterLiquid()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnStickyCollision(string objID) {
-        
+
                                           InternalUnsafeMethods.OnStickyCollision__Args _args = new InternalUnsafeMethods.OnStickyCollision__Args() {
                         objID = objID,
                      };
                      InternalUnsafeMethods.OnStickyCollision()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

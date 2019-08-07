@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class TimeOfDay : SceneObject {
 
 
 
-        public TimeOfDay(bool pRegister = false) 
+        public TimeOfDay(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public TimeOfDay(string pName, bool pRegister) 
+
+        public TimeOfDay(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public TimeOfDay(string pName) 
+
+        public TimeOfDay(string pName)
             : this(pName, false) {
         }
-        
-        public TimeOfDay(string pName, string pParent, bool pRegister = false) 
+
+        public TimeOfDay(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public TimeOfDay(string pName, SimObject pParent, bool pRegister = false) 
+
+        public TimeOfDay(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public TimeOfDay(SimObject pObj) 
+
+        public TimeOfDay(SimObject pObj)
             : base(pObj) {
         }
-        
-        public TimeOfDay(IntPtr pObj) 
+
+        public TimeOfDay(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,19 +69,19 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Animate__Args
                 {
-				   
+
 				   internal float elevation;
-				   
+
 				   internal float degreesPerSecond;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Animate(IntPtr _this, float elevation, float degreesPerSecond);
                 internal delegate void _Animate(IntPtr _this, Animate__Args args);
                 private static _Animate _AnimateFunc;
@@ -93,21 +93,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTimeOfDay_animate"), typeof(_Animate));
                     }
-                    
+
                     return _AnimateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetDayLength__Args
                 {
-				   
+
 				   internal float seconds;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetDayLength(IntPtr _this, float seconds);
                 internal delegate void _SetDayLength(IntPtr _this, SetDayLength__Args args);
                 private static _SetDayLength _SetDayLengthFunc;
@@ -119,11 +119,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTimeOfDay_setDayLength"), typeof(_SetDayLength));
                     }
-                    
+
                     return _SetDayLengthFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetPlay__Args
@@ -133,7 +133,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetPlay(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool enabled);
                 internal delegate void _SetPlay(IntPtr _this, SetPlay__Args args);
                 private static _SetPlay _SetPlayFunc;
@@ -145,21 +145,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTimeOfDay_setPlay"), typeof(_SetPlay));
                     }
-                    
+
                     return _SetPlayFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetTimeOfDay__Args
                 {
-				   
+
 				   internal float time;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetTimeOfDay(IntPtr _this, float time);
                 internal delegate void _SetTimeOfDay(IntPtr _this, SetTimeOfDay__Args args);
                 private static _SetTimeOfDay _SetTimeOfDayFunc;
@@ -171,23 +171,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTimeOfDay_setTimeOfDay"), typeof(_SetTimeOfDay));
                     }
-                    
+
                     return _SetTimeOfDayFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddTimeOfDayEvent__Args
                 {
-				   
+
 				   internal float elevation;
-				   
+
 				   internal string identifier;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _AddTimeOfDayEvent(IntPtr _this, float elevation, string identifier);
                 internal delegate void _AddTimeOfDayEvent(IntPtr _this, AddTimeOfDayEvent__Args args);
                 private static _AddTimeOfDayEvent _AddTimeOfDayEventFunc;
@@ -199,11 +199,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTimeOfDay_addTimeOfDayEvent"), typeof(_AddTimeOfDayEvent));
                     }
-                    
+
                     return _AddTimeOfDayEventFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -211,7 +211,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -223,11 +223,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTimeOfDay_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -235,7 +235,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -247,7 +247,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTimeOfDay_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -255,72 +255,72 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void Animate(float elevation, float degreesPerSecond) {
-        
+
                                                                InternalUnsafeMethods.Animate__Args _args = new InternalUnsafeMethods.Animate__Args() {
                         elevation = elevation,
                         degreesPerSecond = degreesPerSecond,
                      };
                      InternalUnsafeMethods.Animate()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetDayLength(float seconds) {
-        
+
                                           InternalUnsafeMethods.SetDayLength__Args _args = new InternalUnsafeMethods.SetDayLength__Args() {
                         seconds = seconds,
                      };
                      InternalUnsafeMethods.SetDayLength()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetPlay(bool enabled) {
-        
+
                                           InternalUnsafeMethods.SetPlay__Args _args = new InternalUnsafeMethods.SetPlay__Args() {
                         enabled = enabled,
                      };
                      InternalUnsafeMethods.SetPlay()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetTimeOfDay(float time) {
-        
+
                                           InternalUnsafeMethods.SetTimeOfDay__Args _args = new InternalUnsafeMethods.SetTimeOfDay__Args() {
                         time = time,
                      };
                      InternalUnsafeMethods.SetTimeOfDay()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void AddTimeOfDayEvent(float elevation, string identifier) {
-        
+
                                                                InternalUnsafeMethods.AddTimeOfDayEvent__Args _args = new InternalUnsafeMethods.AddTimeOfDayEvent__Args() {
                         elevation = elevation,
                         identifier = identifier,
                      };
                      InternalUnsafeMethods.AddTimeOfDayEvent()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

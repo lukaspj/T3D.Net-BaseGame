@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class TerrainEditor : EditTSCtrl {
 
 
 
-        public TerrainEditor(bool pRegister = false) 
+        public TerrainEditor(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public TerrainEditor(string pName, bool pRegister) 
+
+        public TerrainEditor(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public TerrainEditor(string pName) 
+
+        public TerrainEditor(string pName)
             : this(pName, false) {
         }
-        
-        public TerrainEditor(string pName, string pParent, bool pRegister = false) 
+
+        public TerrainEditor(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public TerrainEditor(string pName, SimObject pParent, bool pRegister = false) 
+
+        public TerrainEditor(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public TerrainEditor(SimObject pObj) 
+
+        public TerrainEditor(SimObject pObj)
             : base(pObj) {
         }
-        
-        public TerrainEditor(IntPtr pObj) 
+
+        public TerrainEditor(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,25 +69,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AutoMaterialLayer__Args
                 {
-				   
+
 				   internal float minHeight;
-				   
+
 				   internal float maxHeight;
-				   
+
 				   internal float minSlope;
-				   
+
 				   internal float maxSlope;
-				   
+
 				   internal float coverage;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _AutoMaterialLayer(IntPtr _this, float minHeight, float maxHeight, float minSlope, float maxSlope, float coverage);
                 internal delegate void _AutoMaterialLayer(IntPtr _this, AutoMaterialLayer__Args args);
                 private static _AutoMaterialLayer _AutoMaterialLayerFunc;
@@ -99,21 +99,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_autoMaterialLayer"), typeof(_AutoMaterialLayer));
                     }
-                    
+
                     return _AutoMaterialLayerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetSlopeLimitMaxAngle__Args
                 {
-				   
+
 				   internal float angle;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _SetSlopeLimitMaxAngle(IntPtr _this, float angle);
                 internal delegate float _SetSlopeLimitMaxAngle(IntPtr _this, SetSlopeLimitMaxAngle__Args args);
                 private static _SetSlopeLimitMaxAngle _SetSlopeLimitMaxAngleFunc;
@@ -125,11 +125,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_setSlopeLimitMaxAngle"), typeof(_SetSlopeLimitMaxAngle));
                     }
-                    
+
                     return _SetSlopeLimitMaxAngleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSlopeLimitMaxAngle__Args
@@ -137,7 +137,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetSlopeLimitMaxAngle(IntPtr _this);
                 internal delegate float _GetSlopeLimitMaxAngle(IntPtr _this, GetSlopeLimitMaxAngle__Args args);
                 private static _GetSlopeLimitMaxAngle _GetSlopeLimitMaxAngleFunc;
@@ -149,21 +149,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getSlopeLimitMaxAngle"), typeof(_GetSlopeLimitMaxAngle));
                     }
-                    
+
                     return _GetSlopeLimitMaxAngleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetSlopeLimitMinAngle__Args
                 {
-				   
+
 				   internal float angle;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _SetSlopeLimitMinAngle(IntPtr _this, float angle);
                 internal delegate float _SetSlopeLimitMinAngle(IntPtr _this, SetSlopeLimitMinAngle__Args args);
                 private static _SetSlopeLimitMinAngle _SetSlopeLimitMinAngleFunc;
@@ -175,11 +175,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_setSlopeLimitMinAngle"), typeof(_SetSlopeLimitMinAngle));
                     }
-                    
+
                     return _SetSlopeLimitMinAngleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSlopeLimitMinAngle__Args
@@ -187,7 +187,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetSlopeLimitMinAngle(IntPtr _this);
                 internal delegate float _GetSlopeLimitMinAngle(IntPtr _this, GetSlopeLimitMinAngle__Args args);
                 private static _GetSlopeLimitMinAngle _GetSlopeLimitMinAngleFunc;
@@ -199,25 +199,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getSlopeLimitMinAngle"), typeof(_GetSlopeLimitMinAngle));
                     }
-                    
+
                     return _GetSlopeLimitMinAngleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTerrainUnderWorldPoint__Args
                 {
-				   
+
 				   internal string ptOrX;
-				   
+
 				   internal string Y;
-				   
+
 				   internal string Z;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetTerrainUnderWorldPoint(IntPtr _this, string ptOrX, string Y, string Z);
                 internal delegate int _GetTerrainUnderWorldPoint(IntPtr _this, GetTerrainUnderWorldPoint__Args args);
                 private static _GetTerrainUnderWorldPoint _GetTerrainUnderWorldPointFunc;
@@ -229,23 +229,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getTerrainUnderWorldPoint"), typeof(_GetTerrainUnderWorldPoint));
                     }
-                    
+
                     return _GetTerrainUnderWorldPointFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ReorderMaterial__Args
                 {
-				   
+
 				   internal int index;
-				   
+
 				   internal int orderPos;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ReorderMaterial(IntPtr _this, int index, int orderPos);
                 internal delegate void _ReorderMaterial(IntPtr _this, ReorderMaterial__Args args);
                 private static _ReorderMaterial _ReorderMaterialFunc;
@@ -257,11 +257,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_reorderMaterial"), typeof(_ReorderMaterial));
                     }
-                    
+
                     return _ReorderMaterialFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMaterialIndex__Args
@@ -271,7 +271,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetMaterialIndex(IntPtr _this, [MarshalAs(UnmanagedType.LPUTF8Str)]string name);
                 internal delegate int _GetMaterialIndex(IntPtr _this, GetMaterialIndex__Args args);
                 private static _GetMaterialIndex _GetMaterialIndexFunc;
@@ -283,21 +283,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getMaterialIndex"), typeof(_GetMaterialIndex));
                     }
-                    
+
                     return _GetMaterialIndexFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMaterialName__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetMaterialName(IntPtr _this, int index);
                 internal delegate IntPtr _GetMaterialName(IntPtr _this, GetMaterialName__Args args);
                 private static _GetMaterialName _GetMaterialNameFunc;
@@ -309,11 +309,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getMaterialName"), typeof(_GetMaterialName));
                     }
-                    
+
                     return _GetMaterialNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMaterials__Args
@@ -321,7 +321,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetMaterials(IntPtr _this);
                 internal delegate IntPtr _GetMaterials(IntPtr _this, GetMaterials__Args args);
                 private static _GetMaterials _GetMaterialsFunc;
@@ -333,11 +333,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getMaterials"), typeof(_GetMaterials));
                     }
-                    
+
                     return _GetMaterialsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMaterialCount__Args
@@ -345,7 +345,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetMaterialCount(IntPtr _this);
                 internal delegate int _GetMaterialCount(IntPtr _this, GetMaterialCount__Args args);
                 private static _GetMaterialCount _GetMaterialCountFunc;
@@ -357,21 +357,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getMaterialCount"), typeof(_GetMaterialCount));
                     }
-                    
+
                     return _GetMaterialCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveMaterial__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _RemoveMaterial(IntPtr _this, int index);
                 internal delegate void _RemoveMaterial(IntPtr _this, RemoveMaterial__Args args);
                 private static _RemoveMaterial _RemoveMaterialFunc;
@@ -383,11 +383,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_removeMaterial"), typeof(_RemoveMaterial));
                     }
-                    
+
                     return _RemoveMaterialFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddMaterial__Args
@@ -397,7 +397,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _AddMaterial(IntPtr _this, [MarshalAs(UnmanagedType.LPUTF8Str)]string matName);
                 internal delegate int _AddMaterial(IntPtr _this, AddMaterial__Args args);
                 private static _AddMaterial _AddMaterialFunc;
@@ -409,16 +409,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_addMaterial"), typeof(_AddMaterial));
                     }
-                    
+
                     return _AddMaterialFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct UpdateMaterial__Args
                 {
-				   
+
 				   internal uint index;
 				   [MarshalAs(UnmanagedType.LPUTF8Str)]
 				   internal string matName;
@@ -437,11 +437,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_updateMaterial"), typeof(_UpdateMaterial));
                     }
-                    
+
                     return _UpdateMaterialFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetTerraformOverlay__Args
@@ -451,7 +451,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetTerraformOverlay(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool overlayEnable);
                 internal delegate void _SetTerraformOverlay(IntPtr _this, SetTerraformOverlay__Args args);
                 private static _SetTerraformOverlay _SetTerraformOverlayFunc;
@@ -463,21 +463,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_setTerraformOverlay"), typeof(_SetTerraformOverlay));
                     }
-                    
+
                     return _SetTerraformOverlayFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct MirrorTerrain__Args
                 {
-				   
+
 				   internal int mirrorIndex;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _MirrorTerrain(IntPtr _this, int mirrorIndex);
                 internal delegate void _MirrorTerrain(IntPtr _this, MirrorTerrain__Args args);
                 private static _MirrorTerrain _MirrorTerrainFunc;
@@ -489,11 +489,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_mirrorTerrain"), typeof(_MirrorTerrain));
                     }
-                    
+
                     return _MirrorTerrainFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct MarkEmptySquares__Args
@@ -501,7 +501,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _MarkEmptySquares(IntPtr _this);
                 internal delegate void _MarkEmptySquares(IntPtr _this, MarkEmptySquares__Args args);
                 private static _MarkEmptySquares _MarkEmptySquaresFunc;
@@ -513,11 +513,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_markEmptySquares"), typeof(_MarkEmptySquares));
                     }
-                    
+
                     return _MarkEmptySquaresFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNumTextures__Args
@@ -525,7 +525,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetNumTextures(IntPtr _this);
                 internal delegate int _GetNumTextures(IntPtr _this, GetNumTextures__Args args);
                 private static _GetNumTextures _GetNumTexturesFunc;
@@ -537,11 +537,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getNumTextures"), typeof(_GetNumTextures));
                     }
-                    
+
                     return _GetNumTexturesFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetActiveTerrain__Args
@@ -549,7 +549,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetActiveTerrain(IntPtr _this);
                 internal delegate int _GetActiveTerrain(IntPtr _this, GetActiveTerrain__Args args);
                 private static _GetActiveTerrain _GetActiveTerrainFunc;
@@ -561,11 +561,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getActiveTerrain"), typeof(_GetActiveTerrain));
                     }
-                    
+
                     return _GetActiveTerrainFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ProcessAction__Args
@@ -575,7 +575,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ProcessAction(IntPtr _this, [MarshalAs(UnmanagedType.LPUTF8Str)]string action);
                 internal delegate void _ProcessAction(IntPtr _this, ProcessAction__Args args);
                 private static _ProcessAction _ProcessActionFunc;
@@ -587,11 +587,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_processAction"), typeof(_ProcessAction));
                     }
-                    
+
                     return _ProcessActionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ClearSelection__Args
@@ -599,7 +599,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ClearSelection(IntPtr _this);
                 internal delegate void _ClearSelection(IntPtr _this, ClearSelection__Args args);
                 private static _ClearSelection _ClearSelectionFunc;
@@ -611,11 +611,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_clearSelection"), typeof(_ClearSelection));
                     }
-                    
+
                     return _ClearSelectionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ResetSelWeights__Args
@@ -625,7 +625,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ResetSelWeights(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool clear);
                 internal delegate void _ResetSelWeights(IntPtr _this, ResetSelWeights__Args args);
                 private static _ResetSelWeights _ResetSelWeightsFunc;
@@ -637,11 +637,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_resetSelWeights"), typeof(_ResetSelWeights));
                     }
-                    
+
                     return _ResetSelWeightsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetCurrentAction__Args
@@ -649,7 +649,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetCurrentAction(IntPtr _this);
                 internal delegate IntPtr _GetCurrentAction(IntPtr _this, GetCurrentAction__Args args);
                 private static _GetCurrentAction _GetCurrentActionFunc;
@@ -661,11 +661,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getCurrentAction"), typeof(_GetCurrentAction));
                     }
-                    
+
                     return _GetCurrentActionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNumActions__Args
@@ -673,7 +673,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetNumActions(IntPtr _this);
                 internal delegate int _GetNumActions(IntPtr _this, GetNumActions__Args args);
                 private static _GetNumActions _GetNumActionsFunc;
@@ -685,21 +685,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getNumActions"), typeof(_GetNumActions));
                     }
-                    
+
                     return _GetNumActionsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetActionName__Args
                 {
-				   
+
 				   internal uint index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetActionName(IntPtr _this, uint index);
                 internal delegate IntPtr _GetActionName(IntPtr _this, GetActionName__Args args);
                 private static _GetActionName _GetActionNameFunc;
@@ -711,21 +711,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getActionName"), typeof(_GetActionName));
                     }
-                    
+
                     return _GetActionNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetAction__Args
                 {
-				   
+
 				   internal string action_name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetAction(IntPtr _this, string action_name);
                 internal delegate void _SetAction(IntPtr _this, SetAction__Args args);
                 private static _SetAction _SetActionFunc;
@@ -737,21 +737,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_setAction"), typeof(_SetAction));
                     }
-                    
+
                     return _SetActionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetBrushPos__Args
                 {
-				   
+
 				   internal IntPtr pos;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetBrushPos(IntPtr _this, IntPtr pos);
                 internal delegate void _SetBrushPos(IntPtr _this, SetBrushPos__Args args);
                 private static _SetBrushPos _SetBrushPosFunc;
@@ -763,11 +763,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_setBrushPos"), typeof(_SetBrushPos));
                     }
-                    
+
                     return _SetBrushPosFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetBrushPos__Args
@@ -775,7 +775,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetBrushPos(IntPtr _this);
                 internal delegate IntPtr _GetBrushPos(IntPtr _this, GetBrushPos__Args args);
                 private static _GetBrushPos _GetBrushPosFunc;
@@ -787,11 +787,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getBrushPos"), typeof(_GetBrushPos));
                     }
-                    
+
                     return _GetBrushPosFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetBrushSoftness__Args
@@ -799,7 +799,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetBrushSoftness(IntPtr _this);
                 internal delegate float _GetBrushSoftness(IntPtr _this, GetBrushSoftness__Args args);
                 private static _GetBrushSoftness _GetBrushSoftnessFunc;
@@ -811,21 +811,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getBrushSoftness"), typeof(_GetBrushSoftness));
                     }
-                    
+
                     return _GetBrushSoftnessFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetBrushSoftness__Args
                 {
-				   
+
 				   internal float softness;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetBrushSoftness(IntPtr _this, float softness);
                 internal delegate void _SetBrushSoftness(IntPtr _this, SetBrushSoftness__Args args);
                 private static _SetBrushSoftness _SetBrushSoftnessFunc;
@@ -837,11 +837,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_setBrushSoftness"), typeof(_SetBrushSoftness));
                     }
-                    
+
                     return _SetBrushSoftnessFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetBrushPressure__Args
@@ -849,7 +849,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetBrushPressure(IntPtr _this);
                 internal delegate float _GetBrushPressure(IntPtr _this, GetBrushPressure__Args args);
                 private static _GetBrushPressure _GetBrushPressureFunc;
@@ -861,21 +861,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getBrushPressure"), typeof(_GetBrushPressure));
                     }
-                    
+
                     return _GetBrushPressureFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetBrushPressure__Args
                 {
-				   
+
 				   internal float pressure;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetBrushPressure(IntPtr _this, float pressure);
                 internal delegate void _SetBrushPressure(IntPtr _this, SetBrushPressure__Args args);
                 private static _SetBrushPressure _SetBrushPressureFunc;
@@ -887,11 +887,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_setBrushPressure"), typeof(_SetBrushPressure));
                     }
-                    
+
                     return _SetBrushPressureFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetBrushSize__Args
@@ -899,7 +899,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetBrushSize(IntPtr _this);
                 internal delegate IntPtr _GetBrushSize(IntPtr _this, GetBrushSize__Args args);
                 private static _GetBrushSize _GetBrushSizeFunc;
@@ -911,23 +911,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getBrushSize"), typeof(_GetBrushSize));
                     }
-                    
+
                     return _GetBrushSizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetBrushSize__Args
                 {
-				   
+
 				   internal int w;
-				   
+
 				   internal int h;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetBrushSize(IntPtr _this, int w, int h);
                 internal delegate void _SetBrushSize(IntPtr _this, SetBrushSize__Args args);
                 private static _SetBrushSize _SetBrushSizeFunc;
@@ -939,11 +939,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_setBrushSize"), typeof(_SetBrushSize));
                     }
-                    
+
                     return _SetBrushSizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetBrushType__Args
@@ -951,7 +951,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetBrushType(IntPtr _this);
                 internal delegate IntPtr _GetBrushType(IntPtr _this, GetBrushType__Args args);
                 private static _GetBrushType _GetBrushTypeFunc;
@@ -963,11 +963,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getBrushType"), typeof(_GetBrushType));
                     }
-                    
+
                     return _GetBrushTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetBrushType__Args
@@ -977,7 +977,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetBrushType(IntPtr _this, [MarshalAs(UnmanagedType.LPUTF8Str)]string type);
                 internal delegate void _SetBrushType(IntPtr _this, SetBrushType__Args args);
                 private static _SetBrushType _SetBrushTypeFunc;
@@ -989,11 +989,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_setBrushType"), typeof(_SetBrushType));
                     }
-                    
+
                     return _SetBrushTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTerrainBlocksMaterialList__Args
@@ -1001,7 +1001,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetTerrainBlocksMaterialList(IntPtr _this);
                 internal delegate IntPtr _GetTerrainBlocksMaterialList(IntPtr _this, GetTerrainBlocksMaterialList__Args args);
                 private static _GetTerrainBlocksMaterialList _GetTerrainBlocksMaterialListFunc;
@@ -1013,21 +1013,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getTerrainBlocksMaterialList"), typeof(_GetTerrainBlocksMaterialList));
                     }
-                    
+
                     return _GetTerrainBlocksMaterialListFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTerrainBlock__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetTerrainBlock(IntPtr _this, int index);
                 internal delegate int _GetTerrainBlock(IntPtr _this, GetTerrainBlock__Args args);
                 private static _GetTerrainBlock _GetTerrainBlockFunc;
@@ -1039,11 +1039,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getTerrainBlock"), typeof(_GetTerrainBlock));
                     }
-                    
+
                     return _GetTerrainBlockFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTerrainBlockCount__Args
@@ -1051,7 +1051,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetTerrainBlockCount(IntPtr _this);
                 internal delegate int _GetTerrainBlockCount(IntPtr _this, GetTerrainBlockCount__Args args);
                 private static _GetTerrainBlockCount _GetTerrainBlockCountFunc;
@@ -1063,21 +1063,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_getTerrainBlockCount"), typeof(_GetTerrainBlockCount));
                     }
-                    
+
                     return _GetTerrainBlockCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AttachTerrain__Args
                 {
-				   
+
 				   internal string terrain;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _AttachTerrain(IntPtr _this, string terrain);
                 internal delegate void _AttachTerrain(IntPtr _this, AttachTerrain__Args args);
                 private static _AttachTerrain _AttachTerrainFunc;
@@ -1089,11 +1089,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_attachTerrain"), typeof(_AttachTerrain));
                     }
-                    
+
                     return _AttachTerrainFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -1101,7 +1101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -1113,11 +1113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -1125,7 +1125,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -1137,7 +1137,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainEditor_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -1145,9 +1145,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void AutoMaterialLayer(float minHeight, float maxHeight, float minSlope, float maxSlope, float coverage) {
-        
+
                                                                                                                               InternalUnsafeMethods.AutoMaterialLayer__Args _args = new InternalUnsafeMethods.AutoMaterialLayer__Args() {
                         minHeight = minHeight,
                         maxHeight = maxHeight,
@@ -1156,460 +1156,460 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         coverage = coverage,
                      };
                      InternalUnsafeMethods.AutoMaterialLayer()(ObjectPtr, _args);
-                                                                                                                                          
-                  }
-	
 
-			
+                  }
+
+
+
                   public float SetSlopeLimitMaxAngle(float angle) {
-        
+
                                           InternalUnsafeMethods.SetSlopeLimitMaxAngle__Args _args = new InternalUnsafeMethods.SetSlopeLimitMaxAngle__Args() {
                         angle = angle,
                      };
                      float _engineResult = InternalUnsafeMethods.SetSlopeLimitMaxAngle()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public float GetSlopeLimitMaxAngle() {
-        
+
                      InternalUnsafeMethods.GetSlopeLimitMaxAngle__Args _args = new InternalUnsafeMethods.GetSlopeLimitMaxAngle__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetSlopeLimitMaxAngle()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public float SetSlopeLimitMinAngle(float angle) {
-        
+
                                           InternalUnsafeMethods.SetSlopeLimitMinAngle__Args _args = new InternalUnsafeMethods.SetSlopeLimitMinAngle__Args() {
                         angle = angle,
                      };
                      float _engineResult = InternalUnsafeMethods.SetSlopeLimitMinAngle()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public float GetSlopeLimitMinAngle() {
-        
+
                      InternalUnsafeMethods.GetSlopeLimitMinAngle__Args _args = new InternalUnsafeMethods.GetSlopeLimitMinAngle__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetSlopeLimitMinAngle()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetTerrainUnderWorldPoint(string ptOrX = "", string Y = "", string Z = "") {
-        
+
                                                                                     InternalUnsafeMethods.GetTerrainUnderWorldPoint__Args _args = new InternalUnsafeMethods.GetTerrainUnderWorldPoint__Args() {
                         ptOrX = ptOrX,
                         Y = Y,
                         Z = Z,
                      };
                      int _engineResult = InternalUnsafeMethods.GetTerrainUnderWorldPoint()(ObjectPtr, _args);
-                                                                                                
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void ReorderMaterial(int index, int orderPos) {
-        
+
                                                                InternalUnsafeMethods.ReorderMaterial__Args _args = new InternalUnsafeMethods.ReorderMaterial__Args() {
                         index = index,
                         orderPos = orderPos,
                      };
                      InternalUnsafeMethods.ReorderMaterial()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public int GetMaterialIndex(string name) {
-        
+
                                           InternalUnsafeMethods.GetMaterialIndex__Args _args = new InternalUnsafeMethods.GetMaterialIndex__Args() {
                         name = name,
                      };
                      int _engineResult = InternalUnsafeMethods.GetMaterialIndex()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetMaterialName(int index) {
-        
+
                                           InternalUnsafeMethods.GetMaterialName__Args _args = new InternalUnsafeMethods.GetMaterialName__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetMaterialName()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string GetMaterials() {
-        
+
                      InternalUnsafeMethods.GetMaterials__Args _args = new InternalUnsafeMethods.GetMaterials__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetMaterials()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetMaterialCount() {
-        
+
                      InternalUnsafeMethods.GetMaterialCount__Args _args = new InternalUnsafeMethods.GetMaterialCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetMaterialCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void RemoveMaterial(int index) {
-        
+
                                           InternalUnsafeMethods.RemoveMaterial__Args _args = new InternalUnsafeMethods.RemoveMaterial__Args() {
                         index = index,
                      };
                      InternalUnsafeMethods.RemoveMaterial()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public int AddMaterial(string matName) {
-        
+
                                           InternalUnsafeMethods.AddMaterial__Args _args = new InternalUnsafeMethods.AddMaterial__Args() {
                         matName = matName,
                      };
                      int _engineResult = InternalUnsafeMethods.AddMaterial()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool UpdateMaterial(uint index, string matName) {
-        
+
                                                                InternalUnsafeMethods.UpdateMaterial__Args _args = new InternalUnsafeMethods.UpdateMaterial__Args() {
                         index = index,
                         matName = matName,
                      };
                      bool _engineResult = InternalUnsafeMethods.UpdateMaterial()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetTerraformOverlay(bool overlayEnable) {
-        
+
                                           InternalUnsafeMethods.SetTerraformOverlay__Args _args = new InternalUnsafeMethods.SetTerraformOverlay__Args() {
                         overlayEnable = overlayEnable,
                      };
                      InternalUnsafeMethods.SetTerraformOverlay()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void MirrorTerrain(int mirrorIndex) {
-        
+
                                           InternalUnsafeMethods.MirrorTerrain__Args _args = new InternalUnsafeMethods.MirrorTerrain__Args() {
                         mirrorIndex = mirrorIndex,
                      };
                      InternalUnsafeMethods.MirrorTerrain()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void MarkEmptySquares() {
-        
+
                      InternalUnsafeMethods.MarkEmptySquares__Args _args = new InternalUnsafeMethods.MarkEmptySquares__Args() {
                      };
                      InternalUnsafeMethods.MarkEmptySquares()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public int GetNumTextures() {
-        
+
                      InternalUnsafeMethods.GetNumTextures__Args _args = new InternalUnsafeMethods.GetNumTextures__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetNumTextures()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetActiveTerrain() {
-        
+
                      InternalUnsafeMethods.GetActiveTerrain__Args _args = new InternalUnsafeMethods.GetActiveTerrain__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetActiveTerrain()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void ProcessAction(string action = "") {
-        
+
                                           InternalUnsafeMethods.ProcessAction__Args _args = new InternalUnsafeMethods.ProcessAction__Args() {
                         action = action,
                      };
                      InternalUnsafeMethods.ProcessAction()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ClearSelection() {
-        
+
                      InternalUnsafeMethods.ClearSelection__Args _args = new InternalUnsafeMethods.ClearSelection__Args() {
                      };
                      InternalUnsafeMethods.ClearSelection()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ResetSelWeights(bool clear) {
-        
+
                                           InternalUnsafeMethods.ResetSelWeights__Args _args = new InternalUnsafeMethods.ResetSelWeights__Args() {
                         clear = clear,
                      };
                      InternalUnsafeMethods.ResetSelWeights()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public string GetCurrentAction() {
-        
+
                      InternalUnsafeMethods.GetCurrentAction__Args _args = new InternalUnsafeMethods.GetCurrentAction__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetCurrentAction()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetNumActions() {
-        
+
                      InternalUnsafeMethods.GetNumActions__Args _args = new InternalUnsafeMethods.GetNumActions__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetNumActions()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetActionName(uint index) {
-        
+
                                           InternalUnsafeMethods.GetActionName__Args _args = new InternalUnsafeMethods.GetActionName__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetActionName()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void SetAction(string action_name) {
-        
+
                                           InternalUnsafeMethods.SetAction__Args _args = new InternalUnsafeMethods.SetAction__Args() {
                         action_name = action_name,
                      };
                      InternalUnsafeMethods.SetAction()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetBrushPos(Point2I pos) {
-        
+
                      pos.Alloc();                     InternalUnsafeMethods.SetBrushPos__Args _args = new InternalUnsafeMethods.SetBrushPos__Args() {
                         pos = pos.internalStructPtr,
                      };
                      InternalUnsafeMethods.SetBrushPos()(ObjectPtr, _args);
-                                          pos.Free();            
+                                          pos.Free();
                   }
-	
 
-			
+
+
                   public string GetBrushPos() {
-        
+
                      InternalUnsafeMethods.GetBrushPos__Args _args = new InternalUnsafeMethods.GetBrushPos__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetBrushPos()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public float GetBrushSoftness() {
-        
+
                      InternalUnsafeMethods.GetBrushSoftness__Args _args = new InternalUnsafeMethods.GetBrushSoftness__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetBrushSoftness()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetBrushSoftness(float softness) {
-        
+
                                           InternalUnsafeMethods.SetBrushSoftness__Args _args = new InternalUnsafeMethods.SetBrushSoftness__Args() {
                         softness = softness,
                      };
                      InternalUnsafeMethods.SetBrushSoftness()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public float GetBrushPressure() {
-        
+
                      InternalUnsafeMethods.GetBrushPressure__Args _args = new InternalUnsafeMethods.GetBrushPressure__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetBrushPressure()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetBrushPressure(float pressure) {
-        
+
                                           InternalUnsafeMethods.SetBrushPressure__Args _args = new InternalUnsafeMethods.SetBrushPressure__Args() {
                         pressure = pressure,
                      };
                      InternalUnsafeMethods.SetBrushPressure()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public string GetBrushSize() {
-        
+
                      InternalUnsafeMethods.GetBrushSize__Args _args = new InternalUnsafeMethods.GetBrushSize__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetBrushSize()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void SetBrushSize(int w, int h = 0) {
-        
+
                                                                InternalUnsafeMethods.SetBrushSize__Args _args = new InternalUnsafeMethods.SetBrushSize__Args() {
                         w = w,
                         h = h,
                      };
                      InternalUnsafeMethods.SetBrushSize()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public string GetBrushType() {
-        
+
                      InternalUnsafeMethods.GetBrushType__Args _args = new InternalUnsafeMethods.GetBrushType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetBrushType()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void SetBrushType(string type) {
-        
+
                                           InternalUnsafeMethods.SetBrushType__Args _args = new InternalUnsafeMethods.SetBrushType__Args() {
                         type = type,
                      };
                      InternalUnsafeMethods.SetBrushType()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public string GetTerrainBlocksMaterialList() {
-        
+
                      InternalUnsafeMethods.GetTerrainBlocksMaterialList__Args _args = new InternalUnsafeMethods.GetTerrainBlocksMaterialList__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetTerrainBlocksMaterialList()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetTerrainBlock(int index) {
-        
+
                                           InternalUnsafeMethods.GetTerrainBlock__Args _args = new InternalUnsafeMethods.GetTerrainBlock__Args() {
                         index = index,
                      };
                      int _engineResult = InternalUnsafeMethods.GetTerrainBlock()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetTerrainBlockCount() {
-        
+
                      InternalUnsafeMethods.GetTerrainBlockCount__Args _args = new InternalUnsafeMethods.GetTerrainBlockCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetTerrainBlockCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void AttachTerrain(string terrain = "") {
-        
+
                                           InternalUnsafeMethods.AttachTerrain__Args _args = new InternalUnsafeMethods.AttachTerrain__Args() {
                         terrain = terrain,
                      };
                      InternalUnsafeMethods.AttachTerrain()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

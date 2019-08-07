@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class RenderPassManager : SimObject {
 
 
 
-        public RenderPassManager(bool pRegister = false) 
+        public RenderPassManager(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public RenderPassManager(string pName, bool pRegister) 
+
+        public RenderPassManager(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public RenderPassManager(string pName) 
+
+        public RenderPassManager(string pName)
             : this(pName, false) {
         }
-        
-        public RenderPassManager(string pName, string pParent, bool pRegister = false) 
+
+        public RenderPassManager(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public RenderPassManager(string pName, SimObject pParent, bool pRegister = false) 
+
+        public RenderPassManager(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public RenderPassManager(SimObject pObj) 
+
+        public RenderPassManager(SimObject pObj)
             : base(pObj) {
         }
-        
-        public RenderPassManager(IntPtr pObj) 
+
+        public RenderPassManager(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,17 +69,17 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveManager__Args
                 {
-				   
+
 				   internal IntPtr renderBin;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _RemoveManager(IntPtr _this, IntPtr renderBin);
                 internal delegate void _RemoveManager(IntPtr _this, RemoveManager__Args args);
                 private static _RemoveManager _RemoveManagerFunc;
@@ -91,21 +91,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRenderPassManager_removeManager"), typeof(_RemoveManager));
                     }
-                    
+
                     return _RemoveManagerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddManager__Args
                 {
-				   
+
 				   internal IntPtr renderBin;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _AddManager(IntPtr _this, IntPtr renderBin);
                 internal delegate void _AddManager(IntPtr _this, AddManager__Args args);
                 private static _AddManager _AddManagerFunc;
@@ -117,21 +117,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRenderPassManager_addManager"), typeof(_AddManager));
                     }
-                    
+
                     return _AddManagerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetManager__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetManager(IntPtr _this, int index);
                 internal delegate IntPtr _GetManager(IntPtr _this, GetManager__Args args);
                 private static _GetManager _GetManagerFunc;
@@ -143,11 +143,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRenderPassManager_getManager"), typeof(_GetManager));
                     }
-                    
+
                     return _GetManagerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetManagerCount__Args
@@ -155,7 +155,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetManagerCount(IntPtr _this);
                 internal delegate int _GetManagerCount(IntPtr _this, GetManagerCount__Args args);
                 private static _GetManagerCount _GetManagerCountFunc;
@@ -167,11 +167,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRenderPassManager_getManagerCount"), typeof(_GetManagerCount));
                     }
-                    
+
                     return _GetManagerCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -179,7 +179,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -191,11 +191,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRenderPassManager_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -203,7 +203,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -215,7 +215,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRenderPassManager_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -223,60 +223,60 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void RemoveManager(RenderBinManager renderBin) {
-        
+
                                           InternalUnsafeMethods.RemoveManager__Args _args = new InternalUnsafeMethods.RemoveManager__Args() {
                         renderBin = renderBin.ObjectPtr,
                      };
                      InternalUnsafeMethods.RemoveManager()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void AddManager(RenderBinManager renderBin) {
-        
+
                                           InternalUnsafeMethods.AddManager__Args _args = new InternalUnsafeMethods.AddManager__Args() {
                         renderBin = renderBin.ObjectPtr,
                      };
                      InternalUnsafeMethods.AddManager()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public RenderBinManager GetManager(int index) {
-        
+
                                           InternalUnsafeMethods.GetManager__Args _args = new InternalUnsafeMethods.GetManager__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetManager()(ObjectPtr, _args);
-                                                      
+
                      return new RenderBinManager(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetManagerCount() {
-        
+
                      InternalUnsafeMethods.GetManagerCount__Args _args = new InternalUnsafeMethods.GetManagerCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetManagerCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

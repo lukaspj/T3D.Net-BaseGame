@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class EventManager : SimObject {
 
 
 
-        public EventManager(bool pRegister = false) 
+        public EventManager(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public EventManager(string pName, bool pRegister) 
+
+        public EventManager(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public EventManager(string pName) 
+
+        public EventManager(string pName)
             : this(pName, false) {
         }
-        
-        public EventManager(string pName, string pParent, bool pRegister = false) 
+
+        public EventManager(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public EventManager(string pName, SimObject pParent, bool pRegister = false) 
+
+        public EventManager(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public EventManager(SimObject pObj) 
+
+        public EventManager(SimObject pObj)
             : base(pObj) {
         }
-        
-        public EventManager(IntPtr pObj) 
+
+        public EventManager(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,17 +69,17 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct DumpSubscribers__Args
                 {
-				   
+
 				   internal string listenerName;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _DumpSubscribers(IntPtr _this, string listenerName);
                 internal delegate void _DumpSubscribers(IntPtr _this, DumpSubscribers__Args args);
                 private static _DumpSubscribers _DumpSubscribersFunc;
@@ -91,11 +91,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_dumpSubscribers"), typeof(_DumpSubscribers));
                     }
-                    
+
                     return _DumpSubscribersFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct DumpEvents__Args
@@ -103,7 +103,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _DumpEvents(IntPtr _this);
                 internal delegate void _DumpEvents(IntPtr _this, DumpEvents__Args args);
                 private static _DumpEvents _DumpEventsFunc;
@@ -115,21 +115,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_dumpEvents"), typeof(_DumpEvents));
                     }
-                    
+
                     return _DumpEventsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveAll__Args
                 {
-				   
+
 				   internal string listenerName;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _RemoveAll(IntPtr _this, string listenerName);
                 internal delegate void _RemoveAll(IntPtr _this, RemoveAll__Args args);
                 private static _RemoveAll _RemoveAllFunc;
@@ -141,23 +141,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_removeAll"), typeof(_RemoveAll));
                     }
-                    
+
                     return _RemoveAllFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Remove__Args
                 {
-				   
+
 				   internal string listenerName;
-				   
+
 				   internal string evt;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Remove(IntPtr _this, string listenerName, string evt);
                 internal delegate void _Remove(IntPtr _this, Remove__Args args);
                 private static _Remove _RemoveFunc;
@@ -169,20 +169,20 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_remove"), typeof(_Remove));
                     }
-                    
+
                     return _RemoveFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Subscribe__Args
                 {
-				   
+
 				   internal string listenerName;
-				   
+
 				   internal string evt;
-				   
+
 				   internal string callback;
                 }
 
@@ -199,18 +199,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_subscribe"), typeof(_Subscribe));
                     }
-                    
+
                     return _SubscribeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct PostEvent__Args
                 {
-				   
+
 				   internal string evt;
-				   
+
 				   internal string data;
                 }
 
@@ -227,16 +227,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_postEvent"), typeof(_PostEvent));
                     }
-                    
+
                     return _PostEventFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsRegisteredEvent__Args
                 {
-				   
+
 				   internal string evt;
                 }
 
@@ -253,21 +253,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_isRegisteredEvent"), typeof(_IsRegisteredEvent));
                     }
-                    
+
                     return _IsRegisteredEventFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct UnregisterEvent__Args
                 {
-				   
+
 				   internal string evt;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _UnregisterEvent(IntPtr _this, string evt);
                 internal delegate void _UnregisterEvent(IntPtr _this, UnregisterEvent__Args args);
                 private static _UnregisterEvent _UnregisterEventFunc;
@@ -279,16 +279,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_unregisterEvent"), typeof(_UnregisterEvent));
                     }
-                    
+
                     return _UnregisterEventFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RegisterEvent__Args
                 {
-				   
+
 				   internal string evt;
                 }
 
@@ -305,11 +305,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_registerEvent"), typeof(_RegisterEvent));
                     }
-                    
+
                     return _RegisterEventFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -317,7 +317,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -329,11 +329,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -341,7 +341,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -353,7 +353,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEventManager_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -361,121 +361,121 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void DumpSubscribers(string listenerName = "") {
-        
+
                                           InternalUnsafeMethods.DumpSubscribers__Args _args = new InternalUnsafeMethods.DumpSubscribers__Args() {
                         listenerName = listenerName,
                      };
                      InternalUnsafeMethods.DumpSubscribers()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void DumpEvents() {
-        
+
                      InternalUnsafeMethods.DumpEvents__Args _args = new InternalUnsafeMethods.DumpEvents__Args() {
                      };
                      InternalUnsafeMethods.DumpEvents()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void RemoveAll(string listenerName) {
-        
+
                                           InternalUnsafeMethods.RemoveAll__Args _args = new InternalUnsafeMethods.RemoveAll__Args() {
                         listenerName = listenerName,
                      };
                      InternalUnsafeMethods.RemoveAll()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Remove(string listenerName, string evt) {
-        
+
                                                                InternalUnsafeMethods.Remove__Args _args = new InternalUnsafeMethods.Remove__Args() {
                         listenerName = listenerName,
                         evt = evt,
                      };
                      InternalUnsafeMethods.Remove()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool Subscribe(string listenerName, string evt, string callback = "") {
-        
+
                                                                                     InternalUnsafeMethods.Subscribe__Args _args = new InternalUnsafeMethods.Subscribe__Args() {
                         listenerName = listenerName,
                         evt = evt,
                         callback = callback,
                      };
                      bool _engineResult = InternalUnsafeMethods.Subscribe()(ObjectPtr, _args);
-                                                                                                
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool PostEvent(string evt, string data = "") {
-        
+
                                                                InternalUnsafeMethods.PostEvent__Args _args = new InternalUnsafeMethods.PostEvent__Args() {
                         evt = evt,
                         data = data,
                      };
                      bool _engineResult = InternalUnsafeMethods.PostEvent()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool IsRegisteredEvent(string evt) {
-        
+
                                           InternalUnsafeMethods.IsRegisteredEvent__Args _args = new InternalUnsafeMethods.IsRegisteredEvent__Args() {
                         evt = evt,
                      };
                      bool _engineResult = InternalUnsafeMethods.IsRegisteredEvent()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void UnregisterEvent(string evt) {
-        
+
                                           InternalUnsafeMethods.UnregisterEvent__Args _args = new InternalUnsafeMethods.UnregisterEvent__Args() {
                         evt = evt,
                      };
                      InternalUnsafeMethods.UnregisterEvent()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool RegisterEvent(string evt) {
-        
+
                                           InternalUnsafeMethods.RegisterEvent__Args _args = new InternalUnsafeMethods.RegisterEvent__Args() {
                         evt = evt,
                      };
                      bool _engineResult = InternalUnsafeMethods.RegisterEvent()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

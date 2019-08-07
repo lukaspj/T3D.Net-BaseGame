@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class afxCamera : ShapeBase {
 
 
 
-        public afxCamera(bool pRegister = false) 
+        public afxCamera(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public afxCamera(string pName, bool pRegister) 
+
+        public afxCamera(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public afxCamera(string pName) 
+
+        public afxCamera(string pName)
             : this(pName, false) {
         }
-        
-        public afxCamera(string pName, string pParent, bool pRegister = false) 
+
+        public afxCamera(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public afxCamera(string pName, SimObject pParent, bool pRegister = false) 
+
+        public afxCamera(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public afxCamera(SimObject pObj) 
+
+        public afxCamera(SimObject pObj)
             : base(pObj) {
         }
-        
-        public afxCamera(IntPtr pObj) 
+
+        public afxCamera(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMode__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetMode(IntPtr _this);
                 internal delegate IntPtr _GetMode(IntPtr _this, GetMode__Args args);
                 private static _GetMode _GetModeFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_getMode"), typeof(_GetMode));
                     }
-                    
+
                     return _GetModeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetThirdPersonSnap__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetThirdPersonSnap(IntPtr _this);
                 internal delegate void _SetThirdPersonSnap(IntPtr _this, SetThirdPersonSnap__Args args);
                 private static _SetThirdPersonSnap _SetThirdPersonSnapFunc;
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_setThirdPersonSnap"), typeof(_SetThirdPersonSnap));
                     }
-                    
+
                     return _SetThirdPersonSnapFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetThirdPersonMode__Args
@@ -125,7 +125,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetThirdPersonMode(IntPtr _this);
                 internal delegate void _SetThirdPersonMode(IntPtr _this, SetThirdPersonMode__Args args);
                 private static _SetThirdPersonMode _SetThirdPersonModeFunc;
@@ -137,11 +137,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_setThirdPersonMode"), typeof(_SetThirdPersonMode));
                     }
-                    
+
                     return _SetThirdPersonModeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetThirdPersonCOIOffset__Args
@@ -149,7 +149,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetThirdPersonCOIOffset(IntPtr _this);
                 internal delegate Point3F.InternalStruct _GetThirdPersonCOIOffset(IntPtr _this, GetThirdPersonCOIOffset__Args args);
                 private static _GetThirdPersonCOIOffset _GetThirdPersonCOIOffsetFunc;
@@ -161,11 +161,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_getThirdPersonCOIOffset"), typeof(_GetThirdPersonCOIOffset));
                     }
-                    
+
                     return _GetThirdPersonCOIOffsetFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetThirdPersonOffset__Args
@@ -173,7 +173,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetThirdPersonOffset(IntPtr _this);
                 internal delegate Point3F.InternalStruct _GetThirdPersonOffset(IntPtr _this, GetThirdPersonOffset__Args args);
                 private static _GetThirdPersonOffset _GetThirdPersonOffsetFunc;
@@ -185,23 +185,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_getThirdPersonOffset"), typeof(_GetThirdPersonOffset));
                     }
-                    
+
                     return _GetThirdPersonOffsetFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetThirdPersonOffset__Args
                 {
-				   
+
 				   internal IntPtr offset;
-				   
+
 				   internal IntPtr coi_offset;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetThirdPersonOffset(IntPtr _this, IntPtr offset, IntPtr coi_offset);
                 internal delegate void _SetThirdPersonOffset(IntPtr _this, SetThirdPersonOffset__Args args);
                 private static _SetThirdPersonOffset _SetThirdPersonOffsetFunc;
@@ -213,11 +213,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_setThirdPersonOffset"), typeof(_SetThirdPersonOffset));
                     }
-                    
+
                     return _SetThirdPersonOffsetFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetThirdPersonAngle__Args
@@ -225,7 +225,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetThirdPersonAngle(IntPtr _this);
                 internal delegate float _GetThirdPersonAngle(IntPtr _this, GetThirdPersonAngle__Args args);
                 private static _GetThirdPersonAngle _GetThirdPersonAngleFunc;
@@ -237,16 +237,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_getThirdPersonAngle"), typeof(_GetThirdPersonAngle));
                     }
-                    
+
                     return _GetThirdPersonAngleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetThirdPersonAngle__Args
                 {
-				   
+
 				   internal float distance;
                 }
 
@@ -263,11 +263,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_setThirdPersonAngle"), typeof(_SetThirdPersonAngle));
                     }
-                    
+
                     return _SetThirdPersonAngleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetThirdPersonDistance__Args
@@ -275,7 +275,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetThirdPersonDistance(IntPtr _this);
                 internal delegate float _GetThirdPersonDistance(IntPtr _this, GetThirdPersonDistance__Args args);
                 private static _GetThirdPersonDistance _GetThirdPersonDistanceFunc;
@@ -287,16 +287,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_getThirdPersonDistance"), typeof(_GetThirdPersonDistance));
                     }
-                    
+
                     return _GetThirdPersonDistanceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetThirdPersonDistance__Args
                 {
-				   
+
 				   internal float distance;
                 }
 
@@ -313,16 +313,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_setThirdPersonDistance"), typeof(_SetThirdPersonDistance));
                     }
-                    
+
                     return _SetThirdPersonDistanceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetCameraSubject__Args
                 {
-				   
+
 				   internal IntPtr subject;
                 }
 
@@ -339,11 +339,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_setCameraSubject"), typeof(_SetCameraSubject));
                     }
-                    
+
                     return _SetCameraSubjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetPosition__Args
@@ -351,7 +351,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetPosition(IntPtr _this);
                 internal delegate Point3F.InternalStruct _GetPosition(IntPtr _this, GetPosition__Args args);
                 private static _GetPosition _GetPositionFunc;
@@ -363,11 +363,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_getPosition"), typeof(_GetPosition));
                     }
-                    
+
                     return _GetPositionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetFlyMode__Args
@@ -375,7 +375,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetFlyMode(IntPtr _this);
                 internal delegate void _SetFlyMode(IntPtr _this, SetFlyMode__Args args);
                 private static _SetFlyMode _SetFlyModeFunc;
@@ -387,13 +387,13 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_setFlyMode"), typeof(_SetFlyMode));
                     }
-                    
+
                     return _SetFlyModeFunc;
                 }
 
-	
+
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 internal delegate void _SetOrbitMode(IntPtr _this, ref StringVector.InternalStruct args);
                 private static _SetOrbitMode _SetOrbitModeFunc;
                 internal static _SetOrbitMode SetOrbitMode() {
@@ -404,11 +404,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_setOrbitMode"), typeof(_SetOrbitMode));
                     }
-                    
+
                     return _SetOrbitModeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -416,7 +416,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -428,11 +428,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -440,7 +440,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -452,7 +452,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxCamera_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -460,154 +460,154 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public string GetMode() {
-        
+
                      InternalUnsafeMethods.GetMode__Args _args = new InternalUnsafeMethods.GetMode__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetMode()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void SetThirdPersonSnap() {
-        
+
                      InternalUnsafeMethods.SetThirdPersonSnap__Args _args = new InternalUnsafeMethods.SetThirdPersonSnap__Args() {
                      };
                      InternalUnsafeMethods.SetThirdPersonSnap()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetThirdPersonMode() {
-        
+
                      InternalUnsafeMethods.SetThirdPersonMode__Args _args = new InternalUnsafeMethods.SetThirdPersonMode__Args() {
                      };
                      InternalUnsafeMethods.SetThirdPersonMode()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public Point3F GetThirdPersonCOIOffset() {
-        
+
                      InternalUnsafeMethods.GetThirdPersonCOIOffset__Args _args = new InternalUnsafeMethods.GetThirdPersonCOIOffset__Args() {
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetThirdPersonCOIOffset()(ObjectPtr, _args);
-                                 
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public Point3F GetThirdPersonOffset() {
-        
+
                      InternalUnsafeMethods.GetThirdPersonOffset__Args _args = new InternalUnsafeMethods.GetThirdPersonOffset__Args() {
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetThirdPersonOffset()(ObjectPtr, _args);
-                                 
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public void SetThirdPersonOffset(Point3F offset, Point3F coi_offset = null) {
-        
+
                      offset.Alloc();                     coi_offset = coi_offset ?? new Point3F("3.40282e+38 3.40282e+38 3.40282e+38");coi_offset.Alloc();                     InternalUnsafeMethods.SetThirdPersonOffset__Args _args = new InternalUnsafeMethods.SetThirdPersonOffset__Args() {
                         offset = offset.internalStructPtr,
                         coi_offset = coi_offset.internalStructPtr,
                      };
                      InternalUnsafeMethods.SetThirdPersonOffset()(ObjectPtr, _args);
-                                          offset.Free();                     coi_offset.Free();            
+                                          offset.Free();                     coi_offset.Free();
                   }
-	
 
-			
+
+
                   public float GetThirdPersonAngle() {
-        
+
                      InternalUnsafeMethods.GetThirdPersonAngle__Args _args = new InternalUnsafeMethods.GetThirdPersonAngle__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetThirdPersonAngle()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetThirdPersonAngle(float distance) {
-        
+
                                           InternalUnsafeMethods.SetThirdPersonAngle__Args _args = new InternalUnsafeMethods.SetThirdPersonAngle__Args() {
                         distance = distance,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetThirdPersonAngle()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public float GetThirdPersonDistance() {
-        
+
                      InternalUnsafeMethods.GetThirdPersonDistance__Args _args = new InternalUnsafeMethods.GetThirdPersonDistance__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetThirdPersonDistance()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetThirdPersonDistance(float distance) {
-        
+
                                           InternalUnsafeMethods.SetThirdPersonDistance__Args _args = new InternalUnsafeMethods.SetThirdPersonDistance__Args() {
                         distance = distance,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetThirdPersonDistance()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetCameraSubject(SceneObject subject) {
-        
+
                                           InternalUnsafeMethods.SetCameraSubject__Args _args = new InternalUnsafeMethods.SetCameraSubject__Args() {
                         subject = subject.ObjectPtr,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetCameraSubject()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public Point3F GetPosition() {
-        
+
                      InternalUnsafeMethods.GetPosition__Args _args = new InternalUnsafeMethods.GetPosition__Args() {
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetPosition()(ObjectPtr, _args);
-                                 
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public void SetFlyMode() {
-        
+
                      InternalUnsafeMethods.SetFlyMode__Args _args = new InternalUnsafeMethods.SetFlyMode__Args() {
                      };
                      InternalUnsafeMethods.SetFlyMode()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-								public void SetOrbitMode(params string[] args) { 
+                  }
+
+
+								public void SetOrbitMode(params string[] args) {
 						List<string> _argList = new List<string>() {"", ""};
 						_argList.AddRange(args);
-            
+
 						StringVector nativeVecArgs = new StringVector {
 							ElementCount = (uint)_argList.Count,
 							Array = _argList.ToArray(),
@@ -616,18 +616,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 						nativeVecArgs.Alloc();
 						InternalUnsafeMethods.SetOrbitMode()(ObjectPtr, ref nativeVecArgs.internalStruct);
 						nativeVecArgs.Free();
-            
-					}	
 
-			
+					}
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

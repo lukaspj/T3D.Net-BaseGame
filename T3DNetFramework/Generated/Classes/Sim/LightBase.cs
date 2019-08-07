@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class LightBase : SceneObject {
 
 
 
-        public LightBase(bool pRegister = false) 
+        public LightBase(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public LightBase(string pName, bool pRegister) 
+
+        public LightBase(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public LightBase(string pName) 
+
+        public LightBase(string pName)
             : this(pName, false) {
         }
-        
-        public LightBase(string pName, string pParent, bool pRegister = false) 
+
+        public LightBase(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public LightBase(string pName, SimObject pParent, bool pRegister = false) 
+
+        public LightBase(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public LightBase(SimObject pObj) 
+
+        public LightBase(SimObject pObj)
             : base(pObj) {
         }
-        
-        public LightBase(IntPtr pObj) 
+
+        public LightBase(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct PauseAnimation__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _PauseAnimation(IntPtr _this);
                 internal delegate void _PauseAnimation(IntPtr _this, PauseAnimation__Args args);
                 private static _PauseAnimation _PauseAnimationFunc;
@@ -89,21 +89,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnLightBase_pauseAnimation"), typeof(_PauseAnimation));
                     }
-                    
+
                     return _PauseAnimationFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct PlayAnimation__Args
                 {
-				   
+
 				   internal string anim;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _PlayAnimation(IntPtr _this, string anim);
                 internal delegate void _PlayAnimation(IntPtr _this, PlayAnimation__Args args);
                 private static _PlayAnimation _PlayAnimationFunc;
@@ -115,11 +115,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnLightBase_playAnimation"), typeof(_PlayAnimation));
                     }
-                    
+
                     return _PlayAnimationFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetLightEnabled__Args
@@ -129,7 +129,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetLightEnabled(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool state);
                 internal delegate void _SetLightEnabled(IntPtr _this, SetLightEnabled__Args args);
                 private static _SetLightEnabled _SetLightEnabledFunc;
@@ -141,11 +141,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnLightBase_setLightEnabled"), typeof(_SetLightEnabled));
                     }
-                    
+
                     return _SetLightEnabledFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -153,7 +153,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -165,11 +165,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnLightBase_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -177,7 +177,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -189,7 +189,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnLightBase_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -197,47 +197,47 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void PauseAnimation() {
-        
+
                      InternalUnsafeMethods.PauseAnimation__Args _args = new InternalUnsafeMethods.PauseAnimation__Args() {
                      };
                      InternalUnsafeMethods.PauseAnimation()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void PlayAnimation(string anim = "") {
-        
+
                                           InternalUnsafeMethods.PlayAnimation__Args _args = new InternalUnsafeMethods.PlayAnimation__Args() {
                         anim = anim,
                      };
                      InternalUnsafeMethods.PlayAnimation()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetLightEnabled(bool state) {
-        
+
                                           InternalUnsafeMethods.SetLightEnabled__Args _args = new InternalUnsafeMethods.SetLightEnabled__Args() {
                         state = state,
                      };
                      InternalUnsafeMethods.SetLightEnabled()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

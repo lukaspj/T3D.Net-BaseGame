@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiSliderCtrl : GuiControl {
 
 
 
-        public GuiSliderCtrl(bool pRegister = false) 
+        public GuiSliderCtrl(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiSliderCtrl(string pName, bool pRegister) 
+
+        public GuiSliderCtrl(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiSliderCtrl(string pName) 
+
+        public GuiSliderCtrl(string pName)
             : this(pName, false) {
         }
-        
-        public GuiSliderCtrl(string pName, string pParent, bool pRegister = false) 
+
+        public GuiSliderCtrl(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiSliderCtrl(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiSliderCtrl(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiSliderCtrl(SimObject pObj) 
+
+        public GuiSliderCtrl(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiSliderCtrl(IntPtr pObj) 
+
+        public GuiSliderCtrl(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsThumbBeingDragged__Args
@@ -89,23 +89,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiSliderCtrl_isThumbBeingDragged"), typeof(_IsThumbBeingDragged));
                     }
-                    
+
                     return _IsThumbBeingDraggedFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetValue__Args
                 {
-				   
+
 				   internal float pos;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool doCallback;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetValue(IntPtr _this, float pos, [MarshalAs(UnmanagedType.I1)]bool doCallback);
                 internal delegate void _SetValue(IntPtr _this, SetValue__Args args);
                 private static _SetValue _SetValueFunc;
@@ -117,11 +117,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiSliderCtrl_setValue"), typeof(_SetValue));
                     }
-                    
+
                     return _SetValueFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetValue__Args
@@ -129,7 +129,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetValue(IntPtr _this);
                 internal delegate float _GetValue(IntPtr _this, GetValue__Args args);
                 private static _GetValue _GetValueFunc;
@@ -141,11 +141,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiSliderCtrl_getValue"), typeof(_GetValue));
                     }
-                    
+
                     return _GetValueFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnMouseDragged__Args
@@ -153,7 +153,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnMouseDragged(IntPtr _this);
                 internal delegate void _OnMouseDragged(IntPtr _this, OnMouseDragged__Args args);
                 private static _OnMouseDragged _OnMouseDraggedFunc;
@@ -165,11 +165,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiSliderCtrl_onMouseDragged"), typeof(_OnMouseDragged));
                     }
-                    
+
                     return _OnMouseDraggedFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -177,7 +177,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -189,11 +189,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiSliderCtrl_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -201,7 +201,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -213,7 +213,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiSliderCtrl_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -221,59 +221,59 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public bool IsThumbBeingDragged() {
-        
+
                      InternalUnsafeMethods.IsThumbBeingDragged__Args _args = new InternalUnsafeMethods.IsThumbBeingDragged__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsThumbBeingDragged()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetValue(float pos, bool doCallback = false) {
-        
+
                                                                InternalUnsafeMethods.SetValue__Args _args = new InternalUnsafeMethods.SetValue__Args() {
                         pos = pos,
                         doCallback = doCallback,
                      };
                      InternalUnsafeMethods.SetValue()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public float GetValue() {
-        
+
                      InternalUnsafeMethods.GetValue__Args _args = new InternalUnsafeMethods.GetValue__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetValue()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void OnMouseDragged() {
-        
+
                      InternalUnsafeMethods.OnMouseDragged__Args _args = new InternalUnsafeMethods.OnMouseDragged__Args() {
                      };
                      InternalUnsafeMethods.OnMouseDragged()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class Gui3DProjectionCtrl : GuiControl {
 
 
 
-        public Gui3DProjectionCtrl(bool pRegister = false) 
+        public Gui3DProjectionCtrl(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public Gui3DProjectionCtrl(string pName, bool pRegister) 
+
+        public Gui3DProjectionCtrl(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public Gui3DProjectionCtrl(string pName) 
+
+        public Gui3DProjectionCtrl(string pName)
             : this(pName, false) {
         }
-        
-        public Gui3DProjectionCtrl(string pName, string pParent, bool pRegister = false) 
+
+        public Gui3DProjectionCtrl(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public Gui3DProjectionCtrl(string pName, SimObject pParent, bool pRegister = false) 
+
+        public Gui3DProjectionCtrl(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public Gui3DProjectionCtrl(SimObject pObj) 
+
+        public Gui3DProjectionCtrl(SimObject pObj)
             : base(pObj) {
         }
-        
-        public Gui3DProjectionCtrl(IntPtr pObj) 
+
+        public Gui3DProjectionCtrl(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetAttachedTo__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetAttachedTo(IntPtr _this);
                 internal delegate int _GetAttachedTo(IntPtr _this, GetAttachedTo__Args args);
                 private static _GetAttachedTo _GetAttachedToFunc;
@@ -89,21 +89,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGui3DProjectionCtrl_getAttachedTo"), typeof(_GetAttachedTo));
                     }
-                    
+
                     return _GetAttachedToFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetAttachedTo__Args
                 {
-				   
+
 				   internal IntPtr target;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetAttachedTo(IntPtr _this, IntPtr target);
                 internal delegate void _SetAttachedTo(IntPtr _this, SetAttachedTo__Args args);
                 private static _SetAttachedTo _SetAttachedToFunc;
@@ -115,11 +115,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGui3DProjectionCtrl_setAttachedTo"), typeof(_SetAttachedTo));
                     }
-                    
+
                     return _SetAttachedToFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -127,7 +127,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -139,11 +139,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGui3DProjectionCtrl_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -151,7 +151,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -163,7 +163,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGui3DProjectionCtrl_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -171,37 +171,37 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public int GetAttachedTo() {
-        
+
                      InternalUnsafeMethods.GetAttachedTo__Args _args = new InternalUnsafeMethods.GetAttachedTo__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetAttachedTo()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetAttachedTo(SceneObject target = null) {
-        
+
                                           InternalUnsafeMethods.SetAttachedTo__Args _args = new InternalUnsafeMethods.SetAttachedTo__Args() {
                         target = target.ObjectPtr,
                      };
                      InternalUnsafeMethods.SetAttachedTo()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

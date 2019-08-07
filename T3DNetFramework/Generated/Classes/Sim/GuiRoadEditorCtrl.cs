@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiRoadEditorCtrl : EditTSCtrl {
 
 
 
-        public GuiRoadEditorCtrl(bool pRegister = false) 
+        public GuiRoadEditorCtrl(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiRoadEditorCtrl(string pName, bool pRegister) 
+
+        public GuiRoadEditorCtrl(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiRoadEditorCtrl(string pName) 
+
+        public GuiRoadEditorCtrl(string pName)
             : this(pName, false) {
         }
-        
-        public GuiRoadEditorCtrl(string pName, string pParent, bool pRegister = false) 
+
+        public GuiRoadEditorCtrl(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiRoadEditorCtrl(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiRoadEditorCtrl(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiRoadEditorCtrl(SimObject pObj) 
+
+        public GuiRoadEditorCtrl(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiRoadEditorCtrl(IntPtr pObj) 
+
+        public GuiRoadEditorCtrl(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct DeleteRoad__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _DeleteRoad(IntPtr _this);
                 internal delegate void _DeleteRoad(IntPtr _this, DeleteRoad__Args args);
                 private static _DeleteRoad _DeleteRoadFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_deleteRoad"), typeof(_DeleteRoad));
                     }
-                    
+
                     return _DeleteRoadFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSelectedNode__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetSelectedNode(IntPtr _this);
                 internal delegate int _GetSelectedNode(IntPtr _this, GetSelectedNode__Args args);
                 private static _GetSelectedNode _GetSelectedNodeFunc;
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_getSelectedNode"), typeof(_GetSelectedNode));
                     }
-                    
+
                     return _GetSelectedNodeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSelectedRoad__Args
@@ -125,7 +125,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetSelectedRoad(IntPtr _this);
                 internal delegate int _GetSelectedRoad(IntPtr _this, GetSelectedRoad__Args args);
                 private static _GetSelectedRoad _GetSelectedRoadFunc;
@@ -137,21 +137,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_getSelectedRoad"), typeof(_GetSelectedRoad));
                     }
-                    
+
                     return _GetSelectedRoadFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetSelectedRoad__Args
                 {
-				   
+
 				   internal string pathRoad;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetSelectedRoad(IntPtr _this, string pathRoad);
                 internal delegate void _SetSelectedRoad(IntPtr _this, SetSelectedRoad__Args args);
                 private static _SetSelectedRoad _SetSelectedRoadFunc;
@@ -163,21 +163,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_setSelectedRoad"), typeof(_SetSelectedRoad));
                     }
-                    
+
                     return _SetSelectedRoadFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetNodePosition__Args
                 {
-				   
+
 				   internal IntPtr pos;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetNodePosition(IntPtr _this, IntPtr pos);
                 internal delegate void _SetNodePosition(IntPtr _this, SetNodePosition__Args args);
                 private static _SetNodePosition _SetNodePositionFunc;
@@ -189,11 +189,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_setNodePosition"), typeof(_SetNodePosition));
                     }
-                    
+
                     return _SetNodePositionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodePosition__Args
@@ -201,7 +201,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetNodePosition(IntPtr _this);
                 internal delegate Point3F.InternalStruct _GetNodePosition(IntPtr _this, GetNodePosition__Args args);
                 private static _GetNodePosition _GetNodePositionFunc;
@@ -213,21 +213,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_getNodePosition"), typeof(_GetNodePosition));
                     }
-                    
+
                     return _GetNodePositionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetNodeWidth__Args
                 {
-				   
+
 				   internal float width;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetNodeWidth(IntPtr _this, float width);
                 internal delegate void _SetNodeWidth(IntPtr _this, SetNodeWidth__Args args);
                 private static _SetNodeWidth _SetNodeWidthFunc;
@@ -239,11 +239,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_setNodeWidth"), typeof(_SetNodeWidth));
                     }
-                    
+
                     return _SetNodeWidthFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodeWidth__Args
@@ -251,7 +251,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetNodeWidth(IntPtr _this);
                 internal delegate float _GetNodeWidth(IntPtr _this, GetNodeWidth__Args args);
                 private static _GetNodeWidth _GetNodeWidthFunc;
@@ -263,21 +263,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_getNodeWidth"), typeof(_GetNodeWidth));
                     }
-                    
+
                     return _GetNodeWidthFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetMode__Args
                 {
-				   
+
 				   internal string mode;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetMode(IntPtr _this, string mode);
                 internal delegate void _SetMode(IntPtr _this, SetMode__Args args);
                 private static _SetMode _SetModeFunc;
@@ -289,11 +289,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_setMode"), typeof(_SetMode));
                     }
-                    
+
                     return _SetModeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMode__Args
@@ -301,7 +301,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetMode(IntPtr _this);
                 internal delegate IntPtr _GetMode(IntPtr _this, GetMode__Args args);
                 private static _GetMode _GetModeFunc;
@@ -313,11 +313,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_getMode"), typeof(_GetMode));
                     }
-                    
+
                     return _GetModeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct DeleteNode__Args
@@ -325,7 +325,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _DeleteNode(IntPtr _this);
                 internal delegate void _DeleteNode(IntPtr _this, DeleteNode__Args args);
                 private static _DeleteNode _DeleteNodeFunc;
@@ -337,11 +337,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_deleteNode"), typeof(_DeleteNode));
                     }
-                    
+
                     return _DeleteNodeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -349,7 +349,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -361,11 +361,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -373,7 +373,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -385,7 +385,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiRoadEditorCtrl_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -393,134 +393,134 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void DeleteRoad() {
-        
+
                      InternalUnsafeMethods.DeleteRoad__Args _args = new InternalUnsafeMethods.DeleteRoad__Args() {
                      };
                      InternalUnsafeMethods.DeleteRoad()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public int GetSelectedNode() {
-        
+
                      InternalUnsafeMethods.GetSelectedNode__Args _args = new InternalUnsafeMethods.GetSelectedNode__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetSelectedNode()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetSelectedRoad() {
-        
+
                      InternalUnsafeMethods.GetSelectedRoad__Args _args = new InternalUnsafeMethods.GetSelectedRoad__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetSelectedRoad()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetSelectedRoad(string pathRoad = "") {
-        
+
                                           InternalUnsafeMethods.SetSelectedRoad__Args _args = new InternalUnsafeMethods.SetSelectedRoad__Args() {
                         pathRoad = pathRoad,
                      };
                      InternalUnsafeMethods.SetSelectedRoad()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetNodePosition(Point3F pos) {
-        
+
                      pos.Alloc();                     InternalUnsafeMethods.SetNodePosition__Args _args = new InternalUnsafeMethods.SetNodePosition__Args() {
                         pos = pos.internalStructPtr,
                      };
                      InternalUnsafeMethods.SetNodePosition()(ObjectPtr, _args);
-                                          pos.Free();            
+                                          pos.Free();
                   }
-	
 
-			
+
+
                   public Point3F GetNodePosition() {
-        
+
                      InternalUnsafeMethods.GetNodePosition__Args _args = new InternalUnsafeMethods.GetNodePosition__Args() {
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetNodePosition()(ObjectPtr, _args);
-                                 
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public void SetNodeWidth(float width) {
-        
+
                                           InternalUnsafeMethods.SetNodeWidth__Args _args = new InternalUnsafeMethods.SetNodeWidth__Args() {
                         width = width,
                      };
                      InternalUnsafeMethods.SetNodeWidth()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public float GetNodeWidth() {
-        
+
                      InternalUnsafeMethods.GetNodeWidth__Args _args = new InternalUnsafeMethods.GetNodeWidth__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetNodeWidth()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetMode(string mode) {
-        
+
                                           InternalUnsafeMethods.SetMode__Args _args = new InternalUnsafeMethods.SetMode__Args() {
                         mode = mode,
                      };
                      InternalUnsafeMethods.SetMode()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public string GetMode() {
-        
+
                      InternalUnsafeMethods.GetMode__Args _args = new InternalUnsafeMethods.GetMode__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetMode()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void DeleteNode() {
-        
+
                      InternalUnsafeMethods.DeleteNode__Args _args = new InternalUnsafeMethods.DeleteNode__Args() {
                      };
                      InternalUnsafeMethods.DeleteNode()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

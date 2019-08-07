@@ -1,10 +1,10 @@
 using System;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Functions;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Functions;
+using T3DNetFramework.Interop;
 
-namespace Game.Core
+namespace BaseGame.Core
 {
    [ConsoleClass]
    public class CoreModule : SimSet

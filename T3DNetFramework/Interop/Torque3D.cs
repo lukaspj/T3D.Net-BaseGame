@@ -1,10 +1,10 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Generated.Classes.Sim;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Sim;
 
-namespace T3DSharpFramework.Interop
+namespace T3DNetFramework.Interop
 {
     public static class Torque3D
     {

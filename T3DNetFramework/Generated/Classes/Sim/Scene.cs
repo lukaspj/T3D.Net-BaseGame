@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class Scene : NetObject {
 
 
 
-        public Scene(bool pRegister = false) 
+        public Scene(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public Scene(string pName, bool pRegister) 
+
+        public Scene(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public Scene(string pName) 
+
+        public Scene(string pName)
             : this(pName, false) {
         }
-        
-        public Scene(string pName, string pParent, bool pRegister = false) 
+
+        public Scene(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public Scene(string pName, SimObject pParent, bool pRegister = false) 
+
+        public Scene(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public Scene(SimObject pObj) 
+
+        public Scene(SimObject pObj)
             : base(pObj) {
         }
-        
-        public Scene(IntPtr pObj) 
+
+        public Scene(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetObjectsByClass__Args
@@ -79,7 +79,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetObjectsByClass(IntPtr _this, [MarshalAs(UnmanagedType.LPUTF8Str)]string className);
                 internal delegate IntPtr _GetObjectsByClass(IntPtr _this, GetObjectsByClass__Args args);
                 private static _GetObjectsByClass _GetObjectsByClassFunc;
@@ -91,21 +91,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnScene_getObjectsByClass"), typeof(_GetObjectsByClass));
                     }
-                    
+
                     return _GetObjectsByClassFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveDynamicObject__Args
                 {
-				   
+
 				   internal IntPtr sceneObj;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _RemoveDynamicObject(IntPtr _this, IntPtr sceneObj);
                 internal delegate void _RemoveDynamicObject(IntPtr _this, RemoveDynamicObject__Args args);
                 private static _RemoveDynamicObject _RemoveDynamicObjectFunc;
@@ -117,21 +117,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnScene_removeDynamicObject"), typeof(_RemoveDynamicObject));
                     }
-                    
+
                     return _RemoveDynamicObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddDynamicObject__Args
                 {
-				   
+
 				   internal IntPtr sceneObj;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _AddDynamicObject(IntPtr _this, IntPtr sceneObj);
                 internal delegate void _AddDynamicObject(IntPtr _this, AddDynamicObject__Args args);
                 private static _AddDynamicObject _AddDynamicObjectFunc;
@@ -143,11 +143,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnScene_addDynamicObject"), typeof(_AddDynamicObject));
                     }
-                    
+
                     return _AddDynamicObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetRootScene__Args
@@ -155,7 +155,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetRootScene(IntPtr _this);
                 internal delegate int _GetRootScene(IntPtr _this, GetRootScene__Args args);
                 private static _GetRootScene _GetRootSceneFunc;
@@ -167,11 +167,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnScene_getRootScene"), typeof(_GetRootScene));
                     }
-                    
+
                     return _GetRootSceneFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -179,7 +179,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -191,11 +191,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnScene_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -203,7 +203,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -215,7 +215,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnScene_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -223,60 +223,60 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public string GetObjectsByClass(string className = "") {
-        
+
                                           InternalUnsafeMethods.GetObjectsByClass__Args _args = new InternalUnsafeMethods.GetObjectsByClass__Args() {
                         className = className,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetObjectsByClass()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void RemoveDynamicObject(SceneObject sceneObj = null) {
-        
+
                                           InternalUnsafeMethods.RemoveDynamicObject__Args _args = new InternalUnsafeMethods.RemoveDynamicObject__Args() {
                         sceneObj = sceneObj.ObjectPtr,
                      };
                      InternalUnsafeMethods.RemoveDynamicObject()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void AddDynamicObject(SceneObject sceneObj = null) {
-        
+
                                           InternalUnsafeMethods.AddDynamicObject__Args _args = new InternalUnsafeMethods.AddDynamicObject__Args() {
                         sceneObj = sceneObj.ObjectPtr,
                      };
                      InternalUnsafeMethods.AddDynamicObject()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public int GetRootScene() {
-        
+
                      InternalUnsafeMethods.GetRootScene__Args _args = new InternalUnsafeMethods.GetRootScene__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetRootScene()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

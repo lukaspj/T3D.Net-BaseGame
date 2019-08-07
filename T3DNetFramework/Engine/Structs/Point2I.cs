@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace T3DSharpFramework.Engine.Structs
+namespace T3DNetFramework.Engine.Structs
 {
     public class Point2I : Generated.Structs.Math.Point2I
     {
@@ -18,7 +18,7 @@ namespace T3DSharpFramework.Engine.Structs
             X = x;
             Y = y;
         }
-        
+
         public static Point2I Zero = new Point2I(0, 0);
     }
 }

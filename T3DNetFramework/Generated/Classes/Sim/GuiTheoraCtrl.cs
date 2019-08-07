@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiTheoraCtrl : GuiControl {
 
 
 
-        public GuiTheoraCtrl(bool pRegister = false) 
+        public GuiTheoraCtrl(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiTheoraCtrl(string pName, bool pRegister) 
+
+        public GuiTheoraCtrl(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiTheoraCtrl(string pName) 
+
+        public GuiTheoraCtrl(string pName)
             : this(pName, false) {
         }
-        
-        public GuiTheoraCtrl(string pName, string pParent, bool pRegister = false) 
+
+        public GuiTheoraCtrl(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiTheoraCtrl(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiTheoraCtrl(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiTheoraCtrl(SimObject pObj) 
+
+        public GuiTheoraCtrl(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiTheoraCtrl(IntPtr pObj) 
+
+        public GuiTheoraCtrl(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsPlaybackDone__Args
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTheoraCtrl_isPlaybackDone"), typeof(_IsPlaybackDone));
                     }
-                    
+
                     return _IsPlaybackDoneFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetCurrentTime__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetCurrentTime(IntPtr _this);
                 internal delegate float _GetCurrentTime(IntPtr _this, GetCurrentTime__Args args);
                 private static _GetCurrentTime _GetCurrentTimeFunc;
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTheoraCtrl_getCurrentTime"), typeof(_GetCurrentTime));
                     }
-                    
+
                     return _GetCurrentTimeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Stop__Args
@@ -125,7 +125,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Stop(IntPtr _this);
                 internal delegate void _Stop(IntPtr _this, Stop__Args args);
                 private static _Stop _StopFunc;
@@ -137,11 +137,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTheoraCtrl_stop"), typeof(_Stop));
                     }
-                    
+
                     return _StopFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Pause__Args
@@ -149,7 +149,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Pause(IntPtr _this);
                 internal delegate void _Pause(IntPtr _this, Pause__Args args);
                 private static _Pause _PauseFunc;
@@ -161,11 +161,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTheoraCtrl_pause"), typeof(_Pause));
                     }
-                    
+
                     return _PauseFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Play__Args
@@ -173,7 +173,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Play(IntPtr _this);
                 internal delegate void _Play(IntPtr _this, Play__Args args);
                 private static _Play _PlayFunc;
@@ -185,21 +185,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTheoraCtrl_play"), typeof(_Play));
                     }
-                    
+
                     return _PlayFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetFile__Args
                 {
-				   
+
 				   internal string filename;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetFile(IntPtr _this, string filename);
                 internal delegate void _SetFile(IntPtr _this, SetFile__Args args);
                 private static _SetFile _SetFileFunc;
@@ -211,11 +211,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTheoraCtrl_setFile"), typeof(_SetFile));
                     }
-                    
+
                     return _SetFileFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -223,7 +223,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -235,11 +235,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTheoraCtrl_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -247,7 +247,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -259,7 +259,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTheoraCtrl_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -267,78 +267,78 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public bool IsPlaybackDone() {
-        
+
                      InternalUnsafeMethods.IsPlaybackDone__Args _args = new InternalUnsafeMethods.IsPlaybackDone__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsPlaybackDone()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public float GetCurrentTime() {
-        
+
                      InternalUnsafeMethods.GetCurrentTime__Args _args = new InternalUnsafeMethods.GetCurrentTime__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetCurrentTime()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void Stop() {
-        
+
                      InternalUnsafeMethods.Stop__Args _args = new InternalUnsafeMethods.Stop__Args() {
                      };
                      InternalUnsafeMethods.Stop()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Pause() {
-        
+
                      InternalUnsafeMethods.Pause__Args _args = new InternalUnsafeMethods.Pause__Args() {
                      };
                      InternalUnsafeMethods.Pause()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Play() {
-        
+
                      InternalUnsafeMethods.Play__Args _args = new InternalUnsafeMethods.Play__Args() {
                      };
                      InternalUnsafeMethods.Play()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetFile(string filename) {
-        
+
                                           InternalUnsafeMethods.SetFile__Args _args = new InternalUnsafeMethods.SetFile__Args() {
                         filename = filename,
                      };
                      InternalUnsafeMethods.SetFile()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiConsole : GuiArrayCtrl {
 
 
 
-        public GuiConsole(bool pRegister = false) 
+        public GuiConsole(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiConsole(string pName, bool pRegister) 
+
+        public GuiConsole(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiConsole(string pName) 
+
+        public GuiConsole(string pName)
             : this(pName, false) {
         }
-        
-        public GuiConsole(string pName, string pParent, bool pRegister = false) 
+
+        public GuiConsole(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiConsole(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiConsole(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiConsole(SimObject pObj) 
+
+        public GuiConsole(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiConsole(IntPtr pObj) 
+
+        public GuiConsole(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Refresh__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Refresh(IntPtr _this);
                 internal delegate void _Refresh(IntPtr _this, Refresh__Args args);
                 private static _Refresh _RefreshFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiConsole_refresh"), typeof(_Refresh));
                     }
-                    
+
                     return _RefreshFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ToggleNormalFilter__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ToggleNormalFilter(IntPtr _this);
                 internal delegate void _ToggleNormalFilter(IntPtr _this, ToggleNormalFilter__Args args);
                 private static _ToggleNormalFilter _ToggleNormalFilterFunc;
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiConsole_toggleNormalFilter"), typeof(_ToggleNormalFilter));
                     }
-                    
+
                     return _ToggleNormalFilterFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ToggleWarnFilter__Args
@@ -125,7 +125,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ToggleWarnFilter(IntPtr _this);
                 internal delegate void _ToggleWarnFilter(IntPtr _this, ToggleWarnFilter__Args args);
                 private static _ToggleWarnFilter _ToggleWarnFilterFunc;
@@ -137,11 +137,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiConsole_toggleWarnFilter"), typeof(_ToggleWarnFilter));
                     }
-                    
+
                     return _ToggleWarnFilterFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ToggleErrorFilter__Args
@@ -149,7 +149,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ToggleErrorFilter(IntPtr _this);
                 internal delegate void _ToggleErrorFilter(IntPtr _this, ToggleErrorFilter__Args args);
                 private static _ToggleErrorFilter _ToggleErrorFilterFunc;
@@ -161,11 +161,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiConsole_toggleErrorFilter"), typeof(_ToggleErrorFilter));
                     }
-                    
+
                     return _ToggleErrorFilterFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNormalFilter__Args
@@ -185,11 +185,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiConsole_getNormalFilter"), typeof(_GetNormalFilter));
                     }
-                    
+
                     return _GetNormalFilterFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetWarnFilter__Args
@@ -209,11 +209,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiConsole_getWarnFilter"), typeof(_GetWarnFilter));
                     }
-                    
+
                     return _GetWarnFilterFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetErrorFilter__Args
@@ -233,11 +233,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiConsole_getErrorFilter"), typeof(_GetErrorFilter));
                     }
-                    
+
                     return _GetErrorFilterFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetDisplayFilters__Args
@@ -251,7 +251,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetDisplayFilters(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool errors, [MarshalAs(UnmanagedType.I1)]bool warns, [MarshalAs(UnmanagedType.I1)]bool normal);
                 internal delegate void _SetDisplayFilters(IntPtr _this, SetDisplayFilters__Args args);
                 private static _SetDisplayFilters _SetDisplayFiltersFunc;
@@ -263,25 +263,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiConsole_setDisplayFilters"), typeof(_SetDisplayFilters));
                     }
-                    
+
                     return _SetDisplayFiltersFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnNewMessage__Args
                 {
-				   
+
 				   internal uint errorCount;
-				   
+
 				   internal uint warnCount;
-				   
+
 				   internal uint normalCount;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnNewMessage(IntPtr _this, uint errorCount, uint warnCount, uint normalCount);
                 internal delegate void _OnNewMessage(IntPtr _this, OnNewMessage__Args args);
                 private static _OnNewMessage _OnNewMessageFunc;
@@ -293,23 +293,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiConsole_onNewMessage"), typeof(_OnNewMessage));
                     }
-                    
+
                     return _OnNewMessageFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnMessageSelected__Args
                 {
-				   
+
 				   internal int level;
-				   
+
 				   internal string message;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnMessageSelected(IntPtr _this, int level, string message);
                 internal delegate void _OnMessageSelected(IntPtr _this, OnMessageSelected__Args args);
                 private static _OnMessageSelected _OnMessageSelectedFunc;
@@ -321,11 +321,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiConsole_onMessageSelected"), typeof(_OnMessageSelected));
                     }
-                    
+
                     return _OnMessageSelectedFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -333,7 +333,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -345,11 +345,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiConsole_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -357,7 +357,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -369,7 +369,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiConsole_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -377,126 +377,126 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void Refresh() {
-        
+
                      InternalUnsafeMethods.Refresh__Args _args = new InternalUnsafeMethods.Refresh__Args() {
                      };
                      InternalUnsafeMethods.Refresh()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ToggleNormalFilter() {
-        
+
                      InternalUnsafeMethods.ToggleNormalFilter__Args _args = new InternalUnsafeMethods.ToggleNormalFilter__Args() {
                      };
                      InternalUnsafeMethods.ToggleNormalFilter()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ToggleWarnFilter() {
-        
+
                      InternalUnsafeMethods.ToggleWarnFilter__Args _args = new InternalUnsafeMethods.ToggleWarnFilter__Args() {
                      };
                      InternalUnsafeMethods.ToggleWarnFilter()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ToggleErrorFilter() {
-        
+
                      InternalUnsafeMethods.ToggleErrorFilter__Args _args = new InternalUnsafeMethods.ToggleErrorFilter__Args() {
                      };
                      InternalUnsafeMethods.ToggleErrorFilter()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool GetNormalFilter() {
-        
+
                      InternalUnsafeMethods.GetNormalFilter__Args _args = new InternalUnsafeMethods.GetNormalFilter__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.GetNormalFilter()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool GetWarnFilter() {
-        
+
                      InternalUnsafeMethods.GetWarnFilter__Args _args = new InternalUnsafeMethods.GetWarnFilter__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.GetWarnFilter()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool GetErrorFilter() {
-        
+
                      InternalUnsafeMethods.GetErrorFilter__Args _args = new InternalUnsafeMethods.GetErrorFilter__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.GetErrorFilter()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetDisplayFilters(bool errors = true, bool warns = true, bool normal = true) {
-        
+
                                                                                     InternalUnsafeMethods.SetDisplayFilters__Args _args = new InternalUnsafeMethods.SetDisplayFilters__Args() {
                         errors = errors,
                         warns = warns,
                         normal = normal,
                      };
                      InternalUnsafeMethods.SetDisplayFilters()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnNewMessage(uint errorCount, uint warnCount, uint normalCount) {
-        
+
                                                                                     InternalUnsafeMethods.OnNewMessage__Args _args = new InternalUnsafeMethods.OnNewMessage__Args() {
                         errorCount = errorCount,
                         warnCount = warnCount,
                         normalCount = normalCount,
                      };
                      InternalUnsafeMethods.OnNewMessage()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnMessageSelected(LogLevel level, string message) {
-        
+
                                                                InternalUnsafeMethods.OnMessageSelected__Args _args = new InternalUnsafeMethods.OnMessageSelected__Args() {
                         level = (int)level,
                         message = message,
                      };
                      InternalUnsafeMethods.OnMessageSelected()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

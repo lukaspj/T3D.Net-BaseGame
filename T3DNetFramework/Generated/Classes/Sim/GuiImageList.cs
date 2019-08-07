@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiImageList : SimObject {
 
 
 
-        public GuiImageList(bool pRegister = false) 
+        public GuiImageList(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiImageList(string pName, bool pRegister) 
+
+        public GuiImageList(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiImageList(string pName) 
+
+        public GuiImageList(string pName)
             : this(pName, false) {
         }
-        
-        public GuiImageList(string pName, string pParent, bool pRegister = false) 
+
+        public GuiImageList(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiImageList(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiImageList(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiImageList(SimObject pObj) 
+
+        public GuiImageList(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiImageList(IntPtr pObj) 
+
+        public GuiImageList(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,17 +69,17 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Insert__Args
                 {
-				   
+
 				   internal string imagePath;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _Insert(IntPtr _this, string imagePath);
                 internal delegate int _Insert(IntPtr _this, Insert__Args args);
                 private static _Insert _InsertFunc;
@@ -91,21 +91,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiImageList_insert"), typeof(_Insert));
                     }
-                    
+
                     return _InsertFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetIndex__Args
                 {
-				   
+
 				   internal string imagePath;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetIndex(IntPtr _this, string imagePath);
                 internal delegate int _GetIndex(IntPtr _this, GetIndex__Args args);
                 private static _GetIndex _GetIndexFunc;
@@ -117,16 +117,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiImageList_getIndex"), typeof(_GetIndex));
                     }
-                    
+
                     return _GetIndexFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Remove__Args
                 {
-				   
+
 				   internal int index;
                 }
 
@@ -143,11 +143,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiImageList_remove"), typeof(_Remove));
                     }
-                    
+
                     return _RemoveFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Count__Args
@@ -155,7 +155,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _Count(IntPtr _this);
                 internal delegate int _Count(IntPtr _this, Count__Args args);
                 private static _Count _CountFunc;
@@ -167,11 +167,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiImageList_count"), typeof(_Count));
                     }
-                    
+
                     return _CountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Clear__Args
@@ -191,21 +191,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiImageList_clear"), typeof(_Clear));
                     }
-                    
+
                     return _ClearFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetImage__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetImage(IntPtr _this, int index);
                 internal delegate IntPtr _GetImage(IntPtr _this, GetImage__Args args);
                 private static _GetImage _GetImageFunc;
@@ -217,11 +217,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiImageList_getImage"), typeof(_GetImage));
                     }
-                    
+
                     return _GetImageFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -229,7 +229,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -241,11 +241,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiImageList_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -253,7 +253,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -265,7 +265,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiImageList_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -273,85 +273,85 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public int Insert(string imagePath) {
-        
+
                                           InternalUnsafeMethods.Insert__Args _args = new InternalUnsafeMethods.Insert__Args() {
                         imagePath = imagePath,
                      };
                      int _engineResult = InternalUnsafeMethods.Insert()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetIndex(string imagePath) {
-        
+
                                           InternalUnsafeMethods.GetIndex__Args _args = new InternalUnsafeMethods.GetIndex__Args() {
                         imagePath = imagePath,
                      };
                      int _engineResult = InternalUnsafeMethods.GetIndex()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool Remove(int index) {
-        
+
                                           InternalUnsafeMethods.Remove__Args _args = new InternalUnsafeMethods.Remove__Args() {
                         index = index,
                      };
                      bool _engineResult = InternalUnsafeMethods.Remove()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int Count() {
-        
+
                      InternalUnsafeMethods.Count__Args _args = new InternalUnsafeMethods.Count__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.Count()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool Clear() {
-        
+
                      InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.Clear()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetImage(int index) {
-        
+
                                           InternalUnsafeMethods.GetImage__Args _args = new InternalUnsafeMethods.GetImage__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetImage()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using T3DSharpFramework.Engine;
+using T3DNetFramework.Engine;
 
-namespace T3DSharpFramework.Interop
+namespace T3DNetFramework.Interop
 {
     internal class EngineCallbacks
     {

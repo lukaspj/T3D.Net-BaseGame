@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class afxSpellButton : GuiButtonCtrl {
 
 
 
-        public afxSpellButton(bool pRegister = false) 
+        public afxSpellButton(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public afxSpellButton(string pName, bool pRegister) 
+
+        public afxSpellButton(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public afxSpellButton(string pName) 
+
+        public afxSpellButton(string pName)
             : this(pName, false) {
         }
-        
-        public afxSpellButton(string pName, string pParent, bool pRegister = false) 
+
+        public afxSpellButton(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public afxSpellButton(string pName, SimObject pParent, bool pRegister = false) 
+
+        public afxSpellButton(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public afxSpellButton(SimObject pObj) 
+
+        public afxSpellButton(SimObject pObj)
             : base(pObj) {
         }
-        
-        public afxSpellButton(IntPtr pObj) 
+
+        public afxSpellButton(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetFreeTargetStyle__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetFreeTargetStyle(IntPtr _this);
                 internal delegate int _GetFreeTargetStyle(IntPtr _this, GetFreeTargetStyle__Args args);
                 private static _GetFreeTargetStyle _GetFreeTargetStyleFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellButton_getFreeTargetStyle"), typeof(_GetFreeTargetStyle));
                     }
-                    
+
                     return _GetFreeTargetStyleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct UseFreeTargeting__Args
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellButton_useFreeTargeting"), typeof(_UseFreeTargeting));
                     }
-                    
+
                     return _UseFreeTargetingFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSpellRPGDataBlock__Args
@@ -125,7 +125,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetSpellRPGDataBlock(IntPtr _this);
                 internal delegate int _GetSpellRPGDataBlock(IntPtr _this, GetSpellRPGDataBlock__Args args);
                 private static _GetSpellRPGDataBlock _GetSpellRPGDataBlockFunc;
@@ -137,11 +137,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellButton_getSpellRPGDataBlock"), typeof(_GetSpellRPGDataBlock));
                     }
-                    
+
                     return _GetSpellRPGDataBlockFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSpellDataBlock__Args
@@ -149,7 +149,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetSpellDataBlock(IntPtr _this);
                 internal delegate int _GetSpellDataBlock(IntPtr _this, GetSpellDataBlock__Args args);
                 private static _GetSpellDataBlock _GetSpellDataBlockFunc;
@@ -161,11 +161,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellButton_getSpellDataBlock"), typeof(_GetSpellDataBlock));
                     }
-                    
+
                     return _GetSpellDataBlockFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSpellDescription__Args
@@ -173,7 +173,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetSpellDescription(IntPtr _this);
                 internal delegate IntPtr _GetSpellDescription(IntPtr _this, GetSpellDescription__Args args);
                 private static _GetSpellDescription _GetSpellDescriptionFunc;
@@ -185,21 +185,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellButton_getSpellDescription"), typeof(_GetSpellDescription));
                     }
-                    
+
                     return _GetSpellDescriptionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnTurnPage__Args
                 {
-				   
+
 				   internal uint page;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnTurnPage(IntPtr _this, uint page);
                 internal delegate void _OnTurnPage(IntPtr _this, OnTurnPage__Args args);
                 private static _OnTurnPage _OnTurnPageFunc;
@@ -211,23 +211,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellButton_onTurnPage"), typeof(_OnTurnPage));
                     }
-                    
+
                     return _OnTurnPageFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnSpellbookChange__Args
                 {
-				   
+
 				   internal IntPtr spellbook;
-				   
+
 				   internal uint page;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnSpellbookChange(IntPtr _this, IntPtr spellbook, uint page);
                 internal delegate void _OnSpellbookChange(IntPtr _this, OnSpellbookChange__Args args);
                 private static _OnSpellbookChange _OnSpellbookChangeFunc;
@@ -239,11 +239,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellButton_onSpellbookChange"), typeof(_OnSpellbookChange));
                     }
-                    
+
                     return _OnSpellbookChangeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -251,7 +251,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -263,11 +263,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellButton_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -275,7 +275,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -287,7 +287,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellButton_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -295,93 +295,93 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public int GetFreeTargetStyle() {
-        
+
                      InternalUnsafeMethods.GetFreeTargetStyle__Args _args = new InternalUnsafeMethods.GetFreeTargetStyle__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetFreeTargetStyle()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool UseFreeTargeting() {
-        
+
                      InternalUnsafeMethods.UseFreeTargeting__Args _args = new InternalUnsafeMethods.UseFreeTargeting__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.UseFreeTargeting()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetSpellRPGDataBlock() {
-        
+
                      InternalUnsafeMethods.GetSpellRPGDataBlock__Args _args = new InternalUnsafeMethods.GetSpellRPGDataBlock__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetSpellRPGDataBlock()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetSpellDataBlock() {
-        
+
                      InternalUnsafeMethods.GetSpellDataBlock__Args _args = new InternalUnsafeMethods.GetSpellDataBlock__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetSpellDataBlock()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetSpellDescription() {
-        
+
                      InternalUnsafeMethods.GetSpellDescription__Args _args = new InternalUnsafeMethods.GetSpellDescription__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetSpellDescription()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void OnTurnPage(uint page) {
-        
+
                                           InternalUnsafeMethods.OnTurnPage__Args _args = new InternalUnsafeMethods.OnTurnPage__Args() {
                         page = page,
                      };
                      InternalUnsafeMethods.OnTurnPage()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnSpellbookChange(afxSpellBook spellbook, uint page) {
-        
+
                                                                InternalUnsafeMethods.OnSpellbookChange__Args _args = new InternalUnsafeMethods.OnSpellbookChange__Args() {
                         spellbook = spellbook.ObjectPtr,
                         page = page,
                      };
                      InternalUnsafeMethods.OnSpellbookChange()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

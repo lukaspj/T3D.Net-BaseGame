@@ -1,6 +1,6 @@
 using System;
 
-namespace T3DSharpFramework.Engine
+namespace T3DNetFramework.Engine
 {
     public interface ISimObject : IDisposable
     {

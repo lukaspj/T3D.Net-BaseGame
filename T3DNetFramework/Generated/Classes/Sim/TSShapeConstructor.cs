@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class TSShapeConstructor : SimObject {
 
 
 
-        public TSShapeConstructor(bool pRegister = false) 
+        public TSShapeConstructor(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public TSShapeConstructor(string pName, bool pRegister) 
+
+        public TSShapeConstructor(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public TSShapeConstructor(string pName) 
+
+        public TSShapeConstructor(string pName)
             : this(pName, false) {
         }
-        
-        public TSShapeConstructor(string pName, string pParent, bool pRegister = false) 
+
+        public TSShapeConstructor(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public TSShapeConstructor(string pName, SimObject pParent, bool pRegister = false) 
+
+        public TSShapeConstructor(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public TSShapeConstructor(SimObject pObj) 
+
+        public TSShapeConstructor(SimObject pObj)
             : base(pObj) {
         }
-        
-        public TSShapeConstructor(IntPtr pObj) 
+
+        public TSShapeConstructor(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,16 +69,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveTrigger__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal int keyframe;
-				   
+
 				   internal int state;
                 }
 
@@ -95,20 +95,20 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_removeTrigger"), typeof(_RemoveTrigger));
                     }
-                    
+
                     return _RemoveTriggerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddTrigger__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal int keyframe;
-				   
+
 				   internal int state;
                 }
 
@@ -125,23 +125,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_addTrigger"), typeof(_AddTrigger));
                     }
-                    
+
                     return _AddTriggerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTrigger__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetTrigger(IntPtr _this, string name, int index);
                 internal delegate IntPtr _GetTrigger(IntPtr _this, GetTrigger__Args args);
                 private static _GetTrigger _GetTriggerFunc;
@@ -153,21 +153,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getTrigger"), typeof(_GetTrigger));
                     }
-                    
+
                     return _GetTriggerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTriggerCount__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetTriggerCount(IntPtr _this, string name);
                 internal delegate int _GetTriggerCount(IntPtr _this, GetTriggerCount__Args args);
                 private static _GetTriggerCount _GetTriggerCountFunc;
@@ -179,16 +179,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getTriggerCount"), typeof(_GetTriggerCount));
                     }
-                    
+
                     return _GetTriggerCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveSequence__Args
                 {
-				   
+
 				   internal string name;
                 }
 
@@ -205,22 +205,22 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_removeSequence"), typeof(_RemoveSequence));
                     }
-                    
+
                     return _RemoveSequenceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddSequence__Args
                 {
-				   
+
 				   internal string source;
-				   
+
 				   internal string name;
-				   
+
 				   internal int start;
-				   
+
 				   internal int end;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool padRot;
@@ -241,18 +241,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_addSequence"), typeof(_AddSequence));
                     }
-                    
+
                     return _AddSequenceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RenameSequence__Args
                 {
-				   
+
 				   internal string oldName;
-				   
+
 				   internal string newName;
                 }
 
@@ -269,22 +269,22 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_renameSequence"), typeof(_RenameSequence));
                     }
-                    
+
                     return _RenameSequenceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetSequenceBlend__Args
                 {
-				   
+
 				   internal string name;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool blend;
-				   
+
 				   internal string blendSeq;
-				   
+
 				   internal int blendFrame;
                 }
 
@@ -301,21 +301,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setSequenceBlend"), typeof(_SetSequenceBlend));
                     }
-                    
+
                     return _SetSequenceBlendFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSequenceBlend__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetSequenceBlend(IntPtr _this, string name);
                 internal delegate IntPtr _GetSequenceBlend(IntPtr _this, GetSequenceBlend__Args args);
                 private static _GetSequenceBlend _GetSequenceBlendFunc;
@@ -327,16 +327,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getSequenceBlend"), typeof(_GetSequenceBlend));
                     }
-                    
+
                     return _GetSequenceBlendFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetSequenceCyclic__Args
                 {
-				   
+
 				   internal string name;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool cyclic;
@@ -355,16 +355,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setSequenceCyclic"), typeof(_SetSequenceCyclic));
                     }
-                    
+
                     return _SetSequenceCyclicFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSequenceCyclic__Args
                 {
-				   
+
 				   internal string name;
                 }
 
@@ -381,20 +381,20 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getSequenceCyclic"), typeof(_GetSequenceCyclic));
                     }
-                    
+
                     return _GetSequenceCyclicFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetSequenceGroundSpeed__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal IntPtr transSpeed;
-				   
+
 				   internal IntPtr rotSpeed;
                 }
 
@@ -411,21 +411,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setSequenceGroundSpeed"), typeof(_SetSequenceGroundSpeed));
                     }
-                    
+
                     return _SetSequenceGroundSpeedFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSequenceGroundSpeed__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetSequenceGroundSpeed(IntPtr _this, string name);
                 internal delegate IntPtr _GetSequenceGroundSpeed(IntPtr _this, GetSequenceGroundSpeed__Args args);
                 private static _GetSequenceGroundSpeed _GetSequenceGroundSpeedFunc;
@@ -437,18 +437,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getSequenceGroundSpeed"), typeof(_GetSequenceGroundSpeed));
                     }
-                    
+
                     return _GetSequenceGroundSpeedFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetSequencePriority__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal float priority;
                 }
 
@@ -465,21 +465,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setSequencePriority"), typeof(_SetSequencePriority));
                     }
-                    
+
                     return _SetSequencePriorityFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSequencePriority__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetSequencePriority(IntPtr _this, string name);
                 internal delegate float _GetSequencePriority(IntPtr _this, GetSequencePriority__Args args);
                 private static _GetSequencePriority _GetSequencePriorityFunc;
@@ -491,21 +491,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getSequencePriority"), typeof(_GetSequencePriority));
                     }
-                    
+
                     return _GetSequencePriorityFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSequenceFrameCount__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetSequenceFrameCount(IntPtr _this, string name);
                 internal delegate int _GetSequenceFrameCount(IntPtr _this, GetSequenceFrameCount__Args args);
                 private static _GetSequenceFrameCount _GetSequenceFrameCountFunc;
@@ -517,21 +517,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getSequenceFrameCount"), typeof(_GetSequenceFrameCount));
                     }
-                    
+
                     return _GetSequenceFrameCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSequenceSource__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetSequenceSource(IntPtr _this, string name);
                 internal delegate IntPtr _GetSequenceSource(IntPtr _this, GetSequenceSource__Args args);
                 private static _GetSequenceSource _GetSequenceSourceFunc;
@@ -543,21 +543,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getSequenceSource"), typeof(_GetSequenceSource));
                     }
-                    
+
                     return _GetSequenceSourceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSequenceName__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetSequenceName(IntPtr _this, int index);
                 internal delegate IntPtr _GetSequenceName(IntPtr _this, GetSequenceName__Args args);
                 private static _GetSequenceName _GetSequenceNameFunc;
@@ -569,21 +569,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getSequenceName"), typeof(_GetSequenceName));
                     }
-                    
+
                     return _GetSequenceNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSequenceIndex__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetSequenceIndex(IntPtr _this, string name);
                 internal delegate int _GetSequenceIndex(IntPtr _this, GetSequenceIndex__Args args);
                 private static _GetSequenceIndex _GetSequenceIndexFunc;
@@ -595,11 +595,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getSequenceIndex"), typeof(_GetSequenceIndex));
                     }
-                    
+
                     return _GetSequenceIndexFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSequenceCount__Args
@@ -607,7 +607,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetSequenceCount(IntPtr _this);
                 internal delegate int _GetSequenceCount(IntPtr _this, GetSequenceCount__Args args);
                 private static _GetSequenceCount _GetSequenceCountFunc;
@@ -619,11 +619,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getSequenceCount"), typeof(_GetSequenceCount));
                     }
-                    
+
                     return _GetSequenceCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveImposter__Args
@@ -643,33 +643,33 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_removeImposter"), typeof(_RemoveImposter));
                     }
-                    
+
                     return _RemoveImposterFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddImposter__Args
                 {
-				   
+
 				   internal int size;
-				   
+
 				   internal int equatorSteps;
-				   
+
 				   internal int polarSteps;
-				   
+
 				   internal int dl;
-				   
+
 				   internal int dim;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool includePoles;
-				   
+
 				   internal float polarAngle;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _AddImposter(IntPtr _this, int size, int equatorSteps, int polarSteps, int dl, int dim, [MarshalAs(UnmanagedType.I1)]bool includePoles, float polarAngle);
                 internal delegate int _AddImposter(IntPtr _this, AddImposter__Args args);
                 private static _AddImposter _AddImposterFunc;
@@ -681,21 +681,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_addImposter"), typeof(_AddImposter));
                     }
-                    
+
                     return _AddImposterFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetImposterSettings__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetImposterSettings(IntPtr _this, int index);
                 internal delegate IntPtr _GetImposterSettings(IntPtr _this, GetImposterSettings__Args args);
                 private static _GetImposterSettings _GetImposterSettingsFunc;
@@ -707,11 +707,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getImposterSettings"), typeof(_GetImposterSettings));
                     }
-                    
+
                     return _GetImposterSettingsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetImposterDetailLevel__Args
@@ -719,7 +719,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetImposterDetailLevel(IntPtr _this);
                 internal delegate int _GetImposterDetailLevel(IntPtr _this, GetImposterDetailLevel__Args args);
                 private static _GetImposterDetailLevel _GetImposterDetailLevelFunc;
@@ -731,23 +731,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getImposterDetailLevel"), typeof(_GetImposterDetailLevel));
                     }
-                    
+
                     return _GetImposterDetailLevelFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetDetailLevelSize__Args
                 {
-				   
+
 				   internal int index;
-				   
+
 				   internal int newSize;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _SetDetailLevelSize(IntPtr _this, int index, int newSize);
                 internal delegate int _SetDetailLevelSize(IntPtr _this, SetDetailLevelSize__Args args);
                 private static _SetDetailLevelSize _SetDetailLevelSizeFunc;
@@ -759,16 +759,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setDetailLevelSize"), typeof(_SetDetailLevelSize));
                     }
-                    
+
                     return _SetDetailLevelSizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveDetailLevel__Args
                 {
-				   
+
 				   internal int index;
                 }
 
@@ -785,18 +785,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_removeDetailLevel"), typeof(_RemoveDetailLevel));
                     }
-                    
+
                     return _RemoveDetailLevelFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RenameDetailLevel__Args
                 {
-				   
+
 				   internal string oldName;
-				   
+
 				   internal string newName;
                 }
 
@@ -813,21 +813,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_renameDetailLevel"), typeof(_RenameDetailLevel));
                     }
-                    
+
                     return _RenameDetailLevelFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetDetailLevelIndex__Args
                 {
-				   
+
 				   internal int size;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetDetailLevelIndex(IntPtr _this, int size);
                 internal delegate int _GetDetailLevelIndex(IntPtr _this, GetDetailLevelIndex__Args args);
                 private static _GetDetailLevelIndex _GetDetailLevelIndexFunc;
@@ -839,21 +839,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getDetailLevelIndex"), typeof(_GetDetailLevelIndex));
                     }
-                    
+
                     return _GetDetailLevelIndexFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetDetailLevelSize__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetDetailLevelSize(IntPtr _this, int index);
                 internal delegate int _GetDetailLevelSize(IntPtr _this, GetDetailLevelSize__Args args);
                 private static _GetDetailLevelSize _GetDetailLevelSizeFunc;
@@ -865,21 +865,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getDetailLevelSize"), typeof(_GetDetailLevelSize));
                     }
-                    
+
                     return _GetDetailLevelSizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetDetailLevelName__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetDetailLevelName(IntPtr _this, int index);
                 internal delegate IntPtr _GetDetailLevelName(IntPtr _this, GetDetailLevelName__Args args);
                 private static _GetDetailLevelName _GetDetailLevelNameFunc;
@@ -891,11 +891,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getDetailLevelName"), typeof(_GetDetailLevelName));
                     }
-                    
+
                     return _GetDetailLevelNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetDetailLevelCount__Args
@@ -903,7 +903,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetDetailLevelCount(IntPtr _this);
                 internal delegate int _GetDetailLevelCount(IntPtr _this, GetDetailLevelCount__Args args);
                 private static _GetDetailLevelCount _GetDetailLevelCountFunc;
@@ -915,16 +915,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getDetailLevelCount"), typeof(_GetDetailLevelCount));
                     }
-                    
+
                     return _GetDetailLevelCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetBounds__Args
                 {
-				   
+
 				   internal IntPtr bbox;
                 }
 
@@ -941,11 +941,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setBounds"), typeof(_SetBounds));
                     }
-                    
+
                     return _SetBoundsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetBounds__Args
@@ -953,7 +953,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Box3F.InternalStruct _GetBounds(IntPtr _this);
                 internal delegate Box3F.InternalStruct _GetBounds(IntPtr _this, GetBounds__Args args);
                 private static _GetBounds _GetBoundsFunc;
@@ -965,16 +965,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getBounds"), typeof(_GetBounds));
                     }
-                    
+
                     return _GetBoundsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveMesh__Args
                 {
-				   
+
 				   internal string name;
                 }
 
@@ -991,20 +991,20 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_removeMesh"), typeof(_RemoveMesh));
                     }
-                    
+
                     return _RemoveMeshFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddMesh__Args
                 {
-				   
+
 				   internal string meshName;
-				   
+
 				   internal string srcShape;
-				   
+
 				   internal string srcMesh;
                 }
 
@@ -1021,18 +1021,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_addMesh"), typeof(_AddMesh));
                     }
-                    
+
                     return _AddMeshFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetMeshMaterial__Args
                 {
-				   
+
 				   internal string meshName;
-				   
+
 				   internal string matName;
                 }
 
@@ -1049,21 +1049,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setMeshMaterial"), typeof(_SetMeshMaterial));
                     }
-                    
+
                     return _SetMeshMaterialFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMeshMaterial__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetMeshMaterial(IntPtr _this, string name);
                 internal delegate IntPtr _GetMeshMaterial(IntPtr _this, GetMeshMaterial__Args args);
                 private static _GetMeshMaterial _GetMeshMaterialFunc;
@@ -1075,18 +1075,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getMeshMaterial"), typeof(_GetMeshMaterial));
                     }
-                    
+
                     return _GetMeshMaterialFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetMeshType__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal string type;
                 }
 
@@ -1103,21 +1103,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setMeshType"), typeof(_SetMeshType));
                     }
-                    
+
                     return _SetMeshTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMeshType__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetMeshType(IntPtr _this, string name);
                 internal delegate IntPtr _GetMeshType(IntPtr _this, GetMeshType__Args args);
                 private static _GetMeshType _GetMeshTypeFunc;
@@ -1129,18 +1129,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getMeshType"), typeof(_GetMeshType));
                     }
-                    
+
                     return _GetMeshTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetMeshSize__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal int size;
                 }
 
@@ -1157,23 +1157,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setMeshSize"), typeof(_SetMeshSize));
                     }
-                    
+
                     return _SetMeshSizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMeshSize__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetMeshSize(IntPtr _this, string name, int index);
                 internal delegate int _GetMeshSize(IntPtr _this, GetMeshSize__Args args);
                 private static _GetMeshSize _GetMeshSizeFunc;
@@ -1185,23 +1185,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getMeshSize"), typeof(_GetMeshSize));
                     }
-                    
+
                     return _GetMeshSizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMeshName__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetMeshName(IntPtr _this, string name, int index);
                 internal delegate IntPtr _GetMeshName(IntPtr _this, GetMeshName__Args args);
                 private static _GetMeshName _GetMeshNameFunc;
@@ -1213,21 +1213,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getMeshName"), typeof(_GetMeshName));
                     }
-                    
+
                     return _GetMeshNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMeshCount__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetMeshCount(IntPtr _this, string name);
                 internal delegate int _GetMeshCount(IntPtr _this, GetMeshCount__Args args);
                 private static _GetMeshCount _GetMeshCountFunc;
@@ -1239,16 +1239,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getMeshCount"), typeof(_GetMeshCount));
                     }
-                    
+
                     return _GetMeshCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveObject__Args
                 {
-				   
+
 				   internal string name;
                 }
 
@@ -1265,18 +1265,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_removeObject"), typeof(_RemoveObject));
                     }
-                    
+
                     return _RemoveObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RenameObject__Args
                 {
-				   
+
 				   internal string oldName;
-				   
+
 				   internal string newName;
                 }
 
@@ -1293,18 +1293,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_renameObject"), typeof(_RenameObject));
                     }
-                    
+
                     return _RenameObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetObjectNode__Args
                 {
-				   
+
 				   internal string objName;
-				   
+
 				   internal string nodeName;
                 }
 
@@ -1321,21 +1321,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setObjectNode"), typeof(_SetObjectNode));
                     }
-                    
+
                     return _SetObjectNodeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetObjectNode__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetObjectNode(IntPtr _this, string name);
                 internal delegate IntPtr _GetObjectNode(IntPtr _this, GetObjectNode__Args args);
                 private static _GetObjectNode _GetObjectNodeFunc;
@@ -1347,21 +1347,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getObjectNode"), typeof(_GetObjectNode));
                     }
-                    
+
                     return _GetObjectNodeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetObjectIndex__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetObjectIndex(IntPtr _this, string name);
                 internal delegate int _GetObjectIndex(IntPtr _this, GetObjectIndex__Args args);
                 private static _GetObjectIndex _GetObjectIndexFunc;
@@ -1373,21 +1373,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getObjectIndex"), typeof(_GetObjectIndex));
                     }
-                    
+
                     return _GetObjectIndexFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetObjectName__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetObjectName(IntPtr _this, int index);
                 internal delegate IntPtr _GetObjectName(IntPtr _this, GetObjectName__Args args);
                 private static _GetObjectName _GetObjectNameFunc;
@@ -1399,11 +1399,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getObjectName"), typeof(_GetObjectName));
                     }
-                    
+
                     return _GetObjectNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetObjectCount__Args
@@ -1411,7 +1411,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetObjectCount(IntPtr _this);
                 internal delegate int _GetObjectCount(IntPtr _this, GetObjectCount__Args args);
                 private static _GetObjectCount _GetObjectCountFunc;
@@ -1423,21 +1423,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getObjectCount"), typeof(_GetObjectCount));
                     }
-                    
+
                     return _GetObjectCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTargetName__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetTargetName(IntPtr _this, int index);
                 internal delegate IntPtr _GetTargetName(IntPtr _this, GetTargetName__Args args);
                 private static _GetTargetName _GetTargetNameFunc;
@@ -1449,11 +1449,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getTargetName"), typeof(_GetTargetName));
                     }
-                    
+
                     return _GetTargetNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTargetCount__Args
@@ -1461,7 +1461,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetTargetCount(IntPtr _this);
                 internal delegate int _GetTargetCount(IntPtr _this, GetTargetCount__Args args);
                 private static _GetTargetCount _GetTargetCountFunc;
@@ -1473,16 +1473,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getTargetCount"), typeof(_GetTargetCount));
                     }
-                    
+
                     return _GetTargetCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveNode__Args
                 {
-				   
+
 				   internal string name;
                 }
 
@@ -1499,20 +1499,20 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_removeNode"), typeof(_RemoveNode));
                     }
-                    
+
                     return _RemoveNodeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddNode__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal string parentName;
-				   
+
 				   internal IntPtr txfm;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool isWorld;
@@ -1531,18 +1531,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_addNode"), typeof(_AddNode));
                     }
-                    
+
                     return _AddNodeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RenameNode__Args
                 {
-				   
+
 				   internal string oldName;
-				   
+
 				   internal string newName;
                 }
 
@@ -1559,18 +1559,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_renameNode"), typeof(_RenameNode));
                     }
-                    
+
                     return _RenameNodeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetNodeTransform__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal IntPtr txfm;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool isWorld;
@@ -1589,23 +1589,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setNodeTransform"), typeof(_SetNodeTransform));
                     }
-                    
+
                     return _SetNodeTransformFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodeTransform__Args
                 {
-				   
+
 				   internal string name;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool isWorld;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate TransformF.InternalStruct _GetNodeTransform(IntPtr _this, string name, [MarshalAs(UnmanagedType.I1)]bool isWorld);
                 internal delegate TransformF.InternalStruct _GetNodeTransform(IntPtr _this, GetNodeTransform__Args args);
                 private static _GetNodeTransform _GetNodeTransformFunc;
@@ -1617,23 +1617,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getNodeTransform"), typeof(_GetNodeTransform));
                     }
-                    
+
                     return _GetNodeTransformFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodeObjectName__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetNodeObjectName(IntPtr _this, string name, int index);
                 internal delegate IntPtr _GetNodeObjectName(IntPtr _this, GetNodeObjectName__Args args);
                 private static _GetNodeObjectName _GetNodeObjectNameFunc;
@@ -1645,21 +1645,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getNodeObjectName"), typeof(_GetNodeObjectName));
                     }
-                    
+
                     return _GetNodeObjectNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodeObjectCount__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetNodeObjectCount(IntPtr _this, string name);
                 internal delegate int _GetNodeObjectCount(IntPtr _this, GetNodeObjectCount__Args args);
                 private static _GetNodeObjectCount _GetNodeObjectCountFunc;
@@ -1671,23 +1671,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getNodeObjectCount"), typeof(_GetNodeObjectCount));
                     }
-                    
+
                     return _GetNodeObjectCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodeChildName__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetNodeChildName(IntPtr _this, string name, int index);
                 internal delegate IntPtr _GetNodeChildName(IntPtr _this, GetNodeChildName__Args args);
                 private static _GetNodeChildName _GetNodeChildNameFunc;
@@ -1699,21 +1699,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getNodeChildName"), typeof(_GetNodeChildName));
                     }
-                    
+
                     return _GetNodeChildNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodeChildCount__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetNodeChildCount(IntPtr _this, string name);
                 internal delegate int _GetNodeChildCount(IntPtr _this, GetNodeChildCount__Args args);
                 private static _GetNodeChildCount _GetNodeChildCountFunc;
@@ -1725,18 +1725,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getNodeChildCount"), typeof(_GetNodeChildCount));
                     }
-                    
+
                     return _GetNodeChildCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetNodeParent__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal string parentName;
                 }
 
@@ -1753,21 +1753,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_setNodeParent"), typeof(_SetNodeParent));
                     }
-                    
+
                     return _SetNodeParentFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodeParentName__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetNodeParentName(IntPtr _this, string name);
                 internal delegate IntPtr _GetNodeParentName(IntPtr _this, GetNodeParentName__Args args);
                 private static _GetNodeParentName _GetNodeParentNameFunc;
@@ -1779,21 +1779,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getNodeParentName"), typeof(_GetNodeParentName));
                     }
-                    
+
                     return _GetNodeParentNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodeName__Args
                 {
-				   
+
 				   internal int index;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetNodeName(IntPtr _this, int index);
                 internal delegate IntPtr _GetNodeName(IntPtr _this, GetNodeName__Args args);
                 private static _GetNodeName _GetNodeNameFunc;
@@ -1805,21 +1805,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getNodeName"), typeof(_GetNodeName));
                     }
-                    
+
                     return _GetNodeNameFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodeIndex__Args
                 {
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetNodeIndex(IntPtr _this, string name);
                 internal delegate int _GetNodeIndex(IntPtr _this, GetNodeIndex__Args args);
                 private static _GetNodeIndex _GetNodeIndexFunc;
@@ -1831,11 +1831,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getNodeIndex"), typeof(_GetNodeIndex));
                     }
-                    
+
                     return _GetNodeIndexFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNodeCount__Args
@@ -1843,7 +1843,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetNodeCount(IntPtr _this);
                 internal delegate int _GetNodeCount(IntPtr _this, GetNodeCount__Args args);
                 private static _GetNodeCount _GetNodeCountFunc;
@@ -1855,11 +1855,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_getNodeCount"), typeof(_GetNodeCount));
                     }
-                    
+
                     return _GetNodeCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct NotifyShapeChanged__Args
@@ -1867,7 +1867,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _NotifyShapeChanged(IntPtr _this);
                 internal delegate void _NotifyShapeChanged(IntPtr _this, NotifyShapeChanged__Args args);
                 private static _NotifyShapeChanged _NotifyShapeChangedFunc;
@@ -1879,11 +1879,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_notifyShapeChanged"), typeof(_NotifyShapeChanged));
                     }
-                    
+
                     return _NotifyShapeChangedFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct WriteChangeSet__Args
@@ -1891,7 +1891,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _WriteChangeSet(IntPtr _this);
                 internal delegate void _WriteChangeSet(IntPtr _this, WriteChangeSet__Args args);
                 private static _WriteChangeSet _WriteChangeSetFunc;
@@ -1903,21 +1903,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_writeChangeSet"), typeof(_WriteChangeSet));
                     }
-                    
+
                     return _WriteChangeSetFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SaveShape__Args
                 {
-				   
+
 				   internal string filename;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SaveShape(IntPtr _this, string filename);
                 internal delegate void _SaveShape(IntPtr _this, SaveShape__Args args);
                 private static _SaveShape _SaveShapeFunc;
@@ -1929,21 +1929,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_saveShape"), typeof(_SaveShape));
                     }
-                    
+
                     return _SaveShapeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct DumpShape__Args
                 {
-				   
+
 				   internal string filename;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _DumpShape(IntPtr _this, string filename);
                 internal delegate void _DumpShape(IntPtr _this, DumpShape__Args args);
                 private static _DumpShape _DumpShapeFunc;
@@ -1955,11 +1955,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_dumpShape"), typeof(_DumpShape));
                     }
-                    
+
                     return _DumpShapeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -1967,7 +1967,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -1979,11 +1979,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -1991,7 +1991,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -2003,11 +2003,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnUnload__Args
@@ -2015,7 +2015,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnUnload(IntPtr _this);
                 internal delegate void _OnUnload(IntPtr _this, OnUnload__Args args);
                 private static _OnUnload _OnUnloadFunc;
@@ -2027,11 +2027,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbTSShapeConstructor_onUnload"), typeof(_OnUnload));
                     }
-                    
+
                     return _OnUnloadFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnLoad__Args
@@ -2039,7 +2039,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnLoad(IntPtr _this);
                 internal delegate void _OnLoad(IntPtr _this, OnLoad__Args args);
                 private static _OnLoad _OnLoadFunc;
@@ -2051,34 +2051,34 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbTSShapeConstructor_onLoad"), typeof(_OnLoad));
                     }
-                    
+
                     return _OnLoadFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddCollisionDetail__Args
                 {
-				   
+
 				   internal int size;
-				   
+
 				   internal string type;
-				   
+
 				   internal string target;
-				   
+
 				   internal int depth;
-				   
+
 				   internal float merge;
-				   
+
 				   internal float concavity;
-				   
+
 				   internal int maxVerts;
-				   
+
 				   internal float boxMaxError;
-				   
+
 				   internal float sphereMaxError;
-				   
+
 				   internal float capsuleMaxError;
                 }
 
@@ -2095,24 +2095,24 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_addCollisionDetail"), typeof(_AddCollisionDetail));
                     }
-                    
+
                     return _AddCollisionDetailFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AddPrimitive__Args
                 {
-				   
+
 				   internal string meshName;
-				   
+
 				   internal string type;
-				   
+
 				   internal string _params;
-				   
+
 				   internal IntPtr txfm;
-				   
+
 				   internal string nodeName;
                 }
 
@@ -2129,7 +2129,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTSShapeConstructor_addPrimitive"), typeof(_AddPrimitive));
                     }
-                    
+
                     return _AddPrimitiveFunc;
                 }
 
@@ -2137,74 +2137,74 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public bool RemoveTrigger(string name, int keyframe, int state) {
-        
+
                                                                                     InternalUnsafeMethods.RemoveTrigger__Args _args = new InternalUnsafeMethods.RemoveTrigger__Args() {
                         name = name,
                         keyframe = keyframe,
                         state = state,
                      };
                      bool _engineResult = InternalUnsafeMethods.RemoveTrigger()(ObjectPtr, _args);
-                                                                                                
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool AddTrigger(string name, int keyframe, int state) {
-        
+
                                                                                     InternalUnsafeMethods.AddTrigger__Args _args = new InternalUnsafeMethods.AddTrigger__Args() {
                         name = name,
                         keyframe = keyframe,
                         state = state,
                      };
                      bool _engineResult = InternalUnsafeMethods.AddTrigger()(ObjectPtr, _args);
-                                                                                                
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetTrigger(string name, int index) {
-        
+
                                                                InternalUnsafeMethods.GetTrigger__Args _args = new InternalUnsafeMethods.GetTrigger__Args() {
                         name = name,
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetTrigger()(ObjectPtr, _args);
-                                                                           
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetTriggerCount(string name) {
-        
+
                                           InternalUnsafeMethods.GetTriggerCount__Args _args = new InternalUnsafeMethods.GetTriggerCount__Args() {
                         name = name,
                      };
                      int _engineResult = InternalUnsafeMethods.GetTriggerCount()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RemoveSequence(string name) {
-        
+
                                           InternalUnsafeMethods.RemoveSequence__Args _args = new InternalUnsafeMethods.RemoveSequence__Args() {
                         name = name,
                      };
                      bool _engineResult = InternalUnsafeMethods.RemoveSequence()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool AddSequence(string source, string name, int start = 0, int end = -1, bool padRot = true, bool padTrans = false) {
-        
+
                                                                                                                                                    InternalUnsafeMethods.AddSequence__Args _args = new InternalUnsafeMethods.AddSequence__Args() {
                         source = source,
                         name = name,
@@ -2214,27 +2214,27 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         padTrans = padTrans,
                      };
                      bool _engineResult = InternalUnsafeMethods.AddSequence()(ObjectPtr, _args);
-                                                                                                                                                               
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RenameSequence(string oldName, string newName) {
-        
+
                                                                InternalUnsafeMethods.RenameSequence__Args _args = new InternalUnsafeMethods.RenameSequence__Args() {
                         oldName = oldName,
                         newName = newName,
                      };
                      bool _engineResult = InternalUnsafeMethods.RenameSequence()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetSequenceBlend(string name, bool blend, string blendSeq, int blendFrame) {
-        
+
                                                                                                          InternalUnsafeMethods.SetSequenceBlend__Args _args = new InternalUnsafeMethods.SetSequenceBlend__Args() {
                         name = name,
                         blend = blend,
@@ -2242,172 +2242,172 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         blendFrame = blendFrame,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetSequenceBlend()(ObjectPtr, _args);
-                                                                                                                     
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetSequenceBlend(string name) {
-        
+
                                           InternalUnsafeMethods.GetSequenceBlend__Args _args = new InternalUnsafeMethods.GetSequenceBlend__Args() {
                         name = name,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetSequenceBlend()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public bool SetSequenceCyclic(string name, bool cyclic) {
-        
+
                                                                InternalUnsafeMethods.SetSequenceCyclic__Args _args = new InternalUnsafeMethods.SetSequenceCyclic__Args() {
                         name = name,
                         cyclic = cyclic,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetSequenceCyclic()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool GetSequenceCyclic(string name) {
-        
+
                                           InternalUnsafeMethods.GetSequenceCyclic__Args _args = new InternalUnsafeMethods.GetSequenceCyclic__Args() {
                         name = name,
                      };
                      bool _engineResult = InternalUnsafeMethods.GetSequenceCyclic()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetSequenceGroundSpeed(string name, Point3F transSpeed, Point3F rotSpeed = null) {
-        
+
                                           transSpeed.Alloc();                     rotSpeed = rotSpeed ?? new Point3F("0 0 0");rotSpeed.Alloc();                     InternalUnsafeMethods.SetSequenceGroundSpeed__Args _args = new InternalUnsafeMethods.SetSequenceGroundSpeed__Args() {
                         name = name,
                         transSpeed = transSpeed.internalStructPtr,
                         rotSpeed = rotSpeed.internalStructPtr,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetSequenceGroundSpeed()(ObjectPtr, _args);
-                                                               transSpeed.Free();                     rotSpeed.Free();            
+                                                               transSpeed.Free();                     rotSpeed.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetSequenceGroundSpeed(string name) {
-        
+
                                           InternalUnsafeMethods.GetSequenceGroundSpeed__Args _args = new InternalUnsafeMethods.GetSequenceGroundSpeed__Args() {
                         name = name,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetSequenceGroundSpeed()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public bool SetSequencePriority(string name, float priority) {
-        
+
                                                                InternalUnsafeMethods.SetSequencePriority__Args _args = new InternalUnsafeMethods.SetSequencePriority__Args() {
                         name = name,
                         priority = priority,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetSequencePriority()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public float GetSequencePriority(string name) {
-        
+
                                           InternalUnsafeMethods.GetSequencePriority__Args _args = new InternalUnsafeMethods.GetSequencePriority__Args() {
                         name = name,
                      };
                      float _engineResult = InternalUnsafeMethods.GetSequencePriority()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetSequenceFrameCount(string name) {
-        
+
                                           InternalUnsafeMethods.GetSequenceFrameCount__Args _args = new InternalUnsafeMethods.GetSequenceFrameCount__Args() {
                         name = name,
                      };
                      int _engineResult = InternalUnsafeMethods.GetSequenceFrameCount()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetSequenceSource(string name) {
-        
+
                                           InternalUnsafeMethods.GetSequenceSource__Args _args = new InternalUnsafeMethods.GetSequenceSource__Args() {
                         name = name,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetSequenceSource()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string GetSequenceName(int index) {
-        
+
                                           InternalUnsafeMethods.GetSequenceName__Args _args = new InternalUnsafeMethods.GetSequenceName__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetSequenceName()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetSequenceIndex(string name) {
-        
+
                                           InternalUnsafeMethods.GetSequenceIndex__Args _args = new InternalUnsafeMethods.GetSequenceIndex__Args() {
                         name = name,
                      };
                      int _engineResult = InternalUnsafeMethods.GetSequenceIndex()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetSequenceCount() {
-        
+
                      InternalUnsafeMethods.GetSequenceCount__Args _args = new InternalUnsafeMethods.GetSequenceCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetSequenceCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RemoveImposter() {
-        
+
                      InternalUnsafeMethods.RemoveImposter__Args _args = new InternalUnsafeMethods.RemoveImposter__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.RemoveImposter()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int AddImposter(int size, int equatorSteps, int polarSteps, int dl, int dim, bool includePoles, float polarAngle) {
-        
+
                                                                                                                                                                         InternalUnsafeMethods.AddImposter__Args _args = new InternalUnsafeMethods.AddImposter__Args() {
                         size = size,
                         equatorSteps = equatorSteps,
@@ -2418,392 +2418,392 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         polarAngle = polarAngle,
                      };
                      int _engineResult = InternalUnsafeMethods.AddImposter()(ObjectPtr, _args);
-                                                                                                                                                                                    
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetImposterSettings(int index) {
-        
+
                                           InternalUnsafeMethods.GetImposterSettings__Args _args = new InternalUnsafeMethods.GetImposterSettings__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetImposterSettings()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetImposterDetailLevel() {
-        
+
                      InternalUnsafeMethods.GetImposterDetailLevel__Args _args = new InternalUnsafeMethods.GetImposterDetailLevel__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetImposterDetailLevel()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int SetDetailLevelSize(int index, int newSize) {
-        
+
                                                                InternalUnsafeMethods.SetDetailLevelSize__Args _args = new InternalUnsafeMethods.SetDetailLevelSize__Args() {
                         index = index,
                         newSize = newSize,
                      };
                      int _engineResult = InternalUnsafeMethods.SetDetailLevelSize()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RemoveDetailLevel(int index) {
-        
+
                                           InternalUnsafeMethods.RemoveDetailLevel__Args _args = new InternalUnsafeMethods.RemoveDetailLevel__Args() {
                         index = index,
                      };
                      bool _engineResult = InternalUnsafeMethods.RemoveDetailLevel()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RenameDetailLevel(string oldName, string newName) {
-        
+
                                                                InternalUnsafeMethods.RenameDetailLevel__Args _args = new InternalUnsafeMethods.RenameDetailLevel__Args() {
                         oldName = oldName,
                         newName = newName,
                      };
                      bool _engineResult = InternalUnsafeMethods.RenameDetailLevel()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetDetailLevelIndex(int size) {
-        
+
                                           InternalUnsafeMethods.GetDetailLevelIndex__Args _args = new InternalUnsafeMethods.GetDetailLevelIndex__Args() {
                         size = size,
                      };
                      int _engineResult = InternalUnsafeMethods.GetDetailLevelIndex()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetDetailLevelSize(int index) {
-        
+
                                           InternalUnsafeMethods.GetDetailLevelSize__Args _args = new InternalUnsafeMethods.GetDetailLevelSize__Args() {
                         index = index,
                      };
                      int _engineResult = InternalUnsafeMethods.GetDetailLevelSize()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetDetailLevelName(int index) {
-        
+
                                           InternalUnsafeMethods.GetDetailLevelName__Args _args = new InternalUnsafeMethods.GetDetailLevelName__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetDetailLevelName()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetDetailLevelCount() {
-        
+
                      InternalUnsafeMethods.GetDetailLevelCount__Args _args = new InternalUnsafeMethods.GetDetailLevelCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetDetailLevelCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetBounds(Box3F bbox) {
-        
+
                      bbox.Alloc();                     InternalUnsafeMethods.SetBounds__Args _args = new InternalUnsafeMethods.SetBounds__Args() {
                         bbox = bbox.internalStructPtr,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetBounds()(ObjectPtr, _args);
-                                          bbox.Free();            
+                                          bbox.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public Box3F GetBounds() {
-        
+
                      InternalUnsafeMethods.GetBounds__Args _args = new InternalUnsafeMethods.GetBounds__Args() {
                      };
                      Box3F.InternalStruct _engineResult = InternalUnsafeMethods.GetBounds()(ObjectPtr, _args);
-                                 
+
                      return new Box3F(_engineResult);
                   }
-	
 
-			
+
+
                   public bool RemoveMesh(string name) {
-        
+
                                           InternalUnsafeMethods.RemoveMesh__Args _args = new InternalUnsafeMethods.RemoveMesh__Args() {
                         name = name,
                      };
                      bool _engineResult = InternalUnsafeMethods.RemoveMesh()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool AddMesh(string meshName, string srcShape, string srcMesh) {
-        
+
                                                                                     InternalUnsafeMethods.AddMesh__Args _args = new InternalUnsafeMethods.AddMesh__Args() {
                         meshName = meshName,
                         srcShape = srcShape,
                         srcMesh = srcMesh,
                      };
                      bool _engineResult = InternalUnsafeMethods.AddMesh()(ObjectPtr, _args);
-                                                                                                
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetMeshMaterial(string meshName, string matName) {
-        
+
                                                                InternalUnsafeMethods.SetMeshMaterial__Args _args = new InternalUnsafeMethods.SetMeshMaterial__Args() {
                         meshName = meshName,
                         matName = matName,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetMeshMaterial()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetMeshMaterial(string name) {
-        
+
                                           InternalUnsafeMethods.GetMeshMaterial__Args _args = new InternalUnsafeMethods.GetMeshMaterial__Args() {
                         name = name,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetMeshMaterial()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public bool SetMeshType(string name, string type) {
-        
+
                                                                InternalUnsafeMethods.SetMeshType__Args _args = new InternalUnsafeMethods.SetMeshType__Args() {
                         name = name,
                         type = type,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetMeshType()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetMeshType(string name) {
-        
+
                                           InternalUnsafeMethods.GetMeshType__Args _args = new InternalUnsafeMethods.GetMeshType__Args() {
                         name = name,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetMeshType()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public bool SetMeshSize(string name, int size) {
-        
+
                                                                InternalUnsafeMethods.SetMeshSize__Args _args = new InternalUnsafeMethods.SetMeshSize__Args() {
                         name = name,
                         size = size,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetMeshSize()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetMeshSize(string name, int index) {
-        
+
                                                                InternalUnsafeMethods.GetMeshSize__Args _args = new InternalUnsafeMethods.GetMeshSize__Args() {
                         name = name,
                         index = index,
                      };
                      int _engineResult = InternalUnsafeMethods.GetMeshSize()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetMeshName(string name, int index) {
-        
+
                                                                InternalUnsafeMethods.GetMeshName__Args _args = new InternalUnsafeMethods.GetMeshName__Args() {
                         name = name,
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetMeshName()(ObjectPtr, _args);
-                                                                           
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetMeshCount(string name) {
-        
+
                                           InternalUnsafeMethods.GetMeshCount__Args _args = new InternalUnsafeMethods.GetMeshCount__Args() {
                         name = name,
                      };
                      int _engineResult = InternalUnsafeMethods.GetMeshCount()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RemoveObject(string name) {
-        
+
                                           InternalUnsafeMethods.RemoveObject__Args _args = new InternalUnsafeMethods.RemoveObject__Args() {
                         name = name,
                      };
                      bool _engineResult = InternalUnsafeMethods.RemoveObject()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RenameObject(string oldName, string newName) {
-        
+
                                                                InternalUnsafeMethods.RenameObject__Args _args = new InternalUnsafeMethods.RenameObject__Args() {
                         oldName = oldName,
                         newName = newName,
                      };
                      bool _engineResult = InternalUnsafeMethods.RenameObject()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetObjectNode(string objName, string nodeName) {
-        
+
                                                                InternalUnsafeMethods.SetObjectNode__Args _args = new InternalUnsafeMethods.SetObjectNode__Args() {
                         objName = objName,
                         nodeName = nodeName,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetObjectNode()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetObjectNode(string name) {
-        
+
                                           InternalUnsafeMethods.GetObjectNode__Args _args = new InternalUnsafeMethods.GetObjectNode__Args() {
                         name = name,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetObjectNode()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetObjectIndex(string name) {
-        
+
                                           InternalUnsafeMethods.GetObjectIndex__Args _args = new InternalUnsafeMethods.GetObjectIndex__Args() {
                         name = name,
                      };
                      int _engineResult = InternalUnsafeMethods.GetObjectIndex()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetObjectName(int index) {
-        
+
                                           InternalUnsafeMethods.GetObjectName__Args _args = new InternalUnsafeMethods.GetObjectName__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetObjectName()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetObjectCount() {
-        
+
                      InternalUnsafeMethods.GetObjectCount__Args _args = new InternalUnsafeMethods.GetObjectCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetObjectCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetTargetName(int index) {
-        
+
                                           InternalUnsafeMethods.GetTargetName__Args _args = new InternalUnsafeMethods.GetTargetName__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetTargetName()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetTargetCount() {
-        
+
                      InternalUnsafeMethods.GetTargetCount__Args _args = new InternalUnsafeMethods.GetTargetCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetTargetCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RemoveNode(string name) {
-        
+
                                           InternalUnsafeMethods.RemoveNode__Args _args = new InternalUnsafeMethods.RemoveNode__Args() {
                         name = name,
                      };
                      bool _engineResult = InternalUnsafeMethods.RemoveNode()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool AddNode(string name, string parentName, TransformF txfm = null, bool isWorld = false) {
-        
+
                                                                txfm = txfm ?? new TransformF("0 0 0 0 0 1 0 true");txfm.Alloc();                                          InternalUnsafeMethods.AddNode__Args _args = new InternalUnsafeMethods.AddNode__Args() {
                         name = name,
                         parentName = parentName,
@@ -2811,238 +2811,238 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         isWorld = isWorld,
                      };
                      bool _engineResult = InternalUnsafeMethods.AddNode()(ObjectPtr, _args);
-                                                                                    txfm.Free();                                 
+                                                                                    txfm.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool RenameNode(string oldName, string newName) {
-        
+
                                                                InternalUnsafeMethods.RenameNode__Args _args = new InternalUnsafeMethods.RenameNode__Args() {
                         oldName = oldName,
                         newName = newName,
                      };
                      bool _engineResult = InternalUnsafeMethods.RenameNode()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetNodeTransform(string name, TransformF txfm, bool isWorld = false) {
-        
+
                                           txfm.Alloc();                                          InternalUnsafeMethods.SetNodeTransform__Args _args = new InternalUnsafeMethods.SetNodeTransform__Args() {
                         name = name,
                         txfm = txfm.internalStructPtr,
                         isWorld = isWorld,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetNodeTransform()(ObjectPtr, _args);
-                                                               txfm.Free();                                 
+                                                               txfm.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public TransformF GetNodeTransform(string name, bool isWorld = false) {
-        
+
                                                                InternalUnsafeMethods.GetNodeTransform__Args _args = new InternalUnsafeMethods.GetNodeTransform__Args() {
                         name = name,
                         isWorld = isWorld,
                      };
                      TransformF.InternalStruct _engineResult = InternalUnsafeMethods.GetNodeTransform()(ObjectPtr, _args);
-                                                                           
+
                      return new TransformF(_engineResult);
                   }
-	
 
-			
+
+
                   public string GetNodeObjectName(string name, int index) {
-        
+
                                                                InternalUnsafeMethods.GetNodeObjectName__Args _args = new InternalUnsafeMethods.GetNodeObjectName__Args() {
                         name = name,
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetNodeObjectName()(ObjectPtr, _args);
-                                                                           
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetNodeObjectCount(string name) {
-        
+
                                           InternalUnsafeMethods.GetNodeObjectCount__Args _args = new InternalUnsafeMethods.GetNodeObjectCount__Args() {
                         name = name,
                      };
                      int _engineResult = InternalUnsafeMethods.GetNodeObjectCount()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetNodeChildName(string name, int index) {
-        
+
                                                                InternalUnsafeMethods.GetNodeChildName__Args _args = new InternalUnsafeMethods.GetNodeChildName__Args() {
                         name = name,
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetNodeChildName()(ObjectPtr, _args);
-                                                                           
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetNodeChildCount(string name) {
-        
+
                                           InternalUnsafeMethods.GetNodeChildCount__Args _args = new InternalUnsafeMethods.GetNodeChildCount__Args() {
                         name = name,
                      };
                      int _engineResult = InternalUnsafeMethods.GetNodeChildCount()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetNodeParent(string name, string parentName) {
-        
+
                                                                InternalUnsafeMethods.SetNodeParent__Args _args = new InternalUnsafeMethods.SetNodeParent__Args() {
                         name = name,
                         parentName = parentName,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetNodeParent()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetNodeParentName(string name) {
-        
+
                                           InternalUnsafeMethods.GetNodeParentName__Args _args = new InternalUnsafeMethods.GetNodeParentName__Args() {
                         name = name,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetNodeParentName()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string GetNodeName(int index) {
-        
+
                                           InternalUnsafeMethods.GetNodeName__Args _args = new InternalUnsafeMethods.GetNodeName__Args() {
                         index = index,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetNodeName()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetNodeIndex(string name) {
-        
+
                                           InternalUnsafeMethods.GetNodeIndex__Args _args = new InternalUnsafeMethods.GetNodeIndex__Args() {
                         name = name,
                      };
                      int _engineResult = InternalUnsafeMethods.GetNodeIndex()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetNodeCount() {
-        
+
                      InternalUnsafeMethods.GetNodeCount__Args _args = new InternalUnsafeMethods.GetNodeCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetNodeCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void NotifyShapeChanged() {
-        
+
                      InternalUnsafeMethods.NotifyShapeChanged__Args _args = new InternalUnsafeMethods.NotifyShapeChanged__Args() {
                      };
                      InternalUnsafeMethods.NotifyShapeChanged()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void WriteChangeSet() {
-        
+
                      InternalUnsafeMethods.WriteChangeSet__Args _args = new InternalUnsafeMethods.WriteChangeSet__Args() {
                      };
                      InternalUnsafeMethods.WriteChangeSet()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SaveShape(string filename) {
-        
+
                                           InternalUnsafeMethods.SaveShape__Args _args = new InternalUnsafeMethods.SaveShape__Args() {
                         filename = filename,
                      };
                      InternalUnsafeMethods.SaveShape()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void DumpShape(string filename = "") {
-        
+
                                           InternalUnsafeMethods.DumpShape__Args _args = new InternalUnsafeMethods.DumpShape__Args() {
                         filename = filename,
                      };
                      InternalUnsafeMethods.DumpShape()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
 
 
 
-			
+
+
                   public void OnUnload() {
-        
+
                      InternalUnsafeMethods.OnUnload__Args _args = new InternalUnsafeMethods.OnUnload__Args() {
                      };
                      InternalUnsafeMethods.OnUnload()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnLoad() {
-        
+
                      InternalUnsafeMethods.OnLoad__Args _args = new InternalUnsafeMethods.OnLoad__Args() {
                      };
                      InternalUnsafeMethods.OnLoad()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool AddCollisionDetail(int size, string type, string target, int depth = 4, float merge = 30f, float concavity = 30f, int maxVerts = 32, float boxMaxError = 0f, float sphereMaxError = 0f, float capsuleMaxError = 0f) {
-        
+
                                                                                                                                                                                                                                        InternalUnsafeMethods.AddCollisionDetail__Args _args = new InternalUnsafeMethods.AddCollisionDetail__Args() {
                         size = size,
                         type = type,
@@ -3056,14 +3056,14 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         capsuleMaxError = capsuleMaxError,
                      };
                      bool _engineResult = InternalUnsafeMethods.AddCollisionDetail()(ObjectPtr, _args);
-                                                                                                                                                                                                                                                   
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool AddPrimitive(string meshName, string type, string _params, TransformF txfm, string nodeName) {
-        
+
                                                                                     txfm.Alloc();                                          InternalUnsafeMethods.AddPrimitive__Args _args = new InternalUnsafeMethods.AddPrimitive__Args() {
                         meshName = meshName,
                         type = type,
@@ -3072,10 +3072,10 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         nodeName = nodeName,
                      };
                      bool _engineResult = InternalUnsafeMethods.AddPrimitive()(ObjectPtr, _args);
-                                                                                                         txfm.Free();                                 
+                                                                                                         txfm.Free();
                      return _engineResult;
                   }
-	
+
 
 
 

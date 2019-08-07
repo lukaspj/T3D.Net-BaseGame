@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GameBase : SceneObject {
 
 
 
-        public GameBase(bool pRegister = false) 
+        public GameBase(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GameBase(string pName, bool pRegister) 
+
+        public GameBase(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GameBase(string pName) 
+
+        public GameBase(string pName)
             : this(pName, false) {
         }
-        
-        public GameBase(string pName, string pParent, bool pRegister = false) 
+
+        public GameBase(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GameBase(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GameBase(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GameBase(SimObject pObj) 
+
+        public GameBase(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GameBase(IntPtr pObj) 
+
+        public GameBase(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,21 +69,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ApplyRadialImpulse__Args
                 {
-				   
+
 				   internal IntPtr origin;
-				   
+
 				   internal float radius;
-				   
+
 				   internal float magnitude;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ApplyRadialImpulse(IntPtr _this, IntPtr origin, float radius, float magnitude);
                 internal delegate void _ApplyRadialImpulse(IntPtr _this, ApplyRadialImpulse__Args args);
                 private static _ApplyRadialImpulse _ApplyRadialImpulseFunc;
@@ -95,18 +95,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGameBase_applyRadialImpulse"), typeof(_ApplyRadialImpulse));
                     }
-                    
+
                     return _ApplyRadialImpulseFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ApplyImpulse__Args
                 {
-				   
+
 				   internal IntPtr pos;
-				   
+
 				   internal IntPtr vel;
                 }
 
@@ -123,16 +123,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGameBase_applyImpulse"), typeof(_ApplyImpulse));
                     }
-                    
+
                     return _ApplyImpulseFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetDataBlock__Args
                 {
-				   
+
 				   internal IntPtr data;
                 }
 
@@ -149,11 +149,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGameBase_setDataBlock"), typeof(_SetDataBlock));
                     }
-                    
+
                     return _SetDataBlockFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetDataBlock__Args
@@ -161,7 +161,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetDataBlock(IntPtr _this);
                 internal delegate int _GetDataBlock(IntPtr _this, GetDataBlock__Args args);
                 private static _GetDataBlock _GetDataBlockFunc;
@@ -173,11 +173,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGameBase_getDataBlock"), typeof(_GetDataBlock));
                     }
-                    
+
                     return _GetDataBlockFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -185,7 +185,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -197,11 +197,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGameBase_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -209,7 +209,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -221,11 +221,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGameBase_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetControl__Args
@@ -235,7 +235,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetControl(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool controlled);
                 internal delegate void _SetControl(IntPtr _this, SetControl__Args args);
                 private static _SetControl _SetControlFunc;
@@ -247,7 +247,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGameBase_setControl"), typeof(_SetControl));
                     }
-                    
+
                     return _SetControlFunc;
                 }
 
@@ -255,77 +255,77 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void ApplyRadialImpulse(Point3F origin, float radius, float magnitude) {
-        
+
                      origin.Alloc();                                                               InternalUnsafeMethods.ApplyRadialImpulse__Args _args = new InternalUnsafeMethods.ApplyRadialImpulse__Args() {
                         origin = origin.internalStructPtr,
                         radius = radius,
                         magnitude = magnitude,
                      };
                      InternalUnsafeMethods.ApplyRadialImpulse()(ObjectPtr, _args);
-                                          origin.Free();                                                      
+                                          origin.Free();
                   }
-	
 
-			
+
+
                   public bool ApplyImpulse(Point3F pos, Point3F vel) {
-        
+
                      pos.Alloc();                     vel.Alloc();                     InternalUnsafeMethods.ApplyImpulse__Args _args = new InternalUnsafeMethods.ApplyImpulse__Args() {
                         pos = pos.internalStructPtr,
                         vel = vel.internalStructPtr,
                      };
                      bool _engineResult = InternalUnsafeMethods.ApplyImpulse()(ObjectPtr, _args);
-                                          pos.Free();                     vel.Free();            
+                                          pos.Free();                     vel.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetDataBlock(GameBaseData data) {
-        
+
                                           InternalUnsafeMethods.SetDataBlock__Args _args = new InternalUnsafeMethods.SetDataBlock__Args() {
                         data = data.ObjectPtr,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetDataBlock()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetDataBlock() {
-        
+
                      InternalUnsafeMethods.GetDataBlock__Args _args = new InternalUnsafeMethods.GetDataBlock__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetDataBlock()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
 
 
 
-			
+
+
                   public void SetControl(bool controlled) {
-        
+
                                           InternalUnsafeMethods.SetControl__Args _args = new InternalUnsafeMethods.SetControl__Args() {
                         controlled = controlled,
                      };
                      InternalUnsafeMethods.SetControl()(ObjectPtr, _args);
-                                                      
+
                   }
-	
+
 
 
 

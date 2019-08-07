@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class StreamObject : SimObject {
 
 
 
-        public StreamObject(bool pRegister = false) 
+        public StreamObject(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public StreamObject(string pName, bool pRegister) 
+
+        public StreamObject(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public StreamObject(string pName) 
+
+        public StreamObject(string pName)
             : this(pName, false) {
         }
-        
-        public StreamObject(string pName, string pParent, bool pRegister = false) 
+
+        public StreamObject(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public StreamObject(string pName, SimObject pParent, bool pRegister = false) 
+
+        public StreamObject(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public StreamObject(SimObject pObj) 
+
+        public StreamObject(SimObject pObj)
             : base(pObj) {
         }
-        
-        public StreamObject(IntPtr pObj) 
+
+        public StreamObject(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,12 +69,12 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct CopyFrom__Args
                 {
-				   
+
 				   internal IntPtr other;
                 }
 
@@ -91,23 +91,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_copyFrom"), typeof(_CopyFrom));
                     }
-                    
+
                     return _CopyFromFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct WriteString__Args
                 {
-				   
+
 				   internal string _string;
-				   
+
 				   internal int maxLength;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _WriteString(IntPtr _this, string _string, int maxLength);
                 internal delegate void _WriteString(IntPtr _this, WriteString__Args args);
                 private static _WriteString _WriteStringFunc;
@@ -119,23 +119,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_writeString"), typeof(_WriteString));
                     }
-                    
+
                     return _WriteStringFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct WriteLongString__Args
                 {
-				   
+
 				   internal int maxLength;
-				   
+
 				   internal string _string;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _WriteLongString(IntPtr _this, int maxLength, string _string);
                 internal delegate void _WriteLongString(IntPtr _this, WriteLongString__Args args);
                 private static _WriteLongString _WriteLongStringFunc;
@@ -147,21 +147,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_writeLongString"), typeof(_WriteLongString));
                     }
-                    
+
                     return _WriteLongStringFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ReadLongString__Args
                 {
-				   
+
 				   internal int maxLength;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _ReadLongString(IntPtr _this, int maxLength);
                 internal delegate IntPtr _ReadLongString(IntPtr _this, ReadLongString__Args args);
                 private static _ReadLongString _ReadLongStringFunc;
@@ -173,11 +173,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_readLongString"), typeof(_ReadLongString));
                     }
-                    
+
                     return _ReadLongStringFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ReadString__Args
@@ -185,7 +185,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _ReadString(IntPtr _this);
                 internal delegate IntPtr _ReadString(IntPtr _this, ReadString__Args args);
                 private static _ReadString _ReadStringFunc;
@@ -197,11 +197,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_readString"), typeof(_ReadString));
                     }
-                    
+
                     return _ReadStringFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ReadSTString__Args
@@ -211,7 +211,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _ReadSTString(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool caseSensitive);
                 internal delegate IntPtr _ReadSTString(IntPtr _this, ReadSTString__Args args);
                 private static _ReadSTString _ReadSTStringFunc;
@@ -223,21 +223,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_readSTString"), typeof(_ReadSTString));
                     }
-                    
+
                     return _ReadSTStringFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct WriteLine__Args
                 {
-				   
+
 				   internal string line;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _WriteLine(IntPtr _this, string line);
                 internal delegate void _WriteLine(IntPtr _this, WriteLine__Args args);
                 private static _WriteLine _WriteLineFunc;
@@ -249,11 +249,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_writeLine"), typeof(_WriteLine));
                     }
-                    
+
                     return _WriteLineFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ReadLine__Args
@@ -261,7 +261,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _ReadLine(IntPtr _this);
                 internal delegate IntPtr _ReadLine(IntPtr _this, ReadLine__Args args);
                 private static _ReadLine _ReadLineFunc;
@@ -273,11 +273,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_readLine"), typeof(_ReadLine));
                     }
-                    
+
                     return _ReadLineFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetStreamSize__Args
@@ -285,7 +285,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetStreamSize(IntPtr _this);
                 internal delegate int _GetStreamSize(IntPtr _this, GetStreamSize__Args args);
                 private static _GetStreamSize _GetStreamSizeFunc;
@@ -297,16 +297,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_getStreamSize"), typeof(_GetStreamSize));
                     }
-                    
+
                     return _GetStreamSizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetPosition__Args
                 {
-				   
+
 				   internal int newPosition;
                 }
 
@@ -323,11 +323,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_setPosition"), typeof(_SetPosition));
                     }
-                    
+
                     return _SetPositionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetPosition__Args
@@ -335,7 +335,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetPosition(IntPtr _this);
                 internal delegate int _GetPosition(IntPtr _this, GetPosition__Args args);
                 private static _GetPosition _GetPositionFunc;
@@ -347,11 +347,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_getPosition"), typeof(_GetPosition));
                     }
-                    
+
                     return _GetPositionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsEOF__Args
@@ -371,11 +371,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_isEOF"), typeof(_IsEOF));
                     }
-                    
+
                     return _IsEOFFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsEOS__Args
@@ -395,11 +395,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_isEOS"), typeof(_IsEOS));
                     }
-                    
+
                     return _IsEOSFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetStatus__Args
@@ -407,7 +407,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetStatus(IntPtr _this);
                 internal delegate IntPtr _GetStatus(IntPtr _this, GetStatus__Args args);
                 private static _GetStatus _GetStatusFunc;
@@ -419,11 +419,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_getStatus"), typeof(_GetStatus));
                     }
-                    
+
                     return _GetStatusFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -431,7 +431,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -443,11 +443,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -455,7 +455,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -467,7 +467,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnStreamObject_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -475,175 +475,175 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public bool CopyFrom(SimObject other) {
-        
+
                                           InternalUnsafeMethods.CopyFrom__Args _args = new InternalUnsafeMethods.CopyFrom__Args() {
                         other = other.ObjectPtr,
                      };
                      bool _engineResult = InternalUnsafeMethods.CopyFrom()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void WriteString(string _string, int maxLength = 256) {
-        
+
                                                                InternalUnsafeMethods.WriteString__Args _args = new InternalUnsafeMethods.WriteString__Args() {
                         _string = _string,
                         maxLength = maxLength,
                      };
                      InternalUnsafeMethods.WriteString()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void WriteLongString(int maxLength, string _string) {
-        
+
                                                                InternalUnsafeMethods.WriteLongString__Args _args = new InternalUnsafeMethods.WriteLongString__Args() {
                         maxLength = maxLength,
                         _string = _string,
                      };
                      InternalUnsafeMethods.WriteLongString()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public string ReadLongString(int maxLength) {
-        
+
                                           InternalUnsafeMethods.ReadLongString__Args _args = new InternalUnsafeMethods.ReadLongString__Args() {
                         maxLength = maxLength,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.ReadLongString()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string ReadString() {
-        
+
                      InternalUnsafeMethods.ReadString__Args _args = new InternalUnsafeMethods.ReadString__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.ReadString()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string ReadSTString(bool caseSensitive = false) {
-        
+
                                           InternalUnsafeMethods.ReadSTString__Args _args = new InternalUnsafeMethods.ReadSTString__Args() {
                         caseSensitive = caseSensitive,
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.ReadSTString()(ObjectPtr, _args);
-                                                      
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void WriteLine(string line) {
-        
+
                                           InternalUnsafeMethods.WriteLine__Args _args = new InternalUnsafeMethods.WriteLine__Args() {
                         line = line,
                      };
                      InternalUnsafeMethods.WriteLine()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public string ReadLine() {
-        
+
                      InternalUnsafeMethods.ReadLine__Args _args = new InternalUnsafeMethods.ReadLine__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.ReadLine()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetStreamSize() {
-        
+
                      InternalUnsafeMethods.GetStreamSize__Args _args = new InternalUnsafeMethods.GetStreamSize__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetStreamSize()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetPosition(int newPosition) {
-        
+
                                           InternalUnsafeMethods.SetPosition__Args _args = new InternalUnsafeMethods.SetPosition__Args() {
                         newPosition = newPosition,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetPosition()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetPosition() {
-        
+
                      InternalUnsafeMethods.GetPosition__Args _args = new InternalUnsafeMethods.GetPosition__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetPosition()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool IsEOF() {
-        
+
                      InternalUnsafeMethods.IsEOF__Args _args = new InternalUnsafeMethods.IsEOF__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsEOF()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool IsEOS() {
-        
+
                      InternalUnsafeMethods.IsEOS__Args _args = new InternalUnsafeMethods.IsEOS__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsEOS()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetStatus() {
-        
+
                      InternalUnsafeMethods.GetStatus__Args _args = new InternalUnsafeMethods.GetStatus__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetStatus()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

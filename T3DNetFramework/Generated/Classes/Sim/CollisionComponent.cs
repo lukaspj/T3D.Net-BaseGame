@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class CollisionComponent : Component {
 
 
 
-        public CollisionComponent(bool pRegister = false) 
+        public CollisionComponent(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public CollisionComponent(string pName, bool pRegister) 
+
+        public CollisionComponent(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public CollisionComponent(string pName) 
+
+        public CollisionComponent(string pName)
             : this(pName, false) {
         }
-        
-        public CollisionComponent(string pName, string pParent, bool pRegister = false) 
+
+        public CollisionComponent(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public CollisionComponent(string pName, SimObject pParent, bool pRegister = false) 
+
+        public CollisionComponent(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public CollisionComponent(SimObject pObj) 
+
+        public CollisionComponent(SimObject pObj)
             : base(pObj) {
         }
-        
-        public CollisionComponent(IntPtr pObj) 
+
+        public CollisionComponent(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -113,21 +113,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetBestCollisionAngle__Args
                 {
-				   
+
 				   internal IntPtr upVector;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetBestCollisionAngle(IntPtr _this, IntPtr upVector);
                 internal delegate float _GetBestCollisionAngle(IntPtr _this, GetBestCollisionAngle__Args args);
                 private static _GetBestCollisionAngle _GetBestCollisionAngleFunc;
@@ -139,23 +139,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getBestCollisionAngle"), typeof(_GetBestCollisionAngle));
                     }
-                    
+
                     return _GetBestCollisionAngleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetCollisionAngle__Args
                 {
-				   
+
 				   internal int collisionIndex;
-				   
+
 				   internal IntPtr upVector;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetCollisionAngle(IntPtr _this, int collisionIndex, IntPtr upVector);
                 internal delegate float _GetCollisionAngle(IntPtr _this, GetCollisionAngle__Args args);
                 private static _GetCollisionAngle _GetCollisionAngleFunc;
@@ -167,21 +167,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getCollisionAngle"), typeof(_GetCollisionAngle));
                     }
-                    
+
                     return _GetCollisionAngleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetCollisionNormal__Args
                 {
-				   
+
 				   internal int collisionIndex;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetCollisionNormal(IntPtr _this, int collisionIndex);
                 internal delegate Point3F.InternalStruct _GetCollisionNormal(IntPtr _this, GetCollisionNormal__Args args);
                 private static _GetCollisionNormal _GetCollisionNormalFunc;
@@ -193,11 +193,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getCollisionNormal"), typeof(_GetCollisionNormal));
                     }
-                    
+
                     return _GetCollisionNormalFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetCollisionCount__Args
@@ -205,7 +205,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetCollisionCount(IntPtr _this);
                 internal delegate int _GetCollisionCount(IntPtr _this, GetCollisionCount__Args args);
                 private static _GetCollisionCount _GetCollisionCountFunc;
@@ -217,11 +217,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getCollisionCount"), typeof(_GetCollisionCount));
                     }
-                    
+
                     return _GetCollisionCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct HasContact__Args
@@ -241,11 +241,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_hasContact"), typeof(_HasContact));
                     }
-                    
+
                     return _HasContactFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetContactTime__Args
@@ -253,7 +253,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetContactTime(IntPtr _this);
                 internal delegate int _GetContactTime(IntPtr _this, GetContactTime__Args args);
                 private static _GetContactTime _GetContactTimeFunc;
@@ -265,11 +265,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getContactTime"), typeof(_GetContactTime));
                     }
-                    
+
                     return _GetContactTimeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetContactPoint__Args
@@ -277,7 +277,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetContactPoint(IntPtr _this);
                 internal delegate Point3F.InternalStruct _GetContactPoint(IntPtr _this, GetContactPoint__Args args);
                 private static _GetContactPoint _GetContactPointFunc;
@@ -289,11 +289,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getContactPoint"), typeof(_GetContactPoint));
                     }
-                    
+
                     return _GetContactPointFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetContactObject__Args
@@ -301,7 +301,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetContactObject(IntPtr _this);
                 internal delegate int _GetContactObject(IntPtr _this, GetContactObject__Args args);
                 private static _GetContactObject _GetContactObjectFunc;
@@ -313,11 +313,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getContactObject"), typeof(_GetContactObject));
                     }
-                    
+
                     return _GetContactObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetContactMaterial__Args
@@ -325,7 +325,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetContactMaterial(IntPtr _this);
                 internal delegate int _GetContactMaterial(IntPtr _this, GetContactMaterial__Args args);
                 private static _GetContactMaterial _GetContactMaterialFunc;
@@ -337,11 +337,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getContactMaterial"), typeof(_GetContactMaterial));
                     }
-                    
+
                     return _GetContactMaterialFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetContactNormal__Args
@@ -349,7 +349,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetContactNormal(IntPtr _this);
                 internal delegate Point3F.InternalStruct _GetContactNormal(IntPtr _this, GetContactNormal__Args args);
                 private static _GetContactNormal _GetContactNormalFunc;
@@ -361,11 +361,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getContactNormal"), typeof(_GetContactNormal));
                     }
-                    
+
                     return _GetContactNormalFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetBestContact__Args
@@ -373,7 +373,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetBestContact(IntPtr _this);
                 internal delegate int _GetBestContact(IntPtr _this, GetBestContact__Args args);
                 private static _GetBestContact _GetBestContactFunc;
@@ -385,11 +385,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getBestContact"), typeof(_GetBestContact));
                     }
-                    
+
                     return _GetBestContactFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNumberOfContacts__Args
@@ -397,7 +397,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetNumberOfContacts(IntPtr _this);
                 internal delegate int _GetNumberOfContacts(IntPtr _this, GetNumberOfContacts__Args args);
                 private static _GetNumberOfContacts _GetNumberOfContactsFunc;
@@ -409,7 +409,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnCollisionComponent_getNumberOfContacts"), typeof(_GetNumberOfContacts));
                     }
-                    
+
                     return _GetNumberOfContactsFunc;
                 }
 
@@ -417,153 +417,153 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
 
 
 
-			
+
+
                   public float GetBestCollisionAngle(Point3F upVector) {
-        
+
                      upVector.Alloc();                     InternalUnsafeMethods.GetBestCollisionAngle__Args _args = new InternalUnsafeMethods.GetBestCollisionAngle__Args() {
                         upVector = upVector.internalStructPtr,
                      };
                      float _engineResult = InternalUnsafeMethods.GetBestCollisionAngle()(ObjectPtr, _args);
-                                          upVector.Free();            
+                                          upVector.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public float GetCollisionAngle(int collisionIndex, Point3F upVector) {
-        
+
                                           upVector.Alloc();                     InternalUnsafeMethods.GetCollisionAngle__Args _args = new InternalUnsafeMethods.GetCollisionAngle__Args() {
                         collisionIndex = collisionIndex,
                         upVector = upVector.internalStructPtr,
                      };
                      float _engineResult = InternalUnsafeMethods.GetCollisionAngle()(ObjectPtr, _args);
-                                                               upVector.Free();            
+                                                               upVector.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public Point3F GetCollisionNormal(int collisionIndex) {
-        
+
                                           InternalUnsafeMethods.GetCollisionNormal__Args _args = new InternalUnsafeMethods.GetCollisionNormal__Args() {
                         collisionIndex = collisionIndex,
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetCollisionNormal()(ObjectPtr, _args);
-                                                      
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetCollisionCount() {
-        
+
                      InternalUnsafeMethods.GetCollisionCount__Args _args = new InternalUnsafeMethods.GetCollisionCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetCollisionCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool HasContact() {
-        
+
                      InternalUnsafeMethods.HasContact__Args _args = new InternalUnsafeMethods.HasContact__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.HasContact()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetContactTime() {
-        
+
                      InternalUnsafeMethods.GetContactTime__Args _args = new InternalUnsafeMethods.GetContactTime__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetContactTime()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public Point3F GetContactPoint() {
-        
+
                      InternalUnsafeMethods.GetContactPoint__Args _args = new InternalUnsafeMethods.GetContactPoint__Args() {
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetContactPoint()(ObjectPtr, _args);
-                                 
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetContactObject() {
-        
+
                      InternalUnsafeMethods.GetContactObject__Args _args = new InternalUnsafeMethods.GetContactObject__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetContactObject()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetContactMaterial() {
-        
+
                      InternalUnsafeMethods.GetContactMaterial__Args _args = new InternalUnsafeMethods.GetContactMaterial__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetContactMaterial()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public Point3F GetContactNormal() {
-        
+
                      InternalUnsafeMethods.GetContactNormal__Args _args = new InternalUnsafeMethods.GetContactNormal__Args() {
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetContactNormal()(ObjectPtr, _args);
-                                 
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public int GetBestContact() {
-        
+
                      InternalUnsafeMethods.GetBestContact__Args _args = new InternalUnsafeMethods.GetBestContact__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetBestContact()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetNumberOfContacts() {
-        
+
                      InternalUnsafeMethods.GetNumberOfContacts__Args _args = new InternalUnsafeMethods.GetNumberOfContacts__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetNumberOfContacts()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
+
 
 
 

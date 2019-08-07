@@ -1,7 +1,7 @@
 ﻿using System;
-using T3DSharpFramework.Generated.Functions;
+using T3DNetFramework.Generated.Functions;
 
-namespace T3DSharpFramework.Engine.Util
+namespace T3DNetFramework.Engine.Util
 {
     public static class EngineExtensions
     {

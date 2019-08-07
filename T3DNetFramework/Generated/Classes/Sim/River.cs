@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class River : WaterObject {
 
 
 
-        public River(bool pRegister = false) 
+        public River(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public River(string pName, bool pRegister) 
+
+        public River(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public River(string pName) 
+
+        public River(string pName)
             : this(pName, false) {
         }
-        
-        public River(string pName, string pParent, bool pRegister = false) 
+
+        public River(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public River(string pName, SimObject pParent, bool pRegister = false) 
+
+        public River(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public River(SimObject pObj) 
+
+        public River(SimObject pObj)
             : base(pObj) {
         }
-        
-        public River(IntPtr pObj) 
+
+        public River(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,17 +69,17 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetMaxDivisionSize__Args
                 {
-				   
+
 				   internal float meters;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetMaxDivisionSize(IntPtr _this, float meters);
                 internal delegate void _SetMaxDivisionSize(IntPtr _this, SetMaxDivisionSize__Args args);
                 private static _SetMaxDivisionSize _SetMaxDivisionSizeFunc;
@@ -91,23 +91,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRiver_setMaxDivisionSize"), typeof(_SetMaxDivisionSize));
                     }
-                    
+
                     return _SetMaxDivisionSizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetNodeDepth__Args
                 {
-				   
+
 				   internal int idx;
-				   
+
 				   internal float meters;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetNodeDepth(IntPtr _this, int idx, float meters);
                 internal delegate void _SetNodeDepth(IntPtr _this, SetNodeDepth__Args args);
                 private static _SetNodeDepth _SetNodeDepthFunc;
@@ -119,21 +119,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRiver_setNodeDepth"), typeof(_SetNodeDepth));
                     }
-                    
+
                     return _SetNodeDepthFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetBatchSize__Args
                 {
-				   
+
 				   internal float meters;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetBatchSize(IntPtr _this, float meters);
                 internal delegate void _SetBatchSize(IntPtr _this, SetBatchSize__Args args);
                 private static _SetBatchSize _SetBatchSizeFunc;
@@ -145,21 +145,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRiver_setBatchSize"), typeof(_SetBatchSize));
                     }
-                    
+
                     return _SetBatchSizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetMetersPerSegment__Args
                 {
-				   
+
 				   internal float meters;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetMetersPerSegment(IntPtr _this, float meters);
                 internal delegate void _SetMetersPerSegment(IntPtr _this, SetMetersPerSegment__Args args);
                 private static _SetMetersPerSegment _SetMetersPerSegmentFunc;
@@ -171,11 +171,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRiver_setMetersPerSegment"), typeof(_SetMetersPerSegment));
                     }
-                    
+
                     return _SetMetersPerSegmentFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Regenerate__Args
@@ -183,7 +183,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Regenerate(IntPtr _this);
                 internal delegate void _Regenerate(IntPtr _this, Regenerate__Args args);
                 private static _Regenerate _RegenerateFunc;
@@ -195,11 +195,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRiver_regenerate"), typeof(_Regenerate));
                     }
-                    
+
                     return _RegenerateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -207,7 +207,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -219,11 +219,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRiver_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -231,7 +231,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -243,7 +243,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnRiver_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -251,70 +251,70 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void SetMaxDivisionSize(float meters) {
-        
+
                                           InternalUnsafeMethods.SetMaxDivisionSize__Args _args = new InternalUnsafeMethods.SetMaxDivisionSize__Args() {
                         meters = meters,
                      };
                      InternalUnsafeMethods.SetMaxDivisionSize()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetNodeDepth(int idx, float meters) {
-        
+
                                                                InternalUnsafeMethods.SetNodeDepth__Args _args = new InternalUnsafeMethods.SetNodeDepth__Args() {
                         idx = idx,
                         meters = meters,
                      };
                      InternalUnsafeMethods.SetNodeDepth()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetBatchSize(float meters) {
-        
+
                                           InternalUnsafeMethods.SetBatchSize__Args _args = new InternalUnsafeMethods.SetBatchSize__Args() {
                         meters = meters,
                      };
                      InternalUnsafeMethods.SetBatchSize()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetMetersPerSegment(float meters) {
-        
+
                                           InternalUnsafeMethods.SetMetersPerSegment__Args _args = new InternalUnsafeMethods.SetMetersPerSegment__Args() {
                         meters = meters,
                      };
                      InternalUnsafeMethods.SetMetersPerSegment()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Regenerate() {
-        
+
                      InternalUnsafeMethods.Regenerate__Args _args = new InternalUnsafeMethods.Regenerate__Args() {
                      };
                      InternalUnsafeMethods.Regenerate()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

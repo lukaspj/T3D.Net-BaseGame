@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class PostEffect : SimGroup {
 
 
 
-        public PostEffect(bool pRegister = false) 
+        public PostEffect(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public PostEffect(string pName, bool pRegister) 
+
+        public PostEffect(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public PostEffect(string pName) 
+
+        public PostEffect(string pName)
             : this(pName, false) {
         }
-        
-        public PostEffect(string pName, string pParent, bool pRegister = false) 
+
+        public PostEffect(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public PostEffect(string pName, SimObject pParent, bool pRegister = false) 
+
+        public PostEffect(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public PostEffect(SimObject pObj) 
+
+        public PostEffect(SimObject pObj)
             : base(pObj) {
         }
-        
-        public PostEffect(IntPtr pObj) 
+
+        public PostEffect(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ClearShaderMacros__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ClearShaderMacros(IntPtr _this);
                 internal delegate void _ClearShaderMacros(IntPtr _this, ClearShaderMacros__Args args);
                 private static _ClearShaderMacros _ClearShaderMacrosFunc;
@@ -89,21 +89,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_clearShaderMacros"), typeof(_ClearShaderMacros));
                     }
-                    
+
                     return _ClearShaderMacrosFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveShaderMacro__Args
                 {
-				   
+
 				   internal string key;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _RemoveShaderMacro(IntPtr _this, string key);
                 internal delegate void _RemoveShaderMacro(IntPtr _this, RemoveShaderMacro__Args args);
                 private static _RemoveShaderMacro _RemoveShaderMacroFunc;
@@ -115,23 +115,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_removeShaderMacro"), typeof(_RemoveShaderMacro));
                     }
-                    
+
                     return _RemoveShaderMacroFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetShaderMacro__Args
                 {
-				   
+
 				   internal string key;
-				   
+
 				   internal string value;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetShaderMacro(IntPtr _this, string key, string value);
                 internal delegate void _SetShaderMacro(IntPtr _this, SetShaderMacro__Args args);
                 private static _SetShaderMacro _SetShaderMacroFunc;
@@ -143,11 +143,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_setShaderMacro"), typeof(_SetShaderMacro));
                     }
-                    
+
                     return _SetShaderMacroFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct DumpShaderDisassembly__Args
@@ -155,7 +155,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _DumpShaderDisassembly(IntPtr _this);
                 internal delegate IntPtr _DumpShaderDisassembly(IntPtr _this, DumpShaderDisassembly__Args args);
                 private static _DumpShaderDisassembly _DumpShaderDisassemblyFunc;
@@ -167,11 +167,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_dumpShaderDisassembly"), typeof(_DumpShaderDisassembly));
                     }
-                    
+
                     return _DumpShaderDisassemblyFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetAspectRatio__Args
@@ -179,7 +179,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetAspectRatio(IntPtr _this);
                 internal delegate float _GetAspectRatio(IntPtr _this, GetAspectRatio__Args args);
                 private static _GetAspectRatio _GetAspectRatioFunc;
@@ -191,23 +191,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_getAspectRatio"), typeof(_GetAspectRatio));
                     }
-                    
+
                     return _GetAspectRatioFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetShaderConst__Args
                 {
-				   
+
 				   internal string name;
-				   
+
 				   internal string value;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetShaderConst(IntPtr _this, string name, string value);
                 internal delegate void _SetShaderConst(IntPtr _this, SetShaderConst__Args args);
                 private static _SetShaderConst _SetShaderConstFunc;
@@ -219,23 +219,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_setShaderConst"), typeof(_SetShaderConst));
                     }
-                    
+
                     return _SetShaderConstFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetTexture__Args
                 {
-				   
+
 				   internal int index;
-				   
+
 				   internal string filePath;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetTexture(IntPtr _this, int index, string filePath);
                 internal delegate void _SetTexture(IntPtr _this, SetTexture__Args args);
                 private static _SetTexture _SetTextureFunc;
@@ -247,11 +247,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_setTexture"), typeof(_SetTexture));
                     }
-                    
+
                     return _SetTextureFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsEnabled__Args
@@ -271,11 +271,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_isEnabled"), typeof(_IsEnabled));
                     }
-                    
+
                     return _IsEnabledFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Toggle__Args
@@ -295,11 +295,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_toggle"), typeof(_Toggle));
                     }
-                    
+
                     return _ToggleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Disable__Args
@@ -307,7 +307,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Disable(IntPtr _this);
                 internal delegate void _Disable(IntPtr _this, Disable__Args args);
                 private static _Disable _DisableFunc;
@@ -319,11 +319,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_disable"), typeof(_Disable));
                     }
-                    
+
                     return _DisableFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Enable__Args
@@ -331,7 +331,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Enable(IntPtr _this);
                 internal delegate void _Enable(IntPtr _this, Enable__Args args);
                 private static _Enable _EnableFunc;
@@ -343,11 +343,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_enable"), typeof(_Enable));
                     }
-                    
+
                     return _EnableFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Reload__Args
@@ -355,7 +355,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Reload(IntPtr _this);
                 internal delegate void _Reload(IntPtr _this, Reload__Args args);
                 private static _Reload _ReloadFunc;
@@ -367,11 +367,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_reload"), typeof(_Reload));
                     }
-                    
+
                     return _ReloadFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -379,7 +379,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -391,11 +391,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -403,7 +403,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -415,11 +415,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPostEffect_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnDisabled__Args
@@ -427,7 +427,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnDisabled(IntPtr _this);
                 internal delegate void _OnDisabled(IntPtr _this, OnDisabled__Args args);
                 private static _OnDisabled _OnDisabledFunc;
@@ -439,11 +439,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbPostEffect_onDisabled"), typeof(_OnDisabled));
                     }
-                    
+
                     return _OnDisabledFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnEnabled__Args
@@ -463,11 +463,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbPostEffect_onEnabled"), typeof(_OnEnabled));
                     }
-                    
+
                     return _OnEnabledFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetShaderConsts__Args
@@ -475,7 +475,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetShaderConsts(IntPtr _this);
                 internal delegate void _SetShaderConsts(IntPtr _this, SetShaderConsts__Args args);
                 private static _SetShaderConsts _SetShaderConstsFunc;
@@ -487,11 +487,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbPostEffect_setShaderConsts"), typeof(_SetShaderConsts));
                     }
-                    
+
                     return _SetShaderConstsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct PreProcess__Args
@@ -499,7 +499,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _PreProcess(IntPtr _this);
                 internal delegate void _PreProcess(IntPtr _this, PreProcess__Args args);
                 private static _PreProcess _PreProcessFunc;
@@ -511,11 +511,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbPostEffect_preProcess"), typeof(_PreProcess));
                     }
-                    
+
                     return _PreProcessFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnAdd__Args
@@ -523,7 +523,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnAdd(IntPtr _this);
                 internal delegate void _OnAdd(IntPtr _this, OnAdd__Args args);
                 private static _OnAdd _OnAddFunc;
@@ -535,7 +535,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbPostEffect_onAdd"), typeof(_OnAdd));
                     }
-                    
+
                     return _OnAddFunc;
                 }
 
@@ -543,199 +543,199 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void ClearShaderMacros() {
-        
+
                      InternalUnsafeMethods.ClearShaderMacros__Args _args = new InternalUnsafeMethods.ClearShaderMacros__Args() {
                      };
                      InternalUnsafeMethods.ClearShaderMacros()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void RemoveShaderMacro(string key) {
-        
+
                                           InternalUnsafeMethods.RemoveShaderMacro__Args _args = new InternalUnsafeMethods.RemoveShaderMacro__Args() {
                         key = key,
                      };
                      InternalUnsafeMethods.RemoveShaderMacro()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetShaderMacro(string key, string value = "") {
-        
+
                                                                InternalUnsafeMethods.SetShaderMacro__Args _args = new InternalUnsafeMethods.SetShaderMacro__Args() {
                         key = key,
                         value = value,
                      };
                      InternalUnsafeMethods.SetShaderMacro()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public string DumpShaderDisassembly() {
-        
+
                      InternalUnsafeMethods.DumpShaderDisassembly__Args _args = new InternalUnsafeMethods.DumpShaderDisassembly__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.DumpShaderDisassembly()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public float GetAspectRatio() {
-        
+
                      InternalUnsafeMethods.GetAspectRatio__Args _args = new InternalUnsafeMethods.GetAspectRatio__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetAspectRatio()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetShaderConst(string name, string value) {
-        
+
                                                                InternalUnsafeMethods.SetShaderConst__Args _args = new InternalUnsafeMethods.SetShaderConst__Args() {
                         name = name,
                         value = value,
                      };
                      InternalUnsafeMethods.SetShaderConst()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetTexture(int index, string filePath) {
-        
+
                                                                InternalUnsafeMethods.SetTexture__Args _args = new InternalUnsafeMethods.SetTexture__Args() {
                         index = index,
                         filePath = filePath,
                      };
                      InternalUnsafeMethods.SetTexture()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool IsEnabled() {
-        
+
                      InternalUnsafeMethods.IsEnabled__Args _args = new InternalUnsafeMethods.IsEnabled__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsEnabled()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool Toggle() {
-        
+
                      InternalUnsafeMethods.Toggle__Args _args = new InternalUnsafeMethods.Toggle__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.Toggle()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void Disable() {
-        
+
                      InternalUnsafeMethods.Disable__Args _args = new InternalUnsafeMethods.Disable__Args() {
                      };
                      InternalUnsafeMethods.Disable()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Enable() {
-        
+
                      InternalUnsafeMethods.Enable__Args _args = new InternalUnsafeMethods.Enable__Args() {
                      };
                      InternalUnsafeMethods.Enable()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Reload() {
-        
+
                      InternalUnsafeMethods.Reload__Args _args = new InternalUnsafeMethods.Reload__Args() {
                      };
                      InternalUnsafeMethods.Reload()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
 
 
 
-			
+
+
                   public void OnDisabled() {
-        
+
                      InternalUnsafeMethods.OnDisabled__Args _args = new InternalUnsafeMethods.OnDisabled__Args() {
                      };
                      InternalUnsafeMethods.OnDisabled()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool OnEnabled() {
-        
+
                      InternalUnsafeMethods.OnEnabled__Args _args = new InternalUnsafeMethods.OnEnabled__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.OnEnabled()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetShaderConsts() {
-        
+
                      InternalUnsafeMethods.SetShaderConsts__Args _args = new InternalUnsafeMethods.SetShaderConsts__Args() {
                      };
                      InternalUnsafeMethods.SetShaderConsts()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void PreProcess() {
-        
+
                      InternalUnsafeMethods.PreProcess__Args _args = new InternalUnsafeMethods.PreProcess__Args() {
                      };
                      InternalUnsafeMethods.PreProcess()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnAdd() {
-        
+
                      InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
                      };
                      InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);
-                                 
+
                   }
-	
+
 
 
 
@@ -801,9 +801,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<string> Texture {
             get => new DynamicFieldVector<string>(
-                    this, 
-                    "texture", 
-                    8, 
+                    this,
+                    "texture",
+                    8,
                     val => GenericMarshal.StringTo<string>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -812,9 +812,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<bool> TextureSRGB {
             get => new DynamicFieldVector<bool>(
-                    this, 
-                    "textureSRGB", 
-                    8, 
+                    this,
+                    "textureSRGB",
+                    8,
                     val => GenericMarshal.StringTo<bool>(val),
                     obj => GenericMarshal.ToString(obj)
                 );

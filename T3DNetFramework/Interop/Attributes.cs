@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace T3DSharpFramework.Interop
+namespace T3DNetFramework.Interop
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class ConsoleClassAttribute : Attribute

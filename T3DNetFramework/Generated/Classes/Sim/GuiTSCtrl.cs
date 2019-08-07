@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiTSCtrl : GuiContainer {
 
 
 
-        public GuiTSCtrl(bool pRegister = false) 
+        public GuiTSCtrl(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiTSCtrl(string pName, bool pRegister) 
+
+        public GuiTSCtrl(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiTSCtrl(string pName) 
+
+        public GuiTSCtrl(string pName)
             : this(pName, false) {
         }
-        
-        public GuiTSCtrl(string pName, string pParent, bool pRegister = false) 
+
+        public GuiTSCtrl(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiTSCtrl(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiTSCtrl(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiTSCtrl(SimObject pObj) 
+
+        public GuiTSCtrl(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiTSCtrl(IntPtr pObj) 
+
+        public GuiTSCtrl(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,17 +69,17 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetStereoGui__Args
                 {
-				   
+
 				   internal IntPtr canvas;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetStereoGui(IntPtr _this, IntPtr canvas);
                 internal delegate void _SetStereoGui(IntPtr _this, SetStereoGui__Args args);
                 private static _SetStereoGui _SetStereoGuiFunc;
@@ -91,21 +91,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTSCtrl_setStereoGui"), typeof(_SetStereoGui));
                     }
-                    
+
                     return _SetStereoGuiFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct CalculateViewDistance__Args
                 {
-				   
+
 				   internal float radius;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _CalculateViewDistance(IntPtr _this, float radius);
                 internal delegate float _CalculateViewDistance(IntPtr _this, CalculateViewDistance__Args args);
                 private static _CalculateViewDistance _CalculateViewDistanceFunc;
@@ -117,11 +117,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTSCtrl_calculateViewDistance"), typeof(_CalculateViewDistance));
                     }
-                    
+
                     return _CalculateViewDistanceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetWorldToScreenScale__Args
@@ -129,7 +129,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point2F.InternalStruct _GetWorldToScreenScale(IntPtr _this);
                 internal delegate Point2F.InternalStruct _GetWorldToScreenScale(IntPtr _this, GetWorldToScreenScale__Args args);
                 private static _GetWorldToScreenScale _GetWorldToScreenScaleFunc;
@@ -141,21 +141,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTSCtrl_getWorldToScreenScale"), typeof(_GetWorldToScreenScale));
                     }
-                    
+
                     return _GetWorldToScreenScaleFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Project__Args
                 {
-				   
+
 				   internal IntPtr worldPosition;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _Project(IntPtr _this, IntPtr worldPosition);
                 internal delegate Point3F.InternalStruct _Project(IntPtr _this, Project__Args args);
                 private static _Project _ProjectFunc;
@@ -167,21 +167,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTSCtrl_project"), typeof(_Project));
                     }
-                    
+
                     return _ProjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Unproject__Args
                 {
-				   
+
 				   internal IntPtr screenPosition;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _Unproject(IntPtr _this, IntPtr screenPosition);
                 internal delegate Point3F.InternalStruct _Unproject(IntPtr _this, Unproject__Args args);
                 private static _Unproject _UnprojectFunc;
@@ -193,11 +193,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTSCtrl_unproject"), typeof(_Unproject));
                     }
-                    
+
                     return _UnprojectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -205,7 +205,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -217,11 +217,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTSCtrl_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -229,7 +229,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -241,7 +241,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiTSCtrl_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -249,73 +249,73 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void SetStereoGui(GuiOffscreenCanvas canvas) {
-        
+
                                           InternalUnsafeMethods.SetStereoGui__Args _args = new InternalUnsafeMethods.SetStereoGui__Args() {
                         canvas = canvas.ObjectPtr,
                      };
                      InternalUnsafeMethods.SetStereoGui()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public float CalculateViewDistance(float radius) {
-        
+
                                           InternalUnsafeMethods.CalculateViewDistance__Args _args = new InternalUnsafeMethods.CalculateViewDistance__Args() {
                         radius = radius,
                      };
                      float _engineResult = InternalUnsafeMethods.CalculateViewDistance()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public Point2F GetWorldToScreenScale() {
-        
+
                      InternalUnsafeMethods.GetWorldToScreenScale__Args _args = new InternalUnsafeMethods.GetWorldToScreenScale__Args() {
                      };
                      Point2F.InternalStruct _engineResult = InternalUnsafeMethods.GetWorldToScreenScale()(ObjectPtr, _args);
-                                 
+
                      return new Point2F(_engineResult);
                   }
-	
 
-			
+
+
                   public Point3F Project(Point3F worldPosition) {
-        
+
                      worldPosition.Alloc();                     InternalUnsafeMethods.Project__Args _args = new InternalUnsafeMethods.Project__Args() {
                         worldPosition = worldPosition.internalStructPtr,
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.Project()(ObjectPtr, _args);
-                                          worldPosition.Free();            
+                                          worldPosition.Free();
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public Point3F Unproject(Point3F screenPosition) {
-        
+
                      screenPosition.Alloc();                     InternalUnsafeMethods.Unproject__Args _args = new InternalUnsafeMethods.Unproject__Args() {
                         screenPosition = screenPosition.internalStructPtr,
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.Unproject()(ObjectPtr, _args);
-                                          screenPosition.Free();            
+                                          screenPosition.Free();
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

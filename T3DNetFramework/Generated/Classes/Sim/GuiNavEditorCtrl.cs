@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiNavEditorCtrl : EditTSCtrl {
 
 
 
-        public GuiNavEditorCtrl(bool pRegister = false) 
+        public GuiNavEditorCtrl(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiNavEditorCtrl(string pName, bool pRegister) 
+
+        public GuiNavEditorCtrl(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiNavEditorCtrl(string pName) 
+
+        public GuiNavEditorCtrl(string pName)
             : this(pName, false) {
         }
-        
-        public GuiNavEditorCtrl(string pName, string pParent, bool pRegister = false) 
+
+        public GuiNavEditorCtrl(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiNavEditorCtrl(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiNavEditorCtrl(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiNavEditorCtrl(SimObject pObj) 
+
+        public GuiNavEditorCtrl(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiNavEditorCtrl(IntPtr pObj) 
+
+        public GuiNavEditorCtrl(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetMode__Args
@@ -79,7 +79,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetMode(IntPtr _this, [MarshalAs(UnmanagedType.LPUTF8Str)]string mode);
                 internal delegate void _SetMode(IntPtr _this, SetMode__Args args);
                 private static _SetMode _SetModeFunc;
@@ -91,11 +91,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_setMode"), typeof(_SetMode));
                     }
-                    
+
                     return _SetModeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMode__Args
@@ -103,7 +103,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetMode(IntPtr _this);
                 internal delegate IntPtr _GetMode(IntPtr _this, GetMode__Args args);
                 private static _GetMode _GetModeFunc;
@@ -115,11 +115,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_getMode"), typeof(_GetMode));
                     }
-                    
+
                     return _GetModeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SpawnPlayer__Args
@@ -127,7 +127,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SpawnPlayer(IntPtr _this);
                 internal delegate void _SpawnPlayer(IntPtr _this, SpawnPlayer__Args args);
                 private static _SpawnPlayer _SpawnPlayerFunc;
@@ -139,11 +139,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_spawnPlayer"), typeof(_SpawnPlayer));
                     }
-                    
+
                     return _SpawnPlayerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct BuildTile__Args
@@ -151,7 +151,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _BuildTile(IntPtr _this);
                 internal delegate void _BuildTile(IntPtr _this, BuildTile__Args args);
                 private static _BuildTile _BuildTileFunc;
@@ -163,21 +163,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_buildTile"), typeof(_BuildTile));
                     }
-                    
+
                     return _BuildTileFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetLinkFlags__Args
                 {
-				   
+
 				   internal uint flags;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetLinkFlags(IntPtr _this, uint flags);
                 internal delegate void _SetLinkFlags(IntPtr _this, SetLinkFlags__Args args);
                 private static _SetLinkFlags _SetLinkFlagsFunc;
@@ -189,11 +189,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_setLinkFlags"), typeof(_SetLinkFlags));
                     }
-                    
+
                     return _SetLinkFlagsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct DeleteLink__Args
@@ -201,7 +201,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _DeleteLink(IntPtr _this);
                 internal delegate void _DeleteLink(IntPtr _this, DeleteLink__Args args);
                 private static _DeleteLink _DeleteLinkFunc;
@@ -213,11 +213,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_deleteLink"), typeof(_DeleteLink));
                     }
-                    
+
                     return _DeleteLinkFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Deselect__Args
@@ -225,7 +225,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Deselect(IntPtr _this);
                 internal delegate void _Deselect(IntPtr _this, Deselect__Args args);
                 private static _Deselect _DeselectFunc;
@@ -237,11 +237,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_deselect"), typeof(_Deselect));
                     }
-                    
+
                     return _DeselectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetPlayer__Args
@@ -249,7 +249,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetPlayer(IntPtr _this);
                 internal delegate int _GetPlayer(IntPtr _this, GetPlayer__Args args);
                 private static _GetPlayer _GetPlayerFunc;
@@ -261,11 +261,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_getPlayer"), typeof(_GetPlayer));
                     }
-                    
+
                     return _GetPlayerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMesh__Args
@@ -273,7 +273,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetMesh(IntPtr _this);
                 internal delegate int _GetMesh(IntPtr _this, GetMesh__Args args);
                 private static _GetMesh _GetMeshFunc;
@@ -285,21 +285,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_getMesh"), typeof(_GetMesh));
                     }
-                    
+
                     return _GetMeshFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SelectMesh__Args
                 {
-				   
+
 				   internal int id;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SelectMesh(IntPtr _this, int id);
                 internal delegate void _SelectMesh(IntPtr _this, SelectMesh__Args args);
                 private static _SelectMesh _SelectMeshFunc;
@@ -311,11 +311,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_selectMesh"), typeof(_SelectMesh));
                     }
-                    
+
                     return _SelectMeshFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -323,7 +323,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -335,11 +335,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -347,7 +347,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -359,7 +359,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiNavEditorCtrl_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -367,121 +367,121 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void SetMode(string mode) {
-        
+
                                           InternalUnsafeMethods.SetMode__Args _args = new InternalUnsafeMethods.SetMode__Args() {
                         mode = mode,
                      };
                      InternalUnsafeMethods.SetMode()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public string GetMode() {
-        
+
                      InternalUnsafeMethods.GetMode__Args _args = new InternalUnsafeMethods.GetMode__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetMode()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void SpawnPlayer() {
-        
+
                      InternalUnsafeMethods.SpawnPlayer__Args _args = new InternalUnsafeMethods.SpawnPlayer__Args() {
                      };
                      InternalUnsafeMethods.SpawnPlayer()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void BuildTile() {
-        
+
                      InternalUnsafeMethods.BuildTile__Args _args = new InternalUnsafeMethods.BuildTile__Args() {
                      };
                      InternalUnsafeMethods.BuildTile()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetLinkFlags(uint flags) {
-        
+
                                           InternalUnsafeMethods.SetLinkFlags__Args _args = new InternalUnsafeMethods.SetLinkFlags__Args() {
                         flags = flags,
                      };
                      InternalUnsafeMethods.SetLinkFlags()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void DeleteLink() {
-        
+
                      InternalUnsafeMethods.DeleteLink__Args _args = new InternalUnsafeMethods.DeleteLink__Args() {
                      };
                      InternalUnsafeMethods.DeleteLink()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Deselect() {
-        
+
                      InternalUnsafeMethods.Deselect__Args _args = new InternalUnsafeMethods.Deselect__Args() {
                      };
                      InternalUnsafeMethods.Deselect()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public int GetPlayer() {
-        
+
                      InternalUnsafeMethods.GetPlayer__Args _args = new InternalUnsafeMethods.GetPlayer__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetPlayer()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetMesh() {
-        
+
                      InternalUnsafeMethods.GetMesh__Args _args = new InternalUnsafeMethods.GetMesh__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetMesh()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SelectMesh(int id) {
-        
+
                                           InternalUnsafeMethods.SelectMesh__Args _args = new InternalUnsafeMethods.SelectMesh__Args() {
                         id = id,
                      };
                      InternalUnsafeMethods.SelectMesh()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

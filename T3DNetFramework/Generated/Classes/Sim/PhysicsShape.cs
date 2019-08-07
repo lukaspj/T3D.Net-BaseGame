@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class PhysicsShape : GameBase {
 
 
 
-        public PhysicsShape(bool pRegister = false) 
+        public PhysicsShape(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public PhysicsShape(string pName, bool pRegister) 
+
+        public PhysicsShape(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public PhysicsShape(string pName) 
+
+        public PhysicsShape(string pName)
             : this(pName, false) {
         }
-        
-        public PhysicsShape(string pName, string pParent, bool pRegister = false) 
+
+        public PhysicsShape(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public PhysicsShape(string pName, SimObject pParent, bool pRegister = false) 
+
+        public PhysicsShape(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public PhysicsShape(SimObject pObj) 
+
+        public PhysicsShape(SimObject pObj)
             : base(pObj) {
         }
-        
-        public PhysicsShape(IntPtr pObj) 
+
+        public PhysicsShape(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,17 +69,17 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ApplyForce__Args
                 {
-				   
+
 				   internal IntPtr force;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ApplyForce(IntPtr _this, IntPtr force);
                 internal delegate void _ApplyForce(IntPtr _this, ApplyForce__Args args);
                 private static _ApplyForce _ApplyForceFunc;
@@ -91,21 +91,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPhysicsShape_applyForce"), typeof(_ApplyForce));
                     }
-                    
+
                     return _ApplyForceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ApplyTorque__Args
                 {
-				   
+
 				   internal IntPtr torque;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ApplyTorque(IntPtr _this, IntPtr torque);
                 internal delegate void _ApplyTorque(IntPtr _this, ApplyTorque__Args args);
                 private static _ApplyTorque _ApplyTorqueFunc;
@@ -117,11 +117,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPhysicsShape_applyTorque"), typeof(_ApplyTorque));
                     }
-                    
+
                     return _ApplyTorqueFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Restore__Args
@@ -129,7 +129,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Restore(IntPtr _this);
                 internal delegate void _Restore(IntPtr _this, Restore__Args args);
                 private static _Restore _RestoreFunc;
@@ -141,11 +141,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPhysicsShape_restore"), typeof(_Restore));
                     }
-                    
+
                     return _RestoreFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Destroy__Args
@@ -153,7 +153,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Destroy(IntPtr _this);
                 internal delegate void _Destroy(IntPtr _this, Destroy__Args args);
                 private static _Destroy _DestroyFunc;
@@ -165,11 +165,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPhysicsShape_destroy"), typeof(_Destroy));
                     }
-                    
+
                     return _DestroyFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsDestroyed__Args
@@ -189,11 +189,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPhysicsShape_isDestroyed"), typeof(_IsDestroyed));
                     }
-                    
+
                     return _IsDestroyedFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -201,7 +201,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -213,11 +213,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPhysicsShape_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -225,7 +225,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -237,7 +237,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPhysicsShape_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -245,68 +245,68 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void ApplyForce(Point3F force) {
-        
+
                      force.Alloc();                     InternalUnsafeMethods.ApplyForce__Args _args = new InternalUnsafeMethods.ApplyForce__Args() {
                         force = force.internalStructPtr,
                      };
                      InternalUnsafeMethods.ApplyForce()(ObjectPtr, _args);
-                                          force.Free();            
+                                          force.Free();
                   }
-	
 
-			
+
+
                   public void ApplyTorque(Point3F torque) {
-        
+
                      torque.Alloc();                     InternalUnsafeMethods.ApplyTorque__Args _args = new InternalUnsafeMethods.ApplyTorque__Args() {
                         torque = torque.internalStructPtr,
                      };
                      InternalUnsafeMethods.ApplyTorque()(ObjectPtr, _args);
-                                          torque.Free();            
+                                          torque.Free();
                   }
-	
 
-			
+
+
                   public void Restore() {
-        
+
                      InternalUnsafeMethods.Restore__Args _args = new InternalUnsafeMethods.Restore__Args() {
                      };
                      InternalUnsafeMethods.Restore()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void Destroy() {
-        
+
                      InternalUnsafeMethods.Destroy__Args _args = new InternalUnsafeMethods.Destroy__Args() {
                      };
                      InternalUnsafeMethods.Destroy()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool IsDestroyed() {
-        
+
                      InternalUnsafeMethods.IsDestroyed__Args _args = new InternalUnsafeMethods.IsDestroyed__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsDestroyed()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

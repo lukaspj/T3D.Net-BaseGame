@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace T3DSharpFramework.Interop
+namespace T3DNetFramework.Interop
 {
     public interface IDllLoadUtils
     {

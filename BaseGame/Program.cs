@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 using System.Threading;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Interop;
 
 namespace BaseGame
 {

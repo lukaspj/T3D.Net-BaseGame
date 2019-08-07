@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class NavPath : SceneObject {
 
 
 
-        public NavPath(bool pRegister = false) 
+        public NavPath(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public NavPath(string pName, bool pRegister) 
+
+        public NavPath(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public NavPath(string pName) 
+
+        public NavPath(string pName)
             : this(pName, false) {
         }
-        
-        public NavPath(string pName, string pParent, bool pRegister = false) 
+
+        public NavPath(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public NavPath(string pName, SimObject pParent, bool pRegister = false) 
+
+        public NavPath(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public NavPath(SimObject pObj) 
+
+        public NavPath(SimObject pObj)
             : base(pObj) {
         }
-        
-        public NavPath(IntPtr pObj) 
+
+        public NavPath(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetLength__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate float _GetLength(IntPtr _this);
                 internal delegate float _GetLength(IntPtr _this, GetLength__Args args);
                 private static _GetLength _GetLengthFunc;
@@ -89,21 +89,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNavPath_getLength"), typeof(_GetLength));
                     }
-                    
+
                     return _GetLengthFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetFlags__Args
                 {
-				   
+
 				   internal int idx;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetFlags(IntPtr _this, int idx);
                 internal delegate int _GetFlags(IntPtr _this, GetFlags__Args args);
                 private static _GetFlags _GetFlagsFunc;
@@ -115,21 +115,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNavPath_getFlags"), typeof(_GetFlags));
                     }
-                    
+
                     return _GetFlagsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetNode__Args
                 {
-				   
+
 				   internal int idx;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetNode(IntPtr _this, int idx);
                 internal delegate Point3F.InternalStruct _GetNode(IntPtr _this, GetNode__Args args);
                 private static _GetNode _GetNodeFunc;
@@ -141,11 +141,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNavPath_getNode"), typeof(_GetNode));
                     }
-                    
+
                     return _GetNodeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Size__Args
@@ -153,7 +153,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _Size(IntPtr _this);
                 internal delegate int _Size(IntPtr _this, Size__Args args);
                 private static _Size _SizeFunc;
@@ -165,21 +165,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNavPath_size"), typeof(_Size));
                     }
-                    
+
                     return _SizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnNavMeshUpdateBox__Args
                 {
-				   
+
 				   internal string data;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnNavMeshUpdateBox(IntPtr _this, string data);
                 internal delegate void _OnNavMeshUpdateBox(IntPtr _this, OnNavMeshUpdateBox__Args args);
                 private static _OnNavMeshUpdateBox _OnNavMeshUpdateBoxFunc;
@@ -191,21 +191,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNavPath_onNavMeshUpdateBox"), typeof(_OnNavMeshUpdateBox));
                     }
-                    
+
                     return _OnNavMeshUpdateBoxFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnNavMeshUpdate__Args
                 {
-				   
+
 				   internal string data;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnNavMeshUpdate(IntPtr _this, string data);
                 internal delegate void _OnNavMeshUpdate(IntPtr _this, OnNavMeshUpdate__Args args);
                 private static _OnNavMeshUpdate _OnNavMeshUpdateFunc;
@@ -217,11 +217,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNavPath_onNavMeshUpdate"), typeof(_OnNavMeshUpdate));
                     }
-                    
+
                     return _OnNavMeshUpdateFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Plan__Args
@@ -241,11 +241,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNavPath_plan"), typeof(_Plan));
                     }
-                    
+
                     return _PlanFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -253,7 +253,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -265,11 +265,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNavPath_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -277,7 +277,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -289,7 +289,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnNavPath_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -297,94 +297,94 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public float GetLength() {
-        
+
                      InternalUnsafeMethods.GetLength__Args _args = new InternalUnsafeMethods.GetLength__Args() {
                      };
                      float _engineResult = InternalUnsafeMethods.GetLength()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetFlags(int idx) {
-        
+
                                           InternalUnsafeMethods.GetFlags__Args _args = new InternalUnsafeMethods.GetFlags__Args() {
                         idx = idx,
                      };
                      int _engineResult = InternalUnsafeMethods.GetFlags()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public Point3F GetNode(int idx) {
-        
+
                                           InternalUnsafeMethods.GetNode__Args _args = new InternalUnsafeMethods.GetNode__Args() {
                         idx = idx,
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetNode()(ObjectPtr, _args);
-                                                      
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public int Size() {
-        
+
                      InternalUnsafeMethods.Size__Args _args = new InternalUnsafeMethods.Size__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.Size()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void OnNavMeshUpdateBox(string data) {
-        
+
                                           InternalUnsafeMethods.OnNavMeshUpdateBox__Args _args = new InternalUnsafeMethods.OnNavMeshUpdateBox__Args() {
                         data = data,
                      };
                      InternalUnsafeMethods.OnNavMeshUpdateBox()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnNavMeshUpdate(string data) {
-        
+
                                           InternalUnsafeMethods.OnNavMeshUpdate__Args _args = new InternalUnsafeMethods.OnNavMeshUpdate__Args() {
                         data = data,
                      };
                      InternalUnsafeMethods.OnNavMeshUpdate()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool Plan() {
-        
+
                      InternalUnsafeMethods.Plan__Args _args = new InternalUnsafeMethods.Plan__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.Plan()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

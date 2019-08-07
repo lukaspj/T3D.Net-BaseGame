@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class Precipitation : GameBase {
 
 
 
-        public Precipitation(bool pRegister = false) 
+        public Precipitation(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public Precipitation(string pName, bool pRegister) 
+
+        public Precipitation(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public Precipitation(string pName) 
+
+        public Precipitation(string pName)
             : this(pName, false) {
         }
-        
-        public Precipitation(string pName, string pParent, bool pRegister = false) 
+
+        public Precipitation(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public Precipitation(string pName, SimObject pParent, bool pRegister = false) 
+
+        public Precipitation(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public Precipitation(SimObject pObj) 
+
+        public Precipitation(SimObject pObj)
             : base(pObj) {
         }
-        
-        public Precipitation(IntPtr pObj) 
+
+        public Precipitation(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,21 +69,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetTurbulence__Args
                 {
-				   
+
 				   internal float max;
-				   
+
 				   internal float speed;
-				   
+
 				   internal float seconds;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetTurbulence(IntPtr _this, float max, float speed, float seconds);
                 internal delegate void _SetTurbulence(IntPtr _this, SetTurbulence__Args args);
                 private static _SetTurbulence _SetTurbulenceFunc;
@@ -95,23 +95,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPrecipitation_setTurbulence"), typeof(_SetTurbulence));
                     }
-                    
+
                     return _SetTurbulenceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ModifyStorm__Args
                 {
-				   
+
 				   internal float percentage;
-				   
+
 				   internal float seconds;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ModifyStorm(IntPtr _this, float percentage, float seconds);
                 internal delegate void _ModifyStorm(IntPtr _this, ModifyStorm__Args args);
                 private static _ModifyStorm _ModifyStormFunc;
@@ -123,21 +123,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPrecipitation_modifyStorm"), typeof(_ModifyStorm));
                     }
-                    
+
                     return _ModifyStormFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetPercentage__Args
                 {
-				   
+
 				   internal float percentage;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetPercentage(IntPtr _this, float percentage);
                 internal delegate void _SetPercentage(IntPtr _this, SetPercentage__Args args);
                 private static _SetPercentage _SetPercentageFunc;
@@ -149,11 +149,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPrecipitation_setPercentage"), typeof(_SetPercentage));
                     }
-                    
+
                     return _SetPercentageFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -161,7 +161,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -173,11 +173,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPrecipitation_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -185,7 +185,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -197,7 +197,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnPrecipitation_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -205,51 +205,51 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void SetTurbulence(float max = 1f, float speed = 5f, float seconds = 5f) {
-        
+
                                                                                     InternalUnsafeMethods.SetTurbulence__Args _args = new InternalUnsafeMethods.SetTurbulence__Args() {
                         max = max,
                         speed = speed,
                         seconds = seconds,
                      };
                      InternalUnsafeMethods.SetTurbulence()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ModifyStorm(float percentage = 1f, float seconds = 5f) {
-        
+
                                                                InternalUnsafeMethods.ModifyStorm__Args _args = new InternalUnsafeMethods.ModifyStorm__Args() {
                         percentage = percentage,
                         seconds = seconds,
                      };
                      InternalUnsafeMethods.ModifyStorm()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetPercentage(float percentage = 1f) {
-        
+
                                           InternalUnsafeMethods.SetPercentage__Args _args = new InternalUnsafeMethods.SetPercentage__Args() {
                         percentage = percentage,
                      };
                      InternalUnsafeMethods.SetPercentage()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

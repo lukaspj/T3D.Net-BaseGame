@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiWindowCtrl : GuiContainer {
 
 
 
-        public GuiWindowCtrl(bool pRegister = false) 
+        public GuiWindowCtrl(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiWindowCtrl(string pName, bool pRegister) 
+
+        public GuiWindowCtrl(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiWindowCtrl(string pName) 
+
+        public GuiWindowCtrl(string pName)
             : this(pName, false) {
         }
-        
-        public GuiWindowCtrl(string pName, string pParent, bool pRegister = false) 
+
+        public GuiWindowCtrl(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiWindowCtrl(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiWindowCtrl(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiWindowCtrl(SimObject pObj) 
+
+        public GuiWindowCtrl(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiWindowCtrl(IntPtr pObj) 
+
+        public GuiWindowCtrl(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,19 +69,19 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Attach__Args
                 {
-				   
+
 				   internal IntPtr bottomWindow;
-				   
+
 				   internal IntPtr topWindow;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Attach(IntPtr bottomWindow, IntPtr topWindow);
                 internal delegate void _Attach(Attach__Args args);
                 private static _Attach _AttachFunc;
@@ -93,21 +93,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiWindowCtrl_attach"), typeof(_Attach));
                     }
-                    
+
                     return _AttachFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct AttachTo__Args
                 {
-				   
+
 				   internal IntPtr window;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _AttachTo(IntPtr _this, IntPtr window);
                 internal delegate void _AttachTo(IntPtr _this, AttachTo__Args args);
                 private static _AttachTo _AttachToFunc;
@@ -119,11 +119,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiWindowCtrl_attachTo"), typeof(_AttachTo));
                     }
-                    
+
                     return _AttachToFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ToggleCollapseGroup__Args
@@ -131,7 +131,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ToggleCollapseGroup(IntPtr _this);
                 internal delegate void _ToggleCollapseGroup(IntPtr _this, ToggleCollapseGroup__Args args);
                 private static _ToggleCollapseGroup _ToggleCollapseGroupFunc;
@@ -143,11 +143,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiWindowCtrl_toggleCollapseGroup"), typeof(_ToggleCollapseGroup));
                     }
-                    
+
                     return _ToggleCollapseGroupFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetCollapseGroup__Args
@@ -157,7 +157,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetCollapseGroup(IntPtr _this, [MarshalAs(UnmanagedType.I1)]bool state);
                 internal delegate void _SetCollapseGroup(IntPtr _this, SetCollapseGroup__Args args);
                 private static _SetCollapseGroup _SetCollapseGroupFunc;
@@ -169,11 +169,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiWindowCtrl_setCollapseGroup"), typeof(_SetCollapseGroup));
                     }
-                    
+
                     return _SetCollapseGroupFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SelectWindow__Args
@@ -181,7 +181,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SelectWindow(IntPtr _this);
                 internal delegate void _SelectWindow(IntPtr _this, SelectWindow__Args args);
                 private static _SelectWindow _SelectWindowFunc;
@@ -193,11 +193,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiWindowCtrl_selectWindow"), typeof(_SelectWindow));
                     }
-                    
+
                     return _SelectWindowFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnRestore__Args
@@ -205,7 +205,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnRestore(IntPtr _this);
                 internal delegate void _OnRestore(IntPtr _this, OnRestore__Args args);
                 private static _OnRestore _OnRestoreFunc;
@@ -217,11 +217,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiWindowCtrl_onRestore"), typeof(_OnRestore));
                     }
-                    
+
                     return _OnRestoreFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnCollapse__Args
@@ -229,7 +229,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnCollapse(IntPtr _this);
                 internal delegate void _OnCollapse(IntPtr _this, OnCollapse__Args args);
                 private static _OnCollapse _OnCollapseFunc;
@@ -241,11 +241,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiWindowCtrl_onCollapse"), typeof(_OnCollapse));
                     }
-                    
+
                     return _OnCollapseFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnMaximize__Args
@@ -253,7 +253,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnMaximize(IntPtr _this);
                 internal delegate void _OnMaximize(IntPtr _this, OnMaximize__Args args);
                 private static _OnMaximize _OnMaximizeFunc;
@@ -265,11 +265,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiWindowCtrl_onMaximize"), typeof(_OnMaximize));
                     }
-                    
+
                     return _OnMaximizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnMinimize__Args
@@ -277,7 +277,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnMinimize(IntPtr _this);
                 internal delegate void _OnMinimize(IntPtr _this, OnMinimize__Args args);
                 private static _OnMinimize _OnMinimizeFunc;
@@ -289,11 +289,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiWindowCtrl_onMinimize"), typeof(_OnMinimize));
                     }
-                    
+
                     return _OnMinimizeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnClose__Args
@@ -301,7 +301,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnClose(IntPtr _this);
                 internal delegate void _OnClose(IntPtr _this, OnClose__Args args);
                 private static _OnClose _OnCloseFunc;
@@ -313,11 +313,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbGuiWindowCtrl_onClose"), typeof(_OnClose));
                     }
-                    
+
                     return _OnCloseFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -325,7 +325,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -337,11 +337,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiWindowCtrl_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -349,7 +349,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -361,7 +361,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiWindowCtrl_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -369,122 +369,122 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public static void Attach(GuiWindowCtrl bottomWindow, GuiWindowCtrl topWindow) {
-                     
-                     
+
+
                      InternalUnsafeMethods.Attach__Args _args = new InternalUnsafeMethods.Attach__Args() {
                         bottomWindow = bottomWindow.ObjectPtr,
                         topWindow = topWindow.ObjectPtr,
                      };
                      InternalUnsafeMethods.Attach()(_args);
-                     
-                     
-            
-                  }
-	
 
-			
+
+
+                  }
+
+
+
                   public void AttachTo(GuiWindowCtrl window) {
-        
+
                                           InternalUnsafeMethods.AttachTo__Args _args = new InternalUnsafeMethods.AttachTo__Args() {
                         window = window.ObjectPtr,
                      };
                      InternalUnsafeMethods.AttachTo()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ToggleCollapseGroup() {
-        
+
                      InternalUnsafeMethods.ToggleCollapseGroup__Args _args = new InternalUnsafeMethods.ToggleCollapseGroup__Args() {
                      };
                      InternalUnsafeMethods.ToggleCollapseGroup()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetCollapseGroup(bool state) {
-        
+
                                           InternalUnsafeMethods.SetCollapseGroup__Args _args = new InternalUnsafeMethods.SetCollapseGroup__Args() {
                         state = state,
                      };
                      InternalUnsafeMethods.SetCollapseGroup()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SelectWindow() {
-        
+
                      InternalUnsafeMethods.SelectWindow__Args _args = new InternalUnsafeMethods.SelectWindow__Args() {
                      };
                      InternalUnsafeMethods.SelectWindow()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnRestore() {
-        
+
                      InternalUnsafeMethods.OnRestore__Args _args = new InternalUnsafeMethods.OnRestore__Args() {
                      };
                      InternalUnsafeMethods.OnRestore()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnCollapse() {
-        
+
                      InternalUnsafeMethods.OnCollapse__Args _args = new InternalUnsafeMethods.OnCollapse__Args() {
                      };
                      InternalUnsafeMethods.OnCollapse()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnMaximize() {
-        
+
                      InternalUnsafeMethods.OnMaximize__Args _args = new InternalUnsafeMethods.OnMaximize__Args() {
                      };
                      InternalUnsafeMethods.OnMaximize()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnMinimize() {
-        
+
                      InternalUnsafeMethods.OnMinimize__Args _args = new InternalUnsafeMethods.OnMinimize__Args() {
                      };
                      InternalUnsafeMethods.OnMinimize()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnClose() {
-        
+
                      InternalUnsafeMethods.OnClose__Args _args = new InternalUnsafeMethods.OnClose__Args() {
                      };
                      InternalUnsafeMethods.OnClose()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

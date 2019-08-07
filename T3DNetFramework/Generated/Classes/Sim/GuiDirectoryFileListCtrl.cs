@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiDirectoryFileListCtrl : GuiListBoxCtrl {
 
 
 
-        public GuiDirectoryFileListCtrl(bool pRegister = false) 
+        public GuiDirectoryFileListCtrl(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiDirectoryFileListCtrl(string pName, bool pRegister) 
+
+        public GuiDirectoryFileListCtrl(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiDirectoryFileListCtrl(string pName) 
+
+        public GuiDirectoryFileListCtrl(string pName)
             : this(pName, false) {
         }
-        
-        public GuiDirectoryFileListCtrl(string pName, string pParent, bool pRegister = false) 
+
+        public GuiDirectoryFileListCtrl(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiDirectoryFileListCtrl(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiDirectoryFileListCtrl(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiDirectoryFileListCtrl(SimObject pObj) 
+
+        public GuiDirectoryFileListCtrl(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiDirectoryFileListCtrl(IntPtr pObj) 
+
+        public GuiDirectoryFileListCtrl(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSelectedFile__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetSelectedFile(IntPtr _this);
                 internal delegate IntPtr _GetSelectedFile(IntPtr _this, GetSelectedFile__Args args);
                 private static _GetSelectedFile _GetSelectedFileFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiDirectoryFileListCtrl_getSelectedFile"), typeof(_GetSelectedFile));
                     }
-                    
+
                     return _GetSelectedFileFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSelectedFiles__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetSelectedFiles(IntPtr _this);
                 internal delegate IntPtr _GetSelectedFiles(IntPtr _this, GetSelectedFiles__Args args);
                 private static _GetSelectedFiles _GetSelectedFilesFunc;
@@ -113,18 +113,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiDirectoryFileListCtrl_getSelectedFiles"), typeof(_GetSelectedFiles));
                     }
-                    
+
                     return _GetSelectedFilesFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetPath__Args
                 {
-				   
+
 				   internal string path;
-				   
+
 				   internal string filter;
                 }
 
@@ -141,11 +141,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiDirectoryFileListCtrl_setPath"), typeof(_SetPath));
                     }
-                    
+
                     return _SetPathFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Reload__Args
@@ -153,7 +153,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Reload(IntPtr _this);
                 internal delegate void _Reload(IntPtr _this, Reload__Args args);
                 private static _Reload _ReloadFunc;
@@ -165,21 +165,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiDirectoryFileListCtrl_reload"), typeof(_Reload));
                     }
-                    
+
                     return _ReloadFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetFilter__Args
                 {
-				   
+
 				   internal string filter;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetFilter(IntPtr _this, string filter);
                 internal delegate void _SetFilter(IntPtr _this, SetFilter__Args args);
                 private static _SetFilter _SetFilterFunc;
@@ -191,11 +191,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiDirectoryFileListCtrl_setFilter"), typeof(_SetFilter));
                     }
-                    
+
                     return _SetFilterFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -203,7 +203,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -215,11 +215,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiDirectoryFileListCtrl_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -227,7 +227,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -239,7 +239,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiDirectoryFileListCtrl_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -247,71 +247,71 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public string GetSelectedFile() {
-        
+
                      InternalUnsafeMethods.GetSelectedFile__Args _args = new InternalUnsafeMethods.GetSelectedFile__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetSelectedFile()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public string GetSelectedFiles() {
-        
+
                      InternalUnsafeMethods.GetSelectedFiles__Args _args = new InternalUnsafeMethods.GetSelectedFiles__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetSelectedFiles()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public bool SetPath(string path, string filter) {
-        
+
                                                                InternalUnsafeMethods.SetPath__Args _args = new InternalUnsafeMethods.SetPath__Args() {
                         path = path,
                         filter = filter,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetPath()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void Reload() {
-        
+
                      InternalUnsafeMethods.Reload__Args _args = new InternalUnsafeMethods.Reload__Args() {
                      };
                      InternalUnsafeMethods.Reload()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetFilter(string filter) {
-        
+
                                           InternalUnsafeMethods.SetFilter__Args _args = new InternalUnsafeMethods.SetFilter__Args() {
                         filter = filter,
                      };
                      InternalUnsafeMethods.SetFilter()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

@@ -1,7 +1,7 @@
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Interop;
 
-namespace Game.Core.Components
+namespace BaseGame.Core.Components
 {
    [ConsoleClass("Core_Components")]
    public class CoreComponents : SimSet

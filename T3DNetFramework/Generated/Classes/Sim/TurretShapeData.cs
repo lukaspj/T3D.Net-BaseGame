@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class TurretShapeData : ItemData {
 
 
 
-        public TurretShapeData(bool pRegister = false) 
+        public TurretShapeData(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public TurretShapeData(string pName, bool pRegister) 
+
+        public TurretShapeData(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public TurretShapeData(string pName) 
+
+        public TurretShapeData(string pName)
             : this(pName, false) {
         }
-        
-        public TurretShapeData(string pName, string pParent, bool pRegister = false) 
+
+        public TurretShapeData(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public TurretShapeData(string pName, SimObject pParent, bool pRegister = false) 
+
+        public TurretShapeData(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public TurretShapeData(SimObject pObj) 
+
+        public TurretShapeData(SimObject pObj)
             : base(pObj) {
         }
-        
-        public TurretShapeData(IntPtr pObj) 
+
+        public TurretShapeData(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,17 +69,17 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnStickyCollision__Args
                 {
-				   
+
 				   internal IntPtr obj;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnStickyCollision(IntPtr _this, IntPtr obj);
                 internal delegate void _OnStickyCollision(IntPtr _this, OnStickyCollision__Args args);
                 private static _OnStickyCollision _OnStickyCollisionFunc;
@@ -91,23 +91,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbTurretShapeData_onStickyCollision"), typeof(_OnStickyCollision));
                     }
-                    
+
                     return _OnStickyCollisionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnUnmountObject__Args
                 {
-				   
+
 				   internal IntPtr turret;
-				   
+
 				   internal IntPtr obj;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnUnmountObject(IntPtr _this, IntPtr turret, IntPtr obj);
                 internal delegate void _OnUnmountObject(IntPtr _this, OnUnmountObject__Args args);
                 private static _OnUnmountObject _OnUnmountObjectFunc;
@@ -119,25 +119,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbTurretShapeData_onUnmountObject"), typeof(_OnUnmountObject));
                     }
-                    
+
                     return _OnUnmountObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnMountObject__Args
                 {
-				   
+
 				   internal IntPtr turret;
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal int node;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnMountObject(IntPtr _this, IntPtr turret, IntPtr obj, int node);
                 internal delegate void _OnMountObject(IntPtr _this, OnMountObject__Args args);
                 private static _OnMountObject _OnMountObjectFunc;
@@ -149,11 +149,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbTurretShapeData_onMountObject"), typeof(_OnMountObject));
                     }
-                    
+
                     return _OnMountObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -161,7 +161,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -173,11 +173,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTurretShapeData_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -185,7 +185,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -197,7 +197,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTurretShapeData_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -205,51 +205,51 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void OnStickyCollision(TurretShape obj) {
-        
+
                                           InternalUnsafeMethods.OnStickyCollision__Args _args = new InternalUnsafeMethods.OnStickyCollision__Args() {
                         obj = obj.ObjectPtr,
                      };
                      InternalUnsafeMethods.OnStickyCollision()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnUnmountObject(SceneObject turret, SceneObject obj) {
-        
+
                                                                InternalUnsafeMethods.OnUnmountObject__Args _args = new InternalUnsafeMethods.OnUnmountObject__Args() {
                         turret = turret.ObjectPtr,
                         obj = obj.ObjectPtr,
                      };
                      InternalUnsafeMethods.OnUnmountObject()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnMountObject(SceneObject turret, SceneObject obj, int node) {
-        
+
                                                                                     InternalUnsafeMethods.OnMountObject__Args _args = new InternalUnsafeMethods.OnMountObject__Args() {
                         turret = turret.ObjectPtr,
                         obj = obj.ObjectPtr,
                         node = node,
                      };
                      InternalUnsafeMethods.OnMountObject()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

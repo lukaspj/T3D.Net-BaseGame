@@ -1,10 +1,10 @@
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Functions;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Functions;
+using T3DNetFramework.Interop;
 
-namespace Game.Core.ClientServer
+namespace BaseGame.Core.ClientServer
 {
    // The general flow of a gane - server's creation, loading and hosting clients, and then destruction is as follows:
 

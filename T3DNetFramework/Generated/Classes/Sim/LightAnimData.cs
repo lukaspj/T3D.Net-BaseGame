@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class LightAnimData : SimDataBlock {
 
 
 
-        public LightAnimData(bool pRegister = false) 
+        public LightAnimData(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public LightAnimData(string pName, bool pRegister) 
+
+        public LightAnimData(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public LightAnimData(string pName) 
+
+        public LightAnimData(string pName)
             : this(pName, false) {
         }
-        
-        public LightAnimData(string pName, string pParent, bool pRegister = false) 
+
+        public LightAnimData(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public LightAnimData(string pName, SimObject pParent, bool pRegister = false) 
+
+        public LightAnimData(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public LightAnimData(SimObject pObj) 
+
+        public LightAnimData(SimObject pObj)
             : base(pObj) {
         }
-        
-        public LightAnimData(IntPtr pObj) 
+
+        public LightAnimData(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnLightAnimData_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -113,7 +113,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnLightAnimData_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -121,15 +121,15 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 
@@ -137,9 +137,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> OffsetA {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "offsetA", 
-                    3, 
+                    this,
+                    "offsetA",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -148,9 +148,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> OffsetZ {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "OffsetZ", 
-                    3, 
+                    this,
+                    "OffsetZ",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -159,9 +159,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> OffsetPeriod {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "offsetPeriod", 
-                    3, 
+                    this,
+                    "offsetPeriod",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -170,9 +170,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<string> OffsetKeys {
             get => new DynamicFieldVector<string>(
-                    this, 
-                    "offsetKeys", 
-                    3, 
+                    this,
+                    "offsetKeys",
+                    3,
                     val => GenericMarshal.StringTo<string>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -181,9 +181,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<bool> OffsetSmooth {
             get => new DynamicFieldVector<bool>(
-                    this, 
-                    "offsetSmooth", 
-                    3, 
+                    this,
+                    "offsetSmooth",
+                    3,
                     val => GenericMarshal.StringTo<bool>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -192,9 +192,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> RotA {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "rotA", 
-                    3, 
+                    this,
+                    "rotA",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -203,9 +203,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> RotZ {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "rotZ", 
-                    3, 
+                    this,
+                    "rotZ",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -214,9 +214,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> RotPeriod {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "rotPeriod", 
-                    3, 
+                    this,
+                    "rotPeriod",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -225,9 +225,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<string> RotKeys {
             get => new DynamicFieldVector<string>(
-                    this, 
-                    "rotKeys", 
-                    3, 
+                    this,
+                    "rotKeys",
+                    3,
                     val => GenericMarshal.StringTo<string>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -236,9 +236,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<bool> RotSmooth {
             get => new DynamicFieldVector<bool>(
-                    this, 
-                    "rotSmooth", 
-                    3, 
+                    this,
+                    "rotSmooth",
+                    3,
                     val => GenericMarshal.StringTo<bool>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -247,9 +247,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> ColorA {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "colorA", 
-                    3, 
+                    this,
+                    "colorA",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -258,9 +258,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> ColorZ {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "colorZ", 
-                    3, 
+                    this,
+                    "colorZ",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -269,9 +269,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> ColorPeriod {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "colorPeriod", 
-                    3, 
+                    this,
+                    "colorPeriod",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -280,9 +280,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<string> ColorKeys {
             get => new DynamicFieldVector<string>(
-                    this, 
-                    "colorKeys", 
-                    3, 
+                    this,
+                    "colorKeys",
+                    3,
                     val => GenericMarshal.StringTo<string>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -291,9 +291,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<bool> ColorSmooth {
             get => new DynamicFieldVector<bool>(
-                    this, 
-                    "colorSmooth", 
-                    3, 
+                    this,
+                    "colorSmooth",
+                    3,
                     val => GenericMarshal.StringTo<bool>(val),
                     obj => GenericMarshal.ToString(obj)
                 );

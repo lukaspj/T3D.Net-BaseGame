@@ -1,4 +1,4 @@
-﻿namespace T3DSharpFramework.Engine.Structs
+﻿namespace T3DNetFramework.Engine.Structs
 {
     public class Point3F : Generated.Structs.Math.Point3F
     {

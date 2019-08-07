@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiMaterialPreview : GuiTSCtrl {
 
 
 
-        public GuiMaterialPreview(bool pRegister = false) 
+        public GuiMaterialPreview(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiMaterialPreview(string pName, bool pRegister) 
+
+        public GuiMaterialPreview(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiMaterialPreview(string pName) 
+
+        public GuiMaterialPreview(string pName)
             : this(pName, false) {
         }
-        
-        public GuiMaterialPreview(string pName, string pParent, bool pRegister = false) 
+
+        public GuiMaterialPreview(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiMaterialPreview(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiMaterialPreview(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiMaterialPreview(SimObject pObj) 
+
+        public GuiMaterialPreview(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiMaterialPreview(IntPtr pObj) 
+
+        public GuiMaterialPreview(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,17 +69,17 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetAmbientLightColor__Args
                 {
-				   
+
 				   internal IntPtr color;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetAmbientLightColor(IntPtr _this, IntPtr color);
                 internal delegate void _SetAmbientLightColor(IntPtr _this, SetAmbientLightColor__Args args);
                 private static _SetAmbientLightColor _SetAmbientLightColorFunc;
@@ -91,21 +91,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMaterialPreview_setAmbientLightColor"), typeof(_SetAmbientLightColor));
                     }
-                    
+
                     return _SetAmbientLightColorFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetLightColor__Args
                 {
-				   
+
 				   internal IntPtr color;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetLightColor(IntPtr _this, IntPtr color);
                 internal delegate void _SetLightColor(IntPtr _this, SetLightColor__Args args);
                 private static _SetLightColor _SetLightColorFunc;
@@ -117,11 +117,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMaterialPreview_setLightColor"), typeof(_SetLightColor));
                     }
-                    
+
                     return _SetLightColorFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Reset__Args
@@ -129,7 +129,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Reset(IntPtr _this);
                 internal delegate void _Reset(IntPtr _this, Reset__Args args);
                 private static _Reset _ResetFunc;
@@ -141,21 +141,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMaterialPreview_reset"), typeof(_Reset));
                     }
-                    
+
                     return _ResetFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetOrbitDistance__Args
                 {
-				   
+
 				   internal float distance;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetOrbitDistance(IntPtr _this, float distance);
                 internal delegate void _SetOrbitDistance(IntPtr _this, SetOrbitDistance__Args args);
                 private static _SetOrbitDistance _SetOrbitDistanceFunc;
@@ -167,11 +167,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMaterialPreview_setOrbitDistance"), typeof(_SetOrbitDistance));
                     }
-                    
+
                     return _SetOrbitDistanceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct DeleteModel__Args
@@ -179,7 +179,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _DeleteModel(IntPtr _this);
                 internal delegate void _DeleteModel(IntPtr _this, DeleteModel__Args args);
                 private static _DeleteModel _DeleteModelFunc;
@@ -191,21 +191,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMaterialPreview_deleteModel"), typeof(_DeleteModel));
                     }
-                    
+
                     return _DeleteModelFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetModel__Args
                 {
-				   
+
 				   internal string shapeName;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetModel(IntPtr _this, string shapeName);
                 internal delegate void _SetModel(IntPtr _this, SetModel__Args args);
                 private static _SetModel _SetModelFunc;
@@ -217,11 +217,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMaterialPreview_setModel"), typeof(_SetModel));
                     }
-                    
+
                     return _SetModelFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -229,7 +229,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -241,11 +241,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMaterialPreview_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -253,7 +253,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -265,7 +265,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiMaterialPreview_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -273,79 +273,79 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void SetAmbientLightColor(LinearColorF color) {
-        
+
                      color.Alloc();                     InternalUnsafeMethods.SetAmbientLightColor__Args _args = new InternalUnsafeMethods.SetAmbientLightColor__Args() {
                         color = color.internalStructPtr,
                      };
                      InternalUnsafeMethods.SetAmbientLightColor()(ObjectPtr, _args);
-                                          color.Free();            
+                                          color.Free();
                   }
-	
 
-			
+
+
                   public void SetLightColor(LinearColorF color) {
-        
+
                      color.Alloc();                     InternalUnsafeMethods.SetLightColor__Args _args = new InternalUnsafeMethods.SetLightColor__Args() {
                         color = color.internalStructPtr,
                      };
                      InternalUnsafeMethods.SetLightColor()(ObjectPtr, _args);
-                                          color.Free();            
+                                          color.Free();
                   }
-	
 
-			
+
+
                   public void Reset() {
-        
+
                      InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
                      };
                      InternalUnsafeMethods.Reset()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetOrbitDistance(float distance) {
-        
+
                                           InternalUnsafeMethods.SetOrbitDistance__Args _args = new InternalUnsafeMethods.SetOrbitDistance__Args() {
                         distance = distance,
                      };
                      InternalUnsafeMethods.SetOrbitDistance()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void DeleteModel() {
-        
+
                      InternalUnsafeMethods.DeleteModel__Args _args = new InternalUnsafeMethods.DeleteModel__Args() {
                      };
                      InternalUnsafeMethods.DeleteModel()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetModel(string shapeName) {
-        
+
                                           InternalUnsafeMethods.SetModel__Args _args = new InternalUnsafeMethods.SetModel__Args() {
                         shapeName = shapeName,
                      };
                      InternalUnsafeMethods.SetModel()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

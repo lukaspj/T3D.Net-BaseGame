@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class ShapeBaseData : GameBaseData {
 
 
 
-        public ShapeBaseData(bool pRegister = false) 
+        public ShapeBaseData(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public ShapeBaseData(string pName, bool pRegister) 
+
+        public ShapeBaseData(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public ShapeBaseData(string pName) 
+
+        public ShapeBaseData(string pName)
             : this(pName, false) {
         }
-        
-        public ShapeBaseData(string pName, string pParent, bool pRegister = false) 
+
+        public ShapeBaseData(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public ShapeBaseData(string pName, SimObject pParent, bool pRegister = false) 
+
+        public ShapeBaseData(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public ShapeBaseData(SimObject pObj) 
+
+        public ShapeBaseData(SimObject pObj)
             : base(pObj) {
         }
-        
-        public ShapeBaseData(IntPtr pObj) 
+
+        public ShapeBaseData(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,19 +69,19 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetDeployTransform__Args
                 {
-				   
+
 				   internal IntPtr pos;
-				   
+
 				   internal IntPtr normal;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate TransformF.InternalStruct _GetDeployTransform(IntPtr _this, IntPtr pos, IntPtr normal);
                 internal delegate TransformF.InternalStruct _GetDeployTransform(IntPtr _this, GetDeployTransform__Args args);
                 private static _GetDeployTransform _GetDeployTransformFunc;
@@ -93,16 +93,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnShapeBaseData_getDeployTransform"), typeof(_GetDeployTransform));
                     }
-                    
+
                     return _GetDeployTransformFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct CheckDeployPos__Args
                 {
-				   
+
 				   internal IntPtr txfm;
                 }
 
@@ -119,23 +119,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnShapeBaseData_checkDeployPos"), typeof(_CheckDeployPos));
                     }
-                    
+
                     return _CheckDeployPosFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnForceUncloak__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal string reason;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnForceUncloak(IntPtr _this, IntPtr obj, string reason);
                 internal delegate void _OnForceUncloak(IntPtr _this, OnForceUncloak__Args args);
                 private static _OnForceUncloak _OnForceUncloakFunc;
@@ -147,25 +147,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbShapeBaseData_onForceUncloak"), typeof(_OnForceUncloak));
                     }
-                    
+
                     return _OnForceUncloakFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnEndSequence__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal int slot;
-				   
+
 				   internal string name;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnEndSequence(IntPtr _this, IntPtr obj, int slot, string name);
                 internal delegate void _OnEndSequence(IntPtr _this, OnEndSequence__Args args);
                 private static _OnEndSequence _OnEndSequenceFunc;
@@ -177,25 +177,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbShapeBaseData_onEndSequence"), typeof(_OnEndSequence));
                     }
-                    
+
                     return _OnEndSequenceFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnTrigger__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal int index;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool state;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnTrigger(IntPtr _this, IntPtr obj, int index, [MarshalAs(UnmanagedType.I1)]bool state);
                 internal delegate void _OnTrigger(IntPtr _this, OnTrigger__Args args);
                 private static _OnTrigger _OnTriggerFunc;
@@ -207,23 +207,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbShapeBaseData_onTrigger"), typeof(_OnTrigger));
                     }
-                    
+
                     return _OnTriggerFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnDamage__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal float delta;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnDamage(IntPtr _this, IntPtr obj, float delta);
                 internal delegate void _OnDamage(IntPtr _this, OnDamage__Args args);
                 private static _OnDamage _OnDamageFunc;
@@ -235,27 +235,27 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbShapeBaseData_onDamage"), typeof(_OnDamage));
                     }
-                    
+
                     return _OnDamageFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnCollision__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal IntPtr collObj;
-				   
+
 				   internal IntPtr vec;
-				   
+
 				   internal float len;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnCollision(IntPtr _this, IntPtr obj, IntPtr collObj, IntPtr vec, float len);
                 internal delegate void _OnCollision(IntPtr _this, OnCollision__Args args);
                 private static _OnCollision _OnCollisionFunc;
@@ -267,27 +267,27 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbShapeBaseData_onCollision"), typeof(_OnCollision));
                     }
-                    
+
                     return _OnCollisionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnImpact__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal IntPtr collObj;
-				   
+
 				   internal IntPtr vec;
-				   
+
 				   internal float len;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnImpact(IntPtr _this, IntPtr obj, IntPtr collObj, IntPtr vec, float len);
                 internal delegate void _OnImpact(IntPtr _this, OnImpact__Args args);
                 private static _OnImpact _OnImpactFunc;
@@ -299,23 +299,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbShapeBaseData_onImpact"), typeof(_OnImpact));
                     }
-                    
+
                     return _OnImpactFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnDestroyed__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal string lastState;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnDestroyed(IntPtr _this, IntPtr obj, string lastState);
                 internal delegate void _OnDestroyed(IntPtr _this, OnDestroyed__Args args);
                 private static _OnDestroyed _OnDestroyedFunc;
@@ -327,23 +327,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbShapeBaseData_onDestroyed"), typeof(_OnDestroyed));
                     }
-                    
+
                     return _OnDestroyedFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnDisabled__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal string lastState;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnDisabled(IntPtr _this, IntPtr obj, string lastState);
                 internal delegate void _OnDisabled(IntPtr _this, OnDisabled__Args args);
                 private static _OnDisabled _OnDisabledFunc;
@@ -355,23 +355,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbShapeBaseData_onDisabled"), typeof(_OnDisabled));
                     }
-                    
+
                     return _OnDisabledFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnEnabled__Args
                 {
-				   
+
 				   internal IntPtr obj;
-				   
+
 				   internal string lastState;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnEnabled(IntPtr _this, IntPtr obj, string lastState);
                 internal delegate void _OnEnabled(IntPtr _this, OnEnabled__Args args);
                 private static _OnEnabled _OnEnabledFunc;
@@ -383,11 +383,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "cbShapeBaseData_onEnabled"), typeof(_OnEnabled));
                     }
-                    
+
                     return _OnEnabledFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -395,7 +395,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -407,11 +407,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnShapeBaseData_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -419,7 +419,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -431,7 +431,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnShapeBaseData_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -439,84 +439,84 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public TransformF GetDeployTransform(Point3F pos, Point3F normal) {
-        
+
                      pos.Alloc();                     normal.Alloc();                     InternalUnsafeMethods.GetDeployTransform__Args _args = new InternalUnsafeMethods.GetDeployTransform__Args() {
                         pos = pos.internalStructPtr,
                         normal = normal.internalStructPtr,
                      };
                      TransformF.InternalStruct _engineResult = InternalUnsafeMethods.GetDeployTransform()(ObjectPtr, _args);
-                                          pos.Free();                     normal.Free();            
+                                          pos.Free();                     normal.Free();
                      return new TransformF(_engineResult);
                   }
-	
 
-			
+
+
                   public bool CheckDeployPos(TransformF txfm) {
-        
+
                      txfm.Alloc();                     InternalUnsafeMethods.CheckDeployPos__Args _args = new InternalUnsafeMethods.CheckDeployPos__Args() {
                         txfm = txfm.internalStructPtr,
                      };
                      bool _engineResult = InternalUnsafeMethods.CheckDeployPos()(ObjectPtr, _args);
-                                          txfm.Free();            
+                                          txfm.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void OnForceUncloak(ShapeBase obj, string reason) {
-        
+
                                                                InternalUnsafeMethods.OnForceUncloak__Args _args = new InternalUnsafeMethods.OnForceUncloak__Args() {
                         obj = obj.ObjectPtr,
                         reason = reason,
                      };
                      InternalUnsafeMethods.OnForceUncloak()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnEndSequence(ShapeBase obj, int slot, string name) {
-        
+
                                                                                     InternalUnsafeMethods.OnEndSequence__Args _args = new InternalUnsafeMethods.OnEndSequence__Args() {
                         obj = obj.ObjectPtr,
                         slot = slot,
                         name = name,
                      };
                      InternalUnsafeMethods.OnEndSequence()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnTrigger(ShapeBase obj, int index, bool state) {
-        
+
                                                                                     InternalUnsafeMethods.OnTrigger__Args _args = new InternalUnsafeMethods.OnTrigger__Args() {
                         obj = obj.ObjectPtr,
                         index = index,
                         state = state,
                      };
                      InternalUnsafeMethods.OnTrigger()(ObjectPtr, _args);
-                                                                                                
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnDamage(ShapeBase obj, float delta) {
-        
+
                                                                InternalUnsafeMethods.OnDamage__Args _args = new InternalUnsafeMethods.OnDamage__Args() {
                         obj = obj.ObjectPtr,
                         delta = delta,
                      };
                      InternalUnsafeMethods.OnDamage()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnCollision(ShapeBase obj, SceneObject collObj, Point3F vec, float len) {
-        
+
                                                                vec.Alloc();                                          InternalUnsafeMethods.OnCollision__Args _args = new InternalUnsafeMethods.OnCollision__Args() {
                         obj = obj.ObjectPtr,
                         collObj = collObj.ObjectPtr,
@@ -524,13 +524,13 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         len = len,
                      };
                      InternalUnsafeMethods.OnCollision()(ObjectPtr, _args);
-                                                                                    vec.Free();                                 
+                                                                                    vec.Free();
                   }
-	
 
-			
+
+
                   public void OnImpact(ShapeBase obj, SceneObject collObj, Point3F vec, float len) {
-        
+
                                                                vec.Alloc();                                          InternalUnsafeMethods.OnImpact__Args _args = new InternalUnsafeMethods.OnImpact__Args() {
                         obj = obj.ObjectPtr,
                         collObj = collObj.ObjectPtr,
@@ -538,55 +538,55 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         len = len,
                      };
                      InternalUnsafeMethods.OnImpact()(ObjectPtr, _args);
-                                                                                    vec.Free();                                 
+                                                                                    vec.Free();
                   }
-	
 
-			
+
+
                   public void OnDestroyed(ShapeBase obj, string lastState) {
-        
+
                                                                InternalUnsafeMethods.OnDestroyed__Args _args = new InternalUnsafeMethods.OnDestroyed__Args() {
                         obj = obj.ObjectPtr,
                         lastState = lastState,
                      };
                      InternalUnsafeMethods.OnDestroyed()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnDisabled(ShapeBase obj, string lastState) {
-        
+
                                                                InternalUnsafeMethods.OnDisabled__Args _args = new InternalUnsafeMethods.OnDisabled__Args() {
                         obj = obj.ObjectPtr,
                         lastState = lastState,
                      };
                      InternalUnsafeMethods.OnDisabled()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnEnabled(ShapeBase obj, string lastState) {
-        
+
                                                                InternalUnsafeMethods.OnEnabled__Args _args = new InternalUnsafeMethods.OnEnabled__Args() {
                         obj = obj.ObjectPtr,
                         lastState = lastState,
                      };
                      InternalUnsafeMethods.OnEnabled()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

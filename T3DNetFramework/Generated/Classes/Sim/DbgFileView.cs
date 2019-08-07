@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class DbgFileView : GuiArrayCtrl {
 
 
 
-        public DbgFileView(bool pRegister = false) 
+        public DbgFileView(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public DbgFileView(string pName, bool pRegister) 
+
+        public DbgFileView(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public DbgFileView(string pName) 
+
+        public DbgFileView(string pName)
             : this(pName, false) {
         }
-        
-        public DbgFileView(string pName, string pParent, bool pRegister = false) 
+
+        public DbgFileView(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public DbgFileView(string pName, SimObject pParent, bool pRegister = false) 
+
+        public DbgFileView(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public DbgFileView(SimObject pObj) 
+
+        public DbgFileView(SimObject pObj)
             : base(pObj) {
         }
-        
-        public DbgFileView(IntPtr pObj) 
+
+        public DbgFileView(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,12 +69,12 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct FindString__Args
                 {
-				   
+
 				   internal string findThis;
                 }
 
@@ -91,21 +91,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnDbgFileView_findString"), typeof(_FindString));
                     }
-                    
+
                     return _FindStringFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct RemoveBreak__Args
                 {
-				   
+
 				   internal uint line;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _RemoveBreak(IntPtr _this, uint line);
                 internal delegate void _RemoveBreak(IntPtr _this, RemoveBreak__Args args);
                 private static _RemoveBreak _RemoveBreakFunc;
@@ -117,21 +117,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnDbgFileView_removeBreak"), typeof(_RemoveBreak));
                     }
-                    
+
                     return _RemoveBreakFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetBreak__Args
                 {
-				   
+
 				   internal uint line;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetBreak(IntPtr _this, uint line);
                 internal delegate void _SetBreak(IntPtr _this, SetBreak__Args args);
                 private static _SetBreak _SetBreakFunc;
@@ -143,21 +143,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnDbgFileView_setBreak"), typeof(_SetBreak));
                     }
-                    
+
                     return _SetBreakFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetBreakPosition__Args
                 {
-				   
+
 				   internal uint line;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetBreakPosition(IntPtr _this, uint line);
                 internal delegate void _SetBreakPosition(IntPtr _this, SetBreakPosition__Args args);
                 private static _SetBreakPosition _SetBreakPositionFunc;
@@ -169,11 +169,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnDbgFileView_setBreakPosition"), typeof(_SetBreakPosition));
                     }
-                    
+
                     return _SetBreakPositionFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ClearBreakPositions__Args
@@ -181,7 +181,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ClearBreakPositions(IntPtr _this);
                 internal delegate void _ClearBreakPositions(IntPtr _this, ClearBreakPositions__Args args);
                 private static _ClearBreakPositions _ClearBreakPositionsFunc;
@@ -193,16 +193,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnDbgFileView_clearBreakPositions"), typeof(_ClearBreakPositions));
                     }
-                    
+
                     return _ClearBreakPositionsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Open__Args
                 {
-				   
+
 				   internal string filename;
                 }
 
@@ -219,11 +219,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnDbgFileView_open"), typeof(_Open));
                     }
-                    
+
                     return _OpenFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetCurrentLine__Args
@@ -231,7 +231,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetCurrentLine(IntPtr _this);
                 internal delegate IntPtr _GetCurrentLine(IntPtr _this, GetCurrentLine__Args args);
                 private static _GetCurrentLine _GetCurrentLineFunc;
@@ -243,23 +243,23 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnDbgFileView_getCurrentLine"), typeof(_GetCurrentLine));
                     }
-                    
+
                     return _GetCurrentLineFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetCurrentLine__Args
                 {
-				   
+
 				   internal int line;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool selected;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetCurrentLine(IntPtr _this, int line, [MarshalAs(UnmanagedType.I1)]bool selected);
                 internal delegate void _SetCurrentLine(IntPtr _this, SetCurrentLine__Args args);
                 private static _SetCurrentLine _SetCurrentLineFunc;
@@ -271,11 +271,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnDbgFileView_setCurrentLine"), typeof(_SetCurrentLine));
                     }
-                    
+
                     return _SetCurrentLineFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -283,7 +283,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -295,11 +295,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnDbgFileView_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -307,7 +307,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -319,7 +319,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnDbgFileView_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -327,105 +327,105 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public bool FindString(string findThis) {
-        
+
                                           InternalUnsafeMethods.FindString__Args _args = new InternalUnsafeMethods.FindString__Args() {
                         findThis = findThis,
                      };
                      bool _engineResult = InternalUnsafeMethods.FindString()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void RemoveBreak(uint line) {
-        
+
                                           InternalUnsafeMethods.RemoveBreak__Args _args = new InternalUnsafeMethods.RemoveBreak__Args() {
                         line = line,
                      };
                      InternalUnsafeMethods.RemoveBreak()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetBreak(uint line) {
-        
+
                                           InternalUnsafeMethods.SetBreak__Args _args = new InternalUnsafeMethods.SetBreak__Args() {
                         line = line,
                      };
                      InternalUnsafeMethods.SetBreak()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetBreakPosition(uint line) {
-        
+
                                           InternalUnsafeMethods.SetBreakPosition__Args _args = new InternalUnsafeMethods.SetBreakPosition__Args() {
                         line = line,
                      };
                      InternalUnsafeMethods.SetBreakPosition()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void ClearBreakPositions() {
-        
+
                      InternalUnsafeMethods.ClearBreakPositions__Args _args = new InternalUnsafeMethods.ClearBreakPositions__Args() {
                      };
                      InternalUnsafeMethods.ClearBreakPositions()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public bool Open(string filename) {
-        
+
                                           InternalUnsafeMethods.Open__Args _args = new InternalUnsafeMethods.Open__Args() {
                         filename = filename,
                      };
                      bool _engineResult = InternalUnsafeMethods.Open()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public string GetCurrentLine() {
-        
+
                      InternalUnsafeMethods.GetCurrentLine__Args _args = new InternalUnsafeMethods.GetCurrentLine__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetCurrentLine()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public void SetCurrentLine(int line, bool selected) {
-        
+
                                                                InternalUnsafeMethods.SetCurrentLine__Args _args = new InternalUnsafeMethods.SetCurrentLine__Args() {
                         line = line,
                         selected = selected,
                      };
                      InternalUnsafeMethods.SetCurrentLine()(ObjectPtr, _args);
-                                                                           
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

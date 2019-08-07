@@ -1,38 +1,38 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Reflection {    
+namespace T3DNetFramework.Generated.Classes.Reflection {
 
     public unsafe class EngineExportScope : EngineExport {
 
 
 
-        public EngineExportScope(bool pRegister = false) 
+        public EngineExportScope(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public EngineExportScope(ConsoleObjectBase pObj) 
+
+        public EngineExportScope(ConsoleObjectBase pObj)
             : base(pObj) {
         }
-        
-        public EngineExportScope(IntPtr pObj) 
+
+        public EngineExportScope(IntPtr pObj)
             : base(pObj) {
         }
-        
-        
+
+
 
 
 
@@ -40,7 +40,7 @@ namespace T3DSharpFramework.Generated.Classes.Reflection {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -48,7 +48,7 @@ namespace T3DSharpFramework.Generated.Classes.Reflection {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -60,7 +60,7 @@ namespace T3DSharpFramework.Generated.Classes.Reflection {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEngineExportScope_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
@@ -68,15 +68,15 @@ namespace T3DSharpFramework.Generated.Classes.Reflection {
         #endregion
 
 
-			
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

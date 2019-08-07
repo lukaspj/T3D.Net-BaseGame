@@ -1,4 +1,4 @@
-﻿namespace T3DSharpFramework.Engine.Util
+﻿namespace T3DNetFramework.Engine.Util
 {
    public class Text
    {

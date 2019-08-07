@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class EditManager : GuiControl {
 
 
 
-        public EditManager(bool pRegister = false) 
+        public EditManager(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public EditManager(string pName, bool pRegister) 
+
+        public EditManager(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public EditManager(string pName) 
+
+        public EditManager(string pName)
             : this(pName, false) {
         }
-        
-        public EditManager(string pName, string pParent, bool pRegister = false) 
+
+        public EditManager(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public EditManager(string pName, SimObject pParent, bool pRegister = false) 
+
+        public EditManager(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public EditManager(SimObject pObj) 
+
+        public EditManager(SimObject pObj)
             : base(pObj) {
         }
-        
-        public EditManager(IntPtr pObj) 
+
+        public EditManager(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct IsEditorEnabled__Args
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEditManager_isEditorEnabled"), typeof(_IsEditorEnabled));
                     }
-                    
+
                     return _IsEditorEnabledFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct EditorDisabled__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _EditorDisabled(IntPtr _this);
                 internal delegate void _EditorDisabled(IntPtr _this, EditorDisabled__Args args);
                 private static _EditorDisabled _EditorDisabledFunc;
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEditManager_editorDisabled"), typeof(_EditorDisabled));
                     }
-                    
+
                     return _EditorDisabledFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct EditorEnabled__Args
@@ -125,7 +125,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _EditorEnabled(IntPtr _this);
                 internal delegate void _EditorEnabled(IntPtr _this, EditorEnabled__Args args);
                 private static _EditorEnabled _EditorEnabledFunc;
@@ -137,21 +137,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEditManager_editorEnabled"), typeof(_EditorEnabled));
                     }
-                    
+
                     return _EditorEnabledFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GotoBookmark__Args
                 {
-				   
+
 				   internal int val;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _GotoBookmark(IntPtr _this, int val);
                 internal delegate void _GotoBookmark(IntPtr _this, GotoBookmark__Args args);
                 private static _GotoBookmark _GotoBookmarkFunc;
@@ -163,21 +163,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEditManager_gotoBookmark"), typeof(_GotoBookmark));
                     }
-                    
+
                     return _GotoBookmarkFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetBookmark__Args
                 {
-				   
+
 				   internal int val;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetBookmark(IntPtr _this, int val);
                 internal delegate void _SetBookmark(IntPtr _this, SetBookmark__Args args);
                 private static _SetBookmark _SetBookmarkFunc;
@@ -189,11 +189,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEditManager_setBookmark"), typeof(_SetBookmark));
                     }
-                    
+
                     return _SetBookmarkFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -201,7 +201,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -213,11 +213,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEditManager_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -225,7 +225,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -237,7 +237,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnEditManager_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -245,68 +245,68 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public bool IsEditorEnabled() {
-        
+
                      InternalUnsafeMethods.IsEditorEnabled__Args _args = new InternalUnsafeMethods.IsEditorEnabled__Args() {
                      };
                      bool _engineResult = InternalUnsafeMethods.IsEditorEnabled()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void EditorDisabled() {
-        
+
                      InternalUnsafeMethods.EditorDisabled__Args _args = new InternalUnsafeMethods.EditorDisabled__Args() {
                      };
                      InternalUnsafeMethods.EditorDisabled()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void EditorEnabled() {
-        
+
                      InternalUnsafeMethods.EditorEnabled__Args _args = new InternalUnsafeMethods.EditorEnabled__Args() {
                      };
                      InternalUnsafeMethods.EditorEnabled()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void GotoBookmark(int val) {
-        
+
                                           InternalUnsafeMethods.GotoBookmark__Args _args = new InternalUnsafeMethods.GotoBookmark__Args() {
                         val = val,
                      };
                      InternalUnsafeMethods.GotoBookmark()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetBookmark(int val) {
-        
+
                                           InternalUnsafeMethods.SetBookmark__Args _args = new InternalUnsafeMethods.SetBookmark__Args() {
                         val = val,
                      };
                      InternalUnsafeMethods.SetBookmark()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

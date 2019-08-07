@@ -1,14 +1,14 @@
 using System;
 using System.IO;
 using System.Reflection;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Interop;
-using T3DSharpFramework.Generated.Functions;
-using T3DSharpFramework.Generated.Structs.Math;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Generated.Functions;
+using T3DNetFramework.Generated.Structs.Math;
 using Path = System.IO.Path;
 
-namespace Game
+namespace BaseGame
 {
    class Main
    {

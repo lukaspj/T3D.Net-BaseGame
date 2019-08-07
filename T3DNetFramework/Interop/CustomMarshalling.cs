@@ -4,15 +4,15 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Generated.Classes.Global;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Global;
 
-namespace T3DSharpFramework.Interop
+namespace T3DNetFramework.Interop
 {
    /// <summary>
-   /// A static class to help ease marshalling strings between managed and 
+   /// A static class to help ease marshalling strings between managed and
    /// unmanaged code.
-   /// 
+   ///
    /// Some references for marshaling strings:
    /// http://stackoverflow.com/questions/1498931/marshalling-array-of-strings-to-char-in-c-sharp
    /// </summary>

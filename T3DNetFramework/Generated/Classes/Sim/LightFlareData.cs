@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class LightFlareData : SimDataBlock {
 
 
 
-        public LightFlareData(bool pRegister = false) 
+        public LightFlareData(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public LightFlareData(string pName, bool pRegister) 
+
+        public LightFlareData(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public LightFlareData(string pName) 
+
+        public LightFlareData(string pName)
             : this(pName, false) {
         }
-        
-        public LightFlareData(string pName, string pParent, bool pRegister = false) 
+
+        public LightFlareData(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public LightFlareData(string pName, SimObject pParent, bool pRegister = false) 
+
+        public LightFlareData(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public LightFlareData(SimObject pObj) 
+
+        public LightFlareData(SimObject pObj)
             : base(pObj) {
         }
-        
-        public LightFlareData(IntPtr pObj) 
+
+        public LightFlareData(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Apply__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Apply(IntPtr _this);
                 internal delegate void _Apply(IntPtr _this, Apply__Args args);
                 private static _Apply _ApplyFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnLightFlareData_apply"), typeof(_Apply));
                     }
-                    
+
                     return _ApplyFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnLightFlareData_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -125,7 +125,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -137,7 +137,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnLightFlareData_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -145,25 +145,25 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void Apply() {
-        
+
                      InternalUnsafeMethods.Apply__Args _args = new InternalUnsafeMethods.Apply__Args() {
                      };
                      InternalUnsafeMethods.Apply()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 
@@ -201,9 +201,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<RectF> ElementRect {
             get => new DynamicFieldVector<RectF>(
-                    this, 
-                    "elementRect", 
-                    20, 
+                    this,
+                    "elementRect",
+                    20,
                     val => GenericMarshal.StringTo<RectF>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -212,9 +212,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> ElementDist {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "elementDist", 
-                    20, 
+                    this,
+                    "elementDist",
+                    20,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -223,9 +223,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> ElementScale {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "elementScale", 
-                    20, 
+                    this,
+                    "elementScale",
+                    20,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -234,9 +234,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<LinearColorF> ElementTint {
             get => new DynamicFieldVector<LinearColorF>(
-                    this, 
-                    "elementTint", 
-                    20, 
+                    this,
+                    "elementTint",
+                    20,
                     val => GenericMarshal.StringTo<LinearColorF>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -245,9 +245,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<bool> ElementRotate {
             get => new DynamicFieldVector<bool>(
-                    this, 
-                    "elementRotate", 
-                    20, 
+                    this,
+                    "elementRotate",
+                    20,
                     val => GenericMarshal.StringTo<bool>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -256,9 +256,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<bool> ElementUseLightColor {
             get => new DynamicFieldVector<bool>(
-                    this, 
-                    "elementUseLightColor", 
-                    20, 
+                    this,
+                    "elementUseLightColor",
+                    20,
                     val => GenericMarshal.StringTo<bool>(val),
                     obj => GenericMarshal.ToString(obj)
                 );

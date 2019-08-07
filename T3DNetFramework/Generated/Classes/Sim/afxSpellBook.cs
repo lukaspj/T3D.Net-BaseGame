@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class afxSpellBook : GameBase {
 
 
 
-        public afxSpellBook(bool pRegister = false) 
+        public afxSpellBook(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public afxSpellBook(string pName, bool pRegister) 
+
+        public afxSpellBook(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public afxSpellBook(string pName) 
+
+        public afxSpellBook(string pName)
             : this(pName, false) {
         }
-        
-        public afxSpellBook(string pName, string pParent, bool pRegister = false) 
+
+        public afxSpellBook(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public afxSpellBook(string pName, SimObject pParent, bool pRegister = false) 
+
+        public afxSpellBook(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public afxSpellBook(SimObject pObj) 
+
+        public afxSpellBook(SimObject pObj)
             : base(pObj) {
         }
-        
-        public afxSpellBook(IntPtr pObj) 
+
+        public afxSpellBook(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StartAllSpellCooldown__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _StartAllSpellCooldown(IntPtr _this);
                 internal delegate void _StartAllSpellCooldown(IntPtr _this, StartAllSpellCooldown__Args args);
                 private static _StartAllSpellCooldown _StartAllSpellCooldownFunc;
@@ -89,21 +89,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellBook_startAllSpellCooldown"), typeof(_StartAllSpellCooldown));
                     }
-                    
+
                     return _StartAllSpellCooldownFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSpellRPGData__Args
                 {
-				   
+
 				   internal IntPtr bookSlot;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetSpellRPGData(IntPtr _this, IntPtr bookSlot);
                 internal delegate int _GetSpellRPGData(IntPtr _this, GetSpellRPGData__Args args);
                 private static _GetSpellRPGData _GetSpellRPGDataFunc;
@@ -115,21 +115,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellBook_getSpellRPGData"), typeof(_GetSpellRPGData));
                     }
-                    
+
                     return _GetSpellRPGDataFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetSpellData__Args
                 {
-				   
+
 				   internal IntPtr bookSlot;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetSpellData(IntPtr _this, IntPtr bookSlot);
                 internal delegate int _GetSpellData(IntPtr _this, GetSpellData__Args args);
                 private static _GetSpellData _GetSpellDataFunc;
@@ -141,21 +141,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellBook_getSpellData"), typeof(_GetSpellData));
                     }
-                    
+
                     return _GetSpellDataFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetPageSlotIndex__Args
                 {
-				   
+
 				   internal IntPtr bookSlot;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetPageSlotIndex(IntPtr _this, IntPtr bookSlot);
                 internal delegate int _GetPageSlotIndex(IntPtr _this, GetPageSlotIndex__Args args);
                 private static _GetPageSlotIndex _GetPageSlotIndexFunc;
@@ -167,11 +167,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellBook_getPageSlotIndex"), typeof(_GetPageSlotIndex));
                     }
-                    
+
                     return _GetPageSlotIndexFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -179,7 +179,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -191,11 +191,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellBook_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -203,7 +203,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -215,7 +215,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnafxSpellBook_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -223,61 +223,61 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void StartAllSpellCooldown() {
-        
+
                      InternalUnsafeMethods.StartAllSpellCooldown__Args _args = new InternalUnsafeMethods.StartAllSpellCooldown__Args() {
                      };
                      InternalUnsafeMethods.StartAllSpellCooldown()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public int GetSpellRPGData(Point2I bookSlot) {
-        
+
                      bookSlot.Alloc();                     InternalUnsafeMethods.GetSpellRPGData__Args _args = new InternalUnsafeMethods.GetSpellRPGData__Args() {
                         bookSlot = bookSlot.internalStructPtr,
                      };
                      int _engineResult = InternalUnsafeMethods.GetSpellRPGData()(ObjectPtr, _args);
-                                          bookSlot.Free();            
+                                          bookSlot.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetSpellData(Point2I bookSlot) {
-        
+
                      bookSlot.Alloc();                     InternalUnsafeMethods.GetSpellData__Args _args = new InternalUnsafeMethods.GetSpellData__Args() {
                         bookSlot = bookSlot.internalStructPtr,
                      };
                      int _engineResult = InternalUnsafeMethods.GetSpellData()(ObjectPtr, _args);
-                                          bookSlot.Free();            
+                                          bookSlot.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public int GetPageSlotIndex(Point2I bookSlot) {
-        
+
                      bookSlot.Alloc();                     InternalUnsafeMethods.GetPageSlotIndex__Args _args = new InternalUnsafeMethods.GetPageSlotIndex__Args() {
                         bookSlot = bookSlot.internalStructPtr,
                      };
                      int _engineResult = InternalUnsafeMethods.GetPageSlotIndex()(ObjectPtr, _args);
-                                          bookSlot.Free();            
+                                          bookSlot.Free();
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

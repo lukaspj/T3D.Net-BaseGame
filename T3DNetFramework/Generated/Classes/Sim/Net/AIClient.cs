@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim.Net {    
+namespace T3DNetFramework.Generated.Classes.Sim.Net {
 
     public unsafe class AIClient : AIConnection {
 
 
 
-        public AIClient(bool pRegister = false) 
+        public AIClient(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public AIClient(string pName, bool pRegister) 
+
+        public AIClient(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public AIClient(string pName) 
+
+        public AIClient(string pName)
             : this(pName, false) {
         }
-        
-        public AIClient(string pName, string pParent, bool pRegister = false) 
+
+        public AIClient(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public AIClient(string pName, SimObject pParent, bool pRegister = false) 
+
+        public AIClient(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public AIClient(SimObject pObj) 
+
+        public AIClient(SimObject pObj)
             : base(pObj) {
         }
-        
-        public AIClient(IntPtr pObj) 
+
+        public AIClient(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct MoveForward__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _MoveForward(IntPtr _this);
                 internal delegate void _MoveForward(IntPtr _this, MoveForward__Args args);
                 private static _MoveForward _MoveForwardFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_moveForward"), typeof(_MoveForward));
                     }
-                    
+
                     return _MoveForwardFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetLocation__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetLocation(IntPtr _this);
                 internal delegate Point3F.InternalStruct _GetLocation(IntPtr _this, GetLocation__Args args);
                 private static _GetLocation _GetLocationFunc;
@@ -113,11 +113,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_getLocation"), typeof(_GetLocation));
                     }
-                    
+
                     return _GetLocationFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Move__Args
@@ -125,7 +125,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Move(IntPtr _this);
                 internal delegate void _Move(IntPtr _this, Move__Args args);
                 private static _Move _MoveFunc;
@@ -137,11 +137,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_move"), typeof(_Move));
                     }
-                    
+
                     return _MoveFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct MissionCycleCleanup__Args
@@ -149,7 +149,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _MissionCycleCleanup(IntPtr _this);
                 internal delegate void _MissionCycleCleanup(IntPtr _this, MissionCycleCleanup__Args args);
                 private static _MissionCycleCleanup _MissionCycleCleanupFunc;
@@ -161,11 +161,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_missionCycleCleanup"), typeof(_MissionCycleCleanup));
                     }
-                    
+
                     return _MissionCycleCleanupFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetTargetObject__Args
@@ -173,7 +173,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetTargetObject(IntPtr _this);
                 internal delegate int _GetTargetObject(IntPtr _this, GetTargetObject__Args args);
                 private static _GetTargetObject _GetTargetObjectFunc;
@@ -185,21 +185,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_getTargetObject"), typeof(_GetTargetObject));
                     }
-                    
+
                     return _GetTargetObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetTargetObject__Args
                 {
-				   
+
 				   internal string objName;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetTargetObject(IntPtr _this, string objName);
                 internal delegate void _SetTargetObject(IntPtr _this, SetTargetObject__Args args);
                 private static _SetTargetObject _SetTargetObjectFunc;
@@ -211,11 +211,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_setTargetObject"), typeof(_SetTargetObject));
                     }
-                    
+
                     return _SetTargetObjectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetMoveDestination__Args
@@ -223,7 +223,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetMoveDestination(IntPtr _this);
                 internal delegate Point3F.InternalStruct _GetMoveDestination(IntPtr _this, GetMoveDestination__Args args);
                 private static _GetMoveDestination _GetMoveDestinationFunc;
@@ -235,11 +235,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_getMoveDestination"), typeof(_GetMoveDestination));
                     }
-                    
+
                     return _GetMoveDestinationFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetAimLocation__Args
@@ -247,7 +247,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate Point3F.InternalStruct _GetAimLocation(IntPtr _this);
                 internal delegate Point3F.InternalStruct _GetAimLocation(IntPtr _this, GetAimLocation__Args args);
                 private static _GetAimLocation _GetAimLocationFunc;
@@ -259,21 +259,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_getAimLocation"), typeof(_GetAimLocation));
                     }
-                    
+
                     return _GetAimLocationFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetMoveDestination__Args
                 {
-				   
+
 				   internal IntPtr v;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetMoveDestination(IntPtr _this, IntPtr v);
                 internal delegate void _SetMoveDestination(IntPtr _this, SetMoveDestination__Args args);
                 private static _SetMoveDestination _SetMoveDestinationFunc;
@@ -285,21 +285,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_setMoveDestination"), typeof(_SetMoveDestination));
                     }
-                    
+
                     return _SetMoveDestinationFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetAimLocation__Args
                 {
-				   
+
 				   internal IntPtr v;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetAimLocation(IntPtr _this, IntPtr v);
                 internal delegate void _SetAimLocation(IntPtr _this, SetAimLocation__Args args);
                 private static _SetAimLocation _SetAimLocationFunc;
@@ -311,11 +311,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_setAimLocation"), typeof(_SetAimLocation));
                     }
-                    
+
                     return _SetAimLocationFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Stop__Args
@@ -323,7 +323,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _Stop(IntPtr _this);
                 internal delegate void _Stop(IntPtr _this, Stop__Args args);
                 private static _Stop _StopFunc;
@@ -335,21 +335,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_stop"), typeof(_Stop));
                     }
-                    
+
                     return _StopFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetMoveSpeed__Args
                 {
-				   
+
 				   internal float speed;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _SetMoveSpeed(IntPtr _this, float speed);
                 internal delegate void _SetMoveSpeed(IntPtr _this, SetMoveSpeed__Args args);
                 private static _SetMoveSpeed _SetMoveSpeedFunc;
@@ -361,21 +361,21 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_setMoveSpeed"), typeof(_SetMoveSpeed));
                     }
-                    
+
                     return _SetMoveSpeedFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct OnConnect__Args
                 {
-				   
+
 				   internal string idString;
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _OnConnect(IntPtr _this, string idString);
                 internal delegate void _OnConnect(IntPtr _this, OnConnect__Args args);
                 private static _OnConnect _OnConnectFunc;
@@ -387,11 +387,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "cbAIClient_onConnect"), typeof(_OnConnect));
                     }
-                    
+
                     return _OnConnectFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -399,7 +399,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -411,11 +411,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -423,7 +423,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -435,7 +435,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
                                     Torque3D.Torque3DLibHandle,
                                     "fnAIClient_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -443,154 +443,154 @@ namespace T3DSharpFramework.Generated.Classes.Sim.Net {
         #endregion
 
 
-			
+
                   public void MoveForward() {
-        
+
                      InternalUnsafeMethods.MoveForward__Args _args = new InternalUnsafeMethods.MoveForward__Args() {
                      };
                      InternalUnsafeMethods.MoveForward()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public Point3F GetLocation() {
-        
+
                      InternalUnsafeMethods.GetLocation__Args _args = new InternalUnsafeMethods.GetLocation__Args() {
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetLocation()(ObjectPtr, _args);
-                                 
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public void Move() {
-        
+
                      InternalUnsafeMethods.Move__Args _args = new InternalUnsafeMethods.Move__Args() {
                      };
                      InternalUnsafeMethods.Move()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void MissionCycleCleanup() {
-        
+
                      InternalUnsafeMethods.MissionCycleCleanup__Args _args = new InternalUnsafeMethods.MissionCycleCleanup__Args() {
                      };
                      InternalUnsafeMethods.MissionCycleCleanup()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public int GetTargetObject() {
-        
+
                      InternalUnsafeMethods.GetTargetObject__Args _args = new InternalUnsafeMethods.GetTargetObject__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetTargetObject()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public void SetTargetObject(string objName) {
-        
+
                                           InternalUnsafeMethods.SetTargetObject__Args _args = new InternalUnsafeMethods.SetTargetObject__Args() {
                         objName = objName,
                      };
                      InternalUnsafeMethods.SetTargetObject()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public Point3F GetMoveDestination() {
-        
+
                      InternalUnsafeMethods.GetMoveDestination__Args _args = new InternalUnsafeMethods.GetMoveDestination__Args() {
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetMoveDestination()(ObjectPtr, _args);
-                                 
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public Point3F GetAimLocation() {
-        
+
                      InternalUnsafeMethods.GetAimLocation__Args _args = new InternalUnsafeMethods.GetAimLocation__Args() {
                      };
                      Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetAimLocation()(ObjectPtr, _args);
-                                 
+
                      return new Point3F(_engineResult);
                   }
-	
 
-			
+
+
                   public void SetMoveDestination(Point3F v) {
-        
+
                      v.Alloc();                     InternalUnsafeMethods.SetMoveDestination__Args _args = new InternalUnsafeMethods.SetMoveDestination__Args() {
                         v = v.internalStructPtr,
                      };
                      InternalUnsafeMethods.SetMoveDestination()(ObjectPtr, _args);
-                                          v.Free();            
+                                          v.Free();
                   }
-	
 
-			
+
+
                   public void SetAimLocation(Point3F v) {
-        
+
                      v.Alloc();                     InternalUnsafeMethods.SetAimLocation__Args _args = new InternalUnsafeMethods.SetAimLocation__Args() {
                         v = v.internalStructPtr,
                      };
                      InternalUnsafeMethods.SetAimLocation()(ObjectPtr, _args);
-                                          v.Free();            
+                                          v.Free();
                   }
-	
 
-			
+
+
                   public void Stop() {
-        
+
                      InternalUnsafeMethods.Stop__Args _args = new InternalUnsafeMethods.Stop__Args() {
                      };
                      InternalUnsafeMethods.Stop()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-			
+                  }
+
+
+
                   public void SetMoveSpeed(float speed) {
-        
+
                                           InternalUnsafeMethods.SetMoveSpeed__Args _args = new InternalUnsafeMethods.SetMoveSpeed__Args() {
                         speed = speed,
                      };
                      InternalUnsafeMethods.SetMoveSpeed()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public void OnConnect(string idString) {
-        
+
                                           InternalUnsafeMethods.OnConnect__Args _args = new InternalUnsafeMethods.OnConnect__Args() {
                         idString = idString,
                      };
                      InternalUnsafeMethods.OnConnect()(ObjectPtr, _args);
-                                                      
-                  }
-	
 
-			
+                  }
+
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

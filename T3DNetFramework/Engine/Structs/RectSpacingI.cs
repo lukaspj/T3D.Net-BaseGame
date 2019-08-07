@@ -1,4 +1,4 @@
-﻿namespace T3DSharpFramework.Engine.Structs
+﻿namespace T3DNetFramework.Engine.Structs
 {
     public class RectSpacingI : Generated.Structs.Gui.RectSpacingI
     {

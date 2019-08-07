@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace T3DSharpFramework.Engine.Structs
+namespace T3DNetFramework.Engine.Structs
 {
     public class LinearColorF : Generated.Structs.Global.LinearColorF
     {

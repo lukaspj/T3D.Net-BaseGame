@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class WaterObject : SceneObject {
 
 
 
-        public WaterObject(bool pRegister = false) 
+        public WaterObject(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public WaterObject(string pName, bool pRegister) 
+
+        public WaterObject(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public WaterObject(string pName) 
+
+        public WaterObject(string pName)
             : this(pName, false) {
         }
-        
-        public WaterObject(string pName, string pParent, bool pRegister = false) 
+
+        public WaterObject(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public WaterObject(string pName, SimObject pParent, bool pRegister = false) 
+
+        public WaterObject(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public WaterObject(SimObject pObj) 
+
+        public WaterObject(SimObject pObj)
             : base(pObj) {
         }
-        
-        public WaterObject(IntPtr pObj) 
+
+        public WaterObject(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -89,11 +89,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnWaterObject_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -101,7 +101,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -113,7 +113,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnWaterObject_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -121,15 +121,15 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 
@@ -191,9 +191,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<Point2F> WaveDir {
             get => new DynamicFieldVector<Point2F>(
-                    this, 
-                    "waveDir", 
-                    3, 
+                    this,
+                    "waveDir",
+                    3,
                     val => GenericMarshal.StringTo<Point2F>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -202,9 +202,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> WaveSpeed {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "waveSpeed", 
-                    3, 
+                    this,
+                    "waveSpeed",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -213,9 +213,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> WaveMagnitude {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "waveMagnitude", 
-                    3, 
+                    this,
+                    "waveMagnitude",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -236,9 +236,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<Point2F> RippleDir {
             get => new DynamicFieldVector<Point2F>(
-                    this, 
-                    "rippleDir", 
-                    3, 
+                    this,
+                    "rippleDir",
+                    3,
                     val => GenericMarshal.StringTo<Point2F>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -247,9 +247,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> RippleSpeed {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "rippleSpeed", 
-                    3, 
+                    this,
+                    "rippleSpeed",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -258,9 +258,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<Point2F> RippleTexScale {
             get => new DynamicFieldVector<Point2F>(
-                    this, 
-                    "rippleTexScale", 
-                    3, 
+                    this,
+                    "rippleTexScale",
+                    3,
                     val => GenericMarshal.StringTo<Point2F>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -269,9 +269,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> RippleMagnitude {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "rippleMagnitude", 
-                    3, 
+                    this,
+                    "rippleMagnitude",
+                    3,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -292,9 +292,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<Point2F> FoamDir {
             get => new DynamicFieldVector<Point2F>(
-                    this, 
-                    "foamDir", 
-                    2, 
+                    this,
+                    "foamDir",
+                    2,
                     val => GenericMarshal.StringTo<Point2F>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -303,9 +303,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> FoamSpeed {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "foamSpeed", 
-                    2, 
+                    this,
+                    "foamSpeed",
+                    2,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -314,9 +314,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<Point2F> FoamTexScale {
             get => new DynamicFieldVector<Point2F>(
-                    this, 
-                    "foamTexScale", 
-                    2, 
+                    this,
+                    "foamTexScale",
+                    2,
                     val => GenericMarshal.StringTo<Point2F>(val),
                     obj => GenericMarshal.ToString(obj)
                 );
@@ -325,9 +325,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 
         public DynamicFieldVector<float> FoamOpacity {
             get => new DynamicFieldVector<float>(
-                    this, 
-                    "foamOpacity", 
-                    2, 
+                    this,
+                    "foamOpacity",
+                    2,
                     val => GenericMarshal.StringTo<float>(val),
                     obj => GenericMarshal.ToString(obj)
                 );

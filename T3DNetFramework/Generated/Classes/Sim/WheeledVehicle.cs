@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class WheeledVehicle : Vehicle {
 
 
 
-        public WheeledVehicle(bool pRegister = false) 
+        public WheeledVehicle(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public WheeledVehicle(string pName, bool pRegister) 
+
+        public WheeledVehicle(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public WheeledVehicle(string pName) 
+
+        public WheeledVehicle(string pName)
             : this(pName, false) {
         }
-        
-        public WheeledVehicle(string pName, string pParent, bool pRegister = false) 
+
+        public WheeledVehicle(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public WheeledVehicle(string pName, SimObject pParent, bool pRegister = false) 
+
+        public WheeledVehicle(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public WheeledVehicle(SimObject pObj) 
+
+        public WheeledVehicle(SimObject pObj)
             : base(pObj) {
         }
-        
-        public WheeledVehicle(IntPtr pObj) 
+
+        public WheeledVehicle(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetWheelCount__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _GetWheelCount(IntPtr _this);
                 internal delegate int _GetWheelCount(IntPtr _this, GetWheelCount__Args args);
                 private static _GetWheelCount _GetWheelCountFunc;
@@ -89,18 +89,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnWheeledVehicle_getWheelCount"), typeof(_GetWheelCount));
                     }
-                    
+
                     return _GetWheelCountFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetWheelSpring__Args
                 {
-				   
+
 				   internal int wheel;
-				   
+
 				   internal IntPtr spring;
                 }
 
@@ -117,18 +117,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnWheeledVehicle_setWheelSpring"), typeof(_SetWheelSpring));
                     }
-                    
+
                     return _SetWheelSpringFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetWheelTire__Args
                 {
-				   
+
 				   internal int wheel;
-				   
+
 				   internal IntPtr tire;
                 }
 
@@ -145,16 +145,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnWheeledVehicle_setWheelTire"), typeof(_SetWheelTire));
                     }
-                    
+
                     return _SetWheelTireFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetWheelPowered__Args
                 {
-				   
+
 				   internal int wheel;
 				   [MarshalAs(UnmanagedType.I1)]
 				   internal bool powered;
@@ -173,18 +173,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnWheeledVehicle_setWheelPowered"), typeof(_SetWheelPowered));
                     }
-                    
+
                     return _SetWheelPoweredFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct SetWheelSteering__Args
                 {
-				   
+
 				   internal int wheel;
-				   
+
 				   internal float steering;
                 }
 
@@ -201,11 +201,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnWheeledVehicle_setWheelSteering"), typeof(_SetWheelSteering));
                     }
-                    
+
                     return _SetWheelSteeringFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -213,7 +213,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -225,11 +225,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnWheeledVehicle_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -237,7 +237,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -249,7 +249,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnWheeledVehicle_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -257,78 +257,78 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public int GetWheelCount() {
-        
+
                      InternalUnsafeMethods.GetWheelCount__Args _args = new InternalUnsafeMethods.GetWheelCount__Args() {
                      };
                      int _engineResult = InternalUnsafeMethods.GetWheelCount()(ObjectPtr, _args);
-                                 
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetWheelSpring(int wheel, WheeledVehicleSpring spring) {
-        
+
                                                                InternalUnsafeMethods.SetWheelSpring__Args _args = new InternalUnsafeMethods.SetWheelSpring__Args() {
                         wheel = wheel,
                         spring = spring.ObjectPtr,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetWheelSpring()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetWheelTire(int wheel, WheeledVehicleTire tire) {
-        
+
                                                                InternalUnsafeMethods.SetWheelTire__Args _args = new InternalUnsafeMethods.SetWheelTire__Args() {
                         wheel = wheel,
                         tire = tire.ObjectPtr,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetWheelTire()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetWheelPowered(int wheel, bool powered) {
-        
+
                                                                InternalUnsafeMethods.SetWheelPowered__Args _args = new InternalUnsafeMethods.SetWheelPowered__Args() {
                         wheel = wheel,
                         powered = powered,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetWheelPowered()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool SetWheelSteering(int wheel, float steering) {
-        
+
                                                                InternalUnsafeMethods.SetWheelSteering__Args _args = new InternalUnsafeMethods.SetWheelSteering__Args() {
                         wheel = wheel,
                         steering = steering,
                      };
                      bool _engineResult = InternalUnsafeMethods.SetWheelSteering()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

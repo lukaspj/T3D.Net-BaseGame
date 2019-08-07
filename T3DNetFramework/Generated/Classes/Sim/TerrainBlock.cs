@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class TerrainBlock : SceneObject {
 
 
 
-        public TerrainBlock(bool pRegister = false) 
+        public TerrainBlock(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public TerrainBlock(string pName, bool pRegister) 
+
+        public TerrainBlock(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public TerrainBlock(string pName) 
+
+        public TerrainBlock(string pName)
             : this(pName, false) {
         }
-        
-        public TerrainBlock(string pName, string pParent, bool pRegister = false) 
+
+        public TerrainBlock(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public TerrainBlock(string pName, SimObject pParent, bool pRegister = false) 
+
+        public TerrainBlock(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public TerrainBlock(SimObject pObj) 
+
+        public TerrainBlock(SimObject pObj)
             : base(pObj) {
         }
-        
-        public TerrainBlock(IntPtr pObj) 
+
+        public TerrainBlock(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Import__Args
@@ -78,9 +78,9 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 				   internal string terrainName;
 				   [MarshalAs(UnmanagedType.LPUTF8Str)]
 				   internal string heightMapFile;
-				   
+
 				   internal float metersPerPixel;
-				   
+
 				   internal float heightScale;
 				   [MarshalAs(UnmanagedType.LPUTF8Str)]
 				   internal string opacityLayerFiles;
@@ -91,7 +91,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _Import([MarshalAs(UnmanagedType.LPUTF8Str)]string terrainName, [MarshalAs(UnmanagedType.LPUTF8Str)]string heightMapFile, float metersPerPixel, float heightScale, [MarshalAs(UnmanagedType.LPUTF8Str)]string opacityLayerFiles, [MarshalAs(UnmanagedType.LPUTF8Str)]string materialsStr, [MarshalAs(UnmanagedType.I1)]bool flipYAxis);
                 internal delegate int _Import(Import__Args args);
                 private static _Import _ImportFunc;
@@ -103,18 +103,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainBlock_import"), typeof(_Import));
                     }
-                    
+
                     return _ImportFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct CreateNew__Args
                 {
 				   [MarshalAs(UnmanagedType.LPUTF8Str)]
 				   internal string terrainName;
-				   
+
 				   internal uint resolution;
 				   [MarshalAs(UnmanagedType.LPUTF8Str)]
 				   internal string materialName;
@@ -123,7 +123,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate int _CreateNew([MarshalAs(UnmanagedType.LPUTF8Str)]string terrainName, uint resolution, [MarshalAs(UnmanagedType.LPUTF8Str)]string materialName, [MarshalAs(UnmanagedType.I1)]bool genNoise);
                 internal delegate int _CreateNew(CreateNew__Args args);
                 private static _CreateNew _CreateNewFunc;
@@ -135,18 +135,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainBlock_createNew"), typeof(_CreateNew));
                     }
-                    
+
                     return _CreateNewFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ExportLayerMaps__Args
                 {
-				   
+
 				   internal string filePrefixStr;
-				   
+
 				   internal string format;
                 }
 
@@ -163,18 +163,18 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainBlock_exportLayerMaps"), typeof(_ExportLayerMaps));
                     }
-                    
+
                     return _ExportLayerMapsFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ExportHeightMap__Args
                 {
-				   
+
 				   internal string fileNameStr;
-				   
+
 				   internal string format;
                 }
 
@@ -191,16 +191,16 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainBlock_exportHeightMap"), typeof(_ExportHeightMap));
                     }
-                    
+
                     return _ExportHeightMapFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Save__Args
                 {
-				   
+
 				   internal string fileName;
                 }
 
@@ -217,11 +217,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainBlock_save"), typeof(_Save));
                     }
-                    
+
                     return _SaveFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -229,7 +229,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -241,11 +241,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainBlock_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -253,7 +253,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -265,7 +265,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnTerrainBlock_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -273,15 +273,15 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public static int Import(string terrainName, string heightMapFile, float metersPerPixel, float heightScale, string opacityLayerFiles, string materialsStr, bool flipYAxis = true) {
-                     
-                     
-                     
-                     
-                     
-                     
-                     
+
+
+
+
+
+
+
                      InternalUnsafeMethods.Import__Args _args = new InternalUnsafeMethods.Import__Args() {
                         terrainName = terrainName,
                         heightMapFile = heightMapFile,
@@ -292,24 +292,24 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         flipYAxis = flipYAxis,
                      };
                      int _engineResult = InternalUnsafeMethods.Import()(_args);
-                     
-                     
-                     
-                     
-                     
-                     
-                     
-            
+
+
+
+
+
+
+
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static int CreateNew(string terrainName, uint resolution, string materialName, bool genNoise) {
-                     
-                     
-                     
-                     
+
+
+
+
                      InternalUnsafeMethods.CreateNew__Args _args = new InternalUnsafeMethods.CreateNew__Args() {
                         terrainName = terrainName,
                         resolution = resolution,
@@ -317,62 +317,62 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                         genNoise = genNoise,
                      };
                      int _engineResult = InternalUnsafeMethods.CreateNew()(_args);
-                     
-                     
-                     
-                     
-            
+
+
+
+
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool ExportLayerMaps(string filePrefixStr, string format = "png") {
-        
+
                                                                InternalUnsafeMethods.ExportLayerMaps__Args _args = new InternalUnsafeMethods.ExportLayerMaps__Args() {
                         filePrefixStr = filePrefixStr,
                         format = format,
                      };
                      bool _engineResult = InternalUnsafeMethods.ExportLayerMaps()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool ExportHeightMap(string fileNameStr, string format = "png") {
-        
+
                                                                InternalUnsafeMethods.ExportHeightMap__Args _args = new InternalUnsafeMethods.ExportHeightMap__Args() {
                         fileNameStr = fileNameStr,
                         format = format,
                      };
                      bool _engineResult = InternalUnsafeMethods.ExportHeightMap()(ObjectPtr, _args);
-                                                                           
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public bool Save(string fileName) {
-        
+
                                           InternalUnsafeMethods.Save__Args _args = new InternalUnsafeMethods.Save__Args() {
                         fileName = fileName,
                      };
                      bool _engineResult = InternalUnsafeMethods.Save()(ObjectPtr, _args);
-                                                      
+
                      return _engineResult;
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 

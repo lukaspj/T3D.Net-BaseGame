@@ -1,9 +1,9 @@
-using Game.Core.Rendering.GfxData;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Functions;
+using BaseGame.Core.Rendering.GfxData;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Functions;
 
-namespace Game.Core.Rendering
+namespace BaseGame.Core.Rendering
 {
    public class RenderManager
    {

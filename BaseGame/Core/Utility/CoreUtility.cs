@@ -1,8 +1,8 @@
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Functions;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Functions;
+using T3DNetFramework.Interop;
 
-namespace Game.Core.Utility
+namespace BaseGame.Core.Utility
 {
    [ConsoleClass("Core_Utility")]
    public class CoreUtility : SimSet

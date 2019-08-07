@@ -1,67 +1,67 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DSharpFramework.Engine;
-using T3DSharpFramework.Engine.Util;
-using T3DSharpFramework.Generated.Classes.Global;
-using T3DSharpFramework.Generated.Classes.Reflection;
-using T3DSharpFramework.Generated.Classes.Sim;
-using T3DSharpFramework.Generated.Classes.Sim.Net;
-using T3DSharpFramework.Generated.Enums.Global;
-using T3DSharpFramework.Generated.Enums.Reflection;
-using T3DSharpFramework.Generated.Structs.Global;
-using T3DSharpFramework.Generated.Structs.Gui;
-using T3DSharpFramework.Generated.Structs.Math;
-using T3DSharpFramework.Interop;
+using T3DNetFramework.Generated.Classes.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
+using T3DNetFramework.Engine;
+using T3DNetFramework.Engine.Util;
+using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Sim;
+using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Gui;
 
-namespace T3DSharpFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
 
     public unsafe class GuiFilterCtrl : GuiControl {
 
 
 
-        public GuiFilterCtrl(bool pRegister = false) 
+        public GuiFilterCtrl(bool pRegister = false)
             : base(pRegister) {
         }
-        
-        public GuiFilterCtrl(string pName, bool pRegister) 
+
+        public GuiFilterCtrl(string pName, bool pRegister)
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-        
-        public GuiFilterCtrl(string pName) 
+
+        public GuiFilterCtrl(string pName)
             : this(pName, false) {
         }
-        
-        public GuiFilterCtrl(string pName, string pParent, bool pRegister = false) 
+
+        public GuiFilterCtrl(string pName, string pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-        
-        public GuiFilterCtrl(string pName, SimObject pParent, bool pRegister = false) 
+
+        public GuiFilterCtrl(string pName, SimObject pParent, bool pRegister = false)
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-        
-        public GuiFilterCtrl(SimObject pObj) 
+
+        public GuiFilterCtrl(SimObject pObj)
             : base(pObj) {
         }
-        
-        public GuiFilterCtrl(IntPtr pObj) 
+
+        public GuiFilterCtrl(IntPtr pObj)
             : base(pObj) {
         }
-        
+
 
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
-        
-        
-        
+
+
+
 
 
 
@@ -69,7 +69,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct ResetFiltering__Args
@@ -77,7 +77,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate void _ResetFiltering(IntPtr _this);
                 internal delegate void _ResetFiltering(IntPtr _this, ResetFiltering__Args args);
                 private static _ResetFiltering _ResetFilteringFunc;
@@ -89,13 +89,13 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiFilterCtrl_resetFiltering"), typeof(_ResetFiltering));
                     }
-                    
+
                     return _ResetFilteringFunc;
                 }
 
-	
+
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 internal delegate void _SetValue(IntPtr _this, ref StringVector.InternalStruct args);
                 private static _SetValue _SetValueFunc;
                 internal static _SetValue SetValue() {
@@ -106,11 +106,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiFilterCtrl_setValue"), typeof(_SetValue));
                     }
-                    
+
                     return _SetValueFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct GetValue__Args
@@ -118,7 +118,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _GetValue(IntPtr _this);
                 internal delegate IntPtr _GetValue(IntPtr _this, GetValue__Args args);
                 private static _GetValue _GetValueFunc;
@@ -130,11 +130,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiFilterCtrl_getValue"), typeof(_GetValue));
                     }
-                    
+
                     return _GetValueFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct StaticGetType__Args
@@ -142,7 +142,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _StaticGetType();
                 internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
                 private static _StaticGetType _StaticGetTypeFunc;
@@ -154,11 +154,11 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiFilterCtrl_staticGetType"), typeof(_StaticGetType));
                     }
-                    
+
                     return _StaticGetTypeFunc;
                 }
 
-	
+
 
                 [StructLayout(LayoutKind.Sequential)]
                 internal struct Create__Args
@@ -166,7 +166,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                 }
 
                 [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                
+
                 //internal delegate IntPtr _Create();
                 internal delegate IntPtr _Create(Create__Args args);
                 private static _Create _CreateFunc;
@@ -178,7 +178,7 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
                                     Torque3D.Torque3DLibHandle,
                                     "fnGuiFilterCtrl_create"), typeof(_Create));
                     }
-                    
+
                     return _CreateFunc;
                 }
 
@@ -186,20 +186,20 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
         #endregion
 
 
-			
+
                   public void ResetFiltering() {
-        
+
                      InternalUnsafeMethods.ResetFiltering__Args _args = new InternalUnsafeMethods.ResetFiltering__Args() {
                      };
                      InternalUnsafeMethods.ResetFiltering()(ObjectPtr, _args);
-                                 
-                  }
-	
 
-								public void SetValue(params string[] args) { 
+                  }
+
+
+								public void SetValue(params string[] args) {
 						List<string> _argList = new List<string>() {"", ""};
 						_argList.AddRange(args);
-            
+
 						StringVector nativeVecArgs = new StringVector {
 							ElementCount = (uint)_argList.Count,
 							Array = _argList.ToArray(),
@@ -208,29 +208,29 @@ namespace T3DSharpFramework.Generated.Classes.Sim {
 						nativeVecArgs.Alloc();
 						InternalUnsafeMethods.SetValue()(ObjectPtr, ref nativeVecArgs.internalStruct);
 						nativeVecArgs.Free();
-            
-					}	
 
-			
+					}
+
+
                   public string GetValue() {
-        
+
                      InternalUnsafeMethods.GetValue__Args _args = new InternalUnsafeMethods.GetValue__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.GetValue()(ObjectPtr, _args);
-                                 
+
                      return StringMarshal.IntPtrToUtf8String(_engineResult);
                   }
-	
 
-			
+
+
                   public static EngineTypeInfo StaticGetType() {
                      InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
                      };
                      IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-            
+
                      return new EngineTypeInfo(_engineResult);
                   }
-	
+
 
 
 
