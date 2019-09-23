@@ -56,7 +56,7 @@ namespace T3DNetFramework.Interop
             found = true;
             MethodInfo methodInfo = FunctionDictionary[pFunctionName];
 
-            return InvokeMethod(methodInfo, null, args, out found);
+            return InvokeMethod(methodInfo, null, args.Skip(1).ToArray(), out found);
         }
 
         public static string CallScriptMethod(string className, string classNamespace, ISimObject objectBaseWrapper,
