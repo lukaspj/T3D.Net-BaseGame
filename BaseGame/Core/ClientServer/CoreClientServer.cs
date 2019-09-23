@@ -30,8 +30,8 @@ namespace BaseGame.Core.ClientServer
 
          Global.Call("initServer");
 
-
-         //% dbList = new ArrayObject(DatablockFilesList);
+         ArrayObject dbList = new ArrayObject("DatablockFilesList");
+         dbList.RegisterSingleton();
 
          // Start up in either client, or dedicated server mode
          if (Global.GetConsoleBool("Server::Dedicated")) {
