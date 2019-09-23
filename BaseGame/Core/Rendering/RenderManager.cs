@@ -30,14 +30,10 @@ namespace BaseGame.Core.Rendering
 
       public static RenderFormatToken AL_FormatToken { get; private set; }
 
-      public static void Init() {
-         Global.Assert(!Global.IsObject("DiffuseRenderPassManager"),
-            "initRenderManager() - DiffuseRenderPassManager already initialized!");
-
-         DiffuseRenderPassManager = new RenderPassManager("DiffuseRenderPassManager");
-         Global.Assert(DiffuseRenderPassManager.RegisterSingleton(), "Failed to instantiate DiffuseRenderPassManager");
-
-         PFX_DefaultStateBlock = new GFXStateBlockData("PFX_DefaultStateBlock") {
+      public static void Init()
+      {
+         PFX_DefaultStateBlock = new GFXStateBlockData("PFX_DefaultStateBlock")
+         {
             ZDefined = true,
             ZEnable = false,
             ZWriteEnable = false,
@@ -47,13 +43,15 @@ namespace BaseGame.Core.Rendering
          };
          Global.Assert(PFX_DefaultStateBlock.RegisterSingleton(), "Failed to instantiate PFX_DefaultStateBlock");
 
-         AL_FormatTokenState = new GFXStateBlockData("AL_FormatTokenState", PFX_DefaultStateBlock) {
+         AL_FormatTokenState = new GFXStateBlockData("AL_FormatTokenState", PFX_DefaultStateBlock)
+         {
             SamplersDefined = true,
             SamplerStates = {[0] = CommonMaterialData.SamplerClampPoint}
          };
          Global.Assert(AL_FormatTokenState.RegisterSingleton(), "Failed to instantiate AL_FormatTokenState");
 
-         AL_FormatCopy = new PostEffect("AL_FormatCopy") {
+         AL_FormatCopy = new PostEffect("AL_FormatCopy")
+         {
             Enabled = false,
             AllowReflectPass = true,
 
@@ -63,11 +61,20 @@ namespace BaseGame.Core.Rendering
             Texture = {[0] = "$inTex"},
             Target = "$backBuffer"
          };
+         Global.Assert(AL_FormatCopy.RegisterSingleton(), "Failed to instantiate AL_FormatCopy");
+      }
+
+      public static void InitRenderManager() {
+         Global.Assert(!Global.IsObject("DiffuseRenderPassManager"),
+            "initRenderManager() - DiffuseRenderPassManager already initialized!");
+
+         DiffuseRenderPassManager = new RenderPassManager("DiffuseRenderPassManager");
+         Global.Assert(DiffuseRenderPassManager.RegisterSingleton(), "Failed to instantiate DiffuseRenderPassManager");
 
          // This token, and the associated render managers, ensure that driver MSAA
          // does not get used for Advanced Lighting renders.  The 'AL_FormatResolve'
          // PostEffect copies the result to the backbuffer.
-         AL_FormatToken = new RenderFormatToken(AL_FormatToken) {
+         AL_FormatToken = new RenderFormatToken("AL_FormatToken") {
             Enabled = false,
 
             //When hdr is enabled this will be changed to the appropriate format
@@ -83,67 +90,69 @@ namespace BaseGame.Core.Rendering
             // provided in $inTex
             ResolveEffect = AL_FormatCopy
          };
-         DiffuseRenderPassManager.AddManager(new RenderPassStateBin
+         Global.Assert(AL_FormatToken.RegisterSingleton(), "Failed to instantiate AL_FormatToken");
+
+         DiffuseRenderPassManager.AddManager(new RenderPassStateBin(true)
             {RenderOrder = 0.001f, StateToken = AL_FormatToken});
 
          // We really need to fix the sky to render after all the
          // meshes... but that causes issues in reflections.
-         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("SkyBin")
+         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("SkyBin", true)
             {BinType = "Sky", RenderOrder = 0.1f, ProcessAddOrder = 0.1f});
 
          //DiffuseRenderPassManager.AddManager( new RenderVistaMgr()               { bintype = "Vista"; renderOrder = 0.15; processAddOrder = 0.15; } );
 
-         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("BeginBin")
+         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("BeginBin", true)
             {BinType = "Begin", RenderOrder = 0.2f, ProcessAddOrder = 0.2f});
          // Normal mesh rendering.
-         DiffuseRenderPassManager.AddManager(new RenderTerrainMgr("TerrainBin")
+         DiffuseRenderPassManager.AddManager(new RenderTerrainMgr("TerrainBin", true)
             {RenderOrder = 0.4f, ProcessAddOrder = 0.4f, BasicOnly = true});
-         DiffuseRenderPassManager.AddManager(new RenderMeshMgr("MeshBin")
+         DiffuseRenderPassManager.AddManager(new RenderMeshMgr("MeshBin", true)
             {BinType = "Mesh", RenderOrder = 0.5f, ProcessAddOrder = 0.5f, BasicOnly = true});
-         DiffuseRenderPassManager.AddManager(new RenderImposterMgr("ImposterBin")
+         DiffuseRenderPassManager.AddManager(new RenderImposterMgr("ImposterBin", true)
             {RenderOrder = 0.56f, ProcessAddOrder = 0.56f});
-         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("ObjectBin")
+         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("ObjectBin", true)
             {BinType = "Object", RenderOrder = 0.6f, ProcessAddOrder = 0.6f});
 
-         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("ShadowBin")
+         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("ShadowBin", true)
             {BinType = "Shadow", RenderOrder = 0.7f, ProcessAddOrder = 0.7f});
-         DiffuseRenderPassManager.AddManager(new RenderMeshMgr("DecalRoadBin")
+         DiffuseRenderPassManager.AddManager(new RenderMeshMgr("DecalRoadBin", true)
             {BinType = "DecalRoad", RenderOrder = 0.8f, ProcessAddOrder = 0.8f});
-         DiffuseRenderPassManager.AddManager(new RenderMeshMgr("DecalBin")
+         DiffuseRenderPassManager.AddManager(new RenderMeshMgr("DecalBin", true)
             {BinType = "Decal", RenderOrder = 0.81f, ProcessAddOrder = 0.81f});
-         DiffuseRenderPassManager.AddManager(new RenderOcclusionMgr("OccluderBin")
+         DiffuseRenderPassManager.AddManager(new RenderOcclusionMgr("OccluderBin", true)
             {BinType = "Occluder", RenderOrder = 0.9f, ProcessAddOrder = 0.9f});
 
          // We now render translucent objects that should handle
          // their own fogging and lighting.
 
          // Note that the fog effect is triggered before this bin.
-         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("ObjTranslucentBin")
+         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("ObjTranslucentBin", true)
             {BinType = "ObjectTranslucent", RenderOrder = 1.0f, ProcessAddOrder = 1.0f});
 
-         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("WaterBin")
+         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("WaterBin", true)
             {BinType = "Water", RenderOrder = 1.2f, ProcessAddOrder = 1.2f});
-         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("FoliageBin")
+         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("FoliageBin", true)
             {BinType = "Foliage", RenderOrder = 1.3f, ProcessAddOrder = 1.3f});
-         DiffuseRenderPassManager.AddManager(new RenderParticleMgr("ParticleBin")
+         DiffuseRenderPassManager.AddManager(new RenderParticleMgr("ParticleBin", true)
             {RenderOrder = 1.35f, ProcessAddOrder = 1.35f});
-         DiffuseRenderPassManager.AddManager(new RenderTranslucentMgr("TranslucentBin")
+         DiffuseRenderPassManager.AddManager(new RenderTranslucentMgr("TranslucentBin", true)
             {RenderOrder = 1.4f, ProcessAddOrder = 1.4f});
 
-         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("FogBin")
+         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("FogBin", true)
             {BinType = "ObjectVolumetricFog", RenderOrder = 1.45f, ProcessAddOrder = 1.45f});
 
          // Note that the GlowPostFx is triggered after this bin.
-         DiffuseRenderPassManager.AddManager(new RenderGlowMgr("GlowBin")
+         DiffuseRenderPassManager.AddManager(new RenderGlowMgr("GlowBin", true)
             {RenderOrder = 1.5f, ProcessAddOrder = 1.5f});
 
          // We render any editor stuff from this bin.  Note that the HDR is
          // completed before this bin to keep editor elements from tone mapping.
-         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("EditorBin")
+         DiffuseRenderPassManager.AddManager(new RenderObjectMgr("EditorBin", true)
             {BinType = "Editor", RenderOrder = 1.6f, ProcessAddOrder = 1.6f});
 
          // Resolve format change token last.
-         DiffuseRenderPassManager.AddManager(new RenderPassStateBin("FinalBin")
+         DiffuseRenderPassManager.AddManager(new RenderPassStateBin("FinalBin", true)
             {RenderOrder = 1.7f, StateToken = AL_FormatToken});
       }
    }

@@ -8,28 +8,31 @@ namespace BaseGame.Core.Rendering.GfxData
    public class Water
    {
       public static void Init() {
-//-----------------------------------------------------------------------------
-// Water
-//-----------------------------------------------------------------------------
-         var WaterShader = new ShaderData("WaterShader") {
-            DXVertexShaderFile = Global.GetConsoleString("Core::CommonShaderPath") + "/water/waterV.hlsl",
-            DXPixelShaderFile = Global.GetConsoleString("Core::CommonShaderPath") + "/water/waterP.hlsl",
+         //-----------------------------------------------------------------------------
+         // Water
+         //-----------------------------------------------------------------------------
+         ShaderData WaterShader = new ShaderData("WaterShader")
+         {
+             DXVertexShaderFile = Global.GetConsoleString("Core::CommonShaderPath") + "/water/waterV.hlsl",
+             DXPixelShaderFile = Global.GetConsoleString("Core::CommonShaderPath") + "/water/waterP.hlsl",
 
-            OGLVertexShaderFile = Global.GetConsoleString("Core::CommonShaderPath") + "/water/gl/waterV.glsl",
-            OGLPixelShaderFile = Global.GetConsoleString("Core::CommonShaderPath") + "/water/gl/waterP.glsl",
+             OGLVertexShaderFile = Global.GetConsoleString("Core::CommonShaderPath") + "/water/gl/waterV.glsl",
+             OGLPixelShaderFile = Global.GetConsoleString("Core::CommonShaderPath") + "/water/gl/waterP.glsl",
 
-            SamplerNames = {
-               [0] = "$bumpMap", // noise
-               [1] = "$deferredTex", // #deferred
-               [2] = "$reflectMap", // $reflectbuff
-               [3] = "$refractBuff", // $backbuff
-               [4] = "$skyMap", // $cubemap
-               [5] = "$foamMap", // foam
-               [6] = "$depthGradMap", // depthMap ( color gradient )
-            },
+             SamplerNames =
+             {
+                 [0] = "$bumpMap", // noise
+                 [1] = "$deferredTex", // #deferred
+                 [2] = "$reflectMap", // $reflectbuff
+                 [3] = "$refractBuff", // $backbuff
+                 [4] = "$skyMap", // $cubemap
+                 [5] = "$foamMap", // foam
+                 [6] = "$depthGradMap", // depthMap ( color gradient )
+             },
 
-            PixVersion = 3.0f
-         }.RegisterSingleton();
+             PixVersion = 3.0f
+         };
+         WaterShader.RegisterSingleton();
 
          var WaterSampler = new GFXSamplerStateData("WaterSampler") {
             TextureColorOp = GFXTextureOp.GFXTOPModulate,

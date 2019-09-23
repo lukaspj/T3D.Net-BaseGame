@@ -13,10 +13,11 @@ namespace BaseGame.Core.Rendering
          Global.SetConsoleString("Core::WarningTexturePath", "core/rendering/images/warnMat");
          Global.SetConsoleString("Core::CommonShaderPath", "core/rendering/shaders");
 
-         GfxData.Clouds.Init();
-         GfxData.CommonMaterialData.Init();
-         GfxData.ScatterSky.Init();
          GfxData.Shaders.Init();
+         GfxData.CommonMaterialData.Init();
+         RenderManager.Init();
+         GfxData.Clouds.Init();
+         GfxData.ScatterSky.Init();
          GfxData.TerrainBlock.Init();
          GfxData.Water.Init();
       }

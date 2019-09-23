@@ -51,7 +51,7 @@ namespace BaseGame
 
          if (Global.GetConsoleBool("isDedicated") == false) {
             // Start rendering and stuff
-            Global.Call("initRenderManager");
+            Core.Rendering.RenderManager.InitRenderManager();
             Global.Call("initLightingSystems", "Advanced Lighting");
 
 
