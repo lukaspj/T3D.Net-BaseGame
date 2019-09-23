@@ -2279,8 +2279,8 @@ namespace T3DNetFramework.Generated.Classes.Sim {
 
 
         public new string Name {
-            get => GenericMarshal.StringTo<string>(GetFieldValue("Name"));
-            set => SetFieldValue("Name", GenericMarshal.ToString(value));
+            get => GetName();
+            set => SetName(value);
         }
 
 
