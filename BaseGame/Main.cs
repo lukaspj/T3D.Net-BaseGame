@@ -1,11 +1,8 @@
-using System;
-using System.IO;
 using System.Reflection;
 using T3DNetFramework.Engine;
 using T3DNetFramework.Generated.Classes.Sim;
 using T3DNetFramework.Interop;
 using T3DNetFramework.Generated.Functions;
-using T3DNetFramework.Generated.Structs.Math;
 using Path = System.IO.Path;
 
 namespace BaseGame
@@ -51,21 +48,18 @@ namespace BaseGame
 
          if (Global.GetConsoleBool("isDedicated") == false) {
             // Start rendering and stuff
-            Core.Rendering.RenderManager.InitRenderManager();
-            Global.Call("initLightingSystems", "Advanced Lighting");
+            Core.Functions.Rendering.InitRenderManager();
+            Core.Functions.Lighting.InitLightingSystems("Advanced Lighting");
 
-
-            Global.Call("configureCanvas");
-            //Core.Canvas.ConfigureCanvas();
+            Core.Functions.UI.ConfigureCanvas();
 
             // Autodetect settings if it's our first time
             if (Global.GetConsoleBool("pref::Video::autoDetect"))
             {
-               //todo GraphicsMenu.Autodetect()
-               Global.Eval("GraphicsMenu.AutoDetect");
+               Core.Functions.UI.GraphicsMenu.AutoDetect();
             }
 
-            Global.Call("postFXInit");
+            Core.Functions.Rendering.PostFX.Init();
 
             Global.CloseSplashWindow();
 
@@ -73,7 +67,7 @@ namespace BaseGame
             // we can hide any splash screen we have, and show the canvas.
             // This keeps things looking nice, instead of having a blank window
             // Core.Canvas.ShowWindow();
-            Global.Eval("Canvas.showWindow();");
+            Core.SimObjects.UI.Canvas.ShowWindow();
          } else {
             Global.CloseSplashWindow();
          }
