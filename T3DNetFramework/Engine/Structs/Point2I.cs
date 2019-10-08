@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace T3DNetFramework.Engine.Structs
+﻿namespace T3DNetFramework.Engine.Structs
 {
     public class Point2I : Generated.Structs.Math.Point2I
     {

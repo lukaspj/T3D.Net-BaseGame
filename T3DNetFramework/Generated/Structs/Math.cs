@@ -219,8 +219,8 @@ namespace T3DNetFramework.Generated.Structs.Math {
         }
 
         public void Free() {
-            Position.internalStruct = internalStruct.position; Position.Free();
-            Orientation.internalStruct = internalStruct.orientation; Orientation.Free();
+            Position?.Free(); Position = new Point3F(internalStruct.position); 
+            Orientation?.Free(); Orientation = new AngAxisF(internalStruct.orientation); 
             HasRotation = internalStruct.hasRotation;
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
@@ -273,7 +273,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
         }
 
         public void Free() {
-            Axis.internalStruct = internalStruct.axis; Axis.Free();
+            Axis?.Free(); Axis = new Point3F(internalStruct.axis);
             Angle = internalStruct.angle;
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
