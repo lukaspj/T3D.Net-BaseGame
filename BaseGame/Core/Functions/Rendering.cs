@@ -15,6 +15,8 @@ namespace BaseGame.Core.Functions {
          /// Initialize PostFX system, calls the TorqueScript function "postFXInit".
          /// </summary>
          public static void Init() => Global.Call("postFXInit");
+
+         public static void UpdateDOFSettings() => Global.Call("ppOptionsUpdateDOFSettings");
       }
    }
 }
