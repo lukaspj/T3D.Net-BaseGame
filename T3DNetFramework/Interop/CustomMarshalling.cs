@@ -292,6 +292,16 @@ namespace T3DNetFramework.Interop
             found = true;
             ret = s;
          }
+         else if (typeof(T) == typeof(bool))
+         {
+            found = true;
+            
+            if (int.TryParse(s, out int parseResult)) {
+               ret = parseResult > 0;
+            } else {
+               ret = bool.Parse(s);
+            }
+         }
          else if (typeof(T) == typeof(char))
          {
             found = true;
