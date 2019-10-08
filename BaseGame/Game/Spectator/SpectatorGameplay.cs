@@ -1,4 +1,5 @@
-﻿using T3DNetFramework.Generated.Classes.Sim;
+﻿using BaseGame.Game.Spectator.Server;
+using T3DNetFramework.Generated.Classes.Sim;
 using T3DNetFramework.Generated.Functions;
 using T3DNetFramework.Interop;
 
@@ -7,9 +8,6 @@ namespace BaseGame.Game.Spectator {
    public class SpectatorGameplay : ModuleDefinition {
       public void create() {
          //server scripts
-         Global.Exec("data/spectatorGameplay/scripts/server/camera.cs");
-         Global.Exec("data/spectatorGameplay/scripts/server/DefaultGame.cs");
-         Global.Exec("data/spectatorGameplay/scripts/server/VolumetricFog.cs");
 
          //add DBs
          if (Global.IsObject("DatablockFilesList")) {
@@ -45,6 +43,7 @@ namespace BaseGame.Game.Spectator {
                Global.Exec(prefPath + "/keybinds.cs");
             }
 
+            Client.InputCommands.Variables.Init();
             Global.Exec("data/spectatorGameplay/scripts/client/inputCommands.cs");
 
             //guis
