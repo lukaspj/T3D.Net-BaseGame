@@ -35,16 +35,12 @@ namespace BaseGame.Game.Spectator {
 
          if (!Global.GetConsoleBool("Server::Dedicated")) {
             //client scripts
-            string keybindPath = "data/spectatorGameplay/scripts/client/default.keybinds.cs";
-            Global.Exec(keybindPath);
-
             string prefPath = Core.Functions.Paths.GetPrefPath();
             if (Global.IsFile(prefPath + "/keybinds.cs")) {
                Global.Exec(prefPath + "/keybinds.cs");
             }
 
             Client.InputCommands.Variables.Init();
-            Global.Exec("data/spectatorGameplay/scripts/client/inputCommands.cs");
 
             //guis
             Global.Exec("data/spectatorGameplay/scripts/gui/playGui.gui");
