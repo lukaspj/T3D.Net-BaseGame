@@ -47,7 +47,6 @@ namespace BaseGame.Game.Spectator {
 
             //guis
             Global.Exec("data/spectatorGameplay/scripts/gui/playGui.gui");
-            Global.Exec("data/spectatorGameplay/scripts/gui/playGui.cs");
          }
       }
 
