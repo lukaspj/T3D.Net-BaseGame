@@ -1,265 +1,206 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DNetFramework.Generated.Classes.Reflection;
-using T3DNetFramework.Generated.Structs.Global;
-using T3DNetFramework.Interop;
 using T3DNetFramework.Engine;
 using T3DNetFramework.Engine.Util;
 using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Reflection;
 using T3DNetFramework.Generated.Classes.Sim;
 using T3DNetFramework.Generated.Classes.Sim.Net;
 using T3DNetFramework.Generated.Enums.Global;
 using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
 using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {
-
+namespace T3DNetFramework.Generated.Classes.Sim {    
     public unsafe class afxStatusBar : GuiControl {
-
-
-
-        public afxStatusBar(bool pRegister = false)
+        public afxStatusBar(bool pRegister = false) 
             : base(pRegister) {
         }
-
-        public afxStatusBar(string pName, bool pRegister)
+        
+        public afxStatusBar(string pName, bool pRegister) 
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-
-        public afxStatusBar(string pName)
+        
+        public afxStatusBar(string pName) 
             : this(pName, false) {
         }
-
-        public afxStatusBar(string pName, string pParent, bool pRegister = false)
+        
+        public afxStatusBar(string pName, string pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-
-        public afxStatusBar(string pName, SimObject pParent, bool pRegister = false)
+        
+        public afxStatusBar(string pName, SimObject pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-
-        public afxStatusBar(SimObject pObj)
+        
+        public afxStatusBar(SimObject pObj) 
             : base(pObj) {
         }
-
-        public afxStatusBar(IntPtr pObj)
+        
+        public afxStatusBar(IntPtr pObj) 
             : base(pObj) {
         }
-
-
+        
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
 
-
-
-
-
-
-
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct ClearShape__Args
+            {
+            }
 
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct ClearShape__Args
-                {
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate void _ClearShape(IntPtr _this, ClearShape__Args args);
+            private static _ClearShape _ClearShapeFunc;
+            internal static _ClearShape ClearShape() {
+                if (_ClearShapeFunc == null) {
+                    _ClearShapeFunc =
+                        (_ClearShape)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxStatusBar_clearShape"), typeof(_ClearShape));
                 }
+                
+                return _ClearShapeFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct SetShape__Args
+            {
+                internal IntPtr shape;
+            }
 
-                //internal delegate void _ClearShape(IntPtr _this);
-                internal delegate void _ClearShape(IntPtr _this, ClearShape__Args args);
-                private static _ClearShape _ClearShapeFunc;
-                internal static _ClearShape ClearShape() {
-                    if (_ClearShapeFunc == null) {
-                        _ClearShapeFunc =
-                            (_ClearShape)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxStatusBar_clearShape"), typeof(_ClearShape));
-                    }
-
-                    return _ClearShapeFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate void _SetShape(IntPtr _this, SetShape__Args args);
+            private static _SetShape _SetShapeFunc;
+            internal static _SetShape SetShape() {
+                if (_SetShapeFunc == null) {
+                    _SetShapeFunc =
+                        (_SetShape)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxStatusBar_setShape"), typeof(_SetShape));
                 }
+                
+                return _SetShapeFunc;
+            }
 
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct SetProgress__Args
+            {
+                internal float percentDone;
+            }
 
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct SetShape__Args
-                {
-
-				   internal IntPtr shape;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate void _SetProgress(IntPtr _this, SetProgress__Args args);
+            private static _SetProgress _SetProgressFunc;
+            internal static _SetProgress SetProgress() {
+                if (_SetProgressFunc == null) {
+                    _SetProgressFunc =
+                        (_SetProgress)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxStatusBar_setProgress"), typeof(_SetProgress));
                 }
+                
+                return _SetProgressFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct StaticGetType__Args
+            {
+            }
 
-                //internal delegate void _SetShape(IntPtr _this, IntPtr shape);
-                internal delegate void _SetShape(IntPtr _this, SetShape__Args args);
-                private static _SetShape _SetShapeFunc;
-                internal static _SetShape SetShape() {
-                    if (_SetShapeFunc == null) {
-                        _SetShapeFunc =
-                            (_SetShape)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxStatusBar_setShape"), typeof(_SetShape));
-                    }
-
-                    return _SetShapeFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
+            private static _StaticGetType _StaticGetTypeFunc;
+            internal static _StaticGetType StaticGetType() {
+                if (_StaticGetTypeFunc == null) {
+                    _StaticGetTypeFunc =
+                        (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxStatusBar_staticGetType"), typeof(_StaticGetType));
                 }
+                
+                return _StaticGetTypeFunc;
+            }
 
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct Create__Args
+            {
+            }
 
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct SetProgress__Args
-                {
-
-				   internal float percentDone;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _Create(Create__Args args);
+            private static _Create _CreateFunc;
+            internal static _Create Create() {
+                if (_CreateFunc == null) {
+                    _CreateFunc =
+                        (_Create)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxStatusBar_create"), typeof(_Create));
                 }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate void _SetProgress(IntPtr _this, float percentDone);
-                internal delegate void _SetProgress(IntPtr _this, SetProgress__Args args);
-                private static _SetProgress _SetProgressFunc;
-                internal static _SetProgress SetProgress() {
-                    if (_SetProgressFunc == null) {
-                        _SetProgressFunc =
-                            (_SetProgress)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxStatusBar_setProgress"), typeof(_SetProgress));
-                    }
-
-                    return _SetProgressFunc;
-                }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct StaticGetType__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _StaticGetType();
-                internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
-                private static _StaticGetType _StaticGetTypeFunc;
-                internal static _StaticGetType StaticGetType() {
-                    if (_StaticGetTypeFunc == null) {
-                        _StaticGetTypeFunc =
-                            (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxStatusBar_staticGetType"), typeof(_StaticGetType));
-                    }
-
-                    return _StaticGetTypeFunc;
-                }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct Create__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _Create();
-                internal delegate IntPtr _Create(Create__Args args);
-                private static _Create _CreateFunc;
-                internal static _Create Create() {
-                    if (_CreateFunc == null) {
-                        _CreateFunc =
-                            (_Create)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxStatusBar_create"), typeof(_Create));
-                    }
-
-                    return _CreateFunc;
-                }
-
+                
+                return _CreateFunc;
+            }
         }
         #endregion
 
+        public void ClearShape() {
+             InternalUnsafeMethods.ClearShape__Args _args = new InternalUnsafeMethods.ClearShape__Args() {
+             };
+             InternalUnsafeMethods.ClearShape()(ObjectPtr, _args);
+        }
 
+        public void SetShape(ShapeBase shape) {
+             InternalUnsafeMethods.SetShape__Args _args = new InternalUnsafeMethods.SetShape__Args() {
+                shape = shape.ObjectPtr,
+             };
+             InternalUnsafeMethods.SetShape()(ObjectPtr, _args);
+        }
 
-                  public void ClearShape() {
+        public void SetProgress(float percentDone) {
+             InternalUnsafeMethods.SetProgress__Args _args = new InternalUnsafeMethods.SetProgress__Args() {
+                percentDone = percentDone,
+             };
+             InternalUnsafeMethods.SetProgress()(ObjectPtr, _args);
+        }
 
-                     InternalUnsafeMethods.ClearShape__Args _args = new InternalUnsafeMethods.ClearShape__Args() {
-                     };
-                     InternalUnsafeMethods.ClearShape()(ObjectPtr, _args);
-
-                  }
-
-
-
-                  public void SetShape(ShapeBase shape) {
-
-                                          InternalUnsafeMethods.SetShape__Args _args = new InternalUnsafeMethods.SetShape__Args() {
-                        shape = shape.ObjectPtr,
-                     };
-                     InternalUnsafeMethods.SetShape()(ObjectPtr, _args);
-
-                  }
-
-
-
-                  public void SetProgress(float percentDone) {
-
-                                          InternalUnsafeMethods.SetProgress__Args _args = new InternalUnsafeMethods.SetProgress__Args() {
-                        percentDone = percentDone,
-                     };
-                     InternalUnsafeMethods.SetProgress()(ObjectPtr, _args);
-
-                  }
-
-
-
-                  public static EngineTypeInfo StaticGetType() {
-                     InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
-                     };
-                     IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-
-                     return new EngineTypeInfo(_engineResult);
-                  }
-
-
-
-
-
+        public static EngineTypeInfo StaticGetType() {
+             InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
+             };
+             IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
+             return new EngineTypeInfo(_engineResult);
+        }
 
         public LinearColorF FillColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("fillColor"));
             set => SetFieldValue("fillColor", GenericMarshal.ToString(value));
         }
 
-
         public bool DisplayEnergy {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("displayEnergy"));
             set => SetFieldValue("displayEnergy", GenericMarshal.ToString(value));
         }
 
-
         public bool MonitorPlayer {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("monitorPlayer"));
             set => SetFieldValue("monitorPlayer", GenericMarshal.ToString(value));
         }
-
-
     }
 }

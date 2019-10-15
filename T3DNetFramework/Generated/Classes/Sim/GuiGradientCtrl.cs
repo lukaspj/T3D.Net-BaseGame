@@ -1,248 +1,195 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DNetFramework.Generated.Classes.Reflection;
-using T3DNetFramework.Generated.Enums.Global;
-using T3DNetFramework.Generated.Structs.Global;
-using T3DNetFramework.Interop;
 using T3DNetFramework.Engine;
 using T3DNetFramework.Engine.Util;
 using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Reflection;
 using T3DNetFramework.Generated.Classes.Sim;
 using T3DNetFramework.Generated.Classes.Sim.Net;
+using T3DNetFramework.Generated.Enums.Global;
 using T3DNetFramework.Generated.Enums.Reflection;
+using T3DNetFramework.Generated.Structs.Global;
 using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {
-
+namespace T3DNetFramework.Generated.Classes.Sim {    
     public unsafe class GuiGradientCtrl : GuiControl {
-
-
-
-        public GuiGradientCtrl(bool pRegister = false)
+        public GuiGradientCtrl(bool pRegister = false) 
             : base(pRegister) {
         }
-
-        public GuiGradientCtrl(string pName, bool pRegister)
+        
+        public GuiGradientCtrl(string pName, bool pRegister) 
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-
-        public GuiGradientCtrl(string pName)
+        
+        public GuiGradientCtrl(string pName) 
             : this(pName, false) {
         }
-
-        public GuiGradientCtrl(string pName, string pParent, bool pRegister = false)
+        
+        public GuiGradientCtrl(string pName, string pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-
-        public GuiGradientCtrl(string pName, SimObject pParent, bool pRegister = false)
+        
+        public GuiGradientCtrl(string pName, SimObject pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-
-        public GuiGradientCtrl(SimObject pObj)
+        
+        public GuiGradientCtrl(SimObject pObj) 
             : base(pObj) {
         }
-
-        public GuiGradientCtrl(IntPtr pObj)
+        
+        public GuiGradientCtrl(IntPtr pObj) 
             : base(pObj) {
         }
-
-
+        
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
 
-
-
-
-
-
-
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct GetColor__Args
+            {
+                internal int idx;
+            }
 
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct GetColor__Args
-                {
-
-				   internal int idx;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate LinearColorF.InternalStruct _GetColor(IntPtr _this, GetColor__Args args);
+            private static _GetColor _GetColorFunc;
+            internal static _GetColor GetColor() {
+                if (_GetColorFunc == null) {
+                    _GetColorFunc =
+                        (_GetColor)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnGuiGradientCtrl_getColor"), typeof(_GetColor));
                 }
+                
+                return _GetColorFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct GetColorCount__Args
+            {
+            }
 
-                //internal delegate LinearColorF.InternalStruct _GetColor(IntPtr _this, int idx);
-                internal delegate LinearColorF.InternalStruct _GetColor(IntPtr _this, GetColor__Args args);
-                private static _GetColor _GetColorFunc;
-                internal static _GetColor GetColor() {
-                    if (_GetColorFunc == null) {
-                        _GetColorFunc =
-                            (_GetColor)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnGuiGradientCtrl_getColor"), typeof(_GetColor));
-                    }
-
-                    return _GetColorFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate int _GetColorCount(IntPtr _this, GetColorCount__Args args);
+            private static _GetColorCount _GetColorCountFunc;
+            internal static _GetColorCount GetColorCount() {
+                if (_GetColorCountFunc == null) {
+                    _GetColorCountFunc =
+                        (_GetColorCount)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnGuiGradientCtrl_getColorCount"), typeof(_GetColorCount));
                 }
+                
+                return _GetColorCountFunc;
+            }
 
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct StaticGetType__Args
+            {
+            }
 
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct GetColorCount__Args
-                {
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
+            private static _StaticGetType _StaticGetTypeFunc;
+            internal static _StaticGetType StaticGetType() {
+                if (_StaticGetTypeFunc == null) {
+                    _StaticGetTypeFunc =
+                        (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnGuiGradientCtrl_staticGetType"), typeof(_StaticGetType));
                 }
+                
+                return _StaticGetTypeFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct Create__Args
+            {
+            }
 
-                //internal delegate int _GetColorCount(IntPtr _this);
-                internal delegate int _GetColorCount(IntPtr _this, GetColorCount__Args args);
-                private static _GetColorCount _GetColorCountFunc;
-                internal static _GetColorCount GetColorCount() {
-                    if (_GetColorCountFunc == null) {
-                        _GetColorCountFunc =
-                            (_GetColorCount)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnGuiGradientCtrl_getColorCount"), typeof(_GetColorCount));
-                    }
-
-                    return _GetColorCountFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _Create(Create__Args args);
+            private static _Create _CreateFunc;
+            internal static _Create Create() {
+                if (_CreateFunc == null) {
+                    _CreateFunc =
+                        (_Create)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnGuiGradientCtrl_create"), typeof(_Create));
                 }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct StaticGetType__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _StaticGetType();
-                internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
-                private static _StaticGetType _StaticGetTypeFunc;
-                internal static _StaticGetType StaticGetType() {
-                    if (_StaticGetTypeFunc == null) {
-                        _StaticGetTypeFunc =
-                            (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnGuiGradientCtrl_staticGetType"), typeof(_StaticGetType));
-                    }
-
-                    return _StaticGetTypeFunc;
-                }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct Create__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _Create();
-                internal delegate IntPtr _Create(Create__Args args);
-                private static _Create _CreateFunc;
-                internal static _Create Create() {
-                    if (_CreateFunc == null) {
-                        _CreateFunc =
-                            (_Create)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnGuiGradientCtrl_create"), typeof(_Create));
-                    }
-
-                    return _CreateFunc;
-                }
-
+                
+                return _CreateFunc;
+            }
         }
         #endregion
 
+        public LinearColorF GetColor(int idx) {
+             InternalUnsafeMethods.GetColor__Args _args = new InternalUnsafeMethods.GetColor__Args() {
+                idx = idx,
+             };
+             LinearColorF.InternalStruct _engineResult = InternalUnsafeMethods.GetColor()(ObjectPtr, _args);
+             return new LinearColorF(_engineResult);
+        }
 
+        public int GetColorCount() {
+             InternalUnsafeMethods.GetColorCount__Args _args = new InternalUnsafeMethods.GetColorCount__Args() {
+             };
+             int _engineResult = InternalUnsafeMethods.GetColorCount()(ObjectPtr, _args);
+             return _engineResult;
+        }
 
-                  public LinearColorF GetColor(int idx) {
-
-                                          InternalUnsafeMethods.GetColor__Args _args = new InternalUnsafeMethods.GetColor__Args() {
-                        idx = idx,
-                     };
-                     LinearColorF.InternalStruct _engineResult = InternalUnsafeMethods.GetColor()(ObjectPtr, _args);
-
-                     return new LinearColorF(_engineResult);
-                  }
-
-
-
-                  public int GetColorCount() {
-
-                     InternalUnsafeMethods.GetColorCount__Args _args = new InternalUnsafeMethods.GetColorCount__Args() {
-                     };
-                     int _engineResult = InternalUnsafeMethods.GetColorCount()(ObjectPtr, _args);
-
-                     return _engineResult;
-                  }
-
-
-
-                  public static EngineTypeInfo StaticGetType() {
-                     InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
-                     };
-                     IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-
-                     return new EngineTypeInfo(_engineResult);
-                  }
-
-
-
-
-
+        public static EngineTypeInfo StaticGetType() {
+             InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
+             };
+             IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
+             return new EngineTypeInfo(_engineResult);
+        }
 
         public LinearColorF BaseColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("baseColor"));
             set => SetFieldValue("baseColor", GenericMarshal.ToString(value));
         }
 
-
         public LinearColorF PickColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("pickColor"));
             set => SetFieldValue("pickColor", GenericMarshal.ToString(value));
         }
-
 
         public GuiGradientPickMode DisplayMode {
             get => GenericMarshal.StringTo<GuiGradientPickMode>(GetFieldValue("displayMode"));
             set => SetFieldValue("displayMode", GenericMarshal.ToString(value));
         }
 
-
         public bool ActionOnMove {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("actionOnMove"));
             set => SetFieldValue("actionOnMove", GenericMarshal.ToString(value));
         }
-
 
         public bool ShowReticle {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showReticle"));
             set => SetFieldValue("showReticle", GenericMarshal.ToString(value));
         }
 
-
         public int SwatchFactor {
             get => GenericMarshal.StringTo<int>(GetFieldValue("swatchFactor"));
             set => SetFieldValue("swatchFactor", GenericMarshal.ToString(value));
         }
-
-
     }
 }

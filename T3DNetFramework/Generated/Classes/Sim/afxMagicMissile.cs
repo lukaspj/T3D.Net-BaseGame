@@ -1,225 +1,175 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DNetFramework.Generated.Classes.Reflection;
-using T3DNetFramework.Generated.Structs.Math;
-using T3DNetFramework.Interop;
 using T3DNetFramework.Engine;
 using T3DNetFramework.Engine.Util;
 using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Reflection;
 using T3DNetFramework.Generated.Classes.Sim;
 using T3DNetFramework.Generated.Classes.Sim.Net;
 using T3DNetFramework.Generated.Enums.Global;
 using T3DNetFramework.Generated.Enums.Reflection;
 using T3DNetFramework.Generated.Structs.Global;
 using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {
-
+namespace T3DNetFramework.Generated.Classes.Sim {    
     public unsafe class afxMagicMissile : GameBase {
-
-
-
-        public afxMagicMissile(bool pRegister = false)
+        public afxMagicMissile(bool pRegister = false) 
             : base(pRegister) {
         }
-
-        public afxMagicMissile(string pName, bool pRegister)
+        
+        public afxMagicMissile(string pName, bool pRegister) 
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-
-        public afxMagicMissile(string pName)
+        
+        public afxMagicMissile(string pName) 
             : this(pName, false) {
         }
-
-        public afxMagicMissile(string pName, string pParent, bool pRegister = false)
+        
+        public afxMagicMissile(string pName, string pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-
-        public afxMagicMissile(string pName, SimObject pParent, bool pRegister = false)
+        
+        public afxMagicMissile(string pName, SimObject pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-
-        public afxMagicMissile(SimObject pObj)
+        
+        public afxMagicMissile(SimObject pObj) 
             : base(pObj) {
         }
-
-        public afxMagicMissile(IntPtr pObj)
+        
+        public afxMagicMissile(IntPtr pObj) 
             : base(pObj) {
         }
-
-
+        
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
 
-
-
-
-
-
-
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct SetStartingVelocity__Args
+            {
+                internal float velocity;
+            }
 
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct SetStartingVelocity__Args
-                {
-
-				   internal float velocity;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate void _SetStartingVelocity(IntPtr _this, SetStartingVelocity__Args args);
+            private static _SetStartingVelocity _SetStartingVelocityFunc;
+            internal static _SetStartingVelocity SetStartingVelocity() {
+                if (_SetStartingVelocityFunc == null) {
+                    _SetStartingVelocityFunc =
+                        (_SetStartingVelocity)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxMagicMissile_setStartingVelocity"), typeof(_SetStartingVelocity));
                 }
+                
+                return _SetStartingVelocityFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct SetStartingVelocityVector__Args
+            {
+                internal IntPtr velocityVec;
+            }
 
-                //internal delegate void _SetStartingVelocity(IntPtr _this, float velocity);
-                internal delegate void _SetStartingVelocity(IntPtr _this, SetStartingVelocity__Args args);
-                private static _SetStartingVelocity _SetStartingVelocityFunc;
-                internal static _SetStartingVelocity SetStartingVelocity() {
-                    if (_SetStartingVelocityFunc == null) {
-                        _SetStartingVelocityFunc =
-                            (_SetStartingVelocity)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxMagicMissile_setStartingVelocity"), typeof(_SetStartingVelocity));
-                    }
-
-                    return _SetStartingVelocityFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate void _SetStartingVelocityVector(IntPtr _this, SetStartingVelocityVector__Args args);
+            private static _SetStartingVelocityVector _SetStartingVelocityVectorFunc;
+            internal static _SetStartingVelocityVector SetStartingVelocityVector() {
+                if (_SetStartingVelocityVectorFunc == null) {
+                    _SetStartingVelocityVectorFunc =
+                        (_SetStartingVelocityVector)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxMagicMissile_setStartingVelocityVector"), typeof(_SetStartingVelocityVector));
                 }
+                
+                return _SetStartingVelocityVectorFunc;
+            }
 
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct StaticGetType__Args
+            {
+            }
 
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct SetStartingVelocityVector__Args
-                {
-
-				   internal IntPtr velocityVec;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
+            private static _StaticGetType _StaticGetTypeFunc;
+            internal static _StaticGetType StaticGetType() {
+                if (_StaticGetTypeFunc == null) {
+                    _StaticGetTypeFunc =
+                        (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxMagicMissile_staticGetType"), typeof(_StaticGetType));
                 }
+                
+                return _StaticGetTypeFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct Create__Args
+            {
+            }
 
-                //internal delegate void _SetStartingVelocityVector(IntPtr _this, IntPtr velocityVec);
-                internal delegate void _SetStartingVelocityVector(IntPtr _this, SetStartingVelocityVector__Args args);
-                private static _SetStartingVelocityVector _SetStartingVelocityVectorFunc;
-                internal static _SetStartingVelocityVector SetStartingVelocityVector() {
-                    if (_SetStartingVelocityVectorFunc == null) {
-                        _SetStartingVelocityVectorFunc =
-                            (_SetStartingVelocityVector)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxMagicMissile_setStartingVelocityVector"), typeof(_SetStartingVelocityVector));
-                    }
-
-                    return _SetStartingVelocityVectorFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _Create(Create__Args args);
+            private static _Create _CreateFunc;
+            internal static _Create Create() {
+                if (_CreateFunc == null) {
+                    _CreateFunc =
+                        (_Create)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxMagicMissile_create"), typeof(_Create));
                 }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct StaticGetType__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _StaticGetType();
-                internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
-                private static _StaticGetType _StaticGetTypeFunc;
-                internal static _StaticGetType StaticGetType() {
-                    if (_StaticGetTypeFunc == null) {
-                        _StaticGetTypeFunc =
-                            (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxMagicMissile_staticGetType"), typeof(_StaticGetType));
-                    }
-
-                    return _StaticGetTypeFunc;
-                }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct Create__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _Create();
-                internal delegate IntPtr _Create(Create__Args args);
-                private static _Create _CreateFunc;
-                internal static _Create Create() {
-                    if (_CreateFunc == null) {
-                        _CreateFunc =
-                            (_Create)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxMagicMissile_create"), typeof(_Create));
-                    }
-
-                    return _CreateFunc;
-                }
-
+                
+                return _CreateFunc;
+            }
         }
         #endregion
 
+        public void SetStartingVelocity(float velocity) {
+             InternalUnsafeMethods.SetStartingVelocity__Args _args = new InternalUnsafeMethods.SetStartingVelocity__Args() {
+                velocity = velocity,
+             };
+             InternalUnsafeMethods.SetStartingVelocity()(ObjectPtr, _args);
+        }
 
+        public void SetStartingVelocityVector(Point3F velocityVec) {
+velocityVec.Alloc();             InternalUnsafeMethods.SetStartingVelocityVector__Args _args = new InternalUnsafeMethods.SetStartingVelocityVector__Args() {
+                velocityVec = velocityVec.internalStructPtr,
+             };
+             InternalUnsafeMethods.SetStartingVelocityVector()(ObjectPtr, _args);
+velocityVec.Free();        }
 
-                  public void SetStartingVelocity(float velocity) {
-
-                                          InternalUnsafeMethods.SetStartingVelocity__Args _args = new InternalUnsafeMethods.SetStartingVelocity__Args() {
-                        velocity = velocity,
-                     };
-                     InternalUnsafeMethods.SetStartingVelocity()(ObjectPtr, _args);
-
-                  }
-
-
-
-                  public void SetStartingVelocityVector(Point3F velocityVec) {
-
-                     velocityVec.Alloc();                     InternalUnsafeMethods.SetStartingVelocityVector__Args _args = new InternalUnsafeMethods.SetStartingVelocityVector__Args() {
-                        velocityVec = velocityVec.internalStructPtr,
-                     };
-                     InternalUnsafeMethods.SetStartingVelocityVector()(ObjectPtr, _args);
-                                          velocityVec.Free();
-                  }
-
-
-
-                  public static EngineTypeInfo StaticGetType() {
-                     InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
-                     };
-                     IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-
-                     return new EngineTypeInfo(_engineResult);
-                  }
-
-
-
-
-
+        public static EngineTypeInfo StaticGetType() {
+             InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
+             };
+             IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
+             return new EngineTypeInfo(_engineResult);
+        }
 
         public Point3F InitialPosition {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("initialPosition"));
             set => SetFieldValue("initialPosition", GenericMarshal.ToString(value));
         }
 
-
         public Point3F InitialVelocity {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("initialVelocity"));
             set => SetFieldValue("initialVelocity", GenericMarshal.ToString(value));
         }
-
-
     }
 }

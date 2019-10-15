@@ -1,358 +1,277 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DNetFramework.Generated.Classes.Reflection;
-using T3DNetFramework.Generated.Structs.Math;
-using T3DNetFramework.Interop;
 using T3DNetFramework.Engine;
 using T3DNetFramework.Engine.Util;
 using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Reflection;
 using T3DNetFramework.Generated.Classes.Sim;
 using T3DNetFramework.Generated.Classes.Sim.Net;
 using T3DNetFramework.Generated.Enums.Global;
 using T3DNetFramework.Generated.Enums.Reflection;
 using T3DNetFramework.Generated.Structs.Global;
 using T3DNetFramework.Generated.Structs.Gui;
+using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {
-
+namespace T3DNetFramework.Generated.Classes.Sim {    
     public unsafe class WorldEditorSelection : SimPersistSet {
-
-
-
-        public WorldEditorSelection(bool pRegister = false)
+        public WorldEditorSelection(bool pRegister = false) 
             : base(pRegister) {
         }
-
-        public WorldEditorSelection(string pName, bool pRegister)
+        
+        public WorldEditorSelection(string pName, bool pRegister) 
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-
-        public WorldEditorSelection(string pName)
+        
+        public WorldEditorSelection(string pName) 
             : this(pName, false) {
         }
-
-        public WorldEditorSelection(string pName, string pParent, bool pRegister = false)
+        
+        public WorldEditorSelection(string pName, string pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-
-        public WorldEditorSelection(string pName, SimObject pParent, bool pRegister = false)
+        
+        public WorldEditorSelection(string pName, SimObject pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-
-        public WorldEditorSelection(SimObject pObj)
+        
+        public WorldEditorSelection(SimObject pObj) 
             : base(pObj) {
         }
-
-        public WorldEditorSelection(IntPtr pObj)
+        
+        public WorldEditorSelection(IntPtr pObj) 
             : base(pObj) {
         }
-
-
+        
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
 
-
-
-
-
-
-
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct Subtract__Args
+            {
+                internal IntPtr selection;
+            }
 
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct Subtract__Args
-                {
-
-				   internal IntPtr selection;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate void _Subtract(IntPtr _this, Subtract__Args args);
+            private static _Subtract _SubtractFunc;
+            internal static _Subtract Subtract() {
+                if (_SubtractFunc == null) {
+                    _SubtractFunc =
+                        (_Subtract)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnWorldEditorSelection_subtract"), typeof(_Subtract));
                 }
+                
+                return _SubtractFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct Union__Args
+            {
+                internal IntPtr selection;
+            }
 
-                //internal delegate void _Subtract(IntPtr _this, IntPtr selection);
-                internal delegate void _Subtract(IntPtr _this, Subtract__Args args);
-                private static _Subtract _SubtractFunc;
-                internal static _Subtract Subtract() {
-                    if (_SubtractFunc == null) {
-                        _SubtractFunc =
-                            (_Subtract)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnWorldEditorSelection_subtract"), typeof(_Subtract));
-                    }
-
-                    return _SubtractFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate void _Union(IntPtr _this, Union__Args args);
+            private static _Union _UnionFunc;
+            internal static _Union Union() {
+                if (_UnionFunc == null) {
+                    _UnionFunc =
+                        (_Union)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnWorldEditorSelection_union"), typeof(_Union));
                 }
+                
+                return _UnionFunc;
+            }
 
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct Offset__Args
+            {
+                internal IntPtr delta;
+                internal float gridSnap;
+            }
 
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct Union__Args
-                {
-
-				   internal IntPtr selection;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate void _Offset(IntPtr _this, Offset__Args args);
+            private static _Offset _OffsetFunc;
+            internal static _Offset Offset() {
+                if (_OffsetFunc == null) {
+                    _OffsetFunc =
+                        (_Offset)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnWorldEditorSelection_offset"), typeof(_Offset));
                 }
+                
+                return _OffsetFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct GetBoxCentroid__Args
+            {
+            }
 
-                //internal delegate void _Union(IntPtr _this, IntPtr selection);
-                internal delegate void _Union(IntPtr _this, Union__Args args);
-                private static _Union _UnionFunc;
-                internal static _Union Union() {
-                    if (_UnionFunc == null) {
-                        _UnionFunc =
-                            (_Union)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnWorldEditorSelection_union"), typeof(_Union));
-                    }
-
-                    return _UnionFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate Point3F.InternalStruct _GetBoxCentroid(IntPtr _this, GetBoxCentroid__Args args);
+            private static _GetBoxCentroid _GetBoxCentroidFunc;
+            internal static _GetBoxCentroid GetBoxCentroid() {
+                if (_GetBoxCentroidFunc == null) {
+                    _GetBoxCentroidFunc =
+                        (_GetBoxCentroid)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnWorldEditorSelection_getBoxCentroid"), typeof(_GetBoxCentroid));
                 }
+                
+                return _GetBoxCentroidFunc;
+            }
 
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct GetCentroid__Args
+            {
+            }
 
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct Offset__Args
-                {
-
-				   internal IntPtr delta;
-
-				   internal float gridSnap;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate Point3F.InternalStruct _GetCentroid(IntPtr _this, GetCentroid__Args args);
+            private static _GetCentroid _GetCentroidFunc;
+            internal static _GetCentroid GetCentroid() {
+                if (_GetCentroidFunc == null) {
+                    _GetCentroidFunc =
+                        (_GetCentroid)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnWorldEditorSelection_getCentroid"), typeof(_GetCentroid));
                 }
+                
+                return _GetCentroidFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct ContainsGlobalBounds__Args
+            {
+            }
 
-                //internal delegate void _Offset(IntPtr _this, IntPtr delta, float gridSnap);
-                internal delegate void _Offset(IntPtr _this, Offset__Args args);
-                private static _Offset _OffsetFunc;
-                internal static _Offset Offset() {
-                    if (_OffsetFunc == null) {
-                        _OffsetFunc =
-                            (_Offset)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnWorldEditorSelection_offset"), typeof(_Offset));
-                    }
-
-                    return _OffsetFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [return: MarshalAs(UnmanagedType.I1)]
+            internal delegate bool _ContainsGlobalBounds(IntPtr _this, ContainsGlobalBounds__Args args);
+            private static _ContainsGlobalBounds _ContainsGlobalBoundsFunc;
+            internal static _ContainsGlobalBounds ContainsGlobalBounds() {
+                if (_ContainsGlobalBoundsFunc == null) {
+                    _ContainsGlobalBoundsFunc =
+                        (_ContainsGlobalBounds)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnWorldEditorSelection_containsGlobalBounds"), typeof(_ContainsGlobalBounds));
                 }
+                
+                return _ContainsGlobalBoundsFunc;
+            }
 
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct StaticGetType__Args
+            {
+            }
 
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct GetBoxCentroid__Args
-                {
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
+            private static _StaticGetType _StaticGetTypeFunc;
+            internal static _StaticGetType StaticGetType() {
+                if (_StaticGetTypeFunc == null) {
+                    _StaticGetTypeFunc =
+                        (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnWorldEditorSelection_staticGetType"), typeof(_StaticGetType));
                 }
+                
+                return _StaticGetTypeFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct Create__Args
+            {
+            }
 
-                //internal delegate Point3F.InternalStruct _GetBoxCentroid(IntPtr _this);
-                internal delegate Point3F.InternalStruct _GetBoxCentroid(IntPtr _this, GetBoxCentroid__Args args);
-                private static _GetBoxCentroid _GetBoxCentroidFunc;
-                internal static _GetBoxCentroid GetBoxCentroid() {
-                    if (_GetBoxCentroidFunc == null) {
-                        _GetBoxCentroidFunc =
-                            (_GetBoxCentroid)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnWorldEditorSelection_getBoxCentroid"), typeof(_GetBoxCentroid));
-                    }
-
-                    return _GetBoxCentroidFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _Create(Create__Args args);
+            private static _Create _CreateFunc;
+            internal static _Create Create() {
+                if (_CreateFunc == null) {
+                    _CreateFunc =
+                        (_Create)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnWorldEditorSelection_create"), typeof(_Create));
                 }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct GetCentroid__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate Point3F.InternalStruct _GetCentroid(IntPtr _this);
-                internal delegate Point3F.InternalStruct _GetCentroid(IntPtr _this, GetCentroid__Args args);
-                private static _GetCentroid _GetCentroidFunc;
-                internal static _GetCentroid GetCentroid() {
-                    if (_GetCentroidFunc == null) {
-                        _GetCentroidFunc =
-                            (_GetCentroid)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnWorldEditorSelection_getCentroid"), typeof(_GetCentroid));
-                    }
-
-                    return _GetCentroidFunc;
-                }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct ContainsGlobalBounds__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-                [return: MarshalAs(UnmanagedType.I1)]
-                //internal delegate bool _ContainsGlobalBounds(IntPtr _this);
-                internal delegate bool _ContainsGlobalBounds(IntPtr _this, ContainsGlobalBounds__Args args);
-                private static _ContainsGlobalBounds _ContainsGlobalBoundsFunc;
-                internal static _ContainsGlobalBounds ContainsGlobalBounds() {
-                    if (_ContainsGlobalBoundsFunc == null) {
-                        _ContainsGlobalBoundsFunc =
-                            (_ContainsGlobalBounds)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnWorldEditorSelection_containsGlobalBounds"), typeof(_ContainsGlobalBounds));
-                    }
-
-                    return _ContainsGlobalBoundsFunc;
-                }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct StaticGetType__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _StaticGetType();
-                internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
-                private static _StaticGetType _StaticGetTypeFunc;
-                internal static _StaticGetType StaticGetType() {
-                    if (_StaticGetTypeFunc == null) {
-                        _StaticGetTypeFunc =
-                            (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnWorldEditorSelection_staticGetType"), typeof(_StaticGetType));
-                    }
-
-                    return _StaticGetTypeFunc;
-                }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct Create__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _Create();
-                internal delegate IntPtr _Create(Create__Args args);
-                private static _Create _CreateFunc;
-                internal static _Create Create() {
-                    if (_CreateFunc == null) {
-                        _CreateFunc =
-                            (_Create)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnWorldEditorSelection_create"), typeof(_Create));
-                    }
-
-                    return _CreateFunc;
-                }
-
+                
+                return _CreateFunc;
+            }
         }
         #endregion
 
+        public void Subtract(SimSet selection) {
+             InternalUnsafeMethods.Subtract__Args _args = new InternalUnsafeMethods.Subtract__Args() {
+                selection = selection.ObjectPtr,
+             };
+             InternalUnsafeMethods.Subtract()(ObjectPtr, _args);
+        }
 
+        public void Union(SimSet selection) {
+             InternalUnsafeMethods.Union__Args _args = new InternalUnsafeMethods.Union__Args() {
+                selection = selection.ObjectPtr,
+             };
+             InternalUnsafeMethods.Union()(ObjectPtr, _args);
+        }
 
-                  public void Subtract(SimSet selection) {
+        public void Offset(Point3F delta, float gridSnap = 0f) {
+delta.Alloc();             InternalUnsafeMethods.Offset__Args _args = new InternalUnsafeMethods.Offset__Args() {
+                delta = delta.internalStructPtr,
+                gridSnap = gridSnap,
+             };
+             InternalUnsafeMethods.Offset()(ObjectPtr, _args);
+delta.Free();        }
 
-                                          InternalUnsafeMethods.Subtract__Args _args = new InternalUnsafeMethods.Subtract__Args() {
-                        selection = selection.ObjectPtr,
-                     };
-                     InternalUnsafeMethods.Subtract()(ObjectPtr, _args);
+        public Point3F GetBoxCentroid() {
+             InternalUnsafeMethods.GetBoxCentroid__Args _args = new InternalUnsafeMethods.GetBoxCentroid__Args() {
+             };
+             Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetBoxCentroid()(ObjectPtr, _args);
+             return new Point3F(_engineResult);
+        }
 
-                  }
+        public Point3F GetCentroid() {
+             InternalUnsafeMethods.GetCentroid__Args _args = new InternalUnsafeMethods.GetCentroid__Args() {
+             };
+             Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetCentroid()(ObjectPtr, _args);
+             return new Point3F(_engineResult);
+        }
 
+        public bool ContainsGlobalBounds() {
+             InternalUnsafeMethods.ContainsGlobalBounds__Args _args = new InternalUnsafeMethods.ContainsGlobalBounds__Args() {
+             };
+             bool _engineResult = InternalUnsafeMethods.ContainsGlobalBounds()(ObjectPtr, _args);
+             return _engineResult;
+        }
 
-
-                  public void Union(SimSet selection) {
-
-                                          InternalUnsafeMethods.Union__Args _args = new InternalUnsafeMethods.Union__Args() {
-                        selection = selection.ObjectPtr,
-                     };
-                     InternalUnsafeMethods.Union()(ObjectPtr, _args);
-
-                  }
-
-
-
-                  public void Offset(Point3F delta, float gridSnap = 0f) {
-
-                     delta.Alloc();                                          InternalUnsafeMethods.Offset__Args _args = new InternalUnsafeMethods.Offset__Args() {
-                        delta = delta.internalStructPtr,
-                        gridSnap = gridSnap,
-                     };
-                     InternalUnsafeMethods.Offset()(ObjectPtr, _args);
-                                          delta.Free();
-                  }
-
-
-
-                  public Point3F GetBoxCentroid() {
-
-                     InternalUnsafeMethods.GetBoxCentroid__Args _args = new InternalUnsafeMethods.GetBoxCentroid__Args() {
-                     };
-                     Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetBoxCentroid()(ObjectPtr, _args);
-
-                     return new Point3F(_engineResult);
-                  }
-
-
-
-                  public Point3F GetCentroid() {
-
-                     InternalUnsafeMethods.GetCentroid__Args _args = new InternalUnsafeMethods.GetCentroid__Args() {
-                     };
-                     Point3F.InternalStruct _engineResult = InternalUnsafeMethods.GetCentroid()(ObjectPtr, _args);
-
-                     return new Point3F(_engineResult);
-                  }
-
-
-
-                  public bool ContainsGlobalBounds() {
-
-                     InternalUnsafeMethods.ContainsGlobalBounds__Args _args = new InternalUnsafeMethods.ContainsGlobalBounds__Args() {
-                     };
-                     bool _engineResult = InternalUnsafeMethods.ContainsGlobalBounds()(ObjectPtr, _args);
-
-                     return _engineResult;
-                  }
-
-
-
-                  public static EngineTypeInfo StaticGetType() {
-                     InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
-                     };
-                     IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-
-                     return new EngineTypeInfo(_engineResult);
-                  }
-
-
-
-
-
-
+        public static EngineTypeInfo StaticGetType() {
+             InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
+             };
+             IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
+             return new EngineTypeInfo(_engineResult);
+        }
     }
 }

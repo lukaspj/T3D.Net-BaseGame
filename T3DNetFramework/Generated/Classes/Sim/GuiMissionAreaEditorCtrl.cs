@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DNetFramework.Generated.Classes.Reflection;
-using T3DNetFramework.Interop;
 using T3DNetFramework.Engine;
 using T3DNetFramework.Engine.Util;
 using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Reflection;
 using T3DNetFramework.Generated.Classes.Sim;
 using T3DNetFramework.Generated.Classes.Sim.Net;
 using T3DNetFramework.Generated.Enums.Global;
@@ -13,199 +12,155 @@ using T3DNetFramework.Generated.Enums.Reflection;
 using T3DNetFramework.Generated.Structs.Global;
 using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {
-
+namespace T3DNetFramework.Generated.Classes.Sim {    
     public unsafe class GuiMissionAreaEditorCtrl : EditTSCtrl {
-
-
-
-        public GuiMissionAreaEditorCtrl(bool pRegister = false)
+        public GuiMissionAreaEditorCtrl(bool pRegister = false) 
             : base(pRegister) {
         }
-
-        public GuiMissionAreaEditorCtrl(string pName, bool pRegister)
+        
+        public GuiMissionAreaEditorCtrl(string pName, bool pRegister) 
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-
-        public GuiMissionAreaEditorCtrl(string pName)
+        
+        public GuiMissionAreaEditorCtrl(string pName) 
             : this(pName, false) {
         }
-
-        public GuiMissionAreaEditorCtrl(string pName, string pParent, bool pRegister = false)
+        
+        public GuiMissionAreaEditorCtrl(string pName, string pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-
-        public GuiMissionAreaEditorCtrl(string pName, SimObject pParent, bool pRegister = false)
+        
+        public GuiMissionAreaEditorCtrl(string pName, SimObject pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-
-        public GuiMissionAreaEditorCtrl(SimObject pObj)
+        
+        public GuiMissionAreaEditorCtrl(SimObject pObj) 
             : base(pObj) {
         }
-
-        public GuiMissionAreaEditorCtrl(IntPtr pObj)
+        
+        public GuiMissionAreaEditorCtrl(IntPtr pObj) 
             : base(pObj) {
         }
-
-
+        
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
 
-
-
-
-
-
-
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct GetSelectedMissionArea__Args
+            {
+            }
 
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct GetSelectedMissionArea__Args
-                {
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            
+            internal delegate IntPtr _GetSelectedMissionArea(IntPtr _this, GetSelectedMissionArea__Args args);
+            private static _GetSelectedMissionArea _GetSelectedMissionAreaFunc;
+            internal static _GetSelectedMissionArea GetSelectedMissionArea() {
+                if (_GetSelectedMissionAreaFunc == null) {
+                    _GetSelectedMissionAreaFunc =
+                        (_GetSelectedMissionArea)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnGuiMissionAreaEditorCtrl_getSelectedMissionArea"), typeof(_GetSelectedMissionArea));
                 }
+                
+                return _GetSelectedMissionAreaFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct SetSelectedMissionArea__Args
+            {
+                [MarshalAs(UnmanagedType.LPUTF8Str)]
+                internal string missionAreaName;
+            }
 
-                //internal delegate IntPtr _GetSelectedMissionArea(IntPtr _this);
-                internal delegate IntPtr _GetSelectedMissionArea(IntPtr _this, GetSelectedMissionArea__Args args);
-                private static _GetSelectedMissionArea _GetSelectedMissionAreaFunc;
-                internal static _GetSelectedMissionArea GetSelectedMissionArea() {
-                    if (_GetSelectedMissionAreaFunc == null) {
-                        _GetSelectedMissionAreaFunc =
-                            (_GetSelectedMissionArea)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnGuiMissionAreaEditorCtrl_getSelectedMissionArea"), typeof(_GetSelectedMissionArea));
-                    }
-
-                    return _GetSelectedMissionAreaFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate void _SetSelectedMissionArea(IntPtr _this, SetSelectedMissionArea__Args args);
+            private static _SetSelectedMissionArea _SetSelectedMissionAreaFunc;
+            internal static _SetSelectedMissionArea SetSelectedMissionArea() {
+                if (_SetSelectedMissionAreaFunc == null) {
+                    _SetSelectedMissionAreaFunc =
+                        (_SetSelectedMissionArea)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnGuiMissionAreaEditorCtrl_setSelectedMissionArea"), typeof(_SetSelectedMissionArea));
                 }
+                
+                return _SetSelectedMissionAreaFunc;
+            }
 
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct StaticGetType__Args
+            {
+            }
 
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct SetSelectedMissionArea__Args
-                {
-
-				   internal string missionAreaName;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
+            private static _StaticGetType _StaticGetTypeFunc;
+            internal static _StaticGetType StaticGetType() {
+                if (_StaticGetTypeFunc == null) {
+                    _StaticGetTypeFunc =
+                        (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnGuiMissionAreaEditorCtrl_staticGetType"), typeof(_StaticGetType));
                 }
+                
+                return _StaticGetTypeFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct Create__Args
+            {
+            }
 
-                //internal delegate void _SetSelectedMissionArea(IntPtr _this, string missionAreaName);
-                internal delegate void _SetSelectedMissionArea(IntPtr _this, SetSelectedMissionArea__Args args);
-                private static _SetSelectedMissionArea _SetSelectedMissionAreaFunc;
-                internal static _SetSelectedMissionArea SetSelectedMissionArea() {
-                    if (_SetSelectedMissionAreaFunc == null) {
-                        _SetSelectedMissionAreaFunc =
-                            (_SetSelectedMissionArea)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnGuiMissionAreaEditorCtrl_setSelectedMissionArea"), typeof(_SetSelectedMissionArea));
-                    }
-
-                    return _SetSelectedMissionAreaFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _Create(Create__Args args);
+            private static _Create _CreateFunc;
+            internal static _Create Create() {
+                if (_CreateFunc == null) {
+                    _CreateFunc =
+                        (_Create)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnGuiMissionAreaEditorCtrl_create"), typeof(_Create));
                 }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct StaticGetType__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _StaticGetType();
-                internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
-                private static _StaticGetType _StaticGetTypeFunc;
-                internal static _StaticGetType StaticGetType() {
-                    if (_StaticGetTypeFunc == null) {
-                        _StaticGetTypeFunc =
-                            (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnGuiMissionAreaEditorCtrl_staticGetType"), typeof(_StaticGetType));
-                    }
-
-                    return _StaticGetTypeFunc;
-                }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct Create__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _Create();
-                internal delegate IntPtr _Create(Create__Args args);
-                private static _Create _CreateFunc;
-                internal static _Create Create() {
-                    if (_CreateFunc == null) {
-                        _CreateFunc =
-                            (_Create)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnGuiMissionAreaEditorCtrl_create"), typeof(_Create));
-                    }
-
-                    return _CreateFunc;
-                }
-
+                
+                return _CreateFunc;
+            }
         }
         #endregion
 
+        public string GetSelectedMissionArea() {
+             InternalUnsafeMethods.GetSelectedMissionArea__Args _args = new InternalUnsafeMethods.GetSelectedMissionArea__Args() {
+             };
+             IntPtr _engineResult = InternalUnsafeMethods.GetSelectedMissionArea()(ObjectPtr, _args);
+             return StringMarshal.IntPtrToUtf8String(_engineResult);
+        }
 
+        public void SetSelectedMissionArea(string missionAreaName = "") {
+             InternalUnsafeMethods.SetSelectedMissionArea__Args _args = new InternalUnsafeMethods.SetSelectedMissionArea__Args() {
+                missionAreaName = missionAreaName,
+             };
+             InternalUnsafeMethods.SetSelectedMissionArea()(ObjectPtr, _args);
+        }
 
-                  public string GetSelectedMissionArea() {
-
-                     InternalUnsafeMethods.GetSelectedMissionArea__Args _args = new InternalUnsafeMethods.GetSelectedMissionArea__Args() {
-                     };
-                     IntPtr _engineResult = InternalUnsafeMethods.GetSelectedMissionArea()(ObjectPtr, _args);
-
-                     return StringMarshal.IntPtrToUtf8String(_engineResult);
-                  }
-
-
-
-                  public void SetSelectedMissionArea(string missionAreaName = "") {
-
-                                          InternalUnsafeMethods.SetSelectedMissionArea__Args _args = new InternalUnsafeMethods.SetSelectedMissionArea__Args() {
-                        missionAreaName = missionAreaName,
-                     };
-                     InternalUnsafeMethods.SetSelectedMissionArea()(ObjectPtr, _args);
-
-                  }
-
-
-
-                  public static EngineTypeInfo StaticGetType() {
-                     InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
-                     };
-                     IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-
-                     return new EngineTypeInfo(_engineResult);
-                  }
-
-
-
-
-
-
+        public static EngineTypeInfo StaticGetType() {
+             InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
+             };
+             IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
+             return new EngineTypeInfo(_engineResult);
+        }
     }
 }

@@ -2,149 +2,119 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using T3DNetFramework.Engine;
-using T3DNetFramework.Generated.Enums.Reflection;
-using T3DNetFramework.Interop;
 using T3DNetFramework.Engine.Util;
 using T3DNetFramework.Generated.Classes.Global;
 using T3DNetFramework.Generated.Classes.Reflection;
 using T3DNetFramework.Generated.Classes.Sim;
 using T3DNetFramework.Generated.Classes.Sim.Net;
 using T3DNetFramework.Generated.Enums.Global;
+using T3DNetFramework.Generated.Enums.Reflection;
 using T3DNetFramework.Generated.Structs.Global;
 using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Reflection {
-
+namespace T3DNetFramework.Generated.Classes.Reflection {    
     public unsafe class EngineTypeInfo : EngineExportScope {
-
-
-
-        public EngineTypeInfo(bool pRegister = false)
+        public EngineTypeInfo(bool pRegister = false) 
             : base(pRegister) {
         }
-
-        public EngineTypeInfo(ConsoleObjectBase pObj)
+        
+        public EngineTypeInfo(ConsoleObjectBase pObj) 
             : base(pObj) {
         }
-
-        public EngineTypeInfo(IntPtr pObj)
+        
+        public EngineTypeInfo(IntPtr pObj) 
             : base(pObj) {
         }
-
-
-
-
-
 
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct GetSuperType__Args
+            {
+            }
 
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct GetSuperType__Args
-                {
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _GetSuperType(IntPtr _this, GetSuperType__Args args);
+            private static _GetSuperType _GetSuperTypeFunc;
+            internal static _GetSuperType GetSuperType() {
+                if (_GetSuperTypeFunc == null) {
+                    _GetSuperTypeFunc =
+                        (_GetSuperType)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnEngineTypeInfo_getSuperType"), typeof(_GetSuperType));
                 }
+                
+                return _GetSuperTypeFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct GetTypeKind__Args
+            {
+            }
 
-                //internal delegate IntPtr _GetSuperType(IntPtr _this);
-                internal delegate IntPtr _GetSuperType(IntPtr _this, GetSuperType__Args args);
-                private static _GetSuperType _GetSuperTypeFunc;
-                internal static _GetSuperType GetSuperType() {
-                    if (_GetSuperTypeFunc == null) {
-                        _GetSuperTypeFunc =
-                            (_GetSuperType)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnEngineTypeInfo_getSuperType"), typeof(_GetSuperType));
-                    }
-
-                    return _GetSuperTypeFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate int _GetTypeKind(IntPtr _this, GetTypeKind__Args args);
+            private static _GetTypeKind _GetTypeKindFunc;
+            internal static _GetTypeKind GetTypeKind() {
+                if (_GetTypeKindFunc == null) {
+                    _GetTypeKindFunc =
+                        (_GetTypeKind)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnEngineTypeInfo_getTypeKind"), typeof(_GetTypeKind));
                 }
+                
+                return _GetTypeKindFunc;
+            }
 
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct StaticGetType__Args
+            {
+            }
 
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct GetTypeKind__Args
-                {
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
+            private static _StaticGetType _StaticGetTypeFunc;
+            internal static _StaticGetType StaticGetType() {
+                if (_StaticGetTypeFunc == null) {
+                    _StaticGetTypeFunc =
+                        (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnEngineTypeInfo_staticGetType"), typeof(_StaticGetType));
                 }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate int _GetTypeKind(IntPtr _this);
-                internal delegate int _GetTypeKind(IntPtr _this, GetTypeKind__Args args);
-                private static _GetTypeKind _GetTypeKindFunc;
-                internal static _GetTypeKind GetTypeKind() {
-                    if (_GetTypeKindFunc == null) {
-                        _GetTypeKindFunc =
-                            (_GetTypeKind)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnEngineTypeInfo_getTypeKind"), typeof(_GetTypeKind));
-                    }
-
-                    return _GetTypeKindFunc;
-                }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct StaticGetType__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _StaticGetType();
-                internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
-                private static _StaticGetType _StaticGetTypeFunc;
-                internal static _StaticGetType StaticGetType() {
-                    if (_StaticGetTypeFunc == null) {
-                        _StaticGetTypeFunc =
-                            (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnEngineTypeInfo_staticGetType"), typeof(_StaticGetType));
-                    }
-
-                    return _StaticGetTypeFunc;
-                }
-
+                
+                return _StaticGetTypeFunc;
+            }
         }
         #endregion
 
+        public EngineTypeInfo GetSuperType() {
+             InternalUnsafeMethods.GetSuperType__Args _args = new InternalUnsafeMethods.GetSuperType__Args() {
+             };
+             IntPtr _engineResult = InternalUnsafeMethods.GetSuperType()(ObjectPtr, _args);
+             return new EngineTypeInfo(_engineResult);
+        }
 
+        public EngineTypeKind GetTypeKind() {
+             InternalUnsafeMethods.GetTypeKind__Args _args = new InternalUnsafeMethods.GetTypeKind__Args() {
+             };
+             int _engineResult = InternalUnsafeMethods.GetTypeKind()(ObjectPtr, _args);
+             return (EngineTypeKind)_engineResult;
+        }
 
-                  public EngineTypeInfo GetSuperType() {
+        public static EngineTypeInfo StaticGetType() {
+             InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
+             };
+             IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
+             return new EngineTypeInfo(_engineResult);
+        }
 
-                     InternalUnsafeMethods.GetSuperType__Args _args = new InternalUnsafeMethods.GetSuperType__Args() {
-                     };
-                     IntPtr _engineResult = InternalUnsafeMethods.GetSuperType()(ObjectPtr, _args);
+        public EngineTypeKind TypeKind => GetTypeKind();
 
-                     return new EngineTypeInfo(_engineResult);
-                  }
-
-
-
-                  public EngineTypeKind GetTypeKind() {
-
-                     InternalUnsafeMethods.GetTypeKind__Args _args = new InternalUnsafeMethods.GetTypeKind__Args() {
-                     };
-                     int _engineResult = InternalUnsafeMethods.GetTypeKind()(ObjectPtr, _args);
-
-                     return (EngineTypeKind)_engineResult;
-                  }
-
-
-
-                  public static EngineTypeInfo StaticGetType() {
-                     InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
-                     };
-                     IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-
-                     return new EngineTypeInfo(_engineResult);
-                  }
+        public EngineTypeInfo SuperType => GetSuperType();
     }
 }

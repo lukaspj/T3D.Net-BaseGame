@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using T3DNetFramework.Generated.Classes.Reflection;
-using T3DNetFramework.Interop;
 using T3DNetFramework.Engine;
 using T3DNetFramework.Engine.Util;
 using T3DNetFramework.Generated.Classes.Global;
+using T3DNetFramework.Generated.Classes.Reflection;
 using T3DNetFramework.Generated.Classes.Sim;
 using T3DNetFramework.Generated.Classes.Sim.Net;
 using T3DNetFramework.Generated.Enums.Global;
@@ -13,245 +12,194 @@ using T3DNetFramework.Generated.Enums.Reflection;
 using T3DNetFramework.Generated.Structs.Global;
 using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
+using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {
-
+namespace T3DNetFramework.Generated.Classes.Sim {    
     public unsafe class afxSelectronData : afxChoreographerData {
-
-
-
-        public afxSelectronData(bool pRegister = false)
+        public afxSelectronData(bool pRegister = false) 
             : base(pRegister) {
         }
-
-        public afxSelectronData(string pName, bool pRegister)
+        
+        public afxSelectronData(string pName, bool pRegister) 
             : this(false) {
             Name = pName;
             if (pRegister) {
                 RegisterObject();
             }
         }
-
-        public afxSelectronData(string pName)
+        
+        public afxSelectronData(string pName) 
             : this(pName, false) {
         }
-
-        public afxSelectronData(string pName, string pParent, bool pRegister = false)
+        
+        public afxSelectronData(string pName, string pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(Engine.Sim.FindObject<SimObject>(pParent));
         }
-
-        public afxSelectronData(string pName, SimObject pParent, bool pRegister = false)
+        
+        public afxSelectronData(string pName, SimObject pParent, bool pRegister = false) 
             : this(pName, pRegister) {
             CopyFrom(pParent);
         }
-
-        public afxSelectronData(SimObject pObj)
+        
+        public afxSelectronData(SimObject pObj) 
             : base(pObj) {
         }
-
-        public afxSelectronData(IntPtr pObj)
+        
+        public afxSelectronData(IntPtr pObj) 
             : base(pObj) {
         }
-
-
+        
 		protected override void CreateObjectPtr()
 		{
 			ObjectPtr = InternalUnsafeMethods.Create()(new InternalUnsafeMethods.Create__Args());
 		}
 
-
-
-
-
-
-
         #region UnsafeNativeMethods
         new internal struct InternalUnsafeMethods {
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct Reset__Args
+            {
+            }
 
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct Reset__Args
-                {
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate void _Reset(IntPtr _this, Reset__Args args);
+            private static _Reset _ResetFunc;
+            internal static _Reset Reset() {
+                if (_ResetFunc == null) {
+                    _ResetFunc =
+                        (_Reset)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxSelectronData_reset"), typeof(_Reset));
                 }
+                
+                return _ResetFunc;
+            }
 
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct StaticGetType__Args
+            {
+            }
 
-                //internal delegate void _Reset(IntPtr _this);
-                internal delegate void _Reset(IntPtr _this, Reset__Args args);
-                private static _Reset _ResetFunc;
-                internal static _Reset Reset() {
-                    if (_ResetFunc == null) {
-                        _ResetFunc =
-                            (_Reset)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxSelectronData_reset"), typeof(_Reset));
-                    }
-
-                    return _ResetFunc;
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
+            private static _StaticGetType _StaticGetTypeFunc;
+            internal static _StaticGetType StaticGetType() {
+                if (_StaticGetTypeFunc == null) {
+                    _StaticGetTypeFunc =
+                        (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxSelectronData_staticGetType"), typeof(_StaticGetType));
                 }
+                
+                return _StaticGetTypeFunc;
+            }
 
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct Create__Args
+            {
+            }
 
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct StaticGetType__Args
-                {
+            [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+            internal delegate IntPtr _Create(Create__Args args);
+            private static _Create _CreateFunc;
+            internal static _Create Create() {
+                if (_CreateFunc == null) {
+                    _CreateFunc =
+                        (_Create)Marshal.GetDelegateForFunctionPointer(
+                            Torque3D.DllLoadUtils.GetProcAddress(
+                                Torque3D.Torque3DLibHandle,
+                                "fnafxSelectronData_create"), typeof(_Create));
                 }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _StaticGetType();
-                internal delegate IntPtr _StaticGetType(StaticGetType__Args args);
-                private static _StaticGetType _StaticGetTypeFunc;
-                internal static _StaticGetType StaticGetType() {
-                    if (_StaticGetTypeFunc == null) {
-                        _StaticGetTypeFunc =
-                            (_StaticGetType)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxSelectronData_staticGetType"), typeof(_StaticGetType));
-                    }
-
-                    return _StaticGetTypeFunc;
-                }
-
-
-
-                [StructLayout(LayoutKind.Sequential)]
-                internal struct Create__Args
-                {
-                }
-
-                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-
-                //internal delegate IntPtr _Create();
-                internal delegate IntPtr _Create(Create__Args args);
-                private static _Create _CreateFunc;
-                internal static _Create Create() {
-                    if (_CreateFunc == null) {
-                        _CreateFunc =
-                            (_Create)Marshal.GetDelegateForFunctionPointer(
-                                Torque3D.DllLoadUtils.GetProcAddress(
-                                    Torque3D.Torque3DLibHandle,
-                                    "fnafxSelectronData_create"), typeof(_Create));
-                    }
-
-                    return _CreateFunc;
-                }
-
+                
+                return _CreateFunc;
+            }
         }
         #endregion
 
+        public void Reset() {
+             InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
+             };
+             InternalUnsafeMethods.Reset()(ObjectPtr, _args);
+        }
 
-
-                  public void Reset() {
-
-                     InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
-                     };
-                     InternalUnsafeMethods.Reset()(ObjectPtr, _args);
-
-                  }
-
-
-
-                  public static EngineTypeInfo StaticGetType() {
-                     InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
-                     };
-                     IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
-
-                     return new EngineTypeInfo(_engineResult);
-                  }
-
-
-
-
-
+        public static EngineTypeInfo StaticGetType() {
+             InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
+             };
+             IntPtr _engineResult = InternalUnsafeMethods.StaticGetType()(_args);
+             return new EngineTypeInfo(_engineResult);
+        }
 
         public float MainDur {
             get => GenericMarshal.StringTo<float>(GetFieldValue("mainDur"));
             set => SetFieldValue("mainDur", GenericMarshal.ToString(value));
         }
 
-
         public float SelectDur {
             get => GenericMarshal.StringTo<float>(GetFieldValue("selectDur"));
             set => SetFieldValue("selectDur", GenericMarshal.ToString(value));
         }
-
 
         public float DeselectDur {
             get => GenericMarshal.StringTo<float>(GetFieldValue("deselectDur"));
             set => SetFieldValue("deselectDur", GenericMarshal.ToString(value));
         }
 
-
         public int MainRepeats {
             get => GenericMarshal.StringTo<int>(GetFieldValue("mainRepeats"));
             set => SetFieldValue("mainRepeats", GenericMarshal.ToString(value));
         }
-
 
         public int SelectRepeats {
             get => GenericMarshal.StringTo<int>(GetFieldValue("selectRepeats"));
             set => SetFieldValue("selectRepeats", GenericMarshal.ToString(value));
         }
 
-
         public int DeselectRepeats {
             get => GenericMarshal.StringTo<int>(GetFieldValue("deselectRepeats"));
             set => SetFieldValue("deselectRepeats", GenericMarshal.ToString(value));
         }
-
 
         public int SelectionTypeMask {
             get => GenericMarshal.StringTo<int>(GetFieldValue("selectionTypeMask"));
             set => SetFieldValue("selectionTypeMask", GenericMarshal.ToString(value));
         }
 
-
         public sbyte SelectionTypeStyle {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("selectionTypeStyle"));
             set => SetFieldValue("selectionTypeStyle", GenericMarshal.ToString(value));
         }
-
 
         public afxEffectBaseData AddMainEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addMainEffect"));
             set => SetFieldValue("addMainEffect", GenericMarshal.ToString(value));
         }
 
-
         public afxEffectBaseData AddSelectEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addSelectEffect"));
             set => SetFieldValue("addSelectEffect", GenericMarshal.ToString(value));
         }
-
 
         public afxEffectBaseData AddDeselectEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addDeselectEffect"));
             set => SetFieldValue("addDeselectEffect", GenericMarshal.ToString(value));
         }
 
-
         public int NumMainLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numMainLoops"));
             set => SetFieldValue("numMainLoops", GenericMarshal.ToString(value));
         }
-
 
         public int NumSelectLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numSelectLoops"));
             set => SetFieldValue("numSelectLoops", GenericMarshal.ToString(value));
         }
 
-
         public int NumDeselectLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numDeselectLoops"));
             set => SetFieldValue("numDeselectLoops", GenericMarshal.ToString(value));
         }
-
-
     }
 }

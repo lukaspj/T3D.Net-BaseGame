@@ -10,41 +10,40 @@ namespace T3DNetFramework.Generated.Structs.Global {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
-
+        
+        
         public ByteRange() { }
-
-        public ByteRange(InternalStruct data) {
+        
+        public ByteRange(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public ByteRange(string s) {
             string[] strings = s.Split(' ');
-
         }
-
+        
         public void Alloc() {
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-
             return s.Substring(1);
         }
     }
+
 
     public class Polyhedron : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -53,56 +52,61 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(0)] public PlaneFVector.InternalStruct planeList;
             [FieldOffset(64)] public EdgeVector.InternalStruct edgeList;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public Point3FVector PointList { get; set; }
         public PlaneFVector PlaneList { get; set; }
         public EdgeVector EdgeList { get; set; }
-
+        
         public Polyhedron() { }
-
-        public Polyhedron(InternalStruct data) {
+        
+        public Polyhedron(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public Polyhedron(string s) {
             string[] strings = s.Split(' ');
-            PointList = GenericMarshal.StringTo<Point3FVector>(strings[0]);
-            PlaneList = GenericMarshal.StringTo<PlaneFVector>(strings[1]);
-            EdgeList = GenericMarshal.StringTo<EdgeVector>(strings[2]);
-
+            PointList = GenericMarshal.StringTo<Point3FVector>(strings[0]);            
+            PlaneList = GenericMarshal.StringTo<PlaneFVector>(strings[1]);            
+            EdgeList = GenericMarshal.StringTo<EdgeVector>(strings[2]);            
         }
-
+        
         public void Alloc() {
-            PointList.Alloc();internalStruct.pointList = PointList.internalStruct;
-            PlaneList.Alloc();internalStruct.planeList = PlaneList.internalStruct;
-            EdgeList.Alloc();internalStruct.edgeList = EdgeList.internalStruct;
+            PointList.Alloc();
+            internalStruct.pointList = PointList.internalStruct;
+            PlaneList.Alloc();
+            internalStruct.planeList = PlaneList.internalStruct;
+            EdgeList.Alloc();
+            internalStruct.edgeList = EdgeList.internalStruct;
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
-            PointList.internalStruct = internalStruct.pointList; PointList.Free();
-            PlaneList.internalStruct = internalStruct.planeList; PlaneList.Free();
-            EdgeList.internalStruct = internalStruct.edgeList; EdgeList.Free();
+            PointList?.Free();
+            PointList = new Point3FVector(internalStruct.pointList);
+            PlaneList?.Free();
+            PlaneList = new PlaneFVector(internalStruct.planeList);
+            EdgeList?.Free();
+            EdgeList = new EdgeVector(internalStruct.edgeList);
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(PointList);
-            s += " " + GenericMarshal.ToString(PlaneList);
-            s += " " + GenericMarshal.ToString(EdgeList);
-
+            s += " " + GenericMarshal.ToString(PointList);            
+            s += " " + GenericMarshal.ToString(PlaneList);            
+            s += " " + GenericMarshal.ToString(EdgeList);            
             return s.Substring(1);
         }
     }
+
 
     public class StringVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -111,37 +115,36 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(4)] public uint arraySize;
             [FieldOffset(8)] public IntPtr array;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public uint ElementCount { get; set; }
         public uint ArraySize { get; set; }
         public string[] Array { get; set; }
-
+        
         public StringVector() { }
-
-        public StringVector(InternalStruct data) {
+        
+        public StringVector(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public StringVector(string s) {
             string[] strings = s.Split(' ');
-            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);
-            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);
-            Array = GenericMarshal.StringTo<string[]>(strings[2]);
-
+            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);            
+            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);            
+            Array = GenericMarshal.StringTo<string[]>(strings[2]);            
         }
-
+        
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
             internalStruct.arraySize = ArraySize;
             internalStruct.array = GenericMarshal.ToPtr(Array);
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             ElementCount = internalStruct.elementCount;
             ArraySize = internalStruct.arraySize;
@@ -151,16 +154,16 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(ElementCount);
-            s += " " + GenericMarshal.ToString(ArraySize);
-            s += " " + GenericMarshal.ToString(Array);
-
+            s += " " + GenericMarshal.ToString(ElementCount);            
+            s += " " + GenericMarshal.ToString(ArraySize);            
+            s += " " + GenericMarshal.ToString(Array);            
             return s.Substring(1);
         }
     }
+
 
     public class EdgeVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -169,37 +172,36 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(4)] public uint arraySize;
             [FieldOffset(8)] public IntPtr array;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public uint ElementCount { get; set; }
         public uint ArraySize { get; set; }
         public Edge[] Array { get; set; }
-
+        
         public EdgeVector() { }
-
-        public EdgeVector(InternalStruct data) {
+        
+        public EdgeVector(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public EdgeVector(string s) {
             string[] strings = s.Split(' ');
-            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);
-            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);
-            Array = GenericMarshal.StringTo<Edge[]>(strings[2]);
-
+            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);            
+            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);            
+            Array = GenericMarshal.StringTo<Edge[]>(strings[2]);            
         }
-
+        
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
             internalStruct.arraySize = ArraySize;
             internalStruct.array = GenericMarshal.ToPtr(Array);
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             ElementCount = internalStruct.elementCount;
             ArraySize = internalStruct.arraySize;
@@ -209,16 +211,16 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(ElementCount);
-            s += " " + GenericMarshal.ToString(ArraySize);
-            s += " " + GenericMarshal.ToString(Array);
-
+            s += " " + GenericMarshal.ToString(ElementCount);            
+            s += " " + GenericMarshal.ToString(ArraySize);            
+            s += " " + GenericMarshal.ToString(Array);            
             return s.Substring(1);
         }
     }
+
 
     public class PlaneFVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -227,37 +229,36 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(4)] public uint arraySize;
             [FieldOffset(8)] public IntPtr array;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public uint ElementCount { get; set; }
         public uint ArraySize { get; set; }
         public PlaneF[] Array { get; set; }
-
+        
         public PlaneFVector() { }
-
-        public PlaneFVector(InternalStruct data) {
+        
+        public PlaneFVector(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public PlaneFVector(string s) {
             string[] strings = s.Split(' ');
-            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);
-            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);
-            Array = GenericMarshal.StringTo<PlaneF[]>(strings[2]);
-
+            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);            
+            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);            
+            Array = GenericMarshal.StringTo<PlaneF[]>(strings[2]);            
         }
-
+        
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
             internalStruct.arraySize = ArraySize;
             internalStruct.array = GenericMarshal.ToPtr(Array);
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             ElementCount = internalStruct.elementCount;
             ArraySize = internalStruct.arraySize;
@@ -267,16 +268,16 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(ElementCount);
-            s += " " + GenericMarshal.ToString(ArraySize);
-            s += " " + GenericMarshal.ToString(Array);
-
+            s += " " + GenericMarshal.ToString(ElementCount);            
+            s += " " + GenericMarshal.ToString(ArraySize);            
+            s += " " + GenericMarshal.ToString(Array);            
             return s.Substring(1);
         }
     }
+
 
     public class Point3FVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -285,37 +286,36 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(4)] public uint arraySize;
             [FieldOffset(8)] public IntPtr array;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public uint ElementCount { get; set; }
         public uint ArraySize { get; set; }
         public Point3F[] Array { get; set; }
-
+        
         public Point3FVector() { }
-
-        public Point3FVector(InternalStruct data) {
+        
+        public Point3FVector(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public Point3FVector(string s) {
             string[] strings = s.Split(' ');
-            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);
-            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);
-            Array = GenericMarshal.StringTo<Point3F[]>(strings[2]);
-
+            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);            
+            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);            
+            Array = GenericMarshal.StringTo<Point3F[]>(strings[2]);            
         }
-
+        
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
             internalStruct.arraySize = ArraySize;
             internalStruct.array = GenericMarshal.ToPtr(Array);
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             ElementCount = internalStruct.elementCount;
             ArraySize = internalStruct.arraySize;
@@ -325,16 +325,16 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(ElementCount);
-            s += " " + GenericMarshal.ToString(ArraySize);
-            s += " " + GenericMarshal.ToString(Array);
-
+            s += " " + GenericMarshal.ToString(ElementCount);            
+            s += " " + GenericMarshal.ToString(ArraySize);            
+            s += " " + GenericMarshal.ToString(Array);            
             return s.Substring(1);
         }
     }
+
 
     public class FloatVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -343,37 +343,36 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(4)] public uint arraySize;
             [FieldOffset(8)] public IntPtr array;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public uint ElementCount { get; set; }
         public uint ArraySize { get; set; }
         public float[] Array { get; set; }
-
+        
         public FloatVector() { }
-
-        public FloatVector(InternalStruct data) {
+        
+        public FloatVector(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public FloatVector(string s) {
             string[] strings = s.Split(' ');
-            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);
-            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);
-            Array = GenericMarshal.StringTo<float[]>(strings[2]);
-
+            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);            
+            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);            
+            Array = GenericMarshal.StringTo<float[]>(strings[2]);            
         }
-
+        
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
             internalStruct.arraySize = ArraySize;
             internalStruct.array = GenericMarshal.ToPtr(Array);
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             ElementCount = internalStruct.elementCount;
             ArraySize = internalStruct.arraySize;
@@ -383,16 +382,16 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(ElementCount);
-            s += " " + GenericMarshal.ToString(ArraySize);
-            s += " " + GenericMarshal.ToString(Array);
-
+            s += " " + GenericMarshal.ToString(ElementCount);            
+            s += " " + GenericMarshal.ToString(ArraySize);            
+            s += " " + GenericMarshal.ToString(Array);            
             return s.Substring(1);
         }
     }
+
 
     public class IntVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -401,37 +400,36 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(4)] public uint arraySize;
             [FieldOffset(8)] public IntPtr array;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public uint ElementCount { get; set; }
         public uint ArraySize { get; set; }
         public int[] Array { get; set; }
-
+        
         public IntVector() { }
-
-        public IntVector(InternalStruct data) {
+        
+        public IntVector(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public IntVector(string s) {
             string[] strings = s.Split(' ');
-            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);
-            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);
-            Array = GenericMarshal.StringTo<int[]>(strings[2]);
-
+            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);            
+            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);            
+            Array = GenericMarshal.StringTo<int[]>(strings[2]);            
         }
-
+        
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
             internalStruct.arraySize = ArraySize;
             internalStruct.array = GenericMarshal.ToPtr(Array);
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             ElementCount = internalStruct.elementCount;
             ArraySize = internalStruct.arraySize;
@@ -441,16 +439,16 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(ElementCount);
-            s += " " + GenericMarshal.ToString(ArraySize);
-            s += " " + GenericMarshal.ToString(Array);
-
+            s += " " + GenericMarshal.ToString(ElementCount);            
+            s += " " + GenericMarshal.ToString(ArraySize);            
+            s += " " + GenericMarshal.ToString(Array);            
             return s.Substring(1);
         }
     }
+
 
     public class BoolVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -459,37 +457,36 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(4)] public uint arraySize;
             [FieldOffset(8)] public IntPtr array;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public uint ElementCount { get; set; }
         public uint ArraySize { get; set; }
         public bool[] Array { get; set; }
-
+        
         public BoolVector() { }
-
-        public BoolVector(InternalStruct data) {
+        
+        public BoolVector(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public BoolVector(string s) {
             string[] strings = s.Split(' ');
-            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);
-            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);
-            Array = GenericMarshal.StringTo<bool[]>(strings[2]);
-
+            ElementCount = GenericMarshal.StringTo<uint>(strings[0]);            
+            ArraySize = GenericMarshal.StringTo<uint>(strings[1]);            
+            Array = GenericMarshal.StringTo<bool[]>(strings[2]);            
         }
-
+        
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
             internalStruct.arraySize = ArraySize;
             internalStruct.array = GenericMarshal.ToPtr(Array);
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             ElementCount = internalStruct.elementCount;
             ArraySize = internalStruct.arraySize;
@@ -499,16 +496,16 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(ElementCount);
-            s += " " + GenericMarshal.ToString(ArraySize);
-            s += " " + GenericMarshal.ToString(Array);
-
+            s += " " + GenericMarshal.ToString(ElementCount);            
+            s += " " + GenericMarshal.ToString(ArraySize);            
+            s += " " + GenericMarshal.ToString(Array);            
             return s.Substring(1);
         }
     }
+
 
     public class LinearColorF : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -518,32 +515,31 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(8)] public float blue;
             [FieldOffset(12)] public float alpha;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public float Red { get; set; }
         public float Green { get; set; }
         public float Blue { get; set; }
         public float Alpha { get; set; }
-
+        
         public LinearColorF() { }
-
-        public LinearColorF(InternalStruct data) {
+        
+        public LinearColorF(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public LinearColorF(string s) {
             string[] strings = s.Split(' ');
-            Red = GenericMarshal.StringTo<float>(strings[0]);
-            Green = GenericMarshal.StringTo<float>(strings[1]);
-            Blue = GenericMarshal.StringTo<float>(strings[2]);
-            Alpha = GenericMarshal.StringTo<float>(strings[3]);
-
+            Red = GenericMarshal.StringTo<float>(strings[0]);            
+            Green = GenericMarshal.StringTo<float>(strings[1]);            
+            Blue = GenericMarshal.StringTo<float>(strings[2]);            
+            Alpha = GenericMarshal.StringTo<float>(strings[3]);            
         }
-
+        
         public void Alloc() {
             internalStruct.red = Red;
             internalStruct.green = Green;
@@ -551,7 +547,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
             internalStruct.alpha = Alpha;
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             Red = internalStruct.red;
             Green = internalStruct.green;
@@ -562,17 +558,17 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(Red);
-            s += " " + GenericMarshal.ToString(Green);
-            s += " " + GenericMarshal.ToString(Blue);
-            s += " " + GenericMarshal.ToString(Alpha);
-
+            s += " " + GenericMarshal.ToString(Red);            
+            s += " " + GenericMarshal.ToString(Green);            
+            s += " " + GenericMarshal.ToString(Blue);            
+            s += " " + GenericMarshal.ToString(Alpha);            
             return s.Substring(1);
         }
     }
+
 
     public class ColorI : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -582,32 +578,31 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(2)] public byte blue;
             [FieldOffset(3)] public byte alpha;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public byte Red { get; set; }
         public byte Green { get; set; }
         public byte Blue { get; set; }
         public byte Alpha { get; set; }
-
+        
         public ColorI() { }
-
-        public ColorI(InternalStruct data) {
+        
+        public ColorI(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public ColorI(string s) {
             string[] strings = s.Split(' ');
-            Red = GenericMarshal.StringTo<byte>(strings[0]);
-            Green = GenericMarshal.StringTo<byte>(strings[1]);
-            Blue = GenericMarshal.StringTo<byte>(strings[2]);
-            Alpha = GenericMarshal.StringTo<byte>(strings[3]);
-
+            Red = GenericMarshal.StringTo<byte>(strings[0]);            
+            Green = GenericMarshal.StringTo<byte>(strings[1]);            
+            Blue = GenericMarshal.StringTo<byte>(strings[2]);            
+            Alpha = GenericMarshal.StringTo<byte>(strings[3]);            
         }
-
+        
         public void Alloc() {
             internalStruct.red = Red;
             internalStruct.green = Green;
@@ -615,7 +610,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
             internalStruct.alpha = Alpha;
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             Red = internalStruct.red;
             Green = internalStruct.green;
@@ -626,17 +621,17 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(Red);
-            s += " " + GenericMarshal.ToString(Green);
-            s += " " + GenericMarshal.ToString(Blue);
-            s += " " + GenericMarshal.ToString(Alpha);
-
+            s += " " + GenericMarshal.ToString(Red);            
+            s += " " + GenericMarshal.ToString(Green);            
+            s += " " + GenericMarshal.ToString(Blue);            
+            s += " " + GenericMarshal.ToString(Alpha);            
             return s.Substring(1);
         }
     }
+
 
     public class UUID : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -648,36 +643,35 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(9)] public byte e;
             [FieldOffset(10)] public IntPtr f;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public uint A { get; set; }
         public ushort B { get; set; }
         public ushort C { get; set; }
         public byte D { get; set; }
         public byte E { get; set; }
         public byte[] F { get; set; }
-
+        
         public UUID() { }
-
-        public UUID(InternalStruct data) {
+        
+        public UUID(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public UUID(string s) {
             string[] strings = s.Split(' ');
-            A = GenericMarshal.StringTo<uint>(strings[0]);
-            B = GenericMarshal.StringTo<ushort>(strings[1]);
-            C = GenericMarshal.StringTo<ushort>(strings[2]);
-            D = GenericMarshal.StringTo<byte>(strings[3]);
-            E = GenericMarshal.StringTo<byte>(strings[4]);
-            F = GenericMarshal.StringTo<byte[]>(strings[5]);
-
+            A = GenericMarshal.StringTo<uint>(strings[0]);            
+            B = GenericMarshal.StringTo<ushort>(strings[1]);            
+            C = GenericMarshal.StringTo<ushort>(strings[2]);            
+            D = GenericMarshal.StringTo<byte>(strings[3]);            
+            E = GenericMarshal.StringTo<byte>(strings[4]);            
+            F = GenericMarshal.StringTo<byte[]>(strings[5]);            
         }
-
+        
         public void Alloc() {
             internalStruct.a = A;
             internalStruct.b = B;
@@ -687,7 +681,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
             internalStruct.f = GenericMarshal.ToPtr(F);
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             A = internalStruct.a;
             B = internalStruct.b;
@@ -700,19 +694,19 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(A);
-            s += " " + GenericMarshal.ToString(B);
-            s += " " + GenericMarshal.ToString(C);
-            s += " " + GenericMarshal.ToString(D);
-            s += " " + GenericMarshal.ToString(E);
-            s += " " + GenericMarshal.ToString(F);
-
+            s += " " + GenericMarshal.ToString(A);            
+            s += " " + GenericMarshal.ToString(B);            
+            s += " " + GenericMarshal.ToString(C);            
+            s += " " + GenericMarshal.ToString(D);            
+            s += " " + GenericMarshal.ToString(E);            
+            s += " " + GenericMarshal.ToString(F);            
             return s.Substring(1);
         }
     }
+
 
     public class Edge : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -720,34 +714,33 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(0)] public IntPtr face;
             [FieldOffset(8)] public IntPtr vertex;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public uint[] Face { get; set; }
         public uint[] Vertex { get; set; }
-
+        
         public Edge() { }
-
-        public Edge(InternalStruct data) {
+        
+        public Edge(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public Edge(string s) {
             string[] strings = s.Split(' ');
-            Face = GenericMarshal.StringTo<uint[]>(strings[0]);
-            Vertex = GenericMarshal.StringTo<uint[]>(strings[1]);
-
+            Face = GenericMarshal.StringTo<uint[]>(strings[0]);            
+            Vertex = GenericMarshal.StringTo<uint[]>(strings[1]);            
         }
-
+        
         public void Alloc() {
             internalStruct.face = GenericMarshal.ToPtr(Face);
             internalStruct.vertex = GenericMarshal.ToPtr(Vertex);
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             Face = GenericMarshal.FromPtr<uint>(internalStruct.face, 2, true);
             Vertex = GenericMarshal.FromPtr<uint>(internalStruct.vertex, 2, true);
@@ -756,15 +749,15 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(Face);
-            s += " " + GenericMarshal.ToString(Vertex);
-
+            s += " " + GenericMarshal.ToString(Face);            
+            s += " " + GenericMarshal.ToString(Vertex);            
             return s.Substring(1);
         }
     }
+
 
     public class PlaneF : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
@@ -774,32 +767,31 @@ namespace T3DNetFramework.Generated.Structs.Global {
             [FieldOffset(8)] public float z;
             [FieldOffset(12)] public float d;
         }
-
+        
         public InternalStruct internalStruct;
-
+        
         public IntPtr internalStructPtr;
-
+        
         public float X { get; set; }
         public float Y { get; set; }
         public float Z { get; set; }
         public float D { get; set; }
-
+        
         public PlaneF() { }
-
-        public PlaneF(InternalStruct data) {
+        
+        public PlaneF(InternalStruct data) { 
             internalStruct = data;
 			Free();
         }
-
+        
         public PlaneF(string s) {
             string[] strings = s.Split(' ');
-            X = GenericMarshal.StringTo<float>(strings[0]);
-            Y = GenericMarshal.StringTo<float>(strings[1]);
-            Z = GenericMarshal.StringTo<float>(strings[2]);
-            D = GenericMarshal.StringTo<float>(strings[3]);
-
+            X = GenericMarshal.StringTo<float>(strings[0]);            
+            Y = GenericMarshal.StringTo<float>(strings[1]);            
+            Z = GenericMarshal.StringTo<float>(strings[2]);            
+            D = GenericMarshal.StringTo<float>(strings[3]);            
         }
-
+        
         public void Alloc() {
             internalStruct.x = X;
             internalStruct.y = Y;
@@ -807,7 +799,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
             internalStruct.d = D;
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
-
+        
         public void Free() {
             X = internalStruct.x;
             Y = internalStruct.y;
@@ -818,16 +810,14 @@ namespace T3DNetFramework.Generated.Structs.Global {
             }
             internalStructPtr = IntPtr.Zero;
         }
-
+        
         public override string ToString() {
             string s = "";
-            s += " " + GenericMarshal.ToString(X);
-            s += " " + GenericMarshal.ToString(Y);
-            s += " " + GenericMarshal.ToString(Z);
-            s += " " + GenericMarshal.ToString(D);
-
+            s += " " + GenericMarshal.ToString(X);            
+            s += " " + GenericMarshal.ToString(Y);            
+            s += " " + GenericMarshal.ToString(Z);            
+            s += " " + GenericMarshal.ToString(D);            
             return s.Substring(1);
         }
     }
-
 }
