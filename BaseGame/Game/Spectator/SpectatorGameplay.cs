@@ -1,4 +1,5 @@
-﻿using BaseGame.Game.Spectator.Server;
+﻿using BaseGame.Game.Spectator.Client;
+using BaseGame.Game.Spectator.Server;
 using T3DNetFramework.Generated.Classes.Sim;
 using T3DNetFramework.Generated.Functions;
 using T3DNetFramework.Interop;
@@ -35,6 +36,8 @@ namespace BaseGame.Game.Spectator {
 
          if (!Global.GetConsoleBool("Server::Dedicated")) {
             //client scripts
+            Keybinds.Init();
+            
             string prefPath = Core.Functions.Paths.GetPrefPath();
             if (Global.IsFile(prefPath + "/keybinds.cs")) {
                Global.Exec(prefPath + "/keybinds.cs");
