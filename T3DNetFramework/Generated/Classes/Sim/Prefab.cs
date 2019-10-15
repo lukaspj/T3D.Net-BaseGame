@@ -120,7 +120,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnLoad(SimGroup children) {
+        public virtual void OnLoad(SimGroup children) {
              InternalUnsafeMethods.OnLoad__Args _args = new InternalUnsafeMethods.OnLoad__Args() {
                 children = children.ObjectPtr,
              };

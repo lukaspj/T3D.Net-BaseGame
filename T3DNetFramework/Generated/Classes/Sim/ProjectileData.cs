@@ -147,7 +147,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnCollision(Projectile proj, SceneObject col, float fade, Point3F pos, Point3F normal) {
+        public virtual void OnCollision(Projectile proj, SceneObject col, float fade, Point3F pos, Point3F normal) {
 pos.Alloc();normal.Alloc();             InternalUnsafeMethods.OnCollision__Args _args = new InternalUnsafeMethods.OnCollision__Args() {
                 proj = proj.ObjectPtr,
                 col = col.ObjectPtr,
@@ -158,7 +158,7 @@ pos.Alloc();normal.Alloc();             InternalUnsafeMethods.OnCollision__Args 
              InternalUnsafeMethods.OnCollision()(ObjectPtr, _args);
 pos.Free();normal.Free();        }
 
-        public void OnExplode(Projectile proj, Point3F pos, float fade) {
+        public virtual void OnExplode(Projectile proj, Point3F pos, float fade) {
 pos.Alloc();             InternalUnsafeMethods.OnExplode__Args _args = new InternalUnsafeMethods.OnExplode__Args() {
                 proj = proj.ObjectPtr,
                 pos = pos.internalStructPtr,

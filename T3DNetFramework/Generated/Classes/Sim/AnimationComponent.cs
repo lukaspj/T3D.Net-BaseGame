@@ -449,7 +449,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
-        public void OnAnimationTrigger(Component obj, string animName, int triggerID) {
+        public virtual void OnAnimationTrigger(Component obj, string animName, int triggerID) {
              InternalUnsafeMethods.OnAnimationTrigger__Args _args = new InternalUnsafeMethods.OnAnimationTrigger__Args() {
                 obj = obj.ObjectPtr,
                 animName = animName,
@@ -458,7 +458,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAnimationTrigger()(ObjectPtr, _args);
         }
 
-        public void OnAnimationEnd(Component obj, string animName) {
+        public virtual void OnAnimationEnd(Component obj, string animName) {
              InternalUnsafeMethods.OnAnimationEnd__Args _args = new InternalUnsafeMethods.OnAnimationEnd__Args() {
                 obj = obj.ObjectPtr,
                 animName = animName,
@@ -466,7 +466,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAnimationEnd()(ObjectPtr, _args);
         }
 
-        public void OnAnimationStart(Component obj, string animName) {
+        public virtual void OnAnimationStart(Component obj, string animName) {
              InternalUnsafeMethods.OnAnimationStart__Args _args = new InternalUnsafeMethods.OnAnimationStart__Args() {
                 obj = obj.ObjectPtr,
                 animName = animName,

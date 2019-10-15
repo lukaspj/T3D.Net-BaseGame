@@ -141,14 +141,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnRemove(uint ID) {
+        public virtual void OnRemove(uint ID) {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
                 ID = ID,
              };
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
-        public void OnAdd(uint ID) {
+        public virtual void OnAdd(uint ID) {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
                 ID = ID,
              };

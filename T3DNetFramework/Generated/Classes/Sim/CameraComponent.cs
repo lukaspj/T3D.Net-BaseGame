@@ -249,7 +249,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
-        public float ValidateCameraFov(float fov) {
+        public virtual float ValidateCameraFov(float fov) {
              InternalUnsafeMethods.ValidateCameraFov__Args _args = new InternalUnsafeMethods.ValidateCameraFov__Args() {
                 fov = fov,
              };

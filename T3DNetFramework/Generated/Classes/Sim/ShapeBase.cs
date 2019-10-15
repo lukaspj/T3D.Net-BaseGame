@@ -2761,7 +2761,7 @@ vel.Free();             return _engineResult;
              InternalUnsafeMethods.SetHidden()(ObjectPtr, _args);
         }
 
-        public float ValidateCameraFov(float fov) {
+        public virtual float ValidateCameraFov(float fov) {
              InternalUnsafeMethods.ValidateCameraFov__Args _args = new InternalUnsafeMethods.ValidateCameraFov__Args() {
                 fov = fov,
              };

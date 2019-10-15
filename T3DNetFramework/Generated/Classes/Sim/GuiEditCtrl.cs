@@ -1355,27 +1355,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnControlInspectPostApply(GuiControl control) {
+        public virtual void OnControlInspectPostApply(GuiControl control) {
              InternalUnsafeMethods.OnControlInspectPostApply__Args _args = new InternalUnsafeMethods.OnControlInspectPostApply__Args() {
                 control = control.ObjectPtr,
              };
              InternalUnsafeMethods.OnControlInspectPostApply()(ObjectPtr, _args);
         }
 
-        public void OnControlInspectPreApply(GuiControl control) {
+        public virtual void OnControlInspectPreApply(GuiControl control) {
              InternalUnsafeMethods.OnControlInspectPreApply__Args _args = new InternalUnsafeMethods.OnControlInspectPreApply__Args() {
                 control = control.ObjectPtr,
              };
              InternalUnsafeMethods.OnControlInspectPreApply()(ObjectPtr, _args);
         }
 
-        public void OnMouseModeChange() {
+        public virtual void OnMouseModeChange() {
              InternalUnsafeMethods.OnMouseModeChange__Args _args = new InternalUnsafeMethods.OnMouseModeChange__Args() {
              };
              InternalUnsafeMethods.OnMouseModeChange()(ObjectPtr, _args);
         }
 
-        public void OnFitIntoParent(bool width, bool height) {
+        public virtual void OnFitIntoParent(bool width, bool height) {
              InternalUnsafeMethods.OnFitIntoParent__Args _args = new InternalUnsafeMethods.OnFitIntoParent__Args() {
                 width = width,
                 height = height,
@@ -1383,110 +1383,110 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnFitIntoParent()(ObjectPtr, _args);
         }
 
-        public void OnSelectionResized(GuiControl control) {
+        public virtual void OnSelectionResized(GuiControl control) {
              InternalUnsafeMethods.OnSelectionResized__Args _args = new InternalUnsafeMethods.OnSelectionResized__Args() {
                 control = control.ObjectPtr,
              };
              InternalUnsafeMethods.OnSelectionResized()(ObjectPtr, _args);
         }
 
-        public void OnAddNewCtrlSet(SimSet set) {
+        public virtual void OnAddNewCtrlSet(SimSet set) {
              InternalUnsafeMethods.OnAddNewCtrlSet__Args _args = new InternalUnsafeMethods.OnAddNewCtrlSet__Args() {
                 set = set.ObjectPtr,
              };
              InternalUnsafeMethods.OnAddNewCtrlSet()(ObjectPtr, _args);
         }
 
-        public void OnAddNewCtrl(GuiControl control) {
+        public virtual void OnAddNewCtrl(GuiControl control) {
              InternalUnsafeMethods.OnAddNewCtrl__Args _args = new InternalUnsafeMethods.OnAddNewCtrl__Args() {
                 control = control.ObjectPtr,
              };
              InternalUnsafeMethods.OnAddNewCtrl()(ObjectPtr, _args);
         }
 
-        public void OnTrashSelection(SimSet selection) {
+        public virtual void OnTrashSelection(SimSet selection) {
              InternalUnsafeMethods.OnTrashSelection__Args _args = new InternalUnsafeMethods.OnTrashSelection__Args() {
                 selection = selection.ObjectPtr,
              };
              InternalUnsafeMethods.OnTrashSelection()(ObjectPtr, _args);
         }
 
-        public void OnSelectionCloned(SimSet selection) {
+        public virtual void OnSelectionCloned(SimSet selection) {
              InternalUnsafeMethods.OnSelectionCloned__Args _args = new InternalUnsafeMethods.OnSelectionCloned__Args() {
                 selection = selection.ObjectPtr,
              };
              InternalUnsafeMethods.OnSelectionCloned()(ObjectPtr, _args);
         }
 
-        public void OnSelectionMoved(GuiControl control) {
+        public virtual void OnSelectionMoved(GuiControl control) {
              InternalUnsafeMethods.OnSelectionMoved__Args _args = new InternalUnsafeMethods.OnSelectionMoved__Args() {
                 control = control.ObjectPtr,
              };
              InternalUnsafeMethods.OnSelectionMoved()(ObjectPtr, _args);
         }
 
-        public void OnPostSelectionNudged(SimSet selection) {
+        public virtual void OnPostSelectionNudged(SimSet selection) {
              InternalUnsafeMethods.OnPostSelectionNudged__Args _args = new InternalUnsafeMethods.OnPostSelectionNudged__Args() {
                 selection = selection.ObjectPtr,
              };
              InternalUnsafeMethods.OnPostSelectionNudged()(ObjectPtr, _args);
         }
 
-        public void OnPreSelectionNudged(SimSet selection) {
+        public virtual void OnPreSelectionNudged(SimSet selection) {
              InternalUnsafeMethods.OnPreSelectionNudged__Args _args = new InternalUnsafeMethods.OnPreSelectionNudged__Args() {
                 selection = selection.ObjectPtr,
              };
              InternalUnsafeMethods.OnPreSelectionNudged()(ObjectPtr, _args);
         }
 
-        public void OnRemoveSelected(GuiControl control) {
+        public virtual void OnRemoveSelected(GuiControl control) {
              InternalUnsafeMethods.OnRemoveSelected__Args _args = new InternalUnsafeMethods.OnRemoveSelected__Args() {
                 control = control.ObjectPtr,
              };
              InternalUnsafeMethods.OnRemoveSelected()(ObjectPtr, _args);
         }
 
-        public void OnAddSelected(GuiControl control) {
+        public virtual void OnAddSelected(GuiControl control) {
              InternalUnsafeMethods.OnAddSelected__Args _args = new InternalUnsafeMethods.OnAddSelected__Args() {
                 control = control.ObjectPtr,
              };
              InternalUnsafeMethods.OnAddSelected()(ObjectPtr, _args);
         }
 
-        public void OnSelect(GuiControl control) {
+        public virtual void OnSelect(GuiControl control) {
              InternalUnsafeMethods.OnSelect__Args _args = new InternalUnsafeMethods.OnSelect__Args() {
                 control = control.ObjectPtr,
              };
              InternalUnsafeMethods.OnSelect()(ObjectPtr, _args);
         }
 
-        public void OnClearSelected() {
+        public virtual void OnClearSelected() {
              InternalUnsafeMethods.OnClearSelected__Args _args = new InternalUnsafeMethods.OnClearSelected__Args() {
              };
              InternalUnsafeMethods.OnClearSelected()(ObjectPtr, _args);
         }
 
-        public void OnPostEdit(SimSet selection) {
+        public virtual void OnPostEdit(SimSet selection) {
              InternalUnsafeMethods.OnPostEdit__Args _args = new InternalUnsafeMethods.OnPostEdit__Args() {
                 selection = selection.ObjectPtr,
              };
              InternalUnsafeMethods.OnPostEdit()(ObjectPtr, _args);
         }
 
-        public void OnPreEdit(SimSet selection) {
+        public virtual void OnPreEdit(SimSet selection) {
              InternalUnsafeMethods.OnPreEdit__Args _args = new InternalUnsafeMethods.OnPreEdit__Args() {
                 selection = selection.ObjectPtr,
              };
              InternalUnsafeMethods.OnPreEdit()(ObjectPtr, _args);
         }
 
-        public void OnDelete() {
+        public virtual void OnDelete() {
              InternalUnsafeMethods.OnDelete__Args _args = new InternalUnsafeMethods.OnDelete__Args() {
              };
              InternalUnsafeMethods.OnDelete()(ObjectPtr, _args);
         }
 
-        public void OnHierarchyChanged() {
+        public virtual void OnHierarchyChanged() {
              InternalUnsafeMethods.OnHierarchyChanged__Args _args = new InternalUnsafeMethods.OnHierarchyChanged__Args() {
              };
              InternalUnsafeMethods.OnHierarchyChanged()(ObjectPtr, _args);

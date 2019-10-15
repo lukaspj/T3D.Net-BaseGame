@@ -161,7 +161,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnFrame(int frameIndex, int frame) {
+        public virtual void OnFrame(int frameIndex, int frame) {
              InternalUnsafeMethods.OnFrame__Args _args = new InternalUnsafeMethods.OnFrame__Args() {
                 frameIndex = frameIndex,
                 frame = frame,
@@ -169,13 +169,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnFrame()(ObjectPtr, _args);
         }
 
-        public void OnCompleted() {
+        public virtual void OnCompleted() {
              InternalUnsafeMethods.OnCompleted__Args _args = new InternalUnsafeMethods.OnCompleted__Args() {
              };
              InternalUnsafeMethods.OnCompleted()(ObjectPtr, _args);
         }
 
-        public void OnLoop() {
+        public virtual void OnLoop() {
              InternalUnsafeMethods.OnLoop__Args _args = new InternalUnsafeMethods.OnLoop__Args() {
              };
              InternalUnsafeMethods.OnLoop()(ObjectPtr, _args);

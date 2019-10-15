@@ -306,7 +306,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnRightMouseDragged(int modifier, Point2I mousePoint, int mouseClickCount) {
+        public virtual void OnRightMouseDragged(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseDragged__Args _args = new InternalUnsafeMethods.OnRightMouseDragged__Args() {
                 modifier = modifier,
                 mousePoint = mousePoint.internalStructPtr,
@@ -315,7 +315,7 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseDragged__Args 
              InternalUnsafeMethods.OnRightMouseDragged()(ObjectPtr, _args);
 mousePoint.Free();        }
 
-        public void OnRightMouseUp(int modifier, Point2I mousePoint, int mouseClickCount) {
+        public virtual void OnRightMouseUp(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseUp__Args _args = new InternalUnsafeMethods.OnRightMouseUp__Args() {
                 modifier = modifier,
                 mousePoint = mousePoint.internalStructPtr,
@@ -324,7 +324,7 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseUp__Args _args
              InternalUnsafeMethods.OnRightMouseUp()(ObjectPtr, _args);
 mousePoint.Free();        }
 
-        public void OnRightMouseDown(int modifier, Point2I mousePoint, int mouseClickCount) {
+        public virtual void OnRightMouseDown(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseDown__Args _args = new InternalUnsafeMethods.OnRightMouseDown__Args() {
                 modifier = modifier,
                 mousePoint = mousePoint.internalStructPtr,
@@ -333,7 +333,7 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseDown__Args _ar
              InternalUnsafeMethods.OnRightMouseDown()(ObjectPtr, _args);
 mousePoint.Free();        }
 
-        public void OnMouseLeave(int modifier, Point2I mousePoint, int mouseClickCount) {
+        public virtual void OnMouseLeave(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseLeave__Args _args = new InternalUnsafeMethods.OnMouseLeave__Args() {
                 modifier = modifier,
                 mousePoint = mousePoint.internalStructPtr,
@@ -342,7 +342,7 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseLeave__Args _args =
              InternalUnsafeMethods.OnMouseLeave()(ObjectPtr, _args);
 mousePoint.Free();        }
 
-        public void OnMouseEnter(int modifier, Point2I mousePoint, int mouseClickCount) {
+        public virtual void OnMouseEnter(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseEnter__Args _args = new InternalUnsafeMethods.OnMouseEnter__Args() {
                 modifier = modifier,
                 mousePoint = mousePoint.internalStructPtr,
@@ -351,7 +351,7 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseEnter__Args _args =
              InternalUnsafeMethods.OnMouseEnter()(ObjectPtr, _args);
 mousePoint.Free();        }
 
-        public void OnMouseDragged(int modifier, Point2I mousePoint, int mouseClickCount) {
+        public virtual void OnMouseDragged(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseDragged__Args _args = new InternalUnsafeMethods.OnMouseDragged__Args() {
                 modifier = modifier,
                 mousePoint = mousePoint.internalStructPtr,
@@ -360,7 +360,7 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseDragged__Args _args
              InternalUnsafeMethods.OnMouseDragged()(ObjectPtr, _args);
 mousePoint.Free();        }
 
-        public void OnMouseMove(int modifier, Point2I mousePoint, int mouseClickCount) {
+        public virtual void OnMouseMove(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseMove__Args _args = new InternalUnsafeMethods.OnMouseMove__Args() {
                 modifier = modifier,
                 mousePoint = mousePoint.internalStructPtr,
@@ -369,7 +369,7 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseMove__Args _args = 
              InternalUnsafeMethods.OnMouseMove()(ObjectPtr, _args);
 mousePoint.Free();        }
 
-        public void OnMouseUp(int modifier, Point2I mousePoint, int mouseClickCount) {
+        public virtual void OnMouseUp(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseUp__Args _args = new InternalUnsafeMethods.OnMouseUp__Args() {
                 modifier = modifier,
                 mousePoint = mousePoint.internalStructPtr,
@@ -378,7 +378,7 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseUp__Args _args = ne
              InternalUnsafeMethods.OnMouseUp()(ObjectPtr, _args);
 mousePoint.Free();        }
 
-        public void OnMouseDown(int modifier, Point2I mousePoint, int mouseClickCount) {
+        public virtual void OnMouseDown(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseDown__Args _args = new InternalUnsafeMethods.OnMouseDown__Args() {
                 modifier = modifier,
                 mousePoint = mousePoint.internalStructPtr,

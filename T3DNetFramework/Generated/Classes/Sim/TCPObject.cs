@@ -457,43 +457,43 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Send()(ObjectPtr, _args);
         }
 
-        public void OnDisconnect() {
+        public virtual void OnDisconnect() {
              InternalUnsafeMethods.OnDisconnect__Args _args = new InternalUnsafeMethods.OnDisconnect__Args() {
              };
              InternalUnsafeMethods.OnDisconnect()(ObjectPtr, _args);
         }
 
-        public void OnConnectFailed() {
+        public virtual void OnConnectFailed() {
              InternalUnsafeMethods.OnConnectFailed__Args _args = new InternalUnsafeMethods.OnConnectFailed__Args() {
              };
              InternalUnsafeMethods.OnConnectFailed()(ObjectPtr, _args);
         }
 
-        public void OnConnected() {
+        public virtual void OnConnected() {
              InternalUnsafeMethods.OnConnected__Args _args = new InternalUnsafeMethods.OnConnected__Args() {
              };
              InternalUnsafeMethods.OnConnected()(ObjectPtr, _args);
         }
 
-        public void OnDNSFailed() {
+        public virtual void OnDNSFailed() {
              InternalUnsafeMethods.OnDNSFailed__Args _args = new InternalUnsafeMethods.OnDNSFailed__Args() {
              };
              InternalUnsafeMethods.OnDNSFailed()(ObjectPtr, _args);
         }
 
-        public void OnDNSResolved() {
+        public virtual void OnDNSResolved() {
              InternalUnsafeMethods.OnDNSResolved__Args _args = new InternalUnsafeMethods.OnDNSResolved__Args() {
              };
              InternalUnsafeMethods.OnDNSResolved()(ObjectPtr, _args);
         }
 
-        public void OnEndReceive() {
+        public virtual void OnEndReceive() {
              InternalUnsafeMethods.OnEndReceive__Args _args = new InternalUnsafeMethods.OnEndReceive__Args() {
              };
              InternalUnsafeMethods.OnEndReceive()(ObjectPtr, _args);
         }
 
-        public bool OnPacket(string data) {
+        public virtual bool OnPacket(string data) {
              InternalUnsafeMethods.OnPacket__Args _args = new InternalUnsafeMethods.OnPacket__Args() {
                 data = data,
              };
@@ -501,14 +501,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnLine(string line) {
+        public virtual void OnLine(string line) {
              InternalUnsafeMethods.OnLine__Args _args = new InternalUnsafeMethods.OnLine__Args() {
                 line = line,
              };
              InternalUnsafeMethods.OnLine()(ObjectPtr, _args);
         }
 
-        public void OnConnectionRequest(string address, string ID) {
+        public virtual void OnConnectionRequest(string address, string ID) {
              InternalUnsafeMethods.OnConnectionRequest__Args _args = new InternalUnsafeMethods.OnConnectionRequest__Args() {
                 address = address,
                 ID = ID,

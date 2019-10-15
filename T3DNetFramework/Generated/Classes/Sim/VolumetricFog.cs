@@ -347,14 +347,14 @@ new_color.Alloc();             InternalUnsafeMethods.SetFogColorF__Args _args = 
              InternalUnsafeMethods.SetFogColorF()(ObjectPtr, _args);
 new_color.Free();        }
 
-        public void OnLeaveFog(uint obj) {
+        public virtual void OnLeaveFog(uint obj) {
              InternalUnsafeMethods.OnLeaveFog__Args _args = new InternalUnsafeMethods.OnLeaveFog__Args() {
                 obj = obj,
              };
              InternalUnsafeMethods.OnLeaveFog()(ObjectPtr, _args);
         }
 
-        public void OnEnterFog(uint obj) {
+        public virtual void OnEnterFog(uint obj) {
              InternalUnsafeMethods.OnEnterFog__Args _args = new InternalUnsafeMethods.OnEnterFog__Args() {
                 obj = obj,
              };

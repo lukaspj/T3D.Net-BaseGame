@@ -909,7 +909,7 @@ pos.Alloc();             InternalUnsafeMethods.SetOrbitPos__Args _args = new Int
              InternalUnsafeMethods.SetOrbitPos()(ObjectPtr, _args);
 pos.Free();        }
 
-        public void OnThreadPosChanged(float pos, bool inTransition) {
+        public virtual void OnThreadPosChanged(float pos, bool inTransition) {
              InternalUnsafeMethods.OnThreadPosChanged__Args _args = new InternalUnsafeMethods.OnThreadPosChanged__Args() {
                 pos = pos,
                 inTransition = inTransition,

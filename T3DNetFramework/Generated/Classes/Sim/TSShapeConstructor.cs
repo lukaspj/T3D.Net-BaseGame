@@ -2420,13 +2420,13 @@ txfm.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
-        public void OnUnload() {
+        public virtual void OnUnload() {
              InternalUnsafeMethods.OnUnload__Args _args = new InternalUnsafeMethods.OnUnload__Args() {
              };
              InternalUnsafeMethods.OnUnload()(ObjectPtr, _args);
         }
 
-        public void OnLoad() {
+        public virtual void OnLoad() {
              InternalUnsafeMethods.OnLoad__Args _args = new InternalUnsafeMethods.OnLoad__Args() {
              };
              InternalUnsafeMethods.OnLoad()(ObjectPtr, _args);

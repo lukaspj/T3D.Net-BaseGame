@@ -146,7 +146,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnLeaveLiquid(Vehicle obj, string type) {
+        public virtual void OnLeaveLiquid(Vehicle obj, string type) {
              InternalUnsafeMethods.OnLeaveLiquid__Args _args = new InternalUnsafeMethods.OnLeaveLiquid__Args() {
                 obj = obj.ObjectPtr,
                 type = type,
@@ -154,7 +154,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnLeaveLiquid()(ObjectPtr, _args);
         }
 
-        public void OnEnterLiquid(Vehicle obj, float coverage, string type) {
+        public virtual void OnEnterLiquid(Vehicle obj, float coverage, string type) {
              InternalUnsafeMethods.OnEnterLiquid__Args _args = new InternalUnsafeMethods.OnEnterLiquid__Args() {
                 obj = obj.ObjectPtr,
                 coverage = coverage,

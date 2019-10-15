@@ -331,7 +331,7 @@ transform.Free();        }
              InternalUnsafeMethods.SetPosition()(ObjectPtr, _args);
         }
 
-        public void OnNode(int node) {
+        public virtual void OnNode(int node) {
              InternalUnsafeMethods.OnNode__Args _args = new InternalUnsafeMethods.OnNode__Args() {
                 node = node,
              };

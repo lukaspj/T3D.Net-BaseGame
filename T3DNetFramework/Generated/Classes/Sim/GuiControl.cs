@@ -1361,7 +1361,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new GuiControl(_engineResult);
         }
 
-        public void OnControlDropped(GuiControl control, Point2I dropPoint) {
+        public virtual void OnControlDropped(GuiControl control, Point2I dropPoint) {
 dropPoint.Alloc();             InternalUnsafeMethods.OnControlDropped__Args _args = new InternalUnsafeMethods.OnControlDropped__Args() {
                 control = control.ObjectPtr,
                 dropPoint = dropPoint.internalStructPtr,
@@ -1369,7 +1369,7 @@ dropPoint.Alloc();             InternalUnsafeMethods.OnControlDropped__Args _arg
              InternalUnsafeMethods.OnControlDropped()(ObjectPtr, _args);
 dropPoint.Free();        }
 
-        public void OnControlDragged(GuiControl control, Point2I dropPoint) {
+        public virtual void OnControlDragged(GuiControl control, Point2I dropPoint) {
 dropPoint.Alloc();             InternalUnsafeMethods.OnControlDragged__Args _args = new InternalUnsafeMethods.OnControlDragged__Args() {
                 control = control.ObjectPtr,
                 dropPoint = dropPoint.internalStructPtr,
@@ -1377,7 +1377,7 @@ dropPoint.Alloc();             InternalUnsafeMethods.OnControlDragged__Args _arg
              InternalUnsafeMethods.OnControlDragged()(ObjectPtr, _args);
 dropPoint.Free();        }
 
-        public void OnControlDragExit(GuiControl control, Point2I dropPoint) {
+        public virtual void OnControlDragExit(GuiControl control, Point2I dropPoint) {
 dropPoint.Alloc();             InternalUnsafeMethods.OnControlDragExit__Args _args = new InternalUnsafeMethods.OnControlDragExit__Args() {
                 control = control.ObjectPtr,
                 dropPoint = dropPoint.internalStructPtr,
@@ -1385,7 +1385,7 @@ dropPoint.Alloc();             InternalUnsafeMethods.OnControlDragExit__Args _ar
              InternalUnsafeMethods.OnControlDragExit()(ObjectPtr, _args);
 dropPoint.Free();        }
 
-        public void OnControlDragEnter(GuiControl control, Point2I dropPoint) {
+        public virtual void OnControlDragEnter(GuiControl control, Point2I dropPoint) {
 dropPoint.Alloc();             InternalUnsafeMethods.OnControlDragEnter__Args _args = new InternalUnsafeMethods.OnControlDragEnter__Args() {
                 control = control.ObjectPtr,
                 dropPoint = dropPoint.internalStructPtr,
@@ -1393,69 +1393,69 @@ dropPoint.Alloc();             InternalUnsafeMethods.OnControlDragEnter__Args _a
              InternalUnsafeMethods.OnControlDragEnter()(ObjectPtr, _args);
 dropPoint.Free();        }
 
-        public void OnDialogPop() {
+        public virtual void OnDialogPop() {
              InternalUnsafeMethods.OnDialogPop__Args _args = new InternalUnsafeMethods.OnDialogPop__Args() {
              };
              InternalUnsafeMethods.OnDialogPop()(ObjectPtr, _args);
         }
 
-        public void OnDialogPush() {
+        public virtual void OnDialogPush() {
              InternalUnsafeMethods.OnDialogPush__Args _args = new InternalUnsafeMethods.OnDialogPush__Args() {
              };
              InternalUnsafeMethods.OnDialogPush()(ObjectPtr, _args);
         }
 
-        public void OnActive(bool state) {
+        public virtual void OnActive(bool state) {
              InternalUnsafeMethods.OnActive__Args _args = new InternalUnsafeMethods.OnActive__Args() {
                 state = state,
              };
              InternalUnsafeMethods.OnActive()(ObjectPtr, _args);
         }
 
-        public void OnVisible(bool state) {
+        public virtual void OnVisible(bool state) {
              InternalUnsafeMethods.OnVisible__Args _args = new InternalUnsafeMethods.OnVisible__Args() {
                 state = state,
              };
              InternalUnsafeMethods.OnVisible()(ObjectPtr, _args);
         }
 
-        public void OnAction() {
+        public virtual void OnAction() {
              InternalUnsafeMethods.OnAction__Args _args = new InternalUnsafeMethods.OnAction__Args() {
              };
              InternalUnsafeMethods.OnAction()(ObjectPtr, _args);
         }
 
-        public void OnLoseFirstResponder() {
+        public virtual void OnLoseFirstResponder() {
              InternalUnsafeMethods.OnLoseFirstResponder__Args _args = new InternalUnsafeMethods.OnLoseFirstResponder__Args() {
              };
              InternalUnsafeMethods.OnLoseFirstResponder()(ObjectPtr, _args);
         }
 
-        public void OnGainFirstResponder() {
+        public virtual void OnGainFirstResponder() {
              InternalUnsafeMethods.OnGainFirstResponder__Args _args = new InternalUnsafeMethods.OnGainFirstResponder__Args() {
              };
              InternalUnsafeMethods.OnGainFirstResponder()(ObjectPtr, _args);
         }
 
-        public void OnSleep() {
+        public virtual void OnSleep() {
              InternalUnsafeMethods.OnSleep__Args _args = new InternalUnsafeMethods.OnSleep__Args() {
              };
              InternalUnsafeMethods.OnSleep()(ObjectPtr, _args);
         }
 
-        public void OnWake() {
+        public virtual void OnWake() {
              InternalUnsafeMethods.OnWake__Args _args = new InternalUnsafeMethods.OnWake__Args() {
              };
              InternalUnsafeMethods.OnWake()(ObjectPtr, _args);
         }
 
-        public void OnRemove() {
+        public virtual void OnRemove() {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
              };
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
-        public void OnAdd() {
+        public virtual void OnAdd() {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
              };
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);

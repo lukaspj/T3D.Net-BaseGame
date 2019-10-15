@@ -370,7 +370,7 @@ txfm.Alloc();             InternalUnsafeMethods.CheckDeployPos__Args _args = new
 txfm.Free();             return _engineResult;
         }
 
-        public void OnForceUncloak(ShapeBase obj, string reason) {
+        public virtual void OnForceUncloak(ShapeBase obj, string reason) {
              InternalUnsafeMethods.OnForceUncloak__Args _args = new InternalUnsafeMethods.OnForceUncloak__Args() {
                 obj = obj.ObjectPtr,
                 reason = reason,
@@ -378,7 +378,7 @@ txfm.Free();             return _engineResult;
              InternalUnsafeMethods.OnForceUncloak()(ObjectPtr, _args);
         }
 
-        public void OnEndSequence(ShapeBase obj, int slot, string name) {
+        public virtual void OnEndSequence(ShapeBase obj, int slot, string name) {
              InternalUnsafeMethods.OnEndSequence__Args _args = new InternalUnsafeMethods.OnEndSequence__Args() {
                 obj = obj.ObjectPtr,
                 slot = slot,
@@ -387,7 +387,7 @@ txfm.Free();             return _engineResult;
              InternalUnsafeMethods.OnEndSequence()(ObjectPtr, _args);
         }
 
-        public void OnTrigger(ShapeBase obj, int index, bool state) {
+        public virtual void OnTrigger(ShapeBase obj, int index, bool state) {
              InternalUnsafeMethods.OnTrigger__Args _args = new InternalUnsafeMethods.OnTrigger__Args() {
                 obj = obj.ObjectPtr,
                 index = index,
@@ -396,7 +396,7 @@ txfm.Free();             return _engineResult;
              InternalUnsafeMethods.OnTrigger()(ObjectPtr, _args);
         }
 
-        public void OnDamage(ShapeBase obj, float delta) {
+        public virtual void OnDamage(ShapeBase obj, float delta) {
              InternalUnsafeMethods.OnDamage__Args _args = new InternalUnsafeMethods.OnDamage__Args() {
                 obj = obj.ObjectPtr,
                 delta = delta,
@@ -404,7 +404,7 @@ txfm.Free();             return _engineResult;
              InternalUnsafeMethods.OnDamage()(ObjectPtr, _args);
         }
 
-        public void OnCollision(ShapeBase obj, SceneObject collObj, Point3F vec, float len) {
+        public virtual void OnCollision(ShapeBase obj, SceneObject collObj, Point3F vec, float len) {
 vec.Alloc();             InternalUnsafeMethods.OnCollision__Args _args = new InternalUnsafeMethods.OnCollision__Args() {
                 obj = obj.ObjectPtr,
                 collObj = collObj.ObjectPtr,
@@ -414,7 +414,7 @@ vec.Alloc();             InternalUnsafeMethods.OnCollision__Args _args = new Int
              InternalUnsafeMethods.OnCollision()(ObjectPtr, _args);
 vec.Free();        }
 
-        public void OnImpact(ShapeBase obj, SceneObject collObj, Point3F vec, float len) {
+        public virtual void OnImpact(ShapeBase obj, SceneObject collObj, Point3F vec, float len) {
 vec.Alloc();             InternalUnsafeMethods.OnImpact__Args _args = new InternalUnsafeMethods.OnImpact__Args() {
                 obj = obj.ObjectPtr,
                 collObj = collObj.ObjectPtr,
@@ -424,7 +424,7 @@ vec.Alloc();             InternalUnsafeMethods.OnImpact__Args _args = new Intern
              InternalUnsafeMethods.OnImpact()(ObjectPtr, _args);
 vec.Free();        }
 
-        public void OnDestroyed(ShapeBase obj, string lastState) {
+        public virtual void OnDestroyed(ShapeBase obj, string lastState) {
              InternalUnsafeMethods.OnDestroyed__Args _args = new InternalUnsafeMethods.OnDestroyed__Args() {
                 obj = obj.ObjectPtr,
                 lastState = lastState,
@@ -432,7 +432,7 @@ vec.Free();        }
              InternalUnsafeMethods.OnDestroyed()(ObjectPtr, _args);
         }
 
-        public void OnDisabled(ShapeBase obj, string lastState) {
+        public virtual void OnDisabled(ShapeBase obj, string lastState) {
              InternalUnsafeMethods.OnDisabled__Args _args = new InternalUnsafeMethods.OnDisabled__Args() {
                 obj = obj.ObjectPtr,
                 lastState = lastState,
@@ -440,7 +440,7 @@ vec.Free();        }
              InternalUnsafeMethods.OnDisabled()(ObjectPtr, _args);
         }
 
-        public void OnEnabled(ShapeBase obj, string lastState) {
+        public virtual void OnEnabled(ShapeBase obj, string lastState) {
              InternalUnsafeMethods.OnEnabled__Args _args = new InternalUnsafeMethods.OnEnabled__Args() {
                 obj = obj.ObjectPtr,
                 lastState = lastState,

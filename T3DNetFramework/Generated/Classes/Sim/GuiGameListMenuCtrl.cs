@@ -391,7 +391,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddRow()(ObjectPtr, _args);
         }
 
-        public void OnChange() {
+        public virtual void OnChange() {
              InternalUnsafeMethods.OnChange__Args _args = new InternalUnsafeMethods.OnChange__Args() {
              };
              InternalUnsafeMethods.OnChange()(ObjectPtr, _args);

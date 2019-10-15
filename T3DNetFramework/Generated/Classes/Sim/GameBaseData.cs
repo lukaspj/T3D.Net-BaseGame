@@ -208,7 +208,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnUnmount(SceneObject obj, SceneObject mountObj, int node) {
+        public virtual void OnUnmount(SceneObject obj, SceneObject mountObj, int node) {
              InternalUnsafeMethods.OnUnmount__Args _args = new InternalUnsafeMethods.OnUnmount__Args() {
                 obj = obj.ObjectPtr,
                 mountObj = mountObj.ObjectPtr,
@@ -217,7 +217,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnUnmount()(ObjectPtr, _args);
         }
 
-        public void OnMount(SceneObject obj, SceneObject mountObj, int node) {
+        public virtual void OnMount(SceneObject obj, SceneObject mountObj, int node) {
              InternalUnsafeMethods.OnMount__Args _args = new InternalUnsafeMethods.OnMount__Args() {
                 obj = obj.ObjectPtr,
                 mountObj = mountObj.ObjectPtr,
@@ -226,21 +226,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnMount()(ObjectPtr, _args);
         }
 
-        public void OnRemove(GameBase obj) {
+        public virtual void OnRemove(GameBase obj) {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
-        public void OnNewDataBlock(GameBase obj) {
+        public virtual void OnNewDataBlock(GameBase obj) {
              InternalUnsafeMethods.OnNewDataBlock__Args _args = new InternalUnsafeMethods.OnNewDataBlock__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.OnNewDataBlock()(ObjectPtr, _args);
         }
 
-        public void OnAdd(GameBase obj) {
+        public virtual void OnAdd(GameBase obj) {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
                 obj = obj.ObjectPtr,
              };

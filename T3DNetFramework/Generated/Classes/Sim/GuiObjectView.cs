@@ -626,13 +626,13 @@ color.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
-        public void OnMouseLeave() {
+        public virtual void OnMouseLeave() {
              InternalUnsafeMethods.OnMouseLeave__Args _args = new InternalUnsafeMethods.OnMouseLeave__Args() {
              };
              InternalUnsafeMethods.OnMouseLeave()(ObjectPtr, _args);
         }
 
-        public void OnMouseEnter() {
+        public virtual void OnMouseEnter() {
              InternalUnsafeMethods.OnMouseEnter__Args _args = new InternalUnsafeMethods.OnMouseEnter__Args() {
              };
              InternalUnsafeMethods.OnMouseEnter()(ObjectPtr, _args);

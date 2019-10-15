@@ -1675,80 +1675,80 @@ location.Free();             return _engineResult;
              InternalUnsafeMethods.SetJoinPassword()(ObjectPtr, _args);
         }
 
-        public void OnFlash(bool state) {
+        public virtual void OnFlash(bool state) {
              InternalUnsafeMethods.OnFlash__Args _args = new InternalUnsafeMethods.OnFlash__Args() {
                 state = state,
              };
              InternalUnsafeMethods.OnFlash()(ObjectPtr, _args);
         }
 
-        public void OnDataBlocksDone(uint sequence) {
+        public virtual void OnDataBlocksDone(uint sequence) {
              InternalUnsafeMethods.OnDataBlocksDone__Args _args = new InternalUnsafeMethods.OnDataBlocksDone__Args() {
                 sequence = sequence,
              };
              InternalUnsafeMethods.OnDataBlocksDone()(ObjectPtr, _args);
         }
 
-        public void SetLagIcon(bool state) {
+        public virtual void SetLagIcon(bool state) {
              InternalUnsafeMethods.SetLagIcon__Args _args = new InternalUnsafeMethods.SetLagIcon__Args() {
                 state = state,
              };
              InternalUnsafeMethods.SetLagIcon()(ObjectPtr, _args);
         }
 
-        public void OnControlObjectChange() {
+        public virtual void OnControlObjectChange() {
              InternalUnsafeMethods.OnControlObjectChange__Args _args = new InternalUnsafeMethods.OnControlObjectChange__Args() {
              };
              InternalUnsafeMethods.OnControlObjectChange()(ObjectPtr, _args);
         }
 
-        public void InitialControlSet() {
+        public virtual void InitialControlSet() {
              InternalUnsafeMethods.InitialControlSet__Args _args = new InternalUnsafeMethods.InitialControlSet__Args() {
              };
              InternalUnsafeMethods.InitialControlSet()(ObjectPtr, _args);
         }
 
-        public void OnDrop(string disconnectReason) {
+        public virtual void OnDrop(string disconnectReason) {
              InternalUnsafeMethods.OnDrop__Args _args = new InternalUnsafeMethods.OnDrop__Args() {
                 disconnectReason = disconnectReason,
              };
              InternalUnsafeMethods.OnDrop()(ObjectPtr, _args);
         }
 
-        public void OnConnectionError(string errorString) {
+        public virtual void OnConnectionError(string errorString) {
              InternalUnsafeMethods.OnConnectionError__Args _args = new InternalUnsafeMethods.OnConnectionError__Args() {
                 errorString = errorString,
              };
              InternalUnsafeMethods.OnConnectionError()(ObjectPtr, _args);
         }
 
-        public void OnConnectRequestRejected(string reason) {
+        public virtual void OnConnectRequestRejected(string reason) {
              InternalUnsafeMethods.OnConnectRequestRejected__Args _args = new InternalUnsafeMethods.OnConnectRequestRejected__Args() {
                 reason = reason,
              };
              InternalUnsafeMethods.OnConnectRequestRejected()(ObjectPtr, _args);
         }
 
-        public void OnConnectionDropped(string reason) {
+        public virtual void OnConnectionDropped(string reason) {
              InternalUnsafeMethods.OnConnectionDropped__Args _args = new InternalUnsafeMethods.OnConnectionDropped__Args() {
                 reason = reason,
              };
              InternalUnsafeMethods.OnConnectionDropped()(ObjectPtr, _args);
         }
 
-        public void OnConnectRequestTimedOut() {
+        public virtual void OnConnectRequestTimedOut() {
              InternalUnsafeMethods.OnConnectRequestTimedOut__Args _args = new InternalUnsafeMethods.OnConnectRequestTimedOut__Args() {
              };
              InternalUnsafeMethods.OnConnectRequestTimedOut()(ObjectPtr, _args);
         }
 
-        public void OnConnectionAccepted() {
+        public virtual void OnConnectionAccepted() {
              InternalUnsafeMethods.OnConnectionAccepted__Args _args = new InternalUnsafeMethods.OnConnectionAccepted__Args() {
              };
              InternalUnsafeMethods.OnConnectionAccepted()(ObjectPtr, _args);
         }
 
-        public void OnConnectionTimedOut() {
+        public virtual void OnConnectionTimedOut() {
              InternalUnsafeMethods.OnConnectionTimedOut__Args _args = new InternalUnsafeMethods.OnConnectionTimedOut__Args() {
              };
              InternalUnsafeMethods.OnConnectionTimedOut()(ObjectPtr, _args);

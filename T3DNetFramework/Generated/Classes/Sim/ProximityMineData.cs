@@ -143,7 +143,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnExplode(ProximityMine obj, Point3F pos) {
+        public virtual void OnExplode(ProximityMine obj, Point3F pos) {
 pos.Alloc();             InternalUnsafeMethods.OnExplode__Args _args = new InternalUnsafeMethods.OnExplode__Args() {
                 obj = obj.ObjectPtr,
                 pos = pos.internalStructPtr,
@@ -151,7 +151,7 @@ pos.Alloc();             InternalUnsafeMethods.OnExplode__Args _args = new Inter
              InternalUnsafeMethods.OnExplode()(ObjectPtr, _args);
 pos.Free();        }
 
-        public void OnTriggered(ProximityMine obj, SceneObject target) {
+        public virtual void OnTriggered(ProximityMine obj, SceneObject target) {
              InternalUnsafeMethods.OnTriggered__Args _args = new InternalUnsafeMethods.OnTriggered__Args() {
                 obj = obj.ObjectPtr,
                 target = target.ObjectPtr,

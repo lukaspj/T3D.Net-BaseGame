@@ -126,7 +126,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
-        public void OnStateChange() {
+        public virtual void OnStateChange() {
              InternalUnsafeMethods.OnStateChange__Args _args = new InternalUnsafeMethods.OnStateChange__Args() {
              };
              InternalUnsafeMethods.OnStateChange()(ObjectPtr, _args);

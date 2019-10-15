@@ -165,14 +165,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnStickyCollision(TurretShape obj) {
+        public virtual void OnStickyCollision(TurretShape obj) {
              InternalUnsafeMethods.OnStickyCollision__Args _args = new InternalUnsafeMethods.OnStickyCollision__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.OnStickyCollision()(ObjectPtr, _args);
         }
 
-        public void OnUnmountObject(SceneObject turret, SceneObject obj) {
+        public virtual void OnUnmountObject(SceneObject turret, SceneObject obj) {
              InternalUnsafeMethods.OnUnmountObject__Args _args = new InternalUnsafeMethods.OnUnmountObject__Args() {
                 turret = turret.ObjectPtr,
                 obj = obj.ObjectPtr,
@@ -180,7 +180,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnUnmountObject()(ObjectPtr, _args);
         }
 
-        public void OnMountObject(SceneObject turret, SceneObject obj, int node) {
+        public virtual void OnMountObject(SceneObject turret, SceneObject obj, int node) {
              InternalUnsafeMethods.OnMountObject__Args _args = new InternalUnsafeMethods.OnMountObject__Args() {
                 turret = turret.ObjectPtr,
                 obj = obj.ObjectPtr,

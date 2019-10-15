@@ -2358,13 +2358,13 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
-        public void OnClearSelection() {
+        public virtual void OnClearSelection() {
              InternalUnsafeMethods.OnClearSelection__Args _args = new InternalUnsafeMethods.OnClearSelection__Args() {
              };
              InternalUnsafeMethods.OnClearSelection()(ObjectPtr, _args);
         }
 
-        public bool HandleRenameObject(string newName, SimObject _object) {
+        public virtual bool HandleRenameObject(string newName, SimObject _object) {
              InternalUnsafeMethods.HandleRenameObject__Args _args = new InternalUnsafeMethods.HandleRenameObject__Args() {
                 newName = newName,
                 _object = _object.ObjectPtr,
@@ -2373,7 +2373,7 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
-        public bool CanRenameObject(SimObject _object) {
+        public virtual bool CanRenameObject(SimObject _object) {
              InternalUnsafeMethods.CanRenameObject__Args _args = new InternalUnsafeMethods.CanRenameObject__Args() {
                 _object = _object.ObjectPtr,
              };
@@ -2381,25 +2381,25 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
-        public void OnAddMultipleSelectionEnd() {
+        public virtual void OnAddMultipleSelectionEnd() {
              InternalUnsafeMethods.OnAddMultipleSelectionEnd__Args _args = new InternalUnsafeMethods.OnAddMultipleSelectionEnd__Args() {
              };
              InternalUnsafeMethods.OnAddMultipleSelectionEnd()(ObjectPtr, _args);
         }
 
-        public void OnAddMultipleSelectionBegin() {
+        public virtual void OnAddMultipleSelectionBegin() {
              InternalUnsafeMethods.OnAddMultipleSelectionBegin__Args _args = new InternalUnsafeMethods.OnAddMultipleSelectionBegin__Args() {
              };
              InternalUnsafeMethods.OnAddMultipleSelectionBegin()(ObjectPtr, _args);
         }
 
-        public void OnDragDropped() {
+        public virtual void OnDragDropped() {
              InternalUnsafeMethods.OnDragDropped__Args _args = new InternalUnsafeMethods.OnDragDropped__Args() {
              };
              InternalUnsafeMethods.OnDragDropped()(ObjectPtr, _args);
         }
 
-        public void OnReparent(int itemOrObjectId, int oldParentItemOrObjectId, int newParentItemOrObjectId) {
+        public virtual void OnReparent(int itemOrObjectId, int oldParentItemOrObjectId, int newParentItemOrObjectId) {
              InternalUnsafeMethods.OnReparent__Args _args = new InternalUnsafeMethods.OnReparent__Args() {
                 itemOrObjectId = itemOrObjectId,
                 oldParentItemOrObjectId = oldParentItemOrObjectId,
@@ -2408,19 +2408,19 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.OnReparent()(ObjectPtr, _args);
         }
 
-        public void OnEndReparenting() {
+        public virtual void OnEndReparenting() {
              InternalUnsafeMethods.OnEndReparenting__Args _args = new InternalUnsafeMethods.OnEndReparenting__Args() {
              };
              InternalUnsafeMethods.OnEndReparenting()(ObjectPtr, _args);
         }
 
-        public void OnBeginReparenting() {
+        public virtual void OnBeginReparenting() {
              InternalUnsafeMethods.OnBeginReparenting__Args _args = new InternalUnsafeMethods.OnBeginReparenting__Args() {
              };
              InternalUnsafeMethods.OnBeginReparenting()(ObjectPtr, _args);
         }
 
-        public void OnRightMouseUp(int itemId, Point2I mousePos, SimObject _object) {
+        public virtual void OnRightMouseUp(int itemId, Point2I mousePos, SimObject _object) {
 mousePos.Alloc();             InternalUnsafeMethods.OnRightMouseUp__Args _args = new InternalUnsafeMethods.OnRightMouseUp__Args() {
                 itemId = itemId,
                 mousePos = mousePos.internalStructPtr,
@@ -2429,7 +2429,7 @@ mousePos.Alloc();             InternalUnsafeMethods.OnRightMouseUp__Args _args =
              InternalUnsafeMethods.OnRightMouseUp()(ObjectPtr, _args);
 mousePos.Free();        }
 
-        public void OnRightMouseDown(int itemId, Point2I mousePos, SimObject _object) {
+        public virtual void OnRightMouseDown(int itemId, Point2I mousePos, SimObject _object) {
 mousePos.Alloc();             InternalUnsafeMethods.OnRightMouseDown__Args _args = new InternalUnsafeMethods.OnRightMouseDown__Args() {
                 itemId = itemId,
                 mousePos = mousePos.internalStructPtr,
@@ -2438,13 +2438,13 @@ mousePos.Alloc();             InternalUnsafeMethods.OnRightMouseDown__Args _args
              InternalUnsafeMethods.OnRightMouseDown()(ObjectPtr, _args);
 mousePos.Free();        }
 
-        public void OnMouseDragged() {
+        public virtual void OnMouseDragged() {
              InternalUnsafeMethods.OnMouseDragged__Args _args = new InternalUnsafeMethods.OnMouseDragged__Args() {
              };
              InternalUnsafeMethods.OnMouseDragged()(ObjectPtr, _args);
         }
 
-        public void OnMouseUp(int hitItemId, int mouseClickCount) {
+        public virtual void OnMouseUp(int hitItemId, int mouseClickCount) {
              InternalUnsafeMethods.OnMouseUp__Args _args = new InternalUnsafeMethods.OnMouseUp__Args() {
                 hitItemId = hitItemId,
                 mouseClickCount = mouseClickCount,
@@ -2452,7 +2452,7 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnMouseUp()(ObjectPtr, _args);
         }
 
-        public void OnKeyDown(int modifier, int keyCode) {
+        public virtual void OnKeyDown(int modifier, int keyCode) {
              InternalUnsafeMethods.OnKeyDown__Args _args = new InternalUnsafeMethods.OnKeyDown__Args() {
                 modifier = modifier,
                 keyCode = keyCode,
@@ -2460,47 +2460,47 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnKeyDown()(ObjectPtr, _args);
         }
 
-        public void OnObjectDeleteCompleted() {
+        public virtual void OnObjectDeleteCompleted() {
              InternalUnsafeMethods.OnObjectDeleteCompleted__Args _args = new InternalUnsafeMethods.OnObjectDeleteCompleted__Args() {
              };
              InternalUnsafeMethods.OnObjectDeleteCompleted()(ObjectPtr, _args);
         }
 
-        public void OnDeleteSelection() {
+        public virtual void OnDeleteSelection() {
              InternalUnsafeMethods.OnDeleteSelection__Args _args = new InternalUnsafeMethods.OnDeleteSelection__Args() {
              };
              InternalUnsafeMethods.OnDeleteSelection()(ObjectPtr, _args);
         }
 
-        public void OnUnselect(int itemOrObjectId) {
+        public virtual void OnUnselect(int itemOrObjectId) {
              InternalUnsafeMethods.OnUnselect__Args _args = new InternalUnsafeMethods.OnUnselect__Args() {
                 itemOrObjectId = itemOrObjectId,
              };
              InternalUnsafeMethods.OnUnselect()(ObjectPtr, _args);
         }
 
-        public void OnRemoveSelection(int itemOrObjectId) {
+        public virtual void OnRemoveSelection(int itemOrObjectId) {
              InternalUnsafeMethods.OnRemoveSelection__Args _args = new InternalUnsafeMethods.OnRemoveSelection__Args() {
                 itemOrObjectId = itemOrObjectId,
              };
              InternalUnsafeMethods.OnRemoveSelection()(ObjectPtr, _args);
         }
 
-        public void OnInspect(int itemOrObjectId) {
+        public virtual void OnInspect(int itemOrObjectId) {
              InternalUnsafeMethods.OnInspect__Args _args = new InternalUnsafeMethods.OnInspect__Args() {
                 itemOrObjectId = itemOrObjectId,
              };
              InternalUnsafeMethods.OnInspect()(ObjectPtr, _args);
         }
 
-        public void OnSelect(int itemOrObjectId) {
+        public virtual void OnSelect(int itemOrObjectId) {
              InternalUnsafeMethods.OnSelect__Args _args = new InternalUnsafeMethods.OnSelect__Args() {
                 itemOrObjectId = itemOrObjectId,
              };
              InternalUnsafeMethods.OnSelect()(ObjectPtr, _args);
         }
 
-        public void OnAddSelection(int itemOrObjectId, bool isLastSelection) {
+        public virtual void OnAddSelection(int itemOrObjectId, bool isLastSelection) {
              InternalUnsafeMethods.OnAddSelection__Args _args = new InternalUnsafeMethods.OnAddSelection__Args() {
                 itemOrObjectId = itemOrObjectId,
                 isLastSelection = isLastSelection,
@@ -2508,20 +2508,20 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnAddSelection()(ObjectPtr, _args);
         }
 
-        public void OnAddGroupSelected(SimGroup group) {
+        public virtual void OnAddGroupSelected(SimGroup group) {
              InternalUnsafeMethods.OnAddGroupSelected__Args _args = new InternalUnsafeMethods.OnAddGroupSelected__Args() {
                 group = group.ObjectPtr,
              };
              InternalUnsafeMethods.OnAddGroupSelected()(ObjectPtr, _args);
         }
 
-        public void OnDefineIcons() {
+        public virtual void OnDefineIcons() {
              InternalUnsafeMethods.OnDefineIcons__Args _args = new InternalUnsafeMethods.OnDefineIcons__Args() {
              };
              InternalUnsafeMethods.OnDefineIcons()(ObjectPtr, _args);
         }
 
-        public bool IsValidDragTarget(int id, string value) {
+        public virtual bool IsValidDragTarget(int id, string value) {
              InternalUnsafeMethods.IsValidDragTarget__Args _args = new InternalUnsafeMethods.IsValidDragTarget__Args() {
                 id = id,
                 value = value,
@@ -2530,7 +2530,7 @@ mousePos.Free();        }
              return _engineResult;
         }
 
-        public bool OnDeleteObject(SimObject _object) {
+        public virtual bool OnDeleteObject(SimObject _object) {
              InternalUnsafeMethods.OnDeleteObject__Args _args = new InternalUnsafeMethods.OnDeleteObject__Args() {
                 _object = _object.ObjectPtr,
              };

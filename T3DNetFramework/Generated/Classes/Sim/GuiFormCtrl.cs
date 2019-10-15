@@ -175,7 +175,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnResize() {
+        public virtual void OnResize() {
              InternalUnsafeMethods.OnResize__Args _args = new InternalUnsafeMethods.OnResize__Args() {
              };
              InternalUnsafeMethods.OnResize()(ObjectPtr, _args);

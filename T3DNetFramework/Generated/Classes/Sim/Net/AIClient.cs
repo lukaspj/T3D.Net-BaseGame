@@ -446,7 +446,7 @@ v.Free();        }
              InternalUnsafeMethods.SetMoveSpeed()(ObjectPtr, _args);
         }
 
-        public void OnConnect(string idString) {
+        public virtual void OnConnect(string idString) {
              InternalUnsafeMethods.OnConnect__Args _args = new InternalUnsafeMethods.OnConnect__Args() {
                 idString = idString,
              };

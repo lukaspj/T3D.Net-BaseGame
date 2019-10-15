@@ -149,7 +149,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.StartDragging()(ObjectPtr, _args);
         }
 
-        public void OnControlDragCancelled() {
+        public virtual void OnControlDragCancelled() {
              InternalUnsafeMethods.OnControlDragCancelled__Args _args = new InternalUnsafeMethods.OnControlDragCancelled__Args() {
              };
              InternalUnsafeMethods.OnControlDragCancelled()(ObjectPtr, _args);

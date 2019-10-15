@@ -241,7 +241,7 @@ pos.Free();vel.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
-        public void UpdateMove(PlayerControllerComponent obj) {
+        public virtual void UpdateMove(PlayerControllerComponent obj) {
              InternalUnsafeMethods.UpdateMove__Args _args = new InternalUnsafeMethods.UpdateMove__Args() {
                 obj = obj.ObjectPtr,
              };

@@ -764,14 +764,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Play()(ObjectPtr, _args);
         }
 
-        public void OnParameterValueChange(SFXParameter parameter) {
+        public virtual void OnParameterValueChange(SFXParameter parameter) {
              InternalUnsafeMethods.OnParameterValueChange__Args _args = new InternalUnsafeMethods.OnParameterValueChange__Args() {
                 parameter = parameter.ObjectPtr,
              };
              InternalUnsafeMethods.OnParameterValueChange()(ObjectPtr, _args);
         }
 
-        public void OnStatusChange(SFXStatus newStatus) {
+        public virtual void OnStatusChange(SFXStatus newStatus) {
              InternalUnsafeMethods.OnStatusChange__Args _args = new InternalUnsafeMethods.OnStatusChange__Args() {
                 newStatus = (int)newStatus,
              };

@@ -150,7 +150,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnAxisEvent(string device, string action, float axisValue) {
+        public virtual void OnAxisEvent(string device, string action, float axisValue) {
              InternalUnsafeMethods.OnAxisEvent__Args _args = new InternalUnsafeMethods.OnAxisEvent__Args() {
                 device = device,
                 action = action,
@@ -159,7 +159,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAxisEvent()(ObjectPtr, _args);
         }
 
-        public void OnInputEvent(string device, string action, bool state) {
+        public virtual void OnInputEvent(string device, string action, bool state) {
              InternalUnsafeMethods.OnInputEvent__Args _args = new InternalUnsafeMethods.OnInputEvent__Args() {
                 device = device,
                 action = action,

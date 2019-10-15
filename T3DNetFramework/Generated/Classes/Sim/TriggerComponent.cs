@@ -276,28 +276,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
-        public void OnUpdateOutOfView(Entity cameraEnt) {
+        public virtual void OnUpdateOutOfView(Entity cameraEnt) {
              InternalUnsafeMethods.OnUpdateOutOfView__Args _args = new InternalUnsafeMethods.OnUpdateOutOfView__Args() {
                 cameraEnt = cameraEnt.ObjectPtr,
              };
              InternalUnsafeMethods.OnUpdateOutOfView()(ObjectPtr, _args);
         }
 
-        public void OnUpdateInView(Entity cameraEnt) {
+        public virtual void OnUpdateInView(Entity cameraEnt) {
              InternalUnsafeMethods.OnUpdateInView__Args _args = new InternalUnsafeMethods.OnUpdateInView__Args() {
                 cameraEnt = cameraEnt.ObjectPtr,
              };
              InternalUnsafeMethods.OnUpdateInView()(ObjectPtr, _args);
         }
 
-        public void OnExitView(Entity cameraEnt) {
+        public virtual void OnExitView(Entity cameraEnt) {
              InternalUnsafeMethods.OnExitView__Args _args = new InternalUnsafeMethods.OnExitView__Args() {
                 cameraEnt = cameraEnt.ObjectPtr,
              };
              InternalUnsafeMethods.OnExitView()(ObjectPtr, _args);
         }
 
-        public void OnEnterView(Entity cameraEnt, bool firstTimeSeeing) {
+        public virtual void OnEnterView(Entity cameraEnt, bool firstTimeSeeing) {
              InternalUnsafeMethods.OnEnterView__Args _args = new InternalUnsafeMethods.OnEnterView__Args() {
                 cameraEnt = cameraEnt.ObjectPtr,
                 firstTimeSeeing = firstTimeSeeing,

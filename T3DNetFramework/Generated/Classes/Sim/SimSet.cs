@@ -719,14 +719,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ListObjects()(ObjectPtr, _args);
         }
 
-        public void OnObjectRemoved(SimObject _object) {
+        public virtual void OnObjectRemoved(SimObject _object) {
              InternalUnsafeMethods.OnObjectRemoved__Args _args = new InternalUnsafeMethods.OnObjectRemoved__Args() {
                 _object = _object.ObjectPtr,
              };
              InternalUnsafeMethods.OnObjectRemoved()(ObjectPtr, _args);
         }
 
-        public void OnObjectAdded(SimObject _object) {
+        public virtual void OnObjectAdded(SimObject _object) {
              InternalUnsafeMethods.OnObjectAdded__Args _args = new InternalUnsafeMethods.OnObjectAdded__Args() {
                 _object = _object.ObjectPtr,
              };

@@ -219,13 +219,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
-        public void OnRemove() {
+        public virtual void OnRemove() {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
              };
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
-        public void OnAdd() {
+        public virtual void OnAdd() {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
              };
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);

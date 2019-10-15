@@ -368,7 +368,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetDisplayFilters()(ObjectPtr, _args);
         }
 
-        public void OnNewMessage(uint errorCount, uint warnCount, uint normalCount) {
+        public virtual void OnNewMessage(uint errorCount, uint warnCount, uint normalCount) {
              InternalUnsafeMethods.OnNewMessage__Args _args = new InternalUnsafeMethods.OnNewMessage__Args() {
                 errorCount = errorCount,
                 warnCount = warnCount,
@@ -377,7 +377,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnNewMessage()(ObjectPtr, _args);
         }
 
-        public void OnMessageSelected(LogLevel level, string message) {
+        public virtual void OnMessageSelected(LogLevel level, string message) {
              InternalUnsafeMethods.OnMessageSelected__Args _args = new InternalUnsafeMethods.OnMessageSelected__Args() {
                 level = (int)level,
                 message = message,

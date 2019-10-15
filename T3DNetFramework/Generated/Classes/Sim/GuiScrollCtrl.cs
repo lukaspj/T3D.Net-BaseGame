@@ -336,7 +336,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ScrollToTop()(ObjectPtr, _args);
         }
 
-        public void OnScroll() {
+        public virtual void OnScroll() {
              InternalUnsafeMethods.OnScroll__Args _args = new InternalUnsafeMethods.OnScroll__Args() {
              };
              InternalUnsafeMethods.OnScroll()(ObjectPtr, _args);

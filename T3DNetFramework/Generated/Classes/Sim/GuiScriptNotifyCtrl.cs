@@ -249,28 +249,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnGainFirstResponder(uint ID) {
+        public virtual void OnGainFirstResponder(uint ID) {
              InternalUnsafeMethods.OnGainFirstResponder__Args _args = new InternalUnsafeMethods.OnGainFirstResponder__Args() {
                 ID = ID,
              };
              InternalUnsafeMethods.OnGainFirstResponder()(ObjectPtr, _args);
         }
 
-        public void OnLoseFirstResponder(uint ID) {
+        public virtual void OnLoseFirstResponder(uint ID) {
              InternalUnsafeMethods.OnLoseFirstResponder__Args _args = new InternalUnsafeMethods.OnLoseFirstResponder__Args() {
                 ID = ID,
              };
              InternalUnsafeMethods.OnLoseFirstResponder()(ObjectPtr, _args);
         }
 
-        public void OnParentResized(uint ID) {
+        public virtual void OnParentResized(uint ID) {
              InternalUnsafeMethods.OnParentResized__Args _args = new InternalUnsafeMethods.OnParentResized__Args() {
                 ID = ID,
              };
              InternalUnsafeMethods.OnParentResized()(ObjectPtr, _args);
         }
 
-        public void OnChildResized(uint ID, uint childID) {
+        public virtual void OnChildResized(uint ID, uint childID) {
              InternalUnsafeMethods.OnChildResized__Args _args = new InternalUnsafeMethods.OnChildResized__Args() {
                 ID = ID,
                 childID = childID,
@@ -278,7 +278,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnChildResized()(ObjectPtr, _args);
         }
 
-        public void OnChildRemoved(uint ID, uint childID) {
+        public virtual void OnChildRemoved(uint ID, uint childID) {
              InternalUnsafeMethods.OnChildRemoved__Args _args = new InternalUnsafeMethods.OnChildRemoved__Args() {
                 ID = ID,
                 childID = childID,
@@ -286,7 +286,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnChildRemoved()(ObjectPtr, _args);
         }
 
-        public void OnChildAdded(uint ID, uint childID) {
+        public virtual void OnChildAdded(uint ID, uint childID) {
              InternalUnsafeMethods.OnChildAdded__Args _args = new InternalUnsafeMethods.OnChildAdded__Args() {
                 ID = ID,
                 childID = childID,
@@ -294,7 +294,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnChildAdded()(ObjectPtr, _args);
         }
 
-        public void OnResize(uint ID) {
+        public virtual void OnResize(uint ID) {
              InternalUnsafeMethods.OnResize__Args _args = new InternalUnsafeMethods.OnResize__Args() {
                 ID = ID,
              };

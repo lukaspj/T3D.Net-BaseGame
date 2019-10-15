@@ -218,20 +218,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetProcessTicks()(ObjectPtr, _args);
         }
 
-        public void OnAdvanceTime(float timeDelta) {
+        public virtual void OnAdvanceTime(float timeDelta) {
              InternalUnsafeMethods.OnAdvanceTime__Args _args = new InternalUnsafeMethods.OnAdvanceTime__Args() {
                 timeDelta = timeDelta,
              };
              InternalUnsafeMethods.OnAdvanceTime()(ObjectPtr, _args);
         }
 
-        public void OnProcessTick() {
+        public virtual void OnProcessTick() {
              InternalUnsafeMethods.OnProcessTick__Args _args = new InternalUnsafeMethods.OnProcessTick__Args() {
              };
              InternalUnsafeMethods.OnProcessTick()(ObjectPtr, _args);
         }
 
-        public void OnInterpolateTick(float delta) {
+        public virtual void OnInterpolateTick(float delta) {
              InternalUnsafeMethods.OnInterpolateTick__Args _args = new InternalUnsafeMethods.OnInterpolateTick__Args() {
                 delta = delta,
              };

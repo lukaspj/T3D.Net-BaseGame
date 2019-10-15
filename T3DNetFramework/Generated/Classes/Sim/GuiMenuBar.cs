@@ -343,7 +343,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AttachToCanvas()(ObjectPtr, _args);
         }
 
-        public void OnMenuItemSelect(int menuId, string menuText, int menuItemId, string menuItemText) {
+        public virtual void OnMenuItemSelect(int menuId, string menuText, int menuItemId, string menuItemText) {
              InternalUnsafeMethods.OnMenuItemSelect__Args _args = new InternalUnsafeMethods.OnMenuItemSelect__Args() {
                 menuId = menuId,
                 menuText = menuText,
@@ -353,7 +353,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnMenuItemSelect()(ObjectPtr, _args);
         }
 
-        public void OnMenuSelect(int menuId, string menuText) {
+        public virtual void OnMenuSelect(int menuId, string menuText) {
              InternalUnsafeMethods.OnMenuSelect__Args _args = new InternalUnsafeMethods.OnMenuSelect__Args() {
                 menuId = menuId,
                 menuText = menuText,
@@ -361,7 +361,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnMenuSelect()(ObjectPtr, _args);
         }
 
-        public void OnMouseInMenu(bool isInMenu) {
+        public virtual void OnMouseInMenu(bool isInMenu) {
              InternalUnsafeMethods.OnMouseInMenu__Args _args = new InternalUnsafeMethods.OnMouseInMenu__Args() {
                 isInMenu = isInMenu,
              };

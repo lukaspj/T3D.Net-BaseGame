@@ -249,7 +249,7 @@ pos.Free();vel.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
-        public void SetControl(bool controlled) {
+        public virtual void SetControl(bool controlled) {
              InternalUnsafeMethods.SetControl__Args _args = new InternalUnsafeMethods.SetControl__Args() {
                 controlled = controlled,
              };

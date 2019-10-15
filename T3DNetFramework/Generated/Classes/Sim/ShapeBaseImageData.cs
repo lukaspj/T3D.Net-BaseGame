@@ -145,7 +145,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnUnmount(SceneObject obj, int slot, float dt) {
+        public virtual void OnUnmount(SceneObject obj, int slot, float dt) {
              InternalUnsafeMethods.OnUnmount__Args _args = new InternalUnsafeMethods.OnUnmount__Args() {
                 obj = obj.ObjectPtr,
                 slot = slot,
@@ -154,7 +154,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnUnmount()(ObjectPtr, _args);
         }
 
-        public void OnMount(SceneObject obj, int slot, float dt) {
+        public virtual void OnMount(SceneObject obj, int slot, float dt) {
              InternalUnsafeMethods.OnMount__Args _args = new InternalUnsafeMethods.OnMount__Args() {
                 obj = obj.ObjectPtr,
                 slot = slot,

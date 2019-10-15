@@ -150,7 +150,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnAdd(uint objectId) {
+        public virtual void OnAdd(uint objectId) {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
                 objectId = objectId,
              };

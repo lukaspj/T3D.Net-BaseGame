@@ -338,31 +338,31 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SelectWindow()(ObjectPtr, _args);
         }
 
-        public void OnRestore() {
+        public virtual void OnRestore() {
              InternalUnsafeMethods.OnRestore__Args _args = new InternalUnsafeMethods.OnRestore__Args() {
              };
              InternalUnsafeMethods.OnRestore()(ObjectPtr, _args);
         }
 
-        public void OnCollapse() {
+        public virtual void OnCollapse() {
              InternalUnsafeMethods.OnCollapse__Args _args = new InternalUnsafeMethods.OnCollapse__Args() {
              };
              InternalUnsafeMethods.OnCollapse()(ObjectPtr, _args);
         }
 
-        public void OnMaximize() {
+        public virtual void OnMaximize() {
              InternalUnsafeMethods.OnMaximize__Args _args = new InternalUnsafeMethods.OnMaximize__Args() {
              };
              InternalUnsafeMethods.OnMaximize()(ObjectPtr, _args);
         }
 
-        public void OnMinimize() {
+        public virtual void OnMinimize() {
              InternalUnsafeMethods.OnMinimize__Args _args = new InternalUnsafeMethods.OnMinimize__Args() {
              };
              InternalUnsafeMethods.OnMinimize()(ObjectPtr, _args);
         }
 
-        public void OnClose() {
+        public virtual void OnClose() {
              InternalUnsafeMethods.OnClose__Args _args = new InternalUnsafeMethods.OnClose__Args() {
              };
              InternalUnsafeMethods.OnClose()(ObjectPtr, _args);

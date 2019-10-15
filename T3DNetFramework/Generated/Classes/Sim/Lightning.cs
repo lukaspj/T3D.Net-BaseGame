@@ -202,7 +202,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.WarningFlashes()(ObjectPtr, _args);
         }
 
-        public void ApplyDamage(Point3F hitPosition, Point3F hitNormal, SceneObject hitObject) {
+        public virtual void ApplyDamage(Point3F hitPosition, Point3F hitNormal, SceneObject hitObject) {
 hitPosition.Alloc();hitNormal.Alloc();             InternalUnsafeMethods.ApplyDamage__Args _args = new InternalUnsafeMethods.ApplyDamage__Args() {
                 hitPosition = hitPosition.internalStructPtr,
                 hitNormal = hitNormal.internalStructPtr,

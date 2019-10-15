@@ -426,49 +426,49 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PerformClick()(ObjectPtr, _args);
         }
 
-        public void OnMouseDragged() {
+        public virtual void OnMouseDragged() {
              InternalUnsafeMethods.OnMouseDragged__Args _args = new InternalUnsafeMethods.OnMouseDragged__Args() {
              };
              InternalUnsafeMethods.OnMouseDragged()(ObjectPtr, _args);
         }
 
-        public void OnMouseLeave() {
+        public virtual void OnMouseLeave() {
              InternalUnsafeMethods.OnMouseLeave__Args _args = new InternalUnsafeMethods.OnMouseLeave__Args() {
              };
              InternalUnsafeMethods.OnMouseLeave()(ObjectPtr, _args);
         }
 
-        public void OnMouseEnter() {
+        public virtual void OnMouseEnter() {
              InternalUnsafeMethods.OnMouseEnter__Args _args = new InternalUnsafeMethods.OnMouseEnter__Args() {
              };
              InternalUnsafeMethods.OnMouseEnter()(ObjectPtr, _args);
         }
 
-        public void OnRightClick() {
+        public virtual void OnRightClick() {
              InternalUnsafeMethods.OnRightClick__Args _args = new InternalUnsafeMethods.OnRightClick__Args() {
              };
              InternalUnsafeMethods.OnRightClick()(ObjectPtr, _args);
         }
 
-        public void OnDoubleClick() {
+        public virtual void OnDoubleClick() {
              InternalUnsafeMethods.OnDoubleClick__Args _args = new InternalUnsafeMethods.OnDoubleClick__Args() {
              };
              InternalUnsafeMethods.OnDoubleClick()(ObjectPtr, _args);
         }
 
-        public void OnClick() {
+        public virtual void OnClick() {
              InternalUnsafeMethods.OnClick__Args _args = new InternalUnsafeMethods.OnClick__Args() {
              };
              InternalUnsafeMethods.OnClick()(ObjectPtr, _args);
         }
 
-        public void OnMouseUp() {
+        public virtual void OnMouseUp() {
              InternalUnsafeMethods.OnMouseUp__Args _args = new InternalUnsafeMethods.OnMouseUp__Args() {
              };
              InternalUnsafeMethods.OnMouseUp()(ObjectPtr, _args);
         }
 
-        public void OnMouseDown() {
+        public virtual void OnMouseDown() {
              InternalUnsafeMethods.OnMouseDown__Args _args = new InternalUnsafeMethods.OnMouseDown__Args() {
              };
              InternalUnsafeMethods.OnMouseDown()(ObjectPtr, _args);

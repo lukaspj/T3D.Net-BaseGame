@@ -229,7 +229,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddPage()(ObjectPtr, _args);
         }
 
-        public void OnTabRightClick(string text, uint index) {
+        public virtual void OnTabRightClick(string text, uint index) {
              InternalUnsafeMethods.OnTabRightClick__Args _args = new InternalUnsafeMethods.OnTabRightClick__Args() {
                 text = text,
                 index = index,
@@ -237,7 +237,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnTabRightClick()(ObjectPtr, _args);
         }
 
-        public void OnTabSelected(string text, uint index) {
+        public virtual void OnTabSelected(string text, uint index) {
              InternalUnsafeMethods.OnTabSelected__Args _args = new InternalUnsafeMethods.OnTabSelected__Args() {
                 text = text,
                 index = index,

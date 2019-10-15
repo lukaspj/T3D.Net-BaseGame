@@ -339,28 +339,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnLeaveMissionArea(Player obj) {
+        public virtual void OnLeaveMissionArea(Player obj) {
              InternalUnsafeMethods.OnLeaveMissionArea__Args _args = new InternalUnsafeMethods.OnLeaveMissionArea__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.OnLeaveMissionArea()(ObjectPtr, _args);
         }
 
-        public void OnEnterMissionArea(Player obj) {
+        public virtual void OnEnterMissionArea(Player obj) {
              InternalUnsafeMethods.OnEnterMissionArea__Args _args = new InternalUnsafeMethods.OnEnterMissionArea__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.OnEnterMissionArea()(ObjectPtr, _args);
         }
 
-        public void AnimationDone(Player obj) {
+        public virtual void AnimationDone(Player obj) {
              InternalUnsafeMethods.AnimationDone__Args _args = new InternalUnsafeMethods.AnimationDone__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.AnimationDone()(ObjectPtr, _args);
         }
 
-        public void OnLeaveLiquid(Player obj, string type) {
+        public virtual void OnLeaveLiquid(Player obj, string type) {
              InternalUnsafeMethods.OnLeaveLiquid__Args _args = new InternalUnsafeMethods.OnLeaveLiquid__Args() {
                 obj = obj.ObjectPtr,
                 type = type,
@@ -368,7 +368,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnLeaveLiquid()(ObjectPtr, _args);
         }
 
-        public void OnEnterLiquid(Player obj, float coverage, string type) {
+        public virtual void OnEnterLiquid(Player obj, float coverage, string type) {
              InternalUnsafeMethods.OnEnterLiquid__Args _args = new InternalUnsafeMethods.OnEnterLiquid__Args() {
                 obj = obj.ObjectPtr,
                 coverage = coverage,
@@ -377,42 +377,42 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnEnterLiquid()(ObjectPtr, _args);
         }
 
-        public void DoDismount(Player obj) {
+        public virtual void DoDismount(Player obj) {
              InternalUnsafeMethods.DoDismount__Args _args = new InternalUnsafeMethods.DoDismount__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.DoDismount()(ObjectPtr, _args);
         }
 
-        public void OnStopSprintMotion(Player obj) {
+        public virtual void OnStopSprintMotion(Player obj) {
              InternalUnsafeMethods.OnStopSprintMotion__Args _args = new InternalUnsafeMethods.OnStopSprintMotion__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.OnStopSprintMotion()(ObjectPtr, _args);
         }
 
-        public void OnStartSprintMotion(Player obj) {
+        public virtual void OnStartSprintMotion(Player obj) {
              InternalUnsafeMethods.OnStartSprintMotion__Args _args = new InternalUnsafeMethods.OnStartSprintMotion__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.OnStartSprintMotion()(ObjectPtr, _args);
         }
 
-        public void OnStopSwim(Player obj) {
+        public virtual void OnStopSwim(Player obj) {
              InternalUnsafeMethods.OnStopSwim__Args _args = new InternalUnsafeMethods.OnStopSwim__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.OnStopSwim()(ObjectPtr, _args);
         }
 
-        public void OnStartSwim(Player obj) {
+        public virtual void OnStartSwim(Player obj) {
              InternalUnsafeMethods.OnStartSwim__Args _args = new InternalUnsafeMethods.OnStartSwim__Args() {
                 obj = obj.ObjectPtr,
              };
              InternalUnsafeMethods.OnStartSwim()(ObjectPtr, _args);
         }
 
-        public void OnPoseChange(Player obj, string oldPose, string newPose) {
+        public virtual void OnPoseChange(Player obj, string oldPose, string newPose) {
              InternalUnsafeMethods.OnPoseChange__Args _args = new InternalUnsafeMethods.OnPoseChange__Args() {
                 obj = obj.ObjectPtr,
                 oldPose = oldPose,

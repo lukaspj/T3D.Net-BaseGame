@@ -372,19 +372,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnCollapsed() {
+        public virtual void OnCollapsed() {
              InternalUnsafeMethods.OnCollapsed__Args _args = new InternalUnsafeMethods.OnCollapsed__Args() {
              };
              InternalUnsafeMethods.OnCollapsed()(ObjectPtr, _args);
         }
 
-        public void OnExpanded() {
+        public virtual void OnExpanded() {
              InternalUnsafeMethods.OnExpanded__Args _args = new InternalUnsafeMethods.OnExpanded__Args() {
              };
              InternalUnsafeMethods.OnExpanded()(ObjectPtr, _args);
         }
 
-        public void OnHeaderRightClick() {
+        public virtual void OnHeaderRightClick() {
              InternalUnsafeMethods.OnHeaderRightClick__Args _args = new InternalUnsafeMethods.OnHeaderRightClick__Args() {
              };
              InternalUnsafeMethods.OnHeaderRightClick()(ObjectPtr, _args);

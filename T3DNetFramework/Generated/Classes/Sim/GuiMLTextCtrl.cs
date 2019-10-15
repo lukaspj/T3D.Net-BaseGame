@@ -396,7 +396,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetText()(ObjectPtr, _args);
         }
 
-        public void OnResize(int width, int maxY) {
+        public virtual void OnResize(int width, int maxY) {
              InternalUnsafeMethods.OnResize__Args _args = new InternalUnsafeMethods.OnResize__Args() {
                 width = width,
                 maxY = maxY,
@@ -404,7 +404,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnResize()(ObjectPtr, _args);
         }
 
-        public void OnURL(string url) {
+        public virtual void OnURL(string url) {
              InternalUnsafeMethods.OnURL__Args _args = new InternalUnsafeMethods.OnURL__Args() {
                 url = url,
              };

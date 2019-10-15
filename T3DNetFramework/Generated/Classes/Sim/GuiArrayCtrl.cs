@@ -141,14 +141,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnCellHighlighted(Point2I cell) {
+        public virtual void OnCellHighlighted(Point2I cell) {
 cell.Alloc();             InternalUnsafeMethods.OnCellHighlighted__Args _args = new InternalUnsafeMethods.OnCellHighlighted__Args() {
                 cell = cell.internalStructPtr,
              };
              InternalUnsafeMethods.OnCellHighlighted()(ObjectPtr, _args);
 cell.Free();        }
 
-        public void OnCellSelected(Point2I cell) {
+        public virtual void OnCellSelected(Point2I cell) {
 cell.Alloc();             InternalUnsafeMethods.OnCellSelected__Args _args = new InternalUnsafeMethods.OnCellSelected__Args() {
                 cell = cell.internalStructPtr,
              };

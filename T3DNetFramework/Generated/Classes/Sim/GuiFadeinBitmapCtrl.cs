@@ -139,13 +139,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnDone() {
+        public virtual void OnDone() {
              InternalUnsafeMethods.OnDone__Args _args = new InternalUnsafeMethods.OnDone__Args() {
              };
              InternalUnsafeMethods.OnDone()(ObjectPtr, _args);
         }
 
-        public void Click() {
+        public virtual void Click() {
              InternalUnsafeMethods.Click__Args _args = new InternalUnsafeMethods.Click__Args() {
              };
              InternalUnsafeMethods.Click()(ObjectPtr, _args);

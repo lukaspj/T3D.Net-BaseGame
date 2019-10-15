@@ -205,25 +205,25 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
-        public void OnReset() {
+        public virtual void OnReset() {
              InternalUnsafeMethods.OnReset__Args _args = new InternalUnsafeMethods.OnReset__Args() {
              };
              InternalUnsafeMethods.OnReset()(ObjectPtr, _args);
         }
 
-        public void OnComplete() {
+        public virtual void OnComplete() {
              InternalUnsafeMethods.OnComplete__Args _args = new InternalUnsafeMethods.OnComplete__Args() {
              };
              InternalUnsafeMethods.OnComplete()(ObjectPtr, _args);
         }
 
-        public void OnStart() {
+        public virtual void OnStart() {
              InternalUnsafeMethods.OnStart__Args _args = new InternalUnsafeMethods.OnStart__Args() {
              };
              InternalUnsafeMethods.OnStart()(ObjectPtr, _args);
         }
 
-        public void OnTick() {
+        public virtual void OnTick() {
              InternalUnsafeMethods.OnTick__Args _args = new InternalUnsafeMethods.OnTick__Args() {
              };
              InternalUnsafeMethods.OnTick()(ObjectPtr, _args);

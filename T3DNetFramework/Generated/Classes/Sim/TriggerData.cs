@@ -164,7 +164,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnLeaveTrigger(Trigger trigger, GameBase obj) {
+        public virtual void OnLeaveTrigger(Trigger trigger, GameBase obj) {
              InternalUnsafeMethods.OnLeaveTrigger__Args _args = new InternalUnsafeMethods.OnLeaveTrigger__Args() {
                 trigger = trigger.ObjectPtr,
                 obj = obj.ObjectPtr,
@@ -172,14 +172,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnLeaveTrigger()(ObjectPtr, _args);
         }
 
-        public void OnTickTrigger(Trigger trigger) {
+        public virtual void OnTickTrigger(Trigger trigger) {
              InternalUnsafeMethods.OnTickTrigger__Args _args = new InternalUnsafeMethods.OnTickTrigger__Args() {
                 trigger = trigger.ObjectPtr,
              };
              InternalUnsafeMethods.OnTickTrigger()(ObjectPtr, _args);
         }
 
-        public void OnEnterTrigger(Trigger trigger, GameBase obj) {
+        public virtual void OnEnterTrigger(Trigger trigger, GameBase obj) {
              InternalUnsafeMethods.OnEnterTrigger__Args _args = new InternalUnsafeMethods.OnEnterTrigger__Args() {
                 trigger = trigger.ObjectPtr,
                 obj = obj.ObjectPtr,

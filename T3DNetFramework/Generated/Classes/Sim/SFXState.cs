@@ -299,13 +299,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnDeactivate() {
+        public virtual void OnDeactivate() {
              InternalUnsafeMethods.OnDeactivate__Args _args = new InternalUnsafeMethods.OnDeactivate__Args() {
              };
              InternalUnsafeMethods.OnDeactivate()(ObjectPtr, _args);
         }
 
-        public void OnActivate() {
+        public virtual void OnActivate() {
              InternalUnsafeMethods.OnActivate__Args _args = new InternalUnsafeMethods.OnActivate__Args() {
              };
              InternalUnsafeMethods.OnActivate()(ObjectPtr, _args);

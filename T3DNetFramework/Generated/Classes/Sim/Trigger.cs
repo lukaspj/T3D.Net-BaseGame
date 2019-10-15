@@ -197,14 +197,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnRemove(uint objectId) {
+        public virtual void OnRemove(uint objectId) {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
                 objectId = objectId,
              };
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
-        public void OnAdd(uint objectId) {
+        public virtual void OnAdd(uint objectId) {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
                 objectId = objectId,
              };

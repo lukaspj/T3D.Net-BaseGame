@@ -462,19 +462,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
-        public void OnValidate() {
+        public virtual void OnValidate() {
              InternalUnsafeMethods.OnValidate__Args _args = new InternalUnsafeMethods.OnValidate__Args() {
              };
              InternalUnsafeMethods.OnValidate()(ObjectPtr, _args);
         }
 
-        public void OnReturn() {
+        public virtual void OnReturn() {
              InternalUnsafeMethods.OnReturn__Args _args = new InternalUnsafeMethods.OnReturn__Args() {
              };
              InternalUnsafeMethods.OnReturn()(ObjectPtr, _args);
         }
 
-        public void OnTabComplete(string val) {
+        public virtual void OnTabComplete(string val) {
              InternalUnsafeMethods.OnTabComplete__Args _args = new InternalUnsafeMethods.OnTabComplete__Args() {
                 val = val,
              };

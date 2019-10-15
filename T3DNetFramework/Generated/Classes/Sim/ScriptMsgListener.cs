@@ -234,21 +234,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
-        public void OnRemoveFromQueue(string queue) {
+        public virtual void OnRemoveFromQueue(string queue) {
              InternalUnsafeMethods.OnRemoveFromQueue__Args _args = new InternalUnsafeMethods.OnRemoveFromQueue__Args() {
                 queue = queue,
              };
              InternalUnsafeMethods.OnRemoveFromQueue()(ObjectPtr, _args);
         }
 
-        public void OnAddToQueue(string queue) {
+        public virtual void OnAddToQueue(string queue) {
              InternalUnsafeMethods.OnAddToQueue__Args _args = new InternalUnsafeMethods.OnAddToQueue__Args() {
                 queue = queue,
              };
              InternalUnsafeMethods.OnAddToQueue()(ObjectPtr, _args);
         }
 
-        public bool OnMessageObjectReceived(string queue, Message msg) {
+        public virtual bool OnMessageObjectReceived(string queue, Message msg) {
              InternalUnsafeMethods.OnMessageObjectReceived__Args _args = new InternalUnsafeMethods.OnMessageObjectReceived__Args() {
                 queue = queue,
                 msg = msg.ObjectPtr,
@@ -257,7 +257,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public bool OnMessageReceived(string queue, string _event, string data) {
+        public virtual bool OnMessageReceived(string queue, string _event, string data) {
              InternalUnsafeMethods.OnMessageReceived__Args _args = new InternalUnsafeMethods.OnMessageReceived__Args() {
                 queue = queue,
                 _event = _event,
@@ -267,13 +267,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnRemove() {
+        public virtual void OnRemove() {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
              };
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
-        public void OnAdd() {
+        public virtual void OnAdd() {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
              };
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);

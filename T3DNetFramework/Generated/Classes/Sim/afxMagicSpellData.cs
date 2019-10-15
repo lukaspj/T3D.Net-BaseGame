@@ -437,7 +437,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
-        public void OnActivate(afxMagicSpell spell, ShapeBase caster, SceneObject target) {
+        public virtual void OnActivate(afxMagicSpell spell, ShapeBase caster, SceneObject target) {
              InternalUnsafeMethods.OnActivate__Args _args = new InternalUnsafeMethods.OnActivate__Args() {
                 spell = spell.ObjectPtr,
                 caster = caster.ObjectPtr,
@@ -446,7 +446,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnActivate()(ObjectPtr, _args);
         }
 
-        public bool OnPreactivate(SimObject param_holder, ShapeBase caster, SceneObject target, SimObject extra) {
+        public virtual bool OnPreactivate(SimObject param_holder, ShapeBase caster, SceneObject target, SimObject extra) {
              InternalUnsafeMethods.OnPreactivate__Args _args = new InternalUnsafeMethods.OnPreactivate__Args() {
                 param_holder = param_holder.ObjectPtr,
                 caster = caster.ObjectPtr,
@@ -457,7 +457,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnImpact(afxMagicSpell spell, ShapeBase caster, SceneObject impacted, Point3F pos, Point3F normal) {
+        public virtual void OnImpact(afxMagicSpell spell, ShapeBase caster, SceneObject impacted, Point3F pos, Point3F normal) {
 pos.Alloc();normal.Alloc();             InternalUnsafeMethods.OnImpact__Args _args = new InternalUnsafeMethods.OnImpact__Args() {
                 spell = spell.ObjectPtr,
                 caster = caster.ObjectPtr,
@@ -468,7 +468,7 @@ pos.Alloc();normal.Alloc();             InternalUnsafeMethods.OnImpact__Args _ar
              InternalUnsafeMethods.OnImpact()(ObjectPtr, _args);
 pos.Free();normal.Free();        }
 
-        public void OnLaunch(afxMagicSpell spell, ShapeBase caster, SceneObject target, afxMagicMissile missile) {
+        public virtual void OnLaunch(afxMagicSpell spell, ShapeBase caster, SceneObject target, afxMagicMissile missile) {
              InternalUnsafeMethods.OnLaunch__Args _args = new InternalUnsafeMethods.OnLaunch__Args() {
                 spell = spell.ObjectPtr,
                 caster = caster.ObjectPtr,
@@ -478,7 +478,7 @@ pos.Free();normal.Free();        }
              InternalUnsafeMethods.OnLaunch()(ObjectPtr, _args);
         }
 
-        public void OnInterrupt(afxMagicSpell spell, ShapeBase caster) {
+        public virtual void OnInterrupt(afxMagicSpell spell, ShapeBase caster) {
              InternalUnsafeMethods.OnInterrupt__Args _args = new InternalUnsafeMethods.OnInterrupt__Args() {
                 spell = spell.ObjectPtr,
                 caster = caster.ObjectPtr,
@@ -486,14 +486,14 @@ pos.Free();normal.Free();        }
              InternalUnsafeMethods.OnInterrupt()(ObjectPtr, _args);
         }
 
-        public void OnDeactivate(afxMagicSpell spell) {
+        public virtual void OnDeactivate(afxMagicSpell spell) {
              InternalUnsafeMethods.OnDeactivate__Args _args = new InternalUnsafeMethods.OnDeactivate__Args() {
                 spell = spell.ObjectPtr,
              };
              InternalUnsafeMethods.OnDeactivate()(ObjectPtr, _args);
         }
 
-        public void OnDamage(afxMagicSpell spell, string label, string flaver, uint target_id, float amount, byte n, Point3F pos, float ad_amount, float radius, float impulse) {
+        public virtual void OnDamage(afxMagicSpell spell, string label, string flaver, uint target_id, float amount, byte n, Point3F pos, float ad_amount, float radius, float impulse) {
 pos.Alloc();             InternalUnsafeMethods.OnDamage__Args _args = new InternalUnsafeMethods.OnDamage__Args() {
                 spell = spell.ObjectPtr,
                 label = label,

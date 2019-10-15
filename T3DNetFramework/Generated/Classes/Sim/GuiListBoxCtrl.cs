@@ -965,7 +965,7 @@ color.Free();        }
              InternalUnsafeMethods.SetMultipleSelection()(ObjectPtr, _args);
         }
 
-        public bool IsObjectMirrored(string indexIdString) {
+        public virtual bool IsObjectMirrored(string indexIdString) {
              InternalUnsafeMethods.IsObjectMirrored__Args _args = new InternalUnsafeMethods.IsObjectMirrored__Args() {
                 indexIdString = indexIdString,
              };
@@ -973,13 +973,13 @@ color.Free();        }
              return _engineResult;
         }
 
-        public void OnDeleteKey() {
+        public virtual void OnDeleteKey() {
              InternalUnsafeMethods.OnDeleteKey__Args _args = new InternalUnsafeMethods.OnDeleteKey__Args() {
              };
              InternalUnsafeMethods.OnDeleteKey()(ObjectPtr, _args);
         }
 
-        public void OnMouseUp(int itemHit, int mouseClickCount) {
+        public virtual void OnMouseUp(int itemHit, int mouseClickCount) {
              InternalUnsafeMethods.OnMouseUp__Args _args = new InternalUnsafeMethods.OnMouseUp__Args() {
                 itemHit = itemHit,
                 mouseClickCount = mouseClickCount,
@@ -987,13 +987,13 @@ color.Free();        }
              InternalUnsafeMethods.OnMouseUp()(ObjectPtr, _args);
         }
 
-        public void OnDoubleClick() {
+        public virtual void OnDoubleClick() {
              InternalUnsafeMethods.OnDoubleClick__Args _args = new InternalUnsafeMethods.OnDoubleClick__Args() {
              };
              InternalUnsafeMethods.OnDoubleClick()(ObjectPtr, _args);
         }
 
-        public void OnSelect(int index, string itemText) {
+        public virtual void OnSelect(int index, string itemText) {
              InternalUnsafeMethods.OnSelect__Args _args = new InternalUnsafeMethods.OnSelect__Args() {
                 index = index,
                 itemText = itemText,
@@ -1001,7 +1001,7 @@ color.Free();        }
              InternalUnsafeMethods.OnSelect()(ObjectPtr, _args);
         }
 
-        public void OnUnSelect(int index, string itemText) {
+        public virtual void OnUnSelect(int index, string itemText) {
              InternalUnsafeMethods.OnUnSelect__Args _args = new InternalUnsafeMethods.OnUnSelect__Args() {
                 index = index,
                 itemText = itemText,
@@ -1009,13 +1009,13 @@ color.Free();        }
              InternalUnsafeMethods.OnUnSelect()(ObjectPtr, _args);
         }
 
-        public void OnClearSelection() {
+        public virtual void OnClearSelection() {
              InternalUnsafeMethods.OnClearSelection__Args _args = new InternalUnsafeMethods.OnClearSelection__Args() {
              };
              InternalUnsafeMethods.OnClearSelection()(ObjectPtr, _args);
         }
 
-        public void OnMouseDragged() {
+        public virtual void OnMouseDragged() {
              InternalUnsafeMethods.OnMouseDragged__Args _args = new InternalUnsafeMethods.OnMouseDragged__Args() {
              };
              InternalUnsafeMethods.OnMouseDragged()(ObjectPtr, _args);

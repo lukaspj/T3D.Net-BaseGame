@@ -752,14 +752,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnDeleteKey(int id) {
+        public virtual void OnDeleteKey(int id) {
              InternalUnsafeMethods.OnDeleteKey__Args _args = new InternalUnsafeMethods.OnDeleteKey__Args() {
                 id = id,
              };
              InternalUnsafeMethods.OnDeleteKey()(ObjectPtr, _args);
         }
 
-        public void OnSelect(int cellid, string text) {
+        public virtual void OnSelect(int cellid, string text) {
              InternalUnsafeMethods.OnSelect__Args _args = new InternalUnsafeMethods.OnSelect__Args() {
                 cellid = cellid,
                 text = text,

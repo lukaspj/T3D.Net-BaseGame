@@ -208,25 +208,25 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetBitmap()(ObjectPtr, _args);
         }
 
-        public void OnShiftClick() {
+        public virtual void OnShiftClick() {
              InternalUnsafeMethods.OnShiftClick__Args _args = new InternalUnsafeMethods.OnShiftClick__Args() {
              };
              InternalUnsafeMethods.OnShiftClick()(ObjectPtr, _args);
         }
 
-        public void OnAltClick() {
+        public virtual void OnAltClick() {
              InternalUnsafeMethods.OnAltClick__Args _args = new InternalUnsafeMethods.OnAltClick__Args() {
              };
              InternalUnsafeMethods.OnAltClick()(ObjectPtr, _args);
         }
 
-        public void OnCtrlClick() {
+        public virtual void OnCtrlClick() {
              InternalUnsafeMethods.OnCtrlClick__Args _args = new InternalUnsafeMethods.OnCtrlClick__Args() {
              };
              InternalUnsafeMethods.OnCtrlClick()(ObjectPtr, _args);
         }
 
-        public void OnDefaultClick() {
+        public virtual void OnDefaultClick() {
              InternalUnsafeMethods.OnDefaultClick__Args _args = new InternalUnsafeMethods.OnDefaultClick__Args() {
              };
              InternalUnsafeMethods.OnDefaultClick()(ObjectPtr, _args);

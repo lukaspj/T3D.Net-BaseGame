@@ -546,32 +546,32 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
-        public void OnDisabled() {
+        public virtual void OnDisabled() {
              InternalUnsafeMethods.OnDisabled__Args _args = new InternalUnsafeMethods.OnDisabled__Args() {
              };
              InternalUnsafeMethods.OnDisabled()(ObjectPtr, _args);
         }
 
-        public bool OnEnabled() {
+        public virtual bool OnEnabled() {
              InternalUnsafeMethods.OnEnabled__Args _args = new InternalUnsafeMethods.OnEnabled__Args() {
              };
              bool _engineResult = InternalUnsafeMethods.OnEnabled()(ObjectPtr, _args);
              return _engineResult;
         }
 
-        public void SetShaderConsts() {
+        public virtual void SetShaderConsts() {
              InternalUnsafeMethods.SetShaderConsts__Args _args = new InternalUnsafeMethods.SetShaderConsts__Args() {
              };
              InternalUnsafeMethods.SetShaderConsts()(ObjectPtr, _args);
         }
 
-        public void PreProcess() {
+        public virtual void PreProcess() {
              InternalUnsafeMethods.PreProcess__Args _args = new InternalUnsafeMethods.PreProcess__Args() {
              };
              InternalUnsafeMethods.PreProcess()(ObjectPtr, _args);
         }
 
-        public void OnAdd() {
+        public virtual void OnAdd() {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
              };
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);

@@ -340,7 +340,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
-        public void OnLeaveLiquid(string objID, string liquidType) {
+        public virtual void OnLeaveLiquid(string objID, string liquidType) {
              InternalUnsafeMethods.OnLeaveLiquid__Args _args = new InternalUnsafeMethods.OnLeaveLiquid__Args() {
                 objID = objID,
                 liquidType = liquidType,
@@ -348,7 +348,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnLeaveLiquid()(ObjectPtr, _args);
         }
 
-        public void OnEnterLiquid(string objID, float waterCoverage, string liquidType) {
+        public virtual void OnEnterLiquid(string objID, float waterCoverage, string liquidType) {
              InternalUnsafeMethods.OnEnterLiquid__Args _args = new InternalUnsafeMethods.OnEnterLiquid__Args() {
                 objID = objID,
                 waterCoverage = waterCoverage,
@@ -357,7 +357,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnEnterLiquid()(ObjectPtr, _args);
         }
 
-        public void OnStickyCollision(string objID) {
+        public virtual void OnStickyCollision(string objID) {
              InternalUnsafeMethods.OnStickyCollision__Args _args = new InternalUnsafeMethods.OnStickyCollision__Args() {
                 objID = objID,
              };

@@ -173,7 +173,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
-        public void OnUpdate() {
+        public virtual void OnUpdate() {
              InternalUnsafeMethods.OnUpdate__Args _args = new InternalUnsafeMethods.OnUpdate__Args() {
              };
              InternalUnsafeMethods.OnUpdate()(ObjectPtr, _args);
