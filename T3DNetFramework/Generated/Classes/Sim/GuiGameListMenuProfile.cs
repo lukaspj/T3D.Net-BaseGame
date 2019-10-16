@@ -14,7 +14,21 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A GuiControlProfile with additional fields specific to GuiGameListMenuCtrl.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiGameListMenuProfile()
+    /// {
+    ///    hitAreaUpperLeft = "10 2";
+    ///    hitAreaLowerRight = "190 18";
+    ///    iconOffset = "10 2";
+    ///    rowSize = "200 20";
+    ///    //Properties not specific to this control have been omitted from this example.
+    /// };
+    /// </code>
     public unsafe class GuiGameListMenuProfile : GuiControlProfile {
         public GuiGameListMenuProfile(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +113,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiGameListMenuProfile class.
+        /// </description>
+        /// <returns>The type info object for GuiGameListMenuProfile</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +124,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Position of the upper left corner of the row hit area (relative to row's top left corner)
+        /// </description>
+        /// </value>
         public Point2I HitAreaUpperLeft {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("hitAreaUpperLeft"));
             set => SetFieldValue("hitAreaUpperLeft", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Position of the lower right corner of the row hit area (relative to row's top left corner)
+        /// </description>
+        /// </value>
         public Point2I HitAreaLowerRight {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("hitAreaLowerRight"));
             set => SetFieldValue("hitAreaLowerRight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Offset from the row's top left corner at which to render the row icon
+        /// </description>
+        /// </value>
         public Point2I IconOffset {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("iconOffset"));
             set => SetFieldValue("iconOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The base size ("width height") of a row
+        /// </description>
+        /// </value>
         public Point2I RowSize {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("rowSize"));
             set => SetFieldValue("rowSize", GenericMarshal.ToString(value));

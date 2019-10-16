@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class PlayerControllerComponent : Component {
         public PlayerControllerComponent(bool pRegister = false) 
             : base(pRegister) {
@@ -204,6 +205,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public bool IsContacted() {
              InternalUnsafeMethods.IsContacted__Args _args = new InternalUnsafeMethods.IsContacted__Args() {
              };
@@ -211,6 +221,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public SceneObject GetContactObject() {
              InternalUnsafeMethods.GetContactObject__Args _args = new InternalUnsafeMethods.GetContactObject__Args() {
              };
@@ -218,6 +237,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SceneObject(_engineResult);
         }
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public Point3F GetContactNormal() {
              InternalUnsafeMethods.GetContactNormal__Args _args = new InternalUnsafeMethods.GetContactNormal__Args() {
              };
@@ -225,6 +253,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public bool ApplyImpulse(Point3F pos, Point3F vel) {
 pos.Alloc();vel.Alloc();             InternalUnsafeMethods.ApplyImpulse__Args _args = new InternalUnsafeMethods.ApplyImpulse__Args() {
                 pos = pos.internalStructPtr,
@@ -234,6 +271,10 @@ pos.Alloc();vel.Alloc();             InternalUnsafeMethods.ApplyImpulse__Args _a
 pos.Free();vel.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the PlayerControllerComponent class.
+        /// </description>
+        /// <returns>The type info object for PlayerControllerComponent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -241,6 +282,10 @@ pos.Free();vel.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// Called when the player updates it's movement, only called if object is set to callback in script(doUpdateMove).
+        /// </description>
+        /// <param name="obj">the Player object</param>
         public virtual void UpdateMove(PlayerControllerComponent obj) {
              InternalUnsafeMethods.UpdateMove__Args _args = new InternalUnsafeMethods.UpdateMove__Args() {
                 obj = obj.ObjectPtr,
@@ -248,11 +293,19 @@ pos.Free();vel.Free();             return _engineResult;
              InternalUnsafeMethods.UpdateMove()(ObjectPtr, _args);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F InputVelocity {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("inputVelocity"));
             set => SetFieldValue("inputVelocity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F UseDirectMoveInput {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("useDirectMoveInput"));
             set => SetFieldValue("useDirectMoveInput", GenericMarshal.ToString(value));

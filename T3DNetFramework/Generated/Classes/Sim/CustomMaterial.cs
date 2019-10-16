@@ -14,7 +14,24 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Material object which provides more control over surface properties.</summary>
+    /// <description>
+    /// CustomMaterials allow the user to specify their own shaders via the ShaderData datablock. Because CustomMaterials are derived from Materials, they can hold a lot of the same properties. It is up to the user to code how these properties are used.
+    /// </description>
+    /// <code>
+    /// singleton CustomMaterial( WaterBasicMat )
+    /// {
+    ///    sampler["reflectMap"] = "$reflectbuff";
+    ///    sampler["refractBuff"] = "$backbuff";
+    /// 
+    ///    cubemap = NewLevelSkyCubemap;
+    ///    shader = WaterBasicShader;
+    ///    stateBlock = WaterBasicStateBlock;
+    ///    version = 2.0;
+    /// };
+    /// </code>
+    /// <see cref="Material, GFXStateBlockData, ShaderData" />
     public unsafe class CustomMaterial : Material {
         public CustomMaterial(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +116,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the CustomMaterial class.
+        /// </description>
+        /// <returns>The type info object for CustomMaterial</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,31 +127,71 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Specifies pixel shader version for hardware.</summary>
+        /// <description>
+        /// Valid pixel shader versions include 2.0, 3.0, etc.
+        /// </description>
+        /// <remarks> All features aren't compatible with all pixel shader versions.</remarks>
+        /// </value>
         public float Version {
             get => GenericMarshal.StringTo<float>(GetFieldValue("version"));
             set => SetFieldValue("version", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Alternate material for targeting lower end hardware.</summary>
+        /// <description>
+        /// If the CustomMaterial requires a higher pixel shader version than the one it's using, it's fallback Material will be processed instead. If the fallback material wasn't defined, Torque 3D will assert and attempt to use a very basic material in it's place.
+        /// </description>
+        /// </value>
         public Material Fallback {
             get => GenericMarshal.StringTo<Material>(GetFieldValue("fallback"));
             set => SetFieldValue("fallback", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Name of the ShaderData to use for this effect.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// </value>
         public string Shader {
             get => GenericMarshal.StringTo<string>(GetFieldValue("shader"));
             set => SetFieldValue("shader", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Name of a GFXStateBlockData for this effect.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// </value>
         public GFXStateBlockData StateBlock {
             get => GenericMarshal.StringTo<GFXStateBlockData>(GetFieldValue("stateBlock"));
             set => SetFieldValue("stateBlock", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>String identifier of this material's target texture.</summary>
+        /// </value>
         public string Target {
             get => GenericMarshal.StringTo<string>(GetFieldValue("target"));
             set => SetFieldValue("target", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Determines if the material should recieve lights in Basic Lighting. Has no effect in Advanced Lighting.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// </value>
         public bool ForwardLit {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("forwardLit"));
             set => SetFieldValue("forwardLit", GenericMarshal.ToString(value));

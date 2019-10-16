@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A 3rd person camera object.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxCamera : ShapeBase {
         public afxCamera(bool pRegister = false) 
             : base(pRegister) {
@@ -384,6 +388,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public string GetMode() {
              InternalUnsafeMethods.GetMode__Args _args = new InternalUnsafeMethods.GetMode__Args() {
              };
@@ -391,18 +396,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// 
         public void SetThirdPersonSnap() {
              InternalUnsafeMethods.SetThirdPersonSnap__Args _args = new InternalUnsafeMethods.SetThirdPersonSnap__Args() {
              };
              InternalUnsafeMethods.SetThirdPersonSnap()(ObjectPtr, _args);
         }
 
+        /// 
         public void SetThirdPersonMode() {
              InternalUnsafeMethods.SetThirdPersonMode__Args _args = new InternalUnsafeMethods.SetThirdPersonMode__Args() {
              };
              InternalUnsafeMethods.SetThirdPersonMode()(ObjectPtr, _args);
         }
 
+        /// 
         public Point3F GetThirdPersonCOIOffset() {
              InternalUnsafeMethods.GetThirdPersonCOIOffset__Args _args = new InternalUnsafeMethods.GetThirdPersonCOIOffset__Args() {
              };
@@ -410,6 +418,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point3F(_engineResult);
         }
 
+        /// 
         public Point3F GetThirdPersonOffset() {
              InternalUnsafeMethods.GetThirdPersonOffset__Args _args = new InternalUnsafeMethods.GetThirdPersonOffset__Args() {
              };
@@ -417,6 +426,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point3F(_engineResult);
         }
 
+        /// 
         public void SetThirdPersonOffset(Point3F offset, Point3F coi_offset = null) {
 offset.Alloc();coi_offset = coi_offset ?? new Point3F("3.40282e+38 3.40282e+38 3.40282e+38");
 coi_offset.Alloc();             InternalUnsafeMethods.SetThirdPersonOffset__Args _args = new InternalUnsafeMethods.SetThirdPersonOffset__Args() {
@@ -426,6 +436,7 @@ coi_offset.Alloc();             InternalUnsafeMethods.SetThirdPersonOffset__Args
              InternalUnsafeMethods.SetThirdPersonOffset()(ObjectPtr, _args);
 offset.Free();coi_offset.Free();        }
 
+        /// 
         public float GetThirdPersonAngle() {
              InternalUnsafeMethods.GetThirdPersonAngle__Args _args = new InternalUnsafeMethods.GetThirdPersonAngle__Args() {
              };
@@ -433,6 +444,7 @@ offset.Free();coi_offset.Free();        }
              return _engineResult;
         }
 
+        /// 
         public bool SetThirdPersonAngle(float distance) {
              InternalUnsafeMethods.SetThirdPersonAngle__Args _args = new InternalUnsafeMethods.SetThirdPersonAngle__Args() {
                 distance = distance,
@@ -441,6 +453,7 @@ offset.Free();coi_offset.Free();        }
              return _engineResult;
         }
 
+        /// 
         public float GetThirdPersonDistance() {
              InternalUnsafeMethods.GetThirdPersonDistance__Args _args = new InternalUnsafeMethods.GetThirdPersonDistance__Args() {
              };
@@ -448,6 +461,7 @@ offset.Free();coi_offset.Free();        }
              return _engineResult;
         }
 
+        /// 
         public bool SetThirdPersonDistance(float distance) {
              InternalUnsafeMethods.SetThirdPersonDistance__Args _args = new InternalUnsafeMethods.SetThirdPersonDistance__Args() {
                 distance = distance,
@@ -456,6 +470,7 @@ offset.Free();coi_offset.Free();        }
              return _engineResult;
         }
 
+        /// 
         public bool SetCameraSubject(SceneObject subject) {
              InternalUnsafeMethods.SetCameraSubject__Args _args = new InternalUnsafeMethods.SetCameraSubject__Args() {
                 subject = subject.ObjectPtr,
@@ -464,6 +479,11 @@ offset.Free();coi_offset.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the position of the camera.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>The position of the camera.</returns>
         public Point3F GetPosition() {
              InternalUnsafeMethods.GetPosition__Args _args = new InternalUnsafeMethods.GetPosition__Args() {
              };
@@ -471,12 +491,22 @@ offset.Free();coi_offset.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Set the camera to be able to fly freely.</summary>
         public void SetFlyMode() {
              InternalUnsafeMethods.SetFlyMode__Args _args = new InternalUnsafeMethods.SetFlyMode__Args() {
              };
              InternalUnsafeMethods.SetFlyMode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (GameBase orbitObject, TransformF mat, float minDistance, float maxDistance, float curDistance, bool ownClientObject)Set the camera to orbit around some given object.
+        /// </description>
+        /// <param name="orbitObject">Object we want to orbit.</param>
+        /// <param name="mat">A set of fields: posX posY posZ aaX aaY aaZ aaTheta</param>
+        /// <param name="minDistance">Minimum distance to keep from object.</param>
+        /// <param name="maxDistance">Maximum distance to keep from object.</param>
+        /// <param name="curDistance">Distance to set initially from object.</param>
+        /// <param name="ownClientObj">Are we observing an object owned by us?</param>
         public void SetOrbitMode(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -492,6 +522,10 @@ offset.Free();coi_offset.Free();        }
 
         }
 
+        /// <description>
+        /// Get the type info object for the afxCamera class.
+        /// </description>
+        /// <returns>The type info object for afxCamera</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

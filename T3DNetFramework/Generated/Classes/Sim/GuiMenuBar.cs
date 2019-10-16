@@ -14,7 +14,28 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>GUI Control which displays a horizontal bar with individual drop-down menu items. Each menu item may also have submenu items.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiMenuBar(newMenuBar)
+    /// {
+    ///   Padding = "0";
+    ///   //Properties not specific to this control have been omitted from this example.
+    /// };
+    /// 
+    /// // Add a menu to the menu bar
+    /// newMenuBar.addMenu(0,"New Menu");
+    /// 
+    /// // Add a menu item to the New Menu
+    /// newMenuBar.addMenuItem(0,"New Menu Item",0,"n",-1);
+    /// 
+    /// // Add a submenu item to the New Menu Item
+    /// newMenuBar.addSubmenuItem(0,1,"New Submenu Item",0,"s",-1);
+    /// </code>
+    /// <see cref="GuiTickCtrl" />
     public unsafe class GuiMenuBar : GuiTickCtrl {
         public GuiMenuBar(bool pRegister = false) 
             : base(pRegister) {
@@ -298,6 +319,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// (barTitle)
+        /// </description>
         public int FindMenu(string barTitle = "") {
              InternalUnsafeMethods.FindMenu__Args _args = new InternalUnsafeMethods.FindMenu__Args() {
                 barTitle = barTitle,
@@ -306,6 +330,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (object, pos) insert object at position
+        /// </description>
         public void Insert(SimObject pObject = null, int pos = -1) {
              InternalUnsafeMethods.Insert__Args _args = new InternalUnsafeMethods.Insert__Args() {
                 pObject = pObject.ObjectPtr,
@@ -314,6 +341,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Insert()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (Index)
+        /// </description>
         public int GetMenu(int index = 0) {
              InternalUnsafeMethods.GetMenu__Args _args = new InternalUnsafeMethods.GetMenu__Args() {
                 index = index,
@@ -322,6 +352,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public int GetMenuCount() {
              InternalUnsafeMethods.GetMenuCount__Args _args = new InternalUnsafeMethods.GetMenuCount__Args() {
              };
@@ -329,12 +362,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public void RemoveFromCanvas() {
              InternalUnsafeMethods.RemoveFromCanvas__Args _args = new InternalUnsafeMethods.RemoveFromCanvas__Args() {
              };
              InternalUnsafeMethods.RemoveFromCanvas()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (GuiCanvas, pos)
+        /// </description>
         public void AttachToCanvas(string canvas, int pos) {
              InternalUnsafeMethods.AttachToCanvas__Args _args = new InternalUnsafeMethods.AttachToCanvas__Args() {
                 canvas = canvas,
@@ -343,6 +382,22 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AttachToCanvas()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever an item in a menu is selected.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="menuId">Index id of the menu which contains the selected menu item</param>
+        /// <param name="menuText">Text of the menu which contains the selected menu item</param>
+        /// <param name="menuItemId">Index id of the selected menu item</param>
+        /// <param name="menuItemText">Text of the selected menu item</param>
+        /// <code>
+        /// // A menu item has been selected, causing the callback to occur.
+        /// GuiMenuBar::onMenuItemSelect(%this,%menuId,%menuText,%menuItemId,%menuItemText)
+        /// {
+        ///   // Code to run when the callback occurs
+        /// }
+        /// </code>
+        /// <see cref="GuiTickCtrl" />
         public virtual void OnMenuItemSelect(int menuId, string menuText, int menuItemId, string menuItemText) {
              InternalUnsafeMethods.OnMenuItemSelect__Args _args = new InternalUnsafeMethods.OnMenuItemSelect__Args() {
                 menuId = menuId,
@@ -353,6 +408,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnMenuItemSelect()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever a menu is selected.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="menuId">Index id of the clicked menu</param>
+        /// <param name="menuText">Text of the clicked menu</param>
+        /// <code>
+        /// // A menu has been selected, causing the callback to occur.
+        /// GuiMenuBar::onMenuSelect(%this,%menuId,%menuText)
+        /// {
+        ///   // Code to run when the callback occurs
+        /// }
+        /// </code>
+        /// <see cref="GuiTickCtrl" />
         public virtual void OnMenuSelect(int menuId, string menuText) {
              InternalUnsafeMethods.OnMenuSelect__Args _args = new InternalUnsafeMethods.OnMenuSelect__Args() {
                 menuId = menuId,
@@ -361,6 +430,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnMenuSelect()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever the mouse enters, or persists is in the menu.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="isInMenu">True if the mouse has entered the menu, otherwise is false.</param>
+        /// <remarks> To receive this callback, call setProcessTicks(true) on the menu bar.
+        /// </remarks>
+        /// <code>
+        /// // Mouse enters or persists within the menu, causing the callback to occur.
+        /// GuiMenuBar::onMouseInMenu(%this,%hasLeftMenu)
+        /// {
+        ///   // Code to run when the callback occurs
+        /// }
+        /// </code>
+        /// <see cref="GuiTickCtrl" />
         public virtual void OnMouseInMenu(bool isInMenu) {
              InternalUnsafeMethods.OnMouseInMenu__Args _args = new InternalUnsafeMethods.OnMouseInMenu__Args() {
                 isInMenu = isInMenu,
@@ -368,6 +452,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnMouseInMenu()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiMenuBar class.
+        /// </description>
+        /// <returns>The type info object for GuiMenuBar</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -375,11 +463,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Extra padding to add to the bounds of the control.
+        /// </description>
+        /// </value>
         public int Padding {
             get => GenericMarshal.StringTo<int>(GetFieldValue("padding"));
             set => SetFieldValue("padding", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sets the height of the menubar when attached to the canvas.
+        /// </description>
+        /// </value>
         public int MenubarHeight {
             get => GenericMarshal.StringTo<int>(GetFieldValue("menubarHeight"));
             set => SetFieldValue("menubarHeight", GenericMarshal.ToString(value));

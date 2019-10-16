@@ -14,7 +14,52 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Derived from FileDialog, this class is responsible for opening a file browser with the intention of saving a file.</summary>
+    /// <description>
+    /// The core usage of this dialog is to locate a file in the OS and return the path and name. This does not handle the actual file writing or data manipulation. That functionality is left up to the FileObject class.
+    /// </description>
+    /// <code>
+    /// // Create a dialog dedicated to opening file
+    ///  %saveFileDlg = new SaveFileDialog()
+    ///  {
+    ///     // Only allow for saving of COLLADA files
+    ///     Filters        = "COLLADA Files (*.dae)|*.dae|";
+    /// 
+    ///     // Default save path to where the WorldEditor last saved
+    ///     DefaultPath    = $pref::WorldEditor::LastPath;
+    /// 
+    ///     // No default file specified
+    ///     DefaultFile    = "";
+    /// 
+    ///     // Do not allow the user to change to a new directory
+    ///     ChangePath     = false;
+    /// 
+    ///     // Prompt the user if they are going to overwrite an existing file
+    ///     OverwritePrompt   = true;
+    ///  };
+    /// 
+    ///  // Launch the save file dialog
+    ///  %saveFileDlg.Execute();
+    /// 
+    ///  if ( %result )
+    ///  {
+    ///     %seletedFile = %openFileDlg.file;
+    ///  }
+    ///  else
+    ///  {
+    ///     %selectedFile = "";
+    ///  }
+    /// 
+    ///  // Cleanup
+    ///  %saveFileDlg.delete();
+    /// </code>
+    /// <remarks> FileDialog and its related classes are only availble in a Tools build of Torque.
+    /// 
+    /// </remarks>
+    /// <see cref="FileDialog" />
+    /// <see cref="OpenFileDialog" />
+    /// <see cref="FileObject" />
     public unsafe class SaveFileDialog : FileDialog {
         public SaveFileDialog(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +144,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the SaveFileDialog class.
+        /// </description>
+        /// <returns>The type info object for SaveFileDialog</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +155,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// True/False whether the dialog should prompt before accepting an existing file name
+        /// </description>
+        /// </value>
         public bool OverwritePrompt {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("OverwritePrompt"));
             set => SetFieldValue("OverwritePrompt", GenericMarshal.ToString(value));

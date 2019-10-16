@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Inspector Field undo action instance</summary>
+    /// <description>
+    /// Not intended for game development, for editors or internal use only.
+    /// </description>
     public unsafe class InspectorFieldUndoAction : UndoAction {
         public InspectorFieldUndoAction(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the InspectorFieldUndoAction class.
+        /// </description>
+        /// <returns>The type info object for InspectorFieldUndoAction</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,26 +114,46 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public GuiInspector InspectorGui {
             get => GenericMarshal.StringTo<GuiInspector>(GetFieldValue("inspectorGui"));
             set => SetFieldValue("inspectorGui", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int ObjectId {
             get => GenericMarshal.StringTo<int>(GetFieldValue("objectId"));
             set => SetFieldValue("objectId", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string FieldName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("fieldName"));
             set => SetFieldValue("fieldName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string FieldValue {
             get => GenericMarshal.StringTo<string>(GetFieldValue("fieldValue"));
             set => SetFieldValue("fieldValue", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string ArrayIndex {
             get => GenericMarshal.StringTo<string>(GetFieldValue("arrayIndex"));
             set => SetFieldValue("arrayIndex", GenericMarshal.ToString(value));

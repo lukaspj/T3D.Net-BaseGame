@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A render bin for mesh rendering.</summary>
+    /// <description>
+    /// This is the primary render bin in Torque which does most of the work of rendering DTS shapes and arbitrary mesh geometry.  It knows how to render mesh instances using materials and supports hardware mesh instancing.
+    /// </description>
     public unsafe class RenderMeshMgr : RenderBinManager {
         public RenderMeshMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderMeshMgr class.
+        /// </description>
+        /// <returns>The type info object for RenderMeshMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

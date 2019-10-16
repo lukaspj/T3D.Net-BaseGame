@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class ShapeBase : GameBase {
         public ShapeBase(bool pRegister = false) 
             : base(pRegister) {
@@ -2068,6 +2069,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Get the model filename used by this shape.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the shape filename</returns>
         public string GetModelFile() {
              InternalUnsafeMethods.GetModelFile__Args _args = new InternalUnsafeMethods.GetModelFile__Args() {
              };
@@ -2075,6 +2081,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Change one of the materials on the shape.</summary>
+        /// <description>
+        /// This method changes materials per mapTo with others. The material that is being replaced is mapped to unmapped_mat as a part of this transition.
+        /// </description>
+        /// <remarks> Warning, right now this only sort of works. It doesn't do a live update like it should.
+        /// </remarks>
+        /// <param name="mapTo">the name of the material target to remap (from getTargetName)</param>
+        /// <param name="oldMat">the old Material that was mapped</param>
+        /// <param name="newMat">the new Material to map</param>
+        /// <code>
+        /// // remap the first material in the shape
+        /// %mapTo = %obj.getTargetName( 0 );
+        /// %obj.changeMaterial( %mapTo, 0, MyMaterial );
+        /// </code>
         public void ChangeMaterial(string mapTo, Material oldMat, Material newMat) {
              InternalUnsafeMethods.ChangeMaterial__Args _args = new InternalUnsafeMethods.ChangeMaterial__Args() {
                 mapTo = mapTo,
@@ -2084,6 +2104,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ChangeMaterial()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the number of materials in the shape.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the number of materials in the shape.</returns>
+        /// <see cref="getTargetName()" />
         public int GetTargetCount() {
              InternalUnsafeMethods.GetTargetCount__Args _args = new InternalUnsafeMethods.GetTargetCount__Args() {
              };
@@ -2091,6 +2117,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Get the name of the indexed shape material.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">index of the material to get (valid range is 0 - getTargetCount()-1).</param>
+        /// <returns>the name of the indexed material.</returns>
+        /// <see cref="getTargetCount()" />
         public string GetTargetName(int index) {
              InternalUnsafeMethods.GetTargetName__Args _args = new InternalUnsafeMethods.GetTargetName__Args() {
                 index = index,
@@ -2099,12 +2132,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Print a list of visible and hidden meshes in the shape to the console for debugging purposes.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Only in a SHIPPING build.
+        /// </remarks>
         public void DumpMeshVisibility() {
              InternalUnsafeMethods.DumpMeshVisibility__Args _args = new InternalUnsafeMethods.DumpMeshVisibility__Args() {
              };
              InternalUnsafeMethods.DumpMeshVisibility()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the hidden state on the named shape mesh.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="name">name of the mesh to hide/show</param>
+        /// <param name="hide">new hidden state for the mesh</param>
         public void SetMeshHidden(string name, bool hide) {
              InternalUnsafeMethods.SetMeshHidden__Args _args = new InternalUnsafeMethods.SetMeshHidden__Args() {
                 name = name,
@@ -2113,6 +2158,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMeshHidden()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the hidden state on all the shape meshes.</summary>
+        /// <description>
+        /// This allows you to hide all meshes in the shape, for example, and then only enable a few.
+        /// </description>
+        /// <param name="hide">new hidden state for all meshes</param>
         public void SetAllMeshesHidden(bool hide) {
              InternalUnsafeMethods.SetAllMeshesHidden__Args _args = new InternalUnsafeMethods.SetAllMeshesHidden__Args() {
                 hide = hide,
@@ -2120,6 +2170,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAllMeshesHidden()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the name of the skin applied to this shape.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the name of the skin</returns>
+        /// <see cref="skin" />
+        /// <see cref="setSkinName()" />
         public string GetSkinName() {
              InternalUnsafeMethods.GetSkinName__Args _args = new InternalUnsafeMethods.GetSkinName__Args() {
              };
@@ -2127,6 +2184,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Apply a new skin to this shape.</summary>
+        /// <description>
+        /// 'Skinning' the shape effectively renames the material targets, allowing different materials to be used on different instances of the same model.
+        /// </description>
+        /// <param name="name">name of the skin to apply</param>
+        /// <see cref="skin" />
+        /// <see cref="getSkinName()" />
         public void SetSkinName(string name) {
              InternalUnsafeMethods.SetSkinName__Args _args = new InternalUnsafeMethods.SetSkinName__Args() {
                 name = name,
@@ -2134,6 +2198,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSkinName()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the name of the shape.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> This is the name of the shape object that is sent to the client, not the DTS or DAE model filename.
+        /// </remarks>
+        /// <returns>the name of the shape</returns>
+        /// <see cref="setShapeName()" />
         public string GetShapeName() {
              InternalUnsafeMethods.GetShapeName__Args _args = new InternalUnsafeMethods.GetShapeName__Args() {
              };
@@ -2141,6 +2213,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Set the name of this shape.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> This is the name of the shape object that is sent to the client, not the DTS or DAE model filename.
+        /// </remarks>
+        /// <param name="name">new name for the shape</param>
+        /// <see cref="getShapeName()" />
         public void SetShapeName(string name) {
              InternalUnsafeMethods.SetShapeName__Args _args = new InternalUnsafeMethods.SetShapeName__Args() {
                 name = name,
@@ -2148,6 +2228,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetShapeName()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the damage direction vector.</summary>
+        /// <description>
+        /// Currently this is only used to initialise the explosion if this object is blown up.
+        /// </description>
+        /// <param name="vec">damage direction vector</param>
+        /// <code>
+        /// %obj.setDamageVector( "0 0 1" );
+        /// </code>
         public void SetDamageVector(Point3F vec) {
 vec.Alloc();             InternalUnsafeMethods.SetDamageVector__Args _args = new InternalUnsafeMethods.SetDamageVector__Args() {
                 vec = vec.internalStructPtr,
@@ -2155,6 +2243,15 @@ vec.Alloc();             InternalUnsafeMethods.SetDamageVector__Args _args = new
              InternalUnsafeMethods.SetDamageVector()(ObjectPtr, _args);
 vec.Free();        }
 
+        /// <summary>Fade the object in or out without removing it from the scene.</summary>
+        /// <description>
+        /// A faded out object is still in the scene and can still be collided with, so if you want to disable collisions for this shape after it fades out use setHidden to temporarily remove this shape from the scene.
+        /// </description>
+        /// <remarks> Items have the ability to light their surroundings. When an Item with an active light is fading out, the light it emits is correspondingly reduced until it goes out. Likewise, when the item fades in, the light is turned-up till it reaches it's normal brightntess.
+        /// </remarks>
+        /// <param name="time">duration of the fade effect in ms</param>
+        /// <param name="delay">delay in ms before the fade effect begins</param>
+        /// <param name="fadeOut">true to fade-out to invisible, false to fade-in to full visibility</param>
         public void StartFade(int time, int delay, bool fadeOut) {
              InternalUnsafeMethods.StartFade__Args _args = new InternalUnsafeMethods.StartFade__Args() {
                 time = time,
@@ -2164,6 +2261,11 @@ vec.Free();        }
              InternalUnsafeMethods.StartFade()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the vertical field of view in degrees for this object if used as a camera.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fov">new FOV value</param>
         public void SetCameraFov(float fov) {
              InternalUnsafeMethods.SetCameraFov__Args _args = new InternalUnsafeMethods.SetCameraFov__Args() {
                 fov = fov,
@@ -2171,6 +2273,11 @@ vec.Free();        }
              InternalUnsafeMethods.SetCameraFov()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns the vertical field of view in degrees for this object if used as a camera.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>current FOV as defined in ShapeBaseData::cameraDefaultFov</returns>
         public float GetCameraFov() {
              InternalUnsafeMethods.GetCameraFov__Args _args = new InternalUnsafeMethods.GetCameraFov__Args() {
              };
@@ -2178,6 +2285,11 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Returns the default vertical field of view in degrees for this object if used as a camera.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>Default FOV</returns>
         public float GetDefaultCameraFov() {
              InternalUnsafeMethods.GetDefaultCameraFov__Args _args = new InternalUnsafeMethods.GetDefaultCameraFov__Args() {
              };
@@ -2185,6 +2297,12 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the white-out level.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>white-out level</returns>
+        /// <see cref="setWhiteOut" />
         public float GetWhiteOut() {
              InternalUnsafeMethods.GetWhiteOut__Args _args = new InternalUnsafeMethods.GetWhiteOut__Args() {
              };
@@ -2192,6 +2310,14 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Set the white-out level.</summary>
+        /// <description>
+        /// White-out may be used as a postfx effect to brighten the screen in response to a game event.
+        /// </description>
+        /// <remarks> Relies on the flash postFx.
+        /// </remarks>
+        /// <param name="level">flash level (0-1)</param>
+        /// <see cref="getWhiteOut()" />
         public void SetWhiteOut(float level) {
              InternalUnsafeMethods.SetWhiteOut__Args _args = new InternalUnsafeMethods.SetWhiteOut__Args() {
                 level = level,
@@ -2199,6 +2325,12 @@ vec.Free();        }
              InternalUnsafeMethods.SetWhiteOut()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the damage flash level.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>flash level</returns>
+        /// <see cref="setDamageFlash" />
         public float GetDamageFlash() {
              InternalUnsafeMethods.GetDamageFlash__Args _args = new InternalUnsafeMethods.GetDamageFlash__Args() {
              };
@@ -2206,6 +2338,14 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Set the damage flash level.</summary>
+        /// <description>
+        /// Damage flash may be used as a postfx effect to flash the screen when the client is damaged.
+        /// </description>
+        /// <remarks> Relies on the flash postFx.
+        /// </remarks>
+        /// <param name="level">flash level (0-1)</param>
+        /// <see cref="getDamageFlash()" />
         public void SetDamageFlash(float level) {
              InternalUnsafeMethods.SetDamageFlash__Args _args = new InternalUnsafeMethods.SetDamageFlash__Args() {
                 level = level,
@@ -2213,6 +2353,12 @@ vec.Free();        }
              InternalUnsafeMethods.SetDamageFlash()(ObjectPtr, _args);
         }
 
+        /// <summary>Check if this object is cloaked.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>true if cloaked, false if not</returns>
+        /// <see cref="setCloaked()" />
         public bool IsCloaked() {
              InternalUnsafeMethods.IsCloaked__Args _args = new InternalUnsafeMethods.IsCloaked__Args() {
              };
@@ -2220,6 +2366,12 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Set the cloaked state of this object.</summary>
+        /// <description>
+        /// When an object is cloaked it is not rendered.
+        /// </description>
+        /// <param name="cloak">true to cloak the object, false to uncloak</param>
+        /// <see cref="isCloaked()" />
         public void SetCloaked(bool cloak) {
              InternalUnsafeMethods.SetCloaked__Args _args = new InternalUnsafeMethods.SetCloaked__Args() {
                 cloak = cloak,
@@ -2227,6 +2379,12 @@ vec.Free();        }
              InternalUnsafeMethods.SetCloaked()(ObjectPtr, _args);
         }
 
+        /// <summary>Check if this object can cloak.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>true</returns>
+        /// <remarks> Not implemented as it always returns true.</remarks>
         public bool CanCloak() {
              InternalUnsafeMethods.CanCloak__Args _args = new InternalUnsafeMethods.CanCloak__Args() {
              };
@@ -2234,6 +2392,11 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the object (if any) that controls this object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the ID of the controlling ShapeBase object, or 0 if this object is not controlled by another object.</returns>
         public int GetControllingObject() {
              InternalUnsafeMethods.GetControllingObject__Args _args = new InternalUnsafeMethods.GetControllingObject__Args() {
              };
@@ -2241,6 +2404,12 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the client (if any) that controls this object.</summary>
+        /// <description>
+        /// The controlling client is the one that will send moves to us to act on.
+        /// </description>
+        /// <returns>the ID of the controlling GameConnection, or 0 if this object is not controlled by any client.</returns>
+        /// <see cref="GameConnection" />
         public int GetControllingClient() {
              InternalUnsafeMethods.GetControllingClient__Args _args = new InternalUnsafeMethods.GetControllingClient__Args() {
              };
@@ -2248,6 +2417,12 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the current recharge rate.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the recharge rate (per tick)</returns>
+        /// <see cref="setRechargeRate()" />
         public float GetRechargeRate() {
              InternalUnsafeMethods.GetRechargeRate__Args _args = new InternalUnsafeMethods.GetRechargeRate__Args() {
              };
@@ -2255,6 +2430,12 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Set the recharge rate.</summary>
+        /// <description>
+        /// The recharge rate is added to the object's current energy level each tick, up to the maxEnergy level set in the ShapeBaseData datablock.
+        /// </description>
+        /// <param name="rate">the recharge rate (per tick)</param>
+        /// <see cref="getRechargeRate()" />
         public void SetRechargeRate(float rate) {
              InternalUnsafeMethods.SetRechargeRate__Args _args = new InternalUnsafeMethods.SetRechargeRate__Args() {
                 rate = rate,
@@ -2262,6 +2443,12 @@ vec.Free();        }
              InternalUnsafeMethods.SetRechargeRate()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the per-tick repair amount.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the current value to be subtracted from damage level each tick</returns>
+        /// <see cref="setRepairRate" />
         public float GetRepairRate() {
              InternalUnsafeMethods.GetRepairRate__Args _args = new InternalUnsafeMethods.GetRepairRate__Args() {
              };
@@ -2269,6 +2456,12 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Set amount to repair damage by each tick.</summary>
+        /// <description>
+        /// Note that this value is separate to the repairRate field in ShapeBaseData. This value will be subtracted from the damage level each tick, whereas the ShapeBaseData field limits how much of the applyRepair value is subtracted each tick. Both repair types can be active at the same time.
+        /// </description>
+        /// <param name="rate">value to subtract from damage level each tick (must be > 0)</param>
+        /// <see cref="getRepairRate()" />
         public void SetRepairRate(float rate) {
              InternalUnsafeMethods.SetRepairRate__Args _args = new InternalUnsafeMethods.SetRepairRate__Args() {
                 rate = rate,
@@ -2276,6 +2469,11 @@ vec.Free();        }
              InternalUnsafeMethods.SetRepairRate()(ObjectPtr, _args);
         }
 
+        /// <summary>Repair damage by the specified amount.</summary>
+        /// <description>
+        /// Note that the damage level is only reduced by repairRate per tick, so it may take several ticks for the total repair to complete.
+        /// </description>
+        /// <param name="amount">total repair value (subtracted from damage level over time)</param>
         public void ApplyRepair(float amount) {
              InternalUnsafeMethods.ApplyRepair__Args _args = new InternalUnsafeMethods.ApplyRepair__Args() {
                 amount = amount,
@@ -2283,6 +2481,11 @@ vec.Free();        }
              InternalUnsafeMethods.ApplyRepair()(ObjectPtr, _args);
         }
 
+        /// <summary>Increment the current damage level by the specified amount.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="amount">value to add to current damage level</param>
         public void ApplyDamage(float amount) {
              InternalUnsafeMethods.ApplyDamage__Args _args = new InternalUnsafeMethods.ApplyDamage__Args() {
                 amount = amount,
@@ -2290,12 +2493,20 @@ vec.Free();        }
              InternalUnsafeMethods.ApplyDamage()(ObjectPtr, _args);
         }
 
+        /// <summary>Explodes an object into pieces.</summary>
         public void BlowUp() {
              InternalUnsafeMethods.BlowUp__Args _args = new InternalUnsafeMethods.BlowUp__Args() {
              };
              InternalUnsafeMethods.BlowUp()(ObjectPtr, _args);
         }
 
+        /// <summary>Check if the object is in the Enabled damage state.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>true if damage state is "Enabled", false if not</returns>
+        /// <see cref="isDestroyed()" />
+        /// <see cref="isDisabled()" />
         public bool IsEnabled() {
              InternalUnsafeMethods.IsEnabled__Args _args = new InternalUnsafeMethods.IsEnabled__Args() {
              };
@@ -2303,6 +2514,13 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Check if the object is in the Disabled or Destroyed damage state.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>true if damage state is not "Enabled", false if it is</returns>
+        /// <see cref="isDestroyed()" />
+        /// <see cref="isEnabled()" />
         public bool IsDisabled() {
              InternalUnsafeMethods.IsDisabled__Args _args = new InternalUnsafeMethods.IsDisabled__Args() {
              };
@@ -2310,6 +2528,13 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Check if the object is in the Destroyed damage state.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>true if damage state is "Destroyed", false if not</returns>
+        /// <see cref="isDisabled()" />
+        /// <see cref="isEnabled()" />
         public bool IsDestroyed() {
              InternalUnsafeMethods.IsDestroyed__Args _args = new InternalUnsafeMethods.IsDestroyed__Args() {
              };
@@ -2317,6 +2542,12 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the object's damage state.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the damage state; one of "Enabled", "Disabled", "Destroyed"</returns>
+        /// <see cref="setDamageState()" />
         public string GetDamageState() {
              InternalUnsafeMethods.GetDamageState__Args _args = new InternalUnsafeMethods.GetDamageState__Args() {
              };
@@ -2324,6 +2555,13 @@ vec.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Set the object's damage state.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="state">should be one of "Enabled", "Disabled", "Destroyed"</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="getDamageState()" />
         public bool SetDamageState(string state) {
              InternalUnsafeMethods.SetDamageState__Args _args = new InternalUnsafeMethods.SetDamageState__Args() {
                 state = state,
@@ -2332,6 +2570,10 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the object's maxDamage level.
+        /// </description>
+        /// <returns>datablock.maxDamage</returns>
         public float GetMaxDamage() {
              InternalUnsafeMethods.GetMaxDamage__Args _args = new InternalUnsafeMethods.GetMaxDamage__Args() {
              };
@@ -2339,6 +2581,12 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the object's current damage level as a percentage of maxDamage.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>damageLevel / datablock.maxDamage</returns>
+        /// <see cref="setDamageLevel()" />
         public float GetDamagePercent() {
              InternalUnsafeMethods.GetDamagePercent__Args _args = new InternalUnsafeMethods.GetDamagePercent__Args() {
              };
@@ -2346,6 +2594,12 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the object's current damage level.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>damage level</returns>
+        /// <see cref="setDamageLevel()" />
         public float GetDamageLevel() {
              InternalUnsafeMethods.GetDamageLevel__Args _args = new InternalUnsafeMethods.GetDamageLevel__Args() {
              };
@@ -2353,6 +2607,13 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Set the object's current damage level.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="level">new damage level</param>
+        /// <see cref="getDamageLevel()" />
+        /// <see cref="getDamagePercent()" />
         public void SetDamageLevel(float level) {
              InternalUnsafeMethods.SetDamageLevel__Args _args = new InternalUnsafeMethods.SetDamageLevel__Args() {
                 level = level,
@@ -2360,6 +2621,12 @@ vec.Free();        }
              InternalUnsafeMethods.SetDamageLevel()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the object's current energy level as a percentage of maxEnergy.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>energyLevel / datablock.maxEnergy</returns>
+        /// <see cref="setEnergyLevel()" />
         public float GetEnergyPercent() {
              InternalUnsafeMethods.GetEnergyPercent__Args _args = new InternalUnsafeMethods.GetEnergyPercent__Args() {
              };
@@ -2367,6 +2634,12 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the object's current energy level.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>energy level</returns>
+        /// <see cref="setEnergyLevel()" />
         public float GetEnergyLevel() {
              InternalUnsafeMethods.GetEnergyLevel__Args _args = new InternalUnsafeMethods.GetEnergyLevel__Args() {
              };
@@ -2374,6 +2647,13 @@ vec.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Set this object's current energy level.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="level">new energy level</param>
+        /// <see cref="getEnergyLevel()" />
+        /// <see cref="getEnergyPercent()" />
         public void SetEnergyLevel(float level) {
              InternalUnsafeMethods.SetEnergyLevel__Args _args = new InternalUnsafeMethods.SetEnergyLevel__Args() {
                 level = level,
@@ -2381,6 +2661,18 @@ vec.Free();        }
              InternalUnsafeMethods.SetEnergyLevel()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the world position this object is looking at.</summary>
+        /// <description>
+        /// Casts a ray from the eye and returns information about what the ray hits.
+        /// </description>
+        /// <param name="distance">maximum distance of the raycast</param>
+        /// <param name="typeMask">typeMask of objects to include for raycast collision testing</param>
+        /// <returns>look-at information as "Object HitX HitY HitZ [Material]" or empty string for no hit</returns>
+        /// <code>
+        /// %lookat = %obj.getLookAtPoint();
+        /// echo( "Looking at: "@ getWords( %lookat, 1, 3 ) );
+        /// 
+        /// </code>
         public string GetLookAtPoint(float distance = 2000f, uint typeMask = 4294967295) {
              InternalUnsafeMethods.GetLookAtPoint__Args _args = new InternalUnsafeMethods.GetLookAtPoint__Args() {
                 distance = distance,
@@ -2390,6 +2682,13 @@ vec.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the 'eye' transform for this object.</summary>
+        /// <description>
+        /// If the object model has a node called 'eye', this method will return that node's current transform, otherwise it will return the object's current transform.
+        /// </description>
+        /// <returns>the eye transform for this object</returns>
+        /// <see cref="getEyeVector" />
+        /// <see cref="getEyePoint" />
         public TransformF GetEyeTransform() {
              InternalUnsafeMethods.GetEyeTransform__Args _args = new InternalUnsafeMethods.GetEyeTransform__Args() {
              };
@@ -2397,6 +2696,13 @@ vec.Free();        }
              return new TransformF(_engineResult);
         }
 
+        /// <summary>Get the position of the 'eye' for this object.</summary>
+        /// <description>
+        /// If the object model has a node called 'eye', this method will return that node's current world position, otherwise it will return the object's current world position.
+        /// </description>
+        /// <returns>the eye position for this object</returns>
+        /// <see cref="getEyeVector" />
+        /// <see cref="getEyeTransform" />
         public Point3F GetEyePoint() {
              InternalUnsafeMethods.GetEyePoint__Args _args = new InternalUnsafeMethods.GetEyePoint__Args() {
              };
@@ -2404,6 +2710,13 @@ vec.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Get the forward direction of the 'eye' for this object.</summary>
+        /// <description>
+        /// If the object model has a node called 'eye', this method will return that node's current forward direction vector, otherwise it will return the object's current forward direction vector.
+        /// </description>
+        /// <returns>the eye vector for this object</returns>
+        /// <see cref="getEyePoint" />
+        /// <see cref="getEyeTransform" />
         public Point3F GetEyeVector() {
              InternalUnsafeMethods.GetEyeVector__Args _args = new InternalUnsafeMethods.GetEyeVector__Args() {
              };
@@ -2411,6 +2724,13 @@ vec.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Apply an impulse to the object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">world position of the impulse</param>
+        /// <param name="vec">impulse momentum (velocity * mass)</param>
+        /// <returns>true</returns>
         public bool ApplyImpulse(Point3F pos, Point3F vec) {
 pos.Alloc();vec.Alloc();             InternalUnsafeMethods.ApplyImpulse__Args _args = new InternalUnsafeMethods.ApplyImpulse__Args() {
                 pos = pos.internalStructPtr,
@@ -2420,6 +2740,12 @@ pos.Alloc();vec.Alloc();             InternalUnsafeMethods.ApplyImpulse__Args _a
 pos.Free();vec.Free();             return _engineResult;
         }
 
+        /// <summary>Set the object's velocity.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="vel">new velocity for the object</param>
+        /// <returns>true</returns>
         public bool SetVelocity(Point3F vel) {
 vel.Alloc();             InternalUnsafeMethods.SetVelocity__Args _args = new InternalUnsafeMethods.SetVelocity__Args() {
                 vel = vel.internalStructPtr,
@@ -2428,6 +2754,11 @@ vel.Alloc();             InternalUnsafeMethods.SetVelocity__Args _args = new Int
 vel.Free();             return _engineResult;
         }
 
+        /// <summary>Get the object's current velocity.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the current velocity</returns>
         public Point3F GetVelocity() {
              InternalUnsafeMethods.GetVelocity__Args _args = new InternalUnsafeMethods.GetVelocity__Args() {
              };
@@ -2435,6 +2766,11 @@ vel.Free();             return _engineResult;
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Get the position at which the AI should stand to repair things.</summary>
+        /// <description>
+        /// If the shape defines a node called "AIRepairNode", this method will return the current world position of that node, otherwise "0 0 0".
+        /// </description>
+        /// <returns>the AI repair position</returns>
         public Point3F GetAIRepairPoint() {
              InternalUnsafeMethods.GetAIRepairPoint__Args _args = new InternalUnsafeMethods.GetAIRepairPoint__Args() {
              };
@@ -2442,6 +2778,12 @@ vel.Free();             return _engineResult;
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Get the world transform of the specified mount slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>the mount transform</returns>
         public TransformF GetSlotTransform(int slot) {
              InternalUnsafeMethods.GetSlotTransform__Args _args = new InternalUnsafeMethods.GetSlotTransform__Args() {
                 slot = slot,
@@ -2450,6 +2792,12 @@ vel.Free();             return _engineResult;
              return new TransformF(_engineResult);
         }
 
+        /// <summary>Get the muzzle position of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// If the Image shape contains a node called 'muzzlePoint', then the muzzle position is the position of that node in world space. If no such node is specified, the slot's mount node is used instead.
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>the muzzle position, or "0 0 0" if the slot is invalid</returns>
         public Point3F GetMuzzlePoint(int slot) {
              InternalUnsafeMethods.GetMuzzlePoint__Args _args = new InternalUnsafeMethods.GetMuzzlePoint__Args() {
                 slot = slot,
@@ -2458,6 +2806,14 @@ vel.Free();             return _engineResult;
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Get the muzzle vector of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// If the Image shape contains a node called 'muzzlePoint', then the muzzle vector is the forward direction vector of that node's transform in world space. If no such node is specified, the slot's mount node is used instead.
+        /// 
+        /// If the correctMuzzleVector flag (correctMuzzleVectorTP in 3rd person) is set in the Image, the muzzle vector is computed to point at whatever object is right in front of the object's 'eye' node.
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>the muzzle vector, or "0 1 0" if the slot is invalid</returns>
         public Point3F GetMuzzleVector(int slot) {
              InternalUnsafeMethods.GetMuzzleVector__Args _args = new InternalUnsafeMethods.GetMuzzleVector__Args() {
                 slot = slot,
@@ -2466,6 +2822,12 @@ vel.Free();             return _engineResult;
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Set the script animation prefix for the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// This is used to further modify the prefix used when deciding which animation sequence to play while this image is mounted.
+        /// </description>
+        /// <param name="slot">Image slot to modify</param>
+        /// <param name="prefix">The prefix applied to the image</param>
         public void SetImageScriptAnimPrefix(int slot, string prefix) {
              InternalUnsafeMethods.SetImageScriptAnimPrefix__Args _args = new InternalUnsafeMethods.SetImageScriptAnimPrefix__Args() {
                 slot = slot,
@@ -2474,6 +2836,12 @@ vel.Free();             return _engineResult;
              InternalUnsafeMethods.SetImageScriptAnimPrefix()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the script animation prefix of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>the Image's current script animation prefix</returns>
         public string GetImageScriptAnimPrefix(int slot) {
              InternalUnsafeMethods.GetImageScriptAnimPrefix__Args _args = new InternalUnsafeMethods.GetImageScriptAnimPrefix__Args() {
                 slot = slot,
@@ -2482,6 +2850,13 @@ vel.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Set the target state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to modify</param>
+        /// <param name="state">new target state for the Image</param>
+        /// <returns>the Image's new target state</returns>
         public bool SetImageTarget(int slot, bool state) {
              InternalUnsafeMethods.SetImageTarget__Args _args = new InternalUnsafeMethods.SetImageTarget__Args() {
                 slot = slot,
@@ -2491,6 +2866,12 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the target state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>the Image's current target state</returns>
         public bool GetImageTarget(int slot) {
              InternalUnsafeMethods.GetImageTarget__Args _args = new InternalUnsafeMethods.GetImageTarget__Args() {
                 slot = slot,
@@ -2499,6 +2880,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Set the loaded state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to modify</param>
+        /// <param name="state">new loaded state for the Image</param>
+        /// <returns>the Image's new loaded state</returns>
         public bool SetImageLoaded(int slot, bool state) {
              InternalUnsafeMethods.SetImageLoaded__Args _args = new InternalUnsafeMethods.SetImageLoaded__Args() {
                 slot = slot,
@@ -2508,6 +2896,12 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the loaded state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>the Image's current loaded state</returns>
         public bool GetImageLoaded(int slot) {
              InternalUnsafeMethods.GetImageLoaded__Args _args = new InternalUnsafeMethods.GetImageLoaded__Args() {
                 slot = slot,
@@ -2516,6 +2910,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Set the ammo state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to modify</param>
+        /// <param name="state">new ammo state for the Image</param>
+        /// <returns>the Image's new ammo state</returns>
         public bool SetImageAmmo(int slot, bool state) {
              InternalUnsafeMethods.SetImageAmmo__Args _args = new InternalUnsafeMethods.SetImageAmmo__Args() {
                 slot = slot,
@@ -2525,6 +2926,12 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the ammo state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>the Image's current ammo state</returns>
         public bool GetImageAmmo(int slot) {
              InternalUnsafeMethods.GetImageAmmo__Args _args = new InternalUnsafeMethods.GetImageAmmo__Args() {
                 slot = slot,
@@ -2533,6 +2940,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Set the alt trigger state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to modify</param>
+        /// <param name="state">new alt trigger state for the Image</param>
+        /// <returns>the Image's new alt trigger state</returns>
         public bool SetImageAltTrigger(int slot, bool state) {
              InternalUnsafeMethods.SetImageAltTrigger__Args _args = new InternalUnsafeMethods.SetImageAltTrigger__Args() {
                 slot = slot,
@@ -2542,6 +2956,12 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the alt trigger state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>the Image's current alt trigger state</returns>
         public bool GetImageAltTrigger(int slot) {
              InternalUnsafeMethods.GetImageAltTrigger__Args _args = new InternalUnsafeMethods.GetImageAltTrigger__Args() {
                 slot = slot,
@@ -2550,6 +2970,14 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Set the generic trigger state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to modify</param>
+        /// <param name="trigger">Generic trigger number</param>
+        /// <param name="state">new generic trigger state for the Image</param>
+        /// <returns>the Image's new generic trigger state or -1 if there was a problem.</returns>
         public int SetImageGenericTrigger(int slot, int trigger, bool state) {
              InternalUnsafeMethods.SetImageGenericTrigger__Args _args = new InternalUnsafeMethods.SetImageGenericTrigger__Args() {
                 slot = slot,
@@ -2560,6 +2988,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the generic trigger state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <param name="trigger">Generic trigger number</param>
+        /// <returns>the Image's current generic trigger state</returns>
         public bool GetImageGenericTrigger(int slot, int trigger) {
              InternalUnsafeMethods.GetImageGenericTrigger__Args _args = new InternalUnsafeMethods.GetImageGenericTrigger__Args() {
                 slot = slot,
@@ -2569,6 +3004,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Set the trigger state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to modify</param>
+        /// <param name="state">new trigger state for the Image</param>
+        /// <returns>the Image's new trigger state</returns>
         public bool SetImageTrigger(int slot, bool state) {
              InternalUnsafeMethods.SetImageTrigger__Args _args = new InternalUnsafeMethods.SetImageTrigger__Args() {
                 slot = slot,
@@ -2578,6 +3020,12 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the trigger state of the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>the Image's current trigger state</returns>
         public bool GetImageTrigger(int slot) {
              InternalUnsafeMethods.GetImageTrigger__Args _args = new InternalUnsafeMethods.GetImageTrigger__Args() {
                 slot = slot,
@@ -2586,6 +3034,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Check if the given state exists on the mounted Image.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <param name="state">Image state to check for</param>
+        /// <returns>true if the Image has the requested state defined.</returns>
         public bool HasImageState(int slot, string state) {
              InternalUnsafeMethods.HasImageState__Args _args = new InternalUnsafeMethods.HasImageState__Args() {
                 slot = slot,
@@ -2595,6 +3050,12 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the name of the current state of the Image in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>name of the current Image state, or "Error" if slot is invalid</returns>
         public string GetImageState(int slot) {
              InternalUnsafeMethods.GetImageState__Args _args = new InternalUnsafeMethods.GetImageState__Args() {
                 slot = slot,
@@ -2603,6 +3064,12 @@ vel.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the skin tag ID for the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>the skinTag value passed to mountImage when the image was mounted</returns>
         public int GetImageSkinTag(int slot) {
              InternalUnsafeMethods.GetImageSkinTag__Args _args = new InternalUnsafeMethods.GetImageSkinTag__Args() {
                 slot = slot,
@@ -2611,6 +3078,12 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the first slot the given datablock is mounted to on this object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="image">ShapeBaseImageData datablock to query</param>
+        /// <returns>index of the first slot the Image is mounted in, or -1 if the Image is not mounted in any slot on this object.</returns>
         public int GetMountSlot(ShapeBaseImageData image) {
              InternalUnsafeMethods.GetMountSlot__Args _args = new InternalUnsafeMethods.GetMountSlot__Args() {
                 image = image.ObjectPtr,
@@ -2619,6 +3092,12 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Check if the given datablock is mounted to any slot on this object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="image">ShapeBaseImageData datablock to query</param>
+        /// <returns>true if the Image is mounted to any slot, false otherwise.</returns>
         public bool IsImageMounted(ShapeBaseImageData image) {
              InternalUnsafeMethods.IsImageMounted__Args _args = new InternalUnsafeMethods.IsImageMounted__Args() {
                 image = image.ObjectPtr,
@@ -2627,6 +3106,12 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Check if the current Image state is firing.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>true if the current Image state in this slot has the 'stateFire' flag set.</returns>
         public bool IsImageFiring(int slot) {
              InternalUnsafeMethods.IsImageFiring__Args _args = new InternalUnsafeMethods.IsImageFiring__Args() {
                 slot = slot,
@@ -2635,6 +3120,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the Image that will be mounted next in the specified slot.</summary>
+        /// <description>
+        /// Calling mountImage when an Image is already mounted does one of two things: <ol><li>Mount the new Image immediately, the old Image is discarded and whatever state it was in is ignored.</li><li>If the current Image state does not allow Image changes, the new Image is marked as pending, and will not be mounted until the current state completes. eg. if the user changes weapons, you may wish to ensure that the current weapon firing state plays to completion first.</li></ol>
+        /// This command retrieves the ID of the pending Image (2nd case above).
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>ID of the pending ShapeBaseImageData datablock, or 0 if none.</returns>
         public int GetPendingImage(int slot) {
              InternalUnsafeMethods.GetPendingImage__Args _args = new InternalUnsafeMethods.GetPendingImage__Args() {
                 slot = slot,
@@ -2643,6 +3135,12 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the Image mounted in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to query</param>
+        /// <returns>ID of the ShapeBaseImageData datablock mounted in the slot, or 0 if no Image is mounted there.</returns>
         public int GetMountedImage(int slot) {
              InternalUnsafeMethods.GetMountedImage__Args _args = new InternalUnsafeMethods.GetMountedImage__Args() {
                 slot = slot,
@@ -2651,6 +3149,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Unmount the mounted Image in the specified slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Image slot to unmount</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="mountImage()" />
         public bool UnmountImage(int slot) {
              InternalUnsafeMethods.UnmountImage__Args _args = new InternalUnsafeMethods.UnmountImage__Args() {
                 slot = slot,
@@ -2659,6 +3164,24 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Mount a new Image.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="image">the Image to mount</param>
+        /// <param name="slot">Image slot to mount into (valid range is 0 - 3)</param>
+        /// <param name="loaded">initial loaded state for the Image</param>
+        /// <param name="skinTag">tagged string to reskin the mounted Image</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <code>
+        /// %player.mountImage( PistolImage, 1 );
+        /// %player.mountImage( CrossbowImage, 0, false );
+        /// %player.mountImage( RocketLauncherImage, 0, true, 'blue' );
+        /// </code>
+        /// <see cref="unmountImage()" />
+        /// <see cref="getMountedImage()" />
+        /// <see cref="getPendingImage()" />
+        /// <see cref="isImageMounted()" />
         public bool MountImage(ShapeBaseImageData image, int slot, bool loaded = true, string skinTag = "") {
              InternalUnsafeMethods.MountImage__Args _args = new InternalUnsafeMethods.MountImage__Args() {
                 image = image.ObjectPtr,
@@ -2670,6 +3193,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Pause an animation thread.</summary>
+        /// <description>
+        /// If restarted using playThread, the animation will resume from the paused position.
+        /// </description>
+        /// <param name="slot">thread slot to stop</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread" />
         public bool PauseThread(int slot) {
              InternalUnsafeMethods.PauseThread__Args _args = new InternalUnsafeMethods.PauseThread__Args() {
                 slot = slot,
@@ -2678,6 +3208,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Destroy an animation thread, which prevents it from playing.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">thread slot to destroy</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread" />
         public bool DestroyThread(int slot) {
              InternalUnsafeMethods.DestroyThread__Args _args = new InternalUnsafeMethods.DestroyThread__Args() {
                 slot = slot,
@@ -2686,6 +3223,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Stop an animation thread.</summary>
+        /// <description>
+        /// If restarted using playThread, the animation will start from the beginning again.
+        /// </description>
+        /// <param name="slot">thread slot to stop</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread" />
         public bool StopThread(int slot) {
              InternalUnsafeMethods.StopThread__Args _args = new InternalUnsafeMethods.StopThread__Args() {
                 slot = slot,
@@ -2694,6 +3238,14 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Set the position within an animation thread.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">thread slot to modify</param>
+        /// <param name="pos">position within thread</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread" />
         public bool SetThreadPosition(int slot, float pos) {
              InternalUnsafeMethods.SetThreadPosition__Args _args = new InternalUnsafeMethods.SetThreadPosition__Args() {
                 slot = slot,
@@ -2703,6 +3255,14 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Set the playback time scale of an animation thread.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">thread slot to modify</param>
+        /// <param name="scale">new thread time scale (1=normal speed, 0.5=half speed etc)</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread" />
         public bool SetThreadTimeScale(int slot, float scale) {
              InternalUnsafeMethods.SetThreadTimeScale__Args _args = new InternalUnsafeMethods.SetThreadTimeScale__Args() {
                 slot = slot,
@@ -2712,6 +3272,14 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Set the playback direction of an animation thread.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">thread slot to modify</param>
+        /// <param name="fwd">true to play the animation forwards, false to play backwards</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread()" />
         public bool SetThreadDir(int slot, bool fwd) {
              InternalUnsafeMethods.SetThreadDir__Args _args = new InternalUnsafeMethods.SetThreadDir__Args() {
                 slot = slot,
@@ -2721,6 +3289,25 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Start a new animation thread, or restart one that has been paused or stopped.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">thread slot to play. Valid range is 0 - 3)</param>
+        /// <param name="name">name of the animation sequence to play in this slot. If not specified, the paused or stopped thread in this slot will be resumed.</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <code>
+        /// %obj.playThread( 0, "ambient" );      // Play the ambient sequence in slot 0
+        /// %obj.setThreadTimeScale( 0, 0.5 );    // Play at half-speed
+        /// %obj.pauseThread( 0 );                // Pause the sequence
+        /// %obj.playThread( 0 );                 // Resume playback
+        /// %obj.playThread( 0, "spin" );         // Replace the sequence in slot 0
+        /// </code>
+        /// <see cref="pauseThread()" />
+        /// <see cref="stopThread()" />
+        /// <see cref="setThreadDir()" />
+        /// <see cref="setThreadTimeScale()" />
+        /// <see cref="destroyThread()" />
         public bool PlayThread(int slot, string name = "") {
              InternalUnsafeMethods.PlayThread__Args _args = new InternalUnsafeMethods.PlayThread__Args() {
                 slot = slot,
@@ -2730,6 +3317,13 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Stop a sound started with playAudio.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">audio slot index (started with playAudio)</param>
+        /// <returns>true if the sound was stopped successfully, false if failed</returns>
+        /// <see cref="playAudio()" />
         public bool StopAudio(int slot) {
              InternalUnsafeMethods.StopAudio__Args _args = new InternalUnsafeMethods.StopAudio__Args() {
                 slot = slot,
@@ -2738,6 +3332,14 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Attach a sound to this shape and start playing it.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Audio slot index for the sound (valid range is 0 - 3)</param>
+        /// <param name="track">SFXTrack to play</param>
+        /// <returns>true if the sound was attached successfully, false if failed</returns>
+        /// <see cref="stopAudio()" />
         public bool PlayAudio(int slot, SFXTrack track) {
              InternalUnsafeMethods.PlayAudio__Args _args = new InternalUnsafeMethods.PlayAudio__Args() {
                 slot = slot,
@@ -2747,6 +3349,10 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Check if the object is hidden.
+        /// </description>
+        /// <returns>true if the object is hidden, false if visible.</returns>
         public bool IsHidden() {
              InternalUnsafeMethods.IsHidden__Args _args = new InternalUnsafeMethods.IsHidden__Args() {
              };
@@ -2754,6 +3360,11 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Add or remove this object from the scene.</summary>
+        /// <description>
+        /// When removed from the scene, the object will not be processed or rendered.
+        /// </description>
+        /// <param name="show">False to hide the object, true to re-show it</param>
         public void SetHidden(bool show) {
              InternalUnsafeMethods.SetHidden__Args _args = new InternalUnsafeMethods.SetHidden__Args() {
                 show = show,
@@ -2761,6 +3372,15 @@ vel.Free();             return _engineResult;
              InternalUnsafeMethods.SetHidden()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the server when the client has requested a FOV change.</summary>
+        /// <description>
+        /// When the client requests that its field of view should be changed (because they want to use a sniper scope, for example) this new FOV needs to be validated by the server.  This method is called if it exists (it is optional) to validate the requested FOV, and modify it if necessary.  This could be as simple as checking that the FOV falls within a correct range, to making sure that the FOV matches the capabilities of the current weapon.
+        /// 
+        /// Following this method, ShapeBase ensures that the given FOV still falls within the datablock's cameraMinFov and cameraMaxFov.  If that is good enough for your purposes, then you do not need to define the validateCameraFov() callback for your ShapeBase.
+        /// </description>
+        /// <param name="fov">The FOV that has been requested by the client.</param>
+        /// <returns>The FOV as validated by the server.</returns>
+        /// <see cref="ShapeBaseData" />
         public virtual float ValidateCameraFov(float fov) {
              InternalUnsafeMethods.ValidateCameraFov__Args _args = new InternalUnsafeMethods.ValidateCameraFov__Args() {
                 fov = fov,
@@ -2769,6 +3389,10 @@ vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the ShapeBase class.
+        /// </description>
+        /// <returns>The type info object for ShapeBase</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -2776,11 +3400,33 @@ vel.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>The skin applied to the shape.</summary>
+        /// <description>
+        /// 'Skinning' the shape effectively renames the material targets, allowing different materials to be used on different instances of the same model. Using getSkinName() and setSkinName() is equivalent to reading and writing the skin field directly.
+        /// 
+        /// Any material targets that start with the old skin name have that part of the name replaced with the new skin name. The initial old skin name is "base". For example, if a new skin of "blue" was applied to a model that had material targets <i>base_body</i> and <i>face</i>, the new targets would be <i>blue_body</i> and <i>face</i>. Note that <i>face</i> was not renamed since it did not start with the old skin name of "base".
+        /// 
+        /// To support models that do not use the default "base" naming convention, you can also specify the part of the name to replace in the skin field itself. For example, if a model had a material target called <i>shapemat</i>, we could apply a new skin "shape=blue", and the material target would be renamed to <i>bluemat</i> (note "shape" has been replaced with "blue").
+        /// 
+        /// Multiple skin updates can also be applied at the same time by separating them with a semicolon. For example: "base=blue;face=happy_face".
+        /// 
+        /// Material targets are only renamed if an existing Material maps to that name, or if there is a diffuse texture in the model folder with the same name as the new target.
+        /// </description>
+        /// </value>
         public string Skin {
             get => GenericMarshal.StringTo<string>(GetFieldValue("skin"));
             set => SetFieldValue("skin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Is this object AI controlled.</summary>
+        /// <description>
+        /// If True then this object is considered AI controlled and not player controlled.
+        /// </description>
+        /// </value>
         public bool IsAIControlled {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isAIControlled"));
             set => SetFieldValue("isAIControlled", GenericMarshal.ToString(value));

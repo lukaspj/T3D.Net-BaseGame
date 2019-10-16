@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Script Event effect.</summary>
+    /// <description>
+    /// Arbitrary script functions can be called as an AFX effect using afxScriptEventData. They are useful for implementing high-level scripted side-effects such as character resurrection or teleportation.
+    /// </description>
     public unsafe class afxScriptEventData : GameBaseData {
         public afxScriptEventData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxScriptEventData class.
+        /// </description>
+        /// <returns>The type info object for afxScriptEventData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +114,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The name of a script method defined for the instance class of an effects choreographer. The arguments used to call this method are determined by the type of choreographer.
+        /// </description>
+        /// </value>
         public string MethodName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("methodName"));
             set => SetFieldValue("methodName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// An arbitrary blind data value which is passed in as an argument of the script event method. The value of scriptData can be used to differentiate uses when handling different script event effects with a single method.
+        /// </description>
+        /// </value>
         public string ScriptData {
             get => GenericMarshal.StringTo<string>(GetFieldValue("scriptData"));
             set => SetFieldValue("scriptData", GenericMarshal.ToString(value));

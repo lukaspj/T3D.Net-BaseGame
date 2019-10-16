@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An xmod datablock.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxXM_RandomRotData : afxXM_BaseData {
         public afxXM_RandomRotData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxXM_RandomRotData class.
+        /// </description>
+        /// <returns>The type info object for afxXM_RandomRotData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,26 +114,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point3F Axis {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("axis"));
             set => SetFieldValue("axis", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float ThetaMin {
             get => GenericMarshal.StringTo<float>(GetFieldValue("thetaMin"));
             set => SetFieldValue("thetaMin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float ThetaMax {
             get => GenericMarshal.StringTo<float>(GetFieldValue("thetaMax"));
             set => SetFieldValue("thetaMax", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float PhiMin {
             get => GenericMarshal.StringTo<float>(GetFieldValue("phiMin"));
             set => SetFieldValue("phiMin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float PhiMax {
             get => GenericMarshal.StringTo<float>(GetFieldValue("phiMax"));
             set => SetFieldValue("phiMax", GenericMarshal.ToString(value));

@@ -14,7 +14,22 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Level object which defines the boundaries of the level.</summary>
+    /// <description>
+    /// This is a simple box with starting points, width, depth, and height. It does not have any default functionality. Instead, when objects hit the boundaries certain script callbacks will be made allowing you to control the reaction.
+    /// </description>
+    /// <code>
+    /// new MissionArea(GlobalMissionArea)
+    /// {
+    /// 	  Area = "-152 -352 1008 864";
+    /// 	  flightCeiling = "300";
+    /// 	  flightCeilingRange = "20";
+    /// 	  canSaveDynamicFields = "1";
+    /// 		 enabled = "1";
+    /// 		 TypeBool locked = "false";
+    /// };
+    /// </code>
     public unsafe class MissionArea : NetObject {
         public MissionArea(bool pRegister = false) 
             : base(pRegister) {
@@ -164,12 +179,25 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// Force trigger an inspectPostApply. This will transmit material and other fields ( not including nodes ) to client objects.
+        /// </description>
         public void PostApply() {
              InternalUnsafeMethods.PostApply__Args _args = new InternalUnsafeMethods.PostApply__Args() {
              };
              InternalUnsafeMethods.PostApply()(ObjectPtr, _args);
         }
 
+        /// <summary>- Defines the size of the MissionArea</summary>
+        /// <description>
+        /// param x Starting X coordinate position for MissionArea
+        /// param y Starting Y coordinate position for MissionArea
+        /// param width New width of the MissionArea
+        /// param height New height of the MissionArea
+        /// </description>
+        /// <remarks> Only the server object may be set.
+        /// </remarks>
         public void SetArea(int x, int y, int width, int height) {
              InternalUnsafeMethods.SetArea__Args _args = new InternalUnsafeMethods.SetArea__Args() {
                 x = x,
@@ -180,6 +208,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetArea()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Returns 4 fields: starting x, starting y, extents x, extents y.
+        /// </description>
         public string GetArea() {
              InternalUnsafeMethods.GetArea__Args _args = new InternalUnsafeMethods.GetArea__Args() {
              };
@@ -187,6 +218,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the MissionArea class.
+        /// </description>
+        /// <returns>The type info object for MissionArea</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -194,16 +229,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Four corners (X1, X2, Y1, Y2) that makes up the level's boundaries
+        /// </description>
+        /// </value>
         public RectI Area {
             get => GenericMarshal.StringTo<RectI>(GetFieldValue("area"));
             set => SetFieldValue("area", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Represents the top of the mission area, used by FlyingVehicle.
+        /// </description>
+        /// </value>
         public float FlightCeiling {
             get => GenericMarshal.StringTo<float>(GetFieldValue("flightCeiling"));
             set => SetFieldValue("flightCeiling", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Distance from ceiling before FlyingVehicle thrust is cut off.
+        /// </description>
+        /// </value>
         public float FlightCeilingRange {
             get => GenericMarshal.StringTo<float>(GetFieldValue("flightCeilingRange"));
             set => SetFieldValue("flightCeilingRange", GenericMarshal.ToString(value));

@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class ModuleManager : SimObject {
         public ModuleManager(bool pRegister = false) 
             : base(pRegister) {
@@ -578,6 +579,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ModuleManager class.
+        /// </description>
+        /// <returns>The type info object for ModuleManager</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -585,6 +590,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// Sets if the Module Manager should ingore laoded groups.
+        /// </description>
+        /// <param name="doIgnore">Whether we should or should not ignore loaded groups.</param>
+        /// <returns>No return value.</returns>
         public void IgnoreLoadedGroups(bool doIgnore = false) {
              InternalUnsafeMethods.IgnoreLoadedGroups__Args _args = new InternalUnsafeMethods.IgnoreLoadedGroups__Args() {
                 doIgnore = doIgnore,
@@ -592,6 +602,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.IgnoreLoadedGroups()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Unregisters the specified object as a listener for module notifications.
+        /// </description>
+        /// <param name="listenerObject">The object to stop receiving module notifications.</param>
+        /// <returns>No return value.</returns>
         public void RemoveListener(string listenerObject = "") {
              InternalUnsafeMethods.RemoveListener__Args _args = new InternalUnsafeMethods.RemoveListener__Args() {
                 listenerObject = listenerObject,
@@ -599,6 +614,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveListener()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Registers the specified object as a listener for module notifications.
+        /// </description>
+        /// <param name="listenerObject">The object to start receiving module notifications.</param>
+        /// <returns>No return value.</returns>
         public void AddListener(string listenerObject = "") {
              InternalUnsafeMethods.AddListener__Args _args = new InternalUnsafeMethods.AddListener__Args() {
                 listenerObject = listenerObject,
@@ -606,6 +626,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddListener()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Performs a module merge into the selected target path.
+        /// </description>
+        /// <param name="mergeTargetPath">The path where modules will be merged into.</param>
+        /// <param name="removeMergeDefinition">Whether to remove any merge definition found or not if merge is successful.</param>
+        /// <param name="registerNewModules">Whether new (not replaced or updated) modules should be registered or not.</param>
+        /// <returns>Whether the module merge was successful or not.Failure here could result in a corrupt module state.Reinstall is recommended or at least advised to the user is recommended.</returns>
         public bool MergeModules(string pMergeTargetPath = "", bool removeMergeDefinition = false, bool registerNewModules = false) {
              InternalUnsafeMethods.MergeModules__Args _args = new InternalUnsafeMethods.MergeModules__Args() {
                 pMergeTargetPath = pMergeTargetPath,
@@ -616,6 +643,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Checks whether a module merge using the modules in the source path can current happen or not.
+        /// </description>
+        /// <param name="mergeSourcePath">The path where modules to be merged are located.</param>
+        /// <returns>Whether a module merge using the modules in the source path can current happen or not.</returns>
         public bool CanMergeModules(string mergeSourcePath = "") {
              InternalUnsafeMethods.CanMergeModules__Args _args = new InternalUnsafeMethods.CanMergeModules__Args() {
                 mergeSourcePath = mergeSourcePath,
@@ -624,6 +656,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Checks whether a module merge definition file is available or not.
+        /// </description>
+        /// <returns>Whether a module merge definition file is available or not.</returns>
         public bool IsModuleMergeAvailable() {
              InternalUnsafeMethods.IsModuleMergeAvailable__Args _args = new InternalUnsafeMethods.IsModuleMergeAvailable__Args() {
              };
@@ -631,6 +667,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Synchronize the module dependencies of a module definition to a target dependency folder.
+        /// </description>
+        /// <param name="rootModuleDefinition">The module definition used to determine dependencies.</param>
+        /// <param name="targetDependencyPath">The target dependency folder to copy dependencies to.</param>
+        /// <returns>Whether the module dependencies were synchronized correctly or not.</returns>
         public bool SynchronizeDependencies(string rootModuleDefinition = "", string pTargetDependencyFolder = "") {
              InternalUnsafeMethods.SynchronizeDependencies__Args _args = new InternalUnsafeMethods.SynchronizeDependencies__Args() {
                 rootModuleDefinition = rootModuleDefinition,
@@ -640,6 +682,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Rename a module.
+        /// </description>
+        /// <param name="sourceModuleDefinition">The module definition to rename.</param>
+        /// <param name="pNewModuleName">The new name the module should have.</param>
+        /// <returns>Weither the rename was successful or not.</returns>
         public bool RenameModule(string sourceModuleDefinition = "", string pNewModuleName = "") {
              InternalUnsafeMethods.RenameModule__Args _args = new InternalUnsafeMethods.RenameModule__Args() {
                 sourceModuleDefinition = sourceModuleDefinition,
@@ -649,6 +697,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Copy the module to a new location with a new module Id.
+        /// </description>
+        /// <param name="sourceModuleDefinition">The module definition to copy.</param>
+        /// <param name="targetModuleId">The module Id to rename the copied module to including all references to the source module Id.It is valid to specifiy the source module Id to produce an identical copy.</param>
+        /// <param name="targetPath">The target path to copy the module to.Addition folders will be created depending on whether 'useVersionPathing' is used or not.</param>
+        /// <param name="useVersionPathing">Whether to add a '/targetModuleId/versionId' folder to the target path or not.This allows copying multiple versions of the same module Id.</param>
+        /// <returns>The new module definition file if copy was successful or NULL if not.</returns>
         public string CopyModule(string sourceModuleDefinition = "", string pTargetModuleId = "", string pTargetPath = "", bool useVersionPathing = false) {
              InternalUnsafeMethods.CopyModule__Args _args = new InternalUnsafeMethods.CopyModule__Args() {
                 sourceModuleDefinition = sourceModuleDefinition,
@@ -660,6 +716,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Find the modules registered with the specified module type.
+        /// </description>
+        /// <param name="moduleType">The module type to search for.</param>
+        /// <param name="loadedOnly">Whether to return only modules that are loaded or not.</param>
+        /// <returns>A list of space - separated module definition object Ids.</returns>
         public string FindModuleTypes(string pModuleType = "", bool loadedOnly = false) {
              InternalUnsafeMethods.FindModuleTypes__Args _args = new InternalUnsafeMethods.FindModuleTypes__Args() {
                 pModuleType = pModuleType,
@@ -669,6 +731,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Find all the modules registered with the specified loaded state.
+        /// </description>
+        /// <param name="loadedOnly">Whether to return only modules that are loaded or not.</param>
+        /// <returns>A list of space - separated module definition object Ids.</returns>
         public string FindModules(bool loadedOnly = false) {
              InternalUnsafeMethods.FindModules__Args _args = new InternalUnsafeMethods.FindModules__Args() {
                 loadedOnly = loadedOnly,
@@ -677,6 +744,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Find the specific module Id optionally at the specified version Id.
+        /// </description>
+        /// <param name="moduleId">The module Id to find.</param>
+        /// <param name="versionId">The version Id to find.</param>
+        /// <returns>The module definition object or NULL if not found.</returns>
         public string FindModule(string pModuleId = "", uint pVersionId = 0) {
              InternalUnsafeMethods.FindModule__Args _args = new InternalUnsafeMethods.FindModule__Args() {
                 pModuleId = pModuleId,
@@ -686,6 +759,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Unload the specified module explicitly.
+        /// </description>
+        /// <param name="moduleId">The module Id to unload.</param>
+        /// <returns>Whether the module Id was unloaded or not.</returns>
         public bool UnloadExplicit(string pModuleId = "") {
              InternalUnsafeMethods.UnloadExplicit__Args _args = new InternalUnsafeMethods.UnloadExplicit__Args() {
                 pModuleId = pModuleId,
@@ -694,6 +772,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Load the specified module explicitly.
+        /// </description>
+        /// <param name="moduleId">The module Id to load.</param>
+        /// <param name="versionId">The version Id to load.Optional:  Will load the latest version.</param>
+        /// <returns>Whether the module Id was loaded or not.</returns>
         public bool LoadExplicit(string pModuleId = "", int pVersionId = -1) {
              InternalUnsafeMethods.LoadExplicit__Args _args = new InternalUnsafeMethods.LoadExplicit__Args() {
                 pModuleId = pModuleId,
@@ -703,6 +787,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Unload the specified module group.
+        /// </description>
+        /// <param name="moduleGroup">The module group to unload.</param>
+        /// <returns>Whether the module group was unloaded or not.</returns>
         public bool UnloadGroup(string pModuleGroup = "") {
              InternalUnsafeMethods.UnloadGroup__Args _args = new InternalUnsafeMethods.UnloadGroup__Args() {
                 pModuleGroup = pModuleGroup,
@@ -711,6 +800,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Load the specified module group.
+        /// </description>
+        /// <param name="moduleGroup">The module group to load.</param>
+        /// <returns>Whether the module group was loaded or not.</returns>
         public bool LoadGroup(string pModuleGroup = "") {
              InternalUnsafeMethods.LoadGroup__Args _args = new InternalUnsafeMethods.LoadGroup__Args() {
                 pModuleGroup = pModuleGroup,
@@ -719,6 +813,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Unregister the specified module.
+        /// </description>
+        /// <param name="moduleId">The module Id to unregister.</param>
+        /// <param name="versionId">The version Id to unregister.</param>
+        /// <returns>Whether the module was unregister or not.</returns>
         public bool UnregisterModule(string pModuleId = "", bool versionId = false) {
              InternalUnsafeMethods.UnregisterModule__Args _args = new InternalUnsafeMethods.UnregisterModule__Args() {
                 pModuleId = pModuleId,
@@ -728,6 +828,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Register the specified module.
+        /// </description>
+        /// <param name="moduleId">The module Id to register.</param>
+        /// <param name="versionId">The version Id to register.</param>
+        /// <returns>Whether the module was registered or not.</returns>
         public bool RegisterModule(string pModulePath = "", string pModuleFile = "") {
              InternalUnsafeMethods.RegisterModule__Args _args = new InternalUnsafeMethods.RegisterModule__Args() {
                 pModulePath = pModulePath,
@@ -737,6 +843,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Scans for modules which are sub-directories of the specified path.
+        /// </description>
+        /// <param name="moduleRootPath">The root directory to scan for sub - directories containing modules.</param>
+        /// <param name="rootOnly[Optional]">- Specifies whether to only scan the root path or not when searching for modules.</param>
+        /// <returns>Whether the scan was successful or not.A successful scan can still find zero modules.</returns>
         public bool ScanModules(string pRootPath = "", bool rootOnly = false) {
              InternalUnsafeMethods.ScanModules__Args _args = new InternalUnsafeMethods.ScanModules__Args() {
                 pRootPath = pRootPath,
@@ -746,6 +858,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the module extension used to scan for modules.  The default is 'module'.
+        /// </description>
+        /// <param name="moduleExtension">The module extension used to scan for modules.Do not use a period character.</param>
+        /// <returns>Whether setting the module extension was successful or not.</returns>
         public bool SetModuleExtension(string moduleExtension = "") {
              InternalUnsafeMethods.SetModuleExtension__Args _args = new InternalUnsafeMethods.SetModuleExtension__Args() {
                 moduleExtension = moduleExtension,
@@ -754,11 +871,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the module manager enforces any dependencies on module definitions it discovers or not.
+        /// </description>
+        /// </value>
         public bool EnforceDependencies {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("EnforceDependencies"));
             set => SetFieldValue("EnforceDependencies", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the module manager echos extra information to the console or not.
+        /// </description>
+        /// </value>
         public bool EchoInfo {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("EchoInfo"));
             set => SetFieldValue("EchoInfo", GenericMarshal.ToString(value));

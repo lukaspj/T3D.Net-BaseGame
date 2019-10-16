@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Specialized selection tool for picking individual trees in a forest.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class ForestSelectionTool : ForestTool {
         public ForestSelectionTool(bool pRegister = false) 
             : base(pRegister) {
@@ -219,36 +223,42 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void PasteSelection() {
              InternalUnsafeMethods.PasteSelection__Args _args = new InternalUnsafeMethods.PasteSelection__Args() {
              };
              InternalUnsafeMethods.PasteSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public void CopySelection() {
              InternalUnsafeMethods.CopySelection__Args _args = new InternalUnsafeMethods.CopySelection__Args() {
              };
              InternalUnsafeMethods.CopySelection()(ObjectPtr, _args);
         }
 
+        /// 
         public void CutSelection() {
              InternalUnsafeMethods.CutSelection__Args _args = new InternalUnsafeMethods.CutSelection__Args() {
              };
              InternalUnsafeMethods.CutSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public void ClearSelection() {
              InternalUnsafeMethods.ClearSelection__Args _args = new InternalUnsafeMethods.ClearSelection__Args() {
              };
              InternalUnsafeMethods.ClearSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public void DeleteSelection() {
              InternalUnsafeMethods.DeleteSelection__Args _args = new InternalUnsafeMethods.DeleteSelection__Args() {
              };
              InternalUnsafeMethods.DeleteSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public int GetSelectionCount() {
              InternalUnsafeMethods.GetSelectionCount__Args _args = new InternalUnsafeMethods.GetSelectionCount__Args() {
              };
@@ -256,6 +266,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the ForestSelectionTool class.
+        /// </description>
+        /// <returns>The type info object for ForestSelectionTool</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

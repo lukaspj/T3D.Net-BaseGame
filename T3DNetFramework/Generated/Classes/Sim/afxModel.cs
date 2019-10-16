@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A Model effect as defined by an afxModelData datablock.</summary>
+    /// <description>
+    /// A Model effect is a lightweight client-only geometry object useful for effect-driven props.
+    /// </description>
     public unsafe class afxModel : GameBase {
         public afxModel(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxModel class.
+        /// </description>
+        /// <returns>The type info object for afxModel</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

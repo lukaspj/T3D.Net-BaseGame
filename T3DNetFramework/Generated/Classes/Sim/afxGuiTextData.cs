@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Gui Text effect.</summary>
+    /// <description>
+    /// A Gui Text effect, with the help of an existing afxGuiTextHud, can be used to display 2D text effects on the Gui Canvas. Essentially, using Gui Text effects with an afxGuiTextHud is like using the stock GuiShapeNameHud, but with the ability to make additional text elements come and go as effects constrained to the projection of 3D positions onto the 2D screen.
+    /// </description>
     public unsafe class afxGuiTextData : GameBaseData {
         public afxGuiTextData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxGuiTextData class.
+        /// </description>
+        /// <returns>The type info object for afxGuiTextData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +114,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The literal text to display on the afxGuiTextHud. The center of the text will be placed at the projection of the 3D constraint position into 2D screen space.
+        /// If the text field is set to the special string, '#shapeName', the shape name of the primary position constraint object will be used. (This is only meaningful if the constraint source is a ShapeBase-derived object.)
+        /// </description>
+        /// </value>
         public string Text {
             get => GenericMarshal.StringTo<string>(GetFieldValue("text"));
             set => SetFieldValue("text", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A color value for the text label.
+        /// </description>
+        /// </value>
         public LinearColorF Color {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("color"));
             set => SetFieldValue("color", GenericMarshal.ToString(value));

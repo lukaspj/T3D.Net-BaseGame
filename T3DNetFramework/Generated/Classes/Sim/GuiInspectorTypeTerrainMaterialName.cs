@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Inspector field type for TerrainMaterial</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiInspectorTypeTerrainMaterialName : GuiInspectorTypeMaterialName {
         public GuiInspectorTypeTerrainMaterialName(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiInspectorTypeTerrainMaterialName class.
+        /// </description>
+        /// <returns>The type info object for GuiInspectorTypeTerrainMaterialName</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

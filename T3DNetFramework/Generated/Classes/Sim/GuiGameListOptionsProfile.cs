@@ -14,7 +14,19 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A GuiControlProfile with additional fields specific to GuiGameListOptionsCtrl.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiGameListOptionsProfile()
+    /// {
+    ///    columnSplit = "100";
+    ///    rightPad = "4";
+    ///    //Properties not specific to this control have been omitted from this example.
+    /// };
+    /// </code>
     public unsafe class GuiGameListOptionsProfile : GuiGameListMenuProfile {
         public GuiGameListOptionsProfile(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +111,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiGameListOptionsProfile class.
+        /// </description>
+        /// <returns>The type info object for GuiGameListOptionsProfile</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +122,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Padding between the leftmost edge of the control, and the row's left arrow.
+        /// </description>
+        /// </value>
         public int ColumnSplit {
             get => GenericMarshal.StringTo<int>(GetFieldValue("columnSplit"));
             set => SetFieldValue("columnSplit", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Padding between the rightmost edge of the control and the row's right arrow.
+        /// </description>
+        /// </value>
         public int RightPad {
             get => GenericMarshal.StringTo<int>(GetFieldValue("rightPad"));
             set => SetFieldValue("rightPad", GenericMarshal.ToString(value));

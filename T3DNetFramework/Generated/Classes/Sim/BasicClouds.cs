@@ -14,7 +14,15 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Renders up to three layers of scrolling cloud-cover textures overhead.</summary>
+    /// <description>
+    /// %BasicClouds always renders overhead, following the camera. It is intended as part of the background of your level, rendering in front of Sky/Sun type objects and behind everything else.
+    /// 
+    /// The parameters controlling the rendering of each texture are refered to and grouped as 'layers'. They are rendered in sequential order, so, layer 1 obscures layer 0, and so on.
+    /// 
+    /// BasicClouds is not affected by scene lighting and is therefore not appropriate for scenes in which lighting radically changes, such as day/night.
+    /// </description>
     public unsafe class BasicClouds : SceneObject {
         public BasicClouds(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +107,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the BasicClouds class.
+        /// </description>
+        /// <returns>The type info object for BasicClouds</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +118,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Enable or disable rendering of this layer.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> LayerEnabled {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -116,6 +134,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Texture for this layer.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> Texture {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -126,6 +150,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Texture repeat for this layer.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> TexScale {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -136,6 +166,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Texture scroll direction for this layer, relative to the world axis.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<Point2F> TexDirection {
             get => new DynamicFieldVector<Point2F>(
                     this, 
@@ -146,6 +182,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Texture scroll speed for this layer.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> TexSpeed {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -156,6 +198,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// UV offset for this layer.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<Point2F> TexOffset {
             get => new DynamicFieldVector<Point2F>(
                     this, 
@@ -166,6 +214,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Abstract number which controls the curvature and height of the dome mesh
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> Height {
             get => new DynamicFieldVector<float>(
                     this, 

@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Class used for writing out preferences and settings for editors</summary>
+    /// <description>
+    /// Not intended for game development, for editors or internal use only.
+    /// </description>
     public unsafe class Settings : SimObject {
         public Settings(bool pRegister = false) 
             : base(pRegister) {
@@ -371,6 +375,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// settingObj.getCurrentGroups();
+        /// </description>
         public string GetCurrentGroups() {
              InternalUnsafeMethods.GetCurrentGroups__Args _args = new InternalUnsafeMethods.GetCurrentGroups__Args() {
              };
@@ -378,18 +385,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// settingObj.clearGroups();
+        /// </description>
         public void ClearGroups() {
              InternalUnsafeMethods.ClearGroups__Args _args = new InternalUnsafeMethods.ClearGroups__Args() {
              };
              InternalUnsafeMethods.ClearGroups()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// settingObj.endGroup();
+        /// </description>
         public void EndGroup() {
              InternalUnsafeMethods.EndGroup__Args _args = new InternalUnsafeMethods.EndGroup__Args() {
              };
              InternalUnsafeMethods.EndGroup()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// settingObj.beginGroup(groupName, fromStart = false);
+        /// </description>
         public void BeginGroup(string groupName, bool includeDefaults = false) {
              InternalUnsafeMethods.BeginGroup__Args _args = new InternalUnsafeMethods.BeginGroup__Args() {
                 groupName = groupName,
@@ -398,6 +414,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.BeginGroup()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// %success = settingObj.read();
+        /// </description>
         public bool Read() {
              InternalUnsafeMethods.Read__Args _args = new InternalUnsafeMethods.Read__Args() {
              };
@@ -405,6 +424,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// %success = settingObj.write();
+        /// </description>
         public bool Write() {
              InternalUnsafeMethods.Write__Args _args = new InternalUnsafeMethods.Write__Args() {
              };
@@ -412,6 +434,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// settingObj.remove(settingName, includeDefaults = false);
+        /// </description>
         public void Remove(string settingName, bool includeDefaults = false) {
              InternalUnsafeMethods.Remove__Args _args = new InternalUnsafeMethods.Remove__Args() {
                 settingName = settingName,
@@ -420,6 +445,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Remove()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// settingObj.value(settingName, defaultValue);
+        /// </description>
         public string Value(string settingName, string defaultValue = "") {
              InternalUnsafeMethods.Value__Args _args = new InternalUnsafeMethods.Value__Args() {
                 settingName = settingName,
@@ -429,6 +457,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// settingObj.setDefaultValue(settingName, value);
+        /// </description>
         public void SetDefaultValue(string settingName, string value) {
              InternalUnsafeMethods.SetDefaultValue__Args _args = new InternalUnsafeMethods.SetDefaultValue__Args() {
                 settingName = settingName,
@@ -437,6 +468,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetDefaultValue()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// settingObj.setValue(settingName, value);
+        /// </description>
         public void SetValue(string settingName, string value = "") {
              InternalUnsafeMethods.SetValue__Args _args = new InternalUnsafeMethods.SetValue__Args() {
                 settingName = settingName,
@@ -445,6 +479,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetValue()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// settingObj.findNextValue();
+        /// </description>
         public string FindNextValue() {
              InternalUnsafeMethods.FindNextValue__Args _args = new InternalUnsafeMethods.FindNextValue__Args() {
              };
@@ -452,6 +489,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// settingObj.findFirstValue();
+        /// </description>
         public string FindFirstValue(string pattern = "", bool deepSearch = false, bool includeDefaults = false) {
              InternalUnsafeMethods.FindFirstValue__Args _args = new InternalUnsafeMethods.FindFirstValue__Args() {
                 pattern = pattern,
@@ -462,6 +502,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the Settings class.
+        /// </description>
+        /// <returns>The type info object for Settings</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -469,6 +513,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The file path and name to be saved to and loaded from.
+        /// </description>
+        /// </value>
         public string File {
             get => GenericMarshal.StringTo<string>(GetFieldValue("file"));
             set => SetFieldValue("file", GenericMarshal.ToString(value));

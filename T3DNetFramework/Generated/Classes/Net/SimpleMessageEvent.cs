@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Net {    
+namespace T3DNetFramework.Generated.Classes.Net {
+    /// <summary>A very simple example of a network event.</summary>
+    /// <description>
+    /// This object exists purely for instructional purposes. It is primarily geared toward developers that wish to understand the inner-working of Torque 3D's networking system. This is not intended for actual game development.
+    /// </description>
+    /// <see cref="NetEvent for the inner workings of network events" />
     public unsafe class SimpleMessageEvent : NetEvent {
         public SimpleMessageEvent(bool pRegister = false) 
             : base(pRegister) {
@@ -95,6 +100,22 @@ namespace T3DNetFramework.Generated.Classes.Net {
         }
         #endregion
 
+        /// <summary>Send a SimpleMessageEvent message to the specified connection.</summary>
+        /// <description>
+        /// The far end that receives the message will print the message out to the console.
+        /// </description>
+        /// <param name="con">The unique ID of the connection to transmit to</param>
+        /// <param name="message">The string containing the message to transmit</param>
+        /// <code>
+        /// // Send a message to the other end of the given NetConnection
+        /// SimpleMessageEvent::msg( %conn, "A message from me!");
+        /// 
+        /// // The far end will see the following in the console
+        /// // (Note: The number may be something other than 1796 as it is the SimObjectID
+        /// // of the received event)
+        /// // 
+        /// // RMSG 1796  A message from me!
+        /// </code>
         public static void Msg(NetConnection con, string message) {
              InternalUnsafeMethods.Msg__Args _args = new InternalUnsafeMethods.Msg__Args() {
                 con = con.ObjectPtr,
@@ -103,6 +124,10 @@ namespace T3DNetFramework.Generated.Classes.Net {
              InternalUnsafeMethods.Msg()(_args);
         }
 
+        /// <description>
+        /// Get the type info object for the SimpleMessageEvent class.
+        /// </description>
+        /// <returns>The type info object for SimpleMessageEvent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

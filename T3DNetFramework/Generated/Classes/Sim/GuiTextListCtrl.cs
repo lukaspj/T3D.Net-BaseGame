@@ -14,7 +14,21 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>GUI control that displays a list of text. Text items in the list can be individually selected.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiTextListCtrl(EndGameGuiList)
+    /// 		{
+    /// 			columns = "0 256";
+    /// 	        fitParentWidth = "1";
+    /// 			clipColumnText = "0";
+    /// 		    //Properties not specific to this control have been omitted from this example.
+    /// 		};
+    /// </code>
+    /// <see cref="Reference" />
     public unsafe class GuiTextListCtrl : GuiArrayCtrl {
         public GuiTextListCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -594,6 +608,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Check if the specified row is currently active or not.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="rowNum">Row number to check the active state.</param>
+        /// <code>
+        /// // Define the row number
+        /// %rowNum = "5";
+        /// 
+        /// // Request the active state of the defined row number from the GuiTextListCtrl control.
+        /// %rowActiveState = %thisGuiTextListCtrl.isRowActive(%rowNum);
+        /// </code>
+        /// <returns>Active state of the defined row number.</returns>
+        /// <see cref="GuiControl" />
         public bool IsRowActive(int rowNum) {
              InternalUnsafeMethods.IsRowActive__Args _args = new InternalUnsafeMethods.IsRowActive__Args() {
                 rowNum = rowNum,
@@ -602,6 +630,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Mark a specified row as active/not.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="rowNum">Row number to change the active state.</param>
+        /// <param name="active">Boolean active state to set the row number.</param>
+        /// <code>
+        /// // Define the row number
+        /// %rowNum = "4";
+        /// 
+        /// // Define the boolean active state
+        /// %active = "true";
+        /// 
+        /// // Informthe GuiTextListCtrl control to set the defined active state at the defined row number.
+        /// %thisGuiTextListCtrl.setRowActive(%rowNum,%active);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetRowActive(int rowNum, bool active) {
              InternalUnsafeMethods.SetRowActive__Args _args = new InternalUnsafeMethods.SetRowActive__Args() {
                 rowNum = rowNum,
@@ -610,6 +655,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetRowActive()(ObjectPtr, _args);
         }
 
+        /// <summary>Find needle in the list, and return the row number it was found in.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="needle">Text to find in the list.</param>
+        /// <code>
+        /// // Define the text to find in the list
+        /// %needle = "Text To Find";
+        /// 
+        /// // Request the row number that contains the defined text to find
+        /// 
+        /// %rowNumber = %thisGuiTextListCtrl.findTextIndex(%needle);
+        /// </code>
+        /// <returns>Row number that the defined text was found in,</returns>
+        /// <see cref="GuiControl" />
         public int FindTextIndex(string needle) {
              InternalUnsafeMethods.FindTextIndex__Args _args = new InternalUnsafeMethods.FindTextIndex__Args() {
                 needle = needle,
@@ -618,6 +678,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Scroll so the specified row is visible</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="rowNum">Row number to make visible</param>
+        /// <code>
+        /// // Define the row number to make visible
+        /// %rowNum = "4";
+        /// 
+        /// // Inform the GuiTextListCtrl control to scroll the list so the defined rowNum is visible.
+        /// %thisGuiTextListCtrl.scrollVisible(%rowNum);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void ScrollVisible(int rowNum) {
              InternalUnsafeMethods.ScrollVisible__Args _args = new InternalUnsafeMethods.ScrollVisible__Args() {
                 rowNum = rowNum,
@@ -625,6 +698,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ScrollVisible()(ObjectPtr, _args);
         }
 
+        /// <summary>Remove a row from the table, based on its index.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Row index to remove from the list.</param>
+        /// <code>
+        /// // Define the row index
+        /// %index = "4";
+        /// 
+        /// // Inform the GuiTextListCtrl control to remove the row at the defined row index
+        /// %thisGuiTextListCtrl.removeRow(%index);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void RemoveRow(int index) {
              InternalUnsafeMethods.RemoveRow__Args _args = new InternalUnsafeMethods.RemoveRow__Args() {
                 index = index,
@@ -632,6 +718,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveRow()(ObjectPtr, _args);
         }
 
+        /// <summary>Remove row with the specified id.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="id">Id to remove the row entry at</param>
+        /// <code>
+        /// // Define the id
+        /// %id = "4";
+        /// 
+        /// // Inform the GuiTextListCtrl control to remove the row at the defined id
+        /// %thisGuiTextListCtrl.removeRowById(%id);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void RemoveRowById(int id) {
              InternalUnsafeMethods.RemoveRowById__Args _args = new InternalUnsafeMethods.RemoveRowById__Args() {
                 id = id,
@@ -639,6 +738,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveRowById()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the text of the row with the specified index.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Row index to acquire the text at.</param>
+        /// <code>
+        /// // Define the row index
+        /// %index = "5";
+        /// 
+        /// // Request the text from the row at the defined index
+        /// %rowText = %thisGuiTextListCtrl.getRowText(%index);
+        /// </code>
+        /// <returns>Text at the defined row index.</returns>
+        /// <see cref="GuiControl" />
         public string GetRowText(int index) {
              InternalUnsafeMethods.GetRowText__Args _args = new InternalUnsafeMethods.GetRowText__Args() {
                 index = index,
@@ -647,6 +760,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the row number for a specified id.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="id">Id to get the row number at</param>
+        /// <code>
+        /// // Define the id
+        /// %id = "4";
+        /// 
+        /// // Request the row number from the GuiTextListCtrl control at the defined id.
+        /// %rowNumber = %thisGuiTextListCtrl.getRowNumById(%id);
+        /// </code>
+        /// <see cref="GuiControl" />
         public int GetRowNumById(int id) {
              InternalUnsafeMethods.GetRowNumById__Args _args = new InternalUnsafeMethods.GetRowNumById__Args() {
                 id = id,
@@ -655,6 +781,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Get the text of a row with the specified id.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Define the id
+        /// %id = "4";
+        /// 
+        /// // Inform the GuiTextListCtrl control to return the text at the defined row id
+        /// %rowText = %thisGuiTextListCtrl.getRowTextById(%id);
+        /// </code>
+        /// <returns>Row text at the requested row id.</returns>
+        /// <see cref="GuiControl" />
         public string GetRowTextById(int id) {
              InternalUnsafeMethods.GetRowTextById__Args _args = new InternalUnsafeMethods.GetRowTextById__Args() {
                 id = id,
@@ -663,6 +802,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the row ID for an index.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Index to get the RowID at</param>
+        /// <code>
+        /// // Define the index
+        /// %index = "3";
+        /// 
+        /// // Request the row ID at the defined index
+        /// %rowId = %thisGuiTextListCtrl.getRowId(%index);
+        /// </code>
+        /// <returns>RowId at the defined index.</returns>
+        /// <see cref="GuiControl" />
         public int GetRowId(int index) {
              InternalUnsafeMethods.GetRowId__Args _args = new InternalUnsafeMethods.GetRowId__Args() {
                 index = index,
@@ -671,6 +824,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Get the number of rows.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Get the number of rows in the list
+        /// %rowCount = %thisGuiTextListCtrl.rowCount();
+        /// </code>
+        /// <returns>Number of rows in the list.</returns>
+        /// <see cref="GuiControl" />
         public int RowCount() {
              InternalUnsafeMethods.RowCount__Args _args = new InternalUnsafeMethods.RowCount__Args() {
              };
@@ -678,12 +841,38 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Clear the list.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Inform the GuiTextListCtrl control to clear its contents
+        /// %thisGuiTextListCtrl.clear();
+        /// </code>
+        /// <see cref="GuiControl" />
         public void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };
              InternalUnsafeMethods.Clear()(ObjectPtr, _args);
         }
 
+        /// <summary>Perform a numerical sort on the values in the specified column.</summary>
+        /// <description>
+        /// Detailed description
+        /// </description>
+        /// <param name="columnId">Column ID to perform the sort on.</param>
+        /// <param name="increasing">If false, sort will be performed in reverse.</param>
+        /// <code>
+        /// // Define the columnId
+        /// %id = "1";
+        /// 
+        /// // Define if we are increasing or not
+        /// %increasing = "false";
+        /// 
+        /// // Inform the GuiTextListCtrl to perform the sort operation
+        /// %thisGuiTextListCtrl.sortNumerical(%id,%increasing);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SortNumerical(int columnID, bool increasing = true) {
              InternalUnsafeMethods.SortNumerical__Args _args = new InternalUnsafeMethods.SortNumerical__Args() {
                 columnID = columnID,
@@ -692,6 +881,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SortNumerical()(ObjectPtr, _args);
         }
 
+        /// <summary>Performs a standard (alphabetical) sort on the values in the specified column.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="columnId">Column ID to perform the sort on.</param>
+        /// <param name="increasing">If false, sort will be performed in reverse.</param>
+        /// <code>
+        /// // Define the columnId
+        /// %id = "1";
+        /// 
+        /// // Define if we are increasing or not
+        /// %increasing = "false";
+        /// 
+        /// // Inform the GuiTextListCtrl to perform the sort operation
+        /// %thisGuiTextListCtrl.sort(%id,%increasing);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void Sort(int columnId, bool increasing = true) {
              InternalUnsafeMethods.Sort__Args _args = new InternalUnsafeMethods.Sort__Args() {
                 columnId = columnId,
@@ -700,6 +906,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Sort()(ObjectPtr, _args);
         }
 
+        /// <summary>Sets the text at the defined id.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="id">Id to change.</param>
+        /// <param name="text">Text to use at the Id.</param>
+        /// <code>
+        /// // Define the id
+        /// %id = "4";
+        /// 
+        /// // Define the text
+        /// %text = "Text To Display";
+        /// 
+        /// // Inform the GuiTextListCtrl control to display the defined text at the defined id
+        /// %thisGuiTextListCtrl.setRowById(%id,%text);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetRowById(int id, string text) {
              InternalUnsafeMethods.SetRowById__Args _args = new InternalUnsafeMethods.SetRowById__Args() {
                 id = id,
@@ -708,6 +931,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetRowById()(ObjectPtr, _args);
         }
 
+        /// <summary>Adds a new row at end of the list with the defined id and text.</summary>
+        /// <description>
+        /// If index is used, then the new row is inserted at the row location of 'index'.
+        /// </description>
+        /// <param name="id">Id of the new row.</param>
+        /// <param name="text">Text to display at the new row.</param>
+        /// <param name="index">Index to insert the new row at. If not used, new row will be placed at the end of the list.</param>
+        /// <code>
+        /// // Define the id
+        /// %id = "4";
+        /// 
+        /// // Define the text to display
+        /// %text = "Display Text"
+        /// 
+        /// // Define the index (optional)
+        /// %index = "2"
+        /// 
+        /// // Inform the GuiTextListCtrl control to add the new row with the defined information.
+        /// %rowIndex = %thisGuiTextListCtrl.addRow(%id,%text,%index);
+        /// </code>
+        /// <returns>Returns the row index of the new row. If 'index' was defined, then this just returns the number of rows in the list.</returns>
+        /// <see cref="References" />
         public int AddRow(int id = 0, string text = "", int index = -1) {
              InternalUnsafeMethods.AddRow__Args _args = new InternalUnsafeMethods.AddRow__Args() {
                 id = id,
@@ -718,12 +963,31 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set the selection to nothing.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Deselect anything that is currently selected
+        /// %thisGuiTextListCtrl.clearSelection();
+        /// </code>
+        /// <see cref="GuiControl" />
         public void ClearSelection() {
              InternalUnsafeMethods.ClearSelection__Args _args = new InternalUnsafeMethods.ClearSelection__Args() {
              };
              InternalUnsafeMethods.ClearSelection()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns the selected row index (not the row ID).</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Acquire the selected row index
+        /// %rowIndex = %thisGuiTextListCtrl.getSelectedRow();
+        /// </code>
+        /// <returns>Index of the selected row</returns>
+        /// <see cref="GuiControl" />
         public int GetSelectedRow() {
              InternalUnsafeMethods.GetSelectedRow__Args _args = new InternalUnsafeMethods.GetSelectedRow__Args() {
              };
@@ -731,6 +995,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <param name="rowNum">Row number to set selected.</param>
+        /// <code>
+        /// // Define the row number to set selected
+        /// %rowNum = "4";
+        /// 
+        /// %guiTextListCtrl.setSelectedRow(%rowNum);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetSelectedRow(int rowNum) {
              InternalUnsafeMethods.SetSelectedRow__Args _args = new InternalUnsafeMethods.SetSelectedRow__Args() {
                 rowNum = rowNum,
@@ -738,6 +1010,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSelectedRow()(ObjectPtr, _args);
         }
 
+        /// <summary>Finds the specified entry by id, then marks its row as selected.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="id">Entry within the text list to make selected.</param>
+        /// <code>
+        /// // Define the id
+        /// %id = "5";
+        /// 
+        /// // Inform the GuiTextListCtrl control to set the defined id entry as selected
+        /// %thisGuiTextListCtrl.setSelectedById(%id);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetSelectedById(int id) {
              InternalUnsafeMethods.SetSelectedById__Args _args = new InternalUnsafeMethods.SetSelectedById__Args() {
                 id = id,
@@ -745,6 +1030,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSelectedById()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the ID of the currently selected item.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Acquire the ID of the selected item in the list.
+        /// %id = %thisGuiTextListCtrl.getSelectedId();
+        /// </code>
+        /// <returns>The id of the selected item in the list.</returns>
+        /// <see cref="GuiControl" />
         public int GetSelectedId() {
              InternalUnsafeMethods.GetSelectedId__Args _args = new InternalUnsafeMethods.GetSelectedId__Args() {
              };
@@ -752,6 +1047,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Called when the delete key has been pressed.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="id">Id of the selected item in the list</param>
+        /// <code>
+        /// // The delete key was pressed while the GuiTextListCtrl was in focus, causing the callback to occur.
+        /// GuiTextListCtrl::onDeleteKey(%this,%id)
+        /// 	{
+        /// 		// Code to run when the delete key is pressed
+        /// 	}
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnDeleteKey(int id) {
              InternalUnsafeMethods.OnDeleteKey__Args _args = new InternalUnsafeMethods.OnDeleteKey__Args() {
                 id = id,
@@ -759,6 +1067,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnDeleteKey()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever an item in the list is selected.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="cellid">The ID of the cell that was selected</param>
+        /// <param name="text">The text in the selected cel</param>
+        /// <code>
+        /// // A cel in the control was selected, causing the callback to occur
+        /// GuiTextListCtrl::onSelect(%this,%callid,%text)
+        /// 	{
+        /// 		// Code to run when a cel item is selected
+        /// 	}
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnSelect(int cellid, string text) {
              InternalUnsafeMethods.OnSelect__Args _args = new InternalUnsafeMethods.OnSelect__Args() {
                 cellid = cellid,
@@ -767,6 +1089,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnSelect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiTextListCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTextListCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -774,16 +1100,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// A vector of column offsets.  The number of values determines the number of columns in the table.
+        /// </description>
+        /// </value>
         public IntVector Columns {
             get => GenericMarshal.StringTo<IntVector>(GetFieldValue("columns"));
             set => SetFieldValue("columns", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the width of this control will match the width of its parent.
+        /// </description>
+        /// </value>
         public bool FitParentWidth {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("fitParentWidth"));
             set => SetFieldValue("fitParentWidth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, text exceeding a column's given width will get clipped.
+        /// </description>
+        /// </value>
         public bool ClipColumnText {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("clipColumnText"));
             set => SetFieldValue("clipColumnText", GenericMarshal.ToString(value));

@@ -14,7 +14,24 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Encapsulates a single sound file for playback by the sound system.</summary>
+    /// <description>
+    /// SFXProfile combines a sound description (SFXDescription) with a sound file such that it can be played by the sound system.  To be able to play a sound file, the sound system will always require a profile for it to be created.  However, several of the SFX functions (sfxPlayOnce(), sfxCreateSource()) perform this creation internally for convenience using temporary profile objects.
+    /// 
+    /// Sound files can be in either OGG or WAV format.  However, extended format support is available when using FMOD. See
+    /// </description>
+    /// <remarks> Sounds using streamed playback (SFXDescription::isStreaming) cannot be preloaded and will thus ignore the #preload flag.
+    /// 
+    /// </remarks>
+    /// <code>
+    /// datablock SFXProfile( Shore01Snd )
+    /// {
+    ///    fileName     = "art/sound/Lakeshore_mono_01";
+    ///    description  = Shore01Looping3d;
+    ///    preload      = true;
+    /// };
+    /// </code>
     public unsafe class SFXProfile : SFXTrack {
         public SFXProfile(bool pRegister = false) 
             : base(pRegister) {
@@ -119,6 +136,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Return the length of the sound data in seconds.
+        /// </description>
+        /// <returns>The length of the sound data in seconds or 0 if the sound referenced by the profile could not be found.</returns>
         public float GetSoundDuration() {
              InternalUnsafeMethods.GetSoundDuration__Args _args = new InternalUnsafeMethods.GetSoundDuration__Args() {
              };
@@ -126,6 +147,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the SFXProfile class.
+        /// </description>
+        /// <returns>The type info object for SFXProfile</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -133,11 +158,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// %Path to the sound file.
+        /// If the extension is left out, it will be inferred by the sound system.  This allows to easily switch the sound format without having to go through the profiles and change the filenames there, too.
+        /// </description>
+        /// </value>
         public string FileName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("fileName"));
             set => SetFieldValue("fileName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to preload sound data when the profile is added to system.
+        /// </description>
+        /// <remarks> This flag is ignored by streamed sounds.
+        /// 
+        /// </remarks>
+        /// </value>
         public bool Preload {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("preload"));
             set => SetFieldValue("preload", GenericMarshal.ToString(value));

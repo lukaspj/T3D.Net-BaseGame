@@ -14,7 +14,18 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>General interface to control a PathCamera object from the script level.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <see cref="PathCamera" />
+    /// <code>
+    /// datablock PathCameraData(LoopingCam)
+    /// 	{
+    /// 		mode = "";
+    /// 	};
+    /// </code>
     public unsafe class PathCameraData : ShapeBaseData {
         public PathCameraData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +110,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the PathCameraData class.
+        /// </description>
+        /// <returns>The type info object for PathCameraData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

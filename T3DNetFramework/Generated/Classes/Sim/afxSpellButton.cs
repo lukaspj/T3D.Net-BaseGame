@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A GUI button with some special features that are useful for casting AFX spells.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxSpellButton : GuiButtonCtrl {
         public afxSpellButton(bool pRegister = false) 
             : base(pRegister) {
@@ -244,6 +248,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the free targeting style used by the spell.
+        /// </description>
         public int GetFreeTargetStyle() {
              InternalUnsafeMethods.GetFreeTargetStyle__Args _args = new InternalUnsafeMethods.GetFreeTargetStyle__Args() {
              };
@@ -251,6 +258,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Test if spell uses free targeting.
+        /// </description>
         public bool UseFreeTargeting() {
              InternalUnsafeMethods.UseFreeTargeting__Args _args = new InternalUnsafeMethods.UseFreeTargeting__Args() {
              };
@@ -258,6 +268,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the spell's RPG datablock.
+        /// </description>
         public int GetSpellRPGDataBlock() {
              InternalUnsafeMethods.GetSpellRPGDataBlock__Args _args = new InternalUnsafeMethods.GetSpellRPGDataBlock__Args() {
              };
@@ -265,6 +278,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the spell's datablock.
+        /// </description>
         public int GetSpellDataBlock() {
              InternalUnsafeMethods.GetSpellDataBlock__Args _args = new InternalUnsafeMethods.GetSpellDataBlock__Args() {
              };
@@ -272,6 +288,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the text description of a spell.
+        /// </description>
         public string GetSpellDescription() {
              InternalUnsafeMethods.GetSpellDescription__Args _args = new InternalUnsafeMethods.GetSpellDescription__Args() {
              };
@@ -279,6 +298,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Notify an afxSpellButton when the spellbook turns to a new page.
+        /// </description>
         public void OnTurnPage(uint page) {
              InternalUnsafeMethods.OnTurnPage__Args _args = new InternalUnsafeMethods.OnTurnPage__Args() {
                 page = page,
@@ -286,6 +308,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnTurnPage()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Notify an afxSpellButton when its associated spellbook has changed.
+        /// </description>
         public void OnSpellbookChange(afxSpellBook spellbook, uint page) {
              InternalUnsafeMethods.OnSpellbookChange__Args _args = new InternalUnsafeMethods.OnSpellbookChange__Args() {
                 spellbook = spellbook.ObjectPtr,
@@ -294,6 +319,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnSpellbookChange()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the afxSpellButton class.
+        /// </description>
+        /// <returns>The type info object for afxSpellButton</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -301,11 +330,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string Bitmap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("bitmap"));
             set => SetFieldValue("bitmap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point2I Book_slot {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("book_slot"));
             set => SetFieldValue("book_slot", GenericMarshal.ToString(value));

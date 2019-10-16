@@ -14,7 +14,19 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The base class for the various button controls.</summary>
+    /// <description>
+    /// This is the base class for the various types of button controls.  If no more specific functionality is required than offered by this class, then it can be instantiated and used directly.  Otherwise, its subclasses should be used:
+    /// - GuiRadioCtrl (radio buttons)
+    /// - GuiCheckBoxCtrl (checkboxes)
+    /// - GuiButtonCtrl (push buttons with text labels)
+    /// - GuiBitmapButtonCtrl (bitmapped buttons)
+    /// - GuiBitmapButtonTextCtrl (bitmapped buttons with a text label)
+    /// - GuiToggleButtonCtrl (toggle buttons, i.e. push buttons with "sticky" behavior)
+    /// - GuiSwatchButtonCtrl (color swatch buttons)
+    /// - GuiBorderButtonCtrl (push buttons for surrounding child controls)
+    /// </description>
     public unsafe class GuiButtonBaseCtrl : GuiControl {
         public GuiButtonBaseCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -386,12 +398,22 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Reset the mousing state of the button.
+        /// 
+        /// This method should not generally be called.
+        /// </description>
         public void ResetState() {
              InternalUnsafeMethods.ResetState__Args _args = new InternalUnsafeMethods.ResetState__Args() {
              };
              InternalUnsafeMethods.ResetState()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// For toggle or radio buttons, set whether the button is currently activated or not.  For radio buttons, toggling a button on will toggle all other radio buttons in its group to off.
+        /// </description>
+        /// <param name="isOn">If true, the button will be toggled on (if not already); if false, it will be toggled off.</param>
+        /// <remarks> Toggling the state of a button with this method will <em>not</em> not trigger the action associated with the button.  To do that, use performClick().</remarks>
         public void SetStateOn(bool isOn = true) {
              InternalUnsafeMethods.SetStateOn__Args _args = new InternalUnsafeMethods.SetStateOn__Args() {
                 isOn = isOn,
@@ -399,6 +421,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetStateOn()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the text display on the button's label (if any).
+        /// </description>
+        /// <returns>The button's label.</returns>
         public string GetText() {
              InternalUnsafeMethods.GetText__Args _args = new InternalUnsafeMethods.GetText__Args() {
              };
@@ -406,6 +432,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Set the text displayed on the button's label using a string from the string table assigned to the control.
+        /// </description>
+        /// <param name="id">Name of the variable that contains the integer string ID.  Used to look up string in table.</param>
+        /// <remarks> Not all buttons render text labels.
+        /// 
+        /// </remarks>
+        /// <see cref="setText" />
+        /// <see cref="getText" />
+        /// <see cref="GuiControl::langTableMod" />
+        /// <see cref="LangTable" />
         public void SetTextID(string id) {
              InternalUnsafeMethods.SetTextID__Args _args = new InternalUnsafeMethods.SetTextID__Args() {
                 id = id,
@@ -413,6 +450,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTextID()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the text displayed on the button's label.
+        /// </description>
+        /// <param name="text">The text to display as the button's text label.</param>
+        /// <remarks> Not all buttons render text labels.
+        /// 
+        /// </remarks>
+        /// <see cref="getText" />
+        /// <see cref="setTextID" />
         public void SetText(string text) {
              InternalUnsafeMethods.SetText__Args _args = new InternalUnsafeMethods.SetText__Args() {
                 text = text,
@@ -420,60 +466,93 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetText()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Simulate a click on the button.
+        /// This method will trigger the button's action just as if the button had been pressed by the user.
+        /// </description>
         public void PerformClick() {
              InternalUnsafeMethods.PerformClick__Args _args = new InternalUnsafeMethods.PerformClick__Args() {
              };
              InternalUnsafeMethods.PerformClick()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// If #useMouseEvents is true, this is called when a left mouse button drag is detected, i.e. when the user pressed the left mouse button on the control and then moves the mouse over a certain distance threshold with the mouse button still pressed.
+        /// </description>
         public virtual void OnMouseDragged() {
              InternalUnsafeMethods.OnMouseDragged__Args _args = new InternalUnsafeMethods.OnMouseDragged__Args() {
              };
              InternalUnsafeMethods.OnMouseDragged()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// If #useMouseEvents is true, this is called when the mouse cursor moves off the button (only if the button had previously received an onMouseEvent() event).
+        /// </description>
         public virtual void OnMouseLeave() {
              InternalUnsafeMethods.OnMouseLeave__Args _args = new InternalUnsafeMethods.OnMouseLeave__Args() {
              };
              InternalUnsafeMethods.OnMouseLeave()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// If #useMouseEvents is true, this is called when the mouse cursor moves over the button (only if the button is the front-most visible control, though).
+        /// </description>
         public virtual void OnMouseEnter() {
              InternalUnsafeMethods.OnMouseEnter__Args _args = new InternalUnsafeMethods.OnMouseEnter__Args() {
              };
              InternalUnsafeMethods.OnMouseEnter()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the right mouse button is clicked on the button.
+        /// </description>
         public virtual void OnRightClick() {
              InternalUnsafeMethods.OnRightClick__Args _args = new InternalUnsafeMethods.OnRightClick__Args() {
              };
              InternalUnsafeMethods.OnRightClick()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the left mouse button is double-clicked on the button.
+        /// </description>
         public virtual void OnDoubleClick() {
              InternalUnsafeMethods.OnDoubleClick__Args _args = new InternalUnsafeMethods.OnDoubleClick__Args() {
              };
              InternalUnsafeMethods.OnDoubleClick()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the primary action of the button is triggered (e.g. by a left mouse click).
+        /// </description>
         public virtual void OnClick() {
              InternalUnsafeMethods.OnClick__Args _args = new InternalUnsafeMethods.OnClick__Args() {
              };
              InternalUnsafeMethods.OnClick()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// If #useMouseEvents is true, this is called when the left mouse button is release over an (active) button.
+        /// </description>
+        /// <remarks> To trigger actions, better use onClick() since onMouseUp() will also be called when the mouse was not originally pressed on the button.</remarks>
         public virtual void OnMouseUp() {
              InternalUnsafeMethods.OnMouseUp__Args _args = new InternalUnsafeMethods.OnMouseUp__Args() {
              };
              InternalUnsafeMethods.OnMouseUp()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// If #useMouseEvents is true, this is called when the left mouse button is pressed on an (active) button.
+        /// </description>
         public virtual void OnMouseDown() {
              InternalUnsafeMethods.OnMouseDown__Args _args = new InternalUnsafeMethods.OnMouseDown__Args() {
              };
              InternalUnsafeMethods.OnMouseDown()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiButtonBaseCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiButtonBaseCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -481,26 +560,61 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Text label to display on button (if button class supports text labels).
+        /// </description>
+        /// </value>
         public string Text {
             get => GenericMarshal.StringTo<string>(GetFieldValue("text"));
             set => SetFieldValue("text", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ID of string in string table to use for text label on button.
+        /// </description>
+        /// <see cref="setTextID" />
+        /// <see cref="GuiControl::langTableMod" />
+        /// <see cref="LangTable" />
+        /// </value>
         public string TextID {
             get => GenericMarshal.StringTo<string>(GetFieldValue("textID"));
             set => SetFieldValue("textID", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Radio button toggle group number.  All radio buttons that are assigned the same #groupNum and that are parented to the same control will synchronize their toggle state, i.e. if one radio button is toggled on all other radio buttons in its group will be toggled off.
+        /// 
+        /// The default group is -1.
+        /// </description>
+        /// </value>
         public int GroupNum {
             get => GenericMarshal.StringTo<int>(GetFieldValue("groupNum"));
             set => SetFieldValue("groupNum", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Button behavior type.
+        /// </description>
+        /// </value>
         public GuiButtonType ButtonType {
             get => GenericMarshal.StringTo<GuiButtonType>(GetFieldValue("buttonType"));
             set => SetFieldValue("buttonType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, mouse events will be passed on to script.  Default is false.
+        /// </description>
+        /// </value>
         public bool UseMouseEvents {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useMouseEvents"));
             set => SetFieldValue("useMouseEvents", GenericMarshal.ToString(value));

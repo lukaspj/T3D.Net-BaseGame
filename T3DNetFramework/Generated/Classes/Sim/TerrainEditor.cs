@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The base Terrain Editor tool</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class TerrainEditor : EditTSCtrl {
         public TerrainEditor(bool pRegister = false) 
             : base(pRegister) {
@@ -952,6 +956,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Rule based terrain painting.
+        /// </description>
+        /// <param name="minHeight">Minimum terrain height.</param>
+        /// <param name="maxHeight">Maximum terrain height.</param>
+        /// <param name="minSlope">Minimum terrain slope.</param>
+        /// <param name="maxSlope">Maximum terrain slope.</param>
+        /// <param name="coverage">Terrain coverage amount.</param>
         public void AutoMaterialLayer(float minHeight, float maxHeight, float minSlope, float maxSlope, float coverage) {
              InternalUnsafeMethods.AutoMaterialLayer__Args _args = new InternalUnsafeMethods.AutoMaterialLayer__Args() {
                 minHeight = minHeight,
@@ -963,6 +975,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AutoMaterialLayer()(ObjectPtr, _args);
         }
 
+        /// 
         public float SetSlopeLimitMaxAngle(float angle) {
              InternalUnsafeMethods.SetSlopeLimitMaxAngle__Args _args = new InternalUnsafeMethods.SetSlopeLimitMaxAngle__Args() {
                 angle = angle,
@@ -971,6 +984,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public float GetSlopeLimitMaxAngle() {
              InternalUnsafeMethods.GetSlopeLimitMaxAngle__Args _args = new InternalUnsafeMethods.GetSlopeLimitMaxAngle__Args() {
              };
@@ -978,6 +992,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public float SetSlopeLimitMinAngle(float angle) {
              InternalUnsafeMethods.SetSlopeLimitMinAngle__Args _args = new InternalUnsafeMethods.SetSlopeLimitMinAngle__Args() {
                 angle = angle,
@@ -986,6 +1001,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public float GetSlopeLimitMinAngle() {
              InternalUnsafeMethods.GetSlopeLimitMinAngle__Args _args = new InternalUnsafeMethods.GetSlopeLimitMinAngle__Args() {
              };
@@ -993,6 +1009,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (x/y/z) Gets the terrain block that is located under the given world point.
+        /// </description>
+        /// <param name="x/y/z">The world coordinates (floating point values) you wish to query at. These can be formatted as either a string ("x y z") or separately as (x, y, z)</param>
+        /// <returns>Returns the ID of the requested terrain block (0 if not found).</returns>
         public int GetTerrainUnderWorldPoint(string ptOrX = "", string Y = "", string Z = "") {
              InternalUnsafeMethods.GetTerrainUnderWorldPoint__Args _args = new InternalUnsafeMethods.GetTerrainUnderWorldPoint__Args() {
                 ptOrX = ptOrX,
@@ -1003,6 +1024,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( int index, int order ) - Reorder material at the given index to the new position, changing the order in which it is rendered / blended.
+        /// </description>
         public void ReorderMaterial(int index, int orderPos) {
              InternalUnsafeMethods.ReorderMaterial__Args _args = new InternalUnsafeMethods.ReorderMaterial__Args() {
                 index = index,
@@ -1011,6 +1035,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ReorderMaterial()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( string name ) - Returns the index of the material with the given name or -1.
+        /// </description>
         public int GetMaterialIndex(string name) {
              InternalUnsafeMethods.GetMaterialIndex__Args _args = new InternalUnsafeMethods.GetMaterialIndex__Args() {
                 name = name,
@@ -1019,6 +1046,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( int index ) - Returns the name of the material at the given index.
+        /// </description>
         public string GetMaterialName(int index) {
              InternalUnsafeMethods.GetMaterialName__Args _args = new InternalUnsafeMethods.GetMaterialName__Args() {
                 index = index,
@@ -1027,6 +1057,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// () gets the list of current terrain materials.
+        /// </description>
         public string GetMaterials() {
              InternalUnsafeMethods.GetMaterials__Args _args = new InternalUnsafeMethods.GetMaterials__Args() {
              };
@@ -1034,6 +1067,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns the current material count.
+        /// </description>
         public int GetMaterialCount() {
              InternalUnsafeMethods.GetMaterialCount__Args _args = new InternalUnsafeMethods.GetMaterialCount__Args() {
              };
@@ -1041,6 +1077,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( int index ) - Remove the material at the given index.
+        /// </description>
         public void RemoveMaterial(int index) {
              InternalUnsafeMethods.RemoveMaterial__Args _args = new InternalUnsafeMethods.RemoveMaterial__Args() {
                 index = index,
@@ -1048,6 +1087,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveMaterial()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( string matName )
+        /// Adds a new material.
+        /// </description>
         public int AddMaterial(string matName) {
              InternalUnsafeMethods.AddMaterial__Args _args = new InternalUnsafeMethods.AddMaterial__Args() {
                 matName = matName,
@@ -1056,6 +1099,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( int index, string matName )
+        /// Changes the material name at the index.
+        /// </description>
         public bool UpdateMaterial(uint index, string matName) {
              InternalUnsafeMethods.UpdateMaterial__Args _args = new InternalUnsafeMethods.UpdateMaterial__Args() {
                 index = index,
@@ -1065,6 +1112,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (bool overlayEnable) - sets the terraformer current heightmap to draw as an overlay over the current terrain.
+        /// </description>
         public void SetTerraformOverlay(bool overlayEnable) {
              InternalUnsafeMethods.SetTerraformOverlay__Args _args = new InternalUnsafeMethods.SetTerraformOverlay__Args() {
                 overlayEnable = overlayEnable,
@@ -1072,6 +1122,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTerraformOverlay()(ObjectPtr, _args);
         }
 
+        /// 
         public void MirrorTerrain(int mirrorIndex) {
              InternalUnsafeMethods.MirrorTerrain__Args _args = new InternalUnsafeMethods.MirrorTerrain__Args() {
                 mirrorIndex = mirrorIndex,
@@ -1079,12 +1130,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.MirrorTerrain()(ObjectPtr, _args);
         }
 
+        /// 
         public void MarkEmptySquares() {
              InternalUnsafeMethods.MarkEmptySquares__Args _args = new InternalUnsafeMethods.MarkEmptySquares__Args() {
              };
              InternalUnsafeMethods.MarkEmptySquares()(ObjectPtr, _args);
         }
 
+        /// 
         public int GetNumTextures() {
              InternalUnsafeMethods.GetNumTextures__Args _args = new InternalUnsafeMethods.GetNumTextures__Args() {
              };
@@ -1092,6 +1145,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public int GetActiveTerrain() {
              InternalUnsafeMethods.GetActiveTerrain__Args _args = new InternalUnsafeMethods.GetActiveTerrain__Args() {
              };
@@ -1099,6 +1153,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string action=NULL)
+        /// </description>
         public void ProcessAction(string action = "") {
              InternalUnsafeMethods.ProcessAction__Args _args = new InternalUnsafeMethods.ProcessAction__Args() {
                 action = action,
@@ -1106,12 +1163,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ProcessAction()(ObjectPtr, _args);
         }
 
+        /// 
         public void ClearSelection() {
              InternalUnsafeMethods.ClearSelection__Args _args = new InternalUnsafeMethods.ClearSelection__Args() {
              };
              InternalUnsafeMethods.ClearSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (bool clear)
+        /// </description>
         public void ResetSelWeights(bool clear) {
              InternalUnsafeMethods.ResetSelWeights__Args _args = new InternalUnsafeMethods.ResetSelWeights__Args() {
                 clear = clear,
@@ -1119,6 +1180,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ResetSelWeights()(ObjectPtr, _args);
         }
 
+        /// 
         public string GetCurrentAction() {
              InternalUnsafeMethods.GetCurrentAction__Args _args = new InternalUnsafeMethods.GetCurrentAction__Args() {
              };
@@ -1126,6 +1188,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// 
         public int GetNumActions() {
              InternalUnsafeMethods.GetNumActions__Args _args = new InternalUnsafeMethods.GetNumActions__Args() {
              };
@@ -1133,6 +1196,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (int num)
+        /// </description>
         public string GetActionName(uint index) {
              InternalUnsafeMethods.GetActionName__Args _args = new InternalUnsafeMethods.GetActionName__Args() {
                 index = index,
@@ -1141,6 +1207,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (string action_name)
+        /// </description>
         public void SetAction(string action_name) {
              InternalUnsafeMethods.SetAction__Args _args = new InternalUnsafeMethods.SetAction__Args() {
                 action_name = action_name,
@@ -1148,6 +1217,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAction()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Location
+        /// </description>
         public void SetBrushPos(Point2I pos) {
 pos.Alloc();             InternalUnsafeMethods.SetBrushPos__Args _args = new InternalUnsafeMethods.SetBrushPos__Args() {
                 pos = pos.internalStructPtr,
@@ -1155,6 +1227,9 @@ pos.Alloc();             InternalUnsafeMethods.SetBrushPos__Args _args = new Int
              InternalUnsafeMethods.SetBrushPos()(ObjectPtr, _args);
 pos.Free();        }
 
+        /// <description>
+        /// Returns a Point2I.
+        /// </description>
         public string GetBrushPos() {
              InternalUnsafeMethods.GetBrushPos__Args _args = new InternalUnsafeMethods.GetBrushPos__Args() {
              };
@@ -1162,6 +1237,9 @@ pos.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public float GetBrushSoftness() {
              InternalUnsafeMethods.GetBrushSoftness__Args _args = new InternalUnsafeMethods.GetBrushSoftness__Args() {
              };
@@ -1169,6 +1247,9 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// (float softness)
+        /// </description>
         public void SetBrushSoftness(float softness) {
              InternalUnsafeMethods.SetBrushSoftness__Args _args = new InternalUnsafeMethods.SetBrushSoftness__Args() {
                 softness = softness,
@@ -1176,6 +1257,9 @@ pos.Free();        }
              InternalUnsafeMethods.SetBrushSoftness()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public float GetBrushPressure() {
              InternalUnsafeMethods.GetBrushPressure__Args _args = new InternalUnsafeMethods.GetBrushPressure__Args() {
              };
@@ -1183,6 +1267,9 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// (float pressure)
+        /// </description>
         public void SetBrushPressure(float pressure) {
              InternalUnsafeMethods.SetBrushPressure__Args _args = new InternalUnsafeMethods.SetBrushPressure__Args() {
                 pressure = pressure,
@@ -1190,6 +1277,9 @@ pos.Free();        }
              InternalUnsafeMethods.SetBrushPressure()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public string GetBrushSize() {
              InternalUnsafeMethods.GetBrushSize__Args _args = new InternalUnsafeMethods.GetBrushSize__Args() {
              };
@@ -1197,6 +1287,9 @@ pos.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (int w [, int h])
+        /// </description>
         public void SetBrushSize(int w, int h = 0) {
              InternalUnsafeMethods.SetBrushSize__Args _args = new InternalUnsafeMethods.SetBrushSize__Args() {
                 w = w,
@@ -1205,6 +1298,9 @@ pos.Free();        }
              InternalUnsafeMethods.SetBrushSize()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public string GetBrushType() {
              InternalUnsafeMethods.GetBrushType__Args _args = new InternalUnsafeMethods.GetBrushType__Args() {
              };
@@ -1212,6 +1308,9 @@ pos.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (string type)One of box, ellipse, selection.
+        /// </description>
         public void SetBrushType(string type) {
              InternalUnsafeMethods.SetBrushType__Args _args = new InternalUnsafeMethods.SetBrushType__Args() {
                 type = type,
@@ -1219,6 +1318,9 @@ pos.Free();        }
              InternalUnsafeMethods.SetBrushType()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () gets the list of current terrain materials for all terrain blocks.
+        /// </description>
         public string GetTerrainBlocksMaterialList() {
              InternalUnsafeMethods.GetTerrainBlocksMaterialList__Args _args = new InternalUnsafeMethods.GetTerrainBlocksMaterialList__Args() {
              };
@@ -1226,6 +1328,9 @@ pos.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (S32 index)
+        /// </description>
         public int GetTerrainBlock(int index) {
              InternalUnsafeMethods.GetTerrainBlock__Args _args = new InternalUnsafeMethods.GetTerrainBlock__Args() {
                 index = index,
@@ -1234,6 +1339,9 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public int GetTerrainBlockCount() {
              InternalUnsafeMethods.GetTerrainBlockCount__Args _args = new InternalUnsafeMethods.GetTerrainBlockCount__Args() {
              };
@@ -1241,6 +1349,9 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// (TerrainBlock terrain)
+        /// </description>
         public void AttachTerrain(string terrain = "") {
              InternalUnsafeMethods.AttachTerrain__Args _args = new InternalUnsafeMethods.AttachTerrain__Args() {
                 terrain = terrain,
@@ -1248,6 +1359,10 @@ pos.Free();        }
              InternalUnsafeMethods.AttachTerrain()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the TerrainEditor class.
+        /// </description>
+        /// <returns>The type info object for TerrainEditor</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -1255,116 +1370,208 @@ pos.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsDirty {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isDirty"));
             set => SetFieldValue("isDirty", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsMissionDirty {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isMissionDirty"));
             set => SetFieldValue("isMissionDirty", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderBorder {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderBorder"));
             set => SetFieldValue("renderBorder", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float BorderHeight {
             get => GenericMarshal.StringTo<float>(GetFieldValue("borderHeight"));
             set => SetFieldValue("borderHeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI BorderFillColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("borderFillColor"));
             set => SetFieldValue("borderFillColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI BorderFrameColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("borderFrameColor"));
             set => SetFieldValue("borderFrameColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool BorderLineMode {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("borderLineMode"));
             set => SetFieldValue("borderLineMode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool SelectionHidden {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("selectionHidden"));
             set => SetFieldValue("selectionHidden", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderVertexSelection {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderVertexSelection"));
             set => SetFieldValue("renderVertexSelection", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderSolidBrush {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderSolidBrush"));
             set => SetFieldValue("renderSolidBrush", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ProcessUsesBrush {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("processUsesBrush"));
             set => SetFieldValue("processUsesBrush", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point2I MaxBrushSize {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("maxBrushSize"));
             set => SetFieldValue("maxBrushSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float AdjustHeightVal {
             get => GenericMarshal.StringTo<float>(GetFieldValue("adjustHeightVal"));
             set => SetFieldValue("adjustHeightVal", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float SetHeightVal {
             get => GenericMarshal.StringTo<float>(GetFieldValue("setHeightVal"));
             set => SetFieldValue("setHeightVal", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float ScaleVal {
             get => GenericMarshal.StringTo<float>(GetFieldValue("scaleVal"));
             set => SetFieldValue("scaleVal", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float SmoothFactor {
             get => GenericMarshal.StringTo<float>(GetFieldValue("smoothFactor"));
             set => SetFieldValue("smoothFactor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float NoiseFactor {
             get => GenericMarshal.StringTo<float>(GetFieldValue("noiseFactor"));
             set => SetFieldValue("noiseFactor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int MaterialGroup {
             get => GenericMarshal.StringTo<int>(GetFieldValue("materialGroup"));
             set => SetFieldValue("materialGroup", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float SoftSelectRadius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("softSelectRadius"));
             set => SetFieldValue("softSelectRadius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string SoftSelectFilter {
             get => GenericMarshal.StringTo<string>(GetFieldValue("softSelectFilter"));
             set => SetFieldValue("softSelectFilter", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string SoftSelectDefaultFilter {
             get => GenericMarshal.StringTo<string>(GetFieldValue("softSelectDefaultFilter"));
             set => SetFieldValue("softSelectDefaultFilter", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float AdjustHeightMouseScale {
             get => GenericMarshal.StringTo<float>(GetFieldValue("adjustHeightMouseScale"));
             set => SetFieldValue("adjustHeightMouseScale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int PaintIndex {
             get => GenericMarshal.StringTo<int>(GetFieldValue("paintIndex"));
             set => SetFieldValue("paintIndex", GenericMarshal.ToString(value));

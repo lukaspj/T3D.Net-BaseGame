@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The base class for the sketch tool</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiConvexEditorCtrl : EditTSCtrl {
         public GuiConvexEditorCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -260,12 +264,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void SplitSelectedFace() {
              InternalUnsafeMethods.SplitSelectedFace__Args _args = new InternalUnsafeMethods.SplitSelectedFace__Args() {
              };
              InternalUnsafeMethods.SplitSelectedFace()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( ConvexShape )
+        /// </description>
         public void SelectConvex(ConvexShape convex) {
              InternalUnsafeMethods.SelectConvex__Args _args = new InternalUnsafeMethods.SelectConvex__Args() {
                 convex = convex.ObjectPtr,
@@ -273,24 +281,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SelectConvex()(ObjectPtr, _args);
         }
 
+        /// 
         public void DropSelectionAtScreenCenter() {
              InternalUnsafeMethods.DropSelectionAtScreenCenter__Args _args = new InternalUnsafeMethods.DropSelectionAtScreenCenter__Args() {
              };
              InternalUnsafeMethods.DropSelectionAtScreenCenter()(ObjectPtr, _args);
         }
 
+        /// 
         public void HandleDeselect() {
              InternalUnsafeMethods.HandleDeselect__Args _args = new InternalUnsafeMethods.HandleDeselect__Args() {
              };
              InternalUnsafeMethods.HandleDeselect()(ObjectPtr, _args);
         }
 
+        /// 
         public void HandleDelete() {
              InternalUnsafeMethods.HandleDelete__Args _args = new InternalUnsafeMethods.HandleDelete__Args() {
              };
              InternalUnsafeMethods.HandleDelete()(ObjectPtr, _args);
         }
 
+        /// 
         public int HasSelection() {
              InternalUnsafeMethods.HasSelection__Args _args = new InternalUnsafeMethods.HasSelection__Args() {
              };
@@ -298,18 +310,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public void RecenterSelection() {
              InternalUnsafeMethods.RecenterSelection__Args _args = new InternalUnsafeMethods.RecenterSelection__Args() {
              };
              InternalUnsafeMethods.RecenterSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public void HollowSelection() {
              InternalUnsafeMethods.HollowSelection__Args _args = new InternalUnsafeMethods.HollowSelection__Args() {
              };
              InternalUnsafeMethods.HollowSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiConvexEditorCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiConvexEditorCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -317,11 +335,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsDirty {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isDirty"));
             set => SetFieldValue("isDirty", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string MaterialName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("materialName"));
             set => SetFieldValue("materialName", GenericMarshal.ToString(value));

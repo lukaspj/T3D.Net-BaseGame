@@ -14,7 +14,23 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock which defines and performs light animation, such as rotation, brightness fade, and colorization.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// datablock LightAnimData( SubtlePulseLightAnim )
+    /// {
+    ///    brightnessA = 0.5;
+    ///    brightnessZ = 1;
+    ///    brightnessPeriod = 1;
+    ///    brightnessKeys = "aza";
+    ///    brightnessSmooth = true;
+    /// };
+    /// </code>
+    /// <see cref="LightBase" />
+    /// <see cref="LightDescription" />
     public unsafe class LightAnimData : SimDataBlock {
         public LightAnimData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +115,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the LightAnimData class.
+        /// </description>
+        /// <returns>The type info object for LightAnimData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +126,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The value of the A key in the keyframe sequence.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> OffsetA {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -116,6 +142,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The value of the Z key in the keyframe sequence.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> OffsetZ {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -126,6 +158,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The animation time for keyframe sequence.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> OffsetPeriod {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -136,6 +174,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The keyframe sequence encoded into a string where characters from A to Z define a position between the two animation values.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> OffsetKeys {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -146,6 +190,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true the transition between keyframes will be smooth.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> OffsetSmooth {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -156,6 +206,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The value of the A key in the keyframe sequence.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> RotA {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -166,6 +222,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The value of the Z key in the keyframe sequence.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> RotZ {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -176,6 +238,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The animation time for keyframe sequence.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> RotPeriod {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -186,6 +254,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The keyframe sequence encoded into a string where characters from A to Z define a position between the two animation values.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> RotKeys {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -196,6 +270,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true the transition between keyframes will be smooth.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> RotSmooth {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -206,6 +286,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The value of the A key in the keyframe sequence.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> ColorA {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -216,6 +302,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The value of the Z key in the keyframe sequence.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> ColorZ {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -226,6 +318,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The animation time for keyframe sequence.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> ColorPeriod {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -236,6 +334,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The keyframe sequence encoded into a string where characters from A to Z define a position between the two animation values.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> ColorKeys {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -246,6 +350,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true the transition between keyframes will be smooth.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> ColorSmooth {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -256,26 +366,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The value of the A key in the keyframe sequence.
+        /// </description>
+        /// </value>
         public float BrightnessA {
             get => GenericMarshal.StringTo<float>(GetFieldValue("brightnessA"));
             set => SetFieldValue("brightnessA", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The value of the Z key in the keyframe sequence.
+        /// </description>
+        /// </value>
         public float BrightnessZ {
             get => GenericMarshal.StringTo<float>(GetFieldValue("brightnessZ"));
             set => SetFieldValue("brightnessZ", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The animation time for keyframe sequence.
+        /// </description>
+        /// </value>
         public float BrightnessPeriod {
             get => GenericMarshal.StringTo<float>(GetFieldValue("brightnessPeriod"));
             set => SetFieldValue("brightnessPeriod", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The keyframe sequence encoded into a string where characters from A to Z define a position between the two animation values.
+        /// </description>
+        /// </value>
         public string BrightnessKeys {
             get => GenericMarshal.StringTo<string>(GetFieldValue("brightnessKeys"));
             set => SetFieldValue("brightnessKeys", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true the transition between keyframes will be smooth.
+        /// </description>
+        /// </value>
         public bool BrightnessSmooth {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("brightnessSmooth"));
             set => SetFieldValue("brightnessSmooth", GenericMarshal.ToString(value));

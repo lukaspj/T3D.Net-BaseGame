@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The main World Editor tool class</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class WorldEditor : EditTSCtrl {
         public WorldEditor(bool pRegister = false) 
             : base(pRegister) {
@@ -1175,6 +1179,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Gets the active Editor Tool for the world editor.
+        /// </description>
         public EditorTool GetActiveEditorTool() {
              InternalUnsafeMethods.GetActiveEditorTool__Args _args = new InternalUnsafeMethods.GetActiveEditorTool__Args() {
              };
@@ -1182,6 +1189,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EditorTool(_engineResult);
         }
 
+        /// <description>
+        /// Sets the active Editor Tool for the world editor.
+        /// </description>
         public void SetEditorTool(EditorTool newEditorTool = null) {
              InternalUnsafeMethods.SetEditorTool__Args _args = new InternalUnsafeMethods.SetEditorTool__Args() {
                 newEditorTool = newEditorTool.ObjectPtr,
@@ -1189,6 +1199,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetEditorTool()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Create a ConvexShape from the given polyhedral object.
+        /// </description>
         public ConvexShape CreateConvexShapeFrom(SceneObject polyObject) {
              InternalUnsafeMethods.CreateConvexShapeFrom__Args _args = new InternalUnsafeMethods.CreateConvexShapeFrom__Args() {
                 polyObject = polyObject.ObjectPtr,
@@ -1197,6 +1210,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new ConvexShape(_engineResult);
         }
 
+        /// <description>
+        /// Grab the geometry from<paramref name="" /> geometryProvider, create a 
+        /// </description>
         public SceneObject CreatePolyhedralObject(string className, SceneObject geometryProvider) {
              InternalUnsafeMethods.CreatePolyhedralObject__Args _args = new InternalUnsafeMethods.CreatePolyhedralObject__Args() {
                 className = className,
@@ -1206,6 +1222,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SceneObject(_engineResult);
         }
 
+        /// <description>
+        /// Mount object B relatively to object A.
+        /// </description>
+        /// <param name="objA">Object to mount to.</param>
+        /// <param name="objB">Object to mount.</param>
         public void MountRelative(SceneObject objA, SceneObject objB) {
              InternalUnsafeMethods.MountRelative__Args _args = new InternalUnsafeMethods.MountRelative__Args() {
                 objA = objA.ObjectPtr,
@@ -1214,6 +1235,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.MountRelative()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Save selected objects to a .dae collada file and replace them in the level with a TSStatic object.
+        /// </description>
+        /// <param name="filename">collada file to save the selected objects to.</param>
         public void MakeSelectionAMesh(string filename) {
              InternalUnsafeMethods.MakeSelectionAMesh__Args _args = new InternalUnsafeMethods.MakeSelectionAMesh__Args() {
                 filename = filename,
@@ -1221,12 +1246,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.MakeSelectionAMesh()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Replace selected Prefab objects with a SimGroup containing all children objects defined in the .prefab.
+        /// </description>
         public void ExplodeSelectedPrefab() {
              InternalUnsafeMethods.ExplodeSelectedPrefab__Args _args = new InternalUnsafeMethods.ExplodeSelectedPrefab__Args() {
              };
              InternalUnsafeMethods.ExplodeSelectedPrefab()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Save selected objects to a .prefab file and replace them in the level with a Prefab object.
+        /// </description>
+        /// <param name="filename">Prefab file to save the selected objects to.</param>
         public void MakeSelectionPrefab(string filename) {
              InternalUnsafeMethods.MakeSelectionPrefab__Args _args = new InternalUnsafeMethods.MakeSelectionPrefab__Args() {
                 filename = filename,
@@ -1234,6 +1266,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.MakeSelectionPrefab()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Export the combined geometry of all selected objects to the specified path in collada format.
+        /// </description>
+        /// <param name="path">Path to export collada format to.</param>
         public void ColladaExportSelection(string path) {
              InternalUnsafeMethods.ColladaExportSelection__Args _args = new InternalUnsafeMethods.ColladaExportSelection__Args() {
                 path = path,
@@ -1241,6 +1277,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ColladaExportSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Transform selection by given parameters.
+        /// </description>
+        /// <param name="position">True to transform the selection's position.</param>
+        /// <param name="point">Position to transform by.</param>
+        /// <param name="relativePos">True to use relative position.</param>
+        /// <param name="rotate">True to transform the selection's rotation.</param>
+        /// <param name="rotation">Rotation to transform by.</param>
+        /// <param name="relativeRot">True to use the relative rotation.</param>
+        /// <param name="rotLocal">True to use the local rotation.</param>
+        /// <param name="scaleType">Scale type to use.</param>
+        /// <param name="scale">Scale to transform by.</param>
+        /// <param name="sRelative">True to use a relative scale.</param>
+        /// <param name="sLocal">True to use a local scale.</param>
         public void TransformSelection(bool position, Point3F point, bool relativePos, bool rotate, Point3F rotation, bool relativeRot, bool rotLocal, int scaleType, Point3F scale, bool sRelative, bool sLocal) {
 point.Alloc();rotation.Alloc();scale.Alloc();             InternalUnsafeMethods.TransformSelection__Args _args = new InternalUnsafeMethods.TransformSelection__Args() {
                 position = position,
@@ -1258,6 +1308,10 @@ point.Alloc();rotation.Alloc();scale.Alloc();             InternalUnsafeMethods.
              InternalUnsafeMethods.TransformSelection()(ObjectPtr, _args);
 point.Free();rotation.Free();scale.Free();        }
 
+        /// <description>
+        /// Set the terrain snap alignment.
+        /// </description>
+        /// <param name="alignment">New terrain snap alignment type.</param>
         public void SetTerrainSnapAlignment(WorldEditorAlignmentType alignment) {
              InternalUnsafeMethods.SetTerrainSnapAlignment__Args _args = new InternalUnsafeMethods.SetTerrainSnapAlignment__Args() {
                 alignment = (int)alignment,
@@ -1265,6 +1319,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SetTerrainSnapAlignment()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the terrain snap alignment.
+        /// </description>
+        /// <returns>terrain snap alignment type.</returns>
         public WorldEditorAlignmentType GetTerrainSnapAlignment() {
              InternalUnsafeMethods.GetTerrainSnapAlignment__Args _args = new InternalUnsafeMethods.GetTerrainSnapAlignment__Args() {
              };
@@ -1272,6 +1330,10 @@ point.Free();rotation.Free();scale.Free();        }
              return (WorldEditorAlignmentType)_engineResult;
         }
 
+        /// <description>
+        /// Toggle soft snapping debug rendering.
+        /// </description>
+        /// <param name="debugRender">True to turn on soft snapping debug rendering, false to turn it off.</param>
         public void SoftSnapDebugRender(float debugRender) {
              InternalUnsafeMethods.SoftSnapDebugRender__Args _args = new InternalUnsafeMethods.SoftSnapDebugRender__Args() {
                 debugRender = debugRender,
@@ -1279,6 +1341,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SoftSnapDebugRender()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Render the soft snapped triangle.
+        /// </description>
+        /// <param name="renderTriangle">True to render the soft snapped triangle, false to not.</param>
         public void SoftSnapRenderTriangle(float renderTriangle) {
              InternalUnsafeMethods.SoftSnapRenderTriangle__Args _args = new InternalUnsafeMethods.SoftSnapRenderTriangle__Args() {
                 renderTriangle = renderTriangle,
@@ -1286,6 +1352,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SoftSnapRenderTriangle()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Render the soft snapping bounds.
+        /// </description>
+        /// <param name="render">True to render the soft snapping bounds, false to not.</param>
         public void SoftSnapRender(float render) {
              InternalUnsafeMethods.SoftSnapRender__Args _args = new InternalUnsafeMethods.SoftSnapRender__Args() {
                 render = render,
@@ -1293,6 +1363,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SoftSnapRender()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the fraction of the soft snap radius that backfaces may be included.
+        /// </description>
+        /// <param name="tolerance">Fraction of the soft snap radius that backfaces may be included (range of 0..1).</param>
         public void SetSoftSnapBackfaceTolerance(float tolerance) {
              InternalUnsafeMethods.SetSoftSnapBackfaceTolerance__Args _args = new InternalUnsafeMethods.SetSoftSnapBackfaceTolerance__Args() {
                 tolerance = tolerance,
@@ -1300,6 +1374,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SetSoftSnapBackfaceTolerance()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the fraction of the soft snap radius that backfaces may be included.
+        /// </description>
+        /// <returns>fraction of the soft snap radius that backfaces may be included.</returns>
         public float GetSoftSnapBackfaceTolerance() {
              InternalUnsafeMethods.GetSoftSnapBackfaceTolerance__Args _args = new InternalUnsafeMethods.GetSoftSnapBackfaceTolerance__Args() {
              };
@@ -1307,6 +1385,10 @@ point.Free();rotation.Free();scale.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Use selection bounds size as soft snap bounds.
+        /// </description>
+        /// <param name="useBounds">True to use selection bounds size as soft snap bounds, false to not.</param>
         public void SoftSnapSizeByBounds(bool useBounds) {
              InternalUnsafeMethods.SoftSnapSizeByBounds__Args _args = new InternalUnsafeMethods.SoftSnapSizeByBounds__Args() {
                 useBounds = useBounds,
@@ -1314,6 +1396,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SoftSnapSizeByBounds()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the soft snap alignment.
+        /// </description>
+        /// <param name="type">Soft snap alignment type.</param>
         public void SetSoftSnapAlignment(WorldEditorAlignmentType type) {
              InternalUnsafeMethods.SetSoftSnapAlignment__Args _args = new InternalUnsafeMethods.SetSoftSnapAlignment__Args() {
                 type = (int)type,
@@ -1321,6 +1407,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SetSoftSnapAlignment()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the soft snap alignment.
+        /// </description>
+        /// <returns>soft snap alignment.</returns>
         public WorldEditorAlignmentType GetSoftSnapAlignment() {
              InternalUnsafeMethods.GetSoftSnapAlignment__Args _args = new InternalUnsafeMethods.GetSoftSnapAlignment__Args() {
              };
@@ -1328,6 +1418,10 @@ point.Free();rotation.Free();scale.Free();        }
              return (WorldEditorAlignmentType)_engineResult;
         }
 
+        /// <description>
+        /// Set the absolute size to trigger a soft snap.
+        /// </description>
+        /// <param name="size">Absolute size to trigger a soft snap.</param>
         public void SetSoftSnapSize(float size) {
              InternalUnsafeMethods.SetSoftSnapSize__Args _args = new InternalUnsafeMethods.SetSoftSnapSize__Args() {
                 size = size,
@@ -1335,6 +1429,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SetSoftSnapSize()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the absolute size to trigger a soft snap.
+        /// </description>
+        /// <returns>absolute size to trigger a soft snap.</returns>
         public float GetSoftSnapSize() {
              InternalUnsafeMethods.GetSoftSnapSize__Args _args = new InternalUnsafeMethods.GetSoftSnapSize__Args() {
              };
@@ -1342,6 +1440,10 @@ point.Free();rotation.Free();scale.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Allow soft snapping all of the time.
+        /// </description>
+        /// <param name="softSnap">True to turn soft snap on, false to turn it off.</param>
         public void SetSoftSnap(bool softSnap) {
              InternalUnsafeMethods.SetSoftSnap__Args _args = new InternalUnsafeMethods.SetSoftSnap__Args() {
                 softSnap = softSnap,
@@ -1349,6 +1451,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SetSoftSnap()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Is soft snapping always on?
+        /// </description>
+        /// <returns>True if soft snap is on, false if not.</returns>
         public bool GetSoftSnap() {
              InternalUnsafeMethods.GetSoftSnap__Args _args = new InternalUnsafeMethods.GetSoftSnap__Args() {
              };
@@ -1356,12 +1462,19 @@ point.Free();rotation.Free();scale.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Adds/Submits an undo state to the undo manager.
+        /// </description>
         public void AddUndoState() {
              InternalUnsafeMethods.AddUndoState__Args _args = new InternalUnsafeMethods.AddUndoState__Args() {
              };
              InternalUnsafeMethods.AddUndoState()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Redirect console.
+        /// </description>
+        /// <param name="objID">Object id.</param>
         public void RedirectConsole(int objID) {
              InternalUnsafeMethods.RedirectConsole__Args _args = new InternalUnsafeMethods.RedirectConsole__Args() {
                 objID = objID,
@@ -1369,18 +1482,28 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.RedirectConsole()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Reset the scale of the selection.
+        /// </description>
         public void ResetSelectedScale() {
              InternalUnsafeMethods.ResetSelectedScale__Args _args = new InternalUnsafeMethods.ResetSelectedScale__Args() {
              };
              InternalUnsafeMethods.ResetSelectedScale()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Reset the rotation of the selection.
+        /// </description>
         public void ResetSelectedRotation() {
              InternalUnsafeMethods.ResetSelectedRotation__Args _args = new InternalUnsafeMethods.ResetSelectedRotation__Args() {
              };
              InternalUnsafeMethods.ResetSelectedRotation()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Align all selected objects along the given axis.
+        /// </description>
+        /// <param name="axis">Axis to align all selected objects along.</param>
         public void AlignByAxis(int axis) {
              InternalUnsafeMethods.AlignByAxis__Args _args = new InternalUnsafeMethods.AlignByAxis__Args() {
                 axis = axis,
@@ -1388,6 +1511,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.AlignByAxis()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Align all selected objects against the given bounds axis.
+        /// </description>
+        /// <param name="boundsAxis">Bounds axis to align all selected objects against.</param>
         public void AlignByBounds(int boundsAxis) {
              InternalUnsafeMethods.AlignByBounds__Args _args = new InternalUnsafeMethods.AlignByBounds__Args() {
                 boundsAxis = boundsAxis,
@@ -1395,6 +1522,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.AlignByBounds()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Lock/unlock the selection.
+        /// </description>
+        /// <param name="lock">True to lock the selection, false to unlock it.</param>
         public void LockSelection(bool _lock) {
              InternalUnsafeMethods.LockSelection__Args _args = new InternalUnsafeMethods.LockSelection__Args() {
                 _lock = _lock,
@@ -1402,6 +1533,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.LockSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Hide/show the selection.
+        /// </description>
+        /// <param name="hide">True to hide the selection, false to show it.</param>
         public void HideSelection(bool hide) {
              InternalUnsafeMethods.HideSelection__Args _args = new InternalUnsafeMethods.HideSelection__Args() {
                 hide = hide,
@@ -1409,6 +1544,11 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.HideSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Hide/show the given object.
+        /// </description>
+        /// <param name="obj	Object">to hide/show.</param>
+        /// <param name="hide">True to hide the object, false to show it.</param>
         public void HideObject(SceneObject obj, bool hide) {
              InternalUnsafeMethods.HideObject__Args _args = new InternalUnsafeMethods.HideObject__Args() {
                 obj = obj.ObjectPtr,
@@ -1417,6 +1557,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.HideObject()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Check if we can paste the current selection.
+        /// </description>
+        /// <returns>True if we can paste the current selection, false if not.</returns>
         public bool CanPasteSelection() {
              InternalUnsafeMethods.CanPasteSelection__Args _args = new InternalUnsafeMethods.CanPasteSelection__Args() {
              };
@@ -1424,24 +1568,37 @@ point.Free();rotation.Free();scale.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Paste the current selection.
+        /// </description>
         public void PasteSelection() {
              InternalUnsafeMethods.PasteSelection__Args _args = new InternalUnsafeMethods.PasteSelection__Args() {
              };
              InternalUnsafeMethods.PasteSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Copy the current selection to be pasted later.
+        /// </description>
         public void CopySelection() {
              InternalUnsafeMethods.CopySelection__Args _args = new InternalUnsafeMethods.CopySelection__Args() {
              };
              InternalUnsafeMethods.CopySelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Cut the current selection to be pasted later.
+        /// </description>
         public void CutSelection() {
              InternalUnsafeMethods.CutSelection__Args _args = new InternalUnsafeMethods.CutSelection__Args() {
              };
              InternalUnsafeMethods.CutSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Drop the current selection.
+        /// </description>
+        /// <param name="skipUndo">True to skip creating undo's for this action, false to create an undo.</param>
         public void DropSelection(bool skipUndo = false) {
              InternalUnsafeMethods.DropSelection__Args _args = new InternalUnsafeMethods.DropSelection__Args() {
                 skipUndo = skipUndo,
@@ -1449,6 +1606,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.DropSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get extent of the selection.
+        /// </description>
+        /// <returns>extent of the selection.</returns>
         public Point3F GetSelectionExtent() {
              InternalUnsafeMethods.GetSelectionExtent__Args _args = new InternalUnsafeMethods.GetSelectionExtent__Args() {
              };
@@ -1456,6 +1617,10 @@ point.Free();rotation.Free();scale.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get centroid of the selection.
+        /// </description>
+        /// <returns>centroid of the selection.</returns>
         public Point3F GetSelectionCentroid() {
              InternalUnsafeMethods.GetSelectionCentroid__Args _args = new InternalUnsafeMethods.GetSelectionCentroid__Args() {
              };
@@ -1463,6 +1628,10 @@ point.Free();rotation.Free();scale.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the radius of the current selection.
+        /// </description>
+        /// <returns>radius of the current selection.</returns>
         public float GetSelectionRadius() {
              InternalUnsafeMethods.GetSelectionRadius__Args _args = new InternalUnsafeMethods.GetSelectionRadius__Args() {
              };
@@ -1470,6 +1639,11 @@ point.Free();rotation.Free();scale.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Return the selected object and the given index.
+        /// </description>
+        /// <param name="index">Index of selected object to get.</param>
+        /// <returns>selected object at given index or -1 if index is incorrect.</returns>
         public int GetSelectedObject(int index) {
              InternalUnsafeMethods.GetSelectedObject__Args _args = new InternalUnsafeMethods.GetSelectedObject__Args() {
                 index = index,
@@ -1478,6 +1652,10 @@ point.Free();rotation.Free();scale.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Return the number of objects currently selected in the editor.
+        /// </description>
+        /// <returns>number of objects currently selected in the editor.</returns>
         public int GetSelectionSize() {
              InternalUnsafeMethods.GetSelectionSize__Args _args = new InternalUnsafeMethods.GetSelectionSize__Args() {
              };
@@ -1485,12 +1663,19 @@ point.Free();rotation.Free();scale.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Invalidate the selection sets centroid.
+        /// </description>
         public void InvalidateSelectionCentroid() {
              InternalUnsafeMethods.InvalidateSelectionCentroid__Args _args = new InternalUnsafeMethods.InvalidateSelectionCentroid__Args() {
              };
              InternalUnsafeMethods.InvalidateSelectionCentroid()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Unselects a single object.
+        /// </description>
+        /// <param name="obj	Object">to unselect.</param>
         public void UnselectObject(SimObject obj) {
              InternalUnsafeMethods.UnselectObject__Args _args = new InternalUnsafeMethods.UnselectObject__Args() {
                 obj = obj.ObjectPtr,
@@ -1498,6 +1683,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.UnselectObject()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Selects a single object.
+        /// </description>
+        /// <param name="obj	Object">to select.</param>
         public void SelectObject(SimObject obj) {
              InternalUnsafeMethods.SelectObject__Args _args = new InternalUnsafeMethods.SelectObject__Args() {
                 obj = obj.ObjectPtr,
@@ -1505,6 +1694,9 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SelectObject()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the currently active WorldEditorSelection object.
+        /// </description>
         public void SetActiveSelection(WorldEditorSelection selection) {
              InternalUnsafeMethods.SetActiveSelection__Args _args = new InternalUnsafeMethods.SetActiveSelection__Args() {
                 selection = selection.ObjectPtr,
@@ -1512,6 +1704,10 @@ point.Free();rotation.Free();scale.Free();        }
              InternalUnsafeMethods.SetActiveSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Return the currently active WorldEditorSelection object.
+        /// </description>
+        /// <returns>currently active WorldEditorSelection object or 0 if no selection set is available.</returns>
         public int GetActiveSelection() {
              InternalUnsafeMethods.GetActiveSelection__Args _args = new InternalUnsafeMethods.GetActiveSelection__Args() {
              };
@@ -1519,18 +1715,27 @@ point.Free();rotation.Free();scale.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Clear the selection.
+        /// </description>
         public void ClearSelection() {
              InternalUnsafeMethods.ClearSelection__Args _args = new InternalUnsafeMethods.ClearSelection__Args() {
              };
              InternalUnsafeMethods.ClearSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Clear the ignore class list.
+        /// </description>
         public void ClearIgnoreList() {
              InternalUnsafeMethods.ClearIgnoreList__Args _args = new InternalUnsafeMethods.ClearIgnoreList__Args() {
              };
              InternalUnsafeMethods.ClearIgnoreList()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (string class_name, ...)
+        /// </description>
         public void IgnoreObjClass(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -1546,6 +1751,10 @@ point.Free();rotation.Free();scale.Free();        }
 
         }
 
+        /// <description>
+        /// Get the type info object for the WorldEditor class.
+        /// </description>
+        /// <returns>The type info object for WorldEditor</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -1553,181 +1762,331 @@ point.Free();rotation.Free();scale.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, transform operations will snap to the grid.
+        /// </description>
+        /// </value>
         public bool GridSnap {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("gridSnap"));
             set => SetFieldValue("gridSnap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool UseGroupCenter {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useGroupCenter"));
             set => SetFieldValue("useGroupCenter", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool DropAtBounds {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("dropAtBounds"));
             set => SetFieldValue("dropAtBounds", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float DropBelowCameraOffset {
             get => GenericMarshal.StringTo<float>(GetFieldValue("dropBelowCameraOffset"));
             set => SetFieldValue("dropBelowCameraOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float DropAtScreenCenterScalar {
             get => GenericMarshal.StringTo<float>(GetFieldValue("dropAtScreenCenterScalar"));
             set => SetFieldValue("dropAtScreenCenterScalar", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float DropAtScreenCenterMax {
             get => GenericMarshal.StringTo<float>(GetFieldValue("dropAtScreenCenterMax"));
             set => SetFieldValue("dropAtScreenCenterMax", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public WorldEditorDropType DropType {
             get => GenericMarshal.StringTo<WorldEditorDropType>(GetFieldValue("dropType"));
             set => SetFieldValue("dropType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI PopupBackgroundColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("popupBackgroundColor"));
             set => SetFieldValue("popupBackgroundColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI PopupTextColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("popupTextColor"));
             set => SetFieldValue("popupTextColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI ObjectTextColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("objectTextColor"));
             set => SetFieldValue("objectTextColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI SelectionBoxColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("selectionBoxColor"));
             set => SetFieldValue("selectionBoxColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI ObjSelectColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("objSelectColor"));
             set => SetFieldValue("objSelectColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI ObjMouseOverSelectColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("objMouseOverSelectColor"));
             set => SetFieldValue("objMouseOverSelectColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI ObjMouseOverColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("objMouseOverColor"));
             set => SetFieldValue("objMouseOverColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI DragRectColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("dragRectColor"));
             set => SetFieldValue("dragRectColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI FaceSelectColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("faceSelectColor"));
             set => SetFieldValue("faceSelectColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool BoundingBoxCollision {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("boundingBoxCollision"));
             set => SetFieldValue("boundingBoxCollision", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ObjectMeshCollision {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("objectMeshCollision"));
             set => SetFieldValue("objectMeshCollision", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool SelectionLocked {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("selectionLocked"));
             set => SetFieldValue("selectionLocked", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ObjectsUseBoxCenter {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("objectsUseBoxCenter"));
             set => SetFieldValue("objectsUseBoxCenter", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string ObjTextFormat {
             get => GenericMarshal.StringTo<string>(GetFieldValue("objTextFormat"));
             set => SetFieldValue("objTextFormat", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderPopupBackground {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderPopupBackground"));
             set => SetFieldValue("renderPopupBackground", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ShowMousePopupInfo {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showMousePopupInfo"));
             set => SetFieldValue("showMousePopupInfo", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderObjText {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderObjText"));
             set => SetFieldValue("renderObjText", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderObjHandle {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderObjHandle"));
             set => SetFieldValue("renderObjHandle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderSelectionBox {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderSelectionBox"));
             set => SetFieldValue("renderSelectionBox", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string SelectHandle {
             get => GenericMarshal.StringTo<string>(GetFieldValue("selectHandle"));
             set => SetFieldValue("selectHandle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string DefaultHandle {
             get => GenericMarshal.StringTo<string>(GetFieldValue("defaultHandle"));
             set => SetFieldValue("defaultHandle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string LockedHandle {
             get => GenericMarshal.StringTo<string>(GetFieldValue("lockedHandle"));
             set => SetFieldValue("lockedHandle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether object icons should fade out with distance to camera pos.
+        /// </description>
+        /// </value>
         public bool FadeIcons {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("fadeIcons"));
             set => SetFieldValue("fadeIcons", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Distance from camera pos at which to start fading out icons.
+        /// </description>
+        /// </value>
         public float FadeIconsDist {
             get => GenericMarshal.StringTo<float>(GetFieldValue("fadeIconsDist"));
             set => SetFieldValue("fadeIconsDist", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsDirty {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isDirty"));
             set => SetFieldValue("isDirty", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool StickToGround {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("stickToGround"));
             set => SetFieldValue("stickToGround", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool TerrainSnapOffsetZ {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("TerrainSnapOffsetZ"));
             set => SetFieldValue("TerrainSnapOffsetZ", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float OffsetZValue {
             get => GenericMarshal.StringTo<float>(GetFieldValue("OffsetZValue"));
             set => SetFieldValue("OffsetZValue", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ToggleIgnoreList {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("toggleIgnoreList"));
             set => SetFieldValue("toggleIgnoreList", GenericMarshal.ToString(value));

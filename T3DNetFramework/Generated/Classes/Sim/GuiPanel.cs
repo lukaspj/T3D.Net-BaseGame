@@ -14,7 +14,37 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The GuiPanel panel is a container that when opaque will draw a left to right gradient using its profile fill and fill highlight colors.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// // Mandatory GuiDefaultProfile
+    /// // Contains the fill color information required by a GuiPanel
+    /// // Some values left out for sake of this example
+    /// new GuiControlProfile (GuiDefaultProfile)
+    /// {
+    /// 	// fill color
+    /// 	opaque = false;
+    /// 	fillColor = "242 241 240";
+    /// 	fillColorHL ="228 228 235";
+    /// 	fillColorSEL = "98 100 137";
+    /// 	fillColorNA = "255 255 255 ";
+    /// };
+    /// 
+    /// new GuiPanel(TestPanel)
+    /// {
+    /// 	position = "45 33";
+    /// 	extent = "342 379";
+    /// 	minExtent = "16 16";
+    /// 	horizSizing = "right";
+    /// 	vertSizing = "bottom";
+    /// 	profile = "GuiDefaultProfile"; // Color fill info is in this profile
+    /// 	isContainer = "1";
+    /// };
+    /// </code>
+    /// <see cref="GuiControlProfile" />
     public unsafe class GuiPanel : GuiContainer {
         public GuiPanel(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +129,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiPanel class.
+        /// </description>
+        /// <returns>The type info object for GuiPanel</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

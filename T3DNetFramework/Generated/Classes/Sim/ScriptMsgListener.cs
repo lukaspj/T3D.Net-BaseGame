@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class ScriptMsgListener : SimObject {
         public ScriptMsgListener(bool pRegister = false) 
             : base(pRegister) {
@@ -234,6 +235,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Callback for when the listener is removed from a queue</summary>
+        /// <description>
+        /// The default implementation of onAddToQueue() and onRemoveFromQueue() provide tracking of the queues this listener is added to through the mQueues member. Overrides of onAddToQueue() or onRemoveFromQueue() should ensure they call the parent implementation in any overrides.
+        /// </description>
+        /// <param name="queue">The name of the queue that the listener was removed from</param>
+        /// <see cref="onAddToQueue()" />
         public virtual void OnRemoveFromQueue(string queue) {
              InternalUnsafeMethods.OnRemoveFromQueue__Args _args = new InternalUnsafeMethods.OnRemoveFromQueue__Args() {
                 queue = queue,
@@ -241,6 +248,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnRemoveFromQueue()(ObjectPtr, _args);
         }
 
+        /// <summary>Callback for when the listener is added to a queue</summary>
+        /// <description>
+        /// The default implementation of onAddToQueue() and onRemoveFromQueue() provide tracking of the queues this listener is added to through the mQueues member. Overrides of onAddToQueue() or onRemoveFromQueue() should ensure they call the parent implementation in any overrides.
+        /// </description>
+        /// <param name="queue">The name of the queue that the listener added to</param>
+        /// <see cref="onRemoveFromQueue()" />
         public virtual void OnAddToQueue(string queue) {
              InternalUnsafeMethods.OnAddToQueue__Args _args = new InternalUnsafeMethods.OnAddToQueue__Args() {
                 queue = queue,
@@ -248,6 +261,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAddToQueue()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when a message object (not just the message data) is passed to a listener.
+        /// </description>
+        /// <param name="queue">The name of the queue the message was dispatched to</param>
+        /// <param name="msg">The message object</param>
+        /// <returns>false to prevent other listeners receiving this message, true otherwise</returns>
+        /// <see cref="Message" />
+        /// <see cref="onMessageReceived" />
         public virtual bool OnMessageObjectReceived(string queue, Message msg) {
              InternalUnsafeMethods.OnMessageObjectReceived__Args _args = new InternalUnsafeMethods.OnMessageObjectReceived__Args() {
                 queue = queue,
@@ -257,6 +278,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Called when the listener has received a message.
+        /// </description>
+        /// <param name="queue">The name of the queue the message was dispatched to</param>
+        /// <param name="event">The name of the event (function) that was triggered</param>
+        /// <param name="data">The data (parameters) for the message</param>
+        /// <returns>false to prevent other listeners receiving this message, true otherwise</returns>
         public virtual bool OnMessageReceived(string queue, string _event, string data) {
              InternalUnsafeMethods.OnMessageReceived__Args _args = new InternalUnsafeMethods.OnMessageReceived__Args() {
                 queue = queue,
@@ -267,18 +295,40 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Script callback when a listener is deleted.
+        /// </description>
+        /// <code>
+        /// function ScriptMsgListener::onRemove(%this)
+        /// {
+        /// 	// Perform on remove code here
+        /// }
+        /// </code>
         public virtual void OnRemove() {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
              };
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Script callback when a listener is first created and registered.
+        /// </description>
+        /// <code>
+        /// function ScriptMsgListener::onAdd(%this)
+        /// {
+        /// 	// Perform on add code here
+        /// }
+        /// </code>
         public virtual void OnAdd() {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
              };
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the ScriptMsgListener class.
+        /// </description>
+        /// <returns>The type info object for ScriptMsgListener</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

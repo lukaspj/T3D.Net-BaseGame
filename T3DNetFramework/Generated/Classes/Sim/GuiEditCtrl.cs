@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Native side of the GUI editor.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiEditCtrl : GuiControl {
         public GuiEditCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -1147,6 +1151,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// () - Return the current mouse mode.
+        /// </description>
         public string GetMouseMode() {
              InternalUnsafeMethods.GetMouseMode__Args _args = new InternalUnsafeMethods.GetMouseMode__Args() {
              };
@@ -1154,6 +1161,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ( bool width=true, bool height=true ) - Fit selected controls into their parents.
+        /// </description>
         public void FitIntoParents(bool width = true, bool height = true) {
              InternalUnsafeMethods.FitIntoParents__Args _args = new InternalUnsafeMethods.FitIntoParents__Args() {
                 width = width,
@@ -1162,6 +1172,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.FitIntoParents()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( [ int axis ] ) - Clear all currently set guide lines.
+        /// </description>
         public void ClearGuides(int axis = -1) {
              InternalUnsafeMethods.ClearGuides__Args _args = new InternalUnsafeMethods.ClearGuides__Args() {
                 axis = axis,
@@ -1169,6 +1182,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ClearGuides()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( GuiControl ctrl [, int axis ] ) - Write the guides to the given control.
+        /// </description>
         public void WriteGuides(GuiControl ctrl, int axis = -1) {
              InternalUnsafeMethods.WriteGuides__Args _args = new InternalUnsafeMethods.WriteGuides__Args() {
                 ctrl = ctrl.ObjectPtr,
@@ -1177,6 +1193,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.WriteGuides()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( GuiControl ctrl [, int axis ] ) - Read the guides from the given control.
+        /// </description>
         public void ReadGuides(GuiControl ctrl, int axis = -1) {
              InternalUnsafeMethods.ReadGuides__Args _args = new InternalUnsafeMethods.ReadGuides__Args() {
                 ctrl = ctrl.ObjectPtr,
@@ -1185,6 +1204,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ReadGuides()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// GuiEditCtrl.setSnapToGrid(gridsize)
+        /// </description>
         public void SetSnapToGrid(uint gridsize) {
              InternalUnsafeMethods.SetSnapToGrid__Args _args = new InternalUnsafeMethods.SetSnapToGrid__Args() {
                 gridsize = gridsize,
@@ -1192,6 +1214,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSnapToGrid()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Gets the GUI controls(s) that are currently in the trash.
+        /// </description>
         public SimGroup GetTrash() {
              InternalUnsafeMethods.GetTrash__Args _args = new InternalUnsafeMethods.GetTrash__Args() {
              };
@@ -1199,6 +1224,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimGroup(_engineResult);
         }
 
+        /// <description>
+        /// ( bool addToSelection=false ) - Select children of currently selected controls.
+        /// </description>
         public void SelectChildren(bool addToSelection = false) {
              InternalUnsafeMethods.SelectChildren__Args _args = new InternalUnsafeMethods.SelectChildren__Args() {
                 addToSelection = addToSelection,
@@ -1206,6 +1234,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SelectChildren()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( bool addToSelection=false ) - Select parents of currently selected controls.
+        /// </description>
         public void SelectParents(bool addToSelection = false) {
              InternalUnsafeMethods.SelectParents__Args _args = new InternalUnsafeMethods.SelectParents__Args() {
                 addToSelection = addToSelection,
@@ -1213,6 +1244,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SelectParents()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Returns global bounds of current selection as vector 'x y width height'.
+        /// </description>
         public string GetSelectionGlobalBounds() {
              InternalUnsafeMethods.GetSelectionGlobalBounds__Args _args = new InternalUnsafeMethods.GetSelectionGlobalBounds__Args() {
              };
@@ -1220,6 +1254,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// () - Return the number of controls currently selected.
+        /// </description>
         public int GetNumSelected() {
              InternalUnsafeMethods.GetNumSelected__Args _args = new InternalUnsafeMethods.GetNumSelected__Args() {
              };
@@ -1227,6 +1264,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the set of GUI controls currently selected in the editor.
+        /// </description>
         public SimSet GetSelection() {
              InternalUnsafeMethods.GetSelection__Args _args = new InternalUnsafeMethods.GetSelection__Args() {
              };
@@ -1234,12 +1274,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimSet(_engineResult);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public void SelectAll() {
              InternalUnsafeMethods.SelectAll__Args _args = new InternalUnsafeMethods.SelectAll__Args() {
              };
              InternalUnsafeMethods.SelectAll()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( string fileName=null ) - Load selection from file or clipboard.
+        /// </description>
         public void LoadSelection(string filename = "") {
              InternalUnsafeMethods.LoadSelection__Args _args = new InternalUnsafeMethods.LoadSelection__Args() {
                 filename = filename,
@@ -1247,6 +1293,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.LoadSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( string fileName=null ) - Save selection to file or clipboard.
+        /// </description>
         public void SaveSelection(string filename = "") {
              InternalUnsafeMethods.SaveSelection__Args _args = new InternalUnsafeMethods.SaveSelection__Args() {
                 filename = filename,
@@ -1254,6 +1303,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SaveSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Move all controls in the selection by (dx,dy) pixels.
+        /// </description>
         public void MoveSelection(int dx, int dy) {
              InternalUnsafeMethods.MoveSelection__Args _args = new InternalUnsafeMethods.MoveSelection__Args() {
                 dx = dx,
@@ -1262,24 +1314,32 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.MoveSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Delete the selected controls.
+        /// </description>
         public void DeleteSelection() {
              InternalUnsafeMethods.DeleteSelection__Args _args = new InternalUnsafeMethods.DeleteSelection__Args() {
              };
              InternalUnsafeMethods.DeleteSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public void PushToBack() {
              InternalUnsafeMethods.PushToBack__Args _args = new InternalUnsafeMethods.PushToBack__Args() {
              };
              InternalUnsafeMethods.PushToBack()(ObjectPtr, _args);
         }
 
+        /// 
         public void BringToFront() {
              InternalUnsafeMethods.BringToFront__Args _args = new InternalUnsafeMethods.BringToFront__Args() {
              };
              InternalUnsafeMethods.BringToFront()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int mode)
+        /// </description>
         public void Justify(uint mode) {
              InternalUnsafeMethods.Justify__Args _args = new InternalUnsafeMethods.Justify__Args() {
                 mode = mode,
@@ -1287,12 +1347,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Justify()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Toggle activation.
+        /// </description>
         public void Toggle() {
              InternalUnsafeMethods.Toggle__Args _args = new InternalUnsafeMethods.Toggle__Args() {
              };
              InternalUnsafeMethods.Toggle()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Returns the set to which new controls will be added
+        /// </description>
         public int GetCurrentAddSet() {
              InternalUnsafeMethods.GetCurrentAddSet__Args _args = new InternalUnsafeMethods.GetCurrentAddSet__Args() {
              };
@@ -1300,6 +1366,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (GuiControl ctrl)
+        /// </description>
         public void SetCurrentAddSet(GuiControl addSet) {
              InternalUnsafeMethods.SetCurrentAddSet__Args _args = new InternalUnsafeMethods.SetCurrentAddSet__Args() {
                 addSet = addSet.ObjectPtr,
@@ -1307,6 +1376,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCurrentAddSet()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (GuiControl ctrl)
+        /// </description>
         public void Select(GuiControl ctrl) {
              InternalUnsafeMethods.Select__Args _args = new InternalUnsafeMethods.Select__Args() {
                 ctrl = ctrl.ObjectPtr,
@@ -1314,12 +1386,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Select()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Clear selected controls list.
+        /// </description>
         public void ClearSelection() {
              InternalUnsafeMethods.ClearSelection__Args _args = new InternalUnsafeMethods.ClearSelection__Args() {
              };
              InternalUnsafeMethods.ClearSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// deselects a control.
+        /// </description>
         public void RemoveSelection(int id) {
              InternalUnsafeMethods.RemoveSelection__Args _args = new InternalUnsafeMethods.RemoveSelection__Args() {
                 id = id,
@@ -1327,6 +1405,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// selects a control.
+        /// </description>
         public void AddSelection(int id) {
              InternalUnsafeMethods.AddSelection__Args _args = new InternalUnsafeMethods.AddSelection__Args() {
                 id = id,
@@ -1334,6 +1415,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (GuiControl ctrl)
+        /// </description>
         public void AddNewCtrl(GuiControl ctrl) {
              InternalUnsafeMethods.AddNewCtrl__Args _args = new InternalUnsafeMethods.AddNewCtrl__Args() {
                 ctrl = ctrl.ObjectPtr,
@@ -1341,6 +1425,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddNewCtrl()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( GuiControl ctrl ) - Set the toplevel control to edit in the GUI editor.
+        /// </description>
         public void SetContentControl(GuiControl ctrl) {
              InternalUnsafeMethods.SetContentControl__Args _args = new InternalUnsafeMethods.SetContentControl__Args() {
                 ctrl = ctrl.ObjectPtr,
@@ -1348,6 +1435,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetContentControl()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Return the toplevel control edited inside the GUI editor.
+        /// </description>
         public int GetContentControl() {
              InternalUnsafeMethods.GetContentControl__Args _args = new InternalUnsafeMethods.GetContentControl__Args() {
              };
@@ -1355,6 +1445,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public virtual void OnControlInspectPostApply(GuiControl control) {
              InternalUnsafeMethods.OnControlInspectPostApply__Args _args = new InternalUnsafeMethods.OnControlInspectPostApply__Args() {
                 control = control.ObjectPtr,
@@ -1362,6 +1453,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnControlInspectPostApply()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnControlInspectPreApply(GuiControl control) {
              InternalUnsafeMethods.OnControlInspectPreApply__Args _args = new InternalUnsafeMethods.OnControlInspectPreApply__Args() {
                 control = control.ObjectPtr,
@@ -1369,12 +1461,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnControlInspectPreApply()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnMouseModeChange() {
              InternalUnsafeMethods.OnMouseModeChange__Args _args = new InternalUnsafeMethods.OnMouseModeChange__Args() {
              };
              InternalUnsafeMethods.OnMouseModeChange()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnFitIntoParent(bool width, bool height) {
              InternalUnsafeMethods.OnFitIntoParent__Args _args = new InternalUnsafeMethods.OnFitIntoParent__Args() {
                 width = width,
@@ -1383,6 +1477,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnFitIntoParent()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnSelectionResized(GuiControl control) {
              InternalUnsafeMethods.OnSelectionResized__Args _args = new InternalUnsafeMethods.OnSelectionResized__Args() {
                 control = control.ObjectPtr,
@@ -1390,6 +1485,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnSelectionResized()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnAddNewCtrlSet(SimSet set) {
              InternalUnsafeMethods.OnAddNewCtrlSet__Args _args = new InternalUnsafeMethods.OnAddNewCtrlSet__Args() {
                 set = set.ObjectPtr,
@@ -1397,6 +1493,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAddNewCtrlSet()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnAddNewCtrl(GuiControl control) {
              InternalUnsafeMethods.OnAddNewCtrl__Args _args = new InternalUnsafeMethods.OnAddNewCtrl__Args() {
                 control = control.ObjectPtr,
@@ -1404,6 +1501,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAddNewCtrl()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnTrashSelection(SimSet selection) {
              InternalUnsafeMethods.OnTrashSelection__Args _args = new InternalUnsafeMethods.OnTrashSelection__Args() {
                 selection = selection.ObjectPtr,
@@ -1411,6 +1509,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnTrashSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnSelectionCloned(SimSet selection) {
              InternalUnsafeMethods.OnSelectionCloned__Args _args = new InternalUnsafeMethods.OnSelectionCloned__Args() {
                 selection = selection.ObjectPtr,
@@ -1418,6 +1517,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnSelectionCloned()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnSelectionMoved(GuiControl control) {
              InternalUnsafeMethods.OnSelectionMoved__Args _args = new InternalUnsafeMethods.OnSelectionMoved__Args() {
                 control = control.ObjectPtr,
@@ -1425,6 +1525,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnSelectionMoved()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnPostSelectionNudged(SimSet selection) {
              InternalUnsafeMethods.OnPostSelectionNudged__Args _args = new InternalUnsafeMethods.OnPostSelectionNudged__Args() {
                 selection = selection.ObjectPtr,
@@ -1432,6 +1533,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnPostSelectionNudged()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnPreSelectionNudged(SimSet selection) {
              InternalUnsafeMethods.OnPreSelectionNudged__Args _args = new InternalUnsafeMethods.OnPreSelectionNudged__Args() {
                 selection = selection.ObjectPtr,
@@ -1439,6 +1541,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnPreSelectionNudged()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnRemoveSelected(GuiControl control) {
              InternalUnsafeMethods.OnRemoveSelected__Args _args = new InternalUnsafeMethods.OnRemoveSelected__Args() {
                 control = control.ObjectPtr,
@@ -1446,6 +1549,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnRemoveSelected()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnAddSelected(GuiControl control) {
              InternalUnsafeMethods.OnAddSelected__Args _args = new InternalUnsafeMethods.OnAddSelected__Args() {
                 control = control.ObjectPtr,
@@ -1453,6 +1557,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAddSelected()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnSelect(GuiControl control) {
              InternalUnsafeMethods.OnSelect__Args _args = new InternalUnsafeMethods.OnSelect__Args() {
                 control = control.ObjectPtr,
@@ -1460,12 +1565,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnSelect()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnClearSelected() {
              InternalUnsafeMethods.OnClearSelected__Args _args = new InternalUnsafeMethods.OnClearSelected__Args() {
              };
              InternalUnsafeMethods.OnClearSelected()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnPostEdit(SimSet selection) {
              InternalUnsafeMethods.OnPostEdit__Args _args = new InternalUnsafeMethods.OnPostEdit__Args() {
                 selection = selection.ObjectPtr,
@@ -1473,6 +1580,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnPostEdit()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnPreEdit(SimSet selection) {
              InternalUnsafeMethods.OnPreEdit__Args _args = new InternalUnsafeMethods.OnPreEdit__Args() {
                 selection = selection.ObjectPtr,
@@ -1480,18 +1588,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnPreEdit()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnDelete() {
              InternalUnsafeMethods.OnDelete__Args _args = new InternalUnsafeMethods.OnDelete__Args() {
              };
              InternalUnsafeMethods.OnDelete()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnHierarchyChanged() {
              InternalUnsafeMethods.OnHierarchyChanged__Args _args = new InternalUnsafeMethods.OnHierarchyChanged__Args() {
              };
              InternalUnsafeMethods.OnHierarchyChanged()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiEditCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiEditCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -1499,46 +1613,100 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, edge and center snapping will work against controls.
+        /// </description>
+        /// </value>
         public bool SnapToControls {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("snapToControls"));
             set => SetFieldValue("snapToControls", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, edge and center snapping will work against guides.
+        /// </description>
+        /// </value>
         public bool SnapToGuides {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("snapToGuides"));
             set => SetFieldValue("snapToGuides", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, edge and center snapping will work against canvas (toplevel control).
+        /// </description>
+        /// </value>
         public bool SnapToCanvas {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("snapToCanvas"));
             set => SetFieldValue("snapToCanvas", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, selection edges will snap into alignment when moved or resized.
+        /// </description>
+        /// </value>
         public bool SnapToEdges {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("snapToEdges"));
             set => SetFieldValue("snapToEdges", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, selection centers will snap into alignment when moved or resized.
+        /// </description>
+        /// </value>
         public bool SnapToCenters {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("snapToCenters"));
             set => SetFieldValue("snapToCenters", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Distance in pixels that edge and center snapping will work across.
+        /// </description>
+        /// </value>
         public int SnapSensitivity {
             get => GenericMarshal.StringTo<int>(GetFieldValue("snapSensitivity"));
             set => SetFieldValue("snapSensitivity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, rectangle selection will only select controls fully inside the drag rectangle.
+        /// </description>
+        /// </value>
         public bool FullBoxSelection {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("fullBoxSelection"));
             set => SetFieldValue("fullBoxSelection", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, lines will be drawn extending along the edges of selected objects.
+        /// </description>
+        /// </value>
         public bool DrawBorderLines {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("drawBorderLines"));
             set => SetFieldValue("drawBorderLines", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, guides will be included in rendering.
+        /// </description>
+        /// </value>
         public bool DrawGuides {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("drawGuides"));
             set => SetFieldValue("drawGuides", GenericMarshal.ToString(value));

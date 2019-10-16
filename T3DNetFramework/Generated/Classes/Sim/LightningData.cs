@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Common data for a Lightning emitter object.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <see cref="Lightning" />
     public unsafe class LightningData : GameBaseData {
         public LightningData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +104,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the LightningData class.
+        /// </description>
+        /// <returns>The type info object for LightningData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +115,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sound profile to play when a lightning strike occurs.
+        /// </description>
+        /// </value>
         public SFXTrack StrikeSound {
             get => GenericMarshal.StringTo<SFXTrack>(GetFieldValue("strikeSound"));
             set => SetFieldValue("strikeSound", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>List of thunder sound effects to play.</summary>
+        /// <description>
+        /// A random one of these sounds will be played shortly after each strike occurs.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<SFXTrack> ThunderSounds {
             get => new DynamicFieldVector<SFXTrack>(
                     this, 
@@ -121,6 +143,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// List of textures to use to render lightning strikes.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StrikeTextures {
             get => new DynamicFieldVector<string>(
                     this, 

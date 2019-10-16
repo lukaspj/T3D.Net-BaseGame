@@ -14,7 +14,15 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An extension of GuiBitmapButtonCtrl that additionally renders a text label on the bitmapped button.</summary>
+    /// <description>
+    /// The text for the label is taken from the GuiButtonBaseCtrl::text property.
+    /// 
+    /// For rendering, the label is placed, relative to the control's upper left corner, at the text offset specified in the control's profile (GuiControlProfile::textOffset) and justified according to the profile's setting (GuiControlProfile::justify).
+    /// </description>
+    /// <see cref="GuiControlProfile::textOffset" />
+    /// <see cref="GuiControlProfile::justify" />
     public unsafe class GuiBitmapButtonTextCtrl : GuiBitmapButtonCtrl {
         public GuiBitmapButtonTextCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +107,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiBitmapButtonTextCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiBitmapButtonTextCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

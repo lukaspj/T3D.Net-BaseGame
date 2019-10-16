@@ -6,6 +6,7 @@ using T3DNetFramework.Interop;
 
 namespace T3DNetFramework.Generated.Structs.Math {
 
+    /// 
     public class RotationF : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -41,17 +42,25 @@ namespace T3DNetFramework.Generated.Structs.Math {
         
         public void Alloc() {
             internalStruct.x = X;
+
             internalStruct.y = Y;
+
             internalStruct.z = Z;
+
             internalStruct.w = W;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             X = internalStruct.x;
+
             Y = internalStruct.y;
+
             Z = internalStruct.z;
+
             W = internalStruct.w;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -69,6 +78,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class EaseF : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -101,15 +111,21 @@ namespace T3DNetFramework.Generated.Structs.Math {
         
         public void Alloc() {
             internalStruct.dir = Dir;
+
             internalStruct.type = Type;
+
             internalStruct.param = GenericMarshal.ToPtr(Param);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             Dir = internalStruct.dir;
+
             Type = internalStruct.type;
+
             Param = GenericMarshal.FromPtr<float>(internalStruct.param, 2, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -126,6 +142,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class Box3F : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -156,16 +173,20 @@ namespace T3DNetFramework.Generated.Structs.Math {
         public void Alloc() {
             MinExtents.Alloc();
             internalStruct.minExtents = MinExtents.internalStruct;
+
             MaxExtents.Alloc();
             internalStruct.maxExtents = MaxExtents.internalStruct;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             MinExtents?.Free();
             MinExtents = new Point3F(internalStruct.minExtents);
+
             MaxExtents?.Free();
             MaxExtents = new Point3F(internalStruct.maxExtents);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -181,6 +202,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class TransformF : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -214,18 +236,24 @@ namespace T3DNetFramework.Generated.Structs.Math {
         public void Alloc() {
             Position.Alloc();
             internalStruct.position = Position.internalStruct;
+
             Orientation.Alloc();
             internalStruct.orientation = Orientation.internalStruct;
+
             internalStruct.hasRotation = HasRotation;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             Position?.Free();
             Position = new Point3F(internalStruct.position);
+
             Orientation?.Free();
             Orientation = new AngAxisF(internalStruct.orientation);
+
             HasRotation = internalStruct.hasRotation;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -242,6 +270,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class AngAxisF : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -272,14 +301,18 @@ namespace T3DNetFramework.Generated.Structs.Math {
         public void Alloc() {
             Axis.Alloc();
             internalStruct.axis = Axis.internalStruct;
+
             internalStruct.angle = Angle;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             Axis?.Free();
             Axis = new Point3F(internalStruct.axis);
+
             Angle = internalStruct.angle;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -295,6 +328,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class MatrixF : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -321,11 +355,13 @@ namespace T3DNetFramework.Generated.Structs.Math {
         
         public void Alloc() {
             internalStruct.m = GenericMarshal.ToPtr(M);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             M = GenericMarshal.FromPtr<float>(internalStruct.m, 16, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -340,6 +376,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class RectF : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -370,16 +407,20 @@ namespace T3DNetFramework.Generated.Structs.Math {
         public void Alloc() {
             Point.Alloc();
             internalStruct.point = Point.internalStruct;
+
             Extent.Alloc();
             internalStruct.extent = Extent.internalStruct;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             Point?.Free();
             Point = new Point2F(internalStruct.point);
+
             Extent?.Free();
             Extent = new Point2F(internalStruct.extent);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -395,6 +436,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class RectI : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -425,16 +467,20 @@ namespace T3DNetFramework.Generated.Structs.Math {
         public void Alloc() {
             Point.Alloc();
             internalStruct.point = Point.internalStruct;
+
             Extent.Alloc();
             internalStruct.extent = Extent.internalStruct;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             Point?.Free();
             Point = new Point2I(internalStruct.point);
+
             Extent?.Free();
             Extent = new Point2I(internalStruct.extent);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -450,6 +496,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class Point4F : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -485,17 +532,25 @@ namespace T3DNetFramework.Generated.Structs.Math {
         
         public void Alloc() {
             internalStruct.x = X;
+
             internalStruct.y = Y;
+
             internalStruct.z = Z;
+
             internalStruct.w = W;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             X = internalStruct.x;
+
             Y = internalStruct.y;
+
             Z = internalStruct.z;
+
             W = internalStruct.w;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -513,6 +568,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class Point3F : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -545,15 +601,21 @@ namespace T3DNetFramework.Generated.Structs.Math {
         
         public void Alloc() {
             internalStruct.x = X;
+
             internalStruct.y = Y;
+
             internalStruct.z = Z;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             X = internalStruct.x;
+
             Y = internalStruct.y;
+
             Z = internalStruct.z;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -570,6 +632,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class Point3I : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -602,15 +665,21 @@ namespace T3DNetFramework.Generated.Structs.Math {
         
         public void Alloc() {
             internalStruct.x = X;
+
             internalStruct.y = Y;
+
             internalStruct.z = Z;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             X = internalStruct.x;
+
             Y = internalStruct.y;
+
             Z = internalStruct.z;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -627,6 +696,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class Point2F : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -656,13 +726,17 @@ namespace T3DNetFramework.Generated.Structs.Math {
         
         public void Alloc() {
             internalStruct.x = X;
+
             internalStruct.y = Y;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             X = internalStruct.x;
+
             Y = internalStruct.y;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -678,6 +752,7 @@ namespace T3DNetFramework.Generated.Structs.Math {
     }
 
 
+    /// 
     public class Point2I : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -707,13 +782,17 @@ namespace T3DNetFramework.Generated.Structs.Math {
         
         public void Alloc() {
             internalStruct.x = X;
+
             internalStruct.y = Y;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             X = internalStruct.x;
+
             Y = internalStruct.y;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }

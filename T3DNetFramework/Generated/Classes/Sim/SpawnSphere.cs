@@ -14,7 +14,29 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>This class is used for creating any type of game object, assigning it a class, datablock, and other properties when it is spawned.</summary>
+    /// <description>
+    /// Torque 3D uses a simple spawn system, which can be easily modified to spawn any kind of object (of any class). Each new level already contains at least one SpawnSphere, which is represented by a green octahedron in stock Torque 3D. The spawnClass field determines the object type, such as Player, AIPlayer, etc. The spawnDataBlock field applies the pre-defined datablock to each spawned object instance. The really powerful feature of this class is provided by the spawnScript field which allows you to define a simple script (multiple lines) that will be executed once the object has been spawned.
+    /// </description>
+    /// <code>
+    /// // Define an SpawnSphere that essentially performs the following each time an object is spawned
+    /// //$SpawnObject = new Player()
+    /// //{
+    /// //   dataBlock = "DefaultPlayerData";
+    /// //   name = "Bob";
+    /// //   lifeTotal = 3;
+    /// //};
+    /// //echo("Spawned a Player: "@ $SpawnObject);
+    /// 
+    /// new SpawnSphere(DefaultSpawnSphere)
+    /// {
+    ///    spawnClass = "Player";
+    ///    spawnDatablock = "DefaultPlayerData";
+    ///    spawnScript = "echo(\"Spawned a Player: \" 
+    /// </code>
+    /// <see cref="MissionMarker" />
+    /// <see cref="MissionMarkerData" />
     public unsafe class SpawnSphere : MissionMarker {
         public SpawnSphere(bool pRegister = false) 
             : base(pRegister) {
@@ -142,6 +164,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ([string additionalProps]) Spawns the object based on the SpawnSphere's class, datablock, properties, and script settings. Allows you to pass in extra properties.
+        /// </description>
         public int SpawnObject(string additionalProps) {
              InternalUnsafeMethods.SpawnObject__Args _args = new InternalUnsafeMethods.SpawnObject__Args() {
                 additionalProps = additionalProps,
@@ -150,6 +175,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Called when the SpawnSphere is being created.
+        /// </description>
+        /// <param name="objectId">The unique SimObjectId generated when SpawnSphere is created (%%this in script)</param>
         public virtual void OnAdd(uint objectId) {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
                 objectId = objectId,
@@ -157,6 +186,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SpawnSphere class.
+        /// </description>
+        /// <returns>The type info object for SpawnSphere</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -164,51 +197,111 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object class to create (eg. Player, AIPlayer, Debris etc)
+        /// </description>
+        /// </value>
         public string SpawnClass {
             get => GenericMarshal.StringTo<string>(GetFieldValue("spawnClass"));
             set => SetFieldValue("spawnClass", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Predefined datablock assigned to the object when created
+        /// </description>
+        /// </value>
         public string SpawnDatablock {
             get => GenericMarshal.StringTo<string>(GetFieldValue("spawnDatablock"));
             set => SetFieldValue("spawnDatablock", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// String containing semicolon (;) delimited properties to set when the object is created.
+        /// </description>
+        /// </value>
         public string SpawnProperties {
             get => GenericMarshal.StringTo<string>(GetFieldValue("spawnProperties"));
             set => SetFieldValue("spawnProperties", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Command to execute immediately after spawning an object. New object id is stored in $SpawnObject.  Max 255 characters.
+        /// </description>
+        /// </value>
         public string SpawnScript {
             get => GenericMarshal.StringTo<string>(GetFieldValue("spawnScript"));
             set => SetFieldValue("spawnScript", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Flag to spawn object as soon as SpawnSphere is created, true to enable or false to disable.
+        /// </description>
+        /// </value>
         public bool AutoSpawn {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("autoSpawn"));
             set => SetFieldValue("autoSpawn", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Flag to set the spawned object's transform to the SpawnSphere's transform.
+        /// </description>
+        /// </value>
         public bool SpawnTransform {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("spawnTransform"));
             set => SetFieldValue("spawnTransform", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Deprecated
+        /// </description>
+        /// </value>
         public float Radius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("radius"));
             set => SetFieldValue("radius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Deprecated
+        /// </description>
+        /// </value>
         public float SphereWeight {
             get => GenericMarshal.StringTo<float>(GetFieldValue("sphereWeight"));
             set => SetFieldValue("sphereWeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Deprecated
+        /// </description>
+        /// </value>
         public float IndoorWeight {
             get => GenericMarshal.StringTo<float>(GetFieldValue("indoorWeight"));
             set => SetFieldValue("indoorWeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Deprecated
+        /// </description>
+        /// </value>
         public float OutdoorWeight {
             get => GenericMarshal.StringTo<float>(GetFieldValue("outdoorWeight"));
             set => SetFieldValue("outdoorWeight", GenericMarshal.ToString(value));

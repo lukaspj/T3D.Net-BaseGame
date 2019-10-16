@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class AssetTagsManifest : SimObject {
         public AssetTagsManifest(bool pRegister = false) 
             : base(pRegister) {
@@ -355,6 +356,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the AssetTagsManifest class.
+        /// </description>
+        /// <returns>The type info object for AssetTagsManifest</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -362,6 +367,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// Checks whether the asset Id is tagged with the specified asset tag.
+        /// </description>
+        /// <param name="assetId">The asset Id to check.</param>
+        /// <param name="tagName">The tag name to check.</param>
+        /// <returns>Whether the asset Id is tagged with the specified asset tag or not.</returns>
         public bool HasTag(string assetId, string tagName) {
              InternalUnsafeMethods.HasTag__Args _args = new InternalUnsafeMethods.HasTag__Args() {
                 assetId = assetId,
@@ -371,6 +382,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Un-tags the asset Id from the specified asset tag.
+        /// </description>
+        /// <param name="assetId">The asset Id to un - tag.</param>
+        /// <param name="tagName">The tag name to un - assign.</param>
+        /// <returns>Whether the un - tag operation was successful or not.</returns>
         public bool Untag(string assetId, string tagName) {
              InternalUnsafeMethods.Untag__Args _args = new InternalUnsafeMethods.Untag__Args() {
                 assetId = assetId,
@@ -380,6 +397,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Tags the asset Id with the specified asset tag.
+        /// </description>
+        /// <param name="assetId">The asset Id to tag.</param>
+        /// <param name="tagName">The tag name to assign.</param>
+        /// <returns>Whether the tag operation was successful or not.</returns>
         public bool Tag(string assetId, string tagName) {
              InternalUnsafeMethods.Tag__Args _args = new InternalUnsafeMethods.Tag__Args() {
                 assetId = assetId,
@@ -389,6 +412,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the asset tag on the specified asset Id at the specified index.
+        /// </description>
+        /// <param name="assetId">The asset Id to count tags on.</param>
+        /// <param name="tagIndex">The asset tag index.This must be 0 to the asset tag count less one.</param>
+        /// <returns>The asset tag on the specified asset Id at the specified index or NULL if invalid.</returns>
         public string GetAssetTag(string assetId, int tagIndex) {
              InternalUnsafeMethods.GetAssetTag__Args _args = new InternalUnsafeMethods.GetAssetTag__Args() {
                 assetId = assetId,
@@ -398,6 +427,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the asset tag count on the specified asset Id.
+        /// </description>
+        /// <param name="assetId">The asset Id to count tags on.</param>
+        /// <returns>The asset tag count on the specified asset Id.</returns>
         public int GetAssetTagCount(string assetId) {
              InternalUnsafeMethods.GetAssetTagCount__Args _args = new InternalUnsafeMethods.GetAssetTagCount__Args() {
                 assetId = assetId,
@@ -406,6 +440,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the asset tag at the specified index.
+        /// </description>
+        /// <param name="tagIndex">The asset tag index.This must be 0 to the asset tag count less one.</param>
+        /// <returns>The asset tag at the specified index or NULL if invalid.</returns>
         public string GetTag(int tagIndex) {
              InternalUnsafeMethods.GetTag__Args _args = new InternalUnsafeMethods.GetTag__Args() {
                 tagIndex = tagIndex,
@@ -414,6 +453,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the total asset tag count.
+        /// </description>
+        /// <returns>The total asset tag count.</returns>
         public int GetTagCount() {
              InternalUnsafeMethods.GetTagCount__Args _args = new InternalUnsafeMethods.GetTagCount__Args() {
              };
@@ -421,6 +464,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Checks whether the specified asset tag exists or not.
+        /// </description>
+        /// <param name="tagName">The tag name to check.</param>
+        /// <returns>Whether the specified asset tag exists or not.</returns>
         public bool IsTag(string tagName) {
              InternalUnsafeMethods.IsTag__Args _args = new InternalUnsafeMethods.IsTag__Args() {
                 tagName = tagName,
@@ -429,6 +477,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Deletes an asset tag.
+        /// </description>
+        /// <param name="tagName">The tag name to delete.</param>
+        /// <returns>Whether the asset tag was deleted or not.</returns>
         public bool DeleteTag(string tagName) {
              InternalUnsafeMethods.DeleteTag__Args _args = new InternalUnsafeMethods.DeleteTag__Args() {
                 tagName = tagName,
@@ -437,6 +490,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Renames an existing asset tag.
+        /// </description>
+        /// <param name="tagName">The tag name to rename.</param>
+        /// <param name="newTagName">The new tag name to assign.</param>
+        /// <returns>Whether the asset tag was renamed or not.</returns>
         public bool RenameTag(string oldTagName, string newTagName) {
              InternalUnsafeMethods.RenameTag__Args _args = new InternalUnsafeMethods.RenameTag__Args() {
                 oldTagName = oldTagName,
@@ -446,6 +505,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Creates an asset tag.
+        /// </description>
+        /// <param name="tagName">The tag name to create.</param>
+        /// <returns>No return value.</returns>
         public void CreateTag(string tagName = "") {
              InternalUnsafeMethods.CreateTag__Args _args = new InternalUnsafeMethods.CreateTag__Args() {
                 tagName = tagName,

@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class MaterialAsset : AssetBase {
         public MaterialAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +120,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Compiles the material's generated shader, if any. Not yet implemented
+        /// </description>
         public void CompileShader() {
              InternalUnsafeMethods.CompileShader__Args _args = new InternalUnsafeMethods.CompileShader__Args() {
              };
              InternalUnsafeMethods.CompileShader()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the MaterialAsset class.
+        /// </description>
+        /// <returns>The type info object for MaterialAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -132,11 +140,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the file containing the material definition.
+        /// </description>
+        /// </value>
         public string ScriptFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("scriptFile"));
             set => SetFieldValue("scriptFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the material definition this asset is for.
+        /// </description>
+        /// </value>
         public string MaterialDefinitionName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("materialDefinitionName"));
             set => SetFieldValue("materialDefinitionName", GenericMarshal.ToString(value));

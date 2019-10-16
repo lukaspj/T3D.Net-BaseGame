@@ -123,6 +123,7 @@ namespace T3DNetFramework.Generated.Functions {
         }
         #endregion
 
+        /// 
         public static void OnWindowClosed(GuiWindowCtrl ctrl) {
              InternalUnsafeMethods.OnWindowClosed__Args _args = new InternalUnsafeMethods.OnWindowClosed__Args() {
                 ctrl = ctrl.ObjectPtr,
@@ -130,18 +131,23 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.OnWindowClosed()(_args);
         }
 
+        /// 
         public static void Show() {
              InternalUnsafeMethods.Show__Args _args = new InternalUnsafeMethods.Show__Args() {
              };
              InternalUnsafeMethods.Show()(_args);
         }
 
+        /// 
         public static void Hide() {
              InternalUnsafeMethods.Hide__Args _args = new InternalUnsafeMethods.Hide__Args() {
              };
              InternalUnsafeMethods.Hide()(_args);
         }
 
+        /// <description>
+        /// ( PostEffect, [bool clear = false] )
+        /// </description>
         public static void Open(PostEffect pfx, bool clear = false) {
              InternalUnsafeMethods.Open__Args _args = new InternalUnsafeMethods.Open__Args() {
                 pfx = pfx.ObjectPtr,
@@ -150,6 +156,7 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.Open()(_args);
         }
 
+        /// 
         public static void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };

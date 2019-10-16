@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An xmod datablock.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxXM_BoxHeightOffsetData : afxXM_BaseData {
         public afxXM_BoxHeightOffsetData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxXM_BoxHeightOffsetData class.
+        /// </description>
+        /// <returns>The type info object for afxXM_BoxHeightOffsetData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +114,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F Offset {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("offset"));
             set => SetFieldValue("offset", GenericMarshal.ToString(value));

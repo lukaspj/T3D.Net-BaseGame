@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A ParticlePool datablock.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxParticlePoolData : GameBaseData {
         public afxParticlePoolData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxParticlePoolData class.
+        /// </description>
+        /// <returns>The type info object for afxParticlePoolData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +114,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxParticlePool_PoolType PoolType {
             get => GenericMarshal.StringTo<afxParticlePool_PoolType>(GetFieldValue("poolType"));
             set => SetFieldValue("poolType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF BaseColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("baseColor"));
             set => SetFieldValue("baseColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float BlendWeight {
             get => GenericMarshal.StringTo<float>(GetFieldValue("blendWeight"));
             set => SetFieldValue("blendWeight", GenericMarshal.ToString(value));

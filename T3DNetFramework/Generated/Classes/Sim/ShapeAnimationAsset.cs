@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class ShapeAnimationAsset : AssetBase {
         public ShapeAnimationAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ShapeAnimationAsset class.
+        /// </description>
+        /// <returns>The type info object for ShapeAnimationAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,56 +111,122 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the file name containing the animation
+        /// </description>
+        /// </value>
         public string AnimationFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("animationFile"));
             set => SetFieldValue("animationFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the animation
+        /// </description>
+        /// </value>
         public string AnimationName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("animationName"));
             set => SetFieldValue("animationName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, this animation asset just referrs to an embedded animation of a regular shape mesh. If false, it is a self-contained animation file
+        /// </description>
+        /// </value>
         public bool IsEmbedded {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isEmbedded"));
             set => SetFieldValue("isEmbedded", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Is this animation looping?
+        /// </description>
+        /// </value>
         public bool IsCyclic {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isCyclic"));
             set => SetFieldValue("isCyclic", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Is this animation blended with another?
+        /// </description>
+        /// </value>
         public bool IsBlend {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isBlend"));
             set => SetFieldValue("isBlend", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// AssetID of the animation to reference for our blending
+        /// </description>
+        /// </value>
         public string BlendRefAnimation {
             get => GenericMarshal.StringTo<string>(GetFieldValue("blendRefAnimation"));
             set => SetFieldValue("blendRefAnimation", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Which frame of the reference animation do we use for our blending
+        /// </description>
+        /// </value>
         public int BlendFrame {
             get => GenericMarshal.StringTo<int>(GetFieldValue("blendFrame"));
             set => SetFieldValue("blendFrame", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// What frame does this animation clip start on
+        /// </description>
+        /// </value>
         public int StartFrame {
             get => GenericMarshal.StringTo<int>(GetFieldValue("startFrame"));
             set => SetFieldValue("startFrame", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// What fram does this animation clip end on
+        /// </description>
+        /// </value>
         public int EndFrame {
             get => GenericMarshal.StringTo<int>(GetFieldValue("endFrame"));
             set => SetFieldValue("endFrame", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Are the rotation values padded
+        /// </description>
+        /// </value>
         public bool PadRotation {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("padRotation"));
             set => SetFieldValue("padRotation", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Are the transform values padded
+        /// </description>
+        /// </value>
         public bool PadTransforms {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("padTransforms"));
             set => SetFieldValue("padTransforms", GenericMarshal.ToString(value));

@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Similar to GuiShapeNameHud, afxGuiTextHud displays ShapeBase object names but also allows Gui Text effects.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxGuiTextHud : GuiControl {
         public afxGuiTextHud(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxGuiTextHud class.
+        /// </description>
+        /// <returns>The type info object for afxGuiTextHud</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,46 +114,100 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF FillColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("fillColor"));
             set => SetFieldValue("fillColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF FrameColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("frameColor"));
             set => SetFieldValue("frameColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF TextColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("textColor"));
             set => SetFieldValue("textColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool ShowFill {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showFill"));
             set => SetFieldValue("showFill", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool ShowFrame {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showFrame"));
             set => SetFieldValue("showFrame", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float VerticalOffset {
             get => GenericMarshal.StringTo<float>(GetFieldValue("verticalOffset"));
             set => SetFieldValue("verticalOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float DistanceFade {
             get => GenericMarshal.StringTo<float>(GetFieldValue("distanceFade"));
             set => SetFieldValue("distanceFade", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool LabelAllShapes {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("labelAllShapes"));
             set => SetFieldValue("labelAllShapes", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool EnableControlObjectOcclusion {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("enableControlObjectOcclusion"));
             set => SetFieldValue("enableControlObjectOcclusion", GenericMarshal.ToString(value));

@@ -14,7 +14,28 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Displays name and damage of ShapeBase objects in its bounds. Must be a child of a GuiTSCtrl and a server connection must be present.</summary>
+    /// <description>
+    /// This control displays the name and damage value of all named ShapeBase objects on the client. The name and damage of objects within the control's display area are overlayed above the object.
+    /// 
+    /// This GUI control must be a child of a TSControl, and a server connection and control object must be present. This is a stand-alone control and relies only on the standard base GuiControl.
+    /// </description>
+    /// <code>
+    /// new GuiShapeNameHud(){
+    /// 	fillColor = "0.0 1.0 0.0 1.0"; // Fills with a solid green color
+    /// 	frameColor = "1.0 1.0 1.0 1.0"; // Solid white frame color
+    /// 	textColor = "1.0 1.0 1.0 1.0"; // Solid white text Color
+    /// 	showFill = "true";
+    /// 	showFrame = "true";
+    /// 	labelFillColor = "0.0 1.0 0.0 1.0"; // Fills with a solid green color
+    /// 	labelFrameColor = "1.0 1.0 1.0 1.0"; // Solid white frame color
+    /// 	showLabelFill = "true";
+    /// 	showLabelFrame = "true";
+    /// 	verticalOffset = "0.15";
+    /// 	distanceFade = "15.0";
+    /// };
+    /// </code>
     public unsafe class GuiShapeNameHud : GuiControl {
         public GuiShapeNameHud(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +120,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiShapeNameHud class.
+        /// </description>
+        /// <returns>The type info object for GuiShapeNameHud</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,61 +131,133 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Standard color for the background of the control.
+        /// </description>
+        /// </value>
         public LinearColorF FillColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("fillColor"));
             set => SetFieldValue("fillColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color for the control's frame.
+        /// </description>
+        /// </value>
         public LinearColorF FrameColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("frameColor"));
             set => SetFieldValue("frameColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color for the text on this control.
+        /// </description>
+        /// </value>
         public LinearColorF TextColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("textColor"));
             set => SetFieldValue("textColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color for the background of each shape name label.
+        /// </description>
+        /// </value>
         public LinearColorF LabelFillColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("labelFillColor"));
             set => SetFieldValue("labelFillColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color for the frames around each shape name label.
+        /// </description>
+        /// </value>
         public LinearColorF LabelFrameColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("labelFrameColor"));
             set => SetFieldValue("labelFrameColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, we draw the background color of the control.
+        /// </description>
+        /// </value>
         public bool ShowFill {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showFill"));
             set => SetFieldValue("showFill", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, we draw the frame of the control.
+        /// </description>
+        /// </value>
         public bool ShowFrame {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showFrame"));
             set => SetFieldValue("showFrame", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, we draw a background for each shape name label.
+        /// </description>
+        /// </value>
         public bool ShowLabelFill {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showLabelFill"));
             set => SetFieldValue("showLabelFill", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, we draw a frame around each shape name label.
+        /// </description>
+        /// </value>
         public bool ShowLabelFrame {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showLabelFrame"));
             set => SetFieldValue("showLabelFrame", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The padding (in pixels) between the label text and the frame.
+        /// </description>
+        /// </value>
         public Point2I LabelPadding {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("labelPadding"));
             set => SetFieldValue("labelPadding", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Amount to vertically offset the control in relation to the ShapeBase object in focus.
+        /// </description>
+        /// </value>
         public float VerticalOffset {
             get => GenericMarshal.StringTo<float>(GetFieldValue("verticalOffset"));
             set => SetFieldValue("verticalOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Visibility distance (how far the player must be from the ShapeBase object in focus) for this control to render.
+        /// </description>
+        /// </value>
         public float DistanceFade {
             get => GenericMarshal.StringTo<float>(GetFieldValue("distanceFade"));
             set => SetFieldValue("distanceFade", GenericMarshal.ToString(value));

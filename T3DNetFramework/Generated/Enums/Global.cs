@@ -1,16 +1,25 @@
 namespace T3DNetFramework.Generated.Enums.Global {
+    /// <description>
+    /// The method used to include water surfaces in the NavMesh.
+    /// </description>
     public enum NavMeshWaterMethod {
         Ignore = 0, 
         Solid = 1, 
         Impassable = 2 
     }
 
+    /// <description>
+    /// The size of a cover point.
+    /// </description>
     public enum CoverPointSize {
         Prone = 0, 
         Crouch = 1, 
         Stand = 2 
     }
 
+    /// <description>
+    /// Possible wave operation types.
+    /// </description>
     public enum afxXM_WaveOpType {
         Add = 0, 
         Multiply = 1, 
@@ -18,6 +27,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Mult = 1 
     }
 
+    /// <description>
+    /// Possible wave parameter types.
+    /// </description>
     public enum afxXM_WaveParamType {
         None = 0, 
         Pos = 1, 
@@ -55,6 +67,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Visibility = 19 
     }
 
+    /// <description>
+    /// Possible waveform types.
+    /// </description>
     public enum afxXM_WaveFormType {
         None = 0, 
         Sine = 1, 
@@ -65,6 +80,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         One = 6 
     }
 
+    /// <description>
+    /// Possible box conform alignment types.
+    /// </description>
     public enum afxXM_BoxConformType {
         Plusx = 0, 
         Minusx = 1, 
@@ -77,18 +95,27 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Z = 4 
     }
 
+    /// <description>
+    /// Possible loop types for an afxPath.
+    /// </description>
     public enum afxPath3DLoopType {
         Constant = 0, 
         Cycle = 1, 
         Oscillate = 2 
     }
 
+    /// <description>
+    /// Possible particle pool types.
+    /// </description>
     public enum afxParticlePool_PoolType {
         Normal = 0, 
         Twominuspass = 1, 
         Twopass = 1 
     }
 
+    /// <description>
+    /// Possible RPG spell target types.
+    /// </description>
     public enum afxRPGMagicSpell_TargetType {
         Nothing = 0, 
         Self = 1, 
@@ -98,6 +125,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Free = 5 
     }
 
+    /// <description>
+    /// Possible zodiac plane facing types.
+    /// </description>
     public enum afxZodiacPlane_FacingType {
         Up = 0, 
         Down = 1, 
@@ -109,24 +139,36 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Back = 3 
     }
 
+    /// <description>
+    /// Possible zodiac blend types.
+    /// </description>
     public enum afxZodiacPlane_BlendType {
         Normal = 0, 
         Additive = 1, 
         Subtractive = 2 
     }
 
+    /// <description>
+    /// Possible zodiac blend types.
+    /// </description>
     public enum afxZodiac_BlendType {
         Normal = 0, 
         Additive = 1, 
         Subtractive = 2 
     }
 
+    /// <description>
+    /// Possible projectile launch direction types.
+    /// </description>
     public enum afxProjectile_LaunchDirType {
         TowardPos2Constraint = 0, 
         OrientConstraint = 1, 
         LaunchDirField = 2 
     }
 
+    /// <description>
+    /// Possible player movement operation types.
+    /// </description>
     public enum afxPlayerMovement_OpType {
         Add = 0, 
         Multiply = 1, 
@@ -134,22 +176,34 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Mult = 1 
     }
 
+    /// <description>
+    /// Possible phrase effect types.
+    /// </description>
     public enum afxPhraseEffect_PhraseType {
         Triggered = 0, 
         Continuous = 1 
     }
 
+    /// <description>
+    /// Possible phrase effect state types.
+    /// </description>
     public enum afxPhraseEffect_StateType {
         On = 1, 
         Off = 2, 
         Both = 3 
     }
 
+    /// <description>
+    /// Possible phrase effect match types.
+    /// </description>
     public enum afxPhraseEffect_MatchType {
         Any = 0, 
         All = 1 
     }
 
+    /// <description>
+    /// Possible particle emitter path origin types.
+    /// </description>
     public enum afxParticleEmitterPath_OriginType {
         Origin = 0, 
         Point = 1, 
@@ -157,12 +211,18 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Tangent = 3 
     }
 
+    /// <description>
+    /// Possible texture function types.
+    /// </description>
     public enum afxBillboard_TexFuncType {
         Replace = 0, 
         Modulate = 1, 
         Add = 2 
     }
 
+    /// <description>
+    /// Possible blending types.
+    /// </description>
     public enum afxBillboard_BlendStyle {
         NORMAL = 1, 
         ADDITIVE = 2, 
@@ -170,6 +230,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         PREMULTALPHA = 4 
     }
 
+    /// <description>
+    /// An enumeration of battery levels of a joystick.
+    /// </description>
     public enum SDLPowerEnum {
         Unknown = -1, 
         Empty = 0, 
@@ -180,6 +243,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Max = 5 
     }
 
+    /// <description>
+    /// The type of device connected.
+    /// </description>
     public enum SDLJoystickType {
         Unknown = 0, 
         Game_Controller = 1, 
@@ -193,11 +259,15 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Throttle = 9 
     }
 
+    /// <description>
+    /// GuiSeparatorCtrl orientations
+    /// </description>
     public enum GuiSeparatorType {
         Vertical = 0, 
         Horizontal = 1 
     }
 
+    /// 
     public enum GuiParticleGraphType {
         Bar = 3, 
         Filled = 2, 
@@ -205,6 +275,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Polyline = 1 
     }
 
+    /// <description>
+    /// The charting style of a single plotting curve in a GuiGraphCtrl.
+    /// </description>
     public enum GuiGraphType {
         Bar = 3, 
         Filled = 2, 
@@ -212,12 +285,18 @@ namespace T3DNetFramework.Generated.Enums.Global {
         PolyLine = 1 
     }
 
+    /// <description>
+    /// Active brush mode type.
+    /// </description>
     public enum ForestBrushMode {
         Paint = 0, 
         Erase = 1, 
         EraseSelected = 2 
     }
 
+    /// <description>
+    /// How to snap when snapping is enabled.
+    /// </description>
     public enum WorldEditorAlignmentType {
         None = 0, 
         PlusX = 1, 
@@ -228,6 +307,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         MinusZ = 6 
     }
 
+    /// <description>
+    /// How to drop objects when placed or dropped in the world.
+    /// </description>
     public enum WorldEditorDropType {
         AtOrigin = 0, 
         AtCamera = 1, 
@@ -240,6 +322,7 @@ namespace T3DNetFramework.Generated.Enums.Global {
         AtGizmo = 8 
     }
 
+    /// 
     public enum GizmoMode {
         None = 0, 
         Move = 1, 
@@ -247,17 +330,24 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Scale = 3 
     }
 
+    /// <description>
+    /// Whether the gizmo should be aligned with the world, or with the object.
+    /// </description>
     public enum GizmoAlignment {
         World = 0, 
         Object = 1 
     }
 
+    /// <description>
+    /// Routine to use for converting Theora's Y'CbCr pixel format to RGB color space.
+    /// </description>
     public enum GuiTheoraTranscoder {
         Auto = 0, 
         Generic = 1, 
         SSE2420RGBA = 2 
     }
 
+    /// 
     public enum ShadowType {
         Spot = 0, 
         PSSM = 1, 
@@ -267,22 +357,32 @@ namespace T3DNetFramework.Generated.Enums.Global {
         CubeMap = 5 
     }
 
+    /// <description>
+    /// The shadow filtering modes for Advanced Lighting shadows.
+    /// </description>
     public enum ShadowFilterMode {
         None = 0, 
         SoftShadow = 1, 
         SoftShadowHighQuality = 2 
     }
 
+    /// 
     public enum _TamlFormatMode {
         Xml = 1, 
         Binary = 2 
     }
 
+    /// <description>
+    /// Type of mesh data available in a shape.
+    /// </description>
     public enum BatchingMode {
         Individual = 0, 
         Static_Batching = 2 
     }
 
+    /// <description>
+    /// Type of mesh data available in a shape.
+    /// </description>
     public enum CollisionMeshMeshType {
         None = 0, 
         Bounds = 1, 
@@ -290,18 +390,28 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Visible_Mesh = 3 
     }
 
+    /// <summary>How the weapons are linked to triggers for this TurretShape.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public enum TurretShapeFireLinkType {
         FireTogether = 0, 
         GroupedFire = 1, 
         IndividualFire = 2 
     }
 
+    /// <description>
+    /// How to handle the physics simulation with the client's and server.
+    /// </description>
     public enum PhysicsSimType {
         ClientOnly = 0, 
         ServerOnly = 1, 
         ClientServer = 2 
     }
 
+    /// <description>
+    /// The type of visual blending style to apply to the particles.
+    /// </description>
     public enum ParticleBlendStyle {
         NORMAL = 1, 
         ADDITIVE = 2, 
@@ -309,6 +419,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         PREMULTALPHA = 4 
     }
 
+    /// <description>
+    /// Type of mesh data available in a shape.
+    /// </description>
     public enum TSMeshType {
         None = 0, 
         Bounds = 1, 
@@ -316,6 +429,10 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Visible_Mesh = 3 
     }
 
+    /// <summary>The type of light to attach to this ShapeBaseImage.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public enum ShapeBaseImageLightType {
         NoLight = 0, 
         ConstantLight = 1, 
@@ -324,6 +441,10 @@ namespace T3DNetFramework.Generated.Enums.Global {
         WeaponFireLight = 4 
     }
 
+    /// <summary>What kind of recoil this ShapeBaseImage should emit when fired.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public enum ShapeBaseImageRecoilState {
         NoRecoil = 0, 
         LightRecoil = 1, 
@@ -331,6 +452,10 @@ namespace T3DNetFramework.Generated.Enums.Global {
         HeavyRecoil = 3 
     }
 
+    /// <summary>How the spin animation should be played.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public enum ShapeBaseImageSpinState {
         Ignore = 0, 
         Stop = 1, 
@@ -339,12 +464,20 @@ namespace T3DNetFramework.Generated.Enums.Global {
         FullSpeed = 4 
     }
 
+    /// <summary>The loaded state of this ShapeBaseImage.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public enum ShapeBaseImageLoadedState {
         Ignore = 0, 
         Loaded = 1, 
         Empty = 2 
     }
 
+    /// <summary>The pose of the Player.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public enum PlayerPose {
         Stand = 0, 
         Sprint = 1, 
@@ -353,6 +486,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Swim = 4 
     }
 
+    /// <description>
+    /// Possible physical zone force types.
+    /// </description>
     public enum PhysicalZone_ForceType {
         Vector = 0, 
         Spherical = 1, 
@@ -361,12 +497,19 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Cylinder = 2 
     }
 
+    /// <summary>The type of light the Item has</summary>
+    /// <description>
+    /// 
+    /// </description>
     public enum ItemLightType {
         NoLight = 0, 
         ConstantLight = 1, 
         PulsingLight = 2 
     }
 
+    /// <description>
+    /// Movement behavior type for Camera.
+    /// </description>
     public enum CameraMotionMode {
         Stationary = 0, 
         FreeRotate = 1, 
@@ -378,18 +521,29 @@ namespace T3DNetFramework.Generated.Enums.Global {
         EditOrbit = 7 
     }
 
+    /// <description>
+    /// Specifies how the viewport should be set up for a PostEffect's target.
+    /// </description>
+    /// <remarks> Applies to both the diffuse target and the depth target (if defined).
+    /// </remarks>
     public enum PFXTargetViewport {
         PFXTargetViewport_TargetSize = 0, 
         PFXTargetViewport_GFXViewport = 1, 
         PFXTargetViewport_NamedInTexture0 = 2 
     }
 
+    /// <description>
+    /// Describes when the target texture should be cleared
+    /// </description>
     public enum PFXTargetClear {
         PFXTargetClear_None = 0, 
         PFXTargetClear_OnCreate = 1, 
         PFXTargetClear_OnDraw = 2 
     }
 
+    /// <description>
+    /// When to process this effect during the frame.
+    /// </description>
     public enum PFXRenderTime {
         PFXBeforeBin = 0, 
         PFXAfterBin = 1, 
@@ -398,18 +552,25 @@ namespace T3DNetFramework.Generated.Enums.Global {
         PFXTexGenOnDemand = 4 
     }
 
+    /// <description>
+    /// Style of rendering for a GuiTSCtrl.
+    /// </description>
     public enum GuiTSRenderStyles {
         Standard = 0, 
         Stereo_side_by_side = 1, 
         Stereo_separate = 2 
     }
 
+    /// 
     public enum TSShapeConstructorLodType {
         DetectDTS = 0, 
         SingleSize = 1, 
         TrailingNumber = 2 
     }
 
+    /// <description>
+    /// Axis to use for upwards direction when importing from Collada.
+    /// </description>
     public enum TSShapeConstructorUpAxis {
         X_AXIS = 0, 
         Y_AXIS = 1, 
@@ -417,35 +578,53 @@ namespace T3DNetFramework.Generated.Enums.Global {
         DEFAULT = 3 
     }
 
+    /// <description>
+    /// Description
+    /// </description>
     public enum baseTexFormat {
         NONE = 0, 
         DDS = 1, 
         PNG = 2 
     }
 
+    /// <description>
+    /// The type of knot that this marker will be.
+    /// </description>
     public enum MarkerKnotType {
         Normal = 0, 
         Position_Only = 1, 
         Kink = 2 
     }
 
+    /// <description>
+    /// The type of smoothing this marker will have for pathed objects.
+    /// </description>
     public enum MarkerSmoothingType {
         Spline = 1, 
         Linear = 0 
     }
 
+    /// <description>
+    /// What size to render the target texture. Sizes are based on the Window the render is occuring in.
+    /// </description>
     public enum RenderTexTargetSize {
         Windowsize = 0, 
         Windowsizescaled = 1, 
         Fixedsize = 2 
     }
 
+    /// <description>
+    /// When using the Wave material animation, one of these Wave Types will be used to determine the type of wave to display.
+    /// </description>
     public enum MaterialWaveType {
         Sin = 0, 
         Triangle = 1, 
         Square = 2 
     }
 
+    /// <description>
+    /// The type of graphical blending operation to apply to this material
+    /// </description>
     public enum MaterialBlendOp {
         None = 0, 
         Mul = 1, 
@@ -455,6 +634,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         LerpAlpha = 5 
     }
 
+    /// <description>
+    /// The type of animation effect to apply to this material.
+    /// </description>
     public enum MaterialAnimType {
         Scroll = 1, 
         Rotate = 2, 
@@ -463,6 +645,7 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Sequence = 16 
     }
 
+    /// 
     public enum GuiFontCharset {
         ANSI = 0, 
         SYMBOL = 1, 
@@ -485,6 +668,7 @@ namespace T3DNetFramework.Generated.Enums.Global {
         BALTIC = 18 
     }
 
+    /// 
     public enum GuiAlignmentType {
         Left = 0, 
         Center = 2, 
@@ -493,6 +677,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Bottom = 4 
     }
 
+    /// <description>
+    /// Vertical sizing behavior of a GuiControl.
+    /// </description>
     public enum GuiVerticalSizing {
         Bottom = 0, 
         Height = 1, 
@@ -505,6 +692,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         WindowRelative = 8 
     }
 
+    /// <description>
+    /// Horizontal sizing behavior of a GuiControl.
+    /// </description>
     public enum GuiHorizontalSizing {
         Right = 0, 
         Width = 1, 
@@ -517,11 +707,13 @@ namespace T3DNetFramework.Generated.Enums.Global {
         WindowRelative = 8 
     }
 
+    /// 
     public enum GuiGradientPickMode {
         HorizColor = 0, 
         HorizAlpha = 1 
     }
 
+    /// 
     public enum GuiColorPickMode {
         Pallete = 0, 
         HorizColor = 1, 
@@ -534,50 +726,73 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Dropper = 8 
     }
 
+    /// <description>
+    /// Where the control should put the tab headers for selecting individual pages.
+    /// </description>
     public enum GuiTabPosition {
         Top = 0, 
         Bottom = 1 
     }
 
+    /// <description>
+    /// Determines how child controls are stacked vertically.
+    /// </description>
     public enum GuiVerticalStackingType {
         Top_to_Bottom = 0, 
         Bottom_to_Top = 1 
     }
 
+    /// <description>
+    /// Determines how child controls are stacked horizontally.
+    /// </description>
     public enum GuiHorizontalStackingType {
         Left_to_Right = 0, 
         Right_to_Left = 1 
     }
 
+    /// <description>
+    /// Stacking method used to position child controls.
+    /// </description>
     public enum GuiStackingType {
         Vertical = 0, 
         Horizontal = 1, 
         Dynamic = 2 
     }
 
+    /// <description>
+    /// Which side of the splitter to keep at a fixed size (if any).
+    /// </description>
     public enum GuiSplitFixedPanel {
         None = 0, 
         FirstPanel = 1, 
         SecondPanel = 2 
     }
 
+    /// <description>
+    /// Axis along which to divide the container's space.
+    /// </description>
     public enum GuiSplitOrientation {
         Vertical = 0, 
         Horizontal = 1 
     }
 
+    /// <description>
+    /// Display behavior of a scroll bar.  Determines when a scrollbar will be visible.
+    /// </description>
     public enum GuiScrollBarBehavior {
         AlwaysOn = 0, 
         AlwaysOff = 1, 
         Dynamic = 2 
     }
 
+    /// 
     public enum GuiFrameState {
         AlwaysOn = 0, 
         AlwaysOff = 1, 
         Dynamic = 2 
     }
 
+    /// 
     public enum GuiDockingType {
         None = 1, 
         Client = 2, 
@@ -587,6 +802,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Right = 32 
     }
 
+    /// <description>
+    /// Direction in which to scroll the child control.
+    /// </description>
     public enum GuiAutoScrollDirection {
         Up = 0, 
         Down = 1, 
@@ -594,6 +812,7 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Right = 3 
     }
 
+    /// 
     public enum GuiIconButtonIconLocation {
         None = 0, 
         Left = 1, 
@@ -601,6 +820,7 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Center = 3 
     }
 
+    /// 
     public enum GuiIconButtonTextLocation {
         None = 0, 
         Bottom = 1, 
@@ -610,17 +830,26 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Center = 5 
     }
 
+    /// <description>
+    /// Type of button control.
+    /// </description>
     public enum GuiButtonType {
         PushButton = 0, 
         ToggleButton = 1, 
         RadioButton = 2 
     }
 
+    /// <description>
+    /// Rendering behavior when placing bitmaps in controls.
+    /// </description>
     public enum GuiBitmapMode {
         Stretched = 0, 
         Centered = 1 
     }
 
+    /// <description>
+    /// The blend operators.
+    /// </description>
     public enum GFXBlendOp {
         GFXBlendOpAdd = 0, 
         GFXBlendOpSubtract = 1, 
@@ -629,6 +858,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         GFXBlendOpMax = 4 
     }
 
+    /// <description>
+    /// The stencil operators.
+    /// </description>
     public enum GFXStencilOp {
         GFXStencilOpKeep = 0, 
         GFXStencilOpZero = 1, 
@@ -640,12 +872,20 @@ namespace T3DNetFramework.Generated.Enums.Global {
         GFXStencilOpDecr = 7 
     }
 
+    /// <description>
+    /// The render cull modes.
+    /// </description>
     public enum GFXCullMode {
         GFXCullNone = 0, 
         GFXCullCW = 1, 
         GFXCullCCW = 2 
     }
 
+    /// <description>
+    /// The texture formats.
+    /// </description>
+    /// <remarks> Not all formats are supported on all platforms.
+    /// </remarks>
     public enum GFXFormat {
         GFXFormatR8G8B8 = 10, 
         GFXFormatR8G8B8A8 = 12, 
@@ -679,6 +919,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         GFXFormatR10G10B10A2 = 19 
     }
 
+    /// <description>
+    /// The texture transform state flags.
+    /// </description>
     public enum GFXTextureTransformFlags {
         GFXTTFDisable = 0, 
         GFXTTFFCoord1D = 1, 
@@ -688,6 +931,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         GFXTTFProjected = 256 
     }
 
+    /// <description>
+    /// The texture arguments.
+    /// </description>
     public enum GFXTextureArgument {
         GFXTADiffuse = 0, 
         GFXTACurrent = 1, 
@@ -700,6 +946,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         AlphaReplicate = 32 
     }
 
+    /// <description>
+    /// The texture operators.
+    /// </description>
     public enum GFXTextureOp {
         GFXTOPDisable = 0, 
         GFXTOPSelectARG1 = 1, 
@@ -728,6 +977,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         GFXTOPLERP = 24 
     }
 
+    /// <description>
+    /// The texture filter types.
+    /// </description>
     public enum GFXTextureFilterType {
         GFXTextureFilterNone = 0, 
         GFXTextureFilterPoint = 1, 
@@ -737,6 +989,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         GFXTextureFilterGaussianQuad = 5 
     }
 
+    /// <description>
+    /// The texture address modes.
+    /// </description>
     public enum GFXTextureAddressMode {
         GFXAddressWrap = 0, 
         GFXAddressMirror = 1, 
@@ -745,6 +1000,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         GFXAddressMirrorOnce = 4 
     }
 
+    /// <description>
+    /// The supported comparison functions.
+    /// </description>
     public enum GFXCmpFunc {
         GFXCmpNever = 0, 
         GFXCmpLess = 1, 
@@ -756,6 +1014,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         GFXCmpAlways = 7 
     }
 
+    /// <description>
+    /// The supported blend modes.
+    /// </description>
     public enum GFXBlend {
         GFXBlendZero = 0, 
         GFXBlendOne = 1, 
@@ -770,12 +1031,18 @@ namespace T3DNetFramework.Generated.Enums.Global {
         GFXBlendSrcAlphaSat = 10 
     }
 
+    /// <description>
+    /// Back-end graphics API used by the GFX subsystem.
+    /// </description>
     public enum GFXAdapterType {
         OpenGL = 0, 
         D3D11 = 1, 
         NullDevice = 2 
     }
 
+    /// <description>
+    /// Return value for messageBox() indicating which button was pressed by the user.
+    /// </description>
     public enum MBReturnVal {
         OK = 1, 
         Cancelled = 2, 
@@ -783,6 +1050,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         DontSave = 4 
     }
 
+    /// <description>
+    /// What icon to show on a message box.
+    /// </description>
     public enum MBIcons {
         Information = 1, 
         Warning = 0, 
@@ -790,6 +1060,9 @@ namespace T3DNetFramework.Generated.Enums.Global {
         Question = 2 
     }
 
+    /// <description>
+    /// Which buttons to display on a message box.
+    /// </description>
     public enum MBButtons {
         Ok = 0, 
         OkCancel = 1, 
@@ -798,12 +1071,20 @@ namespace T3DNetFramework.Generated.Enums.Global {
         SaveDontSaveCancel = 4 
     }
 
+    /// <summary>Priority levels for logging entries</summary>
+    /// <description>
+    /// 
+    /// </description>
     public enum LogLevel {
         Normal = 0, 
         Warning = 1, 
         Error = 2 
     }
 
+    /// <description>
+    /// Channels are individual properties of sound sources that may be animated over time.
+    /// </description>
+    /// <see cref="SFXParameter" />
     public enum SFXChannel {
         Volume = 0, 
         Pitch = 1, 
@@ -830,24 +1111,39 @@ namespace T3DNetFramework.Generated.Enums.Global {
         User3 = 22 
     }
 
+    /// <description>
+    /// Type of volume distance attenuation curve.
+    /// The distance model determines the falloff curve applied to the volume of 3D sounds over distance.
+    /// </description>
     public enum SFXDistanceModel {
         Linear = 0, 
         Logarithmic = 1, 
         Exponential = 2 
     }
 
+    /// <description>
+    /// Playback status of sound source.
+    /// </description>
     public enum SFXStatus {
         Playing = 1, 
         Stopped = 2, 
         Paused = 3 
     }
 
+    /// <description>
+    /// Reaction behavior when a state is changed incompatibly on a slot that has already started playing.
+    /// </description>
+    /// <see cref="SFXPlayList::stateMode" />
     public enum SFXPlayListStateMode {
         StopWhenDeactivated = 0, 
         PauseWhenDeactivated = 1, 
         IgnoreWhenDeactivated = 2 
     }
 
+    /// <description>
+    /// Behavior when hitting the play stage of a slot that is still playing from a previous cycle.
+    /// </description>
+    /// <see cref="SFXPlayList::replay" />
     public enum SFXPlayListReplayMode {
         IgnorePlaying = 0, 
         RestartPlaying = 1, 
@@ -856,6 +1152,13 @@ namespace T3DNetFramework.Generated.Enums.Global {
         SkipIfPlaying = 4 
     }
 
+    /// <description>
+    /// Playlist behavior when transitioning in and out of invididual slots.
+    /// 
+    /// Transition behaviors apply when the playback controller starts processing a playlist slot and when it ends processing a slot.  Using transition behaviors, playback can be synchronized.
+    /// </description>
+    /// <see cref="SFXPlayList::transitionIn" />
+    /// <see cref="SFXPlayList::transitionOut" />
     public enum SFXPlayListTransitionMode {
         None = 0, 
         Wait = 1, 
@@ -864,12 +1167,21 @@ namespace T3DNetFramework.Generated.Enums.Global {
         StopAll = 4 
     }
 
+    /// <description>
+    /// Randomization pattern to apply to playlist slot playback order.
+    /// </description>
+    /// <see cref="SFXPlayList::random" />
     public enum SFXPlayListRandomMode {
         NotRandom = 0, 
         StrictRandom = 1, 
         OrderedRandom = 2 
     }
 
+    /// <description>
+    /// Playlist behavior when description is set to loop.
+    /// </description>
+    /// <see cref="SFXDescription::isLooping" />
+    /// <see cref="SFXPlayList::loopMode" />
     public enum SFXPlayListLoopMode {
         All = 0, 
         Single = 1 

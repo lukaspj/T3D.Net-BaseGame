@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A strip shaped decal defined by spine nodes which clips against Terrain objects.</summary>
+    /// <description>
+    /// DecalRoad is for representing a road or path ( or other inventive things ) across a TerrainBlock. It renders as a decal and is therefore only for features that do not need geometric depth.
+    /// 
+    /// The Material assigned to DecalRoad should tile vertically.
+    /// </description>
     public unsafe class DecalRoad : SceneObject {
         public DecalRoad(bool pRegister = false) 
             : base(pRegister) {
@@ -139,18 +145,30 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// Force trigger an inspectPostApply. This will transmit the material and other fields ( not including nodes ) to client objects.
+        /// </description>
         public void PostApply() {
              InternalUnsafeMethods.PostApply__Args _args = new InternalUnsafeMethods.PostApply__Args() {
              };
              InternalUnsafeMethods.PostApply()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// Force DecalRoad to update it's spline and reclip geometry.
+        /// </description>
         public void Regenerate() {
              InternalUnsafeMethods.Regenerate__Args _args = new InternalUnsafeMethods.Regenerate__Args() {
              };
              InternalUnsafeMethods.Regenerate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the DecalRoad class.
+        /// </description>
+        /// <returns>The type info object for DecalRoad</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -158,26 +176,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Material used for rendering.
+        /// </description>
+        /// </value>
         public string Material {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Material"));
             set => SetFieldValue("Material", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The length in meters of textures mapped to the DecalRoad
+        /// </description>
+        /// </value>
         public float TextureLength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("textureLength"));
             set => SetFieldValue("textureLength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Angle in degrees - DecalRoad will subdivided the spline if its curve is greater than this threshold.
+        /// </description>
+        /// </value>
         public float BreakAngle {
             get => GenericMarshal.StringTo<float>(GetFieldValue("breakAngle"));
             set => SetFieldValue("breakAngle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// DecalRoad(s) are rendered in descending renderPriority order.
+        /// </description>
+        /// </value>
         public int RenderPriority {
             get => GenericMarshal.StringTo<int>(GetFieldValue("renderPriority"));
             set => SetFieldValue("renderPriority", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Do not modify, for internal use.
+        /// </description>
+        /// </value>
         public string Node {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Node"));
             set => SetFieldValue("Node", GenericMarshal.ToString(value));

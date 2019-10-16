@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Defines the properties of an afxSelectronData.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxSelectronData : afxChoreographerData {
         public afxSelectronData(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +123,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Resets a selectron datablock during reload.
+        /// </description>
         public void Reset() {
              InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
              };
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the afxSelectronData class.
+        /// </description>
+        /// <returns>The type info object for afxSelectronData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -132,71 +143,155 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float MainDur {
             get => GenericMarshal.StringTo<float>(GetFieldValue("mainDur"));
             set => SetFieldValue("mainDur", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float SelectDur {
             get => GenericMarshal.StringTo<float>(GetFieldValue("selectDur"));
             set => SetFieldValue("selectDur", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float DeselectDur {
             get => GenericMarshal.StringTo<float>(GetFieldValue("deselectDur"));
             set => SetFieldValue("deselectDur", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int MainRepeats {
             get => GenericMarshal.StringTo<int>(GetFieldValue("mainRepeats"));
             set => SetFieldValue("mainRepeats", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int SelectRepeats {
             get => GenericMarshal.StringTo<int>(GetFieldValue("selectRepeats"));
             set => SetFieldValue("selectRepeats", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int DeselectRepeats {
             get => GenericMarshal.StringTo<int>(GetFieldValue("deselectRepeats"));
             set => SetFieldValue("deselectRepeats", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int SelectionTypeMask {
             get => GenericMarshal.StringTo<int>(GetFieldValue("selectionTypeMask"));
             set => SetFieldValue("selectionTypeMask", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public sbyte SelectionTypeStyle {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("selectionTypeStyle"));
             set => SetFieldValue("selectionTypeStyle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxEffectBaseData AddMainEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addMainEffect"));
             set => SetFieldValue("addMainEffect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxEffectBaseData AddSelectEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addSelectEffect"));
             set => SetFieldValue("addSelectEffect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxEffectBaseData AddDeselectEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addDeselectEffect"));
             set => SetFieldValue("addDeselectEffect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int NumMainLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numMainLoops"));
             set => SetFieldValue("numMainLoops", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int NumSelectLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numSelectLoops"));
             set => SetFieldValue("numSelectLoops", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int NumDeselectLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numDeselectLoops"));
             set => SetFieldValue("numDeselectLoops", GenericMarshal.ToString(value));

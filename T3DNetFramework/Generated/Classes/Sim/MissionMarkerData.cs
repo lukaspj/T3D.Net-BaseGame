@@ -14,7 +14,21 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A very basic class containing information used by MissionMarker objects for rendering</summary>
+    /// <description>
+    /// MissionMarkerData, is an extremely barebones class derived from ShapeBaseData. It is solely used by MissionMarker classes (such as SpawnSphere), so that you can see the object while editing a level.
+    /// </description>
+    /// <code>
+    /// datablock MissionMarkerData(SpawnSphereMarker)
+    /// {
+    ///    category = "Misc";
+    ///    shapeFile = "core/art/shapes/octahedron.dts";
+    /// };
+    /// </code>
+    /// <see cref="MissionMarker" />
+    /// <see cref="SpawnSphere" />
+    /// <see cref="WayPoint" />
     public unsafe class MissionMarkerData : ShapeBaseData {
         public MissionMarkerData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +113,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the MissionMarkerData class.
+        /// </description>
+        /// <returns>The type info object for MissionMarkerData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

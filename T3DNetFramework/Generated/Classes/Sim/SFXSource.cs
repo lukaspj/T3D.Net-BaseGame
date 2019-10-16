@@ -14,7 +14,30 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Playback controller for a sound source.</summary>
+    /// <description>
+    /// All sound playback is driven by SFXSources.  Each such source represents an independent playback controller that directly or indirectly affects sound output.
+    /// 
+    /// While this class itself is instantiable, such an instance will not by itself emit any sound.  This is the responsibility of its subclasses.  Note, however, that none of these subclasses must be instantiated directly but must instead be instantiated indirectly through the SFX interface.
+    /// </description>
+    /// <see cref="sfxPlayOnce" />
+    /// <see cref="sfxDeleteWhenStopped" />
+    /// <remarks> Be aware that the property values used to scale child property values are the </remarks>
+    /// <see cref="SFXDescription::sourceGroup" />
+    /// <see cref="SFXDescription::volume" />
+    /// <see cref="SFXDescription::is3d" />
+    /// <see cref="SFXDescription::fadeInTime" />
+    /// <see cref="SFXDescription::fadeOutTime" />
+    /// <see cref="SFXDescription::fadeInEase" />
+    /// <see cref="SFXDescription::fadeOutEase" />
+    /// <see cref="SFXDescription::fadeLoops" />
+    /// <see cref="SFXDescription::coneInsideAngle" />
+    /// <see cref="SFXDescription::coneOutsideAngle" />
+    /// <see cref="SFXDescription::coneOutsideVolume" />
+    /// <see cref="sfxGetDopplerFactor" />
+    /// <see cref="sfxSetDopplerFactor" />
+    /// <see cref="SFXAmbience::dopplerFactor" />
     public unsafe class SFXSource : SimGroup {
         public SFXSource(bool pRegister = false) 
             : base(pRegister) {
@@ -604,6 +627,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Add a notification marker called<paramref name="" /> name at 
+        /// </description>
+        /// <param name="name">Symbolic name for the marker that will be passed to the onMarkerPassed() callback.</param>
+        /// <param name="pos">Playback position in seconds when the notification should trigger.  Note that this is a soft limit and there may be a delay between the play cursor actually passing the position and the callback being triggered.</param>
+        /// <remarks> For looped sounds, the marker will trigger on each iteration.
+        /// 
+        /// </remarks>
+        /// <code>
+        /// // Create a new source.
+        /// $source = sfxCreateSource( AudioMusicLoop2D, "art/sound/backgroundMusic" );
+        /// 
+        /// // Assign a class to the source.
+        /// $source.class = "BackgroundMusic";
+        /// 
+        /// // Add a playback marker at one minute into playback.
+        /// $source.addMarker( "first", 60 );
+        /// 
+        /// // Define the callback function.  This function will be called when the playback position passes the one minute mark.
+        /// function BackgroundMusic::onMarkerPassed( %this, %markerName )
+        /// {
+        ///    if( %markerName $= "first" )
+        ///       echo( "Playback has passed the 60 seconds mark." );
+        /// }
+        /// 
+        /// // Play the sound.
+        /// $source.play();
+        /// </code>
         public void AddMarker(string name, float pos) {
              InternalUnsafeMethods.AddMarker__Args _args = new InternalUnsafeMethods.AddMarker__Args() {
                 name = name,
@@ -612,6 +663,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddMarker()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the parameter at the given index.
+        /// </description>
+        /// <param name="index">Index of the parameter to fetch.  Must be 0<=index<=getParameterCount().</param>
+        /// <returns>The parameter at the given<paramref name="" /> index or null if </returns>
+        /// <code>
+        /// // Print the name ofo each parameter attached to %source.
+        /// %numParams = %source.getParameterCount();
+        /// for( %i = 0; %i < %numParams; %i ++ )
+        ///    echo( %source.getParameter( %i ).getParameterName() );
+        /// </code>
+        /// <see cref="getParameterCount" />
         public SFXParameter GetParameter(int index) {
              InternalUnsafeMethods.GetParameter__Args _args = new InternalUnsafeMethods.GetParameter__Args() {
                 index = index,
@@ -620,6 +683,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SFXParameter(_engineResult);
         }
 
+        /// <description>
+        /// Detach<paramref name="" /> parameter from the source.
+        /// 
+        /// Once detached, the source will no longer react to value changes of the given 
+        /// </description>
+        /// <param name="parameter">The parameter to detach from the source.</param>
         public void RemoveParameter(SFXParameter parameter) {
              InternalUnsafeMethods.RemoveParameter__Args _args = new InternalUnsafeMethods.RemoveParameter__Args() {
                 parameter = parameter.ObjectPtr,
@@ -627,6 +696,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveParameter()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Attach<paramref name="" /> parameter to the source,
+        /// 
+        /// Once attached, the source will react to value changes of the given 
+        /// </description>
+        /// <param name="parameter">The parameter to attach to the source.</param>
         public void AddParameter(SFXParameter parameter) {
              InternalUnsafeMethods.AddParameter__Args _args = new InternalUnsafeMethods.AddParameter__Args() {
                 parameter = parameter.ObjectPtr,
@@ -634,6 +709,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddParameter()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the number of SFXParameters that are attached to the source.
+        /// </description>
+        /// <returns>The number of parameters attached to the source.</returns>
+        /// <code>
+        /// // Print the name ofo each parameter attached to %source.
+        /// %numParams = %source.getParameterCount();
+        /// for( %i = 0; %i < %numParams; %i ++ )
+        ///    echo( %source.getParameter( %i ).getParameterName() );
+        /// </code>
+        /// <see cref="getParameter" />
+        /// <see cref="addParameter" />
         public int GetParameterCount() {
              InternalUnsafeMethods.GetParameterCount__Args _args = new InternalUnsafeMethods.GetParameterCount__Args() {
              };
@@ -641,6 +728,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set up the 3D volume cone for the source.
+        /// </description>
+        /// <param name="innerAngle">Angle of the inner sound cone in degrees (</param>
+        /// <param name="outerAngle">Angle of the outer sound cone in degrees (</param>
+        /// <param name="outsideVolume">Volume scale factor outside of outer cone (</param>
+        /// <remarks> This method has no effect on the source if the source is not 3D.
+        /// 
+        /// </remarks>
         public void SetCone(float innerAngle, float outerAngle, float outsideVolume) {
              InternalUnsafeMethods.SetCone__Args _args = new InternalUnsafeMethods.SetCone__Args() {
                 innerAngle = innerAngle,
@@ -650,6 +746,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCone()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( vector position [, vector direction ] ) Set the position and orientation of a 3D sound source.
+        /// </description>
         public void SetTransform(string position, string direction = "") {
              InternalUnsafeMethods.SetTransform__Args _args = new InternalUnsafeMethods.SetTransform__Args() {
                 position = position,
@@ -658,6 +757,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTransform()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the pitch scale of the source.
+        /// Pitch determines the playback speed of the source (default: 1).
+        /// </description>
+        /// <param name="pitch">The new pitch scale factor.</param>
+        /// <see cref="getPitch" />
+        /// <see cref="SFXDescription::pitch" />
         public void SetPitch(float pitch) {
              InternalUnsafeMethods.SetPitch__Args _args = new InternalUnsafeMethods.SetPitch__Args() {
                 pitch = pitch,
@@ -665,6 +771,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetPitch()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the pitch scale of the source.
+        /// Pitch determines the playback speed of the source (default: 1).
+        /// </description>
+        /// <returns>The current pitch scale factor of the source.</returns>
+        /// <see cref="setPitch" />
+        /// <see cref="SFXDescription::pitch" />
         public float GetPitch() {
              InternalUnsafeMethods.GetPitch__Args _args = new InternalUnsafeMethods.GetPitch__Args() {
              };
@@ -672,6 +785,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the fade time parameters of the source.
+        /// </description>
+        /// <param name="fadeInTime">The new fade-in time in seconds.</param>
+        /// <param name="fadeOutTime">The new fade-out time in seconds.</param>
+        /// <see cref="SFXDescription::fadeInTime" />
+        /// <see cref="SFXDescription::fadeOutTime" />
         public void SetFadeTimes(float fadeInTime, float fadeOutTime) {
              InternalUnsafeMethods.SetFadeTimes__Args _args = new InternalUnsafeMethods.SetFadeTimes__Args() {
                 fadeInTime = fadeInTime,
@@ -680,6 +800,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetFadeTimes()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the fade-out time set on the source.
+        /// This will initially be SFXDescription::fadeOutTime.
+        /// </description>
+        /// <returns>The fade-out time set on the source in seconds.</returns>
+        /// <see cref="SFXDescription::fadeOutTime" />
         public float GetFadeOutTime() {
              InternalUnsafeMethods.GetFadeOutTime__Args _args = new InternalUnsafeMethods.GetFadeOutTime__Args() {
              };
@@ -687,6 +813,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the fade-in time set on the source.
+        /// This will initially be SFXDescription::fadeInTime.
+        /// </description>
+        /// <returns>The fade-in time set on the source in seconds.</returns>
+        /// <see cref="SFXDescription::fadeInTime" />
         public float GetFadeInTime() {
              InternalUnsafeMethods.GetFadeInTime__Args _args = new InternalUnsafeMethods.GetFadeInTime__Args() {
              };
@@ -694,6 +826,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the final effective volume level of the source.
+        /// 
+        /// This method returns the volume level as it is after source group volume modulation, fades, and distance-based volume attenuation have been applied to the base volume level.
+        /// </description>
+        /// <returns>The effective volume of the source.</returns>
         public float GetAttenuatedVolume() {
              InternalUnsafeMethods.GetAttenuatedVolume__Args _args = new InternalUnsafeMethods.GetAttenuatedVolume__Args() {
              };
@@ -701,6 +839,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the base volume level for the source.
+        /// This volume will be the starting point for source group volume modulation, fades, and distance-based volume attenuation.
+        /// </description>
+        /// <param name="volume">The new base volume level for the source.  Must be 0>=volume<=1.</param>
+        /// <see cref="getVolume" />
         public void SetVolume(float volume) {
              InternalUnsafeMethods.SetVolume__Args _args = new InternalUnsafeMethods.SetVolume__Args() {
                 volume = volume,
@@ -708,6 +852,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetVolume()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the current base volume level of the source.
+        /// This is not the final effective volume that the source is playing at but rather the starting volume level before source group modulation, fades, or distance-based volume attenuation are applied.
+        /// </description>
+        /// <returns>The current base volume level.</returns>
+        /// <see cref="setVolume" />
+        /// <see cref="SFXDescription::volume" />
         public float GetVolume() {
              InternalUnsafeMethods.GetVolume__Args _args = new InternalUnsafeMethods.GetVolume__Args() {
              };
@@ -715,6 +866,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the current playback status.
+        /// </description>
+        /// <returns>Te current playback status</returns>
         public SFXStatus GetStatus() {
              InternalUnsafeMethods.GetStatus__Args _args = new InternalUnsafeMethods.GetStatus__Args() {
              };
@@ -722,6 +877,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return (SFXStatus)_engineResult;
         }
 
+        /// <description>
+        /// Test whether the source is currently stopped.
+        /// </description>
+        /// <returns>True if the source is in stopped state, false otherwise.</returns>
+        /// <see cref="stop" />
+        /// <see cref="getStatus" />
+        /// <see cref="SFXStatus" />
         public bool IsStopped() {
              InternalUnsafeMethods.IsStopped__Args _args = new InternalUnsafeMethods.IsStopped__Args() {
              };
@@ -729,6 +891,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the source is currently paused.
+        /// </description>
+        /// <returns>True if the source is in paused state, false otherwise.</returns>
+        /// <see cref="pause" />
+        /// <see cref="getStatus" />
+        /// <see cref="SFXStatus" />
         public bool IsPaused() {
              InternalUnsafeMethods.IsPaused__Args _args = new InternalUnsafeMethods.IsPaused__Args() {
              };
@@ -736,6 +905,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the source is currently playing.
+        /// </description>
+        /// <returns>True if the source is in playing state, false otherwise.</returns>
+        /// <see cref="play" />
+        /// <see cref="getStatus" />
+        /// <see cref="SFXStatus" />
         public bool IsPlaying() {
              InternalUnsafeMethods.IsPlaying__Args _args = new InternalUnsafeMethods.IsPlaying__Args() {
              };
@@ -743,6 +919,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Pause playback of the source.
+        /// </description>
+        /// <param name="fadeOutTime">Seconds for the sound to fade down to zero volume.  If -1, the SFXDescription::fadeOutTime set in the source's associated description is used.  Pass 0 to disable a fade-out effect that may be configured on the description.
+        /// Be aware that if a fade-out effect is used, the source will not immediately to paused state but will rather remain in playing state until the fade-out time has expired..</param>
         public void Pause(float fadeOutTime = -1f) {
              InternalUnsafeMethods.Pause__Args _args = new InternalUnsafeMethods.Pause__Args() {
                 fadeOutTime = fadeOutTime,
@@ -750,6 +931,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Pause()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Stop playback of the source.
+        /// </description>
+        /// <param name="fadeOutTime">Seconds for the sound to fade down to zero volume.  If -1, the SFXDescription::fadeOutTime set in the source's associated description is used.  Pass 0 to disable a fade-out effect that may be configured on the description.
+        /// Be aware that if a fade-out effect is used, the source will not immediately transtion to stopped state but will rather remain in playing state until the fade-out time has expired.</param>
         public void Stop(float fadeOutTime = -1f) {
              InternalUnsafeMethods.Stop__Args _args = new InternalUnsafeMethods.Stop__Args() {
                 fadeOutTime = fadeOutTime,
@@ -757,6 +943,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Stop()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Start playback of the source.
+        /// If the sound data for the source has not yet been fully loaded, there will be a delay after calling play and playback will start after the data has become available.
+        /// </description>
+        /// <param name="fadeInTime">Seconds for the sound to reach full volume.  If -1, the SFXDescription::fadeInTime set in the source's associated description is used.  Pass 0 to disable a fade-in effect that may be configured on the description.</param>
         public void Play(float fadeInTime = -1f) {
              InternalUnsafeMethods.Play__Args _args = new InternalUnsafeMethods.Play__Args() {
                 fadeInTime = fadeInTime,
@@ -764,6 +955,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Play()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when a parameter attached to the source changes value.
+        /// This callback will be triggered before the value change has actually been applied to the source.
+        /// </description>
+        /// <param name="parameter">The parameter that has changed value.</param>
+        /// <remarks> This is also triggered when the parameter is first attached to the source.</remarks>
         public virtual void OnParameterValueChange(SFXParameter parameter) {
              InternalUnsafeMethods.OnParameterValueChange__Args _args = new InternalUnsafeMethods.OnParameterValueChange__Args() {
                 parameter = parameter.ObjectPtr,
@@ -771,6 +968,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnParameterValueChange()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the playback status of the source changes.
+        /// </description>
+        /// <param name="newStatus">The new playback status.</param>
         public virtual void OnStatusChange(SFXStatus newStatus) {
              InternalUnsafeMethods.OnStatusChange__Args _args = new InternalUnsafeMethods.OnStatusChange__Args() {
                 newStatus = (int)newStatus,
@@ -778,6 +979,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnStatusChange()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SFXSource class.
+        /// </description>
+        /// <returns>The type info object for SFXSource</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -785,11 +990,26 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The playback configuration that determines the initial sound properties and setup.
+        /// Any SFXSource must have an associated SFXDescription.
+        /// </description>
+        /// </value>
         public SFXDescription Description {
             get => GenericMarshal.StringTo<SFXDescription>(GetFieldValue("description"));
             set => SetFieldValue("description", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of function to call when the status of the source changes.
+        /// 
+        /// The source that had its status changed is passed as the first argument to the function and the new status of the source is passed as the second argument.
+        /// </description>
+        /// </value>
         public string StatusCallback {
             get => GenericMarshal.StringTo<string>(GetFieldValue("statusCallback"));
             set => SetFieldValue("statusCallback", GenericMarshal.ToString(value));

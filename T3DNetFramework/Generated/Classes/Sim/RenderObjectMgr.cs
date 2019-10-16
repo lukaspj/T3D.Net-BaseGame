@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A render bin which uses object callbacks for rendering.</summary>
+    /// <description>
+    /// This render bin gathers object render instances and calls its delegate method to perform rendering.  It is used infrequently for specialized scene objects which perform custom rendering.
+    /// </description>
     public unsafe class RenderObjectMgr : RenderBinManager {
         public RenderObjectMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderObjectMgr class.
+        /// </description>
+        /// <returns>The type info object for RenderObjectMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

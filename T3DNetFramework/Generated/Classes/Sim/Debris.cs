@@ -14,7 +14,33 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Base debris class. Uses the DebrisData datablock for properties of individual debris objects.</summary>
+    /// <description>
+    /// Debris is typically made up of a shape and up to two particle emitters.  In most cases Debris objects are not created directly.  They are usually produced automatically by other means, such as through the Explosion class.  When an explosion goes off, its ExplosionData datablock determines what Debris to emit.
+    /// </description>
+    /// <code>
+    /// datablock ExplosionData(GrenadeLauncherExplosion)
+    /// {
+    ///    // Assiging debris data
+    ///    debris = GrenadeDebris;
+    /// 
+    ///    // Adjust how debris is ejected
+    ///    debrisThetaMin = 10;
+    ///    debrisThetaMax = 60;
+    ///    debrisNum = 4;
+    ///    debrisNumVariance = 2;
+    ///    debrisVelocity = 25;
+    ///    debrisVelocityVariance = 5;
+    /// 
+    ///    // Note: other ExplosionData properties are not listed for this example
+    /// };
+    /// </code>
+    /// <remarks> Debris are client side only objects.
+    /// </remarks>
+    /// <see cref="DebrisData" />
+    /// <see cref="ExplosionData" />
+    /// <see cref="Explosion" />
     public unsafe class Debris : GameBase {
         public Debris(bool pRegister = false) 
             : base(pRegister) {
@@ -124,6 +150,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Manually set this piece of debris at the given position with the given velocity.</summary>
+        /// <description>
+        /// Usually you do not manually create Debris objects as they are generated through other means, such as an Explosion.  This method exists when you do manually create a Debris object and want to have it start moving.
+        /// </description>
+        /// <param name="inputPosition">Position to place the debris.</param>
+        /// <param name="inputVelocity">Velocity to move the debris after it has been placed.</param>
+        /// <returns>Always returns true.</returns>
+        /// <code>
+        /// // Define the position
+        /// %position = "1.0 1.0 1.0";
+        /// 
+        /// // Define the velocity
+        /// %velocity = "1.0 0.0 0.0";
+        /// 
+        /// // Inform the debris object of its new position and velocity
+        /// %debris.init(%position,%velocity);
+        /// </code>
         public bool Init(string inputPosition = "1.0 1.0 1.0", string inputVelocity = "1.0 0.0 0.0") {
              InternalUnsafeMethods.Init__Args _args = new InternalUnsafeMethods.Init__Args() {
                 inputPosition = inputPosition,
@@ -133,6 +176,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the Debris class.
+        /// </description>
+        /// <returns>The type info object for Debris</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -140,6 +187,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Length of time for this debris object to exist. When expired, the object will be deleted.</summary>
+        /// <description>
+        /// The initial lifetime value comes from the DebrisData datablock.
+        /// </description>
+        /// <see cref="DebrisData::lifetime" />
+        /// <see cref="DebrisData::lifetimeVariance" />
+        /// </value>
         public float Lifetime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("lifetime"));
             set => SetFieldValue("lifetime", GenericMarshal.ToString(value));

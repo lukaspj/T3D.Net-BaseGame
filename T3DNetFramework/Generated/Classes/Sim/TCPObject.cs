@@ -14,7 +14,81 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Allows communications between the game and a server using TCP/IP protocols.</summary>
+    /// <description>
+    /// To use TCPObject you set up a connection to a server, send data to the server, and handle each line of the server's response using a callback.  Once you are done communicating with the server, you disconnect.
+    /// 
+    /// TCPObject is intended to be used with text based protocols which means you'll need to delineate the server's response with an end-of-line character. i.e. the newline character
+    /// </description>
+    /// <code>
+    /// // In this example we'll retrieve the new forum threads RSS
+    /// // feed from garagegames.com.  As we're using TCPObject, the
+    /// // raw text response will be received from the server, including
+    /// // the HTTP header.
+    /// 
+    /// // Define callbacks for our specific TCPObject using our instance's
+    /// // name (RSSFeed) as the namespace.
+    /// 
+    /// // Handle an issue with resolving the server's name
+    /// function RSSFeed::onDNSFailed(%this)
+    /// {
+    ///    // Store this state
+    ///    %this.lastState = "DNSFailed";
+    /// 
+    ///    // Handle DNS failure
+    /// }
+    /// 
+    /// function RSSFeed::onConnectFailed(%this)
+    /// {
+    ///    // Store this state
+    ///    %this.lastState = "ConnectFailed";
+    /// 
+    ///    // Handle connection failure
+    /// }
+    /// 
+    /// function RSSFeed::onDNSResolved(%this)
+    /// {
+    ///    // Store this state
+    ///    %this.lastState = "DNSResolved";
+    /// 
+    /// }
+    /// 
+    /// function RSSFeed::onConnected(%this)
+    /// {
+    ///    // Store this state
+    ///    %this.lastState = "Connected";
+    /// 
+    /// }
+    /// 
+    /// function RSSFeed::onDisconnect(%this)
+    /// {
+    ///    // Store this state
+    ///    %this.lastState = "Disconnected";
+    /// 
+    /// }
+    /// 
+    /// // Handle a line from the server
+    /// function RSSFeed::onLine(%this, %line)
+    /// {
+    ///    // Print the line to the console
+    ///    echo( %line );
+    /// }
+    /// 
+    /// // Create the TCPObject
+    /// %rss = new TCPObject(RSSFeed);
+    /// 
+    /// // Define a dynamic field to store the last connection state
+    /// %rss.lastState = "None";
+    /// 
+    /// // Connect to the server
+    /// %rss.connect("www.garagegames.com:80");
+    /// 
+    /// // Send the RSS feed request to the server.  Response will be
+    /// // handled in onLine() callback above
+    /// %rss.send("GET /feeds/rss/threads HTTP/1.1\r\nHost: www.garagegames.com\r\n\r\n");
+    /// </code>
+    /// <see cref="HTTPObject" />
     public unsafe class TCPObject : SimObject {
         public TCPObject(bool pRegister = false) 
             : base(pRegister) {
@@ -416,12 +490,32 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Disconnect from whatever this TCPObject is currently connected to, if anything.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Inform this TCPObject to disconnect from anything it is currently connected to.
+        /// %thisTCPObj.disconnect();
+        /// </code>
         public void Disconnect() {
              InternalUnsafeMethods.Disconnect__Args _args = new InternalUnsafeMethods.Disconnect__Args() {
              };
              InternalUnsafeMethods.Disconnect()(ObjectPtr, _args);
         }
 
+        /// <summary>Connect to the given address.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="address">Server address (including port) to connect to.</param>
+        /// <code>
+        /// // Set the address.
+        /// %address = "www.garagegames.com:80";
+        /// 
+        /// // Inform this TCPObject to connect to the specified address.
+        /// %thisTCPObj.connect(%address);
+        /// </code>
         public void Connect(string address) {
              InternalUnsafeMethods.Connect__Args _args = new InternalUnsafeMethods.Connect__Args() {
                 address = address,
@@ -429,6 +523,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Connect()(ObjectPtr, _args);
         }
 
+        /// <summary>Start listening on the specified port for connections.</summary>
+        /// <description>
+        /// This method starts a listener which looks for incoming TCP connections to a port.  You must overload the onConnectionRequest callback to create a new TCPObject to read, write, or reject the new connection.
+        /// </description>
+        /// <param name="port">Port for this TCPObject to start listening for connections on.</param>
+        /// <code>
+        /// // Create a listener on port 8080.
+        /// new TCPObject( TCPListener );
+        /// TCPListener.listen( 8080 );
+        /// 
+        /// function TCPListener::onConnectionRequest( %this, %address, %id )
+        /// {
+        ///    // Create a new object to manage the connection.
+        ///    new TCPObject( TCPClient, %id );
+        /// }
+        /// 
+        /// function TCPClient::onLine( %this, %line )
+        /// {
+        ///    // Print the line of text from client.
+        ///    echo( %line );
+        /// }
+        /// </code>
         public void Listen(uint port) {
              InternalUnsafeMethods.Listen__Args _args = new InternalUnsafeMethods.Listen__Args() {
                 port = port,
@@ -436,12 +552,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Listen()(ObjectPtr, _args);
         }
 
+        /// <summary>Eat the rest of the lines.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void FinishLastLine() {
              InternalUnsafeMethods.FinishLastLine__Args _args = new InternalUnsafeMethods.FinishLastLine__Args() {
              };
              InternalUnsafeMethods.FinishLastLine()(ObjectPtr, _args);
         }
 
+        /// <summary>Transmits the file in binary to the connected computer.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">The filename of the file to transfer.</param>
         public bool SendFile(string fileName) {
              InternalUnsafeMethods.SendFile__Args _args = new InternalUnsafeMethods.SendFile__Args() {
                 fileName = fileName,
@@ -450,6 +575,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Transmits the data string to the connected computer.</summary>
+        /// <description>
+        /// This method is used to send text data to the connected computer regardless if we initiated the connection using connect(), or listening to a port using listen().
+        /// </description>
+        /// <param name="data">The data string to send.</param>
+        /// <code>
+        /// // Set the command data
+        /// %data = "GET "@ $RSSFeed::serverURL 
+        /// </code>
         public void Send(string data) {
              InternalUnsafeMethods.Send__Args _args = new InternalUnsafeMethods.Send__Args() {
                 data = data,
@@ -457,42 +591,67 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Send()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called whenever the TCPObject disconnects from whatever it is currently connected to.
+        /// </description>
         public virtual void OnDisconnect() {
              InternalUnsafeMethods.OnDisconnect__Args _args = new InternalUnsafeMethods.OnDisconnect__Args() {
              };
              InternalUnsafeMethods.OnDisconnect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called whenever a connection has failed to be established with a server.
+        /// </description>
         public virtual void OnConnectFailed() {
              InternalUnsafeMethods.OnConnectFailed__Args _args = new InternalUnsafeMethods.OnConnectFailed__Args() {
              };
              InternalUnsafeMethods.OnConnectFailed()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called whenever a connection is established with a server.
+        /// </description>
         public virtual void OnConnected() {
              InternalUnsafeMethods.OnConnected__Args _args = new InternalUnsafeMethods.OnConnected__Args() {
              };
              InternalUnsafeMethods.OnConnected()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called whenever the DNS has failed to resolve.
+        /// </description>
         public virtual void OnDNSFailed() {
              InternalUnsafeMethods.OnDNSFailed__Args _args = new InternalUnsafeMethods.OnDNSFailed__Args() {
              };
              InternalUnsafeMethods.OnDNSFailed()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called whenever the DNS has been resolved.
+        /// </description>
         public virtual void OnDNSResolved() {
              InternalUnsafeMethods.OnDNSResolved__Args _args = new InternalUnsafeMethods.OnDNSResolved__Args() {
              };
              InternalUnsafeMethods.OnDNSResolved()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when we are done reading all lines.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public virtual void OnEndReceive() {
              InternalUnsafeMethods.OnEndReceive__Args _args = new InternalUnsafeMethods.OnEndReceive__Args() {
              };
              InternalUnsafeMethods.OnEndReceive()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when we get a packet with no newlines or nulls (probably websocket).</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="data">Data sent from the server.</param>
+        /// <returns>true if script handled the packet.</returns>
         public virtual bool OnPacket(string data) {
              InternalUnsafeMethods.OnPacket__Args _args = new InternalUnsafeMethods.OnPacket__Args() {
                 data = data,
@@ -501,6 +660,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Called whenever a line of data is sent to this TCPObject.</summary>
+        /// <description>
+        /// This callback is called when the received data contains a newline
+        /// </description>
+        /// <param name="line">Data sent from the server.</param>
         public virtual void OnLine(string line) {
              InternalUnsafeMethods.OnLine__Args _args = new InternalUnsafeMethods.OnLine__Args() {
                 line = line,
@@ -508,6 +672,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnLine()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever a connection request is made.</summary>
+        /// <description>
+        /// This callback is used when the TCPObject is listening to a port and a client is attempting to connect.
+        /// </description>
+        /// <param name="address">Server address connecting from.</param>
+        /// <param name="ID">Connection ID</param>
+        /// <see cref="listen()" />
         public virtual void OnConnectionRequest(string address, string ID) {
              InternalUnsafeMethods.OnConnectionRequest__Args _args = new InternalUnsafeMethods.OnConnectionRequest__Args() {
                 address = address,
@@ -516,6 +687,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnConnectionRequest()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the TCPObject class.
+        /// </description>
+        /// <returns>The type info object for TCPObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

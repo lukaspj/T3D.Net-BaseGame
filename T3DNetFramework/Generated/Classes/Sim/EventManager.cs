@@ -14,7 +14,31 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The EventManager class is a wrapper for the standard messaging system.</summary>
+    /// <description>
+    /// It provides functionality for management of event queues, events, and subscriptions. Creating an EventManager is as simple as calling new EventManager and specifying a queue name.
+    /// </description>
+    /// <code>
+    /// // Create the EventManager.
+    /// $MyEventManager = new EventManager() { queue = "MyEventManager"; };
+    /// 
+    /// // Create an event.
+    /// $MyEventManager.registerEvent( "SomeCoolEvent" );
+    /// 
+    /// // Create a listener and subscribe.
+    /// $MyListener = new ScriptMsgListener() { class = MyListener; };
+    /// $MyEventManager.subscribe( $MyListener, "SomeCoolEvent" );
+    /// 
+    /// function MyListener::onSomeCoolEvent( %this, %data )
+    /// {
+    /// 	  echo( "onSomeCoolEvent Triggered" );
+    /// }
+    /// 
+    /// // Trigger the event.
+    /// $MyEventManager.postEvent( "SomeCoolEvent", "Data" );
+    /// </code>
+    /// <see cref="ScriptMsgListener" />
     public unsafe class EventManager : SimObject {
         public EventManager(bool pRegister = false) 
             : base(pRegister) {
@@ -307,6 +331,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ( String event )
+        /// 
+        /// Print all subscribers to an event to the console.
+        /// </description>
+        /// <param name="event">The event whose subscribers are to be printed. If this parameter isn't specified, all events will be dumped.</param>
         public void DumpSubscribers(string listenerName = "") {
              InternalUnsafeMethods.DumpSubscribers__Args _args = new InternalUnsafeMethods.DumpSubscribers__Args() {
                 listenerName = listenerName,
@@ -314,12 +344,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.DumpSubscribers()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// 
+        /// Print all registered events to the console.
+        /// </description>
         public void DumpEvents() {
              InternalUnsafeMethods.DumpEvents__Args _args = new InternalUnsafeMethods.DumpEvents__Args() {
              };
              InternalUnsafeMethods.DumpEvents()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( SimObject listener )
+        /// 
+        /// Remove a listener from all events.
+        /// </description>
+        /// <param name="listener">The listener to remove.</param>
         public void RemoveAll(string listenerName) {
              InternalUnsafeMethods.RemoveAll__Args _args = new InternalUnsafeMethods.RemoveAll__Args() {
                 listenerName = listenerName,
@@ -327,6 +368,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveAll()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( SimObject listener, String event )
+        /// 
+        /// Remove a listener from an event.
+        /// </description>
+        /// <param name="listener">The listener to remove.</param>
+        /// <param name="event">The event to be removed from.</param>
         public void Remove(string listenerName, string evt) {
              InternalUnsafeMethods.Remove__Args _args = new InternalUnsafeMethods.Remove__Args() {
                 listenerName = listenerName,
@@ -335,6 +383,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Remove()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( SimObject listener, String event, String callback )
+        /// 
+        /// Subscribe a listener to an event.
+        /// </description>
+        /// <param name="listener">The listener to subscribe.</param>
+        /// <param name="event">The event to subscribe to.</param>
+        /// <param name="callback">Optional method name to receive the event notification. If this is not specified, "on[event]" will be used.</param>
+        /// <returns>Whether or not the subscription was successful.</returns>
         public bool Subscribe(string listenerName, string evt, string callback = "") {
              InternalUnsafeMethods.Subscribe__Args _args = new InternalUnsafeMethods.Subscribe__Args() {
                 listenerName = listenerName,
@@ -345,6 +402,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( String event, String data )
+        /// ~Trigger an event.
+        /// </description>
+        /// <param name="event">The event to trigger.</param>
+        /// <param name="data">The data associated with the event.</param>
+        /// <returns>Whether or not the event was dispatched successfully.</returns>
         public bool PostEvent(string evt, string data = "") {
              InternalUnsafeMethods.PostEvent__Args _args = new InternalUnsafeMethods.PostEvent__Args() {
                 evt = evt,
@@ -354,6 +418,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( String event )
+        /// Check if an event is registered or not.
+        /// </description>
+        /// <param name="event">The event to check.</param>
+        /// <returns>Whether or not the event exists.</returns>
         public bool IsRegisteredEvent(string evt) {
              InternalUnsafeMethods.IsRegisteredEvent__Args _args = new InternalUnsafeMethods.IsRegisteredEvent__Args() {
                 evt = evt,
@@ -362,6 +432,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( String event )
+        /// Remove an event from the EventManager.
+        /// </description>
+        /// <param name="event">The event to remove.</param>
         public void UnregisterEvent(string evt) {
              InternalUnsafeMethods.UnregisterEvent__Args _args = new InternalUnsafeMethods.UnregisterEvent__Args() {
                 evt = evt,
@@ -369,6 +444,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.UnregisterEvent()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( String event )
+        /// Register an event with the event manager.
+        /// </description>
+        /// <param name="event">The event to register.</param>
+        /// <returns>Whether or not the event was registered successfully.</returns>
         public bool RegisterEvent(string evt) {
              InternalUnsafeMethods.RegisterEvent__Args _args = new InternalUnsafeMethods.RegisterEvent__Args() {
                 evt = evt,
@@ -377,6 +458,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the EventManager class.
+        /// </description>
+        /// <returns>The type info object for EventManager</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -384,6 +469,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// List of events currently waiting
+        /// </description>
+        /// </value>
         public string Queue {
             get => GenericMarshal.StringTo<string>(GetFieldValue("queue"));
             set => SetFieldValue("queue", GenericMarshal.ToString(value));

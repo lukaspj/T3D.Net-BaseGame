@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class AnimationComponent : Component {
         public AnimationComponent(bool pRegister = false) 
             : base(pRegister) {
@@ -442,6 +443,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the AnimationComponent class.
+        /// </description>
+        /// <returns>The type info object for AnimationComponent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -449,6 +454,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <summary>Called when we collide with another object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">The ShapeBase object</param>
+        /// <param name="collObj">The object we collided with</param>
+        /// <param name="vec">Collision impact vector</param>
+        /// <param name="len">Length of the impact vector</param>
         public virtual void OnAnimationTrigger(Component obj, string animName, int triggerID) {
              InternalUnsafeMethods.OnAnimationTrigger__Args _args = new InternalUnsafeMethods.OnAnimationTrigger__Args() {
                 obj = obj.ObjectPtr,
@@ -458,6 +471,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAnimationTrigger()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when we collide with another object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">The ShapeBase object</param>
+        /// <param name="collObj">The object we collided with</param>
+        /// <param name="vec">Collision impact vector</param>
+        /// <param name="len">Length of the impact vector</param>
         public virtual void OnAnimationEnd(Component obj, string animName) {
              InternalUnsafeMethods.OnAnimationEnd__Args _args = new InternalUnsafeMethods.OnAnimationEnd__Args() {
                 obj = obj.ObjectPtr,
@@ -466,6 +487,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAnimationEnd()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when we collide with another object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">The ShapeBase object</param>
+        /// <param name="collObj">The object we collided with</param>
+        /// <param name="vec">Collision impact vector</param>
+        /// <param name="len">Length of the impact vector</param>
         public virtual void OnAnimationStart(Component obj, string animName) {
              InternalUnsafeMethods.OnAnimationStart__Args _args = new InternalUnsafeMethods.OnAnimationStart__Args() {
                 obj = obj.ObjectPtr,
@@ -474,6 +503,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAnimationStart()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the name of the indexed sequence.
+        /// </description>
+        /// <param name="index">index of the sequence to query (valid range is 0 - getSequenceCount()-1)</param>
+        /// <returns>the name of the sequence</returns>
+        /// <code>
+        /// // print the name of all sequences in the shape
+        /// %count = %this.getSequenceCount();
+        /// for ( %i = 0; %i < %count; %i++ )
+        ///    echo( %i SPC %this.getSequenceName( %i ) );
+        /// </code>
         public string GetAnimationName(int index) {
              InternalUnsafeMethods.GetAnimationName__Args _args = new InternalUnsafeMethods.GetAnimationName__Args() {
                 index = index,
@@ -482,6 +522,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Find the index of the sequence with the given name.
+        /// </description>
+        /// <param name="name">name of the sequence to lookup</param>
+        /// <returns>index of the sequence with matching name, or -1 if not found</returns>
+        /// <code>
+        /// // Check if a given sequence exists in the shape
+        /// if ( %this.getSequenceIndex( "walk" ) == -1 )
+        ///    echo( "Could not find 'walk' sequence" );
+        /// </code>
         public int GetAnimationIndex(string name) {
              InternalUnsafeMethods.GetAnimationIndex__Args _args = new InternalUnsafeMethods.GetAnimationIndex__Args() {
                 name = name,
@@ -490,6 +540,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the total number of sequences in the shape.
+        /// </description>
+        /// <returns>the number of sequences in the shape</returns>
         public int GetAnimationCount() {
              InternalUnsafeMethods.GetAnimationCount__Args _args = new InternalUnsafeMethods.GetAnimationCount__Args() {
              };
@@ -497,6 +551,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Pause an animation thread.</summary>
+        /// <description>
+        /// If restarted using playThread, the animation will resume from the paused position.
+        /// </description>
+        /// <param name="slot">thread slot to stop</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread" />
         public bool PauseThread(int slot) {
              InternalUnsafeMethods.PauseThread__Args _args = new InternalUnsafeMethods.PauseThread__Args() {
                 slot = slot,
@@ -505,6 +566,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Destroy an animation thread, which prevents it from playing.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">thread slot to destroy</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread" />
         public bool DestroyThread(int slot) {
              InternalUnsafeMethods.DestroyThread__Args _args = new InternalUnsafeMethods.DestroyThread__Args() {
                 slot = slot,
@@ -513,6 +581,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Stop an animation thread.</summary>
+        /// <description>
+        /// If restarted using playThread, the animation will start from the beginning again.
+        /// </description>
+        /// <param name="slot">thread slot to stop</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread" />
         public bool StopThread(int slot) {
              InternalUnsafeMethods.StopThread__Args _args = new InternalUnsafeMethods.StopThread__Args() {
                 slot = slot,
@@ -521,6 +596,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Force-sets the animation in a particular thread without starting it playing.</summary>
+        /// <param name="slot">thread slot to play. Valid range is 0 - 3)</param>
+        /// <param name="name">name of the animation sequence to play in this slot. If not specified, the paused or stopped thread in this slot will be resumed.</param>
+        /// <returns>true if successful, false if failed</returns>
         public string GetThreadAnimation(int slot) {
              InternalUnsafeMethods.GetThreadAnimation__Args _args = new InternalUnsafeMethods.GetThreadAnimation__Args() {
                 slot = slot,
@@ -529,6 +608,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Force-sets the animation in a particular thread without starting it playing.</summary>
+        /// <param name="slot">thread slot to play. Valid range is 0 - 3)</param>
+        /// <param name="name">name of the animation sequence to play in this slot. If not specified, the paused or stopped thread in this slot will be resumed.</param>
+        /// <returns>true if successful, false if failed</returns>
         public bool SetThreadAnimation(int slot, string name = "") {
              InternalUnsafeMethods.SetThreadAnimation__Args _args = new InternalUnsafeMethods.SetThreadAnimation__Args() {
                 slot = slot,
@@ -538,6 +621,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set the position within an animation thread.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">thread slot to modify</param>
+        /// <param name="pos">position within thread</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread" />
         public bool SetThreadPosition(int slot, float pos) {
              InternalUnsafeMethods.SetThreadPosition__Args _args = new InternalUnsafeMethods.SetThreadPosition__Args() {
                 slot = slot,
@@ -547,6 +638,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set the playback time scale of an animation thread.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">thread slot to modify</param>
+        /// <param name="scale">new thread time scale (1=normal speed, 0.5=half speed etc)</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread" />
         public bool SetThreadTimeScale(int slot, float scale) {
              InternalUnsafeMethods.SetThreadTimeScale__Args _args = new InternalUnsafeMethods.SetThreadTimeScale__Args() {
                 slot = slot,
@@ -556,6 +655,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set the playback direction of an animation thread.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">thread slot to modify</param>
+        /// <param name="fwd">true to play the animation forwards, false to play backwards</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <see cref="playThread()" />
         public bool SetThreadDir(int slot, bool fwd) {
              InternalUnsafeMethods.SetThreadDir__Args _args = new InternalUnsafeMethods.SetThreadDir__Args() {
                 slot = slot,
@@ -565,6 +672,25 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Start a new animation thread, or restart one that has been paused or stopped.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">thread slot to play. Valid range is 0 - 3)</param>
+        /// <param name="name">name of the animation sequence to play in this slot. If not specified, the paused or stopped thread in this slot will be resumed.</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <code>
+        /// %obj.playThread( 0, "ambient" );      // Play the ambient sequence in slot 0
+        /// %obj.setThreadTimeScale( 0, 0.5 );    // Play at half-speed
+        /// %obj.pauseThread( 0 );                // Pause the sequence
+        /// %obj.playThread( 0 );                 // Resume playback
+        /// %obj.playThread( 0, "spin" );         // Replace the sequence in slot 0
+        /// </code>
+        /// <see cref="pauseThread()" />
+        /// <see cref="stopThread()" />
+        /// <see cref="setThreadDir()" />
+        /// <see cref="setThreadTimeScale()" />
+        /// <see cref="destroyThread()" />
         public bool PlayThread(int slot = -1, string name = "", bool transition = true, float transitionTime = 0.5f) {
              InternalUnsafeMethods.PlayThread__Args _args = new InternalUnsafeMethods.PlayThread__Args() {
                 slot = slot,

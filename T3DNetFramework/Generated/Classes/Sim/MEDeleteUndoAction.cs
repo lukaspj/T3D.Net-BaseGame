@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Material Editor delete undo instance</summary>
+    /// <description>
+    /// Not intended for game development, for editors or internal use only.
+    /// </description>
     public unsafe class MEDeleteUndoAction : UndoAction {
         public MEDeleteUndoAction(bool pRegister = false) 
             : base(pRegister) {
@@ -120,6 +124,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Delete the object and add it to the undo action.
+        /// </description>
+        /// <param name="obj">Object to delete and add to the undo action.</param>
         public void DeleteObject(SimObject obj) {
              InternalUnsafeMethods.DeleteObject__Args _args = new InternalUnsafeMethods.DeleteObject__Args() {
                 obj = obj.ObjectPtr,
@@ -127,6 +135,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.DeleteObject()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the MEDeleteUndoAction class.
+        /// </description>
+        /// <returns>The type info object for MEDeleteUndoAction</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

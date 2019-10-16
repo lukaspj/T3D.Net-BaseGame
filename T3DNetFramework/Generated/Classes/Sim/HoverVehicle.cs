@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A hovering vehicle.</summary>
+    /// <description>
+    /// A hover vehicle is a vehicle that maintains a specific distance between the vehicle and the ground at all times; unlike a flying vehicle which is free to ascend and descend at will.The model used for the HoverVehicle has the following requirements:
+    /// <dl><dt>Collision mesh</dt><dd>A convex collision mesh at detail size -1.</dd><dt>JetNozzle0-1 nodes</dt><dd>Particle emitter nodes used when thrusting forward.</dd><dt>JetNozzle2-3 nodes</dt><dd>Particle emitter nodes used when thrusting downward.</dd><dt>JetNozzleX node</dt><dd>Particle emitter node used when thrusting backward.</dd><dt>activateBack animation</dt><dd>Non-cyclic animation sequence played when the vehicle begins thrusting forwards.</dd><dt>maintainBack animation</dt><dd>Cyclic animation sequence played after activateBack when the vehicle continues thrusting forwards.</dd></dl>
+    /// </description>
     public unsafe class HoverVehicle : Vehicle {
         public HoverVehicle(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +104,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the HoverVehicle class.
+        /// </description>
+        /// <returns>The type info object for HoverVehicle</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

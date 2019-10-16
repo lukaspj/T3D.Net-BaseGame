@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class AssetManager : SimObject {
         public AssetManager(bool pRegister = false) 
             : base(pRegister) {
@@ -1239,6 +1240,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the AssetManager class.
+        /// </description>
+        /// <returns>The type info object for AssetManager</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -1246,12 +1251,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// Dumps a breakdown of all declared assets.
+        /// </description>
+        /// <returns>No return value.</returns>
         public void DumpDeclaredAssets() {
              InternalUnsafeMethods.DumpDeclaredAssets__Args _args = new InternalUnsafeMethods.DumpDeclaredAssets__Args() {
              };
              InternalUnsafeMethods.DumpDeclaredAssets()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Gets the maximum number of loaded external assets.
+        /// </description>
+        /// <returns>Returns the maximum number of loaded external assets.</returns>
         public bool GetMaxLoadedExternalAssetCount() {
              InternalUnsafeMethods.GetMaxLoadedExternalAssetCount__Args _args = new InternalUnsafeMethods.GetMaxLoadedExternalAssetCount__Args() {
              };
@@ -1259,6 +1272,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the number of loaded external assets.
+        /// </description>
+        /// <returns>Returns the number of loaded external assets.</returns>
         public bool GetLoadedExternalAssetCount() {
              InternalUnsafeMethods.GetLoadedExternalAssetCount__Args _args = new InternalUnsafeMethods.GetLoadedExternalAssetCount__Args() {
              };
@@ -1266,6 +1283,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the maximum number of loaded internal assets.
+        /// </description>
+        /// <returns>Returns the maximum number of loaded internal assets.</returns>
         public bool GetMaxLoadedInternalAssetCount() {
              InternalUnsafeMethods.GetMaxLoadedInternalAssetCount__Args _args = new InternalUnsafeMethods.GetMaxLoadedInternalAssetCount__Args() {
              };
@@ -1273,6 +1294,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the number of loaded internal assets.
+        /// </description>
+        /// <returns>Returns the number of loaded internal assets.</returns>
         public bool GetLoadedInternalAssetCount() {
              InternalUnsafeMethods.GetLoadedInternalAssetCount__Args _args = new InternalUnsafeMethods.GetLoadedInternalAssetCount__Args() {
              };
@@ -1280,6 +1305,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the number of asset referenced.
+        /// </description>
+        /// <returns>Returns the number of asset references.</returns>
         public bool GetReferencedAssetCount() {
              InternalUnsafeMethods.GetReferencedAssetCount__Args _args = new InternalUnsafeMethods.GetReferencedAssetCount__Args() {
              };
@@ -1287,6 +1316,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the number of declared assets.
+        /// </description>
+        /// <returns>Returns the number of declared assets.</returns>
         public bool GetDeclaredAssetCount() {
              InternalUnsafeMethods.GetDeclaredAssetCount__Args _args = new InternalUnsafeMethods.GetDeclaredAssetCount__Args() {
              };
@@ -1294,6 +1327,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for the specified loose file.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="assetLooseFile">The loose-file used by the asset to search for.</param>
+        /// <param name="assetQueryAsSource">Whether to use the asset query as the data-source rather than the asset managers database or not.  Doing this effectively filters the asset query.  Optional: Defaults to false.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindAssetLooseFile(string assetQuery = "", string assetLooseFile = "", bool assetQueryAsSource = false) {
              InternalUnsafeMethods.FindAssetLooseFile__Args _args = new InternalUnsafeMethods.FindAssetLooseFile__Args() {
                 assetQuery = assetQuery,
@@ -1304,6 +1344,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for the specified asset tag name(s).
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="assetTagNames">The asset tag name or names to search for.  Multiple names can be specified using comma, space, tab or newline separation.  Tags use an OR operation i.e. only assets tagged with ANY of the specified tags will be returned.</param>
+        /// <param name="assetQueryAsSource">Whether to use the asset query as the data-source rather than the asset managers database or not.  Doing this effectively filters the asset query.  Optional: Defaults to false.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindTaggedAssets(string assetQuery = "", string assetTagNames = "", bool assetQueryAsSource = false) {
              InternalUnsafeMethods.FindTaggedAssets__Args _args = new InternalUnsafeMethods.FindTaggedAssets__Args() {
                 assetQuery = assetQuery,
@@ -1314,6 +1361,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for invalid asset references.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <returns>The number of asset Ids found that are invalid or (-1) if an error occurred.</returns>
         public int FindInvalidAssetReferences(string assetQuery = "") {
              InternalUnsafeMethods.FindInvalidAssetReferences__Args _args = new InternalUnsafeMethods.FindInvalidAssetReferences__Args() {
                 assetQuery = assetQuery,
@@ -1322,6 +1374,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for asset Ids that depend on the specified asset Id.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="assetId">The asset Id to query for any asset Ids that may depend on it.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindAssetIsDependedOn(string assetQuery = "", string assetId = "") {
              InternalUnsafeMethods.FindAssetIsDependedOn__Args _args = new InternalUnsafeMethods.FindAssetIsDependedOn__Args() {
                 assetQuery = assetQuery,
@@ -1331,6 +1389,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for asset Ids that the specified asset Id depends on.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="assetId">The asset Id to query for any asset Ids that it depends on.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindAssetDependsOn(string assetQuery = "", string assetId = "") {
              InternalUnsafeMethods.FindAssetDependsOn__Args _args = new InternalUnsafeMethods.FindAssetDependsOn__Args() {
                 assetQuery = assetQuery,
@@ -1340,6 +1404,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for the specified asset type.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="assetType">The asset type to search for.</param>
+        /// <param name="assetQueryAsSource">Whether to use the asset query as the data-source rather than the asset managers database or not.  Doing this effectively filters the asset query.  Optional: Defaults to false.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindAssetType(string assetQuery = "", string assetType = "", bool assetQueryAsSource = false) {
              InternalUnsafeMethods.FindAssetType__Args _args = new InternalUnsafeMethods.FindAssetType__Args() {
                 assetQuery = assetQuery,
@@ -1350,6 +1421,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for the specified asset private flag.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="assetPrivate">The asset private flag to search for.</param>
+        /// <param name="assetQueryAsSource">Whether to use the asset query as the data-source rather than the asset managers database or not.  Doing this effectively filters the asset query.  Optional: Defaults to false.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindAssetPrivate(string assetQuery = "", bool assetPrivate = false, bool assetQueryAsSource = false) {
              InternalUnsafeMethods.FindAssetPrivate__Args _args = new InternalUnsafeMethods.FindAssetPrivate__Args() {
                 assetQuery = assetQuery,
@@ -1360,6 +1438,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for the specified asset internal flag.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="assetInternal">The asset internal flag to search for.</param>
+        /// <param name="assetQueryAsSource">Whether to use the asset query as the data-source rather than the asset managers database or not.  Doing this effectively filters the asset query.  Optional: Defaults to false.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindAssetInternal(string assetQuery = "", bool assetInternal = false, bool assetQueryAsSource = false) {
              InternalUnsafeMethods.FindAssetInternal__Args _args = new InternalUnsafeMethods.FindAssetInternal__Args() {
                 assetQuery = assetQuery,
@@ -1370,6 +1455,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for the specified asset auto-unload flag.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="assetInternal">The asset internal flag to search for.</param>
+        /// <param name="assetQueryAsSource">Whether to use the asset query as the data-source rather than the asset managers database or not.  Doing this effectively filters the asset query.  Optional: Defaults to false.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindAssetAutoUnload(string assetQuery = "", bool assetAutoUnload = false, bool assetQueryAsSource = false) {
              InternalUnsafeMethods.FindAssetAutoUnload__Args _args = new InternalUnsafeMethods.FindAssetAutoUnload__Args() {
                 assetQuery = assetQuery,
@@ -1380,6 +1472,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for the specified asset category.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="assetCategory">The asset category to search for.</param>
+        /// <param name="assetQueryAsSource">Whether to use the asset query as the data-source rather than the asset managers database or not.  Doing this effectively filters the asset query.  Optional: Defaults to false.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindAssetCategory(string assetQuery = "", string assetCategory = "", bool assetQueryAsSource = false) {
              InternalUnsafeMethods.FindAssetCategory__Args _args = new InternalUnsafeMethods.FindAssetCategory__Args() {
                 assetQuery = assetQuery,
@@ -1390,6 +1489,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for the specified asset name.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="assetName">The asset name to search for.  This may be a partial name if 'partialName' is true.</param>
+        /// <param name="partialName">Whether the asset name is to be used as a partial name or not.  Optional: Defaults to false.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindAssetName(string assetQuery = "", string assetName = "", bool partialName = false) {
              InternalUnsafeMethods.FindAssetName__Args _args = new InternalUnsafeMethods.FindAssetName__Args() {
                 assetQuery = assetQuery,
@@ -1400,6 +1506,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs an asset query searching for all assets optionally ignoring internal assets.
+        /// </description>
+        /// <param name="assetQuery">The asset query object that will be populated with the results.</param>
+        /// <param name="ignoreInternal">Whether to ignore internal assets or not.  Optional: Defaults to true.</param>
+        /// <param name="ignorePrivate">Whether to ignore private assets or not.  Optional: Defaults to true.</param>
+        /// <returns>The number of asset Ids found or (-1) if an error occurred.</returns>
         public int FindAllAssets(string assetQuery = "", bool ignoreInternal = true, bool ignorePrivate = true) {
              InternalUnsafeMethods.FindAllAssets__Args _args = new InternalUnsafeMethods.FindAllAssets__Args() {
                 assetQuery = assetQuery,
@@ -1410,6 +1523,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the currently loaded asset tags manifest.
+        /// </description>
+        /// <returns>The currently loaded asset tags manifest or zero if not loaded.</returns>
         public int GetAssetTags() {
              InternalUnsafeMethods.GetAssetTags__Args _args = new InternalUnsafeMethods.GetAssetTags__Args() {
              };
@@ -1417,6 +1534,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Restore the currently loaded asset tags manifest from disk (replace anything in memory).
+        /// </description>
+        /// <returns>Whether the restore was successful or not.</returns>
         public bool RestoreAssetTags() {
              InternalUnsafeMethods.RestoreAssetTags__Args _args = new InternalUnsafeMethods.RestoreAssetTags__Args() {
              };
@@ -1424,6 +1545,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Save the currently loaded asset tags manifest.
+        /// </description>
+        /// <returns>Whether the save was successful or not.</returns>
         public bool SaveAssetTags() {
              InternalUnsafeMethods.SaveAssetTags__Args _args = new InternalUnsafeMethods.SaveAssetTags__Args() {
              };
@@ -1431,6 +1556,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Refresh all declared assets.
+        /// </description>
+        /// <param name="Whether">to include currently unloaded assets in the refresh or not.  Optional: Defaults to false.
+        /// Refreshing all assets can be an expensive (time-consuming) operation to perform.</param>
+        /// <returns>No return value.</returns>
         public void RefreshAllAssets(bool includeUnloaded = false) {
              InternalUnsafeMethods.RefreshAllAssets__Args _args = new InternalUnsafeMethods.RefreshAllAssets__Args() {
                 includeUnloaded = includeUnloaded,
@@ -1438,6 +1569,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RefreshAllAssets()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Refresh the specified asset Id.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>No return value.</returns>
         public void RefreshAsset(string assetId = "") {
              InternalUnsafeMethods.RefreshAsset__Args _args = new InternalUnsafeMethods.RefreshAsset__Args() {
                 assetId = assetId,
@@ -1445,6 +1581,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RefreshAsset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Deletes the specified asset Id and optionally its loose files and asset dependencies.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <param name="deleteLooseFiles">Whether to delete an assets loose files or not.</param>
+        /// <param name="deleteDependencies">Whether to delete assets that depend on this asset or not.</param>
+        /// <returns>Whether the asset deletion was successful or not.  A failure only indicates that the specified asset was not deleted but dependent assets and their loose files may have being deleted.</returns>
         public bool DeleteAsset(string assetId = "", bool deleteLooseFiles = false, bool deleteDependencies = false) {
              InternalUnsafeMethods.DeleteAsset__Args _args = new InternalUnsafeMethods.DeleteAsset__Args() {
                 assetId = assetId,
@@ -1455,12 +1598,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Purge all assets that are not referenced even if they are set to not auto-unload.
+        /// Assets can be in this state because they are either set to not auto-unload or the asset manager has/is disabling auto-unload.
+        /// </description>
+        /// <returns>No return value.</returns>
         public void PurgeAssets() {
              InternalUnsafeMethods.PurgeAssets__Args _args = new InternalUnsafeMethods.PurgeAssets__Args() {
              };
              InternalUnsafeMethods.PurgeAssets()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Release the specified asset Id.
+        /// The asset should have been acquired using 'acquireAsset'.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>Whether the asset was released or not.</returns>
         public bool ReleaseAsset(string assetId = "") {
              InternalUnsafeMethods.ReleaseAsset__Args _args = new InternalUnsafeMethods.ReleaseAsset__Args() {
                 assetId = assetId,
@@ -1469,6 +1623,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Acquire the specified asset Id.
+        /// You must release the asset once you're finish with it using 'releaseAsset'.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <param name="asPrivate">Whether to acquire the asset Id as a private asset.</param>
+        /// <returns>The acquired asset or NULL if not acquired.</returns>
         public string AcquireAsset(string assetId = "", bool asPrivate = false) {
              InternalUnsafeMethods.AcquireAsset__Args _args = new InternalUnsafeMethods.AcquireAsset__Args() {
                 assetId = assetId,
@@ -1478,6 +1639,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Rename referenced asset Id.
+        /// </description>
+        /// <param name="assetIdFrom">The selected asset Id to rename from.</param>
+        /// <param name="assetIdFrom">The selected asset Id to rename to.</param>
+        /// <returns>Whether the rename was successful or not.</returns>
         public bool RenameReferencedAsset(string assetIdFrom = "", string assetIdTo = "") {
              InternalUnsafeMethods.RenameReferencedAsset__Args _args = new InternalUnsafeMethods.RenameReferencedAsset__Args() {
                 assetIdFrom = assetIdFrom,
@@ -1487,6 +1654,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Rename declared asset Id.
+        /// </description>
+        /// <param name="assetIdFrom">The selected asset Id to rename from.</param>
+        /// <param name="assetIdFrom">The selected asset Id to rename to.</param>
+        /// <returns>Whether the rename was successful or not.</returns>
         public bool RenameDeclaredAsset(string assetIdFrom = "", string assetIdTo = "") {
              InternalUnsafeMethods.RenameDeclaredAsset__Args _args = new InternalUnsafeMethods.RenameDeclaredAsset__Args() {
                 assetIdFrom = assetIdFrom,
@@ -1496,6 +1669,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Check whether the specified asset Id is referenced or not.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>Whether the specified asset Id is referenced or not.</returns>
         public bool IsReferencedAsset(string assetId = "") {
              InternalUnsafeMethods.IsReferencedAsset__Args _args = new InternalUnsafeMethods.IsReferencedAsset__Args() {
                 assetId = assetId,
@@ -1504,6 +1682,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Check whether the specified asset Id is declared or not.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>Whether the specified asset Id is declared or not.</returns>
         public bool IsDeclaredAsset(string assetId = "") {
              InternalUnsafeMethods.IsDeclaredAsset__Args _args = new InternalUnsafeMethods.IsDeclaredAsset__Args() {
                 assetId = assetId,
@@ -1512,6 +1695,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Check whether the specified asset Id is loaded or not.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>Whether the specified asset Id is loaded or not.</returns>
         public bool IsAssetLoaded(string assetId = "") {
              InternalUnsafeMethods.IsAssetLoaded__Args _args = new InternalUnsafeMethods.IsAssetLoaded__Args() {
                 assetId = assetId,
@@ -1520,6 +1708,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Check whether the specified asset Id is auto - unload or not.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>Whether the specified asset Id is auto-unload or not.</returns>
         public bool IsAssetAutoUnload(string assetId = "") {
              InternalUnsafeMethods.IsAssetAutoUnload__Args _args = new InternalUnsafeMethods.IsAssetAutoUnload__Args() {
                 assetId = assetId,
@@ -1528,6 +1721,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Check whether the specified asset Id is private or not.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>Whether the specified asset Id is private or not.</returns>
         public bool IsAssetPrivate(string assetId = "") {
              InternalUnsafeMethods.IsAssetPrivate__Args _args = new InternalUnsafeMethods.IsAssetPrivate__Args() {
                 assetId = assetId,
@@ -1536,6 +1734,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Check whether the specified asset Id is internal or not.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>Whether the specified asset Id is internal or not.</returns>
         public bool IsAssetInternal(string assetId = "") {
              InternalUnsafeMethods.IsAssetInternal__Args _args = new InternalUnsafeMethods.IsAssetInternal__Args() {
                 assetId = assetId,
@@ -1544,6 +1747,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the module definition where the the specified asset Id is located.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>The module definition where the the specified asset Id is located.</returns>
         public string GetAssetModule(string assetId = "") {
              InternalUnsafeMethods.GetAssetModule__Args _args = new InternalUnsafeMethods.GetAssetModule__Args() {
                 assetId = assetId,
@@ -1552,6 +1760,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the asset path (not including the asset file) from the specified asset Id.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>The asset path(not including the asset file) from the specified asset Id.</returns>
         public string GetAssetPath(string assetId = "") {
              InternalUnsafeMethods.GetAssetPath__Args _args = new InternalUnsafeMethods.GetAssetPath__Args() {
                 assetId = assetId,
@@ -1560,6 +1773,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the asset file-path from the specified asset Id.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>The asset file - path from the specified asset Id.</returns>
         public string GetAssetFilePath(string assetId = "") {
              InternalUnsafeMethods.GetAssetFilePath__Args _args = new InternalUnsafeMethods.GetAssetFilePath__Args() {
                 assetId = assetId,
@@ -1568,6 +1786,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the asset type from the specified asset Id.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>The asset type from the specified asset Id.</returns>
         public string GetAssetType(string assetId = "") {
              InternalUnsafeMethods.GetAssetType__Args _args = new InternalUnsafeMethods.GetAssetType__Args() {
                 assetId = assetId,
@@ -1576,6 +1799,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the asset category from the specified asset Id.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>The asset category from the specified asset Id.</returns>
         public string GetAssetCategory(string assetId = "") {
              InternalUnsafeMethods.GetAssetCategory__Args _args = new InternalUnsafeMethods.GetAssetCategory__Args() {
                 assetId = assetId,
@@ -1584,6 +1812,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the asset description from the specified asset Id.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>The asset description from the specified asset Id.</returns>
         public string GetAssetDescription(string assetId = "") {
              InternalUnsafeMethods.GetAssetDescription__Args _args = new InternalUnsafeMethods.GetAssetDescription__Args() {
                 assetId = assetId,
@@ -1592,6 +1825,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the asset name from the specified asset Id.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>The asset name from the specified asset Id.</returns>
         public string GetAssetName(string assetId = "") {
              InternalUnsafeMethods.GetAssetName__Args _args = new InternalUnsafeMethods.GetAssetName__Args() {
                 assetId = assetId,
@@ -1600,6 +1838,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Remove the specified declared asset Id.
+        /// </description>
+        /// <param name="assetId">The selected asset Id.</param>
+        /// <returns>Whether removing the declared asset was successful or not.</returns>
         public bool RemoveDeclaredAsset(string assetId = "") {
              InternalUnsafeMethods.RemoveDeclaredAsset__Args _args = new InternalUnsafeMethods.RemoveDeclaredAsset__Args() {
                 assetId = assetId,
@@ -1608,6 +1851,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Remove any the declared assets specified by the module definition.
+        /// </description>
+        /// <param name="moduleDefinition">The module definition that may contain declared assets.</param>
+        /// <returns>Whether removing declared assets was successful or not.</returns>
         public bool RemoveDeclaredAssets(string moduleDefinition = "") {
              InternalUnsafeMethods.RemoveDeclaredAssets__Args _args = new InternalUnsafeMethods.RemoveDeclaredAssets__Args() {
                 moduleDefinition = moduleDefinition,
@@ -1616,6 +1864,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Adds a private asset object.
+        /// </description>
+        /// <param name="assetObject">The asset object to add as a private asset.</param>
+        /// <returns>The allocated private asset Id.</returns>
         public string AddPrivateAsset(string assetObject = "") {
              InternalUnsafeMethods.AddPrivateAsset__Args _args = new InternalUnsafeMethods.AddPrivateAsset__Args() {
                 assetObject = assetObject,
@@ -1624,6 +1877,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Add the specified asset against the specified module definition.
+        /// </description>
+        /// <param name="moduleDefinition">The module definition that may contain declared assets.</param>
+        /// <returns>Whether adding declared assets was successful or not.</returns>
         public bool AddDeclaredAsset(string moduleDefinition = "", string assetFilePath = "") {
              InternalUnsafeMethods.AddDeclaredAsset__Args _args = new InternalUnsafeMethods.AddDeclaredAsset__Args() {
                 moduleDefinition = moduleDefinition,
@@ -1633,6 +1891,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Add any the declared assets specified by the module definition.
+        /// </description>
+        /// <param name="moduleDefinition">The module definition specifies the asset manifest.</param>
+        /// <returns>Whether adding declared assets was successful or not.</returns>
         public bool AddModuleDeclaredAssets(string moduleDefinition = "") {
              InternalUnsafeMethods.AddModuleDeclaredAssets__Args _args = new InternalUnsafeMethods.AddModuleDeclaredAssets__Args() {
                 moduleDefinition = moduleDefinition,
@@ -1641,6 +1904,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Compile the referenced assets determined by the specified module definition.
+        /// </description>
+        /// <param name="moduleDefinition">The module definition specifies the asset manifest.</param>
+        /// <returns>Whether the compilation was successful or not.</returns>
         public bool CompileReferencedAssets(string moduleDefinition = "") {
              InternalUnsafeMethods.CompileReferencedAssets__Args _args = new InternalUnsafeMethods.CompileReferencedAssets__Args() {
                 moduleDefinition = moduleDefinition,
@@ -1649,6 +1917,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the asset manager echos extra information to the console or not.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> EchoInfo {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -1659,6 +1933,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the asset manager should ignore unloading of auto-unload assets or not.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> IgnoreAutoUnload {
             get => new DynamicFieldVector<bool>(
                     this, 

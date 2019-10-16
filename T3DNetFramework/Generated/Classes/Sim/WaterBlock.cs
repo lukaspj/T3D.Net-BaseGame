@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A block shaped water volume defined by a 3D scale and orientation.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <see cref="WaterObject for inherited functionality." />
     public unsafe class WaterBlock : WaterObject {
         public WaterBlock(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +104,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the WaterBlock class.
+        /// </description>
+        /// <returns>The type info object for WaterBlock</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +115,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Spacing between vertices in the WaterBlock mesh
+        /// </description>
+        /// </value>
         public float GridElementSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("gridElementSize"));
             set => SetFieldValue("gridElementSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Duplicate of gridElementSize for backwards compatility
+        /// </description>
+        /// </value>
         public float GridSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("gridSize"));
             set => SetFieldValue("gridSize", GenericMarshal.ToString(value));

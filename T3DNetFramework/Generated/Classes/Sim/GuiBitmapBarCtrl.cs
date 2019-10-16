@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class GuiBitmapBarCtrl : GuiBitmapCtrl {
         public GuiBitmapBarCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiBitmapBarCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiBitmapBarCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +111,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// % shown
+        /// </description>
+        /// </value>
         public float Percent {
             get => GenericMarshal.StringTo<float>(GetFieldValue("percent"));
             set => SetFieldValue("percent", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the bitmap is clipped vertically.
+        /// </description>
+        /// </value>
         public bool Vertical {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("vertical"));
             set => SetFieldValue("vertical", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the bitmap is clipped in the oposite direction.
+        /// </description>
+        /// </value>
         public bool FlipClip {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("flipClip"));
             set => SetFieldValue("flipClip", GenericMarshal.ToString(value));

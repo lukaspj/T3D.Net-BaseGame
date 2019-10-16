@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Represents a type of ForestItem and parameters for how it is placed when painting with a ForestBrush that contains it.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class ForestBrushElement : SimObject {
         public ForestBrushElement(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ForestBrushElement class.
+        /// </description>
+        /// <returns>The type info object for ForestBrushElement</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,66 +114,144 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The type of ForestItem this element holds placement parameters for.
+        /// </description>
+        /// </value>
         public ForestItemData ForestItemData {
             get => GenericMarshal.StringTo<ForestItemData>(GetFieldValue("ForestItemData"));
             set => SetFieldValue("ForestItemData", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The probability that this element will be created during an editor brush stroke is the sum of all element probabilities in the brush divided by the probability of this element.
+        /// </description>
+        /// </value>
         public float Probability {
             get => GenericMarshal.StringTo<float>(GetFieldValue("probability"));
             set => SetFieldValue("probability", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The max rotation in degrees that items will be placed.
+        /// </description>
+        /// </value>
         public float RotationRange {
             get => GenericMarshal.StringTo<float>(GetFieldValue("rotationRange"));
             set => SetFieldValue("rotationRange", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The minimum random size for each item.
+        /// </description>
+        /// </value>
         public float ScaleMin {
             get => GenericMarshal.StringTo<float>(GetFieldValue("scaleMin"));
             set => SetFieldValue("scaleMin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum random size of each item.
+        /// </description>
+        /// </value>
         public float ScaleMax {
             get => GenericMarshal.StringTo<float>(GetFieldValue("scaleMax"));
             set => SetFieldValue("scaleMax", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// An exponent used to bias between the minimum and maximum random sizes.
+        /// </description>
+        /// </value>
         public float ScaleExponent {
             get => GenericMarshal.StringTo<float>(GetFieldValue("scaleExponent"));
             set => SetFieldValue("scaleExponent", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Min variation in the sink radius.
+        /// </description>
+        /// </value>
         public float SinkMin {
             get => GenericMarshal.StringTo<float>(GetFieldValue("sinkMin"));
             set => SetFieldValue("sinkMin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Max variation in the sink radius.
+        /// </description>
+        /// </value>
         public float SinkMax {
             get => GenericMarshal.StringTo<float>(GetFieldValue("sinkMax"));
             set => SetFieldValue("sinkMax", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// This is the radius used to calculate how much to sink the trunk at its base and is used to sink the tree into the ground when its on a slope.
+        /// </description>
+        /// </value>
         public float SinkRadius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("sinkRadius"));
             set => SetFieldValue("sinkRadius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The min surface slope in degrees this item will be placed on.
+        /// </description>
+        /// </value>
         public float SlopeMin {
             get => GenericMarshal.StringTo<float>(GetFieldValue("slopeMin"));
             set => SetFieldValue("slopeMin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The max surface slope in degrees this item will be placed on.
+        /// </description>
+        /// </value>
         public float SlopeMax {
             get => GenericMarshal.StringTo<float>(GetFieldValue("slopeMax"));
             set => SetFieldValue("slopeMax", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The min world space elevation this item will be placed.
+        /// </description>
+        /// </value>
         public float ElevationMin {
             get => GenericMarshal.StringTo<float>(GetFieldValue("elevationMin"));
             set => SetFieldValue("elevationMin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The max world space elevation this item will be placed.
+        /// </description>
+        /// </value>
         public float ElevationMax {
             get => GenericMarshal.StringTo<float>(GetFieldValue("elevationMax"));
             set => SetFieldValue("elevationMax", GenericMarshal.ToString(value));

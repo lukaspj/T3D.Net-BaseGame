@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>GUI dedicated to variable viewing/manipulation</summary>
+    /// <description>
+    /// Mostly used in console system, internal use only.
+    /// </description>
     public unsafe class GuiVariableInspector : GuiInspector {
         public GuiVariableInspector(bool pRegister = false) 
             : base(pRegister) {
@@ -295,6 +299,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// loadVars( searchString )
+        /// </description>
         public void LoadVars(string searchString) {
              InternalUnsafeMethods.LoadVars__Args _args = new InternalUnsafeMethods.LoadVars__Args() {
                 searchString = searchString,
@@ -302,6 +309,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.LoadVars()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// setFieldEnabled( fieldName, isEnabled )
+        /// </description>
         public void SetFieldEnabled(string fieldName, bool isEnabled = true) {
              InternalUnsafeMethods.SetFieldEnabled__Args _args = new InternalUnsafeMethods.SetFieldEnabled__Args() {
                 fieldName = fieldName,
@@ -310,18 +320,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetFieldEnabled()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// clearFields()
+        /// </description>
         public void ClearFields() {
              InternalUnsafeMethods.ClearFields__Args _args = new InternalUnsafeMethods.ClearFields__Args() {
              };
              InternalUnsafeMethods.ClearFields()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// update()
+        /// </description>
         public void Update() {
              InternalUnsafeMethods.Update__Args _args = new InternalUnsafeMethods.Update__Args() {
              };
              InternalUnsafeMethods.Update()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// addField( fieldName/varName, fieldLabel, fieldTypeName, description, defaultValue, defaultValues, callbackName, ownerObject )
+        /// </description>
         public void AddCallbackField(string name, string label = "", string typeName = "", string description = "", string defaultValue = "", string dataValues = "", string callbackName = "", SimObject ownerObj = null) {
              InternalUnsafeMethods.AddCallbackField__Args _args = new InternalUnsafeMethods.AddCallbackField__Args() {
                 name = name,
@@ -336,6 +355,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddCallbackField()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// addField( fieldName/varName, fieldLabel, fieldTypeName, description, defaultValue, defaultValues, ownerObject )
+        /// </description>
         public void AddField(string name = "", string label = "", string typeName = "", string description = "", string defaultValue = "", string dataValues = "", SimObject ownerObj = null) {
              InternalUnsafeMethods.AddField__Args _args = new InternalUnsafeMethods.AddField__Args() {
                 name = name,
@@ -349,12 +371,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddField()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// endGroup()
+        /// </description>
         public void EndGroup() {
              InternalUnsafeMethods.EndGroup__Args _args = new InternalUnsafeMethods.EndGroup__Args() {
              };
              InternalUnsafeMethods.EndGroup()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// startGroup( groupName )
+        /// </description>
         public void StartGroup(string name) {
              InternalUnsafeMethods.StartGroup__Args _args = new InternalUnsafeMethods.StartGroup__Args() {
                 name = name,
@@ -362,6 +390,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.StartGroup()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiVariableInspector class.
+        /// </description>
+        /// <returns>The type info object for GuiVariableInspector</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

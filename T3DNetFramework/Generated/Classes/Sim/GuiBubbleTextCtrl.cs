@@ -14,7 +14,19 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A single-line text control that displays its text in a multi-line popup when clicked.</summary>
+    /// <description>
+    /// This control acts like a GuiTextCtrl (and inherits from it), when clicked it creates a GuiMLTextCtrl roughly where you clicked with the same text in it.  This allows you to have a single line text control which upon clicking will display the entire text contained in a multi-line format.
+    /// </description>
+    /// <code>
+    /// new GuiBubbleTextCtrl(BubbleTextGUI)
+    /// {
+    ///    text = "This is the first sentence.  This second sentence can be sized outside of the default single line view, upon clicking this will be displayed in a multi-line format.";
+    /// };
+    /// </code>
+    /// <see cref="GuiTextCtrl" />
+    /// <see cref="GuiMLTextCtrl" />
     public unsafe class GuiBubbleTextCtrl : GuiTextCtrl {
         public GuiBubbleTextCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +111,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiBubbleTextCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiBubbleTextCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

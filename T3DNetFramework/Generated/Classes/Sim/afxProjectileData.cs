@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Projectile effect.</summary>
+    /// <description>
+    /// afxProjectileData inherits from ProjectileData and adds some AFX specific fields.
+    /// </description>
     public unsafe class afxProjectileData : ProjectileData {
         public afxProjectileData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxProjectileData class.
+        /// </description>
+        /// <returns>The type info object for afxProjectileData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,41 +114,89 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public sbyte Networking {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("networking"));
             set => SetFieldValue("networking", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string LaunchPosSpec {
             get => GenericMarshal.StringTo<string>(GetFieldValue("launchPosSpec"));
             set => SetFieldValue("launchPosSpec", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point3F LaunchDirBias {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("launchDirBias"));
             set => SetFieldValue("launchDirBias", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool IgnoreSourceTimeout {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ignoreSourceTimeout"));
             set => SetFieldValue("ignoreSourceTimeout", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int DynamicCollisionMask {
             get => GenericMarshal.StringTo<int>(GetFieldValue("dynamicCollisionMask"));
             set => SetFieldValue("dynamicCollisionMask", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int StaticCollisionMask {
             get => GenericMarshal.StringTo<int>(GetFieldValue("staticCollisionMask"));
             set => SetFieldValue("staticCollisionMask", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool OverrideCollisionMasks {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("overrideCollisionMasks"));
             set => SetFieldValue("overrideCollisionMasks", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Possible values: towardPos2Constraint, orientConstraint, or launchDirField.
+        /// </description>
+        /// </value>
         public afxProjectile_LaunchDirType LaunchDirMethod {
             get => GenericMarshal.StringTo<afxProjectile_LaunchDirType>(GetFieldValue("launchDirMethod"));
             set => SetFieldValue("launchDirMethod", GenericMarshal.ToString(value));

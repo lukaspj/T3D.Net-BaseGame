@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Defines the properties of a WheeledVehicle.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class WheeledVehicleData : VehicleData {
         public WheeledVehicleData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the WheeledVehicleData class.
+        /// </description>
+        /// <returns>The type info object for WheeledVehicleData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,46 +114,107 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Looping sound played when the vehicle is jetting.
+        /// </description>
+        /// </value>
         public SFXTrack JetSound {
             get => GenericMarshal.StringTo<SFXTrack>(GetFieldValue("jetSound"));
             set => SetFieldValue("jetSound", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Looping engine sound.</summary>
+        /// <description>
+        /// The pitch is dynamically adjusted based on the current engine RPM
+        /// </description>
+        /// </value>
         public SFXTrack EngineSound {
             get => GenericMarshal.StringTo<SFXTrack>(GetFieldValue("engineSound"));
             set => SetFieldValue("engineSound", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Looping sound played while any of the wheels is slipping.</summary>
+        /// <description>
+        /// The volume is dynamically adjusted based on how much the wheels are slipping.
+        /// </description>
+        /// </value>
         public SFXTrack SquealSound {
             get => GenericMarshal.StringTo<SFXTrack>(GetFieldValue("squealSound"));
             set => SetFieldValue("squealSound", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sound played when the wheels impact the ground.
+        /// Currently unused.
+        /// </description>
+        /// </value>
         public SFXTrack WheelImpactSound {
             get => GenericMarshal.StringTo<SFXTrack>(GetFieldValue("WheelImpactSound"));
             set => SetFieldValue("WheelImpactSound", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ParticleEmitterData datablock used to generate particles from each wheel when the vehicle is moving and the wheel is in contact with the ground.
+        /// </description>
+        /// </value>
         public ParticleEmitterData TireEmitter {
             get => GenericMarshal.StringTo<ParticleEmitterData>(GetFieldValue("tireEmitter"));
             set => SetFieldValue("tireEmitter", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Maximum linear velocity of each wheel.</summary>
+        /// <description>
+        /// This caps the maximum speed of the vehicle.
+        /// </description>
+        /// </value>
         public float MaxWheelSpeed {
             get => GenericMarshal.StringTo<float>(GetFieldValue("maxWheelSpeed"));
             set => SetFieldValue("maxWheelSpeed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Torque available from the engine at 100% throttle.</summary>
+        /// <description>
+        /// This controls vehicle acceleration. ie. how fast it will reach maximum speed.
+        /// </description>
+        /// </value>
         public float EngineTorque {
             get => GenericMarshal.StringTo<float>(GetFieldValue("engineTorque"));
             set => SetFieldValue("engineTorque", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Braking torque applied by the engine when the throttle and brake are both 0.</summary>
+        /// <description>
+        /// This controls how quickly the vehicle will coast to a stop.
+        /// </description>
+        /// </value>
         public float EngineBrake {
             get => GenericMarshal.StringTo<float>(GetFieldValue("engineBrake"));
             set => SetFieldValue("engineBrake", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Torque applied when braking.</summary>
+        /// <description>
+        /// This controls how fast the vehicle will stop when the brakes are applied.
+        /// </description>
+        /// </value>
         public float BrakeTorque {
             get => GenericMarshal.StringTo<float>(GetFieldValue("brakeTorque"));
             set => SetFieldValue("brakeTorque", GenericMarshal.ToString(value));

@@ -14,7 +14,18 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that describes a camera.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// datablock CameraData(Observer)
+    /// {
+    ///    mode = "Observer";
+    /// };
+    /// </code>
+    /// <see cref="Camera" />
     public unsafe class CameraData : ShapeBaseData {
         public CameraData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +110,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the CameraData class.
+        /// </description>
+        /// <returns>The type info object for CameraData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

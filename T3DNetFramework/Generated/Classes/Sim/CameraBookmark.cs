@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Special type of mission marker which allows a level editor's camera to jump to specific points.</summary>
+    /// <description>
+    /// For Torque 3D editors only, not for actual game development
+    /// </description>
     public unsafe class CameraBookmark : MissionMarker {
         public CameraBookmark(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the CameraBookmark class.
+        /// </description>
+        /// <returns>The type info object for CameraBookmark</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

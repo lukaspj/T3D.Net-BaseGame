@@ -14,7 +14,37 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Essentially a SimGroup, but with onAdd and onRemove script callbacks.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// // First container, SimGroup containing a ScriptGroup
+    /// new SimGroup(Scenes)
+    /// {
+    ///   // Subcontainer, ScriptGroup containing variables
+    ///   // related to a cut scene and a starting WayPoint
+    ///   new ScriptGroup(WelcomeScene)
+    ///   {
+    ///      class = "Scene";
+    ///      pathName = "Pathx";
+    ///      description = "A small orc village set in the Hardesty mountains. This town and its surroundings will be used to illustrate some the Torque Game Engine's features.";
+    ///      pathTime = "0";
+    ///      title = "Welcome to Orc Town";
+    /// 
+    ///      new WayPoint(start)
+    ///      {
+    ///         position = "163.873 -103.82 208.354";
+    ///         rotation = "0.136165 -0.0544916 0.989186 44.0527";
+    ///         scale = "1 1 1";
+    ///         dataBlock = "WayPointMarker";
+    ///         team = "0";
+    ///      };
+    ///   };
+    /// };
+    /// </code>
+    /// <see cref="SimGroup" />
     public unsafe class ScriptGroup : SimGroup {
         public ScriptGroup(bool pRegister = false) 
             : base(pRegister) {
@@ -141,6 +171,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Called when this ScriptObject is removed from the system.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
         public virtual void OnRemove(uint ID) {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
                 ID = ID,
@@ -148,6 +182,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when this ScriptGroup is added to the system.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
         public virtual void OnAdd(uint ID) {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
                 ID = ID,
@@ -155,6 +193,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the ScriptGroup class.
+        /// </description>
+        /// <returns>The type info object for ScriptGroup</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

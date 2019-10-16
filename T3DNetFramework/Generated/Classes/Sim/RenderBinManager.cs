@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The abstract base for all render bins.</summary>
+    /// <description>
+    /// The render bins are used by the engine as a high level method to order and batch rendering operations.
+    /// </description>
     public unsafe class RenderBinManager : SimObject {
         public RenderBinManager(bool pRegister = false) 
             : base(pRegister) {
@@ -120,6 +124,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Returns the bin type string.
+        /// </description>
         public string GetBinType() {
              InternalUnsafeMethods.GetBinType__Args _args = new InternalUnsafeMethods.GetBinType__Args() {
              };
@@ -127,6 +134,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the RenderBinManager class.
+        /// </description>
+        /// <returns>The type info object for RenderBinManager</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -134,21 +145,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sets the render bin type which limits what render instances are added to this bin.
+        /// </description>
+        /// </value>
         public string BinType {
             get => GenericMarshal.StringTo<string>(GetFieldValue("binType"));
             set => SetFieldValue("binType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Defines the order for rendering in relation to other bins.
+        /// </description>
+        /// </value>
         public float RenderOrder {
             get => GenericMarshal.StringTo<float>(GetFieldValue("renderOrder"));
             set => SetFieldValue("renderOrder", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Defines the order for adding instances in relation to other bins.
+        /// </description>
+        /// </value>
         public float ProcessAddOrder {
             get => GenericMarshal.StringTo<float>(GetFieldValue("processAddOrder"));
             set => SetFieldValue("processAddOrder", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Limites the render bin to basic lighting only.
+        /// </description>
+        /// </value>
         public bool BasicOnly {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("basicOnly"));
             set => SetFieldValue("basicOnly", GenericMarshal.ToString(value));

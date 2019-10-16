@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A SimSet that can be safely persisted.</summary>
+    /// <description>
+    /// Uses SimPersistIDs to reference objects in the set while persisted on disk.  This allows the set to resolve its references no matter whether they are loaded before or after the set is created.
+    /// 
+    /// Not intended for game development, for editors or internal use only.
+    /// </description>
     public unsafe class SimPersistSet : SimSet {
         public SimPersistSet(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +125,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// () - Try to bind unresolved persistent IDs in the set.
+        /// </description>
         public void ResolvePersistentIds() {
              InternalUnsafeMethods.ResolvePersistentIds__Args _args = new InternalUnsafeMethods.ResolvePersistentIds__Args() {
              };
              InternalUnsafeMethods.ResolvePersistentIds()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SimPersistSet class.
+        /// </description>
+        /// <returns>The type info object for SimPersistSet</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

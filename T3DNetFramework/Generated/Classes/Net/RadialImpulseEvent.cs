@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Net {    
+namespace T3DNetFramework.Generated.Classes.Net {
+    /// <summary>Creates a physics-based impulse effect from a defined central point and magnitude.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <see cref="RadialImpulseEvent::send" />
     public unsafe class RadialImpulseEvent : NetEvent {
         public RadialImpulseEvent(bool pRegister = false) 
             : base(pRegister) {
@@ -96,6 +101,26 @@ namespace T3DNetFramework.Generated.Classes.Net {
         }
         #endregion
 
+        /// <summary>Applies a radial impulse to any SceneObjects within the area of effect.</summary>
+        /// <description>
+        /// This event is performed both server and client-side.
+        /// </description>
+        /// <param name="position">Center point for this radial impulse.</param>
+        /// <param name="radius">Distance from the position for this radial impulse to affect.</param>
+        /// <param name="magnitude">The force applied to objects within the radius from the position of this radial impulse effect.</param>
+        /// <code>
+        /// // Define the Position
+        /// %position = "10.0 15.0 10.0";
+        /// 
+        /// // Define the Radius
+        /// %radius = "25.0";
+        /// 
+        /// // Define the Magnitude
+        /// %magnitude = "30.0"
+        /// 
+        /// // Create a globalRadialImpulse physics effect.
+        /// RadialImpulseEvent::send(%position,%radius,%magnitude);
+        /// </code>
         public static void Send(string inPosition = "1.0 1.0 1.0", float radius = 10f, float magnitude = 20f) {
              InternalUnsafeMethods.Send__Args _args = new InternalUnsafeMethods.Send__Args() {
                 inPosition = inPosition,
@@ -105,6 +130,10 @@ namespace T3DNetFramework.Generated.Classes.Net {
              InternalUnsafeMethods.Send()(_args);
         }
 
+        /// <description>
+        /// Get the type info object for the RadialImpulseEvent class.
+        /// </description>
+        /// <returns>The type info object for RadialImpulseEvent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

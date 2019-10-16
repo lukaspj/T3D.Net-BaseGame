@@ -14,7 +14,28 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A component that places a text entry box on the screen.</summary>
+    /// <description>
+    /// Fonts and sizes are changed using profiles. The text value can be set or entered by a user.
+    /// </description>
+    /// <code>
+    /// new GuiTextEditCtrl(MessageHud_Edit)
+    ///   {
+    ///       text = "Hello World";
+    ///       validate = "validateCommand();"
+    ///       escapeCommand = "escapeCommand();";
+    ///       historySize = "5";
+    ///       tabComplete = "true";
+    ///       deniedSound = "DeniedSoundProfile";
+    ///       sinkAllKeyEvents = "true";
+    ///       password = "true";
+    ///       passwordMask = "*";
+    ///        //Properties not specific to this control have been omitted from this example.
+    ///    };
+    /// </code>
+    /// <see cref="GuiTextCtrl" />
+    /// <see cref="GuiControl" />
     public unsafe class GuiTextEditCtrl : GuiTextCtrl {
         public GuiTextEditCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -389,6 +410,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Returns if the text is set to valid or not.n</summary>
         public bool IsValidText() {
              InternalUnsafeMethods.IsValidText__Args _args = new InternalUnsafeMethods.IsValidText__Args() {
              };
@@ -396,12 +418,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Restores the box to normal color.nn</summary>
         public void ValidText() {
              InternalUnsafeMethods.ValidText__Args _args = new InternalUnsafeMethods.ValidText__Args() {
              };
              InternalUnsafeMethods.ValidText()(ObjectPtr, _args);
         }
 
+        /// <summary>Trigger the invalid sound and make the box red.nn</summary>
+        /// <param name="playSound">Play the invalid text sound or not.n</param>
         public void InvalidText(bool playSound = true) {
              InternalUnsafeMethods.InvalidText__Args _args = new InternalUnsafeMethods.InvalidText__Args() {
                 playSound = playSound,
@@ -409,24 +434,61 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.InvalidText()(ObjectPtr, _args);
         }
 
+        /// <summary>Force a validation to occur.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Inform the control to force a validation of its text.
+        /// %thisGuiTextEditCtrl.forceValidateText();
+        /// </code>
+        /// <see cref="GuiControl" />
         public void ForceValidateText() {
              InternalUnsafeMethods.ForceValidateText__Args _args = new InternalUnsafeMethods.ForceValidateText__Args() {
              };
              InternalUnsafeMethods.ForceValidateText()(ObjectPtr, _args);
         }
 
+        /// <summary>Unselects all selected text in the control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Inform the control to unselect all of its selected text
+        /// %thisGuiTextEditCtrl.clearSelectedText();
+        /// </code>
+        /// <see cref="GuiControl" />
         public void ClearSelectedText() {
              InternalUnsafeMethods.ClearSelectedText__Args _args = new InternalUnsafeMethods.ClearSelectedText__Args() {
              };
              InternalUnsafeMethods.ClearSelectedText()(ObjectPtr, _args);
         }
 
+        /// <summary>Selects all text within the control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Inform the control to select all of its text.
+        /// %thisGuiTextEditCtrl.selectAllText();
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SelectAllText() {
              InternalUnsafeMethods.SelectAllText__Args _args = new InternalUnsafeMethods.SelectAllText__Args() {
              };
              InternalUnsafeMethods.SelectAllText()(ObjectPtr, _args);
         }
 
+        /// <summary>Checks to see if all text in the control has been selected.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Check to see if all text has been selected or not.
+        /// %allSelected = %thisGuiTextEditCtrl.isAllTextSelected();
+        /// </code>
+        /// <returns>True if all text in the control is selected, otherwise false.</returns>
+        /// <see cref="GuiControl" />
         public bool IsAllTextSelected() {
              InternalUnsafeMethods.IsAllTextSelected__Args _args = new InternalUnsafeMethods.IsAllTextSelected__Args() {
              };
@@ -434,6 +496,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Sets the text cursor at the defined position within the control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="position">Text position to set the text cursor.</param>
+        /// <code>
+        /// // Define the cursor position
+        /// %position = "12";
+        /// 
+        /// // Inform the GuiTextEditCtrl control to place the text cursor at the defined position
+        /// %thisGuiTextEditCtrl.setCursorPos(%position);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetCursorPos(int position) {
              InternalUnsafeMethods.SetCursorPos__Args _args = new InternalUnsafeMethods.SetCursorPos__Args() {
                 position = position,
@@ -441,6 +516,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCursorPos()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns the current position of the text cursor in the control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Acquire the cursor position in the control
+        /// %position = %thisGuiTextEditCtrl.getCursorPost();
+        /// </code>
+        /// <returns>Text cursor position within the control.</returns>
+        /// <see cref="GuiControl" />
         public int GetCursorPos() {
              InternalUnsafeMethods.GetCursorPos__Args _args = new InternalUnsafeMethods.GetCursorPos__Args() {
              };
@@ -448,6 +533,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Sets the text in the control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="text">Text to place in the control.</param>
+        /// <code>
+        /// // Define the text to display
+        /// %text = "Text!"
+        /// 
+        /// // Inform the GuiTextEditCtrl to display the defined text
+        /// %thisGuiTextEditCtrl.setText(%text);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetText(string text) {
              InternalUnsafeMethods.SetText__Args _args = new InternalUnsafeMethods.SetText__Args() {
                 text = text,
@@ -455,6 +553,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetText()(ObjectPtr, _args);
         }
 
+        /// <summary>Acquires the current text displayed in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Acquire the value of the text control.
+        /// %text = %thisGuiTextEditCtrl.getText();
+        /// </code>
+        /// <returns>The current text within the control.</returns>
+        /// <see cref="GuiControl" />
         public string GetText() {
              InternalUnsafeMethods.GetText__Args _args = new InternalUnsafeMethods.GetText__Args() {
              };
@@ -462,18 +570,58 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Called whenever the control is validated.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // The control gets validated, causing the callback to occur
+        /// GuiTextEditCtrl::onValidated(%this)
+        ///   {
+        ///      // Code to run when the control is validated
+        ///   }
+        /// </code>
+        /// <see cref="GuiTextCtrl" />
+        /// <see cref="GuiControl" />
         public virtual void OnValidate() {
              InternalUnsafeMethods.OnValidate__Args _args = new InternalUnsafeMethods.OnValidate__Args() {
              };
              InternalUnsafeMethods.OnValidate()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when the 'Return' or 'Enter' key is pressed.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Return or Enter key was pressed, causing the callback to occur.
+        /// GuiTextEditCtrl::onReturn(%this)
+        ///   {
+        ///      // Code to run when the onReturn callback occurs
+        ///   }
+        /// </code>
+        /// <see cref="GuiTextCtrl" />
+        /// <see cref="GuiControl" />
         public virtual void OnReturn() {
              InternalUnsafeMethods.OnReturn__Args _args = new InternalUnsafeMethods.OnReturn__Args() {
              };
              InternalUnsafeMethods.OnReturn()(ObjectPtr, _args);
         }
 
+        /// <summary>Called if tabComplete is true, and the 'tab' key is pressed.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="val">Input to mimick the '1' sent by the actual tab key button press.</param>
+        /// <code>
+        /// // Tab key has been pressed, causing the callback to occur.
+        /// GuiTextEditCtrl::onTabComplete(%this,%val)
+        ///   {
+        ///      //Code to run when the onTabComplete callback occurs
+        ///   }
+        /// </code>
+        /// <see cref="GuiTextCtrl" />
+        /// <see cref="GuiControl" />
         public virtual void OnTabComplete(string val) {
              InternalUnsafeMethods.OnTabComplete__Args _args = new InternalUnsafeMethods.OnTabComplete__Args() {
                 val = val,
@@ -481,6 +629,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnTabComplete()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiTextEditCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTextEditCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -488,41 +640,89 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script command to be called when the first validater is lost.
+        /// </description>
+        /// </value>
         public string Validate {
             get => GenericMarshal.StringTo<string>(GetFieldValue("validate"));
             set => SetFieldValue("validate", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script command to be called when the Escape key is pressed.
+        /// </description>
+        /// </value>
         public string EscapeCommand {
             get => GenericMarshal.StringTo<string>(GetFieldValue("escapeCommand"));
             set => SetFieldValue("escapeCommand", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// How large of a history buffer to maintain.
+        /// </description>
+        /// </value>
         public int HistorySize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("historySize"));
             set => SetFieldValue("historySize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, when the 'tab' key is pressed, it will act as if the Enter key was pressed on the control.
+        /// </description>
+        /// </value>
         public bool TabComplete {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("tabComplete"));
             set => SetFieldValue("tabComplete", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If the attempted text cannot be entered, this sound effect will be played.
+        /// </description>
+        /// </value>
         public SFXTrack DeniedSound {
             get => GenericMarshal.StringTo<SFXTrack>(GetFieldValue("deniedSound"));
             set => SetFieldValue("deniedSound", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, every key event will act as if the Enter key was pressed.
+        /// </description>
+        /// </value>
         public bool SinkAllKeyEvents {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("sinkAllKeyEvents"));
             set => SetFieldValue("sinkAllKeyEvents", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, all characters entered will be stored in the control, however will display as the character stored in passwordMask.
+        /// </description>
+        /// </value>
         public bool Password {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("password"));
             set => SetFieldValue("password", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If 'password' is true, this is the character that will be used to mask the characters in the control.
+        /// </description>
+        /// </value>
         public string PasswordMask {
             get => GenericMarshal.StringTo<string>(GetFieldValue("passwordMask"));
             set => SetFieldValue("passwordMask", GenericMarshal.ToString(value));

@@ -14,7 +14,23 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control that renders a horizontal or vertical separator with an optional text label (horizontal only)</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiSeparatorCtrl()
+    /// {
+    ///    profile = "GuiDefaultProfile";
+    ///    position = "505 0";
+    ///    extent = "10 17";
+    ///    minExtent = "10 17";
+    ///    canSave = "1";
+    ///    visible = "1";
+    ///    horizSizing = "left";
+    /// };
+    /// </code>
     public unsafe class GuiSeparatorCtrl : GuiControl {
         public GuiSeparatorCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +115,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiSeparatorCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiSeparatorCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,26 +126,52 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Optional text label to display.
+        /// </description>
+        /// </value>
         public string Caption {
             get => GenericMarshal.StringTo<string>(GetFieldValue("caption"));
             set => SetFieldValue("caption", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Orientation of separator.
+        /// </description>
+        /// </value>
         public GuiSeparatorType Type {
             get => GenericMarshal.StringTo<GuiSeparatorType>(GetFieldValue("type"));
             set => SetFieldValue("type", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int BorderMargin {
             get => GenericMarshal.StringTo<int>(GetFieldValue("borderMargin"));
             set => SetFieldValue("borderMargin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool Invisible {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("invisible"));
             set => SetFieldValue("invisible", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Left margin of text label.
+        /// </description>
+        /// </value>
         public int LeftMargin {
             get => GenericMarshal.StringTo<int>(GetFieldValue("leftMargin"));
             set => SetFieldValue("leftMargin", GenericMarshal.ToString(value));

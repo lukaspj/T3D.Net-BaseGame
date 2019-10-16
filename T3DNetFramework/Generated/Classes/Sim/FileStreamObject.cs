@@ -14,7 +14,27 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A wrapper around StreamObject for parsing text and data from files.</summary>
+    /// <description>
+    /// FileStreamObject inherits from StreamObject and provides some unique methods for working with strings.  If you're looking for general file handling, you may want to use FileObject.
+    /// </description>
+    /// <code>
+    /// // Create a file stream object for reading
+    /// %fsObject = new FileStreamObject();
+    /// 
+    /// // Open a file for reading
+    /// %fsObject.open("./test.txt", "read");
+    /// 
+    /// // Get the status and print it
+    /// %status = %fsObject.getStatus();
+    /// echo(%status);
+    /// 
+    /// // Always remember to close a file stream when finished
+    /// %fsObject.close();
+    /// </code>
+    /// <see cref="StreamObject for the list of inherited functions variables" />
+    /// <see cref="FileObject for general file handling." />
     public unsafe class FileStreamObject : StreamObject {
         public FileStreamObject(bool pRegister = false) 
             : base(pRegister) {
@@ -144,12 +164,51 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Close the file. You can no longer read or write to it unless you open it again.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Create a file stream object for reading
+        /// %fsObject = new FileStreamObject();
+        /// 
+        /// // Open a file for reading
+        /// %fsObject.open("./test.txt", "read");
+        /// 
+        /// // Always remember to close a file stream when finished
+        /// %fsObject.close();
+        /// </code>
+        /// <see cref="open()" />
         public void Close() {
              InternalUnsafeMethods.Close__Args _args = new InternalUnsafeMethods.Close__Args() {
              };
              InternalUnsafeMethods.Close()(ObjectPtr, _args);
         }
 
+        /// <summary>Open a file for reading, writing, reading and writing, or appending</summary>
+        /// <description>
+        /// Using "Read" for the open mode allows you to parse the contents of file, but not making modifications. "Write" will create a new file if it does not exist, or erase the contents of an existing file when opened. Write also allows you to modify the contents of the file.
+        /// 
+        /// "ReadWrite" will provide the ability to parse data (read it in) and manipulate data (write it out) interchangeably. Keep in mind the stream can move during each operation. Finally, "WriteAppend" will open a file if it exists, but will not clear the contents. You can write new data starting  at the end of the files existing contents.
+        /// </description>
+        /// <param name="filename">Name of file to open</param>
+        /// <param name="openMode">One of "Read", "Write", "ReadWrite" or "WriteAppend"</param>
+        /// <code>
+        /// // Create a file stream object for reading
+        /// %fsObject = new FileStreamObject();
+        /// 
+        /// // Open a file for reading
+        /// %fsObject.open("./test.txt", "read");
+        /// 
+        /// // Get the status and print it
+        /// %status = %fsObject.getStatus();
+        /// echo(%status);
+        /// 
+        /// // Always remember to close a file stream when finished
+        /// %fsObject.close();
+        /// </code>
+        /// <returns>True if the file was successfully opened, false if something went wrong</returns>
+        /// <see cref="close()" />
         public bool Open(string filename, string openMode) {
              InternalUnsafeMethods.Open__Args _args = new InternalUnsafeMethods.Open__Args() {
                 filename = filename,
@@ -159,6 +218,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the FileStreamObject class.
+        /// </description>
+        /// <returns>The type info object for FileStreamObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

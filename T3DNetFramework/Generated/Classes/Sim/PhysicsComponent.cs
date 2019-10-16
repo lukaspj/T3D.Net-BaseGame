@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class PhysicsComponent : Component {
         public PhysicsComponent(bool pRegister = false) 
             : base(pRegister) {
@@ -122,6 +123,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public bool ApplyImpulse(Point3F pos, Point3F vel) {
 pos.Alloc();vel.Alloc();             InternalUnsafeMethods.ApplyImpulse__Args _args = new InternalUnsafeMethods.ApplyImpulse__Args() {
                 pos = pos.internalStructPtr,
@@ -131,6 +141,10 @@ pos.Alloc();vel.Alloc();             InternalUnsafeMethods.ApplyImpulse__Args _a
 pos.Free();vel.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the PhysicsComponent class.
+        /// </description>
+        /// <returns>The type info object for PhysicsComponent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -138,16 +152,28 @@ pos.Free();vel.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F Gravity {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("gravity"));
             set => SetFieldValue("gravity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F Velocity {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("velocity"));
             set => SetFieldValue("velocity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsStatic {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isStatic"));
             set => SetFieldValue("isStatic", GenericMarshal.ToString(value));

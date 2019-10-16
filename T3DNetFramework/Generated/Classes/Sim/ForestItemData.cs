@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Base class for defining a type of ForestItem. It does not implement loading or rendering of the shapeFile.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class ForestItemData : SimDataBlock {
         public ForestItemData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ForestItemData class.
+        /// </description>
+        /// <returns>The type info object for ForestItemData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,61 +114,133 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Shape file for this item type
+        /// </description>
+        /// </value>
         public string ShapeFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("shapeFile"));
             set => SetFieldValue("shapeFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Can other objects or spacial queries hit items of this type.
+        /// </description>
+        /// </value>
         public bool Collidable {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("collidable"));
             set => SetFieldValue("collidable", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Radius used during placement to ensure items are not crowded.
+        /// </description>
+        /// </value>
         public float Radius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("radius"));
             set => SetFieldValue("radius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Mass used in calculating spring forces on the trunk. Generally how springy a plant is.
+        /// </description>
+        /// </value>
         public float Mass {
             get => GenericMarshal.StringTo<float>(GetFieldValue("mass"));
             set => SetFieldValue("mass", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Rigidity used in calculating spring forces on the trunk. How much the plant resists the wind force
+        /// </description>
+        /// </value>
         public float Rigidity {
             get => GenericMarshal.StringTo<float>(GetFieldValue("rigidity"));
             set => SetFieldValue("rigidity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Coefficient used in calculating spring forces on the trunk. How much the plant resists bending.
+        /// </description>
+        /// </value>
         public float TightnessCoefficient {
             get => GenericMarshal.StringTo<float>(GetFieldValue("tightnessCoefficient"));
             set => SetFieldValue("tightnessCoefficient", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Coefficient used in calculating spring forces on the trunk. Causes oscillation and forces to decay faster over time.
+        /// </description>
+        /// </value>
         public float DampingCoefficient {
             get => GenericMarshal.StringTo<float>(GetFieldValue("dampingCoefficient"));
             set => SetFieldValue("dampingCoefficient", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Overall scale to the effect of wind.
+        /// </description>
+        /// </value>
         public float WindScale {
             get => GenericMarshal.StringTo<float>(GetFieldValue("windScale"));
             set => SetFieldValue("windScale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Overall bend amount of the tree trunk by wind and impacts.
+        /// </description>
+        /// </value>
         public float TrunkBendScale {
             get => GenericMarshal.StringTo<float>(GetFieldValue("trunkBendScale"));
             set => SetFieldValue("trunkBendScale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Amplitude of the effect on larger branches.
+        /// </description>
+        /// </value>
         public float BranchAmp {
             get => GenericMarshal.StringTo<float>(GetFieldValue("branchAmp"));
             set => SetFieldValue("branchAmp", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Amplitude of the winds effect on leafs/fronds.
+        /// </description>
+        /// </value>
         public float DetailAmp {
             get => GenericMarshal.StringTo<float>(GetFieldValue("detailAmp"));
             set => SetFieldValue("detailAmp", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Frequency (speed) of the effect on leafs/fronds.
+        /// </description>
+        /// </value>
         public float DetailFreq {
             get => GenericMarshal.StringTo<float>(GetFieldValue("detailFreq"));
             set => SetFieldValue("detailFreq", GenericMarshal.ToString(value));

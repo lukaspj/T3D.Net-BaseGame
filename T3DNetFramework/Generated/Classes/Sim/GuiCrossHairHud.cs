@@ -14,7 +14,19 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Basic cross hair hud. Reacts to state of control object. Also displays health bar for named objects under the cross hair.</summary>
+    /// <description>
+    /// Uses the base bitmap control to render a bitmap, and decides whether to draw or not depending on the current control object and it's state. If there is ShapeBase object under the cross hair and it's named, then a small health bar is displayed.
+    /// </description>
+    /// <code>
+    /// new GuiCrossHairHud(){
+    /// 	damageFillColor = "1.0 0.0 0.0 1.0"; // Fills with a solid red color
+    /// 	damageFrameColor = "1.0 1.0 1.0 1.0"; // Solid white frame color
+    /// 	damageRect = "15 5";
+    /// 	damageOffset = "0 -10";
+    /// };
+    /// </code>
     public unsafe class GuiCrossHairHud : GuiBitmapCtrl {
         public GuiCrossHairHud(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +111,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiCrossHairHud class.
+        /// </description>
+        /// <returns>The type info object for GuiCrossHairHud</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +122,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// As the health bar depletes, this color will represent the health loss amount.
+        /// </description>
+        /// </value>
         public LinearColorF DamageFillColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("damageFillColor"));
             set => SetFieldValue("damageFillColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color for the health bar's frame.
+        /// </description>
+        /// </value>
         public LinearColorF DamageFrameColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("damageFrameColor"));
             set => SetFieldValue("damageFrameColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Size for the health bar portion of the control.
+        /// </description>
+        /// </value>
         public Point2I DamageRect {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("damageRect"));
             set => SetFieldValue("damageRect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Offset for drawing the damage portion of the health control.
+        /// </description>
+        /// </value>
         public Point2I DamageOffset {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("damageOffset"));
             set => SetFieldValue("damageOffset", GenericMarshal.ToString(value));

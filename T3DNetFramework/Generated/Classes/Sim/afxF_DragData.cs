@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock for specifiying AFX drag forces.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxF_DragData : GameBaseData {
         public afxF_DragData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxF_DragData class.
+        /// </description>
+        /// <returns>The type info object for afxF_DragData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +114,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Drag {
             get => GenericMarshal.StringTo<float>(GetFieldValue("drag"));
             set => SetFieldValue("drag", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float AirDensity {
             get => GenericMarshal.StringTo<float>(GetFieldValue("airDensity"));
             set => SetFieldValue("airDensity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float CrossSectionalArea {
             get => GenericMarshal.StringTo<float>(GetFieldValue("crossSectionalArea"));
             set => SetFieldValue("crossSectionalArea", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string ForceSetName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("forceSetName"));
             set => SetFieldValue("forceSetName", GenericMarshal.ToString(value));

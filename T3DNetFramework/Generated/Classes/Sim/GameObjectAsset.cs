@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class GameObjectAsset : AssetBase {
         public GameObjectAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GameObjectAsset class.
+        /// </description>
+        /// <returns>The type info object for GameObjectAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +111,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the game object. Defines the created object's class.
+        /// </description>
+        /// </value>
         public string GameObjectName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("gameObjectName"));
             set => SetFieldValue("gameObjectName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the script file for the GameObject's script code.
+        /// </description>
+        /// </value>
         public string ScriptFilePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("scriptFilePath"));
             set => SetFieldValue("scriptFilePath", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the taml file for the GameObject's heirarchy.
+        /// </description>
+        /// </value>
         public string TAMLFilePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("TAMLFilePath"));
             set => SetFieldValue("TAMLFilePath", GenericMarshal.ToString(value));

@@ -14,7 +14,19 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A debug helper for rendering debug primitives to the scene.</summary>
+    /// <description>
+    /// The DebugDrawer is used to render debug primitives to the scene for testing.  It is often useful when debugging collision code or complex 3d algorithms to have them draw debug information, like culling hulls or bounding volumes, normals, simple lines, and so forth.
+    /// 
+    /// A key feature of the DebugDrawer is that each primitive gets a "time to live" (TTL) which allows them to continue to render to the scene for a fixed period of time.  You can freeze or resume the system at any time to allow you to examine the output.
+    /// </description>
+    /// <code>
+    /// DebugDraw.drawLine( %player.getMuzzlePoint( 0 ), %hitPoint );
+    /// DebugDraw.setLastTTL( 5000 ); // 5 seconds.
+    /// </code>
+    /// <remarks> This feature can easily be used to cheat in online games, so you should be sure it is disabled in your shipping game.  By default the DebugDrawer is disabled in all TORQUE_SHIPPING builds.
+    /// </remarks>
     public unsafe class DebugDrawer : SimObject {
         public DebugDrawer(bool pRegister = false) 
             : base(pRegister) {
@@ -228,18 +240,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Toggles the rendering of DebugDrawer primitives.
+        /// </description>
         public void ToggleDrawing() {
              InternalUnsafeMethods.ToggleDrawing__Args _args = new InternalUnsafeMethods.ToggleDrawing__Args() {
              };
              InternalUnsafeMethods.ToggleDrawing()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Toggles freeze mode which keeps the currently rendered primitives from expiring.
+        /// </description>
         public void ToggleFreeze() {
              InternalUnsafeMethods.ToggleFreeze__Args _args = new InternalUnsafeMethods.ToggleFreeze__Args() {
              };
              InternalUnsafeMethods.ToggleFreeze()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets the z buffer reading state for the last rendered primitive.
+        /// </description>
         public void SetLastZTest(bool enabled) {
              InternalUnsafeMethods.SetLastZTest__Args _args = new InternalUnsafeMethods.SetLastZTest__Args() {
                 enabled = enabled,
@@ -247,6 +268,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetLastZTest()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets the "time to live" (TTL) for the last rendered primitive.
+        /// </description>
         public void SetLastTTL(uint ms) {
              InternalUnsafeMethods.SetLastTTL__Args _args = new InternalUnsafeMethods.SetLastTTL__Args() {
                 ms = ms,
@@ -254,6 +278,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetLastTTL()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Draws an axis aligned box primitive within the two 3d points.
+        /// </description>
         public void DrawBox(Point3F a, Point3F b, LinearColorF color = null) {
 a.Alloc();b.Alloc();color = color ?? new LinearColorF("1 1 1 1");
 color.Alloc();             InternalUnsafeMethods.DrawBox__Args _args = new InternalUnsafeMethods.DrawBox__Args() {
@@ -264,6 +291,9 @@ color.Alloc();             InternalUnsafeMethods.DrawBox__Args _args = new Inter
              InternalUnsafeMethods.DrawBox()(ObjectPtr, _args);
 a.Free();b.Free();color.Free();        }
 
+        /// <description>
+        /// Draws a line primitive between two 3d points.
+        /// </description>
         public void DrawLine(Point3F a, Point3F b, LinearColorF color = null) {
 a.Alloc();b.Alloc();color = color ?? new LinearColorF("1 1 1 1");
 color.Alloc();             InternalUnsafeMethods.DrawLine__Args _args = new InternalUnsafeMethods.DrawLine__Args() {
@@ -274,6 +304,10 @@ color.Alloc();             InternalUnsafeMethods.DrawLine__Args _args = new Inte
              InternalUnsafeMethods.DrawLine()(ObjectPtr, _args);
 a.Free();b.Free();color.Free();        }
 
+        /// <description>
+        /// Get the type info object for the DebugDrawer class.
+        /// </description>
+        /// <returns>The type info object for DebugDrawer</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

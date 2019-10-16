@@ -14,7 +14,22 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Acts as a skin for the cursor, where each GuiCursor object can have its own look and click-zone.</summary>
+    /// <description>
+    /// GuiCursors act as skins for the cursor in the game, where each individual GuiCursor can have its own defined imagemap,
+    /// click zone and render offset. This allows a game to easily support a wide range of cursors. The active cursor can de changed
+    /// for each Canvas using %canvasObj.setCursor(GuiCursor);.
+    /// </description>
+    /// <code>
+    /// new GuiCursor(DefaultCursor)
+    /// {
+    /// 	hotSpot = "1 1";
+    /// 	renderOffset = "0 0";
+    /// 	bitmapName = "~/art/gui/images/defaultCursor";
+    /// };
+    /// </code>
+    /// <see cref="GuiCanvas" />
     public unsafe class GuiCursor : SimObject {
         public GuiCursor(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +114,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiCursor class.
+        /// </description>
+        /// <returns>The type info object for GuiCursor</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +125,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The location of the cursor's hot spot (which pixel carries the click).
+        /// </description>
+        /// </value>
         public Point2I HotSpot {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("hotSpot"));
             set => SetFieldValue("hotSpot", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Offset of the bitmap, where 0 signifies left edge of the bitmap, 1, the right. Similarly for the Y-component.
+        /// </description>
+        /// </value>
         public Point2F RenderOffset {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("renderOffset"));
             set => SetFieldValue("renderOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// File name of the bitmap for the cursor.
+        /// </description>
+        /// </value>
         public string BitmapName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("bitmapName"));
             set => SetFieldValue("bitmapName", GenericMarshal.ToString(value));

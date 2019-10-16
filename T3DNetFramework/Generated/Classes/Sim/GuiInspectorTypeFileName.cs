@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Inspector field type for FileName</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiInspectorTypeFileName : GuiInspectorField {
         public GuiInspectorTypeFileName(bool pRegister = false) 
             : base(pRegister) {
@@ -121,6 +125,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void Apply(string path) {
              InternalUnsafeMethods.Apply__Args _args = new InternalUnsafeMethods.Apply__Args() {
                 path = path,
@@ -128,6 +133,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Apply()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiInspectorTypeFileName class.
+        /// </description>
+        /// <returns>The type info object for GuiInspectorTypeFileName</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

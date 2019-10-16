@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A Trigger is a volume of space that initiates script callbacks when objects pass through the Trigger.</summary>
+    /// <description>
+    /// TriggerData provides the callbacks for the Trigger when an object enters, stays inside or leaves the Trigger's volume.
+    /// </description>
+    /// <see cref="TriggerData" />
     public unsafe class Trigger : GameBase {
         public Trigger(bool pRegister = false) 
             : base(pRegister) {
@@ -182,6 +187,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Retrieve the requested object that is within the Trigger's bounds.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Index of the object to get (range is 0 to getNumObjects()-1)</param>
+        /// <returns>The SimObjectID of the object, or -1 if the requested index is invalid.</returns>
+        /// <see cref="getNumObjects()" />
         public int GetObject(int index) {
              InternalUnsafeMethods.GetObject__Args _args = new InternalUnsafeMethods.GetObject__Args() {
                 index = index,
@@ -190,6 +202,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Get the number of objects that are within the Trigger's bounds.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="getObject()" />
         public int GetNumObjects() {
              InternalUnsafeMethods.GetNumObjects__Args _args = new InternalUnsafeMethods.GetNumObjects__Args() {
              };
@@ -197,6 +214,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Called just before the Trigger is deleted.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objectId">the object id of the Trigger being deleted</param>
         public virtual void OnRemove(uint objectId) {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
                 objectId = objectId,
@@ -204,6 +226,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when the Trigger is being created.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objectId">the object id of the Trigger being created</param>
         public virtual void OnAdd(uint objectId) {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
                 objectId = objectId,
@@ -211,6 +238,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the Trigger class.
+        /// </description>
+        /// <returns>The type info object for Trigger</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -218,21 +249,46 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Defines a non-rectangular area for the trigger.</summary>
+        /// <description>
+        /// Rather than the standard rectangular bounds, this optional parameter defines a quadrilateral trigger area.  The quadrilateral is defined as a corner point followed by three vectors representing the edges extending from the corner.
+        /// </description>
+        /// </value>
         public FloatVector Polyhedron {
             get => GenericMarshal.StringTo<FloatVector>(GetFieldValue("polyhedron"));
             set => SetFieldValue("polyhedron", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The command to execute when an object enters this trigger. Object id stored in %%obj. Maximum 1023 characters.
+        /// </description>
+        /// </value>
         public string EnterCommand {
             get => GenericMarshal.StringTo<string>(GetFieldValue("enterCommand"));
             set => SetFieldValue("enterCommand", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The command to execute when an object leaves this trigger. Object id stored in %%obj. Maximum 1023 characters.
+        /// </description>
+        /// </value>
         public string LeaveCommand {
             get => GenericMarshal.StringTo<string>(GetFieldValue("leaveCommand"));
             set => SetFieldValue("leaveCommand", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The command to execute while an object is inside this trigger. Maximum 1023 characters.
+        /// </description>
+        /// </value>
         public string TickCommand {
             get => GenericMarshal.StringTo<string>(GetFieldValue("tickCommand"));
             set => SetFieldValue("tickCommand", GenericMarshal.ToString(value));

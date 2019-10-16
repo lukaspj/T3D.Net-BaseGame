@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Player Movement effect.</summary>
+    /// <description>
+    /// Player Movement effects are used to directly alter the speed and/or movement direction of Player objects. The Player Movement effect is similar to the Player Puppet effect, but where puppet effects totally take over a Player's transformation using the AFX constraint system, Player Movement effects 'steer' the player using the same mechanisms that allow Player control from mouse and keyboard input. Another difference is that Player Movement effects only influence the server instance of a Player. Puppet effects can influence both the Player's server instance and its client ghosts.
+    /// </description>
     public unsafe class afxPlayerMovementData : GameBaseData {
         public afxPlayerMovementData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxPlayerMovementData class.
+        /// </description>
+        /// <returns>The type info object for afxPlayerMovementData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +114,32 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// A floating-point multiplier that scales the constraint Player's movement speed.
+        /// </description>
+        /// </value>
         public float SpeedBias {
             get => GenericMarshal.StringTo<float>(GetFieldValue("speedBias"));
             set => SetFieldValue("speedBias", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F Movement {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("movement"));
             set => SetFieldValue("movement", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Possible values: add, multiply, or replace.
+        /// </description>
+        /// </value>
         public afxPlayerMovement_OpType MovementOp {
             get => GenericMarshal.StringTo<afxPlayerMovement_OpType>(GetFieldValue("movementOp"));
             set => SetFieldValue("movementOp", GenericMarshal.ToString(value));

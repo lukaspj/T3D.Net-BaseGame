@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Visual representation of Mission Area Editor.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class GuiMissionAreaCtrl : GuiBitmapCtrl {
         public GuiMissionAreaCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -140,12 +144,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Update the terrain bitmap.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void UpdateTerrain() {
              InternalUnsafeMethods.UpdateTerrain__Args _args = new InternalUnsafeMethods.UpdateTerrain__Args() {
              };
              InternalUnsafeMethods.UpdateTerrain()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the MissionArea to edit.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void SetMissionArea(MissionArea area) {
              InternalUnsafeMethods.SetMissionArea__Args _args = new InternalUnsafeMethods.SetMissionArea__Args() {
                 area = area.ObjectPtr,
@@ -153,6 +165,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMissionArea()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiMissionAreaCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiMissionAreaCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -160,21 +176,39 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool SquareBitmap {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("squareBitmap"));
             set => SetFieldValue("squareBitmap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Bitmap file for the mission area handles.
+        /// </description>
+        /// </value>
         public string HandleBitmap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("handleBitmap"));
             set => SetFieldValue("handleBitmap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI MissionBoundsColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("missionBoundsColor"));
             set => SetFieldValue("missionBoundsColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI CameraColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("cameraColor"));
             set => SetFieldValue("cameraColor", GenericMarshal.ToString(value));

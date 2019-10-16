@@ -14,7 +14,24 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Creates and maintains one set of rendertargets to be used by every</summary>
+    /// <description>
+    /// VolumetricFog object in the scene.
+    /// 
+    /// Will be loaded at startup end removed when ending game.
+    /// 
+    /// Methods:
+    ///  get() returns the currently loaded VolumetricFogRTManager, also accessible
+    ///  through VFRTM define.
+    ///  Init() Initializes the rendertargets, called when a VolumetricFog object is
+    ///  added to the scene.
+    ///  isInitialed() returns true if Rendertargets are present, false if not, then
+    ///  Init() should be called to create the rendertargets.
+    ///  setQuality(U32 Quality) Normally a rendertarget has the same size as the view,
+    ///  with this method you can scale down the size of it.
+    ///  Be aware that scaling down will introduce renderartefacts.
+    /// </description>
     public unsafe class VolumetricFogRTManager : SceneObject {
         public VolumetricFogRTManager(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +116,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the VolumetricFogRTManager class.
+        /// </description>
+        /// <returns>The type info object for VolumetricFogRTManager</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

@@ -14,7 +14,34 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A particle emitter object that can be positioned in the world and dynamically enabled or disabled.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// datablock ParticleEmitterNodeData( SimpleEmitterNodeData )
+    /// {
+    ///    timeMultiple = 1.0;
+    /// };
+    /// 
+    /// %emitter = new ParticleEmitterNode()
+    /// {
+    ///    datablock = SimpleEmitterNodeData;
+    ///    active = true;
+    ///    emitter = FireEmitterData;
+    ///    velocity = 3.5;
+    /// };
+    /// 
+    /// // Dynamically change emitter datablock
+    /// %emitter.setEmitterDataBlock( DustEmitterData );
+    /// </code>
+    /// <remarks> To change the emitter field dynamically (after the ParticleEmitterNode object has been created) you must use the setEmitterDataBlock() method or the change will not be replicated to other clients in the game.
+    /// Similarly, use the setActive() method instead of changing the active field directly. When changing velocity, you need to toggle setActive() on and off to force the state change to be transmitted to other clients.
+    /// 
+    /// </remarks>
+    /// <see cref="ParticleEmitterNodeData" />
+    /// <see cref="ParticleEmitterData" />
     public unsafe class ParticleEmitterNode : GameBase {
         public ParticleEmitterNode(bool pRegister = false) 
             : base(pRegister) {
@@ -142,6 +169,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Turns the emitter on or off.
+        /// </description>
+        /// <param name="active">New emitter state</param>
         public void SetActive(bool active) {
              InternalUnsafeMethods.SetActive__Args _args = new InternalUnsafeMethods.SetActive__Args() {
                 active = active,
@@ -149,6 +180,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetActive()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Assigns the datablock for this emitter node.
+        /// </description>
+        /// <param name="emitterDatablock">ParticleEmitterData datablock to assign</param>
+        /// <code>
+        /// // Assign a new emitter datablock
+        /// %emitter.setEmitterDatablock( %emitterDatablock );
+        /// </code>
         public void SetEmitterDataBlock(ParticleEmitterData emitterDatablock = null) {
              InternalUnsafeMethods.SetEmitterDataBlock__Args _args = new InternalUnsafeMethods.SetEmitterDataBlock__Args() {
                 emitterDatablock = emitterDatablock.ObjectPtr,
@@ -156,6 +195,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetEmitterDataBlock()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the ParticleEmitterNode class.
+        /// </description>
+        /// <returns>The type info object for ParticleEmitterNode</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -163,16 +206,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls whether particles are emitted from this node.
+        /// </description>
+        /// </value>
         public bool Active {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("active"));
             set => SetFieldValue("active", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Datablock to use when emitting particles.
+        /// </description>
+        /// </value>
         public ParticleEmitterData Emitter {
             get => GenericMarshal.StringTo<ParticleEmitterData>(GetFieldValue("emitter"));
             set => SetFieldValue("emitter", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Velocity to use when emitting particles (in the direction of the ParticleEmitterNode object's up (Z) axis).
+        /// </description>
+        /// </value>
         public float Velocity {
             get => GenericMarshal.StringTo<float>(GetFieldValue("velocity"));
             set => SetFieldValue("velocity", GenericMarshal.ToString(value));

@@ -14,7 +14,96 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The emitter for an explosion effect, with properties defined by a ExplosionData object.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// datablock ExplosionData( GrenadeSubExplosion )
+    /// {
+    ///    offset = 0.25;
+    ///    emitter[0] = GrenadeExpSparkEmitter;
+    /// 
+    ///    lightStartRadius = 4.0;
+    ///    lightEndRadius = 0.0;
+    ///    lightStartColor = "0.9 0.7 0.7";
+    ///    lightEndColor = "0.9 0.7 0.7";
+    ///    lightStartBrightness = 2.0;
+    ///    lightEndBrightness = 0.0;
+    /// };
+    /// 
+    /// datablock ExplosionData( GrenadeLauncherExplosion )
+    /// {
+    ///    soundProfile = GrenadeLauncherExplosionSound;
+    ///    lifeTimeMS = 400; // Quick flash, short burn, and moderate dispersal
+    /// 
+    ///    // Volume particles
+    ///    particleEmitter = GrenadeExpFireEmitter;
+    ///    particleDensity = 75;
+    ///    particleRadius = 2.25;
+    /// 
+    ///    // Point emission
+    ///    emitter[0] = GrenadeExpDustEmitter;
+    ///    emitter[1] = GrenadeExpSparksEmitter;
+    ///    emitter[2] = GrenadeExpSmokeEmitter;
+    /// 
+    ///    // Sub explosion objects
+    ///    subExplosion[0] = GrenadeSubExplosion;
+    /// 
+    ///    // Camera Shaking
+    ///    shakeCamera = true;
+    ///    camShakeFreq = "10.0 11.0 9.0";
+    ///    camShakeAmp = "15.0 15.0 15.0";
+    ///    camShakeDuration = 1.5;
+    ///    camShakeRadius = 20;
+    /// 
+    ///    // Exploding debris
+    ///    debris = GrenadeDebris;
+    ///    debrisThetaMin = 10;
+    ///    debrisThetaMax = 60;
+    ///    debrisNum = 4;
+    ///    debrisNumVariance = 2;
+    ///    debrisVelocity = 25;
+    ///    debrisVelocityVariance = 5;
+    /// 
+    ///    lightStartRadius = 4.0;
+    ///    lightEndRadius = 0.0;
+    ///    lightStartColor = "1.0 1.0 1.0";
+    ///    lightEndColor = "1.0 1.0 1.0";
+    ///    lightStartBrightness = 4.0;
+    ///    lightEndBrightness = 0.0;
+    ///    lightNormalOffset = 2.0;
+    /// };
+    /// 
+    /// function ServerPlayExplosion(%position, %datablock)
+    /// {
+    ///    // Play the given explosion on every client.
+    ///    // The explosion will be transmitted as an event, not attached to any object.
+    ///    for(%idx = 0; %idx < ClientGroup.getCount(); %idx++)
+    ///    {
+    ///       %client = ClientGroup.getObject(%idx);
+    ///       commandToClient(%client, 'PlayExplosion', %position, %datablock.getId());
+    ///    }
+    /// }
+    /// 
+    /// function clientCmdPlayExplosion(%position, %effectDataBlock)
+    /// {
+    ///    // Play an explosion sent by the server. Make sure this function is defined
+    ///    // on the client.
+    ///    if (isObject(%effectDataBlock))
+    ///    {
+    ///       new Explosion()
+    ///       {
+    ///          position = %position;
+    ///          dataBlock = %effectDataBlock;
+    ///       };
+    ///    }
+    /// }
+    /// 
+    /// // schedule an explosion
+    /// schedule(1000, 0, ServerPlayExplosion, "0 0 0", GrenadeLauncherExplosion);
+    /// </code>
     public unsafe class Explosion : GameBase {
         public Explosion(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +188,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the Explosion class.
+        /// </description>
+        /// <returns>The type info object for Explosion</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

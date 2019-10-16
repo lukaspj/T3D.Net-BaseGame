@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The GuiInspectorField control is a representation of a single abstract field for a given ConsoleObject derived object.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiInspectorField : GuiControl {
         public GuiInspectorField(bool pRegister = false) 
             : base(pRegister) {
@@ -291,6 +295,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// () - Reset to default value.
+        /// </description>
         public void SetEditControl(GuiControl editCtrl = null) {
              InternalUnsafeMethods.SetEditControl__Args _args = new InternalUnsafeMethods.SetEditControl__Args() {
                 editCtrl = editCtrl.ObjectPtr,
@@ -298,6 +305,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetEditControl()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Reset to default value.
+        /// </description>
         public void SetCaption(string newCaption) {
              InternalUnsafeMethods.SetCaption__Args _args = new InternalUnsafeMethods.SetCaption__Args() {
                 newCaption = newCaption,
@@ -305,12 +315,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCaption()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Reset to default value.
+        /// </description>
         public void Reset() {
              InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
              };
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Return the value currently displayed on the field.
+        /// </description>
         public string GetData() {
              InternalUnsafeMethods.GetData__Args _args = new InternalUnsafeMethods.GetData__Args() {
              };
@@ -318,6 +334,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// () - Set field value without recording undo (same as 'apply( value, false )').
+        /// </description>
         public void ApplyWithoutUndo(string data) {
              InternalUnsafeMethods.ApplyWithoutUndo__Args _args = new InternalUnsafeMethods.ApplyWithoutUndo__Args() {
                 data = data,
@@ -325,6 +344,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ApplyWithoutUndo()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( string newValue, bool callbacks=true ) - Set the field's value. Suppress callbacks for undo if callbacks=false.
+        /// </description>
         public void Apply(string newValue, bool callbacks = true) {
              InternalUnsafeMethods.Apply__Args _args = new InternalUnsafeMethods.Apply__Args() {
                 newValue = newValue,
@@ -333,6 +355,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Apply()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Return the type of the field edited by this inspector field.
+        /// </description>
         public string GetInspectedFieldType() {
              InternalUnsafeMethods.GetInspectedFieldType__Args _args = new InternalUnsafeMethods.GetInspectedFieldType__Args() {
              };
@@ -340,6 +365,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// () - Return the name of the field edited by this inspector field.
+        /// </description>
         public string GetInspectedFieldName() {
              InternalUnsafeMethods.GetInspectedFieldName__Args _args = new InternalUnsafeMethods.GetInspectedFieldName__Args() {
              };
@@ -347,6 +375,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// () - Return the GuiInspector to which this field belongs.
+        /// </description>
         public int GetInspector() {
              InternalUnsafeMethods.GetInspector__Args _args = new InternalUnsafeMethods.GetInspector__Args() {
              };
@@ -354,6 +385,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the GuiInspectorField class.
+        /// </description>
+        /// <returns>The type info object for GuiInspectorField</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

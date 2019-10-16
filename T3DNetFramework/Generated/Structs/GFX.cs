@@ -6,6 +6,9 @@ using T3DNetFramework.Interop;
 
 namespace T3DNetFramework.Generated.Structs.GFX {
 
+    /// <description>
+    /// Descriptor for a specific video mode.
+    /// </description>
     public class GFXVideoMode : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -48,22 +51,34 @@ namespace T3DNetFramework.Generated.Structs.GFX {
         public void Alloc() {
             Resolution.Alloc();
             internalStruct.resolution = Resolution.internalStruct;
+
             internalStruct.bitDepth = BitDepth;
+
             internalStruct.refreshRate = RefreshRate;
+
             internalStruct.fullScreen = FullScreen;
+
             internalStruct.wideScreen = WideScreen;
+
             internalStruct.antialiasLevel = AntialiasLevel;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             Resolution?.Free();
             Resolution = new Point2I(internalStruct.resolution);
+
             BitDepth = internalStruct.bitDepth;
+
             RefreshRate = internalStruct.refreshRate;
+
             FullScreen = internalStruct.fullScreen;
+
             WideScreen = internalStruct.wideScreen;
+
             AntialiasLevel = internalStruct.antialiasLevel;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }

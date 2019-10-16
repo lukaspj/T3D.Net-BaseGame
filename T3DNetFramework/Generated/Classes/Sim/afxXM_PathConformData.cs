@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An xmod datablock.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxXM_PathConformData : afxXM_WeightedBaseData {
         public afxXM_PathConformData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxXM_PathConformData class.
+        /// </description>
+        /// <returns>The type info object for afxXM_PathConformData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +114,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string Paths {
             get => GenericMarshal.StringTo<string>(GetFieldValue("paths"));
             set => SetFieldValue("paths", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float PathMult {
             get => GenericMarshal.StringTo<float>(GetFieldValue("pathMult"));
             set => SetFieldValue("pathMult", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float PathTimeOffset {
             get => GenericMarshal.StringTo<float>(GetFieldValue("pathTimeOffset"));
             set => SetFieldValue("pathTimeOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool OrientToPath {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("orientToPath"));
             set => SetFieldValue("orientToPath", GenericMarshal.ToString(value));

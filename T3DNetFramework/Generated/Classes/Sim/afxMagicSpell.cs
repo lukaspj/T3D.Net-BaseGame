@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A magic spell effects choreographer.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxMagicSpell : afxChoreographer {
         public afxMagicSpell(bool pRegister = false) 
             : base(pRegister) {
@@ -255,24 +259,36 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Activates a magic spell that was started with postponeActivation=true.
+        /// </description>
         public void Activate() {
              InternalUnsafeMethods.Activate__Args _args = new InternalUnsafeMethods.Activate__Args() {
              };
              InternalUnsafeMethods.Activate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Interrupts and deletes a running magic spell.
+        /// </description>
         public void Interrupt() {
              InternalUnsafeMethods.Interrupt__Args _args = new InternalUnsafeMethods.Interrupt__Args() {
              };
              InternalUnsafeMethods.Interrupt()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Interrupts the current stage of a magic spell causing it to move onto the next one.
+        /// </description>
         public void InterruptStage() {
              InternalUnsafeMethods.InterruptStage__Args _args = new InternalUnsafeMethods.InterruptStage__Args() {
              };
              InternalUnsafeMethods.InterruptStage()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (F32 factor) or (string phase, F32 factor)Sets the time-factor for the spell, either overall or for a specific phrase.
+        /// </description>
         public void SetTimeFactor(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -288,6 +304,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
 
         }
 
+        /// <description>
+        /// Returns ID of impacted-object for the spell.
+        /// </description>
         public int GetImpactedObject() {
              InternalUnsafeMethods.GetImpactedObject__Args _args = new InternalUnsafeMethods.GetImpactedObject__Args() {
              };
@@ -295,6 +314,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns ID of the spell's magic-missile object.
+        /// </description>
         public int GetMissile() {
              InternalUnsafeMethods.GetMissile__Args _args = new InternalUnsafeMethods.GetMissile__Args() {
              };
@@ -302,6 +324,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns ID of the spell's target object.
+        /// </description>
         public int GetTarget() {
              InternalUnsafeMethods.GetTarget__Args _args = new InternalUnsafeMethods.GetTarget__Args() {
              };
@@ -309,6 +334,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns ID of the spell's caster object.
+        /// </description>
         public int GetCaster() {
              InternalUnsafeMethods.GetCaster__Args _args = new InternalUnsafeMethods.GetCaster__Args() {
              };
@@ -316,6 +344,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the afxMagicSpell class.
+        /// </description>
+        /// <returns>The type info object for afxMagicSpell</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -323,11 +355,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public SimObject Caster {
             get => GenericMarshal.StringTo<SimObject>(GetFieldValue("caster"));
             set => SetFieldValue("caster", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public SimObject Target {
             get => GenericMarshal.StringTo<SimObject>(GetFieldValue("target"));
             set => SetFieldValue("target", GenericMarshal.ToString(value));

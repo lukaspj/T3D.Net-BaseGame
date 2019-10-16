@@ -14,7 +14,15 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>OS level dialog used for browsing folder structures.</summary>
+    /// <description>
+    /// This is essentially an OpenFileDialog, but only used for returning directory paths, not files.
+    /// </description>
+    /// <remarks> FileDialog and its related classes are only availble in a Tools build of Torque.
+    /// 
+    /// </remarks>
+    /// <see cref="OpenFileDialog for more details on functionality." />
     public unsafe class OpenFolderDialog : OpenFileDialog {
         public OpenFolderDialog(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +107,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the OpenFolderDialog class.
+        /// </description>
+        /// <returns>The type info object for OpenFolderDialog</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +118,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// File that must be in selected folder for it to be valid
+        /// </description>
+        /// </value>
         public string FileMustExist {
             get => GenericMarshal.StringTo<string>(GetFieldValue("fileMustExist"));
             set => SetFieldValue("fileMustExist", GenericMarshal.ToString(value));

@@ -14,7 +14,32 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A sound source that drives multi-source playback.</summary>
+    /// <description>
+    /// This class acts as an interpreter for SFXPlayLists.  It goes through the slots of the playlist it is attached to and performs the actions described by each of the slots in turn.
+    /// As SFXControllers are created implicitly by the SFX system when instantiating a source for a play list it is in most cases not necessary to directly deal with the class.
+    /// The following example demonstrates how a controller would commonly be created.
+    /// </description>
+    /// <code>
+    /// // Create a play list from two SFXProfiles.
+    /// %playList = new SFXPlayList()
+    /// {
+    ///    // Use a looped description so the list playback will loop.
+    ///    description = AudioMusicLoop2D;
+    /// 
+    ///    track[ 0 ] = Profile1;
+    ///    track[ 1 ] = Profile2;
+    /// };
+    /// 
+    /// // Play the list.  This will implicitly create a controller.
+    /// sfxPlayOnce( %playList );
+    /// </code>
+    /// <remarks> Play lists are updated at regular intervals by the sound system.  This processing determines the granularity at which playlist action timing takes place.
+    /// </remarks>
+    /// <remarks> This class cannot be instantiated directly.  Use sfxPlayOnce() or sfxCreateSource() with the playlist you want to play to create an instance of this class.
+    /// </remarks>
+    /// <see cref="SFXPlayList" />
     public unsafe class SFXController : SFXSource {
         public SFXController(bool pRegister = false) 
             : base(pRegister) {
@@ -140,6 +165,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Set the index of the playlist slot to play by the controller.  This can be used to seek in the playlist.
+        /// </description>
+        /// <param name="index">Index of the playlist slot.</param>
         public void SetCurrentSlot(int index) {
              InternalUnsafeMethods.SetCurrentSlot__Args _args = new InternalUnsafeMethods.SetCurrentSlot__Args() {
                 index = index,
@@ -147,6 +176,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCurrentSlot()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the index of the playlist slot currently processed by the controller.
+        /// </description>
+        /// <returns>The slot index currently being played.</returns>
+        /// <see cref="SFXPlayList" />
         public int GetCurrentSlot() {
              InternalUnsafeMethods.GetCurrentSlot__Args _args = new InternalUnsafeMethods.GetCurrentSlot__Args() {
              };
@@ -154,6 +188,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the SFXController class.
+        /// </description>
+        /// <returns>The type info object for SFXController</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -161,6 +199,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the controller logs its operation to the console.
+        /// This is a non-networked field that will work locally only.
+        /// </description>
+        /// </value>
         public bool Trace {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("trace"));
             set => SetFieldValue("trace", GenericMarshal.ToString(value));

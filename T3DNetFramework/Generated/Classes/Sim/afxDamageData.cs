@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Damage effect.</summary>
+    /// <description>
+    /// A Damage effect is useful for assigning damage with unusual timing that must be synchronized with other effects. They can be used to deal direct damage, radius damage, and damage over time. Negative damage amounts can be used for healing effects.
+    /// </description>
     public unsafe class afxDamageData : GameBaseData {
         public afxDamageData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxDamageData class.
+        /// </description>
+        /// <returns>The type info object for afxDamageData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,36 +114,78 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// An arbitrary string which is passed as an argument to a spell's onDamage() script method. It can be used to identify which damage effect the damage came from in cases where more than one damage effect is used in a single spell.
+        /// </description>
+        /// </value>
         public string Label {
             get => GenericMarshal.StringTo<string>(GetFieldValue("label"));
             set => SetFieldValue("label", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// An arbitrary string which is passed as an argument to a spell's onDamage() script method. It is used to classify a type of damage such as 'melee', 'magical', or 'fire'.
+        /// </description>
+        /// </value>
         public string Flavor {
             get => GenericMarshal.StringTo<string>(GetFieldValue("flavor"));
             set => SetFieldValue("flavor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// An amount of direct damage to inflict on a target.
+        /// </description>
+        /// </value>
         public float DirectDamage {
             get => GenericMarshal.StringTo<float>(GetFieldValue("directDamage"));
             set => SetFieldValue("directDamage", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The number of times to inflict the damage specified by directDamage. Values greater than 1 inflict damage over time, with the amount of directDamage repeatedly dealt at evenly spaced intervals over the lifetime of the effect.
+        /// </description>
+        /// </value>
         public sbyte DirectDamageRepeats {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("directDamageRepeats"));
             set => SetFieldValue("directDamageRepeats", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// An amount of area damage to inflict on a target. Objects within half the radius receive full damage which then diminishes out to the full distance of areaDamageRadius.
+        /// </description>
+        /// </value>
         public float AreaDamage {
             get => GenericMarshal.StringTo<float>(GetFieldValue("areaDamage"));
             set => SetFieldValue("areaDamage", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Radius centered at the effect position in which damage will be applied.
+        /// </description>
+        /// </value>
         public float AreaDamageRadius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("areaDamageRadius"));
             set => SetFieldValue("areaDamageRadius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specifies an amount of force to apply to damaged objects. Objects within half the radius receive full impulse which then diminishes out to the full distance of areaDamageRadius.
+        /// </description>
+        /// </value>
         public float AreaDamageImpulse {
             get => GenericMarshal.StringTo<float>(GetFieldValue("areaDamageImpulse"));
             set => SetFieldValue("areaDamageImpulse", GenericMarshal.ToString(value));

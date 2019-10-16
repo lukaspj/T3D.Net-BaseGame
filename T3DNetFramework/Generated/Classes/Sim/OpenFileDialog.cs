@@ -14,7 +14,47 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Derived from FileDialog, this class is responsible for opening a file browser with the intention of opening a file.</summary>
+    /// <description>
+    /// The core usage of this dialog is to locate a file in the OS and return the path and name. This does not handle the actual file parsing or data manipulation. That functionality is left up to the FileObject class.
+    /// </description>
+    /// <code>
+    /// // Create a dialog dedicated to opening files
+    ///  %openFileDlg = new OpenFileDialog()
+    ///  {
+    ///     // Look for jpg image files
+    ///     // First part is the descriptor|second part is the extension
+    ///     Filters = "Jepg Files|*.jpg";
+    ///     // Allow browsing through other folders
+    ///     ChangePath = true;
+    /// 
+    ///     // Only allow opening of one file at a time
+    ///     MultipleFiles = false;
+    ///  };
+    /// 
+    ///  // Launch the open file dialog
+    ///  %result = %openFileDlg.Execute();
+    /// 
+    ///  // Obtain the chosen file name and path
+    ///  if ( %result )
+    ///  {
+    ///     %seletedFile = %openFileDlg.file;
+    ///  }
+    ///  else
+    ///  {
+    ///     %selectedFile = "";
+    ///  }
+    /// 
+    ///  // Cleanup
+    ///  %openFileDlg.delete();
+    /// </code>
+    /// <remarks> FileDialog and its related classes are only availble in a Tools build of Torque.
+    /// 
+    /// </remarks>
+    /// <see cref="FileDialog" />
+    /// <see cref="SaveFileDialog" />
+    /// <see cref="FileObject" />
     public unsafe class OpenFileDialog : FileDialog {
         public OpenFileDialog(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +139,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the OpenFileDialog class.
+        /// </description>
+        /// <returns>The type info object for OpenFileDialog</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +150,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// True/False whether the file returned must exist or not
+        /// </description>
+        /// </value>
         public bool MustExist {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("MustExist"));
             set => SetFieldValue("MustExist", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// True/False whether multiple files may be selected and returned or not
+        /// </description>
+        /// </value>
         public bool MultipleFiles {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("MultipleFiles"));
             set => SetFieldValue("MultipleFiles", GenericMarshal.ToString(value));

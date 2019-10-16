@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An infinite plane extending in all direction.</summary>
+    /// <description>
+    /// %GroundPlane is useful for setting up simple testing scenes, or it can be placed under an existing scene to keep objects from falling into 'nothing'.
+    /// 
+    /// %GroundPlane may not be moved or rotated, it is always at the world origin.
+    /// </description>
     public unsafe class GroundPlane : SceneObject {
         public GroundPlane(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +125,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// Force trigger an inspectPostApply. This will transmit material and other fields to client objects.
+        /// </description>
         public void PostApply() {
              InternalUnsafeMethods.PostApply__Args _args = new InternalUnsafeMethods.PostApply__Args() {
              };
              InternalUnsafeMethods.PostApply()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GroundPlane class.
+        /// </description>
+        /// <returns>The type info object for GroundPlane</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -132,21 +146,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Square size in meters to which %GroundPlane subdivides its geometry.
+        /// </description>
+        /// </value>
         public float SquareSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("squareSize"));
             set => SetFieldValue("squareSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Scale of texture repeat in the U direction.
+        /// </description>
+        /// </value>
         public float ScaleU {
             get => GenericMarshal.StringTo<float>(GetFieldValue("scaleU"));
             set => SetFieldValue("scaleU", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Scale of texture repeat in the V direction.
+        /// </description>
+        /// </value>
         public float ScaleV {
             get => GenericMarshal.StringTo<float>(GetFieldValue("scaleV"));
             set => SetFieldValue("scaleV", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of Material used to render %GroundPlane's surface.
+        /// </description>
+        /// </value>
         public string Material {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Material"));
             set => SetFieldValue("Material", GenericMarshal.ToString(value));

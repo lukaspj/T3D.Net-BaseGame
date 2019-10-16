@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Draws a box with handles for the user to manipulate.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiRectHandles : GuiControl {
         public GuiRectHandles(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiRectHandles class.
+        /// </description>
+        /// <returns>The type info object for GuiRectHandles</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +114,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// RectF of handle's box.
+        /// </description>
+        /// </value>
         public RectF HandleRect {
             get => GenericMarshal.StringTo<RectF>(GetFieldValue("handleRect"));
             set => SetFieldValue("handleRect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Size of handles in pixels.
+        /// </description>
+        /// </value>
         public int HandleSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("handleSize"));
             set => SetFieldValue("handleSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Use given custom color for handles.
+        /// </description>
+        /// </value>
         public bool UseCustomColor {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useCustomColor"));
             set => SetFieldValue("useCustomColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Use given custom color for handles.
+        /// </description>
+        /// </value>
         public ColorI HandleColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("handleColor"));
             set => SetFieldValue("handleColor", GenericMarshal.ToString(value));

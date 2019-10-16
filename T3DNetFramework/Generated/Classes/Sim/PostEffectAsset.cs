@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class PostEffectAsset : AssetBase {
         public PostEffectAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the PostEffectAsset class.
+        /// </description>
+        /// <returns>The type info object for PostEffectAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +111,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the script file.
+        /// </description>
+        /// </value>
         public string ScriptFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("scriptFile"));
             set => SetFieldValue("scriptFile", GenericMarshal.ToString(value));

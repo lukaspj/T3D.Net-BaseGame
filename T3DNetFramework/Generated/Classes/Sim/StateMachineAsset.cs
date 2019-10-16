@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class StateMachineAsset : AssetBase {
         public StateMachineAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +120,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void NotifyAssetChanged() {
              InternalUnsafeMethods.NotifyAssetChanged__Args _args = new InternalUnsafeMethods.NotifyAssetChanged__Args() {
              };
              InternalUnsafeMethods.NotifyAssetChanged()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the StateMachineAsset class.
+        /// </description>
+        /// <returns>The type info object for StateMachineAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -132,6 +138,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the state machine file.
+        /// </description>
+        /// </value>
         public string StateMachineFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("stateMachineFile"));
             set => SetFieldValue("stateMachineFile", GenericMarshal.ToString(value));

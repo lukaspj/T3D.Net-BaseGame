@@ -209,12 +209,22 @@ namespace T3DNetFramework.Generated.Functions {
         }
         #endregion
 
+        /// <description>
+        /// Create the NULL graphics device used for testing or headless operation.
+        /// </description>
         public static void CreateNullDevice() {
              InternalUnsafeMethods.CreateNullDevice__Args _args = new InternalUnsafeMethods.CreateNullDevice__Args() {
              };
              InternalUnsafeMethods.CreateNullDevice()(_args);
         }
 
+        /// <description>
+        /// Gets the details of the specified adapter mode.
+        /// </description>
+        /// <param name="index">Index of the adapter to query.</param>
+        /// <param name="modeIndex">Index of the mode to get data from.</param>
+        /// <returns>A video mode string in the format 'width height fullscreen bitDepth refreshRate aaLevel'.</returns>
+        /// <see cref="GuiCanvas::getVideoMode()" />
         public static string GetAdapterMode(int index, int modeIndex) {
              InternalUnsafeMethods.GetAdapterMode__Args _args = new InternalUnsafeMethods.GetAdapterMode__Args() {
                 index = index,
@@ -224,6 +234,11 @@ namespace T3DNetFramework.Generated.Functions {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the number of modes available on the specified adapter.
+        /// </description>
+        /// <param name="index">Index of the adapter to get modes from.</param>
+        /// <returns>The number of video modes supported by the adapter or -1 if the given adapter was not found.</returns>
         public static int GetAdapterModeCount(int index) {
              InternalUnsafeMethods.GetAdapterModeCount__Args _args = new InternalUnsafeMethods.GetAdapterModeCount__Args() {
                 index = index,
@@ -232,6 +247,9 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns the index of the default graphics adapter.  This is the graphics device which will be used to initialize the engine.
+        /// </description>
         public static int GetDefaultAdapterIndex() {
              InternalUnsafeMethods.GetDefaultAdapterIndex__Args _args = new InternalUnsafeMethods.GetDefaultAdapterIndex__Args() {
              };
@@ -239,6 +257,10 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns the supported shader model of the graphics adapter or -1 if the index is bad.
+        /// </description>
+        /// <param name="index">The index of the adapter.</param>
         public static float GetAdapterShaderModel(int index) {
              InternalUnsafeMethods.GetAdapterShaderModel__Args _args = new InternalUnsafeMethods.GetAdapterShaderModel__Args() {
                 index = index,
@@ -247,6 +269,10 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns the type (D3D11, GL, Null) of a graphics adapter.
+        /// </description>
+        /// <param name="index">The index of the adapter.</param>
         public static GFXAdapterType GetAdapterType(int index) {
              InternalUnsafeMethods.GetAdapterType__Args _args = new InternalUnsafeMethods.GetAdapterType__Args() {
                 index = index,
@@ -255,6 +281,10 @@ namespace T3DNetFramework.Generated.Functions {
              return (GFXAdapterType)_engineResult;
         }
 
+        /// <description>
+        /// Returns the name of the graphics adapter's output display device.
+        /// </description>
+        /// <param name="index">The index of the adapter.</param>
         public static string GetAdapterOutputName(int index) {
              InternalUnsafeMethods.GetAdapterOutputName__Args _args = new InternalUnsafeMethods.GetAdapterOutputName__Args() {
                 index = index,
@@ -263,6 +293,10 @@ namespace T3DNetFramework.Generated.Functions {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns the name of the graphics adapter.
+        /// </description>
+        /// <param name="index">The index of the adapter.</param>
         public static string GetAdapterName(int index) {
              InternalUnsafeMethods.GetAdapterName__Args _args = new InternalUnsafeMethods.GetAdapterName__Args() {
                 index = index,
@@ -271,6 +305,9 @@ namespace T3DNetFramework.Generated.Functions {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return the number of graphics adapters available.
+        /// </description>
         public static int GetAdapterCount() {
              InternalUnsafeMethods.GetAdapterCount__Args _args = new InternalUnsafeMethods.GetAdapterCount__Args() {
              };

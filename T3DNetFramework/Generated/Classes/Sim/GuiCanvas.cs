@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A canvas on which rendering occurs.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <see cref="GuiControlProfile" />
+    /// <see cref="GuiControl" />
     public unsafe class GuiCanvas : GuiControl {
         public GuiCanvas(bool pRegister = false) 
             : base(pRegister) {
@@ -1063,12 +1069,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void ResetVideoMode() {
              InternalUnsafeMethods.ResetVideoMode__Args _args = new InternalUnsafeMethods.ResetVideoMode__Args() {
              };
              InternalUnsafeMethods.ResetVideoMode()(ObjectPtr, _args);
         }
 
+        /// 
         public void CursorNudge(float x, float y) {
              InternalUnsafeMethods.CursorNudge__Args _args = new InternalUnsafeMethods.CursorNudge__Args() {
                 x = x,
@@ -1077,6 +1085,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.CursorNudge()(ObjectPtr, _args);
         }
 
+        /// 
         public void CursorClick(int buttonId, bool isDown) {
              InternalUnsafeMethods.CursorClick__Args _args = new InternalUnsafeMethods.CursorClick__Args() {
                 buttonId = buttonId,
@@ -1085,18 +1094,30 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.CursorClick()(ObjectPtr, _args);
         }
 
+        /// 
         public void HideWindow() {
              InternalUnsafeMethods.HideWindow__Args _args = new InternalUnsafeMethods.HideWindow__Args() {
              };
              InternalUnsafeMethods.HideWindow()(ObjectPtr, _args);
         }
 
+        /// 
         public void ShowWindow() {
              InternalUnsafeMethods.ShowWindow__Args _args = new InternalUnsafeMethods.ShowWindow__Args() {
              };
              InternalUnsafeMethods.ShowWindow()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int width, int height, bool fullscreen, [int bitDepth], [int refreshRate], [int antialiasLevel] )
+        /// Change the video mode of this canvas. This method has the side effect of setting the $pref::Video::mode to the new values.
+        /// 
+        /// \param width The screen width to set.
+        /// \param height The screen height to set.
+        /// \param fullscreen Specify true to run fullscreen or false to run in a window
+        /// \param bitDepth [optional] The desired bit-depth. Defaults to the current setting. This parameter is ignored if you are running in a window.
+        /// \param refreshRate [optional] The desired refresh rate. Defaults to the current setting. This parameter is ignored if you are running in a window\param antialiasLevel [optional] The level of anti-aliasing to apply 0 = none
+        /// </description>
         public void SetVideoMode(uint width, uint height, bool fullscreen = false, uint bitDepth = 0, uint refreshRate = 0, uint antialiasLevel = 0) {
              InternalUnsafeMethods.SetVideoMode__Args _args = new InternalUnsafeMethods.SetVideoMode__Args() {
                 width = width,
@@ -1109,6 +1130,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetVideoMode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Translate a coordinate from canvas window-space to screen-space.
+        /// </description>
+        /// <param name="coordinate">The coordinate in window-space.</param>
+        /// <returns>The given coordinate translated to screen-space.</returns>
         public void SetMenuBar(GuiControl menu) {
              InternalUnsafeMethods.SetMenuBar__Args _args = new InternalUnsafeMethods.SetMenuBar__Args() {
                 menu = menu.ObjectPtr,
@@ -1116,24 +1142,36 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMenuBar()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Claim OS input focus for this canvas' window.
+        /// </description>
         public void SetFocus() {
              InternalUnsafeMethods.SetFocus__Args _args = new InternalUnsafeMethods.SetFocus__Args() {
              };
              InternalUnsafeMethods.SetFocus()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - restore this canvas' window.
+        /// </description>
         public void RestoreWindow() {
              InternalUnsafeMethods.RestoreWindow__Args _args = new InternalUnsafeMethods.RestoreWindow__Args() {
              };
              InternalUnsafeMethods.RestoreWindow()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - maximize this canvas' window.
+        /// </description>
         public void MaximizeWindow() {
              InternalUnsafeMethods.MaximizeWindow__Args _args = new InternalUnsafeMethods.MaximizeWindow__Args() {
              };
              InternalUnsafeMethods.MaximizeWindow()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public bool IsMaximized() {
              InternalUnsafeMethods.IsMaximized__Args _args = new InternalUnsafeMethods.IsMaximized__Args() {
              };
@@ -1141,6 +1179,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public bool IsMinimized() {
              InternalUnsafeMethods.IsMinimized__Args _args = new InternalUnsafeMethods.IsMinimized__Args() {
              };
@@ -1148,12 +1189,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// () - minimize this canvas' window.
+        /// </description>
         public void MinimizeWindow() {
              InternalUnsafeMethods.MinimizeWindow__Args _args = new InternalUnsafeMethods.MinimizeWindow__Args() {
              };
              InternalUnsafeMethods.MinimizeWindow()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Is this canvas currently fullscreen?
+        /// </description>
         public bool IsFullscreen() {
              InternalUnsafeMethods.IsFullscreen__Args _args = new InternalUnsafeMethods.IsFullscreen__Args() {
              };
@@ -1161,6 +1208,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the position of the platform window associated with the canvas.
+        /// </description>
+        /// <param name="position">The new position of the window in screen-space.</param>
         public void SetWindowPosition(Point2I position) {
 position.Alloc();             InternalUnsafeMethods.SetWindowPosition__Args _args = new InternalUnsafeMethods.SetWindowPosition__Args() {
                 position = position.internalStructPtr,
@@ -1168,6 +1219,10 @@ position.Alloc();             InternalUnsafeMethods.SetWindowPosition__Args _arg
              InternalUnsafeMethods.SetWindowPosition()(ObjectPtr, _args);
 position.Free();        }
 
+        /// <description>
+        /// Get the current position of the platform window associated with the canvas.
+        /// </description>
+        /// <returns>The window position of the canvas in screen-space.</returns>
         public Point2I GetWindowPosition() {
              InternalUnsafeMethods.GetWindowPosition__Args _args = new InternalUnsafeMethods.GetWindowPosition__Args() {
              };
@@ -1175,6 +1230,11 @@ position.Free();        }
              return new Point2I(_engineResult);
         }
 
+        /// <description>
+        /// Translate a coordinate from screen-space to canvas window-space.
+        /// </description>
+        /// <param name="coordinate">The coordinate in screen-space.</param>
+        /// <returns>The given coordinate translated to window-space.</returns>
         public Point2I ScreenToClient(Point2I coordinate) {
 coordinate.Alloc();             InternalUnsafeMethods.ScreenToClient__Args _args = new InternalUnsafeMethods.ScreenToClient__Args() {
                 coordinate = coordinate.internalStructPtr,
@@ -1183,6 +1243,11 @@ coordinate.Alloc();             InternalUnsafeMethods.ScreenToClient__Args _args
 coordinate.Free();             return new Point2I(_engineResult);
         }
 
+        /// <description>
+        /// Translate a coordinate from canvas window-space to screen-space.
+        /// </description>
+        /// <param name="coordinate">The coordinate in window-space.</param>
+        /// <returns>The given coordinate translated to screen-space.</returns>
         public Point2I ClientToScreen(Point2I coordinate) {
 coordinate.Alloc();             InternalUnsafeMethods.ClientToScreen__Args _args = new InternalUnsafeMethods.ClientToScreen__Args() {
                 coordinate = coordinate.internalStructPtr,
@@ -1191,12 +1256,27 @@ coordinate.Alloc();             InternalUnsafeMethods.ClientToScreen__Args _args
 coordinate.Free();             return new Point2I(_engineResult);
         }
 
+        /// <summary>toggle canvas from fullscreen to windowed mode or back.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // If we are in windowed mode, the following will put is in fullscreen
+        /// Canvas.toggleFullscreen();
+        /// </code>
         public void ToggleFullscreen() {
              InternalUnsafeMethods.ToggleFullscreen__Args _args = new InternalUnsafeMethods.ToggleFullscreen__Args() {
              };
              InternalUnsafeMethods.ToggleFullscreen()(ObjectPtr, _args);
         }
 
+        /// <summary>Gets information on the specified mode of this device.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="modeId">Index of the mode to get data from.</param>
+        /// <returns>A video mode string given an adapter and mode index.</returns>
+        /// <see cref="GuiCanvas::getVideoMode()" />
         public string GetMode(int modeId) {
              InternalUnsafeMethods.GetMode__Args _args = new InternalUnsafeMethods.GetMode__Args() {
                 modeId = modeId,
@@ -1205,6 +1285,15 @@ coordinate.Free();             return new Point2I(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Gets the number of modes available on this device.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="param">Description</param>
+        /// <code>
+        /// %modeCount = Canvas.getModeCount()
+        /// </code>
+        /// <returns>The number of video modes supported by the device</returns>
         public int GetModeCount() {
              InternalUnsafeMethods.GetModeCount__Args _args = new InternalUnsafeMethods.GetModeCount__Args() {
              };
@@ -1212,6 +1301,18 @@ coordinate.Free();             return new Point2I(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Gets the current screen mode as a string.</summary>
+        /// <description>
+        /// The return string will contain 5 values (width, height, fullscreen, bitdepth, refreshRate). You will need to parse out each one for individual use.
+        /// </description>
+        /// <code>
+        /// %screenWidth = getWord(Canvas.getVideoMode(), 0);
+        /// %screenHeight = getWord(Canvas.getVideoMode(), 1);
+        /// %isFullscreen = getWord(Canvas.getVideoMode(), 2);
+        /// %bitdepth = getWord(Canvas.getVideoMode(), 3);
+        /// %refreshRate = getWord(Canvas.getVideoMode(), 4);
+        /// </code>
+        /// <returns>String formatted with screen width, screen height, screen mode, bit depth, and refresh rate.</returns>
         public string GetVideoMode() {
              InternalUnsafeMethods.GetVideoMode__Args _args = new InternalUnsafeMethods.GetVideoMode__Args() {
              };
@@ -1219,6 +1320,12 @@ coordinate.Free();             return new Point2I(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Gets the region of the requested monitor.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">The monitor index.</param>
+        /// <returns>The rectangular region of the requested monitor.</returns>
         public RectI GetMonitorRect(int index) {
              InternalUnsafeMethods.GetMonitorRect__Args _args = new InternalUnsafeMethods.GetMonitorRect__Args() {
                 index = index,
@@ -1227,6 +1334,12 @@ coordinate.Free();             return new Point2I(_engineResult);
              return new RectI(_engineResult);
         }
 
+        /// <summary>Gets the name of the requested monitor.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">The monitor index.</param>
+        /// <returns>The name of the requested monitor.</returns>
         public string GetMonitorName(int index) {
              InternalUnsafeMethods.GetMonitorName__Args _args = new InternalUnsafeMethods.GetMonitorName__Args() {
                 index = index,
@@ -1235,6 +1348,11 @@ coordinate.Free();             return new Point2I(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Gets the number of monitors attached to the system.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>The number of monitors attached to the system, including the default monoitor.</returns>
         public int GetMonitorCount() {
              InternalUnsafeMethods.GetMonitorCount__Args _args = new InternalUnsafeMethods.GetMonitorCount__Args() {
              };
@@ -1242,6 +1360,12 @@ coordinate.Free();             return new Point2I(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Find the first monitor index that matches the given name.</summary>
+        /// <description>
+        /// The actual match algorithm depends on the implementation.
+        /// </description>
+        /// <param name="name">The name to search for.</param>
+        /// <returns>The number of monitors attached to the system, including the default monoitor.</returns>
         public int FindFirstMatchingMonitor(string name) {
              InternalUnsafeMethods.FindFirstMatchingMonitor__Args _args = new InternalUnsafeMethods.FindFirstMatchingMonitor__Args() {
                 name = name,
@@ -1250,6 +1374,14 @@ coordinate.Free();             return new Point2I(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Change the title of the OS window.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="newTitle">String containing the new name</param>
+        /// <code>
+        /// Canvas.setWindowTitle("Documentation Rocks!");
+        /// </code>
         public void SetWindowTitle(string newTitle) {
              InternalUnsafeMethods.SetWindowTitle__Args _args = new InternalUnsafeMethods.SetWindowTitle__Args() {
                 newTitle = newTitle,
@@ -1257,6 +1389,14 @@ coordinate.Free();             return new Point2I(_engineResult);
              InternalUnsafeMethods.SetWindowTitle()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns the dimensions of the canvas</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// %extent = Canvas.getExtent();
+        /// </code>
+        /// <returns>Width and height of canvas. Formatted as numerical values in a single string "# #"</returns>
         public Point2I GetExtent() {
              InternalUnsafeMethods.GetExtent__Args _args = new InternalUnsafeMethods.GetExtent__Args() {
              };
@@ -1264,6 +1404,14 @@ coordinate.Free();             return new Point2I(_engineResult);
              return new Point2I(_engineResult);
         }
 
+        /// <summary>Gets the gui control under the mouse.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// %underMouse = Canvas.getMouseControl();
+        /// </code>
+        /// <returns>ID of the gui control, if one was found. NULL otherwise</returns>
         public int GetMouseControl() {
              InternalUnsafeMethods.GetMouseControl__Args _args = new InternalUnsafeMethods.GetMouseControl__Args() {
              };
@@ -1271,6 +1419,9 @@ coordinate.Free();             return new Point2I(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// (Point2I pos)
+        /// </description>
         public void SetCursorPos(Point2I pos) {
 pos.Alloc();             InternalUnsafeMethods.SetCursorPos__Args _args = new InternalUnsafeMethods.SetCursorPos__Args() {
                 pos = pos.internalStructPtr,
@@ -1278,6 +1429,16 @@ pos.Alloc();             InternalUnsafeMethods.SetCursorPos__Args _args = new In
              InternalUnsafeMethods.SetCursorPos()(ObjectPtr, _args);
 pos.Free();        }
 
+        /// <summary>Get the current position of the cursor in screen-space. Note that this position might be outside the Torque window. If you want to get the position within the Canvas, call screenToClient on the result.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="Canvas::screenToClient()" />
+        /// <param name="param">Description</param>
+        /// <code>
+        /// %cursorPos = Canvas.getCursorPos();
+        /// </code>
+        /// <returns>Screen coordinates of mouse cursor, in format "X Y"</returns>
         public Point2I GetCursorPos() {
              InternalUnsafeMethods.GetCursorPos__Args _args = new InternalUnsafeMethods.GetCursorPos__Args() {
              };
@@ -1285,12 +1446,21 @@ pos.Free();        }
              return new Point2I(_engineResult);
         }
 
+        /// <summary>Reset the update regions for the canvas.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void Reset() {
              InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
              };
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
+        /// <summary>Force canvas to redraw.</summary>
+        /// <description>
+        /// If the elapsed time is greater than the time since the last paint then the repaint will be skipped.
+        /// </description>
+        /// <param name="elapsedMS">The optional elapsed time in milliseconds.</param>
         public void Repaint(int elapsedMS = 0) {
              InternalUnsafeMethods.Repaint__Args _args = new InternalUnsafeMethods.Repaint__Args() {
                 elapsedMS = elapsedMS,
@@ -1298,6 +1468,16 @@ pos.Free();        }
              InternalUnsafeMethods.Repaint()(ObjectPtr, _args);
         }
 
+        /// <summary>Determines if mouse cursor is rendering.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Is cursor rendering?
+        /// if(Canvas.isCursorShown())
+        ///   echo("Canvas cursor is rendering");
+        /// </code>
+        /// <returns>Returns true if the cursor is rendering.</returns>
         public bool IsCursorShown() {
              InternalUnsafeMethods.IsCursorShown__Args _args = new InternalUnsafeMethods.IsCursorShown__Args() {
              };
@@ -1305,6 +1485,16 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Determines if mouse cursor is enabled.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Is cursor on?
+        /// if(Canvas.isCursorOn())
+        ///   echo("Canvas cursor is on");
+        /// </code>
+        /// <returns>Returns true if the cursor is on.</returns>
         public bool IsCursorOn() {
              InternalUnsafeMethods.IsCursorOn__Args _args = new InternalUnsafeMethods.IsCursorOn__Args() {
              };
@@ -1312,18 +1502,31 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Disable rendering of the cursor.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void HideCursor() {
              InternalUnsafeMethods.HideCursor__Args _args = new InternalUnsafeMethods.HideCursor__Args() {
              };
              InternalUnsafeMethods.HideCursor()(ObjectPtr, _args);
         }
 
+        /// <summary>Enable rendering of the cursor.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void ShowCursor() {
              InternalUnsafeMethods.ShowCursor__Args _args = new InternalUnsafeMethods.ShowCursor__Args() {
              };
              InternalUnsafeMethods.ShowCursor()(ObjectPtr, _args);
         }
 
+        /// <summary>This turns on/off front-buffer rendering.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="enable">True if all rendering should be done to the front buffer</param>
         public void RenderFront(bool enable) {
              InternalUnsafeMethods.RenderFront__Args _args = new InternalUnsafeMethods.RenderFront__Args() {
                 enable = enable,
@@ -1331,6 +1534,11 @@ pos.Free();        }
              InternalUnsafeMethods.RenderFront()(ObjectPtr, _args);
         }
 
+        /// <summary>Sets the cursor for the canvas.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="cursor">Name of the GuiCursor to use</param>
         public void SetCursor(GuiCursor cursor) {
              InternalUnsafeMethods.SetCursor__Args _args = new InternalUnsafeMethods.SetCursor__Args() {
                 cursor = cursor.ObjectPtr,
@@ -1338,18 +1546,29 @@ pos.Free();        }
              InternalUnsafeMethods.SetCursor()(ObjectPtr, _args);
         }
 
+        /// <summary>Turns on the mouse off.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void CursorOff() {
              InternalUnsafeMethods.CursorOff__Args _args = new InternalUnsafeMethods.CursorOff__Args() {
              };
              InternalUnsafeMethods.CursorOff()(ObjectPtr, _args);
         }
 
+        /// <summary>Turns on the mouse cursor.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void CursorOn() {
              InternalUnsafeMethods.CursorOn__Args _args = new InternalUnsafeMethods.CursorOn__Args() {
              };
              InternalUnsafeMethods.CursorOn()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int layer)
+        /// </description>
         public void PopLayer(int layer = 0) {
              InternalUnsafeMethods.PopLayer__Args _args = new InternalUnsafeMethods.PopLayer__Args() {
                 layer = layer,
@@ -1357,6 +1576,9 @@ pos.Free();        }
              InternalUnsafeMethods.PopLayer()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (GuiControl ctrl=NULL)
+        /// </description>
         public void PopDialog(GuiControl gui = null) {
              InternalUnsafeMethods.PopDialog__Args _args = new InternalUnsafeMethods.PopDialog__Args() {
                 gui = gui.ObjectPtr,
@@ -1364,6 +1586,9 @@ pos.Free();        }
              InternalUnsafeMethods.PopDialog()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (GuiControl ctrl, int layer=0, bool center=false)
+        /// </description>
         public void PushDialog(string ctrlName, int layer = 0, bool center = false) {
              InternalUnsafeMethods.PushDialog__Args _args = new InternalUnsafeMethods.PushDialog__Args() {
                 ctrlName = ctrlName,
@@ -1373,6 +1598,11 @@ pos.Free();        }
              InternalUnsafeMethods.PushDialog()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the content of the canvas to a specified control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="ctrl">ID or name of GuiControl to set content to</param>
         public void SetContent(GuiControl ctrl) {
              InternalUnsafeMethods.SetContent__Args _args = new InternalUnsafeMethods.SetContent__Args() {
                 ctrl = ctrl.ObjectPtr,
@@ -1380,6 +1610,11 @@ pos.Free();        }
              InternalUnsafeMethods.SetContent()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the GuiControl which is being used as the content.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>ID of current content control</returns>
         public int GetContent() {
              InternalUnsafeMethods.GetContent__Args _args = new InternalUnsafeMethods.GetContent__Args() {
              };
@@ -1387,6 +1622,10 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the GuiCanvas class.
+        /// </description>
+        /// <returns>The type info object for GuiCanvas</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -1394,16 +1633,34 @@ pos.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Deal with mouse buttons, even if the cursor is hidden.
+        /// </description>
+        /// </value>
         public bool AlwaysHandleMouseButtons {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("alwaysHandleMouseButtons"));
             set => SetFieldValue("alwaysHandleMouseButtons", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The number of GFX fences to use.
+        /// </description>
+        /// </value>
         public int NumFences {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numFences"));
             set => SetFieldValue("numFences", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls if the canvas window is rendered or not.
+        /// </description>
+        /// </value>
         public bool DisplayWindow {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("displayWindow"));
             set => SetFieldValue("displayWindow", GenericMarshal.ToString(value));

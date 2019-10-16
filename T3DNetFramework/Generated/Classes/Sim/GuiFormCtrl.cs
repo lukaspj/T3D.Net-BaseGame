@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A generic form control.</summary>
+    /// <description>
+    /// Currently editor use only.
+    /// </description>
     public unsafe class GuiFormCtrl : GuiPanel {
         public GuiFormCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -161,6 +165,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Sets the title of the form.
+        /// </description>
+        /// <param name="caption">Form caption</param>
         public void SetCaption(string caption) {
              InternalUnsafeMethods.SetCaption__Args _args = new InternalUnsafeMethods.SetCaption__Args() {
                 caption = caption,
@@ -168,6 +176,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCaption()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the ID of this form's menu.
+        /// </description>
+        /// <returns>The ID of the form menu</returns>
         public int GetMenuID() {
              InternalUnsafeMethods.GetMenuID__Args _args = new InternalUnsafeMethods.GetMenuID__Args() {
              };
@@ -175,12 +187,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Called when the control is resized.
+        /// </description>
         public virtual void OnResize() {
              InternalUnsafeMethods.OnResize__Args _args = new InternalUnsafeMethods.OnResize__Args() {
              };
              InternalUnsafeMethods.OnResize()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiFormCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiFormCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -188,26 +207,46 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string Caption {
             get => GenericMarshal.StringTo<string>(GetFieldValue("caption"));
             set => SetFieldValue("caption", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string ContentLibrary {
             get => GenericMarshal.StringTo<string>(GetFieldValue("contentLibrary"));
             set => SetFieldValue("contentLibrary", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string Content {
             get => GenericMarshal.StringTo<string>(GetFieldValue("content"));
             set => SetFieldValue("content", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool Movable {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("movable"));
             set => SetFieldValue("movable", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool HasMenu {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("hasMenu"));
             set => SetFieldValue("hasMenu", GenericMarshal.ToString(value));

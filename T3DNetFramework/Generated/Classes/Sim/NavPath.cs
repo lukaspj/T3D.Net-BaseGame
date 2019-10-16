@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class NavPath : SceneObject {
         public NavPath(bool pRegister = false) 
             : base(pRegister) {
@@ -246,6 +247,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Get the length of this path.</summary>
         public float GetLength() {
              InternalUnsafeMethods.GetLength__Args _args = new InternalUnsafeMethods.GetLength__Args() {
              };
@@ -253,6 +255,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Get a specified node along the path.</summary>
         public int GetFlags(int idx) {
              InternalUnsafeMethods.GetFlags__Args _args = new InternalUnsafeMethods.GetFlags__Args() {
                 idx = idx,
@@ -261,6 +264,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Get a specified node along the path.</summary>
         public Point3F GetNode(int idx) {
              InternalUnsafeMethods.GetNode__Args _args = new InternalUnsafeMethods.GetNode__Args() {
                 idx = idx,
@@ -269,6 +273,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Return the number of nodes in this path.</summary>
         public int Size() {
              InternalUnsafeMethods.Size__Args _args = new InternalUnsafeMethods.Size__Args() {
              };
@@ -276,6 +281,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Callback when a particular area in this path's NavMesh is rebuilt.</summary>
         public void OnNavMeshUpdateBox(string data) {
              InternalUnsafeMethods.OnNavMeshUpdateBox__Args _args = new InternalUnsafeMethods.OnNavMeshUpdateBox__Args() {
                 data = data,
@@ -283,6 +289,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnNavMeshUpdateBox()(ObjectPtr, _args);
         }
 
+        /// <summary>Callback when this path's NavMesh is loaded or rebuilt.</summary>
         public void OnNavMeshUpdate(string data) {
              InternalUnsafeMethods.OnNavMeshUpdate__Args _args = new InternalUnsafeMethods.OnNavMeshUpdate__Args() {
                 data = data,
@@ -290,6 +297,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnNavMeshUpdate()(ObjectPtr, _args);
         }
 
+        /// <summary>Find a path using the already-specified path properties.</summary>
         public bool Plan() {
              InternalUnsafeMethods.Plan__Args _args = new InternalUnsafeMethods.Plan__Args() {
              };
@@ -297,6 +305,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the NavPath class.
+        /// </description>
+        /// <returns>The type info object for NavPath</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -304,91 +316,199 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// World location this path starts at.
+        /// </description>
+        /// </value>
         public Point3F From {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("from"));
             set => SetFieldValue("from", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// World location this path should end at.
+        /// </description>
+        /// </value>
         public Point3F To {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("to"));
             set => SetFieldValue("to", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the NavMesh object this path travels within.
+        /// </description>
+        /// </value>
         public string Mesh {
             get => GenericMarshal.StringTo<string>(GetFieldValue("mesh"));
             set => SetFieldValue("mesh", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path containing waypoints for this NavPath to visit.
+        /// </description>
+        /// </value>
         public Path Waypoints {
             get => GenericMarshal.StringTo<Path>(GetFieldValue("waypoints"));
             set => SetFieldValue("waypoints", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Does this path loop?
+        /// </description>
+        /// </value>
         public bool IsLooping {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isLooping"));
             set => SetFieldValue("isLooping", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Plan this path over multiple updates instead of all at once.
+        /// </description>
+        /// </value>
         public bool IsSliced {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isSliced"));
             set => SetFieldValue("isSliced", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Maximum iterations of path planning this path does per tick.
+        /// </description>
+        /// </value>
         public int MaxIterations {
             get => GenericMarshal.StringTo<int>(GetFieldValue("maxIterations"));
             set => SetFieldValue("maxIterations", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If set, this path will automatically replan when its navigation mesh changes.
+        /// </description>
+        /// </value>
         public bool AutoUpdate {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("autoUpdate"));
             set => SetFieldValue("autoUpdate", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allow the path to use dry land.
+        /// </description>
+        /// </value>
         public bool AllowWalk {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowWalk"));
             set => SetFieldValue("allowWalk", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allow the path to use jump links.
+        /// </description>
+        /// </value>
         public bool AllowJump {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowJump"));
             set => SetFieldValue("allowJump", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allow the path to use drop links.
+        /// </description>
+        /// </value>
         public bool AllowDrop {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowDrop"));
             set => SetFieldValue("allowDrop", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allow the path to move in water.
+        /// </description>
+        /// </value>
         public bool AllowSwim {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowSwim"));
             set => SetFieldValue("allowSwim", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allow the path to jump ledges.
+        /// </description>
+        /// </value>
         public bool AllowLedge {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowLedge"));
             set => SetFieldValue("allowLedge", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allow the path to use climb links.
+        /// </description>
+        /// </value>
         public bool AllowClimb {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowClimb"));
             set => SetFieldValue("allowClimb", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allow the path to use teleporters.
+        /// </description>
+        /// </value>
         public bool AllowTeleport {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowTeleport"));
             set => SetFieldValue("allowTeleport", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Render this NavPath even when not selected.
+        /// </description>
+        /// </value>
         public bool AlwaysRender {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("alwaysRender"));
             set => SetFieldValue("alwaysRender", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Render this NavPath through other objects.
+        /// </description>
+        /// </value>
         public bool Xray {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("xray"));
             set => SetFieldValue("xray", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Render the closed list of this NavPath's search.
+        /// </description>
+        /// </value>
         public bool RenderSearch {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderSearch"));
             set => SetFieldValue("renderSearch", GenericMarshal.ToString(value));

@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Scriptable, demo-able datablock.  Used by GameBase objects.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <see cref="GameBase" />
     public unsafe class GameBaseData : SimDataBlock {
         public GameBaseData(bool pRegister = false) 
             : base(pRegister) {
@@ -208,6 +213,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Called when the object is unmounted from another object in the scene.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">the GameBase object being unmounted</param>
+        /// <param name="mountObj">the object we are unmounted from</param>
+        /// <param name="node">the mountObj node we are unmounted from</param>
+        /// <see cref="onAdd for an example" />
         public virtual void OnUnmount(SceneObject obj, SceneObject mountObj, int node) {
              InternalUnsafeMethods.OnUnmount__Args _args = new InternalUnsafeMethods.OnUnmount__Args() {
                 obj = obj.ObjectPtr,
@@ -217,6 +230,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnUnmount()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when the object is mounted to another object in the scene.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">the GameBase object being mounted</param>
+        /// <param name="mountObj">the object we are mounted to</param>
+        /// <param name="node">the mountObj node we are mounted to</param>
+        /// <see cref="onAdd for an example" />
         public virtual void OnMount(SceneObject obj, SceneObject mountObj, int node) {
              InternalUnsafeMethods.OnMount__Args _args = new InternalUnsafeMethods.OnMount__Args() {
                 obj = obj.ObjectPtr,
@@ -226,6 +247,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnMount()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when the object is removed from the scene.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">the GameBase object</param>
+        /// <see cref="onAdd for an example" />
         public virtual void OnRemove(GameBase obj) {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
                 obj = obj.ObjectPtr,
@@ -233,6 +260,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when the object has a new datablock assigned.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">the GameBase object</param>
+        /// <see cref="onAdd for an example" />
         public virtual void OnNewDataBlock(GameBase obj) {
              InternalUnsafeMethods.OnNewDataBlock__Args _args = new InternalUnsafeMethods.OnNewDataBlock__Args() {
                 obj = obj.ObjectPtr,
@@ -240,6 +273,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnNewDataBlock()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when the object is added to the scene.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">the GameBase object</param>
+        /// <code>
+        /// datablock GameBaseData(MyObjectData)
+        /// {
+        ///    category = "Misc";
+        /// };
+        /// 
+        /// function MyObjectData::onAdd( %this, %obj )
+        /// {
+        ///    echo( "Added "@ %obj.getName() 
+        /// </code>
         public virtual void OnAdd(GameBase obj) {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
                 obj = obj.ObjectPtr,
@@ -247,6 +295,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GameBaseData class.
+        /// </description>
+        /// <returns>The type info object for GameBaseData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -254,6 +306,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The group that this datablock will show up in under the "Scripted" tab in the World Editor Library.
+        /// </description>
+        /// </value>
         public string Category {
             get => GenericMarshal.StringTo<string>(GetFieldValue("category"));
             set => SetFieldValue("category", GenericMarshal.ToString(value));

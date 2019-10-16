@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An AFX customized particle emitter that emits particles within a cone shape.</summary>
+    /// <description>
+    /// An AFX customized particle emitter that emits particles within a cone shape.
+    /// </description>
     public unsafe class afxParticleEmitterConeData : afxParticleEmitterData {
         public afxParticleEmitterConeData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxParticleEmitterConeData class.
+        /// </description>
+        /// <returns>The type info object for afxParticleEmitterConeData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +114,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float SpreadMin {
             get => GenericMarshal.StringTo<float>(GetFieldValue("spreadMin"));
             set => SetFieldValue("spreadMin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float SpreadMax {
             get => GenericMarshal.StringTo<float>(GetFieldValue("spreadMax"));
             set => SetFieldValue("spreadMax", GenericMarshal.ToString(value));

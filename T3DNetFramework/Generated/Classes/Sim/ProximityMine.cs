@@ -14,7 +14,86 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A simple proximity mine.</summary>
+    /// <description>
+    /// Proximity mines can be deployed using the world editor or thrown by an in-game object. Once armed, any Player or Vehicle object that moves within the mine's trigger area will cause it to explode.
+    /// 
+    /// Internally, the ProximityMine object transitions through the following states:
+    /// <ol>
+    ///   <li><b>Thrown</b>: Mine has been thrown, but has not yet attached to a surface</li>
+    ///   <li><b>Deployed</b>: Mine has attached to a surface but is not yet armed. Start playing the #armingSound and <i>armed</i> sequence.</li>
+    ///   <li><b>Armed</b>: Mine is armed and will trigger if a Vehicle or Player object moves within the trigger area.</li>
+    ///   <li><b>Triggered</b>: Mine has been triggered and will explode soon. Invoke the onTriggered callback, and start playing the #triggerSound and <i>triggered</i> sequence.</li>
+    ///   <li><b>Exploded</b>: Mine has exploded and will be deleted on the server shortly. Invoke the onExplode callback on the server and generate the explosion effects on the client.</li>
+    /// </ol>
+    /// </description>
+    /// <remarks> Proximity mines with the #static field set to true will start in the <b>Armed</b> state. Use this for mines placed with the World Editor.
+    /// 
+    /// The shape used for the mine may optionally define the following sequences:
+    /// <dl>
+    ///   <dt>armed</dt><dd>Sequence to play when the mine is deployed, but before it becomes active and triggerable (#armingDelay should be set appropriately).</dd>
+    ///   <dt>triggered</dt><dd>Sequence to play when the mine is triggered, just before it explodes (#triggerDelay should be set appropriately).<dd>
+    /// </dl>
+    /// 
+    /// </remarks>
+    /// <code>
+    /// datablock ProximityMineData( SimpleMine )
+    /// {
+    ///    // ShapeBaseData fields
+    ///    category = "Weapon";
+    ///    shapeFile = "art/shapes/weapons/misc/proximityMine.dts";
+    /// 
+    ///    // ItemData fields
+    ///    sticky = true;
+    /// 
+    ///    // ProximityMineData fields
+    ///    armingDelay = 0.5;
+    ///    armingSound = MineArmedSound;
+    /// 
+    ///    autoTriggerDelay = 0;
+    ///    triggerOnOwner = true;
+    ///    triggerRadius = 5.0;
+    ///    triggerSpeed = 1.0;
+    ///    triggerDelay = 0.5;
+    ///    triggerSound = MineTriggeredSound;
+    ///    explosion = RocketLauncherExplosion;
+    /// 
+    ///    // dynamic fields
+    ///    pickUpName = "Proximity Mines";
+    ///    maxInventory = 20;
+    /// 
+    ///    damageType = "MineDamage"; // type of damage applied to objects in radius
+    ///    radiusDamage = 30;           // amount of damage to apply to objects in radius
+    ///    damageRadius = 8;            // search radius to damage objects when exploding
+    ///    areaImpulse = 2000;          // magnitude of impulse to apply to objects in radius
+    /// };
+    /// 
+    /// function ProximityMineData::onTriggered( %this, %obj, %target )
+    /// {
+    ///    echo( %this.name SPC "triggered by "@ %target.getClassName() );
+    /// }
+    /// 
+    /// function ProximityMineData::onExplode( %this, %obj, %position )
+    /// {
+    ///    // Damage objects within the mine's damage radius
+    ///    if ( %this.damageRadius > 0 )
+    ///       radiusDamage( %obj.sourceObject, %position, %this.damageRadius, %this.radiusDamage, %this.damageType, %this.areaImpulse );
+    /// }
+    /// 
+    /// function ProximityMineData::damage( %this, %obj, %position, %source, %amount, %damageType )
+    /// {
+    ///    // Explode if any damage is applied to the mine
+    ///    %obj.schedule(50 + getRandom(50), explode);
+    /// }
+    /// 
+    /// %obj = new ProximityMine()
+    /// {
+    ///    dataBlock = SimpleMine;
+    /// };
+    /// 
+    /// </code>
+    /// <see cref="ProximityMineData" />
     public unsafe class ProximityMine : Item {
         public ProximityMine(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +198,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Manually cause the mine to explode.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void Explode() {
              InternalUnsafeMethods.Explode__Args _args = new InternalUnsafeMethods.Explode__Args() {
              };
              InternalUnsafeMethods.Explode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the ProximityMine class.
+        /// </description>
+        /// <returns>The type info object for ProximityMine</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

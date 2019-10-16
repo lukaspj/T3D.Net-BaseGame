@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Helper object for gameplay physical forces.</summary>
+    /// <description>
+    /// %PhysicsForces can be created and "attached" to other
+    /// </description>
     public unsafe class PhysicsForce : SceneObject {
         public PhysicsForce(bool pRegister = false) 
             : base(pRegister) {
@@ -164,6 +168,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Returns true if the %PhysicsForce is currently attached to an object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="PhysicsForce::attach()" />
         public bool IsAttached() {
              InternalUnsafeMethods.IsAttached__Args _args = new InternalUnsafeMethods.IsAttached__Args() {
              };
@@ -171,6 +180,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Disassociates the PhysicsForce from any attached PhysicsBody.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="force">Optional force to apply to the attached PhysicsBody before detaching.</param>
+        /// <remarks> Has no effect if the %PhysicsForce is not attached to anything.
+        /// 
+        /// </remarks>
         public void Detach(Point3F force = null) {
 force = force ?? new Point3F("0 0 0");
 force.Alloc();             InternalUnsafeMethods.Detach__Args _args = new InternalUnsafeMethods.Detach__Args() {
@@ -179,6 +196,14 @@ force.Alloc();             InternalUnsafeMethods.Detach__Args _args = new Intern
              InternalUnsafeMethods.Detach()(ObjectPtr, _args);
 force.Free();        }
 
+        /// <summary>Attempts to associate the PhysicsForce with a PhysicsBody.</summary>
+        /// <description>
+        /// Performs a physics ray cast of the provided length and direction. The %PhysicsForce will attach itself to the first dynamic PhysicsBody the ray collides with. On every tick, the attached body will be attracted towards the position of the %PhysicsForce.
+        /// 
+        /// A %PhysicsForce can only be attached to one body at a time.
+        /// </description>
+        /// <remarks> To determine if an %attach was successful, check isAttached() immediately after calling this function.n
+        /// </remarks>
         public void Attach(Point3F start, Point3F direction, float maxDist) {
 start.Alloc();direction.Alloc();             InternalUnsafeMethods.Attach__Args _args = new InternalUnsafeMethods.Attach__Args() {
                 start = start.internalStructPtr,
@@ -188,6 +213,10 @@ start.Alloc();direction.Alloc();             InternalUnsafeMethods.Attach__Args 
              InternalUnsafeMethods.Attach()(ObjectPtr, _args);
 start.Free();direction.Free();        }
 
+        /// <description>
+        /// Get the type info object for the PhysicsForce class.
+        /// </description>
+        /// <returns>The type info object for PhysicsForce</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

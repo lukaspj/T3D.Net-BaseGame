@@ -14,7 +14,18 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A single page in a GuiTabBookCtrl.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiTabPageCtrl()
+    /// {
+    ///    fitBook = "1";
+    ///    //Properties not specific to this control have been omitted from this example.
+    /// };
+    /// </code>
     public unsafe class GuiTabPageCtrl : GuiTextCtrl {
         public GuiTabPageCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +130,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Select this page in its tab book.
+        /// </description>
         public void Select() {
              InternalUnsafeMethods.Select__Args _args = new InternalUnsafeMethods.Select__Args() {
              };
              InternalUnsafeMethods.Select()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiTabPageCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTabPageCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -132,6 +150,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Determines whether to resize this page when it is added to the tab book. If true, the page will be resized according to the tab book extents and <i>tabPosition</i> property.
+        /// </description>
+        /// </value>
         public bool FitBook {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("fitBook"));
             set => SetFieldValue("fitBook", GenericMarshal.ToString(value));

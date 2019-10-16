@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The base class for the Decal Editor tool</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiDecalEditorCtrl : EditTSCtrl {
         public GuiDecalEditorCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -337,6 +341,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void RetargetDecalDatablock(string dbFrom, string dbTo) {
              InternalUnsafeMethods.RetargetDecalDatablock__Args _args = new InternalUnsafeMethods.RetargetDecalDatablock__Args() {
                 dbFrom = dbFrom,
@@ -345,6 +350,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RetargetDecalDatablock()(ObjectPtr, _args);
         }
 
+        /// 
         public int GetSelectionCount() {
              InternalUnsafeMethods.GetSelectionCount__Args _args = new InternalUnsafeMethods.GetSelectionCount__Args() {
              };
@@ -352,6 +358,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// editDecalDetails( S32 )()
+        /// </description>
         public void EditDecalDetails(uint id, Point3F pos, Point3F tan, float size) {
 pos.Alloc();tan.Alloc();             InternalUnsafeMethods.EditDecalDetails__Args _args = new InternalUnsafeMethods.EditDecalDetails__Args() {
                 id = id,
@@ -362,6 +371,9 @@ pos.Alloc();tan.Alloc();             InternalUnsafeMethods.EditDecalDetails__Arg
              InternalUnsafeMethods.EditDecalDetails()(ObjectPtr, _args);
 pos.Free();tan.Free();        }
 
+        /// <description>
+        /// selectDecal( S32 )()
+        /// </description>
         public void SelectDecal(uint id) {
              InternalUnsafeMethods.SelectDecal__Args _args = new InternalUnsafeMethods.SelectDecal__Args() {
                 id = id,
@@ -369,6 +381,9 @@ pos.Free();tan.Free();        }
              InternalUnsafeMethods.SelectDecal()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// getDecalLookupName( S32 )()
+        /// </description>
         public string GetDecalLookupName(uint id) {
              InternalUnsafeMethods.GetDecalLookupName__Args _args = new InternalUnsafeMethods.GetDecalLookupName__Args() {
                 id = id,
@@ -377,6 +392,9 @@ pos.Free();tan.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// getDecalTransform()
+        /// </description>
         public string GetDecalTransform(uint id) {
              InternalUnsafeMethods.GetDecalTransform__Args _args = new InternalUnsafeMethods.GetDecalTransform__Args() {
                 id = id,
@@ -385,6 +403,9 @@ pos.Free();tan.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// getDecalCount()
+        /// </description>
         public int GetDecalCount() {
              InternalUnsafeMethods.GetDecalCount__Args _args = new InternalUnsafeMethods.GetDecalCount__Args() {
              };
@@ -392,6 +413,9 @@ pos.Free();tan.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// getMode()
+        /// </description>
         public string GetMode() {
              InternalUnsafeMethods.GetMode__Args _args = new InternalUnsafeMethods.GetMode__Args() {
              };
@@ -399,6 +423,9 @@ pos.Free();tan.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// setMode( String mode )()
+        /// </description>
         public void SetMode(string newMode) {
              InternalUnsafeMethods.SetMode__Args _args = new InternalUnsafeMethods.SetMode__Args() {
                 newMode = newMode,
@@ -406,6 +433,9 @@ pos.Free();tan.Free();        }
              InternalUnsafeMethods.SetMode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// deleteSelectedDecalDatablock( String datablock )
+        /// </description>
         public void DeleteDecalDatablock(string datablock) {
              InternalUnsafeMethods.DeleteDecalDatablock__Args _args = new InternalUnsafeMethods.DeleteDecalDatablock__Args() {
                 datablock = datablock,
@@ -413,12 +443,19 @@ pos.Free();tan.Free();        }
              InternalUnsafeMethods.DeleteDecalDatablock()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// deleteSelectedDecal()
+        /// </description>
         public void DeleteSelectedDecal() {
              InternalUnsafeMethods.DeleteSelectedDecal__Args _args = new InternalUnsafeMethods.DeleteSelectedDecal__Args() {
              };
              InternalUnsafeMethods.DeleteSelectedDecal()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiDecalEditorCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiDecalEditorCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -426,6 +463,10 @@ pos.Free();tan.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public DecalData CurrentDecalData {
             get => GenericMarshal.StringTo<DecalData>(GetFieldValue("currentDecalData"));
             set => SetFieldValue("currentDecalData", GenericMarshal.ToString(value));

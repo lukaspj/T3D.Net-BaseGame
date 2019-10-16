@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Net {    
+namespace T3DNetFramework.Generated.Classes.Net {
+    /// <summary>Network event that triggers a lightning strike on the client when it is received.</summary>
+    /// <description>
+    /// This event is sent to all clients when the warningFlashes(), strikeRandomPoint() or strikeObject() methods are invoked on the Lightning object on the server.
+    /// </description>
+    /// <see cref="Lightning, LightningData" />
     public unsafe class LightningStrikeEvent : NetEvent {
         public LightningStrikeEvent(bool pRegister = false) 
             : base(pRegister) {
@@ -72,6 +77,10 @@ namespace T3DNetFramework.Generated.Classes.Net {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the LightningStrikeEvent class.
+        /// </description>
+        /// <returns>The type info object for LightningStrikeEvent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

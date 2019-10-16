@@ -14,7 +14,15 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>%Forest is a global-bounds scene object provides collision and rendering for a (.forest) data file.</summary>
+    /// <description>
+    /// %Forest is designed to efficiently render a large number of static meshes: trees, rocks plants, etc. These cannot be moved at game-time or play animations but do support wind effects using vertex shader transformations guided by vertex color in the asset and user placed wind emitters ( or weapon explosions ).
+    /// 
+    /// Script level manipulation of forest data is not possible through %Forest, it is only the rendering/collision. All editing is done through the world editor.
+    /// </description>
+    /// <see cref="TSForestItemData Defines a tree type." />
+    /// <see cref="GuiForestEditorCtrl Used by the world editor to provide manipulation of forest data." />
     public unsafe class Forest : SceneObject {
         public Forest(bool pRegister = false) 
             : base(pRegister) {
@@ -182,18 +190,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ()
+        /// </description>
         public void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };
              InternalUnsafeMethods.Clear()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public void RegenCells() {
              InternalUnsafeMethods.RegenCells__Args _args = new InternalUnsafeMethods.RegenCells__Args() {
              };
              InternalUnsafeMethods.RegenCells()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public bool IsDirty() {
              InternalUnsafeMethods.IsDirty__Args _args = new InternalUnsafeMethods.IsDirty__Args() {
              };
@@ -201,6 +218,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// saveDataFile( [path] )
+        /// </description>
         public void SaveDataFile(string path = "") {
              InternalUnsafeMethods.SaveDataFile__Args _args = new InternalUnsafeMethods.SaveDataFile__Args() {
                 path = path,
@@ -208,6 +228,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SaveDataFile()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the Forest class.
+        /// </description>
+        /// <returns>The type info object for Forest</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -215,11 +239,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The source forest data file.
+        /// </description>
+        /// </value>
         public string DataFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("dataFile"));
             set => SetFieldValue("dataFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Scalar applied to the farclip distance when Forest renders into a reflection.
+        /// </description>
+        /// </value>
         public float LodReflectScalar {
             get => GenericMarshal.StringTo<float>(GetFieldValue("lodReflectScalar"));
             set => SetFieldValue("lodReflectScalar", GenericMarshal.ToString(value));

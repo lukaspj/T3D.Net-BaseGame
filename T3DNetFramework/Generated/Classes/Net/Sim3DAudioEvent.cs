@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Net {    
+namespace T3DNetFramework.Generated.Classes.Net {
+    /// <summary>Use by GameConnection to send a 3D sound event over the network.</summary>
+    /// <description>
+    /// Not intended for game development, internal use only, but does expose GameConnection::play3D.
+    /// </description>
     public unsafe class Sim3DAudioEvent : NetEvent {
         public Sim3DAudioEvent(bool pRegister = false) 
             : base(pRegister) {
@@ -72,6 +76,10 @@ namespace T3DNetFramework.Generated.Classes.Net {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the Sim3DAudioEvent class.
+        /// </description>
+        /// <returns>The type info object for Sim3DAudioEvent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

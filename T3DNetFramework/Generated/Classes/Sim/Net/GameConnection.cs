@@ -14,7 +14,18 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim.Net {    
+namespace T3DNetFramework.Generated.Classes.Sim.Net {
+    /// <summary>The game-specific subclass of NetConnection.</summary>
+    /// <description>
+    /// The GameConnection introduces the concept of the control object.  The control object is simply the object that the client is associated with that network connection controls.  By default the control object is an instance of the Player class, but can also be an instance of Camera (when editing the mission, for example), or any other ShapeBase derived class as appropriate for the game.
+    /// 
+    /// Torque uses a model in which the server is the authoritative master of the simulation.  To prevent clients from cheating, the server simulates all player moves and then tells the client where his player is in the world.  This model, while secure, can have problems.  If the network latency is high, this round-trip time can give the player a very noticeable sense of movement lag.  To correct this problem, the game uses a form of prediction - it simulates the movement of the control object on the client and on the server both.  This way the client doesn't need to wait for round-trip verification of his moves.  Only in the case of a force acting on the control object on the server that doesn't exist on the client does the client's position need to be forcefully changed.
+    /// 
+    /// To support this, all control objects (derivative of ShapeBase) must supply a writePacketData() and readPacketData() function that send enough data to accurately simulate the object on the client.  These functions are only called for the current control object, and only when the server can determine that the client's simulation is somehow out of sync with the server.  This occurs usually if the client is affected by a force not present on the server (like an interpolating object) or if the server object is affected by a server only force (such as the impulse from an explosion).
+    /// 
+    /// The Move structure is a 32 millisecond snapshot of player input, containing x, y, and z positional and rotational changes as well as trigger state changes. When time passes in the simulation moves are collected (depending on how much time passes), and applied to the current control object on the client. The same moves are then packed over to the server in GameConnection::writePacket(), for processing on the server's version of the control object.
+    /// </description>
+    /// <see cref="" />
     public unsafe class GameConnection : NetConnection {
         public GameConnection(bool pRegister = false) 
             : base(pRegister) {
@@ -1337,6 +1348,7 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
         }
         #endregion
 
+        /// 
         public bool LoadDatablockCache_Continue() {
              InternalUnsafeMethods.LoadDatablockCache_Continue__Args _args = new InternalUnsafeMethods.LoadDatablockCache_Continue__Args() {
              };
@@ -1344,6 +1356,7 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// 
         public bool LoadDatablockCache_Begin() {
              InternalUnsafeMethods.LoadDatablockCache_Begin__Args _args = new InternalUnsafeMethods.LoadDatablockCache_Begin__Args() {
              };
@@ -1351,36 +1364,42 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// 
         public void LoadDatablockCache() {
              InternalUnsafeMethods.LoadDatablockCache__Args _args = new InternalUnsafeMethods.LoadDatablockCache__Args() {
              };
              InternalUnsafeMethods.LoadDatablockCache()(ObjectPtr, _args);
         }
 
+        /// 
         public void SaveDatablockCache() {
              InternalUnsafeMethods.SaveDatablockCache__Args _args = new InternalUnsafeMethods.SaveDatablockCache__Args() {
              };
              InternalUnsafeMethods.SaveDatablockCache()(ObjectPtr, _args);
         }
 
+        /// 
         public void SetSelectedObjFromPreSelected() {
              InternalUnsafeMethods.SetSelectedObjFromPreSelected__Args _args = new InternalUnsafeMethods.SetSelectedObjFromPreSelected__Args() {
              };
              InternalUnsafeMethods.SetSelectedObjFromPreSelected()(ObjectPtr, _args);
         }
 
+        /// 
         public void ClearPreSelectedObj() {
              InternalUnsafeMethods.ClearPreSelectedObj__Args _args = new InternalUnsafeMethods.ClearPreSelectedObj__Args() {
              };
              InternalUnsafeMethods.ClearPreSelectedObj()(ObjectPtr, _args);
         }
 
+        /// 
         public void SetPreSelectedObjFromRollover() {
              InternalUnsafeMethods.SetPreSelectedObjFromRollover__Args _args = new InternalUnsafeMethods.SetPreSelectedObjFromRollover__Args() {
              };
              InternalUnsafeMethods.SetPreSelectedObjFromRollover()(ObjectPtr, _args);
         }
 
+        /// 
         public void ClearSelectedObj(bool propagate_to_client = false) {
              InternalUnsafeMethods.ClearSelectedObj__Args _args = new InternalUnsafeMethods.ClearSelectedObj__Args() {
                 propagate_to_client = propagate_to_client,
@@ -1388,6 +1407,7 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.ClearSelectedObj()(ObjectPtr, _args);
         }
 
+        /// 
         public SimObject GetSelectedObj() {
              InternalUnsafeMethods.GetSelectedObj__Args _args = new InternalUnsafeMethods.GetSelectedObj__Args() {
              };
@@ -1395,6 +1415,7 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return new SimObject(_engineResult);
         }
 
+        /// 
         public bool SetSelectedObj(SceneObject obj, bool propagate_to_client = false) {
              InternalUnsafeMethods.SetSelectedObj__Args _args = new InternalUnsafeMethods.SetSelectedObj__Args() {
                 obj = obj.ObjectPtr,
@@ -1404,6 +1425,11 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>Gets the distance that objects around the connection will be ghosted.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>S32 of distance.</returns>
         public float GetVisibleGhostDistance() {
              InternalUnsafeMethods.GetVisibleGhostDistance__Args _args = new InternalUnsafeMethods.GetVisibleGhostDistance__Args() {
              };
@@ -1411,6 +1437,10 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>Sets the distance that objects around it will be ghosted. If set to 0, it may be defined by the LevelInfo.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void SetVisibleGhostDistance(float dist) {
              InternalUnsafeMethods.SetVisibleGhostDistance__Args _args = new InternalUnsafeMethods.SetVisibleGhostDistance__Args() {
                 dist = dist,
@@ -1418,6 +1448,12 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.SetVisibleGhostDistance()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the connection's control scheme absolute rotation property.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>True if the connection's control object should use an absolute rotation control scheme.</returns>
+        /// <see cref="GameConnection::setControlSchemeParameters()" />
         public bool GetControlSchemeAbsoluteRotation() {
              InternalUnsafeMethods.GetControlSchemeAbsoluteRotation__Args _args = new InternalUnsafeMethods.GetControlSchemeAbsoluteRotation__Args() {
              };
@@ -1425,6 +1461,12 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>Set the control scheme that may be used by a connection's control object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="absoluteRotation">Use absolute rotation values from client, likely through ExtendedMove.</param>
+        /// <param name="addYawToAbsRot">Add relative yaw control to the absolute rotation calculation.  Only useful when absoluteRotation is true.</param>
         public void SetControlSchemeParameters(bool absoluteRotation, bool addYawToAbsRot, bool addPitchToAbsRot) {
              InternalUnsafeMethods.SetControlSchemeParameters__Args _args = new InternalUnsafeMethods.SetControlSchemeParameters__Args() {
                 absoluteRotation = absoluteRotation,
@@ -1434,6 +1476,11 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.SetControlSchemeParameters()(ObjectPtr, _args);
         }
 
+        /// <summary>On the server, sets this connection into or out of first person mode.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="firstPerson">Set to true to put the connection into first person mode.</param>
         public void SetFirstPerson(bool firstPerson) {
              InternalUnsafeMethods.SetFirstPerson__Args _args = new InternalUnsafeMethods.SetFirstPerson__Args() {
                 firstPerson = firstPerson,
@@ -1441,6 +1488,13 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.SetFirstPerson()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns true if this connection is in first person mode.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Transition to first person occurs over time via mCameraPos, so this won't immediately return true after a set.
+        /// 
+        /// </remarks>
         public bool IsFirstPerson() {
              InternalUnsafeMethods.IsFirstPerson__Args _args = new InternalUnsafeMethods.IsFirstPerson__Args() {
              };
@@ -1448,12 +1502,22 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>Clear the connection's camera object reference.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="GameConnection::setCameraObject() and GameConnection::getCameraObject()" />
         public void ClearCameraObject() {
              InternalUnsafeMethods.ClearCameraObject__Args _args = new InternalUnsafeMethods.ClearCameraObject__Args() {
              };
              InternalUnsafeMethods.ClearCameraObject()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns the connection's camera object used when not viewing through the control object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="GameConnection::setCameraObject() and GameConnection::clearCameraObject()" />
         public SimObject GetCameraObject() {
              InternalUnsafeMethods.GetCameraObject__Args _args = new InternalUnsafeMethods.GetCameraObject__Args() {
              };
@@ -1461,6 +1525,11 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return new SimObject(_engineResult);
         }
 
+        /// <summary>On the server, set the connection's camera object used when not viewing through the control object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="GameConnection::getCameraObject() and GameConnection::clearCameraObject()" />
         public bool SetCameraObject(GameBase camera) {
              InternalUnsafeMethods.SetCameraObject__Args _args = new InternalUnsafeMethods.SetCameraObject__Args() {
                 camera = camera.ObjectPtr,
@@ -1469,6 +1538,11 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>On the client, this static mehtod will return the connection to the server, if any.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>The SimObject ID of the server connection, or -1 if none is found.</returns>
         public static int GetServerConnection() {
              InternalUnsafeMethods.GetServerConnection__Args _args = new InternalUnsafeMethods.GetServerConnection__Args() {
              };
@@ -1476,12 +1550,24 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>List all of the classes that this connection knows about, and what their IDs are. Useful for debugging network problems.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> The list is sent to the console.
+        /// 
+        /// </remarks>
         public void ListClassIDs() {
              InternalUnsafeMethods.ListClassIDs__Args _args = new InternalUnsafeMethods.ListClassIDs__Args() {
              };
              InternalUnsafeMethods.ListClassIDs()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns true if a demo file is now being recorded.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="GameConnection::startRecording(), GameConnection::stopRecording()" />
         public bool IsDemoRecording() {
              InternalUnsafeMethods.IsDemoRecording__Args _args = new InternalUnsafeMethods.IsDemoRecording__Args() {
              };
@@ -1489,6 +1575,11 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>Returns true if a previously recorded demo file is now playing.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="GameConnection::playDemo()" />
         public bool IsDemoPlaying() {
              InternalUnsafeMethods.IsDemoPlaying__Args _args = new InternalUnsafeMethods.IsDemoPlaying__Args() {
              };
@@ -1496,6 +1587,12 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>On the client, play back a previously recorded game session.</summary>
+        /// <description>
+        /// It is often useful to play back a game session.  This could be for producing a demo of the game that will be shown at a later time, or for debugging a game.  By recording the entire network stream it is possible to later play game the game exactly as it unfolded during the actual play session.  This is because all user control and server results pass through the connection.
+        /// </description>
+        /// <returns>True if the playback was successful.  False if there was an issue, such as not being able to open the demo file for playback.</returns>
+        /// <see cref="GameConnection::startRecording(), GameConnection::stopRecording()" />
         public bool PlayDemo(string demoFileName) {
              InternalUnsafeMethods.PlayDemo__Args _args = new InternalUnsafeMethods.PlayDemo__Args() {
                 demoFileName = demoFileName,
@@ -1504,12 +1601,23 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>On the client, stops the recording of a connection's network traffic to a file.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="GameConnection::startRecording(), GameConnection::playDemo()" />
         public void StopRecording() {
              InternalUnsafeMethods.StopRecording__Args _args = new InternalUnsafeMethods.StopRecording__Args() {
              };
              InternalUnsafeMethods.StopRecording()(ObjectPtr, _args);
         }
 
+        /// <summary>On the client, starts recording the network connection's traffic to a demo file.</summary>
+        /// <description>
+        /// It is often useful to play back a game session.  This could be for producing a demo of the game that will be shown at a later time, or for debugging a game.  By recording the entire network stream it is possible to later play game the game exactly as it unfolded during the actual play session.  This is because all user control and server results pass through the connection.
+        /// </description>
+        /// <param name="fileName">The file name to use for the demo recording.</param>
+        /// <see cref="GameConnection::stopRecording(), GameConnection::playDemo()" />
         public void StartRecording(string fileName) {
              InternalUnsafeMethods.StartRecording__Args _args = new InternalUnsafeMethods.StartRecording__Args() {
                 fileName = fileName,
@@ -1517,6 +1625,21 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.StartRecording()(ObjectPtr, _args);
         }
 
+        /// <summary>On the server, disconnect a client and pass along an optional reason why.</summary>
+        /// <description>
+        /// This method performs two operations: it disconnects a client connection from the server, and it deletes the connection object.  The optional reason is sent in the disconnect packet and is often displayed to the user so they know why they've been disconnected.
+        /// </description>
+        /// <param name="reason">[optional] The reason why the user has been disconnected from the server.</param>
+        /// <code>
+        /// function kick(%client)
+        /// {
+        ///    messageAll( 'MsgAdminForce', '\c2The Admin has kicked %1.', %client.playerName);
+        /// 
+        ///    if (!%client.isAIControlled())
+        ///       BanList::add(%client.guid, %client.getAddress(), $Pref::Server::KickBanTime);
+        ///    %client.delete("You have been kicked from this server");
+        /// }
+        /// </code>
         public void Delete(string reason = "") {
              InternalUnsafeMethods.Delete__Args _args = new InternalUnsafeMethods.Delete__Args() {
                 reason = reason,
@@ -1524,6 +1647,30 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.Delete()(ObjectPtr, _args);
         }
 
+        /// <summary>On the server, transmits the mission file's CRC value to the client.</summary>
+        /// <description>
+        /// Typically, during the standard mission start phase 1, the mission file's CRC value on the server is send to the client.  This allows the client to determine if the mission has changed since the last time it downloaded this mission and act appropriately, such as rebuilt cached lightmaps.
+        /// </description>
+        /// <param name="CRC">The mission file's CRC value on the server.</param>
+        /// <code>
+        /// function serverCmdMissionStartPhase1Ack(%client, %seq)
+        /// {
+        ///    // Make sure to ignore calls from a previous mission load
+        ///    if (%seq != $missionSequence || !$MissionRunning)
+        ///       return;
+        ///    if (%client.currentPhase != 0)
+        ///       return;
+        ///    %client.currentPhase = 1;
+        /// 
+        ///    // Start with the CRC
+        ///    %client.setMissionCRC( $missionCRC );
+        /// 
+        ///    // Send over the datablocks...
+        ///    // OnDataBlocksDone will get called when have confirmation
+        ///    // that they've all been received.
+        ///    %client.transmitDataBlocks($missionSequence);
+        /// }
+        /// </code>
         public void SetMissionCRC(int CRC) {
              InternalUnsafeMethods.SetMissionCRC__Args _args = new InternalUnsafeMethods.SetMissionCRC__Args() {
                 CRC = CRC,
@@ -1531,6 +1678,13 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.SetMissionCRC()(ObjectPtr, _args);
         }
 
+        /// <summary>On the server, sets the client's 3D display to fade to black.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="doFade">Set to true to fade to black, and false to fade from black.</param>
+        /// <param name="timeMS">Time it takes to perform the fade as measured in ms.</param>
+        /// <remarks> Not currently hooked up, and is not synchronized over the network.</remarks>
         public void SetBlackOut(bool doFade, int timeMS) {
              InternalUnsafeMethods.SetBlackOut__Args _args = new InternalUnsafeMethods.SetBlackOut__Args() {
                 doFade = doFade,
@@ -1539,6 +1693,11 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.SetBlackOut()(ObjectPtr, _args);
         }
 
+        /// <summary>On the client, get the control object's white-out level.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>white-out level</returns>
         public float GetWhiteOut() {
              InternalUnsafeMethods.GetWhiteOut__Args _args = new InternalUnsafeMethods.GetWhiteOut__Args() {
              };
@@ -1546,6 +1705,11 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>On the client, get the control object's damage flash level.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>flash level</returns>
         public float GetDamageFlash() {
              InternalUnsafeMethods.GetDamageFlash__Args _args = new InternalUnsafeMethods.GetDamageFlash__Args() {
              };
@@ -1553,6 +1717,10 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>Returns the field of view as used by the control object's camera.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public float GetControlCameraFov() {
              InternalUnsafeMethods.GetControlCameraFov__Args _args = new InternalUnsafeMethods.GetControlCameraFov__Args() {
              };
@@ -1560,6 +1728,12 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>On the server, sets the control object's camera's field of view.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="newFOV">New field of view (in degrees) to force the control object's camera to use.  This value is clamped to be within the range of 1 to 179 degrees.</param>
+        /// <remarks> When transmitted over the network to the client, the resolution is limited to one degree.  Any fraction is dropped.</remarks>
         public void SetControlCameraFov(float newFOV) {
              InternalUnsafeMethods.SetControlCameraFov__Args _args = new InternalUnsafeMethods.SetControlCameraFov__Args() {
                 newFOV = newFOV,
@@ -1567,6 +1741,10 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.SetControlCameraFov()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns the default field of view as used by the control object's camera.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public float GetControlCameraDefaultFov() {
              InternalUnsafeMethods.GetControlCameraDefaultFov__Args _args = new InternalUnsafeMethods.GetControlCameraDefaultFov__Args() {
              };
@@ -1574,6 +1752,16 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>Sets the size of the chase camera's matrix queue.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> This sets the queue size across all GameConnections.
+        /// 
+        /// </remarks>
+        /// <remarks> This is not currently hooked up.
+        /// 
+        /// </remarks>
         public bool ChaseCam(int size) {
              InternalUnsafeMethods.ChaseCam__Args _args = new InternalUnsafeMethods.ChaseCam__Args() {
                 size = size,
@@ -1582,6 +1770,21 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <summary>Used on the server to play a 3D sound that is not attached to any object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="profile">The SFXProfile that defines the sound to play.</param>
+        /// <param name="location">The position and orientation of the 3D sound given in the form of "x y z ax ay az aa".</param>
+        /// <code>
+        /// function ServerPlay3D(%profile,%transform)
+        /// {
+        ///    // Play the given sound profile at the given position on every client
+        ///    // The sound will be transmitted as an event, not attached to any object.
+        ///    for(%idx = 0; %idx < ClientGroup.getCount(); %idx++)
+        ///       ClientGroup.getObject(%idx).play3D(%profile,%transform);
+        /// }
+        /// </code>
         public bool Play3D(SFXProfile profile, TransformF location) {
 location.Alloc();             InternalUnsafeMethods.Play3D__Args _args = new InternalUnsafeMethods.Play3D__Args() {
                 profile = profile.ObjectPtr,
@@ -1591,6 +1794,20 @@ location.Alloc();             InternalUnsafeMethods.Play3D__Args _args = new Int
 location.Free();             return _engineResult;
         }
 
+        /// <summary>Used on the server to play a 2D sound that is not attached to any object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="profile">The SFXProfile that defines the sound to play.</param>
+        /// <code>
+        /// function ServerPlay2D(%profile)
+        /// {
+        ///    // Play the given sound profile on every client.
+        ///    // The sounds will be transmitted as an event, not attached to any object.
+        ///    for(%idx = 0; %idx < ClientGroup.getCount(); %idx++)
+        ///       ClientGroup.getObject(%idx).play2D(%profile);
+        /// }
+        /// </code>
         public bool Play2D(SFXProfile profile) {
              InternalUnsafeMethods.Play2D__Args _args = new InternalUnsafeMethods.Play2D__Args() {
                 profile = profile.ObjectPtr,
@@ -1599,6 +1816,11 @@ location.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Returns true if the object being controlled by the client is making use of a rotation damped camera.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="Camera" />
         public bool IsControlObjectRotDampedCamera() {
              InternalUnsafeMethods.IsControlObjectRotDampedCamera__Args _args = new InternalUnsafeMethods.IsControlObjectRotDampedCamera__Args() {
              };
@@ -1606,6 +1828,11 @@ location.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Returns true if this connection is AI controlled.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="AIConnection" />
         public bool IsAIControlled() {
              InternalUnsafeMethods.IsAIControlled__Args _args = new InternalUnsafeMethods.IsAIControlled__Args() {
              };
@@ -1613,6 +1840,11 @@ location.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>On the server, returns the object that the client is controlling.By default the control object is an instance of the Player class, but can also be an instance of Camera (when editing the mission, for example), or any other ShapeBase derived class as appropriate for the game.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="GameConnection::setControlObject()" />
         public GameBase GetControlObject() {
              InternalUnsafeMethods.GetControlObject__Args _args = new InternalUnsafeMethods.GetControlObject__Args() {
              };
@@ -1620,12 +1852,21 @@ location.Free();             return _engineResult;
              return new GameBase(_engineResult);
         }
 
+        /// <summary>Clear any display device.</summary>
+        /// <description>
+        /// A display device may define a number of properties that are used during rendering.
+        /// </description>
         public void ClearDisplayDevice() {
              InternalUnsafeMethods.ClearDisplayDevice__Args _args = new InternalUnsafeMethods.ClearDisplayDevice__Args() {
              };
              InternalUnsafeMethods.ClearDisplayDevice()(ObjectPtr, _args);
         }
 
+        /// <summary>On the server, sets the object that the client will control.</summary>
+        /// <description>
+        /// By default the control object is an instance of the Player class, but can also be an instance of Camera (when editing the mission, for example), or any other ShapeBase derived class as appropriate for the game.
+        /// </description>
+        /// <param name="ctrlObj">The GameBase object on the server to control.</param>
         public bool SetControlObject(GameBase ctrlObj) {
              InternalUnsafeMethods.SetControlObject__Args _args = new InternalUnsafeMethods.SetControlObject__Args() {
                 ctrlObj = ctrlObj.ObjectPtr,
@@ -1634,18 +1875,86 @@ location.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>On the server, resets the connection to indicate that ghosting has been disabled.</summary>
+        /// <description>
+        /// Typically when a mission has ended on the server, all connected clients are informed of this change and their connections are reset back to a starting state.  This method resets a connection on the server to indicate that ghosts are no longer being transmitted.  On the client end, all ghost information will be deleted.
+        /// </description>
+        /// <code>
+        /// // Inform the clients
+        ///    for (%clientIndex = 0; %clientIndex < ClientGroup.getCount(); %clientIndex++)
+        ///    {
+        ///       // clear ghosts and paths from all clients
+        ///       %cl = ClientGroup.getObject(%clientIndex);
+        ///       %cl.endMission();
+        ///       %cl.resetGhosting();
+        ///       %cl.clearPaths();
+        ///    }
+        /// </code>
+        /// <see cref="" />
         public void ResetGhosting() {
              InternalUnsafeMethods.ResetGhosting__Args _args = new InternalUnsafeMethods.ResetGhosting__Args() {
              };
              InternalUnsafeMethods.ResetGhosting()(ObjectPtr, _args);
         }
 
+        /// <summary>Called by the server during phase 2 of the mission download to start sending ghosts to the client.</summary>
+        /// <description>
+        /// Ghosts represent objects on the server that are in scope for the client.  These need to be synchronized with the client in order for the client to see and interact with them.  This is typically done during the standard mission start phase 2 when following Torque's example mission startup sequence.
+        /// </description>
+        /// <code>
+        /// function serverCmdMissionStartPhase2Ack(%client, %seq, %playerDB)
+        /// {
+        ///    // Make sure to ignore calls from a previous mission load
+        ///    if (%seq != $missionSequence || !$MissionRunning)
+        ///       return;
+        ///    if (%client.currentPhase != 1.5)
+        ///       return;
+        ///    %client.currentPhase = 2;
+        /// 
+        ///    // Set the player datablock choice
+        ///    %client.playerDB = %playerDB;
+        /// 
+        ///    // Update mod paths, this needs to get there before the objects.
+        ///    %client.transmitPaths();
+        /// 
+        ///    // Start ghosting objects to the client
+        ///    %client.activateGhosting();
+        /// }
+        /// </code>
+        /// <see cref="" />
         public void ActivateGhosting() {
              InternalUnsafeMethods.ActivateGhosting__Args _args = new InternalUnsafeMethods.ActivateGhosting__Args() {
              };
              InternalUnsafeMethods.ActivateGhosting()(ObjectPtr, _args);
         }
 
+        /// <summary>Sent by the server during phase 1 of the mission download to send the datablocks to the client.</summary>
+        /// <description>
+        /// SimDataBlocks, also known as just datablocks, need to be transmitted to the client prior to the client entering the game world.  These represent the static data that most objects in the world reference.  This is typically done during the standard mission start phase 1 when following Torque's example mission startup sequence.
+        /// 
+        /// When the datablocks have all been transmitted, onDataBlocksDone() is called to move the mission start process to the next phase.
+        /// </description>
+        /// <param name="sequence">The sequence is common between the server and client and ensures that the client is acting on the most recent mission start process.  If an errant network packet (one that was lost but has now been found) is received by the client with an incorrect sequence, it is just ignored.  This sequence number is updated on the server every time a mission is loaded.</param>
+        /// <code>
+        /// function serverCmdMissionStartPhase1Ack(%client, %seq)
+        /// {
+        ///    // Make sure to ignore calls from a previous mission load
+        ///    if (%seq != $missionSequence || !$MissionRunning)
+        ///       return;
+        ///    if (%client.currentPhase != 0)
+        ///       return;
+        ///    %client.currentPhase = 1;
+        /// 
+        ///    // Start with the CRC
+        ///    %client.setMissionCRC( $missionCRC );
+        /// 
+        ///    // Send over the datablocks...
+        ///    // OnDataBlocksDone will get called when have confirmation
+        ///    // that they've all been received.
+        ///    %client.transmitDataBlocks($missionSequence);
+        /// }
+        /// </code>
+        /// <see cref="GameConnection::onDataBlocksDone()" />
         public void TransmitDataBlocks(int sequence) {
              InternalUnsafeMethods.TransmitDataBlocks__Args _args = new InternalUnsafeMethods.TransmitDataBlocks__Args() {
                 sequence = sequence,
@@ -1653,6 +1962,14 @@ location.Free();             return _engineResult;
              InternalUnsafeMethods.TransmitDataBlocks()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (const char* args)
+        /// </description>
+        /// <summary>On the client, pass along a variable set of parameters to the server.</summary>
+        /// <description>
+        /// Once the connection is established with the server, the server calls its onConnect() method with the client's passed in parameters as aruments.
+        /// </description>
+        /// <see cref="GameConnection::onConnect()" />
         public void SetConnectArgs(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -1668,6 +1985,12 @@ location.Free();             return _engineResult;
 
         }
 
+        /// <summary>On the client, set the password that will be passed to the server.</summary>
+        /// <description>
+        /// On the server, this password is compared with what is stored in $pref::Server::Password.  If $pref::Server::Password is empty then the client's sent password is ignored.  Otherwise, if the passed in client password and the server password do not match, the CHR_PASSWORD error string is sent back to the client and the connection is immediately terminated.
+        /// 
+        /// This password checking is performed quite early on in the connection request process so as to minimize the impact of multiple failed attempts -- also known as hacking.
+        /// </description>
         public void SetJoinPassword(string password) {
              InternalUnsafeMethods.SetJoinPassword__Args _args = new InternalUnsafeMethods.SetJoinPassword__Args() {
                 password = password,
@@ -1675,6 +1998,11 @@ location.Free();             return _engineResult;
              InternalUnsafeMethods.SetJoinPassword()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the client when the damage flash or white out states change.</summary>
+        /// <description>
+        /// When the server changes the damage flash or white out values, this callback is called either is on or both are off.  Typically this is used to enable the flash postFx.
+        /// </description>
+        /// <param name="state">Set to true if either the damage flash or white out conditions are active.</param>
         public virtual void OnFlash(bool state) {
              InternalUnsafeMethods.OnFlash__Args _args = new InternalUnsafeMethods.OnFlash__Args() {
                 state = state,
@@ -1682,6 +2010,12 @@ location.Free();             return _engineResult;
              InternalUnsafeMethods.OnFlash()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the server when all datablocks has been sent to the client.</summary>
+        /// <description>
+        /// During phase 1 of the mission download, all datablocks are sent from the server to the client.  Once all datablocks have been sent, this callback is called and the mission download procedure may move on to the next phase.
+        /// </description>
+        /// <param name="sequence">The sequence is common between the server and client and ensures that the client is acting on the most recent mission start process.  If an errant network packet (one that was lost but has now been found) is received by the client with an incorrect sequence, it is just ignored.  This sequence number is updated on the server every time a mission is loaded.</param>
+        /// <see cref="GameConnection::transmitDataBlocks()" />
         public virtual void OnDataBlocksDone(uint sequence) {
              InternalUnsafeMethods.OnDataBlocksDone__Args _args = new InternalUnsafeMethods.OnDataBlocksDone__Args() {
                 sequence = sequence,
@@ -1689,6 +2023,11 @@ location.Free();             return _engineResult;
              InternalUnsafeMethods.OnDataBlocksDone()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the client to display the lag icon.</summary>
+        /// <description>
+        /// When the connection with the server is lagging, this callback is called to allow the game GUI to display some indicator to the player.
+        /// </description>
+        /// <param name="state">Set to true if the lag icon should be displayed.</param>
         public virtual void SetLagIcon(bool state) {
              InternalUnsafeMethods.SetLagIcon__Args _args = new InternalUnsafeMethods.SetLagIcon__Args() {
                 state = state,
@@ -1696,18 +2035,31 @@ location.Free();             return _engineResult;
              InternalUnsafeMethods.SetLagIcon()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the client when the control object has been changed by the server.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public virtual void OnControlObjectChange() {
              InternalUnsafeMethods.OnControlObjectChange__Args _args = new InternalUnsafeMethods.OnControlObjectChange__Args() {
              };
              InternalUnsafeMethods.OnControlObjectChange()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the client when the first control object has been set by the server and we are now ready to go.</summary>
+        /// <description>
+        /// A common action to perform when this callback is called is to switch the GUI canvas from the loading screen and over to the 3D game GUI.
+        /// </description>
         public virtual void InitialControlSet() {
              InternalUnsafeMethods.InitialControlSet__Args _args = new InternalUnsafeMethods.InitialControlSet__Args() {
              };
              InternalUnsafeMethods.InitialControlSet()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the server when the client's connection has been dropped.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="disconnectReason">The reason why the connection was dropped.</param>
         public virtual void OnDrop(string disconnectReason) {
              InternalUnsafeMethods.OnDrop__Args _args = new InternalUnsafeMethods.OnDrop__Args() {
                 disconnectReason = disconnectReason,
@@ -1715,6 +2067,11 @@ location.Free();             return _engineResult;
              InternalUnsafeMethods.OnDrop()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the client when there is an error with the connection to the server.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="errorString">The connection error text.</param>
         public virtual void OnConnectionError(string errorString) {
              InternalUnsafeMethods.OnConnectionError__Args _args = new InternalUnsafeMethods.OnConnectionError__Args() {
                 errorString = errorString,
@@ -1722,6 +2079,11 @@ location.Free();             return _engineResult;
              InternalUnsafeMethods.OnConnectionError()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the client when the connection to the server has been rejected.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="reason">The reason why the connection request was rejected.</param>
         public virtual void OnConnectRequestRejected(string reason) {
              InternalUnsafeMethods.OnConnectRequestRejected__Args _args = new InternalUnsafeMethods.OnConnectRequestRejected__Args() {
                 reason = reason,
@@ -1729,6 +2091,11 @@ location.Free();             return _engineResult;
              InternalUnsafeMethods.OnConnectRequestRejected()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the client when the connection to the server has been dropped.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="reason">The reason why the connection was dropped.</param>
         public virtual void OnConnectionDropped(string reason) {
              InternalUnsafeMethods.OnConnectionDropped__Args _args = new InternalUnsafeMethods.OnConnectionDropped__Args() {
                 reason = reason,
@@ -1736,24 +2103,40 @@ location.Free();             return _engineResult;
              InternalUnsafeMethods.OnConnectionDropped()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when connection attempts have timed out.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public virtual void OnConnectRequestTimedOut() {
              InternalUnsafeMethods.OnConnectRequestTimedOut__Args _args = new InternalUnsafeMethods.OnConnectRequestTimedOut__Args() {
              };
              InternalUnsafeMethods.OnConnectRequestTimedOut()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the client when the connection to the server has been established.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public virtual void OnConnectionAccepted() {
              InternalUnsafeMethods.OnConnectionAccepted__Args _args = new InternalUnsafeMethods.OnConnectionAccepted__Args() {
              };
              InternalUnsafeMethods.OnConnectionAccepted()(ObjectPtr, _args);
         }
 
+        /// <summary>Called on the client when the connection to the server times out.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public virtual void OnConnectionTimedOut() {
              InternalUnsafeMethods.OnConnectionTimedOut__Args _args = new InternalUnsafeMethods.OnConnectionTimedOut__Args() {
              };
              InternalUnsafeMethods.OnConnectionTimedOut()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GameConnection class.
+        /// </description>
+        /// <returns>The type info object for GameConnection</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

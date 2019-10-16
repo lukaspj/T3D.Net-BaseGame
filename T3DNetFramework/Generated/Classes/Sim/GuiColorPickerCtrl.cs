@@ -14,7 +14,14 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Editor GUI used for picking a LinearColorF from a palette.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <remarks> Editor use only.
+    /// 
+    /// </remarks>
     public unsafe class GuiColorPickerCtrl : GuiControl {
         public GuiColorPickerCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -181,6 +188,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Sets the current position of the selector based on a color.n
+        /// </description>
+        /// <param name="color">Color to look for.n</param>
         public void SetSelectorColor(LinearColorF color) {
 color.Alloc();             InternalUnsafeMethods.SetSelectorColor__Args _args = new InternalUnsafeMethods.SetSelectorColor__Args() {
                 color = color.internalStructPtr,
@@ -188,12 +199,18 @@ color.Alloc();             InternalUnsafeMethods.SetSelectorColor__Args _args = 
              InternalUnsafeMethods.SetSelectorColor()(ObjectPtr, _args);
 color.Free();        }
 
+        /// <description>
+        /// Forces update of pick color
+        /// </description>
         public void UpdateColor() {
              InternalUnsafeMethods.UpdateColor__Args _args = new InternalUnsafeMethods.UpdateColor__Args() {
              };
              InternalUnsafeMethods.UpdateColor()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets the current position of the selector
+        /// </description>
         public void SetSelectorPos(Point2I newPos) {
 newPos.Alloc();             InternalUnsafeMethods.SetSelectorPos__Args _args = new InternalUnsafeMethods.SetSelectorPos__Args() {
                 newPos = newPos.internalStructPtr,
@@ -201,6 +218,9 @@ newPos.Alloc();             InternalUnsafeMethods.SetSelectorPos__Args _args = n
              InternalUnsafeMethods.SetSelectorPos()(ObjectPtr, _args);
 newPos.Free();        }
 
+        /// <description>
+        /// Gets the current position of the selector
+        /// </description>
         public Point2I GetSelectorPos() {
              InternalUnsafeMethods.GetSelectorPos__Args _args = new InternalUnsafeMethods.GetSelectorPos__Args() {
              };
@@ -208,6 +228,10 @@ newPos.Free();        }
              return new Point2I(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiColorPickerCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiColorPickerCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -215,31 +239,55 @@ newPos.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public LinearColorF BaseColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("baseColor"));
             set => SetFieldValue("baseColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public LinearColorF PickColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("pickColor"));
             set => SetFieldValue("pickColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int SelectorGap {
             get => GenericMarshal.StringTo<int>(GetFieldValue("selectorGap"));
             set => SetFieldValue("selectorGap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public GuiColorPickMode DisplayMode {
             get => GenericMarshal.StringTo<GuiColorPickMode>(GetFieldValue("displayMode"));
             set => SetFieldValue("displayMode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ActionOnMove {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("actionOnMove"));
             set => SetFieldValue("actionOnMove", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ShowReticle {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showReticle"));
             set => SetFieldValue("showReticle", GenericMarshal.ToString(value));

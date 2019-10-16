@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class TriggerComponent : Component {
         public TriggerComponent(bool pRegister = false) 
             : base(pRegister) {
@@ -248,6 +249,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public void VisualizeFrustums(float renderTime = 1000f) {
              InternalUnsafeMethods.VisualizeFrustums__Args _args = new InternalUnsafeMethods.VisualizeFrustums__Args() {
                 renderTime = renderTime,
@@ -255,6 +264,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.VisualizeFrustums()(ObjectPtr, _args);
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public void RemoveClient(int clientID = -1) {
              InternalUnsafeMethods.RemoveClient__Args _args = new InternalUnsafeMethods.RemoveClient__Args() {
                 clientID = clientID,
@@ -262,6 +279,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveClient()(ObjectPtr, _args);
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public void AddClient(int clientID = -1) {
              InternalUnsafeMethods.AddClient__Args _args = new InternalUnsafeMethods.AddClient__Args() {
                 clientID = clientID,
@@ -269,6 +294,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddClient()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the TriggerComponent class.
+        /// </description>
+        /// <returns>The type info object for TriggerComponent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -276,6 +305,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <summary>Called when an object enters the volume of the Trigger instance using this TriggerData.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="trigger">the Trigger instance whose volume the object entered</param>
+        /// <param name="obj">the object that entered the volume of the Trigger instance</param>
         public virtual void OnUpdateOutOfView(Entity cameraEnt) {
              InternalUnsafeMethods.OnUpdateOutOfView__Args _args = new InternalUnsafeMethods.OnUpdateOutOfView__Args() {
                 cameraEnt = cameraEnt.ObjectPtr,
@@ -283,6 +318,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnUpdateOutOfView()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when an object enters the volume of the Trigger instance using this TriggerData.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="trigger">the Trigger instance whose volume the object entered</param>
+        /// <param name="obj">the object that entered the volume of the Trigger instance</param>
         public virtual void OnUpdateInView(Entity cameraEnt) {
              InternalUnsafeMethods.OnUpdateInView__Args _args = new InternalUnsafeMethods.OnUpdateInView__Args() {
                 cameraEnt = cameraEnt.ObjectPtr,
@@ -290,6 +331,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnUpdateInView()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when an object enters the volume of the Trigger instance using this TriggerData.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="trigger">the Trigger instance whose volume the object entered</param>
+        /// <param name="obj">the object that entered the volume of the Trigger instance</param>
         public virtual void OnExitView(Entity cameraEnt) {
              InternalUnsafeMethods.OnExitView__Args _args = new InternalUnsafeMethods.OnExitView__Args() {
                 cameraEnt = cameraEnt.ObjectPtr,
@@ -297,6 +344,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnExitView()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when an object enters the volume of the Trigger instance using this TriggerData.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="trigger">the Trigger instance whose volume the object entered</param>
+        /// <param name="obj">the object that entered the volume of the Trigger instance</param>
         public virtual void OnEnterView(Entity cameraEnt, bool firstTimeSeeing) {
              InternalUnsafeMethods.OnEnterView__Args _args = new InternalUnsafeMethods.OnEnterView__Args() {
                 cameraEnt = cameraEnt.ObjectPtr,
@@ -305,21 +358,37 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnEnterView()(ObjectPtr, _args);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool Visibile {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("visibile"));
             set => SetFieldValue("visibile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string OnEnterViewCmd {
             get => GenericMarshal.StringTo<string>(GetFieldValue("onEnterViewCmd"));
             set => SetFieldValue("onEnterViewCmd", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string OnExitViewCmd {
             get => GenericMarshal.StringTo<string>(GetFieldValue("onExitViewCmd"));
             set => SetFieldValue("onExitViewCmd", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string OnUpdateInViewCmd {
             get => GenericMarshal.StringTo<string>(GetFieldValue("onUpdateInViewCmd"));
             set => SetFieldValue("onUpdateInViewCmd", GenericMarshal.ToString(value));

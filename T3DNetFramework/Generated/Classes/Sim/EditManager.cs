@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>For Editor use only, deprecated</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class EditManager : GuiControl {
         public EditManager(bool pRegister = false) 
             : base(pRegister) {
@@ -202,6 +206,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Return the value of gEditingMission.
+        /// </description>
         public bool IsEditorEnabled() {
              InternalUnsafeMethods.IsEditorEnabled__Args _args = new InternalUnsafeMethods.IsEditorEnabled__Args() {
              };
@@ -209,18 +216,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Perform the onEditorDisabled callback on all SimObjects and set gEditingMission false
+        /// </description>
         public void EditorDisabled() {
              InternalUnsafeMethods.EditorDisabled__Args _args = new InternalUnsafeMethods.EditorDisabled__Args() {
              };
              InternalUnsafeMethods.EditorDisabled()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Perform the onEditorEnabled callback on all SimObjects and set gEditingMission true
+        /// </description>
         public void EditorEnabled() {
              InternalUnsafeMethods.EditorEnabled__Args _args = new InternalUnsafeMethods.EditorEnabled__Args() {
              };
              InternalUnsafeMethods.EditorEnabled()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int slot)
+        /// </description>
         public void GotoBookmark(int val) {
              InternalUnsafeMethods.GotoBookmark__Args _args = new InternalUnsafeMethods.GotoBookmark__Args() {
                 val = val,
@@ -228,6 +244,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.GotoBookmark()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int slot)
+        /// </description>
         public void SetBookmark(int val) {
              InternalUnsafeMethods.SetBookmark__Args _args = new InternalUnsafeMethods.SetBookmark__Args() {
                 val = val,
@@ -235,6 +254,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetBookmark()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the EditManager class.
+        /// </description>
+        /// <returns>The type info object for EditManager</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

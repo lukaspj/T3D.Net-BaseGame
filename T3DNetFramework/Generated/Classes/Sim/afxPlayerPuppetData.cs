@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Player Puppet effect.</summary>
+    /// <description>
+    /// Player Puppet effects are defined using the afxPlayerPuppetData datablock and are used to control the movement of Player objects with the AFX constraint system. The Player Puppet effect is similar to the Player Movement effect, but where movement effects 'steer' the player using the same mechanisms that allow Player control from mouse and keyboard input, Player Puppet effects totally take over a Player's transformation using the AFX constraint system.
+    /// 
+    /// Player Puppet can be configured to directly move a Player's client ghosts as well as its server instance. When doing this, it is important to keep the general motion of the Player object and its ghosts somewhat consistent. Otherwise, obvious discontinuities in the motion will result when the Player Puppet ends and control is restored to the server Player.
+    /// </description>
     public unsafe class afxPlayerPuppetData : GameBaseData {
         public afxPlayerPuppetData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxPlayerPuppetData class.
+        /// </description>
+        /// <returns>The type info object for afxPlayerPuppetData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +116,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string ObjectSpec {
             get => GenericMarshal.StringTo<string>(GetFieldValue("objectSpec"));
             set => SetFieldValue("objectSpec", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public sbyte Networking {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("networking"));
             set => SetFieldValue("networking", GenericMarshal.ToString(value));

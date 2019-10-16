@@ -14,7 +14,30 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control that allows to select a value from a drop-down list.</summary>
+    /// <description>
+    /// For a nearly identical GUI with additional features, use GuiPopUpMenuCtrlEx.
+    /// </description>
+    /// <code>
+    /// new GuiPopUpMenuCtrl()
+    /// {
+    ///   maxPopupHeight = "200";
+    ///   sbUsesNAColor = "0";
+    ///   reverseTextList = "0";
+    ///   bitmapBounds = "16 16";
+    ///   maxLength = "1024";
+    ///   position = "56 31";
+    ///   extent = "64 64";
+    ///   minExtent = "8 2";
+    ///   profile = "GuiPopUpMenuProfile";
+    ///   tooltipProfile = "GuiToolTipProfile";
+    /// };
+    /// </code>
+    /// <remarks> This is definitely going to be deprecated soon.
+    /// 
+    /// </remarks>
+    /// <see cref="GuiPopUpMenuCtrlEx for more features and better explanations." />
     public unsafe class GuiPopUpMenuCtrl : GuiTextCtrl {
         public GuiPopUpMenuCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -507,6 +530,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// (S32 entry)
+        /// </description>
         public void ClearEntry(int entry) {
              InternalUnsafeMethods.ClearEntry__Args _args = new InternalUnsafeMethods.ClearEntry__Args() {
                 entry = entry,
@@ -514,6 +540,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ClearEntry()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (bool doReplaceText)
+        /// </description>
         public void ReplaceText(bool doReplaceText) {
              InternalUnsafeMethods.ReplaceText__Args _args = new InternalUnsafeMethods.ReplaceText__Args() {
                 doReplaceText = doReplaceText,
@@ -521,6 +550,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ReplaceText()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the size of the menu - the number of entries in it.
+        /// </description>
         public int Size() {
              InternalUnsafeMethods.Size__Args _args = new InternalUnsafeMethods.Size__Args() {
              };
@@ -528,6 +560,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string text)Returns the position of the first entry containing the specified text or -1 if not found.
+        /// </description>
         public int FindText(string text) {
              InternalUnsafeMethods.FindText__Args _args = new InternalUnsafeMethods.FindText__Args() {
                 text = text,
@@ -536,6 +571,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string class, string enum)This fills the popup with a classrep's field enumeration type info.
+        /// 
+        /// More of a helper function than anything.   If console access to the field list is added, at least for the enumerated types, then this should go away..
+        /// </description>
         public void SetEnumContent(string className, string enumName) {
              InternalUnsafeMethods.SetEnumContent__Args _args = new InternalUnsafeMethods.SetEnumContent__Args() {
                 className = className,
@@ -544,6 +584,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetEnumContent()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( int id, string text )
+        /// </description>
         public void ChangeTextById(int id, string text) {
              InternalUnsafeMethods.ChangeTextById__Args _args = new InternalUnsafeMethods.ChangeTextById__Args() {
                 id = id,
@@ -552,6 +595,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ChangeTextById()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int id)
+        /// </description>
         public string GetTextById(int id) {
              InternalUnsafeMethods.GetTextById__Args _args = new InternalUnsafeMethods.GetTextById__Args() {
                 id = id,
@@ -560,12 +606,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// 
         public void SetNoneSelected() {
              InternalUnsafeMethods.SetNoneSelected__Args _args = new InternalUnsafeMethods.SetNoneSelected__Args() {
              };
              InternalUnsafeMethods.SetNoneSelected()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ([scriptCallback=true])
+        /// </description>
         public void SetFirstSelected(bool scriptCallback = true) {
              InternalUnsafeMethods.SetFirstSelected__Args _args = new InternalUnsafeMethods.SetFirstSelected__Args() {
                 scriptCallback = scriptCallback,
@@ -573,6 +623,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetFirstSelected()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int id, [scriptCallback=true])
+        /// </description>
         public void SetSelected(int id, bool scriptCallback = true) {
              InternalUnsafeMethods.SetSelected__Args _args = new InternalUnsafeMethods.SetSelected__Args() {
                 id = id,
@@ -581,6 +634,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSelected()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Gets the selected index
+        /// </description>
         public int GetSelected() {
              InternalUnsafeMethods.GetSelected__Args _args = new InternalUnsafeMethods.GetSelected__Args() {
              };
@@ -588,36 +644,48 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public void ForceClose() {
              InternalUnsafeMethods.ForceClose__Args _args = new InternalUnsafeMethods.ForceClose__Args() {
              };
              InternalUnsafeMethods.ForceClose()(ObjectPtr, _args);
         }
 
+        /// 
         public void ForceOnAction() {
              InternalUnsafeMethods.ForceOnAction__Args _args = new InternalUnsafeMethods.ForceOnAction__Args() {
              };
              InternalUnsafeMethods.ForceOnAction()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sort the list by ID.
+        /// </description>
         public void SortID() {
              InternalUnsafeMethods.SortID__Args _args = new InternalUnsafeMethods.SortID__Args() {
              };
              InternalUnsafeMethods.SortID()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sort the list alphabetically.
+        /// </description>
         public void Sort() {
              InternalUnsafeMethods.Sort__Args _args = new InternalUnsafeMethods.Sort__Args() {
              };
              InternalUnsafeMethods.Sort()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Clear the popup list.
+        /// </description>
         public void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };
              InternalUnsafeMethods.Clear()(ObjectPtr, _args);
         }
 
+        /// 
         public string GetText() {
              InternalUnsafeMethods.GetText__Args _args = new InternalUnsafeMethods.GetText__Args() {
              };
@@ -625,6 +693,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (int id, ColorI fontColor, ColorI fontColorHL, ColorI fontColorSEL)
+        /// </description>
         public void AddScheme(uint id, ColorI fontColor, ColorI fontColorHL, ColorI fontColorSEL) {
 fontColor.Alloc();fontColorHL.Alloc();fontColorSEL.Alloc();             InternalUnsafeMethods.AddScheme__Args _args = new InternalUnsafeMethods.AddScheme__Args() {
                 id = id,
@@ -635,6 +706,9 @@ fontColor.Alloc();fontColorHL.Alloc();fontColorSEL.Alloc();             Internal
              InternalUnsafeMethods.AddScheme()(ObjectPtr, _args);
 fontColor.Free();fontColorHL.Free();fontColorSEL.Free();        }
 
+        /// <description>
+        /// (string name, int idNum, int scheme=0)
+        /// </description>
         public void Add(string name = "", int idNum = -1, uint scheme = 0) {
              InternalUnsafeMethods.Add__Args _args = new InternalUnsafeMethods.Add__Args() {
                 name = name,
@@ -644,6 +718,10 @@ fontColor.Free();fontColorHL.Free();fontColorSEL.Free();        }
              InternalUnsafeMethods.Add()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiPopUpMenuCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiPopUpMenuCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -651,26 +729,46 @@ fontColor.Free();fontColorHL.Free();fontColorSEL.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int MaxPopupHeight {
             get => GenericMarshal.StringTo<int>(GetFieldValue("maxPopupHeight"));
             set => SetFieldValue("maxPopupHeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool SbUsesNAColor {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("sbUsesNAColor"));
             set => SetFieldValue("sbUsesNAColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ReverseTextList {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("reverseTextList"));
             set => SetFieldValue("reverseTextList", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string Bitmap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("bitmap"));
             set => SetFieldValue("bitmap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point2I BitmapBounds {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("bitmapBounds"));
             set => SetFieldValue("bitmapBounds", GenericMarshal.ToString(value));

@@ -14,7 +14,23 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A list of text items.</summary>
+    /// <description>
+    /// A list of text items where each individual entry can have its own text value, text color and associated SimObject.
+    /// </description>
+    /// <code>
+    /// new GuiListBoxCtrl(GuiMusicPlayerMusicList)
+    /// {
+    ///    allowMultipleSelections = "true";
+    ///    fitParentWidth = "true";
+    ///    mirrorSet = "AnotherGuiListBoxCtrl";
+    ///    makeNameCallback = "";
+    ///    colorBullet = "1";
+    ///    //Properties not specific to this control have been omitted from this example.
+    /// };
+    /// </code>
+    /// <see cref="GuiControl" />
     public unsafe class GuiListBoxCtrl : GuiControl {
         public GuiListBoxCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -788,6 +804,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Removes an item of the entered name from the filtered items list.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="itemName">Name of the item to remove from the filtered list.</param>
+        /// <code>
+        /// // Define the itemName that you wish to remove.
+        /// %itemName = "This Item Name";
+        /// 
+        /// // Remove the itemName from the GuiListBoxCtrl
+        /// %thisGuiListBoxCtrl.removeFilteredItem(%itemName);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void RemoveFilteredItem(string itemName) {
              InternalUnsafeMethods.RemoveFilteredItem__Args _args = new InternalUnsafeMethods.RemoveFilteredItem__Args() {
                 itemName = itemName,
@@ -795,6 +824,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveFilteredItem()(ObjectPtr, _args);
         }
 
+        /// <summary>Checks if there is an item with the exact text of what is passed in, and if so</summary>
+        /// <description>
+        /// the item is removed from the list and adds that item's data to the filtered list.
+        /// </description>
+        /// <param name="itemName">Name of the item that we wish to add to the filtered item list of the GuiListBoxCtrl.</param>
+        /// <code>
+        /// // Define the itemName that we wish to add to the filtered item list.
+        /// %itemName = "This Item Name";
+        /// 
+        /// // Add the item name to the filtered item list.
+        /// %thisGuiListBoxCtrl.addFilteredItem(%filteredItemName);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void AddFilteredItem(string newItem) {
              InternalUnsafeMethods.AddFilteredItem__Args _args = new InternalUnsafeMethods.AddFilteredItem__Args() {
                 newItem = newItem,
@@ -802,12 +844,31 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddFilteredItem()(ObjectPtr, _args);
         }
 
+        /// <summary>Informs the GuiListBoxCtrl object to mirror the contents of the GuiListBoxCtrl stored in the mirrorSet field.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// \ Inform the object to mirror the object located at %thisGuiListBox.mirrorSet
+        /// %thisGuiListBox.doMirror();
+        /// </code>
+        /// <see cref="GuiCore" />
         public void DoMirror() {
              InternalUnsafeMethods.DoMirror__Args _args = new InternalUnsafeMethods.DoMirror__Args() {
              };
              InternalUnsafeMethods.DoMirror()(ObjectPtr, _args);
         }
 
+        /// <summary>Request the item index for the item that was last clicked.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Request the item index for the last clicked item in the list
+        /// %lastClickedIndex = %thisGuiListBoxCtrl.getLastClickItem();
+        /// </code>
+        /// <returns>Index id for the last clicked item in the list.</returns>
+        /// <see cref="GuiControl" />
         public int GetLastClickItem() {
              InternalUnsafeMethods.GetLastClickItem__Args _args = new InternalUnsafeMethods.GetLastClickItem__Args() {
              };
@@ -815,6 +876,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set the tooltip text to display for the given list item.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Index id to change the tooltip text</param>
+        /// <param name="text">Text for the tooltip.</param>
+        /// <code>
+        /// // Define the index id
+        /// %index = "12";
+        /// 
+        /// // Define the tooltip text
+        /// %tooltip = "Gideon's goggles can see through space and time."
+        /// 
+        /// // Inform the GuiListBoxCtrl object to set the tooltop for the item at the defined index id
+        /// %thisGuiListBoxCtrl.setItemToolTip(%index,%tooltip);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetItemTooltip(int index, string text) {
              InternalUnsafeMethods.SetItemTooltip__Args _args = new InternalUnsafeMethods.SetItemTooltip__Args() {
                 index = index,
@@ -823,6 +901,22 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetItemTooltip()(ObjectPtr, _args);
         }
 
+        /// <summary>Sets the items text at the specified index.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Index id to set the item text at.</param>
+        /// <param name="newtext">Text to change the list item at index id to.</param>
+        /// <code>
+        /// // Define the index id/n%index = "12";
+        /// 
+        /// // Define the text to set the list item to
+        /// %newtext = "Gideon's Fancy Goggles";
+        /// 
+        /// // Inform the GuiListBoxCtrl object to change the text at the requested index
+        /// %thisGuiListBoxCtrl.setItemText(%index,%newText);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetItemText(int index, string newtext) {
              InternalUnsafeMethods.SetItemText__Args _args = new InternalUnsafeMethods.SetItemText__Args() {
                 index = index,
@@ -831,6 +925,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetItemText()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns the object associated with an item. This only makes sense if you are mirroring a simset.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Index id to request the associated item from.</param>
+        /// <code>
+        /// // Define the index id
+        /// %index = "12";
+        /// 
+        /// // Request the item from the GuiListBoxCtrl object
+        /// %object = %thisGuiListBoxCtrl.getItemObject(%index);
+        /// </code>
+        /// <returns>The object associated with the item in the list.</returns>
+        /// <see cref="References" />
         public string GetItemObject(int index) {
              InternalUnsafeMethods.GetItemObject__Args _args = new InternalUnsafeMethods.GetItemObject__Args() {
                 index = index,
@@ -839,6 +947,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns the text of the item at the specified index.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Index id to return the item text from.</param>
+        /// <code>
+        /// // Define the index id entry to request the text from
+        /// %index = "12";
+        /// 
+        /// // Request the item id text from the GuiListBoxCtrl object.
+        /// %text = %thisGuiListBoxCtrl.getItemText(%index);
+        /// </code>
+        /// <returns>The text of the requested index id.</returns>
+        /// <see cref="GuiControl" />
         public string GetItemText(int index) {
              InternalUnsafeMethods.GetItemText__Args _args = new InternalUnsafeMethods.GetItemText__Args() {
                 index = index,
@@ -847,6 +969,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Removes the list entry at the requested index id from the control and clears the memory associated with it.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="itemIndex">Index id location to remove the item from.</param>
+        /// <code>
+        /// // Define the index id we want to remove from the list
+        /// %itemIndex = "8";
+        /// 
+        /// // Inform the GuiListBoxCtrl object to remove the item at the defined index id.
+        /// %thisGuiListBoxCtrl.deleteItem(%itemIndex);
+        /// </code>
+        /// <see cref="References" />
         public void DeleteItem(int itemIndex) {
              InternalUnsafeMethods.DeleteItem__Args _args = new InternalUnsafeMethods.DeleteItem__Args() {
                 itemIndex = itemIndex,
@@ -854,6 +989,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.DeleteItem()(ObjectPtr, _args);
         }
 
+        /// <summary>Inserts an item into the list at the specified index and returns the index assigned or -1 on error.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="text">Text item to add.</param>
+        /// <param name="index">Index id to insert the list item text at.</param>
+        /// <code>
+        /// // Define the text to insert
+        /// %text = "Secret Agent Gideon";
+        /// 
+        /// // Define the index entry to insert the text at
+        /// %index = "14";
+        /// 
+        /// // In form the GuiListBoxCtrl object to insert the text at the defined index.
+        /// %assignedId = %thisGuiListBoxCtrl.insertItem(%text,%index);
+        /// </code>
+        /// <returns>If successful will return the index id assigned. If unsuccessful, will return -1.</returns>
+        /// <see cref="GuiControl" />
         public void InsertItem(string text, int index) {
              InternalUnsafeMethods.InsertItem__Args _args = new InternalUnsafeMethods.InsertItem__Args() {
                 text = text,
@@ -862,6 +1015,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.InsertItem()(ObjectPtr, _args);
         }
 
+        /// <summary>Removes any custom coloring from an item at the defined index id in the list.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Index id for the item to clear any custom color from.</param>
+        /// <code>
+        /// // Define the index id
+        /// %index = "4";
+        /// 
+        /// // Request the GuiListBoxCtrl object to remove any custom coloring from the defined index entry
+        /// %thisGuiListBoxCtrl.clearItemColor(%index);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void ClearItemColor(int index) {
              InternalUnsafeMethods.ClearItemColor__Args _args = new InternalUnsafeMethods.ClearItemColor__Args() {
                 index = index,
@@ -869,6 +1035,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ClearItemColor()(ObjectPtr, _args);
         }
 
+        /// <summary>Sets the color of a single list entry at the specified index id.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Index id to modify the color of in the list.</param>
+        /// <param name="color">Color value to set the list entry to.</param>
+        /// <code>
+        /// // Define the index id value
+        /// %index = "5";
+        /// 
+        /// // Define the color value
+        /// %color = "1.0 0.0 0.0";
+        /// 
+        /// // Inform the GuiListBoxCtrl object to change the color of the requested index
+        /// %thisGuiListBoxCtrl.setItemColor(%index,%color);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetItemColor(int index, LinearColorF color) {
 color.Alloc();             InternalUnsafeMethods.SetItemColor__Args _args = new InternalUnsafeMethods.SetItemColor__Args() {
                 index = index,
@@ -877,6 +1060,24 @@ color.Alloc();             InternalUnsafeMethods.SetItemColor__Args _args = new 
              InternalUnsafeMethods.SetItemColor()(ObjectPtr, _args);
 color.Free();        }
 
+        /// <summary>Adds an item to the end of the list with an optional color.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="newItem">New item to add to the list.</param>
+        /// <param name="color">Optional color parameter to add to the new item.</param>
+        /// <code>
+        /// // Define the item to add to the list.
+        /// %newItem = "Gideon's Blue Coat";
+        /// 
+        /// // Define the optional color for the new list item.
+        /// %color = "0.0 0.0 1.0";
+        /// 
+        /// // Inform the GuiListBoxCtrl object to add the item to the end of the list with the defined color.
+        /// %thisGuiListBoxCtrl.addItem(%newItem,%color);
+        /// </code>
+        /// <returns>If not void, return value and description</returns>
+        /// <see cref="GuiControl" />
         public int AddItem(string newItem, string color = "") {
              InternalUnsafeMethods.AddItem__Args _args = new InternalUnsafeMethods.AddItem__Args() {
                 newItem = newItem,
@@ -886,6 +1087,23 @@ color.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Sets the current selection range from index start to stop. If no stop is specified it sets from start index to the end of the list</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="indexStart">Index Id to start selection.</param>
+        /// <param name="indexStop">Index Id to end selection.</param>
+        /// <code>
+        /// // Set start id
+        /// %indexStart = "3";
+        /// 
+        /// // Set end id
+        /// %indexEnd = "6";
+        /// 
+        /// // Request the GuiListBoxCtrl object to select the defined range.
+        /// %thisGuiListBoxCtrl.setCurSelRange(%indexStart,%indexEnd);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetCurSelRange(int indexStart, int indexStop = 999999) {
              InternalUnsafeMethods.SetCurSelRange__Args _args = new InternalUnsafeMethods.SetCurSelRange__Args() {
                 indexStart = indexStart,
@@ -894,6 +1112,19 @@ color.Free();        }
              InternalUnsafeMethods.SetCurSelRange()(ObjectPtr, _args);
         }
 
+        /// <summary>Sets the currently selected item at the specified index.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="indexId">Index Id to set selected.</param>
+        /// <code>
+        /// // Define the index id that we wish to select.
+        /// %selectId = "4";
+        /// 
+        /// // Inform the GuiListBoxCtrl object to set the requested index as selected.
+        /// %thisGuiListBoxCtrl.setCurSel(%selectId);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetCurSel(int indexId) {
              InternalUnsafeMethods.SetCurSel__Args _args = new InternalUnsafeMethods.SetCurSel__Args() {
                 indexId = indexId,
@@ -901,6 +1132,22 @@ color.Free();        }
              InternalUnsafeMethods.SetCurSel()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns index of item with matching text or -1 if none found.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="findText">Text in the list to find.</param>
+        /// <param name="isCaseSensitive">If true, the search will be case sensitive.</param>
+        /// <code>
+        /// // Define the text we wish to find in the list.
+        /// %findText = "Hickory Smoked Gideon"/n/n// Define if this is a case sensitive search or not.
+        /// %isCaseSensitive = "false";
+        /// 
+        /// // Ask the GuiListBoxCtrl object what item id in the list matches the requested text.
+        /// %matchingId = %thisGuiListBoxCtrl.findItemText(%findText,%isCaseSensitive);
+        /// </code>
+        /// <returns>Index id of item with matching text or -1 if none found.</returns>
+        /// <see cref="GuiControl" />
         public int FindItemText(string findText, bool bCaseSensitive = false) {
              InternalUnsafeMethods.FindItemText__Args _args = new InternalUnsafeMethods.FindItemText__Args() {
                 findText = findText,
@@ -910,6 +1157,16 @@ color.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Returns a space delimited list of the selected items indexes in the list.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Request a space delimited list of the items in the GuiListBoxCtrl object.
+        /// %selectionList = %thisGuiListBoxCtrl.getSelectedItems();
+        /// </code>
+        /// <returns>Space delimited list of the selected items indexes in the list</returns>
+        /// <see cref="GuiControl" />
         public string GetSelectedItems() {
              InternalUnsafeMethods.GetSelectedItems__Args _args = new InternalUnsafeMethods.GetSelectedItems__Args() {
              };
@@ -917,6 +1174,16 @@ color.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns the selected items index or -1 if none selected. If multiple selections exist it returns the first selected item.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Request the index id of the currently selected item
+        /// %selectedItemId = %thisGuiListBoxCtrl.getSelectedItem();
+        /// </code>
+        /// <returns>The selected items index or -1 if none selected.</returns>
+        /// <see cref="GuiControl" />
         public int GetSelectedItem() {
              InternalUnsafeMethods.GetSelectedItem__Args _args = new InternalUnsafeMethods.GetSelectedItem__Args() {
              };
@@ -924,6 +1191,16 @@ color.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Returns the number of items currently selected.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Request the number of currently selected items
+        /// %selectedItemCount = %thisGuiListBoxCtrl.getSelCount();
+        /// </code>
+        /// <returns>Number of currently selected items.</returns>
+        /// <see cref="GuiControl" />
         public int GetSelCount() {
              InternalUnsafeMethods.GetSelCount__Args _args = new InternalUnsafeMethods.GetSelCount__Args() {
              };
@@ -931,6 +1208,16 @@ color.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Returns the number of items in the list.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Request the number of items in the list of the GuiListBoxCtrl object.
+        /// %listItemCount = %thisGuiListBoxCtrl.getItemCount();
+        /// </code>
+        /// <returns>The number of items in the list.</returns>
+        /// <see cref="GuiControl" />
         public int GetItemCount() {
              InternalUnsafeMethods.GetItemCount__Args _args = new InternalUnsafeMethods.GetItemCount__Args() {
              };
@@ -938,6 +1225,23 @@ color.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Sets the item at the index specified to selected or not.</summary>
+        /// <description>
+        /// Detailed description
+        /// </description>
+        /// <param name="index">Item index to set selected or unselected.</param>
+        /// <param name="setSelected">Boolean selection state to set the requested item index.</param>
+        /// <code>
+        /// // Define the index
+        /// %index = "5";
+        /// 
+        /// // Define the selection state
+        /// %selected = "true"
+        /// 
+        /// // Inform the GuiListBoxCtrl object of the new selection state for the requested index entry.
+        /// %thisGuiListBoxCtrl.setSelected(%index,%selected);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetSelected(int index, bool setSelected = true) {
              InternalUnsafeMethods.SetSelected__Args _args = new InternalUnsafeMethods.SetSelected__Args() {
                 index = index,
@@ -946,18 +1250,48 @@ color.Free();        }
              InternalUnsafeMethods.SetSelected()(ObjectPtr, _args);
         }
 
+        /// <summary>Sets all currently selected items to unselected.</summary>
+        /// <description>
+        /// Detailed description
+        /// </description>
+        /// <code>
+        /// // Inform the GuiListBoxCtrl object to set all of its items to unselected./n%thisGuiListBoxCtrl.clearSelection();
+        /// </code>
+        /// <see cref="GuiControl" />
         public void ClearSelection() {
              InternalUnsafeMethods.ClearSelection__Args _args = new InternalUnsafeMethods.ClearSelection__Args() {
              };
              InternalUnsafeMethods.ClearSelection()(ObjectPtr, _args);
         }
 
+        /// <summary>Clears all the items in the listbox.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Inform the GuiListBoxCtrl object to clear all items from its list.
+        /// %thisGuiListBoxCtrl.clearItems();
+        /// </code>
+        /// <see cref="GuiControl" />
         public void ClearItems() {
              InternalUnsafeMethods.ClearItems__Args _args = new InternalUnsafeMethods.ClearItems__Args() {
              };
              InternalUnsafeMethods.ClearItems()(ObjectPtr, _args);
         }
 
+        /// <summary>Enable or disable multiple selections for this GuiListBoxCtrl object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="allowMultSelections">Boolean variable to set the use of multiple selections or not.</param>
+        /// <code>
+        /// // Define the multiple selection use state.
+        /// %allowMultSelections = "true";
+        /// 
+        /// // Set the allow  multiple selection state on the GuiListBoxCtrl object.
+        /// %thisGuiListBoxCtrl.setMultipleSelection(%allowMultSelections);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetMultipleSelection(bool allowMultSelections) {
              InternalUnsafeMethods.SetMultipleSelection__Args _args = new InternalUnsafeMethods.SetMultipleSelection__Args() {
                 allowMultSelections = allowMultSelections,
@@ -965,6 +1299,21 @@ color.Free();        }
              InternalUnsafeMethods.SetMultipleSelection()(ObjectPtr, _args);
         }
 
+        /// <summary>Checks if a list item at a defined index id is mirrored, and returns the result.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="indexIdString">Index id of the list to check.</param>
+        /// <code>
+        /// // Engine has requested of the script level to determine if a list entry is mirrored or not.
+        /// GuiListBoxCtrl::isObjectMirrored(%this, %indexIdString)
+        ///   {
+        ///      // Perform code required to check and see if the list item at the index id is mirrored or not.
+        ///      return %isMirrored;
+        ///   }
+        /// </code>
+        /// <returns>A boolean value on if the list item is mirrored or not.</returns>
+        /// <see cref="GuiControl" />
         public virtual bool IsObjectMirrored(string indexIdString) {
              InternalUnsafeMethods.IsObjectMirrored__Args _args = new InternalUnsafeMethods.IsObjectMirrored__Args() {
                 indexIdString = indexIdString,
@@ -973,12 +1322,41 @@ color.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Called whenever the Delete key on the keyboard has been pressed while in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // The delete key on the keyboard has been pressed while this control is in focus, causing the callback to occur.
+        /// GuiListBoxCtrl::onDeleteKey(%this)
+        ///   {
+        ///      // Code to call whenever the delete key is pressed
+        ///   }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnDeleteKey() {
              InternalUnsafeMethods.OnDeleteKey__Args _args = new InternalUnsafeMethods.OnDeleteKey__Args() {
              };
              InternalUnsafeMethods.OnDeleteKey()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever the mouse has previously been clicked down (onMouseDown) and has now been raised on the control.</summary>
+        /// <description>
+        /// If an item in the list was hit during the click cycle, then the index id of the clicked object along with how many clicks occured are passed
+        /// into the callback.
+        /// 
+        /// Detailed description
+        /// </description>
+        /// <param name="itemHit">Index id for the list item that was hit</param>
+        /// <param name="mouseClickCount">How many mouse clicks occured on this list item</param>
+        /// <code>
+        /// // Mouse was previously clicked down, and now has been released, causing the callback to occur.
+        /// GuiListBoxCtrl::onMouseUp(%this, %itemHit, %mouseClickCount)
+        ///   {
+        ///      // Code to call whenever the mouse has been clicked and released on the control
+        ///   }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnMouseUp(int itemHit, int mouseClickCount) {
              InternalUnsafeMethods.OnMouseUp__Args _args = new InternalUnsafeMethods.OnMouseUp__Args() {
                 itemHit = itemHit,
@@ -987,12 +1365,38 @@ color.Free();        }
              InternalUnsafeMethods.OnMouseUp()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever an item in the list has been double clicked.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // An item in the list is double clicked, causing the callback to occur.
+        /// GuiListBoxCtrl::onDoubleClick(%this)
+        ///   {
+        ///      // Code to run whenever an item in the control has been double clicked
+        ///   }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnDoubleClick() {
              InternalUnsafeMethods.OnDoubleClick__Args _args = new InternalUnsafeMethods.OnDoubleClick__Args() {
              };
              InternalUnsafeMethods.OnDoubleClick()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever an item in the list is selected.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Index id for the item in the list that was selected.</param>
+        /// <param name="itemText">Text for the list item at the index that was selected.</param>
+        /// <code>
+        /// // An item in the list is selected, causing the callback to occur
+        /// GuiListBoxCtrl::onSelect(%this, %index, %itemText)
+        ///   {
+        ///      // Code to run whenever an item in the list is selected
+        ///   }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnSelect(int index, string itemText) {
              InternalUnsafeMethods.OnSelect__Args _args = new InternalUnsafeMethods.OnSelect__Args() {
                 index = index,
@@ -1001,6 +1405,20 @@ color.Free();        }
              InternalUnsafeMethods.OnSelect()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever a selected item in the list has been unselected.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Index id of the item that was unselected</param>
+        /// <param name="itemText">Text for the list entry at the index id that was unselected</param>
+        /// <code>
+        /// // A selected item is unselected, causing the callback to occur
+        /// GuiListBoxCtrl::onUnSelect(%this, %indexId, %itemText)
+        ///   {
+        ///      // Code to run whenever a selected list item is unselected
+        ///   }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnUnSelect(int index, string itemText) {
              InternalUnsafeMethods.OnUnSelect__Args _args = new InternalUnsafeMethods.OnUnSelect__Args() {
                 index = index,
@@ -1009,18 +1427,46 @@ color.Free();        }
              InternalUnsafeMethods.OnUnSelect()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever a selected item in the list is cleared.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // A selected item is cleared, causing the callback to occur.
+        /// GuiListBoxCtrl::onClearSelection(%this)
+        ///   {
+        ///      // Code to run whenever a selected item is cleared
+        ///   }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnClearSelection() {
              InternalUnsafeMethods.OnClearSelection__Args _args = new InternalUnsafeMethods.OnClearSelection__Args() {
              };
              InternalUnsafeMethods.OnClearSelection()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever the mouse is dragged across the control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Mouse is dragged across the control, causing the callback to occur.
+        /// GuiListBoxCtrl::onMouseDragged(%this)
+        ///   {
+        ///      // Code to run whenever the mouse is dragged across the control
+        ///   }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnMouseDragged() {
              InternalUnsafeMethods.OnMouseDragged__Args _args = new InternalUnsafeMethods.OnMouseDragged__Args() {
              };
              InternalUnsafeMethods.OnMouseDragged()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiListBoxCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiListBoxCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -1028,26 +1474,56 @@ color.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, will allow the selection of multiple items in the listbox.
+        /// </description>
+        /// </value>
         public bool AllowMultipleSelections {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowMultipleSelections"));
             set => SetFieldValue("allowMultipleSelections", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the width of the listbox will match the width of its parent control.
+        /// </description>
+        /// </value>
         public bool FitParentWidth {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("fitParentWidth"));
             set => SetFieldValue("fitParentWidth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, colored items will render a colored rectangular bullet next to the item text.
+        /// </description>
+        /// </value>
         public bool ColorBullet {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("colorBullet"));
             set => SetFieldValue("colorBullet", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If populated with the name of another GuiListBoxCtrl, then this list box will mirror the contents of the mirrorSet listbox.
+        /// </description>
+        /// </value>
         public string MirrorSet {
             get => GenericMarshal.StringTo<string>(GetFieldValue("mirrorSet"));
             set => SetFieldValue("mirrorSet", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A script snippet to control what is displayed in the list for a SimObject. Within this snippet, $ThisControl is bound to the guiListBoxCtrl and $ThisObject to the contained object in question.
+        /// </description>
+        /// </value>
         public string MakeNameCallback {
             get => GenericMarshal.StringTo<string>(GetFieldValue("makeNameCallback"));
             set => SetFieldValue("makeNameCallback", GenericMarshal.ToString(value));

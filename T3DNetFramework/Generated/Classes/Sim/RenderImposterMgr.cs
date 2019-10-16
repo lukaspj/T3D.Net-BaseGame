@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A render bin for batch rendering imposters.</summary>
+    /// <description>
+    /// This render bin gathers imposter render instances and renders them in large batches.
+    /// 
+    /// You can type 'metrics( imposter )' in the console to see rendering statistics.
+    /// </description>
     public unsafe class RenderImposterMgr : RenderBinManager {
         public RenderImposterMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderImposterMgr class.
+        /// </description>
+        /// <returns>The type info object for RenderImposterMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

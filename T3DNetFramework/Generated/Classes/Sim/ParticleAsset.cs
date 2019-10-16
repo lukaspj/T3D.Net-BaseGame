@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class ParticleAsset : AssetBase {
         public ParticleAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ParticleAsset class.
+        /// </description>
+        /// <returns>The type info object for ParticleAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +111,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the script file for the particle effect
+        /// </description>
+        /// </value>
         public string ScriptFilePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("scriptFilePath"));
             set => SetFieldValue("scriptFilePath", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the datablock file
+        /// </description>
+        /// </value>
         public string DatablockFilePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("DatablockFilePath"));
             set => SetFieldValue("DatablockFilePath", GenericMarshal.ToString(value));

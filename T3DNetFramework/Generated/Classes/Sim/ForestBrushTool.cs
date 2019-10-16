@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Defines the brush properties when painting trees in Forest Editor</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class ForestBrushTool : ForestTool {
         public ForestBrushTool(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +123,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void CollectElements() {
              InternalUnsafeMethods.CollectElements__Args _args = new InternalUnsafeMethods.CollectElements__Args() {
              };
              InternalUnsafeMethods.CollectElements()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the ForestBrushTool class.
+        /// </description>
+        /// <returns>The type info object for ForestBrushTool</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -132,21 +141,43 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ForestBrushMode Mode {
             get => GenericMarshal.StringTo<ForestBrushMode>(GetFieldValue("mode"));
             set => SetFieldValue("mode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Brush Size
+        /// </description>
+        /// </value>
         public float Size {
             get => GenericMarshal.StringTo<float>(GetFieldValue("size"));
             set => SetFieldValue("size", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Brush Pressure
+        /// </description>
+        /// </value>
         public float Pressure {
             get => GenericMarshal.StringTo<float>(GetFieldValue("pressure"));
             set => SetFieldValue("pressure", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Brush Hardness
+        /// </description>
+        /// </value>
         public float Hardness {
             get => GenericMarshal.StringTo<float>(GetFieldValue("hardness"));
             set => SetFieldValue("hardness", GenericMarshal.ToString(value));

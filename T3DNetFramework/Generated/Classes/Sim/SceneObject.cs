@@ -14,7 +14,15 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A networkable object that exists in the 3D world.</summary>
+    /// <description>
+    /// The SceneObject class provides the foundation for 3D objects in the Engine.  It exposes the functionality for:
+    /// 
+    /// <ul><li>Position, rotation and scale within the world.</li><li>Working with a scene graph (in the Zone and Portal sections), allowing efficient and robust rendering of the game scene.</li><li>Various helper functions, including functions to get bounding information and momentum/velocity.</li><li>Mounting one SceneObject to another.</li><li>An interface for collision detection, as well as ray casting.</li><li>Lighting. SceneObjects can register lights both at lightmap generation time, and dynamic lights at runtime (for special effects, such as from flame or a projectile, or from an explosion).</li></ul>
+    /// 
+    /// You do not typically work with SceneObjects themselves.  The SceneObject provides a reference within the game world (the scene), but does not render to the client on its own.  The same is true of collision detection beyond that of the bounding box.  Instead you use one of the many classes that derrive from SceneObject, such as TSStatic.
+    /// </description>
     public unsafe class SceneObject : NetObject {
         public SceneObject(bool pRegister = false) 
             : base(pRegister) {
@@ -655,6 +663,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Returns the velocity of a scene-object.
+        /// </description>
         public float GetSpeed() {
              InternalUnsafeMethods.GetSpeed__Args _args = new InternalUnsafeMethods.GetSpeed__Args() {
              };
@@ -662,6 +673,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Sets the forward vector of a scene object, making it face Y+ along the new vector.
+        /// </description>
+        /// <param name="The">new forward vector to set.</param>
+        /// <param name="(Optional)">The up vector to use to help orient the rotation.</param>
         public void SetForwardVector(Point3F newForward = null, Point3F upVector = null) {
 newForward = newForward ?? new Point3F("0 0 0");
 newForward.Alloc();upVector = upVector ?? new Point3F("0 0 1");
@@ -672,6 +688,11 @@ upVector.Alloc();             InternalUnsafeMethods.SetForwardVector__Args _args
              InternalUnsafeMethods.SetForwardVector()(ObjectPtr, _args);
 newForward.Free();upVector.Free();        }
 
+        /// <description>
+        /// Check if this object has a global bounds set.
+        /// If global bounds are set to be true, then the object is assumed to have an infinitely large bounding box for collision and rendering purposes.
+        /// </description>
+        /// <returns>true if the object has a global bounds.</returns>
         public bool IsGlobalBounds() {
              InternalUnsafeMethods.IsGlobalBounds__Args _args = new InternalUnsafeMethods.IsGlobalBounds__Args() {
              };
@@ -679,6 +700,10 @@ newForward.Free();upVector.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the object's bounding box (relative to the object's origin).
+        /// </description>
+        /// <returns>six fields, two Point3Fs, containing the min and max points of the objectbox.</returns>
         public Box3F GetObjectBox() {
              InternalUnsafeMethods.GetObjectBox__Args _args = new InternalUnsafeMethods.GetObjectBox__Args() {
              };
@@ -686,6 +711,10 @@ newForward.Free();upVector.Free();        }
              return new Box3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the center of the object's world bounding box.
+        /// </description>
+        /// <returns>the center of the world bounding box for this object.</returns>
         public Point3F GetWorldBoxCenter() {
              InternalUnsafeMethods.GetWorldBoxCenter__Args _args = new InternalUnsafeMethods.GetWorldBoxCenter__Args() {
              };
@@ -693,6 +722,10 @@ newForward.Free();upVector.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the object's world bounding box.
+        /// </description>
+        /// <returns>six fields, two Point3Fs, containing the min and max points of the worldbox.</returns>
         public Box3F GetWorldBox() {
              InternalUnsafeMethods.GetWorldBox__Args _args = new InternalUnsafeMethods.GetWorldBox__Args() {
              };
@@ -700,6 +733,10 @@ newForward.Free();upVector.Free();        }
              return new Box3F(_engineResult);
         }
 
+        /// <description>
+        /// Set the object's scale.
+        /// </description>
+        /// <param name="scale">object scale to set</param>
         public void SetScale(Point3F scale) {
 scale.Alloc();             InternalUnsafeMethods.SetScale__Args _args = new InternalUnsafeMethods.SetScale__Args() {
                 scale = scale.internalStructPtr,
@@ -707,6 +744,10 @@ scale.Alloc();             InternalUnsafeMethods.SetScale__Args _args = new Inte
              InternalUnsafeMethods.SetScale()(ObjectPtr, _args);
 scale.Free();        }
 
+        /// <description>
+        /// Get the object's scale.
+        /// </description>
+        /// <returns>object scale as a Point3F</returns>
         public Point3F GetScale() {
              InternalUnsafeMethods.GetScale__Args _args = new InternalUnsafeMethods.GetScale__Args() {
              };
@@ -714,6 +755,10 @@ scale.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Set the object's transform (orientation and position).
+        /// </description>
+        /// <param name="txfm">object transform to set</param>
         public void SetTransform(TransformF txfm) {
 txfm.Alloc();             InternalUnsafeMethods.SetTransform__Args _args = new InternalUnsafeMethods.SetTransform__Args() {
                 txfm = txfm.internalStructPtr,
@@ -721,6 +766,11 @@ txfm.Alloc();             InternalUnsafeMethods.SetTransform__Args _args = new I
              InternalUnsafeMethods.SetTransform()(ObjectPtr, _args);
 txfm.Free();        }
 
+        /// <description>
+        /// Get the up vector of the object.
+        /// </description>
+        /// <returns>a vector indicating the up direction of this object.</returns>
+        /// <remarks> This is the object's z axis.</remarks>
         public Point3F GetUpVector() {
              InternalUnsafeMethods.GetUpVector__Args _args = new InternalUnsafeMethods.GetUpVector__Args() {
              };
@@ -728,6 +778,11 @@ txfm.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the right vector of the object.
+        /// </description>
+        /// <returns>a vector indicating the right direction of this object.</returns>
+        /// <remarks> This is the object's x axis.</remarks>
         public Point3F GetRightVector() {
              InternalUnsafeMethods.GetRightVector__Args _args = new InternalUnsafeMethods.GetRightVector__Args() {
              };
@@ -735,6 +790,11 @@ txfm.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the direction this object is facing.
+        /// </description>
+        /// <returns>a vector indicating the direction this object is facing.</returns>
+        /// <remarks> This is the object's y axis.</remarks>
         public Point3F GetForwardVector() {
              InternalUnsafeMethods.GetForwardVector__Args _args = new InternalUnsafeMethods.GetForwardVector__Args() {
              };
@@ -742,6 +802,10 @@ txfm.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get Euler rotation of this object.
+        /// </description>
+        /// <returns>the orientation of the object in the form of rotations around the X, Y and Z axes in degrees.</returns>
         public Point3F GetEulerRotation() {
              InternalUnsafeMethods.GetEulerRotation__Args _args = new InternalUnsafeMethods.GetEulerRotation__Args() {
              };
@@ -749,6 +813,10 @@ txfm.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Set the object's world position.
+        /// </description>
+        /// <param name="pos">the new world position of the object</param>
         public void SetPosition(Point3F pos) {
 pos.Alloc();             InternalUnsafeMethods.SetPosition__Args _args = new InternalUnsafeMethods.SetPosition__Args() {
                 pos = pos.internalStructPtr,
@@ -756,6 +824,10 @@ pos.Alloc();             InternalUnsafeMethods.SetPosition__Args _args = new Int
              InternalUnsafeMethods.SetPosition()(ObjectPtr, _args);
 pos.Free();        }
 
+        /// <description>
+        /// Get the object's world position.
+        /// </description>
+        /// <returns>the current world position of the object</returns>
         public Point3F GetPosition() {
              InternalUnsafeMethods.GetPosition__Args _args = new InternalUnsafeMethods.GetPosition__Args() {
              };
@@ -763,6 +835,10 @@ pos.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the object's inverse transform.
+        /// </description>
+        /// <returns>the inverse transform of the object</returns>
         public TransformF GetInverseTransform() {
              InternalUnsafeMethods.GetInverseTransform__Args _args = new InternalUnsafeMethods.GetInverseTransform__Args() {
              };
@@ -770,6 +846,10 @@ pos.Free();        }
              return new TransformF(_engineResult);
         }
 
+        /// <description>
+        /// Get the object's transform.
+        /// </description>
+        /// <returns>the current transform of the object</returns>
         public TransformF GetTransform() {
              InternalUnsafeMethods.GetTransform__Args _args = new InternalUnsafeMethods.GetTransform__Args() {
              };
@@ -777,6 +857,12 @@ pos.Free();        }
              return new TransformF(_engineResult);
         }
 
+        /// <summary>Get the object mounted at our given node index.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="node">mount node index to query</param>
+        /// <returns>ID of the first object mounted at the node, or 0 if none found.</returns>
         public int GetMountNodeObject(int node) {
              InternalUnsafeMethods.GetMountNodeObject__Args _args = new InternalUnsafeMethods.GetMountNodeObject__Args() {
                 node = node,
@@ -785,6 +871,12 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the mount node index of the object mounted at our given slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">mount slot index to query</param>
+        /// <returns>index of the mount node used by the object mounted in this slot.</returns>
         public int GetMountedObjectNode(int slot) {
              InternalUnsafeMethods.GetMountedObjectNode__Args _args = new InternalUnsafeMethods.GetMountedObjectNode__Args() {
                 slot = slot,
@@ -793,6 +885,11 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the object mounted at a particular slot.
+        /// </description>
+        /// <param name="slot">mount slot index to query</param>
+        /// <returns>ID of the object mounted in the slot, or 0 if no object.</returns>
         public int GetMountedObject(int slot) {
              InternalUnsafeMethods.GetMountedObject__Args _args = new InternalUnsafeMethods.GetMountedObject__Args() {
                 slot = slot,
@@ -801,6 +898,10 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of objects mounted to us.
+        /// </description>
+        /// <returns>the number of mounted objects.</returns>
         public int GetMountedObjectCount() {
              InternalUnsafeMethods.GetMountedObjectCount__Args _args = new InternalUnsafeMethods.GetMountedObjectCount__Args() {
              };
@@ -808,6 +909,11 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Get the object we are mounted to.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the SimObjectID of the object we're mounted to, or 0 if not mounted.</returns>
         public int GetObjectMount() {
              InternalUnsafeMethods.GetObjectMount__Args _args = new InternalUnsafeMethods.GetObjectMount__Args() {
              };
@@ -815,6 +921,11 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Check if we are mounted to another object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>true if mounted to another object, false if not mounted.</returns>
         public bool IsMounted() {
              InternalUnsafeMethods.IsMounted__Args _args = new InternalUnsafeMethods.IsMounted__Args() {
              };
@@ -822,12 +933,21 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Unmount us from the currently mounted object if any.
+        /// </description>
         public void Unmount() {
              InternalUnsafeMethods.Unmount__Args _args = new InternalUnsafeMethods.Unmount__Args() {
              };
              InternalUnsafeMethods.Unmount()(ObjectPtr, _args);
         }
 
+        /// <summary>Unmount an object from ourselves.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="target">object to unmount</param>
+        /// <returns>true if successful, false if failed</returns>
         public bool UnmountObject(SceneObject target) {
              InternalUnsafeMethods.UnmountObject__Args _args = new InternalUnsafeMethods.UnmountObject__Args() {
                 target = target.ObjectPtr,
@@ -836,6 +956,14 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public bool MountObject(SceneObject objB, int slot, TransformF txfm = null) {
 txfm = txfm ?? new TransformF("0 0 0 0 0 1 0 true");
 txfm.Alloc();             InternalUnsafeMethods.MountObject__Args _args = new InternalUnsafeMethods.MountObject__Args() {
@@ -847,6 +975,10 @@ txfm.Alloc();             InternalUnsafeMethods.MountObject__Args _args = new In
 txfm.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Return the type mask for this object.
+        /// </description>
+        /// <returns>The numeric type mask for the object.</returns>
         public int GetType() {
              InternalUnsafeMethods.GetType__Args _args = new InternalUnsafeMethods.GetType__Args() {
              };
@@ -854,6 +986,10 @@ txfm.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the SceneObject class.
+        /// </description>
+        /// <returns>The type info object for SceneObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -861,46 +997,103 @@ txfm.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object world position.
+        /// </description>
+        /// </value>
         public MatrixF Position {
             get => GenericMarshal.StringTo<MatrixF>(GetFieldValue("position"));
             set => SetFieldValue("position", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object world orientation.
+        /// </description>
+        /// </value>
         public MatrixF Rotation {
             get => GenericMarshal.StringTo<MatrixF>(GetFieldValue("rotation"));
             set => SetFieldValue("rotation", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object world scale.
+        /// </description>
+        /// </value>
         public Point3F Scale {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("scale"));
             set => SetFieldValue("scale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls client-side rendering of the object.
+        /// </description>
+        /// <see cref="isRenderable()" />
+        /// </value>
         public bool IsRenderEnabled {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isRenderEnabled"));
             set => SetFieldValue("isRenderEnabled", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Determines if the object may be selected from wihin the Tools.
+        /// </description>
+        /// <see cref="isSelectable()" />
+        /// </value>
         public bool IsSelectionEnabled {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isSelectionEnabled"));
             set => SetFieldValue("isSelectionEnabled", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>PersistentID of object we are mounted to.</summary>
+        /// <description>
+        /// Unlike the SimObjectID that is determined at run time, the PersistentID of an object is saved with the level/mission and may be used to form a link between objects.
+        /// </description>
+        /// </value>
         public SimPersistID MountPID {
             get => GenericMarshal.StringTo<SimPersistID>(GetFieldValue("mountPID"));
             set => SetFieldValue("mountPID", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Node we are mounted to.
+        /// </description>
+        /// </value>
         public int MountNode {
             get => GenericMarshal.StringTo<int>(GetFieldValue("mountNode"));
             set => SetFieldValue("mountNode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Position we are mounted at ( object space of our mount object ).
+        /// </description>
+        /// </value>
         public MatrixF MountPos {
             get => GenericMarshal.StringTo<MatrixF>(GetFieldValue("mountPos"));
             set => SetFieldValue("mountPos", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Rotation we are mounted at ( object space of our mount object ).
+        /// </description>
+        /// </value>
         public MatrixF MountRot {
             get => GenericMarshal.StringTo<MatrixF>(GetFieldValue("mountRot"));
             set => SetFieldValue("mountRot", GenericMarshal.ToString(value));

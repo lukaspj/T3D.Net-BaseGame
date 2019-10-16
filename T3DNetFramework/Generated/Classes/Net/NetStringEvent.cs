@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Net {    
+namespace T3DNetFramework.Generated.Classes.Net {
+    /// <summary>Internal event used for transmitting strings across the server.</summary>
+    /// <description>
+    /// For internal use only, not intended for TorqueScript or game development
+    /// </description>
     public unsafe class NetStringEvent : NetEvent {
         public NetStringEvent(bool pRegister = false) 
             : base(pRegister) {
@@ -72,6 +76,10 @@ namespace T3DNetFramework.Generated.Classes.Net {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the NetStringEvent class.
+        /// </description>
+        /// <returns>The type info object for NetStringEvent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

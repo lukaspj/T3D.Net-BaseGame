@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>GUI tool that makes up the River Editor</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiRiverEditorCtrl : EditTSCtrl {
         public GuiRiverEditorCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -388,12 +392,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void Regenerate() {
              InternalUnsafeMethods.Regenerate__Args _args = new InternalUnsafeMethods.Regenerate__Args() {
              };
              InternalUnsafeMethods.Regenerate()(ObjectPtr, _args);
         }
 
+        /// 
         public int GetSelectedRiver() {
              InternalUnsafeMethods.GetSelectedRiver__Args _args = new InternalUnsafeMethods.GetSelectedRiver__Args() {
              };
@@ -401,6 +407,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public void SetSelectedRiver(string objName = "") {
              InternalUnsafeMethods.SetSelectedRiver__Args _args = new InternalUnsafeMethods.SetSelectedRiver__Args() {
                 objName = objName,
@@ -408,6 +415,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSelectedRiver()(ObjectPtr, _args);
         }
 
+        /// 
         public void SetNodeNormal(Point3F normal) {
 normal.Alloc();             InternalUnsafeMethods.SetNodeNormal__Args _args = new InternalUnsafeMethods.SetNodeNormal__Args() {
                 normal = normal.internalStructPtr,
@@ -415,6 +423,7 @@ normal.Alloc();             InternalUnsafeMethods.SetNodeNormal__Args _args = ne
              InternalUnsafeMethods.SetNodeNormal()(ObjectPtr, _args);
 normal.Free();        }
 
+        /// 
         public Point3F GetNodeNormal() {
              InternalUnsafeMethods.GetNodeNormal__Args _args = new InternalUnsafeMethods.GetNodeNormal__Args() {
              };
@@ -422,6 +431,7 @@ normal.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// 
         public void SetNodePosition(Point3F pos) {
 pos.Alloc();             InternalUnsafeMethods.SetNodePosition__Args _args = new InternalUnsafeMethods.SetNodePosition__Args() {
                 pos = pos.internalStructPtr,
@@ -429,6 +439,7 @@ pos.Alloc();             InternalUnsafeMethods.SetNodePosition__Args _args = new
              InternalUnsafeMethods.SetNodePosition()(ObjectPtr, _args);
 pos.Free();        }
 
+        /// 
         public Point3F GetNodePosition() {
              InternalUnsafeMethods.GetNodePosition__Args _args = new InternalUnsafeMethods.GetNodePosition__Args() {
              };
@@ -436,6 +447,7 @@ pos.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// 
         public void SetNodeDepth(float depth) {
              InternalUnsafeMethods.SetNodeDepth__Args _args = new InternalUnsafeMethods.SetNodeDepth__Args() {
                 depth = depth,
@@ -443,6 +455,7 @@ pos.Free();        }
              InternalUnsafeMethods.SetNodeDepth()(ObjectPtr, _args);
         }
 
+        /// 
         public float GetNodeDepth() {
              InternalUnsafeMethods.GetNodeDepth__Args _args = new InternalUnsafeMethods.GetNodeDepth__Args() {
              };
@@ -450,6 +463,7 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// 
         public void SetNodeWidth(float width) {
              InternalUnsafeMethods.SetNodeWidth__Args _args = new InternalUnsafeMethods.SetNodeWidth__Args() {
                 width = width,
@@ -457,6 +471,7 @@ pos.Free();        }
              InternalUnsafeMethods.SetNodeWidth()(ObjectPtr, _args);
         }
 
+        /// 
         public float GetNodeWidth() {
              InternalUnsafeMethods.GetNodeWidth__Args _args = new InternalUnsafeMethods.GetNodeWidth__Args() {
              };
@@ -464,6 +479,9 @@ pos.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// setMode( String mode )
+        /// </description>
         public void SetMode(string mode) {
              InternalUnsafeMethods.SetMode__Args _args = new InternalUnsafeMethods.SetMode__Args() {
                 mode = mode,
@@ -471,6 +489,7 @@ pos.Free();        }
              InternalUnsafeMethods.SetMode()(ObjectPtr, _args);
         }
 
+        /// 
         public string GetMode() {
              InternalUnsafeMethods.GetMode__Args _args = new InternalUnsafeMethods.GetMode__Args() {
              };
@@ -478,12 +497,19 @@ pos.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// deleteNode()
+        /// </description>
         public void DeleteNode() {
              InternalUnsafeMethods.DeleteNode__Args _args = new InternalUnsafeMethods.DeleteNode__Args() {
              };
              InternalUnsafeMethods.DeleteNode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiRiverEditorCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiRiverEditorCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -491,36 +517,64 @@ pos.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float DefaultWidth {
             get => GenericMarshal.StringTo<float>(GetFieldValue("DefaultWidth"));
             set => SetFieldValue("DefaultWidth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float DefaultDepth {
             get => GenericMarshal.StringTo<float>(GetFieldValue("DefaultDepth"));
             set => SetFieldValue("DefaultDepth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F DefaultNormal {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("DefaultNormal"));
             set => SetFieldValue("DefaultNormal", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI HoverSplineColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("HoverSplineColor"));
             set => SetFieldValue("HoverSplineColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI SelectedSplineColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("SelectedSplineColor"));
             set => SetFieldValue("SelectedSplineColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI HoverNodeColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("HoverNodeColor"));
             set => SetFieldValue("HoverNodeColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsDirty {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isDirty"));
             set => SetFieldValue("isDirty", GenericMarshal.ToString(value));

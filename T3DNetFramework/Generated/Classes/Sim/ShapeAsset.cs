@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class ShapeAsset : AssetBase {
         public ShapeAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -160,6 +161,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Gets a particular shape animation asset for this shape.
+        /// </description>
+        /// <param name="animation">asset index.</param>
+        /// <returns>Shape Animation Asset.</returns>
         public ShapeAnimationAsset GetAnimation(int index = 0) {
              InternalUnsafeMethods.GetAnimation__Args _args = new InternalUnsafeMethods.GetAnimation__Args() {
                 index = index,
@@ -168,6 +174,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new ShapeAnimationAsset(_engineResult);
         }
 
+        /// <description>
+        /// Gets the number of animations for this shape asset.
+        /// </description>
+        /// <returns>Animation count.</returns>
         public int GetAnimationCount() {
              InternalUnsafeMethods.GetAnimationCount__Args _args = new InternalUnsafeMethods.GetAnimationCount__Args() {
              };
@@ -175,6 +185,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the number of materials for this shape asset.
+        /// </description>
+        /// <returns>Material count.</returns>
         public int GetMaterialCount() {
              InternalUnsafeMethods.GetMaterialCount__Args _args = new InternalUnsafeMethods.GetMaterialCount__Args() {
              };
@@ -182,6 +196,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the ShapeAsset class.
+        /// </description>
+        /// <returns>The type info object for ShapeAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -189,6 +207,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the shape file we want to render
+        /// </description>
+        /// </value>
         public string FileName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("fileName"));
             set => SetFieldValue("fileName", GenericMarshal.ToString(value));

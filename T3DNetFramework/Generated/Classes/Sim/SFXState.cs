@@ -14,7 +14,35 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A boolean switch used to modify playlist behavior.</summary>
+    /// <description>
+    /// Sound system states are used to allow playlist controllers to make decisions based on global state.  This is useful, for example, to couple audio playback to gameplay state.  Certain states may, for example, represent different locations that the listener can be in, like underwater, in open space, or indoors.  Other states could represent moods of the current gameplay situation, like, for example, an aggressive mood during combat.
+    /// 
+    /// By activating and deactivating sound states according to gameplay state, a set of concurrently running playlists may react and adapt to changes in the game.
+    /// </description>
+    /// <code>
+    /// // State indicating that the listener is submerged.
+    /// singleton SFXState( AudioLocationUnderwater )
+    /// {
+    ///    parentGroup = AudioLocation;
+    ///    // AudioStateExclusive is a class defined in the core scripts that will automatically
+    ///    // ensure for a state to deactivate all the sibling SFXStates in its parentGroup when it
+    ///    // is activated.
+    ///    className = "AudioStateExclusive";
+    /// };
+    /// 
+    /// // State suitable e.g. for combat.
+    /// singleton SFXState( AudioMoodAggressive )
+    /// {
+    ///    parentGroup = AudioMood;
+    ///    className = "AudioStateExclusive";
+    /// };
+    /// </code>
+    /// <see cref="SFXPlayList" />
+    /// <see cref="SFXController" />
+    /// <see cref="SFXPlayList::state" />
+    /// <see cref="SFXPlayList::stateMode" />
     public unsafe class SFXState : SimDataBlock {
         public SFXState(bool pRegister = false) 
             : base(pRegister) {
@@ -261,18 +289,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Decrease the disabling count of the state.
+        /// If the disabling count reaches zero while the activation count is still non-zero, the state will be reactivated again.
+        /// </description>
+        /// <see cref="isDisabled" />
         public void Enable() {
              InternalUnsafeMethods.Enable__Args _args = new InternalUnsafeMethods.Enable__Args() {
              };
              InternalUnsafeMethods.Enable()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Increase the disabling count of the state.
+        /// If the state is currently active, it will be deactivated.
+        /// </description>
+        /// <see cref="isDisabled" />
         public void Disable() {
              InternalUnsafeMethods.Disable__Args _args = new InternalUnsafeMethods.Disable__Args() {
              };
              InternalUnsafeMethods.Disable()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Test whether the state is currently disabled.
+        /// This is true when the disabling count of the state is non-zero.
+        /// </description>
+        /// <returns>True if the state is disabled.</returns>
+        /// <see cref="disable" />
         public bool IsDisabled() {
              InternalUnsafeMethods.IsDisabled__Args _args = new InternalUnsafeMethods.IsDisabled__Args() {
              };
@@ -280,18 +324,36 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Decrease the activation count on the state.
+        /// If the count reaches zero and the state was not disabled, the state will be deactivated.
+        /// </description>
+        /// <see cref="isActive" />
+        /// <see cref="activate" />
         public void Deactivate() {
              InternalUnsafeMethods.Deactivate__Args _args = new InternalUnsafeMethods.Deactivate__Args() {
              };
              InternalUnsafeMethods.Deactivate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Increase the activation count on the state.
+        /// If the state isn't already active and it is not disabled, the state will be activated.
+        /// </description>
+        /// <see cref="isActive" />
+        /// <see cref="deactivate" />
         public void Activate() {
              InternalUnsafeMethods.Activate__Args _args = new InternalUnsafeMethods.Activate__Args() {
              };
              InternalUnsafeMethods.Activate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Test whether the state is currently active.
+        /// This is true when the activation count is >0 and the disabling count is =0.
+        /// </description>
+        /// <returns>True if the state is currently active.</returns>
+        /// <see cref="activate" />
         public bool IsActive() {
              InternalUnsafeMethods.IsActive__Args _args = new InternalUnsafeMethods.IsActive__Args() {
              };
@@ -299,18 +361,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// called when the state goes from active to deactive.
+        /// </description>
         public virtual void OnDeactivate() {
              InternalUnsafeMethods.OnDeactivate__Args _args = new InternalUnsafeMethods.OnDeactivate__Args() {
              };
              InternalUnsafeMethods.OnDeactivate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the state goes from inactive to active.
+        /// </description>
         public virtual void OnActivate() {
              InternalUnsafeMethods.OnActivate__Args _args = new InternalUnsafeMethods.OnActivate__Args() {
              };
              InternalUnsafeMethods.OnActivate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SFXState class.
+        /// </description>
+        /// <returns>The type info object for SFXState</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -318,6 +390,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// States that will automatically be activated when this state is activated.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<SFXState> IncludedStates {
             get => new DynamicFieldVector<SFXState>(
                     this, 
@@ -328,6 +406,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// States that will automatically be disabled when this state is activated.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<SFXState> ExcludedStates {
             get => new DynamicFieldVector<SFXState>(
                     this, 

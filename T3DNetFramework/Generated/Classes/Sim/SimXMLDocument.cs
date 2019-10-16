@@ -14,7 +14,77 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>File I/O object used for creating, reading, and writing XML documents.</summary>
+    /// <description>
+    /// A SimXMLDocument is a container of various XML nodes.  The Document level may contain a header (sometimes called a declaration), comments and child Elements.  Elements may contain attributes, data (or text) and child Elements.
+    /// 
+    /// You build new Elements using addNewElement().  This makes the new Element the current one you're working with.  You then use setAttribute() to add attributes to the Element.  You use addData() or addText() to write to the text area of an Element.
+    /// </description>
+    /// <code>
+    /// // Thanks to Rex Hiebert for this example
+    /// // Given the following XML
+    /// <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+    /// <DataTables>
+    ///   <table tableName="2DShapes">
+    ///      <rec id="1">Triangle</rec>
+    ///      <rec id="2">Square</rec>
+    ///      <rec id="3">Circle</rec>
+    ///   </table>
+    ///   <table tableName="3DShapes">
+    ///      <rec id="1">Pyramid</rec>
+    ///      <rec id="2">Cube</rec>
+    ///      <rec id="3">Sphere</rec>
+    ///   </table>
+    /// </DataTables>
+    /// 
+    /// // Using SimXMLDocument by itself
+    /// function readXmlExample(%filename)
+    /// {
+    ///    %xml = new SimXMLDocument() {};
+    ///    %xml.loadFile(%filename);
+    /// 
+    ///    %xml.pushChildElement("DataTables");
+    ///    %xml.pushFirstChildElement("table");
+    ///    while(true)
+    ///    {
+    ///     echo("TABLE:" SPC %xml.attribute("tableName"));
+    ///     %xml.pushFirstChildElement("rec");
+    ///     while (true)
+    ///     {
+    ///       %id = %xml.attribute("id");
+    ///       %desc = %xml.getData();
+    ///       echo("  Shape" SPC %id SPC %desc);
+    ///       if (!%xml.nextSiblingElement("rec")) break;
+    ///     }
+    ///     %xml.popElement();
+    ///     if (!%xml.nextSiblingElement("table")) break;
+    ///    }
+    /// }
+    /// 
+    /// // Thanks to Scott Peal for this example
+    /// // Using FileObject in conjunction with SimXMLDocument
+    /// // This example uses an XML file with a format of:
+    /// // <Models>
+    /// //    <Model category="" name="" path="" />
+    /// // </Models>
+    /// function getModelsInCatagory()
+    /// {
+    ///    %file = "./Catalog.xml";
+    ///    %fo = new FileObject();
+    ///    %text = "";
+    /// 
+    ///    if(%fo.openForRead(%file))
+    ///    {
+    ///     while(!%fo.isEOF())
+    ///     {
+    ///       %text = %text@ %fo.readLine();
+    ///       if (!%fo.isEOF()) %text = %text 
+    /// </code>
+    /// <remarks> SimXMLDocument is a wrapper around TinyXml, a standard XML library.  If you're familiar with its concepts, you'll find they also apply here.
+    /// 
+    /// </remarks>
+    /// <see cref="FileObject" />
     public unsafe class SimXMLDocument : SimObject {
         public SimXMLDocument(bool pRegister = false) 
             : base(pRegister) {
@@ -791,6 +861,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Gets the text from the current Element.</summary>
+        /// <description>
+        /// Use addData() to add text to the current Element.
+        /// 
+        /// getData() and getText() may be used interchangeably.  As there is no difference between data and text, you may also use removeText() to clear any data from the current Element.
+        /// </description>
+        /// <returns>String containing the text in the current Element.</returns>
+        /// <code>
+        /// // Using the following test.xml file as an example:
+        /// // <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+        /// // <NewElement>Some data</NewElement>
+        /// 
+        /// // Load in the file
+        /// %x = new SimXMLDocument();
+        /// %x.loadFile("test.xml");
+        /// 
+        /// // Make the first Element the current one
+        /// %x.pushFirstChildElement("NewElement");
+        /// 
+        /// // Store the current Element's data ('Some data' in this example)
+        /// // into 'result'
+        /// %result = %x.getData();
+        /// echo( %result );
+        /// </code>
+        /// <see cref="addData()" />
+        /// <see cref="addText()" />
+        /// <see cref="getText()" />
+        /// <see cref="removeText()" />
         public string GetData() {
              InternalUnsafeMethods.GetData__Args _args = new InternalUnsafeMethods.GetData__Args() {
              };
@@ -798,6 +896,30 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Add the given text as a child of current Element.</summary>
+        /// <description>
+        /// Use getData() to retrieve any text from the current Element.
+        /// 
+        /// addData() and addText() may be used interchangeably.  As there is no difference between data and text, you may also use removeText() to clear any data from the current Element.
+        /// </description>
+        /// <param name="text">String containing the text.</param>
+        /// <code>
+        /// // Create a new XML document with a header and single element
+        /// // with some added data.
+        /// %x = new SimXMLDocument();
+        /// %x.addHeader();
+        /// %x.addNewElement("NewElement");
+        /// %x.addData("Some text");
+        /// %x.saveFile("test.xml");
+        /// 
+        /// // Produces the following file:
+        /// // <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+        /// // <NewElement>Some text</NewElement>
+        /// </code>
+        /// <see cref="getData()" />
+        /// <see cref="addText()" />
+        /// <see cref="getText()" />
+        /// <see cref="removeText()" />
         public void AddData(string text) {
              InternalUnsafeMethods.AddData__Args _args = new InternalUnsafeMethods.AddData__Args() {
                 text = text,
@@ -805,12 +927,48 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddData()(ObjectPtr, _args);
         }
 
+        /// <summary>Remove any text on the current Element.</summary>
+        /// <description>
+        /// Use getText() to retrieve any text from the current Element and addText() to add text to the current Element.  As getData() and addData() are equivalent to getText() and addText(), removeText() will also remove any data from the current Element.
+        /// </description>
+        /// <see cref="addText()" />
+        /// <see cref="getText()" />
+        /// <see cref="addData()" />
+        /// <see cref="getData()" />
         public void RemoveText() {
              InternalUnsafeMethods.RemoveText__Args _args = new InternalUnsafeMethods.RemoveText__Args() {
              };
              InternalUnsafeMethods.RemoveText()(ObjectPtr, _args);
         }
 
+        /// <summary>Gets the text from the current Element.</summary>
+        /// <description>
+        /// Use addText() to add text to the current Element and removeText() to clear any text.
+        /// 
+        /// getText() and getData() may be used interchangeably.
+        /// </description>
+        /// <returns>String containing the text in the current Element.</returns>
+        /// <code>
+        /// // Using the following test.xml file as an example:
+        /// // <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+        /// // <NewElement>Some text</NewElement>
+        /// 
+        /// // Load in the file
+        /// %x = new SimXMLDocument();
+        /// %x.loadFile("test.xml");
+        /// 
+        /// // Make the first Element the current one
+        /// %x.pushFirstChildElement("NewElement");
+        /// 
+        /// // Store the current Element's text ('Some text' in this example)
+        /// // into 'result'
+        /// %result = %x.getText();
+        /// echo( %result );
+        /// </code>
+        /// <see cref="addText()" />
+        /// <see cref="removeText()" />
+        /// <see cref="addData()" />
+        /// <see cref="getData()" />
         public string GetText() {
              InternalUnsafeMethods.GetText__Args _args = new InternalUnsafeMethods.GetText__Args() {
              };
@@ -818,6 +976,30 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Add the given text as a child of current Element.</summary>
+        /// <description>
+        /// Use getText() to retrieve any text from the current Element and removeText() to clear any text.
+        /// 
+        /// addText() and addData() may be used interchangeably.
+        /// </description>
+        /// <param name="text">String containing the text.</param>
+        /// <code>
+        /// // Create a new XML document with a header and single element
+        /// // with some added text.
+        /// %x = new SimXMLDocument();
+        /// %x.addHeader();
+        /// %x.addNewElement("NewElement");
+        /// %x.addText("Some text");
+        /// %x.saveFile("test.xml");
+        /// 
+        /// // Produces the following file:
+        /// // <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+        /// // <NewElement>Some text</NewElement>
+        /// </code>
+        /// <see cref="getText()" />
+        /// <see cref="removeText()" />
+        /// <see cref="addData()" />
+        /// <see cref="getData()" />
         public void AddText(string text) {
              InternalUnsafeMethods.AddText__Args _args = new InternalUnsafeMethods.AddText__Args() {
                 text = text,
@@ -825,6 +1007,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddText()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Gives the comment at the specified index, if any.
+        /// 
+        /// Unlike addComment() that only works at the document level, readComment() may read comments from the document or any child Element.  The current Element (or document if no Elements have been pushed to the stack) is the parent for any comments, and the provided index is the number of comments in to read back.
+        /// </description>
+        /// <param name="index">Comment index number to query from the current Element stack</param>
+        /// <returns>String containing the comment, or an empty string if no comment is found.</returns>
+        /// <see cref="addComment()" />
         public string ReadComment(int index) {
              InternalUnsafeMethods.ReadComment__Args _args = new InternalUnsafeMethods.ReadComment__Args() {
                 index = index,
@@ -833,6 +1023,25 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Add the given comment as a child of the document.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="comment">String containing the comment.</param>
+        /// <code>
+        /// // Create a new XML document with a header, a comment and single element.
+        /// %x = new SimXMLDocument();
+        /// %x.addHeader();
+        /// %x.addComment("This is a test comment");
+        /// %x.addNewElement("NewElement");
+        /// %x.saveFile("test.xml");
+        /// 
+        /// // Produces the following file:
+        /// // <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+        /// // <!--This is a test comment-->
+        /// // <NewElement />
+        /// </code>
+        /// <see cref="readComment()" />
         public void AddComment(string comment) {
              InternalUnsafeMethods.AddComment__Args _args = new InternalUnsafeMethods.AddComment__Args() {
                 comment = comment,
@@ -840,12 +1049,38 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddComment()(ObjectPtr, _args);
         }
 
+        /// <summary>Add a XML header to a document.</summary>
+        /// <description>
+        /// Sometimes called a declaration, you typically add a standard header to the document before adding any elements.  SimXMLDocument always produces the following header:
+        /// 
+        /// <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+        /// </description>
+        /// <code>
+        /// // Create a new XML document with just a header and single element.
+        /// %x = new SimXMLDocument();
+        /// %x.addHeader();
+        /// %x.addNewElement("NewElement");
+        /// %x.saveFile("test.xml");
+        /// 
+        /// // Produces the following file:
+        /// // <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+        /// // <NewElement />
+        /// </code>
         public void AddHeader() {
              InternalUnsafeMethods.AddHeader__Args _args = new InternalUnsafeMethods.AddHeader__Args() {
              };
              InternalUnsafeMethods.AddHeader()(ObjectPtr, _args);
         }
 
+        /// <summary>Create a new element with the given name as child of current Element's parent and push it onto the Element stack making it the current one.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> This differs from pushNewElement() in that it adds the new Element to the current Element's parent (or document if there is no parent Element).  This makes the new Element a sibling of the current one.
+        /// 
+        /// </remarks>
+        /// <param name="name">XML tag for the new Element.</param>
+        /// <see cref="pushNewElement()" />
         public void AddNewElement(string name) {
              InternalUnsafeMethods.AddNewElement__Args _args = new InternalUnsafeMethods.AddNewElement__Args() {
                 name = name,
@@ -853,6 +1088,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddNewElement()(ObjectPtr, _args);
         }
 
+        /// <summary>Create a new element with the given name as child of current Element and push it onto the Element stack making it the current one.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> This differs from addNewElement() in that it adds the new Element as a child of the current Element (or a child of the document if no Element exists).
+        /// 
+        /// </remarks>
+        /// <param name="name">XML tag for the new Element.</param>
+        /// <see cref="addNewElement()" />
         public void PushNewElement(string name) {
              InternalUnsafeMethods.PushNewElement__Args _args = new InternalUnsafeMethods.PushNewElement__Args() {
                 name = name,
@@ -860,6 +1104,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PushNewElement()(ObjectPtr, _args);
         }
 
+        /// <summary>Add the given SimObject's fields as attributes of the current Element on the stack.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objectID">ID of SimObject being copied.</param>
         public void SetObjectAttributes(string objectID) {
              InternalUnsafeMethods.SetObjectAttributes__Args _args = new InternalUnsafeMethods.SetObjectAttributes__Args() {
                 objectID = objectID,
@@ -867,6 +1116,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetObjectAttributes()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the attribute of the current Element on the stack to the given value.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="attributeName">Name of attribute being changed</param>
+        /// <param name="value">New value to assign to the attribute</param>
         public void SetAttribute(string attributeName, string value) {
              InternalUnsafeMethods.SetAttribute__Args _args = new InternalUnsafeMethods.SetAttribute__Args() {
                 attributeName = attributeName,
@@ -875,6 +1130,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAttribute()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the name of the previous attribute for the current Element after a call to lastAttribute().</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>String containing the previous attribute's name, or an empty string if none is found.</returns>
+        /// <see cref="lastAttribute()" />
+        /// <see cref="firstAttribute()" />
+        /// <see cref="nextAttribute()" />
         public string PrevAttribute() {
              InternalUnsafeMethods.PrevAttribute__Args _args = new InternalUnsafeMethods.PrevAttribute__Args() {
              };
@@ -882,6 +1145,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the name of the next attribute for the current Element after a call to firstAttribute().</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>String containing the next attribute's name, or an empty string if none is found.</returns>
+        /// <see cref="firstAttribute()" />
+        /// <see cref="lastAttribute()" />
+        /// <see cref="prevAttribute()" />
         public string NextAttribute() {
              InternalUnsafeMethods.NextAttribute__Args _args = new InternalUnsafeMethods.NextAttribute__Args() {
              };
@@ -889,6 +1160,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Obtain the name of the current Element's last attribute.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>String containing the last attribute's name, or an empty string if none is found.</returns>
+        /// <see cref="prevAttribute()" />
+        /// <see cref="firstAttribute()" />
+        /// <see cref="lastAttribute()" />
         public string LastAttribute() {
              InternalUnsafeMethods.LastAttribute__Args _args = new InternalUnsafeMethods.LastAttribute__Args() {
              };
@@ -896,6 +1175,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Obtain the name of the current Element's first attribute.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>String containing the first attribute's name, or an empty string if none is found.</returns>
+        /// <see cref="nextAttribute()" />
+        /// <see cref="lastAttribute()" />
+        /// <see cref="prevAttribute()" />
         public string FirstAttribute() {
              InternalUnsafeMethods.FirstAttribute__Args _args = new InternalUnsafeMethods.FirstAttribute__Args() {
              };
@@ -903,6 +1190,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Tests if the requested attribute exists.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="attributeName">Name of attribute being queried for.</param>
+        /// <returns>True if the attribute exists.</returns>
         public bool AttributeExists(string attributeName) {
              InternalUnsafeMethods.AttributeExists__Args _args = new InternalUnsafeMethods.AttributeExists__Args() {
                 attributeName = attributeName,
@@ -911,6 +1204,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string attributeName)
+        /// </description>
+        /// <summary>Get int attribute from the current Element on the stack.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="attributeName">Name of attribute to retrieve.</param>
+        /// <returns>The value of the given attribute in the form of an integer.</returns>
         public int AttributeS32(string attributeName) {
              InternalUnsafeMethods.AttributeS32__Args _args = new InternalUnsafeMethods.AttributeS32__Args() {
                 attributeName = attributeName,
@@ -919,6 +1221,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string attributeName)
+        /// </description>
+        /// <summary>Get float attribute from the current Element on the stack.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="attributeName">Name of attribute to retrieve.</param>
+        /// <returns>The value of the given attribute in the form of a float.</returns>
         public float AttributeF32(string attributeName) {
              InternalUnsafeMethods.AttributeF32__Args _args = new InternalUnsafeMethods.AttributeF32__Args() {
                 attributeName = attributeName,
@@ -927,6 +1238,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Get a string attribute from the current Element on the stack.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="attributeName">Name of attribute to retrieve.</param>
+        /// <returns>The attribute string if found.  Otherwise returns an empty string.</returns>
         public string Attribute(string attributeName) {
              InternalUnsafeMethods.Attribute__Args _args = new InternalUnsafeMethods.Attribute__Args() {
                 attributeName = attributeName,
@@ -935,12 +1252,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Pop the last Element off the stack.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void PopElement() {
              InternalUnsafeMethods.PopElement__Args _args = new InternalUnsafeMethods.PopElement__Args() {
              };
              InternalUnsafeMethods.PopElement()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the Element's value if it exists.</summary>
+        /// <description>
+        /// Usually returns the text from the Element.
+        /// </description>
+        /// <returns>The value from the Element, or an empty string if none is found.</returns>
         public string ElementValue() {
              InternalUnsafeMethods.ElementValue__Args _args = new InternalUnsafeMethods.ElementValue__Args() {
              };
@@ -948,6 +1274,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Put the next sibling Element with the given name on the stack, making it the current one.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="name">String containing name of the next sibling.</param>
+        /// <returns>True if the Element was found and made the current one.</returns>
         public bool NextSiblingElement(string name) {
              InternalUnsafeMethods.NextSiblingElement__Args _args = new InternalUnsafeMethods.NextSiblingElement__Args() {
                 name = name,
@@ -956,6 +1288,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Push the child Element at the given index onto the stack, making it the current one.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">Numerical index of Element being pushed.</param>
+        /// <returns>True if the Element was found and made the current one.</returns>
         public bool PushChildElement(int index) {
              InternalUnsafeMethods.PushChildElement__Args _args = new InternalUnsafeMethods.PushChildElement__Args() {
                 index = index,
@@ -964,6 +1302,29 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Push the first child Element with the given name onto the stack, making it the current Element.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="name">String containing name of the child Element.</param>
+        /// <returns>True if the Element was found and made the current one.</returns>
+        /// <code>
+        /// // Using the following test.xml file as an example:
+        /// // <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+        /// // <NewElement>Some text</NewElement>
+        /// 
+        /// // Load in the file
+        /// %x = new SimXMLDocument();
+        /// %x.loadFile("test.xml");
+        /// 
+        /// // Make the first Element the current one
+        /// %x.pushFirstChildElement("NewElement");
+        /// 
+        /// // Store the current Element's text ('Some text' in this example)
+        /// // into 'result'
+        /// %result = %x.getText();
+        /// echo( %result );
+        /// </code>
         public bool PushFirstChildElement(string name) {
              InternalUnsafeMethods.PushFirstChildElement__Args _args = new InternalUnsafeMethods.PushFirstChildElement__Args() {
                 name = name,
@@ -972,12 +1333,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Clear the last error description.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void ClearError() {
              InternalUnsafeMethods.ClearError__Args _args = new InternalUnsafeMethods.ClearError__Args() {
              };
              InternalUnsafeMethods.ClearError()(ObjectPtr, _args);
         }
 
+        /// <summary>Get last error description.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>A string of the last error message.</returns>
         public string GetErrorDesc() {
              InternalUnsafeMethods.GetErrorDesc__Args _args = new InternalUnsafeMethods.GetErrorDesc__Args() {
              };
@@ -985,12 +1355,25 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Set this document to its default state.</summary>
+        /// <description>
+        /// Clears all Elements from the documents.  Equivalent to using reset()
+        /// </description>
+        /// <see cref="reset()" />
         public void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };
              InternalUnsafeMethods.Clear()(ObjectPtr, _args);
         }
 
+        /// <summary>Create a document from a XML string.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Clears the current document's contents.
+        /// 
+        /// </remarks>
+        /// <param name="xmlString">Valid XML to parse and store as a document.</param>
         public void Parse(string xmlString) {
              InternalUnsafeMethods.Parse__Args _args = new InternalUnsafeMethods.Parse__Args() {
                 xmlString = xmlString,
@@ -998,6 +1381,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Parse()(ObjectPtr, _args);
         }
 
+        /// <summary>Save document to the given file name.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">Path and name of XML file to save to.</param>
+        /// <returns>True if the file was successfully saved.</returns>
         public bool SaveFile(string fileName) {
              InternalUnsafeMethods.SaveFile__Args _args = new InternalUnsafeMethods.SaveFile__Args() {
                 fileName = fileName,
@@ -1006,6 +1395,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Load in given filename and prepare it for use.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Clears the current document's contents.
+        /// 
+        /// </remarks>
+        /// <param name="fileName">Name and path of XML document</param>
+        /// <returns>True if the file was loaded successfully.</returns>
         public bool LoadFile(string fileName) {
              InternalUnsafeMethods.LoadFile__Args _args = new InternalUnsafeMethods.LoadFile__Args() {
                 fileName = fileName,
@@ -1014,12 +1412,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set this document to its default state.</summary>
+        /// <description>
+        /// Clears all Elements from the documents.  Equivalent to using clear()
+        /// </description>
+        /// <see cref="clear()" />
         public void Reset() {
              InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
              };
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SimXMLDocument class.
+        /// </description>
+        /// <returns>The type info object for SimXMLDocument</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

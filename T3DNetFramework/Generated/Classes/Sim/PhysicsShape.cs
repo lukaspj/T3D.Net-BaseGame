@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Represents a destructible physical object simulated through the plugin system.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <see cref="PhysicsShapeData." />
     public unsafe class PhysicsShape : GameBase {
         public PhysicsShape(bool pRegister = false) 
             : base(pRegister) {
@@ -202,6 +207,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Add a force to a dynamic physics shape.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="force">to apply to the dynamic physics shape</param>
+        /// <remarks> This value is ignored on physics shapes that are not dynamic. Wakes up the dynamic physics shape if it is sleeping.
+        /// </remarks>
         public void ApplyForce(Point3F force) {
 force.Alloc();             InternalUnsafeMethods.ApplyForce__Args _args = new InternalUnsafeMethods.ApplyForce__Args() {
                 force = force.internalStructPtr,
@@ -209,6 +221,13 @@ force.Alloc();             InternalUnsafeMethods.ApplyForce__Args _args = new In
              InternalUnsafeMethods.ApplyForce()(ObjectPtr, _args);
 force.Free();        }
 
+        /// <summary>Add a torque to a dynamic physics shape.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="torque">to apply to the dynamic physics shape</param>
+        /// <remarks> This value is ignored on physics shapes that are not dynamic. Wakes up the dynamic physics shape if it is sleeping.
+        /// </remarks>
         public void ApplyTorque(Point3F torque) {
 torque.Alloc();             InternalUnsafeMethods.ApplyTorque__Args _args = new InternalUnsafeMethods.ApplyTorque__Args() {
                 torque = torque.internalStructPtr,
@@ -216,18 +235,33 @@ torque.Alloc();             InternalUnsafeMethods.ApplyTorque__Args _args = new 
              InternalUnsafeMethods.ApplyTorque()(ObjectPtr, _args);
 torque.Free();        }
 
+        /// <summary>Restores the shape to its state before being destroyed.</summary>
+        /// <description>
+        /// Re-enables rendering and physical simulation on the object and adds it to the client's scene graph. Has no effect if the shape is not destroyed.
+        /// </description>
         public void Restore() {
              InternalUnsafeMethods.Restore__Args _args = new InternalUnsafeMethods.Restore__Args() {
              };
              InternalUnsafeMethods.Restore()(ObjectPtr, _args);
         }
 
+        /// <summary>Disables rendering and physical simulation.</summary>
+        /// <description>
+        /// Calling destroy() will also spawn any explosions, debris, and/or destroyedShape defined for it, as well as remove it from the scene graph.
+        /// 
+        /// Destroyed objects are only created on the server. Ghosting will later update the client.
+        /// </description>
+        /// <remarks> This does not actually delete the PhysicsShape.</remarks>
         public void Destroy() {
              InternalUnsafeMethods.Destroy__Args _args = new InternalUnsafeMethods.Destroy__Args() {
              };
              InternalUnsafeMethods.Destroy()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns if a PhysicsShape has been destroyed or not.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public bool IsDestroyed() {
              InternalUnsafeMethods.IsDestroyed__Args _args = new InternalUnsafeMethods.IsDestroyed__Args() {
              };
@@ -235,6 +269,10 @@ torque.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the PhysicsShape class.
+        /// </description>
+        /// <returns>The type info object for PhysicsShape</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -242,6 +280,14 @@ torque.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Enables or disables playing of an ambient animation upon loading the shape.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> The ambient animation must be named "ambient".</remarks>
+        /// </value>
         public bool PlayAmbient {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("playAmbient"));
             set => SetFieldValue("playAmbient", GenericMarshal.ToString(value));

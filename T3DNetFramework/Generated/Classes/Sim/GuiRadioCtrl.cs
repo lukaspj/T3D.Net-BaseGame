@@ -14,7 +14,24 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A button based around the radio concept.</summary>
+    /// <description>
+    /// GuiRadioCtrl's functionality is based around GuiButtonBaseCtrl's ButtonTypeRadio type.
+    /// 
+    /// A button control with a radio box and a text label.
+    /// This control is used in groups where multiple radio buttons
+    /// present a range of options out of which one can be chosen.
+    /// A radio button automatically signals its siblings when it is
+    /// toggled on.
+    /// </description>
+    /// <code>
+    /// // Create a GuiCheckBoxCtrl that calls randomFunction with its current value when clicked.
+    /// %radio = new GuiRadioCtrl()
+    /// {
+    ///    profile = "GuiRadioProfile";
+    /// };
+    /// </code>
     public unsafe class GuiRadioCtrl : GuiCheckBoxCtrl {
         public GuiRadioCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +116,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiRadioCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiRadioCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

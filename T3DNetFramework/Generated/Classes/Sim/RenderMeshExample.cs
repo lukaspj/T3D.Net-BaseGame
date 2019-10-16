@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An example scene object which renders a mesh.</summary>
+    /// <description>
+    /// This class implements a basic SceneObject that can exist in the world at a 3D position and render itself. There are several valid ways to render an object in Torque. This class implements the preferred rendering method which is to submit a MeshRenderInst along with a Material, vertex buffer, primitive buffer, and transform and allow the RenderMeshMgr handle the actual setup and rendering for you.
+    /// 
+    /// See the C++ code for implementation details.
+    /// </description>
     public unsafe class RenderMeshExample : SceneObject {
         public RenderMeshExample(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +125,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// A utility method for forcing a network update.
+        /// </description>
         public void PostApply() {
              InternalUnsafeMethods.PostApply__Args _args = new InternalUnsafeMethods.PostApply__Args() {
              };
              InternalUnsafeMethods.PostApply()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the RenderMeshExample class.
+        /// </description>
+        /// <returns>The type info object for RenderMeshExample</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -132,6 +145,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The name of the material used to render the mesh.
+        /// </description>
+        /// </value>
         public string Material {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Material"));
             set => SetFieldValue("Material", GenericMarshal.ToString(value));

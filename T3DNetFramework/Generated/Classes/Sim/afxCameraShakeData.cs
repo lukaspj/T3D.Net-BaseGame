@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Camera Shake effect.</summary>
+    /// <description>
+    /// Camera Shake internally utilizes the standard Torque CameraShake class to implement a shaken camera effect.
+    /// </description>
     public unsafe class afxCameraShakeData : GameBaseData {
         public afxCameraShakeData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxCameraShakeData class.
+        /// </description>
+        /// <returns>The type info object for afxCameraShakeData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +114,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The camera shake frequencies for all three axes: X, Y, Z.
+        /// </description>
+        /// </value>
         public Point3F Frequency {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("frequency"));
             set => SetFieldValue("frequency", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The camera shake amplitudes for all three axes: X, Y, Z.
+        /// </description>
+        /// </value>
         public Point3F Amplitude {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("amplitude"));
             set => SetFieldValue("amplitude", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Radius about the effect position in which shaking will be applied.
+        /// </description>
+        /// </value>
         public float Radius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("radius"));
             set => SetFieldValue("radius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Magnitude by which shaking decreases over distance to radius.
+        /// </description>
+        /// </value>
         public float Falloff {
             get => GenericMarshal.StringTo<float>(GetFieldValue("falloff"));
             set => SetFieldValue("falloff", GenericMarshal.ToString(value));

@@ -14,7 +14,19 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A sound controller that directly plays a single sound file.</summary>
+    /// <description>
+    /// When playing individual audio files, SFXSounds are implicitly created by the sound system.
+    /// 
+    /// Each sound source has an associated play cursor that can be queried and explicitly positioned by the user.  The cursor is a floating-point value measured in seconds.
+    /// 
+    /// For streamed sources, playback may not be continuous in case the streaming queue is interrupted.
+    /// </description>
+    /// <remarks> This class cannot be instantiated directly by the user but rather is implicitly created by the sound system when sfxCreateSource() or sfxPlayOnce() is called on a SFXProfile instance.
+    /// 
+    /// </remarks>
+    /// <see cref="SFXDescription::priority" />
     public unsafe class SFXSound : SFXSource {
         public SFXSound(bool pRegister = false) 
             : base(pRegister) {
@@ -181,6 +193,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the total play time (in seconds) of the sound data attached to the sound.
+        /// </description>
+        /// <returns></returns>
+        /// <remarks> Be aware that for looped sounds, this will not return the total playback time of the sound.
+        /// </remarks>
         public float GetDuration() {
              InternalUnsafeMethods.GetDuration__Args _args = new InternalUnsafeMethods.GetDuration__Args() {
              };
@@ -188,6 +206,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the current playback position in seconds.
+        /// If the source is currently playing, playback will jump to the new position.  If playback is stopped or paused, playback will resume at the given position when play() is called.
+        /// </description>
+        /// <param name="position">The new position of the play cursor (in seconds).</param>
         public void SetPosition(float position) {
              InternalUnsafeMethods.SetPosition__Args _args = new InternalUnsafeMethods.SetPosition__Args() {
                 position = position,
@@ -195,6 +218,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetPosition()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the current playback position in seconds.
+        /// </description>
+        /// <returns>The current play cursor offset.</returns>
         public float GetPosition() {
              InternalUnsafeMethods.GetPosition__Args _args = new InternalUnsafeMethods.GetPosition__Args() {
              };
@@ -202,6 +229,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the sound data associated with the sound has been fully loaded and is ready for playback.
+        /// For streamed sounds, this will be false during playback when the stream queue for the sound is starved and waiting for data.  For buffered sounds, only an initial loading phase will potentially cause isReady to return false.
+        /// </description>
+        /// <returns>True if the sound is ready for playback.</returns>
         public bool IsReady() {
              InternalUnsafeMethods.IsReady__Args _args = new InternalUnsafeMethods.IsReady__Args() {
              };
@@ -209,6 +241,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the SFXSound class.
+        /// </description>
+        /// <returns>The type info object for SFXSound</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

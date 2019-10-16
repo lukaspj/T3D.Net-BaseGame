@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A render bin for terrain mesh rendering.</summary>
+    /// <description>
+    /// This bin renders terrain render instances from a TerrainBlock. Normally a mesh would render via the RenderMeshMgr, but terrain uses a TerrainMaterial designed for multi-layered surfaces which this bin can processs.
+    /// </description>
     public unsafe class RenderTerrainMgr : RenderBinManager {
         public RenderTerrainMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderTerrainMgr class.
+        /// </description>
+        /// <returns>The type info object for RenderTerrainMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

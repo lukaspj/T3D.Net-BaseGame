@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An AFX customized particle emitter that emits particles within a disc shape.</summary>
+    /// <description>
+    /// An AFX customized particle emitter that emits particles within a disc shape.
+    /// </description>
     public unsafe class afxParticleEmitterDiscData : afxParticleEmitterData {
         public afxParticleEmitterDiscData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxParticleEmitterDiscData class.
+        /// </description>
+        /// <returns>The type info object for afxParticleEmitterDiscData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +114,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float RadiusMin {
             get => GenericMarshal.StringTo<float>(GetFieldValue("radiusMin"));
             set => SetFieldValue("radiusMin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float RadiusMax {
             get => GenericMarshal.StringTo<float>(GetFieldValue("radiusMax"));
             set => SetFieldValue("radiusMax", GenericMarshal.ToString(value));

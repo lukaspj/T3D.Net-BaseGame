@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Contains additional data to be associated with a ParticleEmitterNode.</summary>
     public unsafe class ParticleEmitterNodeData : GameBaseData {
         public ParticleEmitterNodeData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ParticleEmitterNodeData class.
+        /// </description>
+        /// <returns>The type info object for ParticleEmitterNodeData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +111,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Time multiplier for particle emitter nodes.</summary>
+        /// <description>
+        /// Increasing timeMultiple is like running the emitter at a faster rate - single-shot emitters will complete in a shorter time, and continuous emitters will generate particles more quickly.
+        /// 
+        /// Valid range is 0.01 - 100.
+        /// </description>
+        /// </value>
         public float TimeMultiple {
             get => GenericMarshal.StringTo<float>(GetFieldValue("timeMultiple"));
             set => SetFieldValue("timeMultiple", GenericMarshal.ToString(value));

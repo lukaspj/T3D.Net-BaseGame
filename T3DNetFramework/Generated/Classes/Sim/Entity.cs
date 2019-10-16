@@ -14,7 +14,33 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Base Entity class.</summary>
+    /// <description>
+    /// Entity is typically made up of a shape and up to two particle emitters.  In most cases Entity objects are not created directly.  They are usually produced automatically by other means, such as through the Explosion class.  When an explosion goes off, its ExplosionData datablock determines what Entity to emit.
+    /// </description>
+    /// <code>
+    /// datablock ExplosionData(GrenadeLauncherExplosion)
+    /// {
+    ///    // Assiging Entity data
+    ///    Entity = GrenadeEntity;
+    /// 
+    ///    // Adjust how Entity is ejected
+    ///    EntityThetaMin = 10;
+    ///    EntityThetaMax = 60;
+    ///    EntityNum = 4;
+    ///    EntityNumVariance = 2;
+    ///    EntityVelocity = 25;
+    ///    EntityVelocityVariance = 5;
+    /// 
+    ///    // Note: other ExplosionData properties are not listed for this example
+    /// };
+    /// </code>
+    /// <remarks> Entity are client side only objects.
+    /// </remarks>
+    /// <see cref="EntityData" />
+    /// <see cref="ExplosionData" />
+    /// <see cref="Explosion" />
     public unsafe class Entity : GameBase {
         public Entity(bool pRegister = false) 
             : base(pRegister) {
@@ -535,6 +561,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Triggers a signal call to all components for a certain function.
+        /// </description>
         public void Notify(string signalFunction = "", string argA = "", string argB = "", string argC = "", string argD = "", string argE = "") {
              InternalUnsafeMethods.Notify__Args _args = new InternalUnsafeMethods.Notify__Args() {
                 signalFunction = signalFunction,
@@ -547,6 +576,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Notify()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public void RotateTo(Point3F lookPosition, float degreePerSecond = 1f) {
 lookPosition.Alloc();             InternalUnsafeMethods.RotateTo__Args _args = new InternalUnsafeMethods.RotateTo__Args() {
                 lookPosition = lookPosition.internalStructPtr,
@@ -555,6 +588,10 @@ lookPosition.Alloc();             InternalUnsafeMethods.RotateTo__Args _args = n
              InternalUnsafeMethods.RotateTo()(ObjectPtr, _args);
 lookPosition.Free();        }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public void LookAt(Point3F lookPosition) {
 lookPosition.Alloc();             InternalUnsafeMethods.LookAt__Args _args = new InternalUnsafeMethods.LookAt__Args() {
                 lookPosition = lookPosition.internalStructPtr,
@@ -562,6 +599,10 @@ lookPosition.Alloc();             InternalUnsafeMethods.LookAt__Args _args = new
              InternalUnsafeMethods.LookAt()(ObjectPtr, _args);
 lookPosition.Free();        }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public void SetForwardVector(Point3F newForward = null) {
 newForward = newForward ?? new Point3F("0 0 0");
 newForward.Alloc();             InternalUnsafeMethods.SetForwardVector__Args _args = new InternalUnsafeMethods.SetForwardVector__Args() {
@@ -570,6 +611,11 @@ newForward.Alloc();             InternalUnsafeMethods.SetForwardVector__Args _ar
              InternalUnsafeMethods.SetForwardVector()(ObjectPtr, _args);
 newForward.Free();        }
 
+        /// <description>
+        /// Get the direction this object is facing.
+        /// </description>
+        /// <returns>a vector indicating the direction this object is facing.</returns>
+        /// <remarks> This is the object's y axis.</remarks>
         public Point3F GetForwardVector() {
              InternalUnsafeMethods.GetForwardVector__Args _args = new InternalUnsafeMethods.GetForwardVector__Args() {
              };
@@ -577,6 +623,10 @@ newForward.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public bool GetMoveTrigger(int triggerNum = 0) {
              InternalUnsafeMethods.GetMoveTrigger__Args _args = new InternalUnsafeMethods.GetMoveTrigger__Args() {
                 triggerNum = triggerNum,
@@ -585,6 +635,10 @@ newForward.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public Point3F GetMoveRotation() {
              InternalUnsafeMethods.GetMoveRotation__Args _args = new InternalUnsafeMethods.GetMoveRotation__Args() {
              };
@@ -592,6 +646,10 @@ newForward.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public Point3F GetMoveVector() {
              InternalUnsafeMethods.GetMoveVector__Args _args = new InternalUnsafeMethods.GetMoveVector__Args() {
              };
@@ -599,6 +657,10 @@ newForward.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public void SetComponentDirty(int componentID = 0, bool forceUpdate = false) {
              InternalUnsafeMethods.SetComponentDirty__Args _args = new InternalUnsafeMethods.SetComponentDirty__Args() {
                 componentID = componentID,
@@ -607,6 +669,11 @@ newForward.Free();        }
              InternalUnsafeMethods.SetComponentDirty()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the count of behaviors on an object</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>(int count) The number of behaviors on an object</returns>
         public int GetComponentCount() {
              InternalUnsafeMethods.GetComponentCount__Args _args = new InternalUnsafeMethods.GetComponentCount__Args() {
              };
@@ -614,6 +681,10 @@ newForward.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public Component GetComponent(string componentName = "") {
              InternalUnsafeMethods.GetComponent__Args _args = new InternalUnsafeMethods.GetComponent__Args() {
                 componentName = componentName,
@@ -622,6 +693,12 @@ newForward.Free();        }
              return new Component(_engineResult);
         }
 
+        /// <summary>Gets a particular behavior</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">The index of the behavior to get</param>
+        /// <returns>(ComponentInstance bi) The behavior instance you requested</returns>
         public Component GetComponentByIndex(int index) {
              InternalUnsafeMethods.GetComponentByIndex__Args _args = new InternalUnsafeMethods.GetComponentByIndex__Args() {
                 index = index,
@@ -630,12 +707,19 @@ newForward.Free();        }
              return new Component(_engineResult);
         }
 
+        /// <description>
+        /// Clear all behavior instances
+        /// </description>
+        /// <returns>No return value</returns>
         public void ClearComponents() {
              InternalUnsafeMethods.ClearComponents__Args _args = new InternalUnsafeMethods.ClearComponents__Args() {
              };
              InternalUnsafeMethods.ClearComponents()(ObjectPtr, _args);
         }
 
+        /// <param name="bi">The behavior instance to remove</param>
+        /// <param name="deleteBehavior">Whether or not to delete the behavior</param>
+        /// <returns>(bool success) Whether the behavior was successfully removed</returns>
         public bool RemoveComponent(Component comp, bool deleteComponent = true) {
              InternalUnsafeMethods.RemoveComponent__Args _args = new InternalUnsafeMethods.RemoveComponent__Args() {
                 comp = comp.ObjectPtr,
@@ -645,6 +729,12 @@ newForward.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Add a behavior to the object</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="bi">The behavior instance to add</param>
+        /// <returns>(bool success) Whether or not the behavior was successfully added</returns>
         public bool AddComponent(Component comp) {
              InternalUnsafeMethods.AddComponent__Args _args = new InternalUnsafeMethods.AddComponent__Args() {
                 comp = comp.ObjectPtr,
@@ -653,6 +743,14 @@ newForward.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public void SetBox(Point3F box = null) {
 box = box ?? new Point3F("1 1 1");
 box.Alloc();             InternalUnsafeMethods.SetBox__Args _args = new InternalUnsafeMethods.SetBox__Args() {
@@ -661,6 +759,14 @@ box.Alloc();             InternalUnsafeMethods.SetBox__Args _args = new Internal
              InternalUnsafeMethods.SetBox()(ObjectPtr, _args);
 box.Free();        }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public TransformF GetMountTransform() {
              InternalUnsafeMethods.GetMountTransform__Args _args = new InternalUnsafeMethods.GetMountTransform__Args() {
              };
@@ -668,6 +774,14 @@ box.Free();        }
              return new TransformF(_engineResult);
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public void SetMountRotation(Point3F rotOffset = null) {
 rotOffset = rotOffset ?? new Point3F("0 0 0");
 rotOffset.Alloc();             InternalUnsafeMethods.SetMountRotation__Args _args = new InternalUnsafeMethods.SetMountRotation__Args() {
@@ -676,6 +790,14 @@ rotOffset.Alloc();             InternalUnsafeMethods.SetMountRotation__Args _arg
              InternalUnsafeMethods.SetMountRotation()(ObjectPtr, _args);
 rotOffset.Free();        }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public void SetMountOffset(Point3F posOffset = null) {
 posOffset = posOffset ?? new Point3F("0 0 0");
 posOffset.Alloc();             InternalUnsafeMethods.SetMountOffset__Args _args = new InternalUnsafeMethods.SetMountOffset__Args() {
@@ -684,6 +806,14 @@ posOffset.Alloc();             InternalUnsafeMethods.SetMountOffset__Args _args 
              InternalUnsafeMethods.SetMountOffset()(ObjectPtr, _args);
 posOffset.Free();        }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public bool MountObject(SceneObject objB, TransformF txfm = null) {
 txfm = txfm ?? new TransformF("0 0 0 1 0 0 0 true");
 txfm.Alloc();             InternalUnsafeMethods.MountObject__Args _args = new InternalUnsafeMethods.MountObject__Args() {
@@ -694,6 +824,10 @@ txfm.Alloc();             InternalUnsafeMethods.MountObject__Args _args = new In
 txfm.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the Entity class.
+        /// </description>
+        /// <returns>The type info object for Entity</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -701,21 +835,45 @@ txfm.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Position we are mounted at ( object space of our mount object ).
+        /// </description>
+        /// </value>
         public MatrixF LocalPosition {
             get => GenericMarshal.StringTo<MatrixF>(GetFieldValue("LocalPosition"));
             set => SetFieldValue("LocalPosition", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Rotation we are mounted at ( object space of our mount object ).
+        /// </description>
+        /// </value>
         public MatrixF LocalRotation {
             get => GenericMarshal.StringTo<MatrixF>(GetFieldValue("LocalRotation"));
             set => SetFieldValue("LocalRotation", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object world orientation.
+        /// </description>
+        /// </value>
         public int LifetimeMS {
             get => GenericMarshal.StringTo<int>(GetFieldValue("lifetimeMS"));
             set => SetFieldValue("lifetimeMS", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The asset Id used for the game object this entity is based on.
+        /// </description>
+        /// </value>
         public IntPtr GameObjectName {
             get => GenericMarshal.StringTo<IntPtr>(GetFieldValue("gameObjectName"));
             set => SetFieldValue("gameObjectName", GenericMarshal.ToString(value));

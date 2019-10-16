@@ -14,7 +14,42 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A collection of SimObjects that are owned by the group.</summary>
+    /// <description>
+    /// A SimGroup is a stricter form of SimSet. SimObjects may only be a member of a single SimGroup at a time. The SimGroup will automatically enforce the single-group-membership rule (ie. adding an object to a SimGroup will cause it to be removed from its current SimGroup, if any).
+    /// 
+    /// Deleting a SimGroup will also delete all SimObjects in the SimGroup.
+    /// </description>
+    /// <code>
+    /// // Create a SimGroup for particle emitters
+    /// new SimGroup(Emitters)
+    /// {
+    ///    canSaveDynamicFields = "1";
+    /// 
+    ///    new ParticleEmitterNode(CrystalEmmiter) {
+    ///       active = "1";
+    ///       emitter = "dustEmitter";
+    ///       velocity = "1";
+    ///       dataBlock = "GenericSmokeEmitterNode";
+    ///       position = "-61.6276 2.1142 4.45027";
+    ///       rotation = "1 0 0 0";
+    ///       scale = "1 1 1";
+    ///       canSaveDynamicFields = "1";
+    ///    };
+    /// 
+    ///    new ParticleEmitterNode(Steam1) {
+    ///       active = "1";
+    ///       emitter = "SlowSteamEmitter";
+    ///       velocity = "1";
+    ///       dataBlock = "GenericSmokeEmitterNode";
+    ///       position = "-25.0458 1.55289 2.51308";
+    ///       rotation = "1 0 0 0";
+    ///       scale = "1 1 1";
+    ///       canSaveDynamicFields = "1";
+    ///    };
+    /// };
+    /// </code>
     public unsafe class SimGroup : SimSet {
         public SimGroup(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +134,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the SimGroup class.
+        /// </description>
+        /// <returns>The type info object for SimGroup</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

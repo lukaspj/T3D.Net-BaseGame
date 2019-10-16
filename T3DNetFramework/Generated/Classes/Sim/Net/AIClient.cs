@@ -14,7 +14,17 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim.Net {    
+namespace T3DNetFramework.Generated.Classes.Sim.Net {
+    /// <summary>Simulated client driven by AI commands.</summary>
+    /// <description>
+    /// This object is derived from the AIConnection class. It introduces its own Player object to solidify the purpose of this class: Simulated client connecting as a player
+    /// 
+    /// To get more specific, if you want a strong alternative to AIPlayer (and wish to make use of the AIConnection structure), consider AIClient. AIClient inherits from AIConnection, contains quite a bit of functionality you will find in AIPlayer, and has its own Player object.
+    /// </description>
+    /// <remarks> This is a legacy class, which you are discouraged from using as it will most likely be deprecated in a future version. For now it has been left in for backwards compatibility with TGE and the old RTS Kit. Use AIPlayer instead.
+    /// 
+    /// </remarks>
+    /// <see cref="AIPlayer, AIConnection" />
     public unsafe class AIClient : AIConnection {
         public AIClient(bool pRegister = false) 
             : base(pRegister) {
@@ -366,12 +376,18 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
         }
         #endregion
 
+        /// <description>
+        /// ai.moveForward();
+        /// </description>
         public void MoveForward() {
              InternalUnsafeMethods.MoveForward__Args _args = new InternalUnsafeMethods.MoveForward__Args() {
              };
              InternalUnsafeMethods.MoveForward()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ai.getLocation();
+        /// </description>
         public Point3F GetLocation() {
              InternalUnsafeMethods.GetLocation__Args _args = new InternalUnsafeMethods.GetLocation__Args() {
              };
@@ -379,18 +395,27 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// ai.move();
+        /// </description>
         public void Move() {
              InternalUnsafeMethods.Move__Args _args = new InternalUnsafeMethods.Move__Args() {
              };
              InternalUnsafeMethods.Move()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ai.missionCycleCleanup();
+        /// </description>
         public void MissionCycleCleanup() {
              InternalUnsafeMethods.MissionCycleCleanup__Args _args = new InternalUnsafeMethods.MissionCycleCleanup__Args() {
              };
              InternalUnsafeMethods.MissionCycleCleanup()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ai.getTargetObject();
+        /// </description>
         public int GetTargetObject() {
              InternalUnsafeMethods.GetTargetObject__Args _args = new InternalUnsafeMethods.GetTargetObject__Args() {
              };
@@ -398,6 +423,9 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <description>
+        /// ai.setTargetObject( obj );
+        /// </description>
         public void SetTargetObject(string objName) {
              InternalUnsafeMethods.SetTargetObject__Args _args = new InternalUnsafeMethods.SetTargetObject__Args() {
                 objName = objName,
@@ -405,6 +433,9 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.SetTargetObject()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ai.getMoveDestination();
+        /// </description>
         public Point3F GetMoveDestination() {
              InternalUnsafeMethods.GetMoveDestination__Args _args = new InternalUnsafeMethods.GetMoveDestination__Args() {
              };
@@ -412,6 +443,9 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// ai.getAimLocation();
+        /// </description>
         public Point3F GetAimLocation() {
              InternalUnsafeMethods.GetAimLocation__Args _args = new InternalUnsafeMethods.GetAimLocation__Args() {
              };
@@ -419,6 +453,9 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// ai.setMoveDestination( x y z );
+        /// </description>
         public void SetMoveDestination(Point3F v) {
 v.Alloc();             InternalUnsafeMethods.SetMoveDestination__Args _args = new InternalUnsafeMethods.SetMoveDestination__Args() {
                 v = v.internalStructPtr,
@@ -426,6 +463,9 @@ v.Alloc();             InternalUnsafeMethods.SetMoveDestination__Args _args = ne
              InternalUnsafeMethods.SetMoveDestination()(ObjectPtr, _args);
 v.Free();        }
 
+        /// <description>
+        /// ai.setAimLocation( x y z );
+        /// </description>
         public void SetAimLocation(Point3F v) {
 v.Alloc();             InternalUnsafeMethods.SetAimLocation__Args _args = new InternalUnsafeMethods.SetAimLocation__Args() {
                 v = v.internalStructPtr,
@@ -433,12 +473,18 @@ v.Alloc();             InternalUnsafeMethods.SetAimLocation__Args _args = new In
              InternalUnsafeMethods.SetAimLocation()(ObjectPtr, _args);
 v.Free();        }
 
+        /// <description>
+        /// ai.stop();
+        /// </description>
         public void Stop() {
              InternalUnsafeMethods.Stop__Args _args = new InternalUnsafeMethods.Stop__Args() {
              };
              InternalUnsafeMethods.Stop()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ai.setMoveSpeed( float );
+        /// </description>
         public void SetMoveSpeed(float speed) {
              InternalUnsafeMethods.SetMoveSpeed__Args _args = new InternalUnsafeMethods.SetMoveSpeed__Args() {
                 speed = speed,
@@ -446,6 +492,7 @@ v.Free();        }
              InternalUnsafeMethods.SetMoveSpeed()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnConnect(string idString) {
              InternalUnsafeMethods.OnConnect__Args _args = new InternalUnsafeMethods.OnConnect__Args() {
                 idString = idString,
@@ -453,6 +500,10 @@ v.Free();        }
              InternalUnsafeMethods.OnConnect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the AIClient class.
+        /// </description>
+        /// <returns>The type info object for AIClient</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

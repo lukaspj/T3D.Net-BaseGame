@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class NavMesh : SceneObject {
         public NavMesh(bool pRegister = false) 
             : base(pRegister) {
@@ -457,12 +458,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Save this NavMesh to its file.</summary>
         public void Save() {
              InternalUnsafeMethods.Save__Args _args = new InternalUnsafeMethods.Save__Args() {
              };
              InternalUnsafeMethods.Save()(ObjectPtr, _args);
         }
 
+        /// <summary>Load this NavMesh from its file.</summary>
         public bool Load() {
              InternalUnsafeMethods.Load__Args _args = new InternalUnsafeMethods.Load__Args() {
              };
@@ -470,6 +473,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Create cover points for this NavMesh.</summary>
         public bool CreateCoverPoints() {
              InternalUnsafeMethods.CreateCoverPoints__Args _args = new InternalUnsafeMethods.CreateCoverPoints__Args() {
              };
@@ -477,18 +481,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Remove all cover points for this NavMesh.</summary>
         public void DeleteCoverPoints() {
              InternalUnsafeMethods.DeleteCoverPoints__Args _args = new InternalUnsafeMethods.DeleteCoverPoints__Args() {
              };
              InternalUnsafeMethods.DeleteCoverPoints()(ObjectPtr, _args);
         }
 
+        /// <summary>Build tiles of this mesh where there are unsynchronised links.</summary>
         public void BuildLinks() {
              InternalUnsafeMethods.BuildLinks__Args _args = new InternalUnsafeMethods.BuildLinks__Args() {
              };
              InternalUnsafeMethods.BuildLinks()(ObjectPtr, _args);
         }
 
+        /// <summary>Rebuild the tiles overlapped by the input box.</summary>
         public void BuildTiles(Box3F box) {
 box.Alloc();             InternalUnsafeMethods.BuildTiles__Args _args = new InternalUnsafeMethods.BuildTiles__Args() {
                 box = box.internalStructPtr,
@@ -496,12 +503,14 @@ box.Alloc();             InternalUnsafeMethods.BuildTiles__Args _args = new Inte
              InternalUnsafeMethods.BuildTiles()(ObjectPtr, _args);
 box.Free();        }
 
+        /// <summary>Cancel the current NavMesh build.</summary>
         public void CancelBuild() {
              InternalUnsafeMethods.CancelBuild__Args _args = new InternalUnsafeMethods.CancelBuild__Args() {
              };
              InternalUnsafeMethods.CancelBuild()(ObjectPtr, _args);
         }
 
+        /// <summary>Create a Recast nav mesh.</summary>
         public bool Build(bool background = true, bool save = false) {
              InternalUnsafeMethods.Build__Args _args = new InternalUnsafeMethods.Build__Args() {
                 background = background,
@@ -511,12 +520,18 @@ box.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Deletes all off-mesh links on this NavMesh.
+        /// </description>
         public void DeleteLinks() {
              InternalUnsafeMethods.DeleteLinks__Args _args = new InternalUnsafeMethods.DeleteLinks__Args() {
              };
              InternalUnsafeMethods.DeleteLinks()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Delete a given off-mesh link.
+        /// </description>
         public void DeleteLink(uint id) {
              InternalUnsafeMethods.DeleteLink__Args _args = new InternalUnsafeMethods.DeleteLink__Args() {
                 id = id,
@@ -524,6 +539,9 @@ box.Free();        }
              InternalUnsafeMethods.DeleteLink()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the ending point of an off-mesh link.
+        /// </description>
         public Point3F GetLinkEnd(uint id) {
              InternalUnsafeMethods.GetLinkEnd__Args _args = new InternalUnsafeMethods.GetLinkEnd__Args() {
                 id = id,
@@ -532,6 +550,9 @@ box.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the starting point of an off-mesh link.
+        /// </description>
         public Point3F GetLinkStart(uint id) {
              InternalUnsafeMethods.GetLinkStart__Args _args = new InternalUnsafeMethods.GetLinkStart__Args() {
                 id = id,
@@ -540,6 +561,9 @@ box.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Set the flags of a particular off-mesh link.
+        /// </description>
         public void SetLinkFlags(uint id, uint flags) {
              InternalUnsafeMethods.SetLinkFlags__Args _args = new InternalUnsafeMethods.SetLinkFlags__Args() {
                 id = id,
@@ -548,6 +572,9 @@ box.Free();        }
              InternalUnsafeMethods.SetLinkFlags()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the flags set for a particular off-mesh link.
+        /// </description>
         public int GetLinkFlags(uint id) {
              InternalUnsafeMethods.GetLinkFlags__Args _args = new InternalUnsafeMethods.GetLinkFlags__Args() {
                 id = id,
@@ -556,6 +583,9 @@ box.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Return the number of links this mesh has.
+        /// </description>
         public int GetLinkCount() {
              InternalUnsafeMethods.GetLinkCount__Args _args = new InternalUnsafeMethods.GetLinkCount__Args() {
              };
@@ -563,6 +593,9 @@ box.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the off-mesh link closest to a given world point.
+        /// </description>
         public int GetLink(Point3F pos) {
 pos.Alloc();             InternalUnsafeMethods.GetLink__Args _args = new InternalUnsafeMethods.GetLink__Args() {
                 pos = pos.internalStructPtr,
@@ -571,6 +604,9 @@ pos.Alloc();             InternalUnsafeMethods.GetLink__Args _args = new Interna
 pos.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Add a link to this NavMesh between two points.
+        /// </description>
         public int AddLink(Point3F from, Point3F to, uint flags = 0) {
 from.Alloc();to.Alloc();             InternalUnsafeMethods.AddLink__Args _args = new InternalUnsafeMethods.AddLink__Args() {
                 from = from.internalStructPtr,
@@ -581,6 +617,10 @@ from.Alloc();to.Alloc();             InternalUnsafeMethods.AddLink__Args _args =
 from.Free();to.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the NavMesh class.
+        /// </description>
+        /// <returns>The type info object for NavMesh</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -588,131 +628,287 @@ from.Free();to.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the data file to store this navmesh in (relative to engine executable).
+        /// </description>
+        /// </value>
         public string FileName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("fileName"));
             set => SetFieldValue("fileName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The method to use to handle water surfaces.
+        /// </description>
+        /// </value>
         public NavMeshWaterMethod WaterMethod {
             get => GenericMarshal.StringTo<NavMeshWaterMethod>(GetFieldValue("waterMethod"));
             set => SetFieldValue("waterMethod", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Length/width of a voxel.
+        /// </description>
+        /// </value>
         public float CellSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("cellSize"));
             set => SetFieldValue("cellSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Height of a voxel.
+        /// </description>
+        /// </value>
         public float CellHeight {
             get => GenericMarshal.StringTo<float>(GetFieldValue("cellHeight"));
             set => SetFieldValue("cellHeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The horizontal size of tiles.
+        /// </description>
+        /// </value>
         public float TileSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("tileSize"));
             set => SetFieldValue("tileSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Height of an actor.
+        /// </description>
+        /// </value>
         public float ActorHeight {
             get => GenericMarshal.StringTo<float>(GetFieldValue("actorHeight"));
             set => SetFieldValue("actorHeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Maximum climbing height of an actor.
+        /// </description>
+        /// </value>
         public float ActorClimb {
             get => GenericMarshal.StringTo<float>(GetFieldValue("actorClimb"));
             set => SetFieldValue("actorClimb", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Radius of an actor.
+        /// </description>
+        /// </value>
         public float ActorRadius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("actorRadius"));
             set => SetFieldValue("actorRadius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Maximum walkable slope in degrees.
+        /// </description>
+        /// </value>
         public float WalkableSlope {
             get => GenericMarshal.StringTo<float>(GetFieldValue("walkableSlope"));
             set => SetFieldValue("walkableSlope", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Is this NavMesh for smaller-than-usual characters?
+        /// </description>
+        /// </value>
         public bool SmallCharacters {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("smallCharacters"));
             set => SetFieldValue("smallCharacters", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Is this NavMesh for regular-sized characters?
+        /// </description>
+        /// </value>
         public bool RegularCharacters {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("regularCharacters"));
             set => SetFieldValue("regularCharacters", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Is this NavMesh for larger-than-usual characters?
+        /// </description>
+        /// </value>
         public bool LargeCharacters {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("largeCharacters"));
             set => SetFieldValue("largeCharacters", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Is this NavMesh for characters driving vehicles?
+        /// </description>
+        /// </value>
         public bool Vehicles {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("vehicles"));
             set => SetFieldValue("vehicles", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the SimGroup to store cover points in.
+        /// </description>
+        /// </value>
         public string CoverGroup {
             get => GenericMarshal.StringTo<string>(GetFieldValue("coverGroup"));
             set => SetFieldValue("coverGroup", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Add cover points everywhere, not just on corners?
+        /// </description>
+        /// </value>
         public bool InnerCover {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("innerCover"));
             set => SetFieldValue("innerCover", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Distance from the edge of the NavMesh to search for cover.
+        /// </description>
+        /// </value>
         public float CoverDist {
             get => GenericMarshal.StringTo<float>(GetFieldValue("coverDist"));
             set => SetFieldValue("coverDist", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Distance to the side of each cover point that peeking happens.
+        /// </description>
+        /// </value>
         public float PeekDist {
             get => GenericMarshal.StringTo<float>(GetFieldValue("peekDist"));
             set => SetFieldValue("peekDist", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Display this NavMesh even outside the editor.
+        /// </description>
+        /// </value>
         public bool AlwaysRender {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("alwaysRender"));
             set => SetFieldValue("alwaysRender", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Size of the non-walkable border around the navigation mesh (in voxels).
+        /// </description>
+        /// </value>
         public int BorderSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("borderSize"));
             set => SetFieldValue("borderSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sets the sampling distance to use when generating the detail mesh.
+        /// </description>
+        /// </value>
         public float DetailSampleDist {
             get => GenericMarshal.StringTo<float>(GetFieldValue("detailSampleDist"));
             set => SetFieldValue("detailSampleDist", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum distance the detail mesh surface should deviate from heightfield data.
+        /// </description>
+        /// </value>
         public float DetailSampleError {
             get => GenericMarshal.StringTo<float>(GetFieldValue("detailSampleError"));
             set => SetFieldValue("detailSampleError", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum allowed length for contour edges along the border of the mesh.
+        /// </description>
+        /// </value>
         public int MaxEdgeLen {
             get => GenericMarshal.StringTo<int>(GetFieldValue("maxEdgeLen"));
             set => SetFieldValue("maxEdgeLen", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum distance a simplfied contour's border edges should deviate from the original raw contour.
+        /// </description>
+        /// </value>
         public float SimplificationError {
             get => GenericMarshal.StringTo<float>(GetFieldValue("simplificationError"));
             set => SetFieldValue("simplificationError", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The minimum number of cells allowed to form isolated island areas.
+        /// </description>
+        /// </value>
         public int MinRegionArea {
             get => GenericMarshal.StringTo<int>(GetFieldValue("minRegionArea"));
             set => SetFieldValue("minRegionArea", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Any regions with a span count smaller than this value will, if possible, be merged with larger regions.
+        /// </description>
+        /// </value>
         public int MergeRegionArea {
             get => GenericMarshal.StringTo<int>(GetFieldValue("mergeRegionArea"));
             set => SetFieldValue("mergeRegionArea", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum number of polygons allowed in a tile.
+        /// </description>
+        /// </value>
         public int MaxPolysPerTile {
             get => GenericMarshal.StringTo<int>(GetFieldValue("maxPolysPerTile"));
             set => SetFieldValue("maxPolysPerTile", GenericMarshal.ToString(value));

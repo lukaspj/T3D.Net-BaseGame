@@ -14,7 +14,23 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A base class for cross platform menu controls that are gamepad friendly.</summary>
+    /// <description>
+    /// This class is used to build row-based menu GUIs that can be easily navigated using the keyboard, mouse or gamepad. The desired row can be selected using the mouse, or by navigating using the Up and Down buttons.
+    /// </description>
+    /// <code>
+    /// new GuiGameListMenuCtrl()
+    /// {
+    ///    debugRender = "0";
+    ///    callbackOnA = "applyOptions();";
+    ///    callbackOnB = "Canvas.setContent(MainMenuGui);";
+    ///    callbackOnX = "";
+    ///    callbackOnY = "revertOptions();";
+    ///    //Properties not specific to this control have been omitted from this example.
+    /// };
+    /// </code>
+    /// <see cref="GuiGameListMenuProfile" />
     public unsafe class GuiGameListMenuCtrl : GuiControl {
         public GuiGameListMenuCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -320,6 +336,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Gets the index of the currently selected row.
+        /// </description>
+        /// <returns>Index of the selected row.</returns>
         public int GetSelectedRow() {
              InternalUnsafeMethods.GetSelectedRow__Args _args = new InternalUnsafeMethods.GetSelectedRow__Args() {
              };
@@ -327,6 +347,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Sets the selected row. Only rows that are enabled can be selected.
+        /// </description>
+        /// <param name="row">Index of the row to set as selected.</param>
         public void SetSelected(int row) {
              InternalUnsafeMethods.SetSelected__Args _args = new InternalUnsafeMethods.SetSelected__Args() {
                 row = row,
@@ -334,6 +358,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSelected()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets the label on the given row.
+        /// </description>
+        /// <param name="row">Index of the row to set the label on.</param>
+        /// <param name="label">Text to set as the label of the row.</param>
         public void SetRowLabel(int row, string label) {
              InternalUnsafeMethods.SetRowLabel__Args _args = new InternalUnsafeMethods.SetRowLabel__Args() {
                 row = row,
@@ -342,6 +371,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetRowLabel()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Gets the label displayed on the specified row.
+        /// </description>
+        /// <param name="row">Index of the row to get the label of.</param>
+        /// <returns>The label for the row.</returns>
         public string GetRowLabel(int row) {
              InternalUnsafeMethods.GetRowLabel__Args _args = new InternalUnsafeMethods.GetRowLabel__Args() {
                 row = row,
@@ -350,6 +384,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the number of rows on the control.
+        /// </description>
+        /// <returns>(int) The number of rows on the control.</returns>
         public int GetRowCount() {
              InternalUnsafeMethods.GetRowCount__Args _args = new InternalUnsafeMethods.GetRowCount__Args() {
              };
@@ -357,12 +395,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Activates the current row. The script callback of  the current row will be called (if it has one).
+        /// </description>
         public void ActivateRow() {
              InternalUnsafeMethods.ActivateRow__Args _args = new InternalUnsafeMethods.ActivateRow__Args() {
              };
              InternalUnsafeMethods.ActivateRow()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets a row's enabled status according to the given parameters.
+        /// </description>
+        /// <param name="row">The index to check for validity.</param>
+        /// <param name="enabled">Indicate true to enable the row or false to disable it.</param>
         public void SetRowEnabled(int row, bool enabled) {
              InternalUnsafeMethods.SetRowEnabled__Args _args = new InternalUnsafeMethods.SetRowEnabled__Args() {
                 row = row,
@@ -371,6 +417,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetRowEnabled()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Determines if the specified row is enabled or disabled.
+        /// </description>
+        /// <param name="row">The row to set the enabled status of.</param>
+        /// <returns>True if the specified row is enabled. False if the row is not enabled or the given index was not valid.</returns>
         public bool IsRowEnabled(int row) {
              InternalUnsafeMethods.IsRowEnabled__Args _args = new InternalUnsafeMethods.IsRowEnabled__Args() {
                 row = row,
@@ -379,6 +430,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Add a row to the list control.
+        /// </description>
+        /// <param name="label">The text to display on the row as a label.</param>
+        /// <param name="callback">Name of a script function to use as a callback when this row is activated.</param>
+        /// <param name="icon">[optional] Index of the icon to use as a marker.</param>
+        /// <param name="yPad">[optional] An extra amount of height padding before the row. Does nothing on the first row.</param>
+        /// <param name="useHighlightIcon">[optional] Does this row use the highlight icon?.</param>
+        /// <param name="enabled">[optional] If this row is initially enabled.</param>
         public void AddRow(string label, string callback, int icon = -1, int yPad = 0, bool useHighlightIcon = true, bool enabled = true) {
              InternalUnsafeMethods.AddRow__Args _args = new InternalUnsafeMethods.AddRow__Args() {
                 label = label,
@@ -391,12 +451,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddRow()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the selected row changes.
+        /// </description>
         public virtual void OnChange() {
              InternalUnsafeMethods.OnChange__Args _args = new InternalUnsafeMethods.OnChange__Args() {
              };
              InternalUnsafeMethods.OnChange()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiGameListMenuCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiGameListMenuCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -404,26 +471,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Enable debug rendering
+        /// </description>
+        /// </value>
         public bool DebugRender {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("debugRender"));
             set => SetFieldValue("debugRender", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script callback when the 'A' button is pressed. 'A' inputs are Keyboard: A, Return, Space; Gamepad: A, Start
+        /// </description>
+        /// </value>
         public string CallbackOnA {
             get => GenericMarshal.StringTo<string>(GetFieldValue("callbackOnA"));
             set => SetFieldValue("callbackOnA", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script callback when the 'B' button is pressed. 'B' inputs are Keyboard: B, Esc, Backspace, Delete; Gamepad: B, Back
+        /// </description>
+        /// </value>
         public string CallbackOnB {
             get => GenericMarshal.StringTo<string>(GetFieldValue("callbackOnB"));
             set => SetFieldValue("callbackOnB", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script callback when the 'X' button is pressed. 'X' inputs are Keyboard: X; Gamepad: X
+        /// </description>
+        /// </value>
         public string CallbackOnX {
             get => GenericMarshal.StringTo<string>(GetFieldValue("callbackOnX"));
             set => SetFieldValue("callbackOnX", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script callback when the 'Y' button is pressed. 'Y' inputs are Keyboard: Y; Gamepad: Y
+        /// </description>
+        /// </value>
         public string CallbackOnY {
             get => GenericMarshal.StringTo<string>(GetFieldValue("callbackOnY"));
             set => SetFieldValue("callbackOnY", GenericMarshal.ToString(value));

@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A volume in space that defines an ambient sound zone.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class SFXSpace : SceneObject {
         public SFXSpace(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the SFXSpace class.
+        /// </description>
+        /// <returns>The type info object for SFXSpace</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +114,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Ambient sound environment for the space.
+        /// </description>
+        /// </value>
         public SFXAmbience SoundAmbience {
             get => GenericMarshal.StringTo<SFXAmbience>(GetFieldValue("soundAmbience"));
             set => SetFieldValue("soundAmbience", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// For internal use only.
+        /// </description>
+        /// </value>
         public string Plane {
             get => GenericMarshal.StringTo<string>(GetFieldValue("plane"));
             set => SetFieldValue("plane", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// For internal use only.
+        /// </description>
+        /// </value>
         public string Point {
             get => GenericMarshal.StringTo<string>(GetFieldValue("point"));
             set => SetFieldValue("point", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// For internal use only.
+        /// </description>
+        /// </value>
         public string Edge {
             get => GenericMarshal.StringTo<string>(GetFieldValue("edge"));
             set => SetFieldValue("edge", GenericMarshal.ToString(value));

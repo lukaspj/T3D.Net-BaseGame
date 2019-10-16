@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class SoundComponent : Component {
         public SoundComponent(bool pRegister = false) 
             : base(pRegister) {
@@ -144,6 +145,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Stop a sound started with playAudio.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">audio slot index (started with playAudio)</param>
+        /// <returns>true if the sound was stopped successfully, false if failed</returns>
+        /// <see cref="playAudio()" />
         public bool StopAudio(int slot) {
              InternalUnsafeMethods.StopAudio__Args _args = new InternalUnsafeMethods.StopAudio__Args() {
                 slot = slot,
@@ -152,6 +160,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Attach a sound to this shape and start playing it.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">Audio slot index for the sound (valid range is 0 - 3)</param>
+        /// <param name="track">SFXTrack to play</param>
+        /// <returns>true if the sound was attached successfully, false if failed</returns>
+        /// <see cref="stopAudio()" />
         public bool PlayAudio(int slot = 0, SFXTrack track = null) {
              InternalUnsafeMethods.PlayAudio__Args _args = new InternalUnsafeMethods.PlayAudio__Args() {
                 slot = slot,
@@ -161,6 +177,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the SoundComponent class.
+        /// </description>
+        /// <returns>The type info object for SoundComponent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -168,6 +188,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If the text will not fit in the control, the deniedSound is played.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<SFXTrack> MSoundFile {
             get => new DynamicFieldVector<SFXTrack>(
                     this, 
@@ -178,6 +204,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Preview Sound
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> MPreviewSound {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -188,6 +220,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether playback of the emitter's sound should start as soon as the emitter object is added to the level.
+        /// If this is true, the emitter will immediately start to play when the level is loaded.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> Play {
             get => new DynamicFieldVector<bool>(
                     this, 

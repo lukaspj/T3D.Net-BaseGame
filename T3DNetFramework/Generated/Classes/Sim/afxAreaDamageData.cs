@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies an Area Damage effect.</summary>
+    /// <description>
+    /// An Area Damage effect is useful for assigning area damage with unusual timing that must be synchronized with other effects. Negative damage amounts can be used for healing effects.
+    /// 
+    /// The primary difference between afxAreaDamageData and afxDamageData, which is also capable of inflicting area damage, is that afxAreaDamageData effects calculate the area damage in C++ code rather than calling out to the script function radiusDamage(). In cases where area damage needs to be inflicted repeatedly or in areas crowded with many targets, afxAreaDamageData is likely to get better performance.
+    /// </description>
     public unsafe class afxAreaDamageData : GameBaseData {
         public afxAreaDamageData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxAreaDamageData class.
+        /// </description>
+        /// <returns>The type info object for afxAreaDamageData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,31 +116,67 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// An arbitrary string which is passed as an argument to a spell's onDamage() script method. It is used to classify a type of damage such as 'melee', 'magical', or 'fire'.
+        /// </description>
+        /// </value>
         public string Flavor {
             get => GenericMarshal.StringTo<string>(GetFieldValue("flavor"));
             set => SetFieldValue("flavor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// An amount of area damage to inflict on a target. Objects within half the radius receive full damage which then diminishes out to the full distance of the specified radius.
+        /// </description>
+        /// </value>
         public float Damage {
             get => GenericMarshal.StringTo<float>(GetFieldValue("damage"));
             set => SetFieldValue("damage", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Radius centered at the effect position in which damage will be applied.
+        /// </description>
+        /// </value>
         public float Radius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("radius"));
             set => SetFieldValue("radius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specifies an amount of force to apply to damaged objects. Objects within half the radius receive full impulse which then diminishes out to the full distance of the specified radius.
+        /// </description>
+        /// </value>
         public float Impulse {
             get => GenericMarshal.StringTo<float>(GetFieldValue("impulse"));
             set => SetFieldValue("impulse", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When true, the onInflictedAreaDamage() method of the damaged object will be called to notify it of the damage. This is useful for starting some effects or action that responds to the damage.
+        /// </description>
+        /// </value>
         public bool NotifyDamageSource {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("notifyDamageSource"));
             set => SetFieldValue("notifyDamageSource", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When true, the object specified as the effect's primary position constraint will not receive any damage.
+        /// </description>
+        /// </value>
         public bool ExcludeConstraintObject {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("excludeConstraintObject"));
             set => SetFieldValue("excludeConstraintObject", GenericMarshal.ToString(value));

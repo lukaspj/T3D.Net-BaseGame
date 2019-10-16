@@ -14,7 +14,20 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>This object is responsible for spawning particles.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <remarks> This class is not normally instantiated directly - to place a simple particle emitting object in the scene, use a ParticleEmitterNode instead.
+    /// 
+    /// This class is the main interface for creating particles - though it is usually only accessed from within another object like ParticleEmitterNode or WheeledVehicle. If using this object class (via C++) directly, be aware that it does <b>not</b> track changes in source axis or velocity over the course of a single update, so emitParticles should be called at a fairly fine grain.  The emitter will potentially track the last particle to be created into the next call to this function in order to create a uniformly random time distribution of the particles.
+    /// 
+    /// If the object to which the emitter is attached is in motion, it should try to ensure that for call (n+1) to this function, start is equal to the end from call (n). This will ensure a uniform spatial distribution.
+    /// 
+    /// </remarks>
+    /// <see cref="ParticleEmitterData" />
+    /// <see cref="ParticleEmitterNode" />
     public unsafe class ParticleEmitter : GameBase {
         public ParticleEmitter(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +112,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ParticleEmitter class.
+        /// </description>
+        /// <returns>The type info object for ParticleEmitter</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

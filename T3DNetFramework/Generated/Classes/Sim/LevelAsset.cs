@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class LevelAsset : AssetBase {
         public LevelAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the LevelAsset class.
+        /// </description>
+        /// <returns>The type info object for LevelAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +111,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the actual level file.
+        /// </description>
+        /// </value>
         public string LevelFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("LevelFile"));
             set => SetFieldValue("LevelFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the image used for selection preview.
+        /// </description>
+        /// </value>
         public string PreviewImage {
             get => GenericMarshal.StringTo<string>(GetFieldValue("PreviewImage"));
             set => SetFieldValue("PreviewImage", GenericMarshal.ToString(value));

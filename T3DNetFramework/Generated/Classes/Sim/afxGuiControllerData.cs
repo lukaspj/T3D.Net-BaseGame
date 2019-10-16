@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Gui Controller effect.</summary>
+    /// <description>
+    /// A Gui Controller enables effect manipulation of pre-existing gui controls. With a Gui Controller effect, a regular gui control is located by name, made visible during the lifetime of the effect, and potentially repositioned by projecting 3D constraint positions into 2D screen space. In addition, when used with a progress-bar control, (GuiProgressCtrl, afxSpellCastBar, afxStatusBar), the progress-bar will continuously reflect the elapsed progress of the effect over its lifetime.
+    /// </description>
     public unsafe class afxGuiControllerData : GameBaseData {
         public afxGuiControllerData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxGuiControllerData class.
+        /// </description>
+        /// <returns>The type info object for afxGuiControllerData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +114,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specifies the name of an existing gui-control.
+        /// </description>
+        /// </value>
         public string ControlName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("controlName"));
             set => SetFieldValue("controlName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When true, the gui-control will retain its initial position, otherwise the gui-control position will be continuously updated using a projection of the 3D constraint position into 2D screen coordinates.
+        /// </description>
+        /// </value>
         public bool PreservePosition {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("preservePosition"));
             set => SetFieldValue("preservePosition", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the effect will only be applied to a gui-control on the client that matches the controlling-client of the primary position constraint object.
+        /// </description>
+        /// </value>
         public bool ControllingClientOnly {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("controllingClientOnly"));
             set => SetFieldValue("controllingClientOnly", GenericMarshal.ToString(value));

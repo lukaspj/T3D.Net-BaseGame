@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Covers the ground in a field of objects (IE: Grass, Flowers, etc).</summary>
     public unsafe class GroundCover : SceneObject {
         public GroundCover(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GroundCover class.
+        /// </description>
+        /// <returns>The type info object for GroundCover</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,61 +111,133 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Material used by all GroundCover segments.
+        /// </description>
+        /// </value>
         public string Material {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Material"));
             set => SetFieldValue("Material", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Outer generation radius from the current camera position.
+        /// </description>
+        /// </value>
         public float Radius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("radius"));
             set => SetFieldValue("radius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// This is less than or equal to radius and defines when fading of cover elements begins.
+        /// </description>
+        /// </value>
         public float DissolveRadius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("dissolveRadius"));
             set => SetFieldValue("dissolveRadius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Scales the various culling radii when rendering a reflection. Typically for water.
+        /// </description>
+        /// </value>
         public float ReflectScale {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reflectScale"));
             set => SetFieldValue("reflectScale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The number of cells per axis in the grid.
+        /// </description>
+        /// </value>
         public int GridSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("gridSize"));
             set => SetFieldValue("gridSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Offset along the Z axis to render the ground cover.
+        /// </description>
+        /// </value>
         public float ZOffset {
             get => GenericMarshal.StringTo<float>(GetFieldValue("zOffset"));
             set => SetFieldValue("zOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// This RNG seed is saved and sent to clients for generating the same cover.
+        /// </description>
+        /// </value>
         public int Seed {
             get => GenericMarshal.StringTo<int>(GetFieldValue("seed"));
             set => SetFieldValue("seed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum amount of cover elements to include in the grid at any one time.
+        /// </description>
+        /// </value>
         public int MaxElements {
             get => GenericMarshal.StringTo<int>(GetFieldValue("maxElements"));
             set => SetFieldValue("maxElements", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum amout of degrees the billboard will tilt down to match the camera.
+        /// </description>
+        /// </value>
         public float MaxBillboardTiltAngle {
             get => GenericMarshal.StringTo<float>(GetFieldValue("maxBillboardTiltAngle"));
             set => SetFieldValue("maxBillboardTiltAngle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// This is the distance at which DTS elements are  completely culled out.
+        /// </description>
+        /// </value>
         public float ShapeCullRadius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("shapeCullRadius"));
             set => SetFieldValue("shapeCullRadius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether DTS elements should cast shadows or not.
+        /// </description>
+        /// </value>
         public bool ShapesCastShadows {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("shapesCastShadows"));
             set => SetFieldValue("shapesCastShadows", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Subset material UV coordinates for this cover billboard.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<RectF> BillboardUVs {
             get => new DynamicFieldVector<RectF>(
                     this, 
@@ -171,6 +248,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The cover shape filename. [Optional]
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> ShapeFilename {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -181,6 +264,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Terrain material name to limit coverage to, or blank to not limit.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> Layer {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -191,6 +280,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Indicates that the terrain material index given in 'layer' is an exclusion mask.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> InvertLayer {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -201,6 +296,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The probability of one cover type verses another (relative to all cover types).
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> Probability {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -211,6 +312,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The minimum random size for each cover type.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> SizeMin {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -221,6 +328,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum random size of this cover type.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> SizeMax {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -231,6 +344,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// An exponent used to bias between the minimum and maximum random sizes.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> SizeExponent {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -241,6 +360,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The wind effect scale.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> WindScale {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -251,6 +376,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum slope angle in degrees for placement.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> MaxSlope {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -261,6 +392,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The minimum world space elevation for placement.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> MinElevation {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -271,6 +408,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum world space elevation for placement.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> MaxElevation {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -281,6 +424,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The minimum amount of elements in a clump.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<int> MinClumpCount {
             get => new DynamicFieldVector<int>(
                     this, 
@@ -291,6 +440,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum amount of elements in a clump.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<int> MaxClumpCount {
             get => new DynamicFieldVector<int>(
                     this, 
@@ -301,6 +456,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// An exponent used to bias between the minimum and maximum clump counts for a particular clump.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> ClumpExponent {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -311,6 +472,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum clump radius.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> ClumpRadius {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -321,51 +488,111 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The direction of the wind.
+        /// </description>
+        /// </value>
         public Point2F WindDirection {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("windDirection"));
             set => SetFieldValue("windDirection", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The length in meters between peaks in the wind gust.
+        /// </description>
+        /// </value>
         public float WindGustLength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("windGustLength"));
             set => SetFieldValue("windGustLength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls how often the wind gust peaks per second.
+        /// </description>
+        /// </value>
         public float WindGustFrequency {
             get => GenericMarshal.StringTo<float>(GetFieldValue("windGustFrequency"));
             set => SetFieldValue("windGustFrequency", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum distance in meters that the peak wind  gust will displace an element.
+        /// </description>
+        /// </value>
         public float WindGustStrength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("windGustStrength"));
             set => SetFieldValue("windGustStrength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls the overall rapidity of the wind turbulence.
+        /// </description>
+        /// </value>
         public float WindTurbulenceFrequency {
             get => GenericMarshal.StringTo<float>(GetFieldValue("windTurbulenceFrequency"));
             set => SetFieldValue("windTurbulenceFrequency", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The maximum distance in meters that the turbulence can displace a ground cover element.
+        /// </description>
+        /// </value>
         public float WindTurbulenceStrength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("windTurbulenceStrength"));
             set => SetFieldValue("windTurbulenceStrength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Debug parameter for locking the culling frustum which will freeze the cover generation.
+        /// </description>
+        /// </value>
         public bool LockFrustum {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("lockFrustum"));
             set => SetFieldValue("lockFrustum", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Debug parameter for displaying the grid cells.
+        /// </description>
+        /// </value>
         public bool RenderCells {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderCells"));
             set => SetFieldValue("renderCells", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Debug parameter for turning off billboard rendering.
+        /// </description>
+        /// </value>
         public bool NoBillboards {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("noBillboards"));
             set => SetFieldValue("noBillboards", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Debug parameter for turning off shape rendering.
+        /// </description>
+        /// </value>
         public bool NoShapes {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("noShapes"));
             set => SetFieldValue("noShapes", GenericMarshal.ToString(value));

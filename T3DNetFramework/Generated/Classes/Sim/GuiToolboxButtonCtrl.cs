@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Unimplemented GUI control meant to interact with Toolbox.</summary>
+    /// <description>
+    /// For Torque 3D editors only, soon to be deprecated
+    /// </description>
     public unsafe class GuiToolboxButtonCtrl : GuiButtonCtrl {
         public GuiToolboxButtonCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -165,6 +169,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ( filepath name ) sets the bitmap that shows when the button is disabled
+        /// </description>
         public void SetHoverBitmap(string name) {
              InternalUnsafeMethods.SetHoverBitmap__Args _args = new InternalUnsafeMethods.SetHoverBitmap__Args() {
                 name = name,
@@ -172,6 +179,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetHoverBitmap()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( filepath name ) sets the bitmap that shows when the button is disabled
+        /// </description>
         public void SetLoweredBitmap(string name) {
              InternalUnsafeMethods.SetLoweredBitmap__Args _args = new InternalUnsafeMethods.SetLoweredBitmap__Args() {
                 name = name,
@@ -179,6 +189,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetLoweredBitmap()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( filepath name ) sets the bitmap that shows when the button is active
+        /// </description>
         public void SetNormalBitmap(string name) {
              InternalUnsafeMethods.SetNormalBitmap__Args _args = new InternalUnsafeMethods.SetNormalBitmap__Args() {
                 name = name,
@@ -186,6 +199,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetNormalBitmap()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiToolboxButtonCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiToolboxButtonCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -193,16 +210,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string NormalBitmap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("normalBitmap"));
             set => SetFieldValue("normalBitmap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string LoweredBitmap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("loweredBitmap"));
             set => SetFieldValue("loweredBitmap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string HoverBitmap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("hoverBitmap"));
             set => SetFieldValue("hoverBitmap", GenericMarshal.ToString(value));

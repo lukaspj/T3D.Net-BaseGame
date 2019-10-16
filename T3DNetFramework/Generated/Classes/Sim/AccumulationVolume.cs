@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An invisible shape that allow objects within it to have an accumulation map.</summary>
+    /// <description>
+    /// AccumulationVolume is used to add additional realism to a scene. It's main use is in outdoor scenes  where objects could benefit from overlaying environment accumulation textures such as sand, snow, etc.
+    /// 
+    /// Objects within the volume must have accumulation enabled in their material.
+    /// </description>
     public unsafe class AccumulationVolume : SceneObject {
         public AccumulationVolume(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the AccumulationVolume class.
+        /// </description>
+        /// <returns>The type info object for AccumulationVolume</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +116,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Accumulation texture.
+        /// </description>
+        /// </value>
         public string Texture {
             get => GenericMarshal.StringTo<string>(GetFieldValue("texture"));
             set => SetFieldValue("texture", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// For internal use only.
+        /// </description>
+        /// </value>
         public string Plane {
             get => GenericMarshal.StringTo<string>(GetFieldValue("plane"));
             set => SetFieldValue("plane", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// For internal use only.
+        /// </description>
+        /// </value>
         public string Point {
             get => GenericMarshal.StringTo<string>(GetFieldValue("point"));
             set => SetFieldValue("point", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// For internal use only.
+        /// </description>
+        /// </value>
         public string Edge {
             get => GenericMarshal.StringTo<string>(GetFieldValue("edge"));
             set => SetFieldValue("edge", GenericMarshal.ToString(value));

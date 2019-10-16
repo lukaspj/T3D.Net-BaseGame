@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Net {    
+namespace T3DNetFramework.Generated.Classes.Net {
+    /// <summary>Event posted when player is fully loaded into the game and ready for interaction.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class ClientZoneInEvent : NetEvent {
         public ClientZoneInEvent(bool pRegister = false) 
             : base(pRegister) {
@@ -72,6 +76,10 @@ namespace T3DNetFramework.Generated.Classes.Net {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ClientZoneInEvent class.
+        /// </description>
+        /// <returns>The type info object for ClientZoneInEvent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

@@ -14,7 +14,38 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Defines a light flare effect usable by scene lights.</summary>
+    /// <description>
+    /// %LightFlareData is a datablock which defines a type of flare effect. This may then be referenced by other classes which support the rendering of a flare: Sun, ScatterSky, LightBase.
+    /// 
+    /// A flare contains one or more elements defined in the element* named fields of %LightFlareData, with a maximum of ten elements. Each element is rendered as a 2D sprite in screenspace.
+    /// </description>
+    /// <code>
+    /// // example from Full Template, core/art/datablocks/lights.cs
+    /// datablock LightFlareData( LightFlareExample0 )
+    /// {
+    ///    overallScale = 2.0;
+    ///    flareEnabled = true;
+    ///    renderReflectPass = true;
+    ///    flareTexture = "./../special/lensFlareSheet1";
+    ///    occlusionRadius = 0.25;
+    ///    
+    ///    elementRect[0] = "0 512 512 512";
+    ///    elementDist[0] = 0.0;
+    ///    elementScale[0] = 0.5;
+    ///    elementTint[0] = "1.0 1.0 1.0";
+    ///    elementRotate[0] = false;
+    ///    elementUseLightColor[0] = false;
+    ///    
+    ///    elementRect[1] = "512 0 512 512";
+    ///    elementDist[1] = 0.0;
+    ///    elementScale[1] = 2.0;
+    ///    elementTint[1] = "0.5 0.5 0.5";
+    ///    elementRotate[1] = false;
+    ///    elementUseLightColor[1] = false;
+    /// };
+    /// </code>
     public unsafe class LightFlareData : SimDataBlock {
         public LightFlareData(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +150,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// Force trigger an inspectPostApply
+        /// </description>
         public void Apply() {
              InternalUnsafeMethods.Apply__Args _args = new InternalUnsafeMethods.Apply__Args() {
              };
              InternalUnsafeMethods.Apply()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the LightFlareData class.
+        /// </description>
+        /// <returns>The type info object for LightFlareData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -132,31 +171,67 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Size scale applied to all elements of the flare.
+        /// </description>
+        /// </value>
         public float OverallScale {
             get => GenericMarshal.StringTo<float>(GetFieldValue("overallScale"));
             set => SetFieldValue("overallScale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If positive an occlusion query is used to test flare visibility, else it uses simple raycasts.
+        /// </description>
+        /// </value>
         public float OcclusionRadius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("occlusionRadius"));
             set => SetFieldValue("occlusionRadius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If false the flare does not render in reflections, else only non-zero distance elements are rendered.
+        /// </description>
+        /// </value>
         public bool RenderReflectPass {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderReflectPass"));
             set => SetFieldValue("renderReflectPass", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allows the user to disable this flare globally for any lights referencing it.
+        /// </description>
+        /// </value>
         public bool FlareEnabled {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("flareEnabled"));
             set => SetFieldValue("flareEnabled", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The texture / sprite sheet for this flare.
+        /// </description>
+        /// </value>
         public string FlareTexture {
             get => GenericMarshal.StringTo<string>(GetFieldValue("flareTexture"));
             set => SetFieldValue("flareTexture", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A rectangle specified in pixels of the flareTexture image.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<RectF> ElementRect {
             get => new DynamicFieldVector<RectF>(
                     this, 
@@ -167,6 +242,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Where this element appears along the flare beam.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> ElementDist {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -177,6 +258,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Size scale applied to this element.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> ElementScale {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -187,6 +274,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Used to modulate this element's color if elementUseLightColor is false.
+        /// </description>
+        /// <see cref="elementUseLightColor" />
+        /// </value>
         public DynamicFieldVector<LinearColorF> ElementTint {
             get => new DynamicFieldVector<LinearColorF>(
                     this, 
@@ -197,6 +291,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Defines if this element orients to point along the flare beam or if it is always upright.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> ElementRotate {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -207,6 +307,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true this element's color is modulated by the light color. If false, elementTint will be used.
+        /// </description>
+        /// <see cref="elementTint" />
+        /// </value>
         public DynamicFieldVector<bool> ElementUseLightColor {
             get => new DynamicFieldVector<bool>(
                     this, 

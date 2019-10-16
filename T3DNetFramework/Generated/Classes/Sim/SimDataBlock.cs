@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary></summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class SimDataBlock : SimObject {
         public SimDataBlock(bool pRegister = false) 
             : base(pRegister) {
@@ -159,24 +163,33 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void Preload() {
              InternalUnsafeMethods.Preload__Args _args = new InternalUnsafeMethods.Preload__Args() {
              };
              InternalUnsafeMethods.Preload()(ObjectPtr, _args);
         }
 
+        /// 
         public void AssignId() {
              InternalUnsafeMethods.AssignId__Args _args = new InternalUnsafeMethods.AssignId__Args() {
              };
              InternalUnsafeMethods.AssignId()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Reload the datablock.  This can only be used with a local client configuration.
+        /// </description>
         public void ReloadOnLocalClient() {
              InternalUnsafeMethods.ReloadOnLocalClient__Args _args = new InternalUnsafeMethods.ReloadOnLocalClient__Args() {
              };
              InternalUnsafeMethods.ReloadOnLocalClient()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SimDataBlock class.
+        /// </description>
+        /// <returns>The type info object for SimDataBlock</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

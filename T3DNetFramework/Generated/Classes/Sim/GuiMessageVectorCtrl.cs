@@ -14,7 +14,36 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A chat HUD control that displays messages from a MessageVector.</summary>
+    /// <description>
+    /// This renders messages from a MessageVector; the important thing here is that the MessageVector holds all the messages we care about, while we can destroy and create these GUI controls as needed.
+    /// </description>
+    /// <code>
+    /// // Declare ChatHud, which is what will display the actual chat from a MessageVector
+    /// new GuiMessageVectorCtrl(ChatHud) {
+    ///    profile = "ChatHudMessageProfile";
+    ///    horizSizing = "width";
+    ///    vertSizing = "height";
+    ///    position = "1 1";
+    ///    extent = "252 16";
+    ///    minExtent = "8 8";
+    ///    visible = "1";
+    ///    helpTag = "0";
+    ///    lineSpacing = "0";
+    ///    lineContinuedIndex = "10";
+    ///    matchColor = "0 0 255 255";
+    ///    maxColorIndex = "5";
+    /// };
+    /// 
+    /// // All messages are stored in this HudMessageVector, the actual
+    /// // MainChatHud only displays the contents of this vector.
+    /// new MessageVector(HudMessageVector);
+    /// 
+    /// // Attach the MessageVector to the chat control
+    /// chatHud.attach(HudMessageVector);
+    /// </code>
+    /// <see cref="MessageVector for more details on how this is used" />
     public unsafe class GuiMessageVectorCtrl : GuiControl {
         public GuiMessageVectorCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -141,12 +170,36 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Stop listing messages from the MessageVector previously attached to, if any.</summary>
+        /// <description>
+        /// Detailed description
+        /// </description>
+        /// <param name="param">Description</param>
+        /// <code>
+        /// // Deatch the MessageVector from HudMessageVector
+        /// // HudMessageVector will no longer render the text
+        /// chatHud.detach();
+        /// </code>
         public void Detach() {
              InternalUnsafeMethods.Detach__Args _args = new InternalUnsafeMethods.Detach__Args() {
              };
              InternalUnsafeMethods.Detach()(ObjectPtr, _args);
         }
 
+        /// <summary>Push a line onto the back of the list.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="item">The GUI element being pushed into the control</param>
+        /// <code>
+        /// // All messages are stored in this HudMessageVector, the actual
+        /// // MainChatHud only displays the contents of this vector.
+        /// new MessageVector(HudMessageVector);
+        /// 
+        /// // Attach the MessageVector to the chat control
+        /// chatHud.attach(HudMessageVector);
+        /// </code>
+        /// <returns>Value</returns>
         public bool Attach(MessageVector item) {
              InternalUnsafeMethods.Attach__Args _args = new InternalUnsafeMethods.Attach__Args() {
                 item = item.ObjectPtr,
@@ -155,6 +208,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the GuiMessageVectorCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiMessageVectorCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -162,16 +219,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int LineSpacing {
             get => GenericMarshal.StringTo<int>(GetFieldValue("lineSpacing"));
             set => SetFieldValue("lineSpacing", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int LineContinuedIndex {
             get => GenericMarshal.StringTo<int>(GetFieldValue("lineContinuedIndex"));
             set => SetFieldValue("lineContinuedIndex", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public DynamicFieldVector<string> AllowedMatches {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -182,11 +251,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI MatchColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("matchColor"));
             set => SetFieldValue("matchColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int MaxColorIndex {
             get => GenericMarshal.StringTo<int>(GetFieldValue("maxColorIndex"));
             set => SetFieldValue("maxColorIndex", GenericMarshal.ToString(value));

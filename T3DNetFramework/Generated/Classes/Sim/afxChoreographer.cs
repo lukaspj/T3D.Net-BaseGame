@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Base class used by choreographers.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxChoreographer : GameBase {
         public afxChoreographer(bool pRegister = false) 
             : base(pRegister) {
@@ -295,6 +299,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Remap a dynamic constraint to use a new source. The source can be a SceneObject, a 3-valued position, or a 7-valued transform. but must match type of existing source.
+        /// </description>
         public void RemapConstraint(string source, string name) {
              InternalUnsafeMethods.RemapConstraint__Args _args = new InternalUnsafeMethods.RemapConstraint__Args() {
                 source = source,
@@ -303,6 +310,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemapConstraint()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Test state of a trigger-mask bit.
+        /// </description>
         public bool TestTriggerBit(uint bit_num) {
              InternalUnsafeMethods.TestTriggerBit__Args _args = new InternalUnsafeMethods.TestTriggerBit__Args() {
                 bit_num = bit_num,
@@ -311,6 +321,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Unset a bit of the trigger-mask.
+        /// </description>
         public void ClearTriggerBit(uint bit_num) {
              InternalUnsafeMethods.ClearTriggerBit__Args _args = new InternalUnsafeMethods.ClearTriggerBit__Args() {
                 bit_num = bit_num,
@@ -318,6 +331,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ClearTriggerBit()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set a bit of the trigger-mask.
+        /// </description>
         public void SetTriggerBit(uint bit_num) {
              InternalUnsafeMethods.SetTriggerBit__Args _args = new InternalUnsafeMethods.SetTriggerBit__Args() {
                 bit_num = bit_num,
@@ -325,6 +341,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTriggerBit()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add an explicit client.
+        /// </description>
         public void AddExplicitClient(NetConnection client) {
              InternalUnsafeMethods.AddExplicitClient__Args _args = new InternalUnsafeMethods.AddExplicitClient__Args() {
                 client = client.ObjectPtr,
@@ -332,6 +351,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddExplicitClient()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add a dynamic constraint consistiing of a source and name. The source can be a SceneObject, a 3-valued position, or a 7-valued transform.
+        /// </description>
         public void AddConstraint(string source, string name) {
              InternalUnsafeMethods.AddConstraint__Args _args = new InternalUnsafeMethods.AddConstraint__Args() {
                 source = source,
@@ -340,6 +362,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddConstraint()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set a bitmask to specifiy the state of exec-conditions.
+        /// </description>
         public void SetExecConditions(uint mask) {
              InternalUnsafeMethods.SetExecConditions__Args _args = new InternalUnsafeMethods.SetExecConditions__Args() {
                 mask = mask,
@@ -347,6 +372,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetExecConditions()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set a level-of-detail value (0-255) for the choreographer.
+        /// </description>
         public void SetLevelOfDetail(uint lod) {
              InternalUnsafeMethods.SetLevelOfDetail__Args _args = new InternalUnsafeMethods.SetLevelOfDetail__Args() {
                 lod = lod,
@@ -354,6 +382,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetLevelOfDetail()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set a ranking value (0-255) for the choreographer.
+        /// </description>
         public void SetRanking(uint ranking) {
              InternalUnsafeMethods.SetRanking__Args _args = new InternalUnsafeMethods.SetRanking__Args() {
                 ranking = ranking,
@@ -361,6 +392,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetRanking()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the afxChoreographer class.
+        /// </description>
+        /// <returns>The type info object for afxChoreographer</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -368,11 +403,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public SimObject Extra {
             get => GenericMarshal.StringTo<SimObject>(GetFieldValue("extra"));
             set => SetFieldValue("extra", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool PostponeActivation {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("postponeActivation"));
             set => SetFieldValue("postponeActivation", GenericMarshal.ToString(value));

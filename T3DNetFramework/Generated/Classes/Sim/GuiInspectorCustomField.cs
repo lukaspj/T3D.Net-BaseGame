@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control that allows to edit the custom properties (text) of one or more SimObjects.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiInspectorCustomField : GuiInspectorField {
         public GuiInspectorCustomField(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiInspectorCustomField class.
+        /// </description>
+        /// <returns>The type info object for GuiInspectorCustomField</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

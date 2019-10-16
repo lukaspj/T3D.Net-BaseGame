@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An Effect Wrapper as defined by an afxEffectWrapperData datablock.</summary>
+    /// <description>
+    /// Conceptually an effect wrapper encloses a building-block effect and acts as a handle for adding the effect to a choreographer. Effect wrapper fields primarily deal with effect timing, constraints, and conditional effect execution.
+    /// 
+    /// Not intended to be used directly, afxEffectWrapper is an internal baseclass used to implement effect-specific adapter classes.
+    /// </description>
     public unsafe class afxEffectWrapper : SimObject {
         public afxEffectWrapper(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxEffectWrapper class.
+        /// </description>
+        /// <returns>The type info object for afxEffectWrapper</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +116,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float LiveScaleFactor {
             get => GenericMarshal.StringTo<float>(GetFieldValue("liveScaleFactor"));
             set => SetFieldValue("liveScaleFactor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float LiveFadeFactor {
             get => GenericMarshal.StringTo<float>(GetFieldValue("liveFadeFactor"));
             set => SetFieldValue("liveFadeFactor", GenericMarshal.ToString(value));

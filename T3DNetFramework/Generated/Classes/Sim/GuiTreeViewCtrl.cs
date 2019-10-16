@@ -14,7 +14,41 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Hierarchical list of text items with optional icons.</summary>
+    /// <description>
+    /// Can also be used to inspect SimObject hierarchies, primarily within editors.
+    /// 
+    /// GuiTreeViewCtrls can either display arbitrary user-defined trees or can be used to display SimObject hierarchies where each parent node in the tree is a SimSet or SimGroup and each leaf node is a SimObject.
+    /// 
+    /// Each item in the tree has a text and a value.  For trees that display SimObject hierarchies, the text for each item is automatically derived from objects while the value for each item is the ID of the respective SimObject.  For trees that are not tied to SimObjects, both text and value of each item are set by the user.
+    /// 
+    /// Additionally, items in the tree can have icons.
+    /// 
+    /// Each item in the tree has a distinct numeric ID that is unique within its tree.  The ID of the root item, which is always present on a tree, is 0.
+    /// </description>
+    /// <code>
+    /// new GuiTreeViewCtrl(DatablockEditorTree)
+    /// {
+    ///   tabSize = "16";
+    ///   textOffset = "2";
+    ///   fullRowSelect = "0";
+    ///   itemHeight = "21";
+    ///   destroyTreeOnSleep = "0";
+    ///   MouseDragging = "0";
+    ///   MultipleSelections = "1";
+    ///   DeleteObjectAllowed = "1";
+    ///   DragToItemAllowed = "0";
+    ///   ClearAllOnSingleSelection = "1";
+    ///   showRoot = "1";
+    ///   internalNamesOnly = "0";
+    ///   objectNamesOnly = "0";
+    ///   compareToObjectID = "0";
+    ///   Profile = "GuiTreeViewProfile";
+    ///   tooltipprofile = "GuiToolTipProfile";
+    ///   hovertime = "1000";
+    /// };
+    /// </code>
     public unsafe class GuiTreeViewCtrl : GuiArrayCtrl {
         public GuiTreeViewCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -1906,6 +1940,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the tree item at the passed in position.
+        /// </description>
+        /// <param name="position">The position to check for what item is below it.</param>
+        /// <returns>The id of the item under the position.</returns>
         public int GetItemAtPosition(Point2I position = null) {
 position = position ?? new Point2I("0 0");
 position.Alloc();             InternalUnsafeMethods.GetItemAtPosition__Args _args = new InternalUnsafeMethods.GetItemAtPosition__Args() {
@@ -1915,12 +1954,23 @@ position.Alloc();             InternalUnsafeMethods.GetItemAtPosition__Args _arg
 position.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Clear the current item filtering pattern.
+        /// </description>
+        /// <see cref="setFilterText" />
+        /// <see cref="getFilterText" />
         public void ClearFilterText() {
              InternalUnsafeMethods.ClearFilterText__Args _args = new InternalUnsafeMethods.ClearFilterText__Args() {
              };
              InternalUnsafeMethods.ClearFilterText()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the pattern by which to filter items in the tree.  Only items in the tree whose text matches this pattern are displayed.
+        /// </description>
+        /// <param name="pattern">New pattern based on which visible items in the tree should be filtered.  If empty, all items become visible.</param>
+        /// <see cref="getFilterText" />
+        /// <see cref="clearFilterText" />
         public void SetFilterText(string pattern) {
              InternalUnsafeMethods.SetFilterText__Args _args = new InternalUnsafeMethods.SetFilterText__Args() {
                 pattern = pattern,
@@ -1928,6 +1978,12 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.SetFilterText()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the current filter expression.  Only tree items whose text matches this expression are displayed.  By default, the expression is empty and all items are shown.
+        /// </description>
+        /// <returns>The current filter pattern or an empty string if no filter pattern is currently active.</returns>
+        /// <see cref="setFilterText" />
+        /// <see cref="clearFilterText" />
         public string GetFilterText() {
              InternalUnsafeMethods.GetFilterText__Args _args = new InternalUnsafeMethods.GetFilterText__Args() {
              };
@@ -1935,6 +1991,11 @@ position.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Check whether the given item is currently selected in the tree.
+        /// </description>
+        /// <param name="id">Item/object ID.</param>
+        /// <returns>True if the given item/object is currently selected in the tree.</returns>
         public bool IsItemSelected(int id) {
              InternalUnsafeMethods.IsItemSelected__Args _args = new InternalUnsafeMethods.IsItemSelected__Args() {
                 id = id,
@@ -1943,6 +2004,10 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Enable/disable debug output.
+        /// </description>
+        /// <param name="value">True to enable debug output, false to disable it.</param>
         public void SetDebug(bool value = true) {
              InternalUnsafeMethods.SetDebug__Args _args = new InternalUnsafeMethods.SetDebug__Args() {
                 value = value,
@@ -1950,6 +2015,10 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.SetDebug()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Show the rename text field for the given item (only one at a time).
+        /// </description>
+        /// <param name="itemId">TreeItemId of item to show rename text field for.</param>
         public void ShowItemRenameCtrl(int itemId) {
              InternalUnsafeMethods.ShowItemRenameCtrl__Args _args = new InternalUnsafeMethods.ShowItemRenameCtrl__Args() {
                 itemId = itemId,
@@ -1957,18 +2026,31 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.ShowItemRenameCtrl()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Validate the new name for an object (For internal use).
+        /// </description>
         public void OnRenameValidate() {
              InternalUnsafeMethods.OnRenameValidate__Args _args = new InternalUnsafeMethods.OnRenameValidate__Args() {
              };
              InternalUnsafeMethods.OnRenameValidate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Cancel renaming an item (For internal use).
+        /// </description>
         public void CancelRename() {
              InternalUnsafeMethods.CancelRename__Args _args = new InternalUnsafeMethods.CancelRename__Args() {
              };
              InternalUnsafeMethods.CancelRename()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sorts all items of the given parent (or root).  With 'hierarchy', traverses hierarchy.
+        /// </description>
+        /// <param name="parentId">TreeItemID of parent/root to sort all the items under. Use 0 to sort the entire tree.</param>
+        /// <param name="traverseHierarchy">True to traverse the hierarchy, false to not.</param>
+        /// <param name="parentsFirst">True to sort the parents first.</param>
+        /// <param name="caseSensitive">True to pay attention to case, false to ignore it.</param>
         public void Sort(int parentId = 0, bool traverseHierarchy = false, bool parentsFirst = false, bool caseSensitive = true) {
              InternalUnsafeMethods.Sort__Args _args = new InternalUnsafeMethods.Sort__Args() {
                 parentId = parentId,
@@ -1979,6 +2061,11 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.Sort()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Show item by object id.
+        /// </description>
+        /// <param name="objectId">Object id you want to scroll to.</param>
+        /// <returns>True if successful, false if not.</returns>
         public int ScrollVisibleByObjectId(int objectId) {
              InternalUnsafeMethods.ScrollVisibleByObjectId__Args _args = new InternalUnsafeMethods.ScrollVisibleByObjectId__Args() {
                 objectId = objectId,
@@ -1987,6 +2074,11 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the object for a particular item.
+        /// </description>
+        /// <param name="itemId">Item id you want the object id for.</param>
+        /// <returns>Object Id for the given tree item ID.</returns>
         public int GetItemObject(int itemId) {
              InternalUnsafeMethods.GetItemObject__Args _args = new InternalUnsafeMethods.GetItemObject__Args() {
                 itemId = itemId,
@@ -1995,6 +2087,11 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Find an item by its object id and returns the Tree Item ID for it.
+        /// </description>
+        /// <param name="objectId">Object id you want the item id for.</param>
+        /// <returns>Tree Item Id for the given object ID.</returns>
         public int FindItemByObjectId(int objectId) {
              InternalUnsafeMethods.FindItemByObjectId__Args _args = new InternalUnsafeMethods.FindItemByObjectId__Args() {
                 objectId = objectId,
@@ -2003,6 +2100,10 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns a space separated list if ids of all selected items.
+        /// </description>
+        /// <returns>space separated list of selected item ids.</returns>
         public string GetSelectedItemList() {
              InternalUnsafeMethods.GetSelectedItemList__Args _args = new InternalUnsafeMethods.GetSelectedItemList__Args() {
              };
@@ -2010,6 +2111,12 @@ position.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the text from the current node to the root, concatenating at each branch upward, with a specified delimiter optionally.
+        /// </description>
+        /// <param name="itemId">TreeItemId of node to start at.</param>
+        /// <param name="delimiter">(Optional) delimiter to use between each branch concatenation.</param>
+        /// <returns>text from the current node to the root.</returns>
         public string GetTextToRoot(int itemId, string delimiter = "") {
              InternalUnsafeMethods.GetTextToRoot__Args _args = new InternalUnsafeMethods.GetTextToRoot__Args() {
                 itemId = itemId,
@@ -2019,6 +2126,10 @@ position.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Move the specified item down in the tree.
+        /// </description>
+        /// <param name="itemId">TreeItemId of item to move down in the tree.</param>
         public void MoveItemDown(int itemId) {
              InternalUnsafeMethods.MoveItemDown__Args _args = new InternalUnsafeMethods.MoveItemDown__Args() {
                 itemId = itemId,
@@ -2026,6 +2137,10 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.MoveItemDown()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the selected number of items.
+        /// </description>
+        /// <returns>number of selected items.</returns>
         public int GetSelectedItemsCount() {
              InternalUnsafeMethods.GetSelectedItemsCount__Args _args = new InternalUnsafeMethods.GetSelectedItemsCount__Args() {
              };
@@ -2033,6 +2148,10 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Move the specified item up in the tree.
+        /// </description>
+        /// <param name="itemId">TreeItemId of item to move up in the tree.</param>
         public void MoveItemUp(int itemId) {
              InternalUnsafeMethods.MoveItemUp__Args _args = new InternalUnsafeMethods.MoveItemUp__Args() {
                 itemId = itemId,
@@ -2040,6 +2159,10 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.MoveItemUp()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Returns a space separated list of all selected object ids.
+        /// </description>
+        /// <returns>space separated list of all selected object ids.</returns>
         public string GetSelectedObjectList() {
              InternalUnsafeMethods.GetSelectedObjectList__Args _args = new InternalUnsafeMethods.GetSelectedObjectList__Args() {
              };
@@ -2047,6 +2170,11 @@ position.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return the currently selected SimObject at the given index in inspector mode or -1.
+        /// </description>
+        /// <param name="index">Given index to look for selected object.</param>
+        /// <returns>currently selected SimObject at the given index in inspector mode or -1.</returns>
         public int GetSelectedObject(int index = 0) {
              InternalUnsafeMethods.GetSelectedObject__Args _args = new InternalUnsafeMethods.GetSelectedObject__Args() {
                 index = index,
@@ -2055,6 +2183,11 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Return the selected item at the given index.
+        /// </description>
+        /// <param name="index">Given index to look for selected item.</param>
+        /// <returns>selected item at the given index.</returns>
         public int GetSelectedItem(int index = 0) {
              InternalUnsafeMethods.GetSelectedItem__Args _args = new InternalUnsafeMethods.GetSelectedItem__Args() {
                 index = index,
@@ -2063,6 +2196,10 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the total number of items in the tree or item count.
+        /// </description>
+        /// <returns>total number of items in the tree.</returns>
         public int GetItemCount() {
              InternalUnsafeMethods.GetItemCount__Args _args = new InternalUnsafeMethods.GetItemCount__Args() {
              };
@@ -2070,6 +2207,11 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the previous sibling of the given item id in the tree.
+        /// </description>
+        /// <param name="itemId">TreeItemID of item that we want the previous sibling of.</param>
+        /// <returns>Id of previous sibling of the given item.</returns>
         public int GetPrevSibling(int itemId) {
              InternalUnsafeMethods.GetPrevSibling__Args _args = new InternalUnsafeMethods.GetPrevSibling__Args() {
                 itemId = itemId,
@@ -2078,6 +2220,11 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the next sibling of the given item id in the tree.
+        /// </description>
+        /// <param name="itemId">TreeItemID of item that we want the next sibling of.</param>
+        /// <returns>Id of next sibling of the given item.</returns>
         public int GetNextSibling(int itemId) {
              InternalUnsafeMethods.GetNextSibling__Args _args = new InternalUnsafeMethods.GetNextSibling__Args() {
                 itemId = itemId,
@@ -2086,6 +2233,11 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the parent of a given id in the tree.
+        /// </description>
+        /// <param name="itemId">TreeItemID of item that has a parent we should get.</param>
+        /// <returns>Id of parent of given item.</returns>
         public int GetParentItem(int itemId) {
              InternalUnsafeMethods.GetParentItem__Args _args = new InternalUnsafeMethods.GetParentItem__Args() {
                 itemId = itemId,
@@ -2094,6 +2246,10 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Build the visible tree.
+        /// </description>
+        /// <param name="forceFullUpdate">True to force a full update of the tree, false to only update the new stuff.</param>
         public void BuildVisibleTree(bool forceFullUpdate = false) {
              InternalUnsafeMethods.BuildVisibleTree__Args _args = new InternalUnsafeMethods.BuildVisibleTree__Args() {
                 forceFullUpdate = forceFullUpdate,
@@ -2101,6 +2257,11 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.BuildVisibleTree()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the child of the parent with the given id.
+        /// </description>
+        /// <param name="itemId">TreeItemID of item that a child we should get.</param>
+        /// <returns>Id of child of given item.</returns>
         public int GetChild(int itemId) {
              InternalUnsafeMethods.GetChild__Args _args = new InternalUnsafeMethods.GetChild__Args() {
                 itemId = itemId,
@@ -2109,6 +2270,10 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get id for root item.
+        /// </description>
+        /// <returns>Id for root item.</returns>
         public int GetFirstRootItem() {
              InternalUnsafeMethods.GetFirstRootItem__Args _args = new InternalUnsafeMethods.GetFirstRootItem__Args() {
              };
@@ -2116,12 +2281,19 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Empty the tree.
+        /// </description>
         public void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };
              InternalUnsafeMethods.Clear()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Remove all children of an item from the tree with the given id.
+        /// </description>
+        /// <param name="itemId">TreeItemID of item that has children we should remove.</param>
         public void RemoveAllChildren(int itemId) {
              InternalUnsafeMethods.RemoveAllChildren__Args _args = new InternalUnsafeMethods.RemoveAllChildren__Args() {
                 itemId = itemId,
@@ -2129,6 +2301,12 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.RemoveAllChildren()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Remove an item from the tree with the given id.
+        /// </description>
+        /// <param name="itemId">TreeItemID of item to remove.</param>
+        /// <param name="deleteObjects">Whether the object on the item is deleted when the item is.</param>
+        /// <returns>True if successful, false if not.</returns>
         public bool RemoveItem(int itemId = 0, bool deleteObjects = true) {
              InternalUnsafeMethods.RemoveItem__Args _args = new InternalUnsafeMethods.RemoveItem__Args() {
                 itemId = itemId,
@@ -2138,6 +2316,11 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Edits the text and value for a given tree item.
+        /// </description>
+        /// <param name="itemId">TreeItemID to edit.</param>
+        /// <returns>True if successful, false if not.</returns>
         public bool EditItem(int itemId, string newText, string newValue) {
              InternalUnsafeMethods.EditItem__Args _args = new InternalUnsafeMethods.EditItem__Args() {
                 itemId = itemId,
@@ -2148,6 +2331,11 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the value for a given item.
+        /// </description>
+        /// <param name="itemId">TreeItemID to get value of.</param>
+        /// <returns>Value for a given item.</returns>
         public string GetItemValue(int itemId) {
              InternalUnsafeMethods.GetItemValue__Args _args = new InternalUnsafeMethods.GetItemValue__Args() {
                 itemId = itemId,
@@ -2156,6 +2344,11 @@ position.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the text for a given item.
+        /// </description>
+        /// <param name="itemId">TreeItemID to get text of.</param>
+        /// <returns>Text for a given item.</returns>
         public string GetItemText(int itemId) {
              InternalUnsafeMethods.GetItemText__Args _args = new InternalUnsafeMethods.GetItemText__Args() {
                 itemId = itemId,
@@ -2164,6 +2357,11 @@ position.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns true if the given item contains child items.
+        /// </description>
+        /// <param name="itemId">TreeItemID to check for children.</param>
+        /// <returns>True if the given item contains child items, false if not.</returns>
         public bool IsParentItem(int itemId) {
              InternalUnsafeMethods.IsParentItem__Args _args = new InternalUnsafeMethods.IsParentItem__Args() {
                 itemId = itemId,
@@ -2172,6 +2370,12 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Sets the normal and expanded images to show for the given item.
+        /// </description>
+        /// <param name="itemId">TreeItemID of item to set images for.</param>
+        /// <param name="normalImage">Normal image to set for the given item.</param>
+        /// <param name="expandedImage">Expanded image to set for the given item.</param>
         public void SetItemImages(int itemId, sbyte normalImage, sbyte expandedImage) {
              InternalUnsafeMethods.SetItemImages__Args _args = new InternalUnsafeMethods.SetItemImages__Args() {
                 itemId = itemId,
@@ -2181,6 +2385,12 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.SetItemImages()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the tooltip to show for the given item.
+        /// </description>
+        /// <param name="itemId">TreeItemID of item to set the tooltip for.</param>
+        /// <param name="tooltip">String tooltip to set for the item.</param>
+        /// <returns>True if successfully found the item, false if not</returns>
         public bool SetItemTooltip(int itemId, string tooltip) {
              InternalUnsafeMethods.SetItemTooltip__Args _args = new InternalUnsafeMethods.SetItemTooltip__Args() {
                 itemId = itemId,
@@ -2190,6 +2400,10 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the root of the tree view to the specified object, or to the root set.
+        /// </description>
+        /// <param name="objName">Name or id of SimSet or object to set the tree root equal to.</param>
         public void Open(string objName, bool okToEdit = true) {
              InternalUnsafeMethods.Open__Args _args = new InternalUnsafeMethods.Open__Args() {
                 objName = objName,
@@ -2198,6 +2412,11 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.Open()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Builds an icon table.
+        /// </description>
+        /// <param name="icons">Name of icons to build, Icons should be designated by the bitmap/png file names (minus the file extensions)and separated by colons (:). This list should be synchronized with the Icons enum</param>
+        /// <returns>True if it was successful, false if not.</returns>
         public bool BuildIconTable(string icons) {
              InternalUnsafeMethods.BuildIconTable__Args _args = new InternalUnsafeMethods.BuildIconTable__Args() {
                 icons = icons,
@@ -2206,6 +2425,11 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Make the given item visible.
+        /// </description>
+        /// <param name="itemID">TreeItemId of item to scroll to/make visible.</param>
+        /// <returns>True if it was successful, false if not.</returns>
         public bool ScrollVisible(int itemID) {
              InternalUnsafeMethods.ScrollVisible__Args _args = new InternalUnsafeMethods.ScrollVisible__Args() {
                 itemID = itemID,
@@ -2214,6 +2438,12 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Mark/unmark item.
+        /// </description>
+        /// <param name="itemID">TreeItemId of item to Mark or unmark.</param>
+        /// <param name="mark">True to Mark the item, false to unmark it.</param>
+        /// <returns>True if it was successful, false if not.</returns>
         public bool MarkItem(int itemID, bool mark = true) {
              InternalUnsafeMethods.MarkItem__Args _args = new InternalUnsafeMethods.MarkItem__Args() {
                 itemID = itemID,
@@ -2223,6 +2453,12 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Expand/contract item, item's sub-tree.
+        /// </description>
+        /// <param name="itemID">TreeItemId of item to expand or contract.</param>
+        /// <param name="expand">True to expand the item, false to contract it.</param>
+        /// <returns>True if it was successful, false if not.</returns>
         public bool ExpandItem(int itemID, bool expand = true) {
              InternalUnsafeMethods.ExpandItem__Args _args = new InternalUnsafeMethods.ExpandItem__Args() {
                 itemID = itemID,
@@ -2232,6 +2468,12 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Select or deselect and item.
+        /// </description>
+        /// <param name="itemID">TreeItemId of item to select or deselect.</param>
+        /// <param name="select">True to select the item, false to deselect it.</param>
+        /// <returns>True if it was successful, false if not.</returns>
         public bool SelectItem(int itemID, bool select = true) {
              InternalUnsafeMethods.SelectItem__Args _args = new InternalUnsafeMethods.SelectItem__Args() {
                 itemID = itemID,
@@ -2241,6 +2483,12 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Deselect a child item or remove it from the selection based on its parent and its value.
+        /// </description>
+        /// <param name="parentId">Parent TreeItemId.</param>
+        /// <param name="value">Value to search for.</param>
+        /// <param name="performCallback">True to notify script of the change, false to not.</param>
         public void RemoveChildSelectionByValue(int parentId, string value) {
              InternalUnsafeMethods.RemoveChildSelectionByValue__Args _args = new InternalUnsafeMethods.RemoveChildSelectionByValue__Args() {
                 parentId = parentId,
@@ -2249,6 +2497,10 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.RemoveChildSelectionByValue()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Deselect an item or remove it from the selection.
+        /// </description>
+        /// <param name="itemId">Item Id to deselect.</param>
         public void RemoveSelection(int itemId) {
              InternalUnsafeMethods.RemoveSelection__Args _args = new InternalUnsafeMethods.RemoveSelection__Args() {
                 itemId = itemId,
@@ -2256,6 +2508,11 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.RemoveSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add a child selection by it's value.
+        /// </description>
+        /// <param name="parentId">Parent TreeItemId.</param>
+        /// <param name="value">Value to search for.</param>
         public void AddChildSelectionByValue(int parentId, string value) {
              InternalUnsafeMethods.AddChildSelectionByValue__Args _args = new InternalUnsafeMethods.AddChildSelectionByValue__Args() {
                 parentId = parentId,
@@ -2264,6 +2521,11 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.AddChildSelectionByValue()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add an item/object to the current selection.
+        /// </description>
+        /// <param name="id">ID of item/object to add to the selection.</param>
+        /// <param name="isLastSelection">Whether there are more pending items/objects to be added to the selection.  If false, the control will defer refreshing the tree and wait until addSelection() is called with this parameter set to true.</param>
         public void AddSelection(int id, bool isLastSelection = true) {
              InternalUnsafeMethods.AddSelection__Args _args = new InternalUnsafeMethods.AddSelection__Args() {
                 id = id,
@@ -2272,30 +2534,48 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.AddSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Delete all items/objects in the current selection.
+        /// </description>
         public void DeleteSelection() {
              InternalUnsafeMethods.DeleteSelection__Args _args = new InternalUnsafeMethods.DeleteSelection__Args() {
              };
              InternalUnsafeMethods.DeleteSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Unselect all currently selected items.
+        /// </description>
         public void ClearSelection() {
              InternalUnsafeMethods.ClearSelection__Args _args = new InternalUnsafeMethods.ClearSelection__Args() {
              };
              InternalUnsafeMethods.ClearSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Toggle the hidden state of all objects in the current selection.
+        /// </description>
         public void ToggleHideSelection() {
              InternalUnsafeMethods.ToggleHideSelection__Args _args = new InternalUnsafeMethods.ToggleHideSelection__Args() {
              };
              InternalUnsafeMethods.ToggleHideSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Toggle the locked state of all objects in the current selection.
+        /// </description>
         public void ToggleLockSelection() {
              InternalUnsafeMethods.ToggleLockSelection__Args _args = new InternalUnsafeMethods.ToggleLockSelection__Args() {
              };
              InternalUnsafeMethods.ToggleLockSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Call SimObject::setHidden(<paramref name="" /> state ) on all objects in the current selection.
+        /// 
+        /// 
+        /// </description>
+        /// <param name="state">Visibility state to set objects in selection to.</param>
         public void HideSelection(bool state = true) {
              InternalUnsafeMethods.HideSelection__Args _args = new InternalUnsafeMethods.HideSelection__Args() {
                 state = state,
@@ -2303,6 +2583,10 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.HideSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set whether the current selection can be changed by the user or not.
+        /// </description>
+        /// <param name="lock">If true, the current selection is frozen and cannot be changed.  If false, the selection may be modified.</param>
         public void LockSelection(bool _lock = true) {
              InternalUnsafeMethods.LockSelection__Args _args = new InternalUnsafeMethods.LockSelection__Args() {
                 _lock = _lock,
@@ -2310,6 +2594,9 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.LockSelection()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Inserts object as a child to the given parent.
+        /// </description>
         public int InsertObject(int parentId, SimObject obj, bool OKToEdit = false) {
              InternalUnsafeMethods.InsertObject__Args _args = new InternalUnsafeMethods.InsertObject__Args() {
                 parentId = parentId,
@@ -2320,6 +2607,16 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Add a new item to the tree.
+        /// </description>
+        /// <param name="parentId">Item ID of parent to which to add the item as a child.  0 is root item.</param>
+        /// <param name="text">Text to display on the item in the tree.</param>
+        /// <param name="value">Behind-the-scenes value of the item.</param>
+        /// <param name="icon"></param>
+        /// <param name="normalImage"></param>
+        /// <param name="expandedImage"></param>
+        /// <returns>The ID of the newly added item.</returns>
         public int InsertItem(int parentId, string text, string value = "", string icon = "", int normalImage = 0, int expandedImage = 0) {
              InternalUnsafeMethods.InsertItem__Args _args = new InternalUnsafeMethods.InsertItem__Args() {
                 parentId = parentId,
@@ -2333,6 +2630,15 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the child item of the given parent item whose text matches<paramref name="" /> childName.
+        /// 
+        /// 
+        /// </description>
+        /// <param name="parentId">Item ID of the parent in which to look for the child.</param>
+        /// <param name="childName">Text of the child item to find.</param>
+        /// <returns>ID of the child item or -1 if no child in<paramref name="" /> parentId has the given text </returns>
+        /// <remarks> This method does not recurse, i.e. it only looks for direct children.</remarks>
         public int FindChildItemByName(int parentId, string childName) {
              InternalUnsafeMethods.FindChildItemByName__Args _args = new InternalUnsafeMethods.FindChildItemByName__Args() {
                 parentId = parentId,
@@ -2342,6 +2648,13 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the ID of the item whose value matches<paramref name="" /> value.
+        /// 
+        /// 
+        /// </description>
+        /// <param name="value">Value text to match.</param>
+        /// <returns>ID of the item or -1 if no item has the given value.</returns>
         public int FindItemByValue(string value) {
              InternalUnsafeMethods.FindItemByValue__Args _args = new InternalUnsafeMethods.FindItemByValue__Args() {
                 value = value,
@@ -2350,6 +2663,13 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the ID of the item whose text matches the given<paramref name="" /> text.
+        /// 
+        /// 
+        /// </description>
+        /// <param name="text">Item text to match.</param>
+        /// <returns>ID of the item or -1 if no item matches the given text.</returns>
         public int FindItemByName(string text) {
              InternalUnsafeMethods.FindItemByName__Args _args = new InternalUnsafeMethods.FindItemByName__Args() {
                 text = text,
@@ -2358,12 +2678,14 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// 
         public virtual void OnClearSelection() {
              InternalUnsafeMethods.OnClearSelection__Args _args = new InternalUnsafeMethods.OnClearSelection__Args() {
              };
              InternalUnsafeMethods.OnClearSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual bool HandleRenameObject(string newName, SimObject _object) {
              InternalUnsafeMethods.HandleRenameObject__Args _args = new InternalUnsafeMethods.HandleRenameObject__Args() {
                 newName = newName,
@@ -2373,6 +2695,7 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// 
         public virtual bool CanRenameObject(SimObject _object) {
              InternalUnsafeMethods.CanRenameObject__Args _args = new InternalUnsafeMethods.CanRenameObject__Args() {
                 _object = _object.ObjectPtr,
@@ -2381,24 +2704,28 @@ position.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// 
         public virtual void OnAddMultipleSelectionEnd() {
              InternalUnsafeMethods.OnAddMultipleSelectionEnd__Args _args = new InternalUnsafeMethods.OnAddMultipleSelectionEnd__Args() {
              };
              InternalUnsafeMethods.OnAddMultipleSelectionEnd()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnAddMultipleSelectionBegin() {
              InternalUnsafeMethods.OnAddMultipleSelectionBegin__Args _args = new InternalUnsafeMethods.OnAddMultipleSelectionBegin__Args() {
              };
              InternalUnsafeMethods.OnAddMultipleSelectionBegin()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnDragDropped() {
              InternalUnsafeMethods.OnDragDropped__Args _args = new InternalUnsafeMethods.OnDragDropped__Args() {
              };
              InternalUnsafeMethods.OnDragDropped()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnReparent(int itemOrObjectId, int oldParentItemOrObjectId, int newParentItemOrObjectId) {
              InternalUnsafeMethods.OnReparent__Args _args = new InternalUnsafeMethods.OnReparent__Args() {
                 itemOrObjectId = itemOrObjectId,
@@ -2408,18 +2735,21 @@ position.Free();             return _engineResult;
              InternalUnsafeMethods.OnReparent()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnEndReparenting() {
              InternalUnsafeMethods.OnEndReparenting__Args _args = new InternalUnsafeMethods.OnEndReparenting__Args() {
              };
              InternalUnsafeMethods.OnEndReparenting()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnBeginReparenting() {
              InternalUnsafeMethods.OnBeginReparenting__Args _args = new InternalUnsafeMethods.OnBeginReparenting__Args() {
              };
              InternalUnsafeMethods.OnBeginReparenting()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnRightMouseUp(int itemId, Point2I mousePos, SimObject _object) {
 mousePos.Alloc();             InternalUnsafeMethods.OnRightMouseUp__Args _args = new InternalUnsafeMethods.OnRightMouseUp__Args() {
                 itemId = itemId,
@@ -2429,6 +2759,7 @@ mousePos.Alloc();             InternalUnsafeMethods.OnRightMouseUp__Args _args =
              InternalUnsafeMethods.OnRightMouseUp()(ObjectPtr, _args);
 mousePos.Free();        }
 
+        /// 
         public virtual void OnRightMouseDown(int itemId, Point2I mousePos, SimObject _object) {
 mousePos.Alloc();             InternalUnsafeMethods.OnRightMouseDown__Args _args = new InternalUnsafeMethods.OnRightMouseDown__Args() {
                 itemId = itemId,
@@ -2438,12 +2769,14 @@ mousePos.Alloc();             InternalUnsafeMethods.OnRightMouseDown__Args _args
              InternalUnsafeMethods.OnRightMouseDown()(ObjectPtr, _args);
 mousePos.Free();        }
 
+        /// 
         public virtual void OnMouseDragged() {
              InternalUnsafeMethods.OnMouseDragged__Args _args = new InternalUnsafeMethods.OnMouseDragged__Args() {
              };
              InternalUnsafeMethods.OnMouseDragged()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnMouseUp(int hitItemId, int mouseClickCount) {
              InternalUnsafeMethods.OnMouseUp__Args _args = new InternalUnsafeMethods.OnMouseUp__Args() {
                 hitItemId = hitItemId,
@@ -2452,6 +2785,7 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnMouseUp()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnKeyDown(int modifier, int keyCode) {
              InternalUnsafeMethods.OnKeyDown__Args _args = new InternalUnsafeMethods.OnKeyDown__Args() {
                 modifier = modifier,
@@ -2460,18 +2794,21 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnKeyDown()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnObjectDeleteCompleted() {
              InternalUnsafeMethods.OnObjectDeleteCompleted__Args _args = new InternalUnsafeMethods.OnObjectDeleteCompleted__Args() {
              };
              InternalUnsafeMethods.OnObjectDeleteCompleted()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnDeleteSelection() {
              InternalUnsafeMethods.OnDeleteSelection__Args _args = new InternalUnsafeMethods.OnDeleteSelection__Args() {
              };
              InternalUnsafeMethods.OnDeleteSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnUnselect(int itemOrObjectId) {
              InternalUnsafeMethods.OnUnselect__Args _args = new InternalUnsafeMethods.OnUnselect__Args() {
                 itemOrObjectId = itemOrObjectId,
@@ -2479,6 +2816,7 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnUnselect()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnRemoveSelection(int itemOrObjectId) {
              InternalUnsafeMethods.OnRemoveSelection__Args _args = new InternalUnsafeMethods.OnRemoveSelection__Args() {
                 itemOrObjectId = itemOrObjectId,
@@ -2486,6 +2824,7 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnRemoveSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnInspect(int itemOrObjectId) {
              InternalUnsafeMethods.OnInspect__Args _args = new InternalUnsafeMethods.OnInspect__Args() {
                 itemOrObjectId = itemOrObjectId,
@@ -2493,6 +2832,7 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnInspect()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnSelect(int itemOrObjectId) {
              InternalUnsafeMethods.OnSelect__Args _args = new InternalUnsafeMethods.OnSelect__Args() {
                 itemOrObjectId = itemOrObjectId,
@@ -2500,6 +2840,7 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnSelect()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnAddSelection(int itemOrObjectId, bool isLastSelection) {
              InternalUnsafeMethods.OnAddSelection__Args _args = new InternalUnsafeMethods.OnAddSelection__Args() {
                 itemOrObjectId = itemOrObjectId,
@@ -2508,6 +2849,7 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnAddSelection()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnAddGroupSelected(SimGroup group) {
              InternalUnsafeMethods.OnAddGroupSelected__Args _args = new InternalUnsafeMethods.OnAddGroupSelected__Args() {
                 group = group.ObjectPtr,
@@ -2515,12 +2857,14 @@ mousePos.Free();        }
              InternalUnsafeMethods.OnAddGroupSelected()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual void OnDefineIcons() {
              InternalUnsafeMethods.OnDefineIcons__Args _args = new InternalUnsafeMethods.OnDefineIcons__Args() {
              };
              InternalUnsafeMethods.OnDefineIcons()(ObjectPtr, _args);
         }
 
+        /// 
         public virtual bool IsValidDragTarget(int id, string value) {
              InternalUnsafeMethods.IsValidDragTarget__Args _args = new InternalUnsafeMethods.IsValidDragTarget__Args() {
                 id = id,
@@ -2530,6 +2874,7 @@ mousePos.Free();        }
              return _engineResult;
         }
 
+        /// 
         public virtual bool OnDeleteObject(SimObject _object) {
              InternalUnsafeMethods.OnDeleteObject__Args _args = new InternalUnsafeMethods.OnDeleteObject__Args() {
                 _object = _object.ObjectPtr,
@@ -2538,6 +2883,10 @@ mousePos.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the GuiTreeViewCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTreeViewCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -2545,106 +2894,210 @@ mousePos.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int TabSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("tabSize"));
             set => SetFieldValue("tabSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int TextOffset {
             get => GenericMarshal.StringTo<int>(GetFieldValue("textOffset"));
             set => SetFieldValue("textOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool FullRowSelect {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("fullRowSelect"));
             set => SetFieldValue("fullRowSelect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int ItemHeight {
             get => GenericMarshal.StringTo<int>(GetFieldValue("itemHeight"));
             set => SetFieldValue("itemHeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the entire tree item hierarchy is deleted when the control goes to sleep.
+        /// </description>
+        /// </value>
         public bool DestroyTreeOnSleep {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("destroyTreeOnSleep"));
             set => SetFieldValue("destroyTreeOnSleep", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool MouseDragging {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("mouseDragging"));
             set => SetFieldValue("mouseDragging", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, multiple items can be selected concurrently.
+        /// </description>
+        /// </value>
         public bool MultipleSelections {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("multipleSelections"));
             set => SetFieldValue("multipleSelections", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool DeleteObjectAllowed {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("deleteObjectAllowed"));
             set => SetFieldValue("deleteObjectAllowed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool DragToItemAllowed {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("dragToItemAllowed"));
             set => SetFieldValue("dragToItemAllowed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ClearAllOnSingleSelection {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("clearAllOnSingleSelection"));
             set => SetFieldValue("clearAllOnSingleSelection", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the root item is shown in the tree.
+        /// </description>
+        /// </value>
         public bool ShowRoot {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showRoot"));
             set => SetFieldValue("showRoot", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool UseInspectorTooltips {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useInspectorTooltips"));
             set => SetFieldValue("useInspectorTooltips", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool TooltipOnWidthOnly {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("tooltipOnWidthOnly"));
             set => SetFieldValue("tooltipOnWidthOnly", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, item text labels for objects will include object IDs.
+        /// </description>
+        /// </value>
         public bool ShowObjectIds {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showObjectIds"));
             set => SetFieldValue("showObjectIds", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, item text labels for objects will include class names.
+        /// </description>
+        /// </value>
         public bool ShowClassNames {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showClassNames"));
             set => SetFieldValue("showClassNames", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, item text labels for objects will include object names.
+        /// </description>
+        /// </value>
         public bool ShowObjectNames {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showObjectNames"));
             set => SetFieldValue("showObjectNames", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, item text labels for obje ts will include internal names.
+        /// </description>
+        /// </value>
         public bool ShowInternalNames {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showInternalNames"));
             set => SetFieldValue("showInternalNames", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, class names will be used as object names for unnamed objects.
+        /// </description>
+        /// </value>
         public bool ShowClassNameForUnnamedObjects {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showClassNameForUnnamedObjects"));
             set => SetFieldValue("showClassNameForUnnamedObjects", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool CompareToObjectID {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("compareToObjectID"));
             set => SetFieldValue("compareToObjectID", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true clicking on a selected item ( that is an object and not the root ) will allow you to rename it.
+        /// </description>
+        /// </value>
         public bool CanRenameObjects {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("canRenameObjects"));
             set => SetFieldValue("canRenameObjects", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true then object renaming operates on the internalName rather than the object name.
+        /// </description>
+        /// </value>
         public bool RenameInternal {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renameInternal"));
             set => SetFieldValue("renameInternal", GenericMarshal.ToString(value));

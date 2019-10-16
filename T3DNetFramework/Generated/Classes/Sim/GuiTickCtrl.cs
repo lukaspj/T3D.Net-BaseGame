@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Brief Description.</summary>
+    /// <description>
+    /// This Gui Control is designed to be subclassed to let people create controls which want to receive update ticks at a constant interval. This class was created to be the Parent class of a control which used a DynamicTexture along with a VectorField to create warping effects much like the ones found in visualization displays for iTunes or Winamp. Those displays are updated at the framerate frequency. This works fine for those effects, however for an application of the same type of effects for things like Gui transitions the framerate-driven update frequency is not desirable because it does not allow the developer to be able to have any idea of a consistent user-experience.
+    /// 
+    /// Enter the ITickable interface. This lets the Gui control, in this case, update the dynamic texture at a constant rate of once per tick, even though it gets rendered every frame, thus creating a framerate-independent update frequency so that the effects are at a consistent speed regardless of the specifics of the system the user is on. This means that the screen-transitions will occur in the same time on a machine getting 300fps in the Gui shell as a machine which gets 150fps in the Gui shell.
+    /// </description>
     public unsafe class GuiTickCtrl : GuiControl {
         public GuiTickCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -121,6 +127,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ( [tick = true] ) - This will set this object to either be processing ticks or not
+        /// </description>
         public void SetProcessTicks(bool tick = true) {
              InternalUnsafeMethods.SetProcessTicks__Args _args = new InternalUnsafeMethods.SetProcessTicks__Args() {
                 tick = tick,
@@ -128,6 +137,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetProcessTicks()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiTickCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTickCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

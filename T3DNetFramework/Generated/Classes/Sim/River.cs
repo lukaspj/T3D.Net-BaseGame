@@ -14,7 +14,14 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A water volume defined by a 3D spline.</summary>
+    /// <description>
+    /// User may control width and depth per node and overall spline shape in three dimensions.
+    /// 
+    /// %River supports dynamic planar reflections (fullReflect) like all WaterObject classes, but keep in mind it is not necessarily a planar surface. For best visual quality a %River should be less reflective the more it twists and bends. This caution only applies to %Rivers with fullReflect on.
+    /// </description>
+    /// <see cref="WaterObject for inherited functionality." />
     public unsafe class River : WaterObject {
         public River(bool pRegister = false) 
             : base(pRegister) {
@@ -204,6 +211,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// </description>
+        /// <see cref="SubdivideLength field." />
         public void SetMaxDivisionSize(float meters) {
              InternalUnsafeMethods.SetMaxDivisionSize__Args _args = new InternalUnsafeMethods.SetMaxDivisionSize__Args() {
                 meters = meters,
@@ -211,6 +222,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMaxDivisionSize()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// Sets the depth in meters of a particular node.
+        /// </description>
         public void SetNodeDepth(int idx, float meters) {
              InternalUnsafeMethods.SetNodeDepth__Args _args = new InternalUnsafeMethods.SetNodeDepth__Args() {
                 idx = idx,
@@ -219,6 +234,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetNodeDepth()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// BatchSize is not currently used.
+        /// </description>
         public void SetBatchSize(float meters) {
              InternalUnsafeMethods.SetBatchSize__Args _args = new InternalUnsafeMethods.SetBatchSize__Args() {
                 meters = meters,
@@ -226,6 +245,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetBatchSize()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// </description>
+        /// <see cref="SegmentLength field." />
         public void SetMetersPerSegment(float meters) {
              InternalUnsafeMethods.SetMetersPerSegment__Args _args = new InternalUnsafeMethods.SetMetersPerSegment__Args() {
                 meters = meters,
@@ -233,12 +256,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMetersPerSegment()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// Force River to recreate its geometry.
+        /// </description>
         public void Regenerate() {
              InternalUnsafeMethods.Regenerate__Args _args = new InternalUnsafeMethods.Regenerate__Args() {
              };
              InternalUnsafeMethods.Regenerate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the River class.
+        /// </description>
+        /// <returns>The type info object for River</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -246,26 +277,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Divide the River lengthwise into segments of this length in meters. These geometric volumes are used for spacial queries like determining containment.
+        /// </description>
+        /// </value>
         public float SegmentLength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("SegmentLength"));
             set => SetFieldValue("SegmentLength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// For purposes of generating the renderable geometry River segments are further subdivided such that no quad is of greater width or length than this distance in meters.
+        /// </description>
+        /// </value>
         public float SubdivideLength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("SubdivideLength"));
             set => SetFieldValue("SubdivideLength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Magnitude of the force vector applied to dynamic objects within the River.
+        /// </description>
+        /// </value>
         public float FlowMagnitude {
             get => GenericMarshal.StringTo<float>(GetFieldValue("FlowMagnitude"));
             set => SetFieldValue("FlowMagnitude", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Segments of the river at this distance in meters or greater will render as a single unsubdivided without undulation effects.
+        /// </description>
+        /// </value>
         public float LowLODDistance {
             get => GenericMarshal.StringTo<float>(GetFieldValue("LowLODDistance"));
             set => SetFieldValue("LowLODDistance", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// For internal use, do not modify.
+        /// </description>
+        /// </value>
         public string Node {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Node"));
             set => SetFieldValue("Node", GenericMarshal.ToString(value));

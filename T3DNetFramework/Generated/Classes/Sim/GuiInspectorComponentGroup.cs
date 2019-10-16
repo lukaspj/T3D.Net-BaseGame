@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Used to inspect an object's FieldDictionary (dynamic fields) instead of regular persistent fields.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiInspectorComponentGroup : GuiInspectorGroup {
         public GuiInspectorComponentGroup(bool pRegister = false) 
             : base(pRegister) {
@@ -180,6 +184,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public int GetComponent() {
              InternalUnsafeMethods.GetComponent__Args _args = new InternalUnsafeMethods.GetComponent__Args() {
              };
@@ -187,18 +192,25 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public void RemoveDynamicField() {
              InternalUnsafeMethods.RemoveDynamicField__Args _args = new InternalUnsafeMethods.RemoveDynamicField__Args() {
              };
              InternalUnsafeMethods.RemoveDynamicField()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// obj.addDynamicField();
+        /// </description>
         public void AddDynamicField() {
              InternalUnsafeMethods.AddDynamicField__Args _args = new InternalUnsafeMethods.AddDynamicField__Args() {
              };
              InternalUnsafeMethods.AddDynamicField()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Refreshes the dynamic fields in the inspector.
+        /// </description>
         public bool InspectGroup() {
              InternalUnsafeMethods.InspectGroup__Args _args = new InternalUnsafeMethods.InspectGroup__Args() {
              };
@@ -206,6 +218,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the GuiInspectorComponentGroup class.
+        /// </description>
+        /// <returns>The type info object for GuiInspectorComponentGroup</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

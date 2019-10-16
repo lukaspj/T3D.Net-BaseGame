@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A renderable, collidable convex shape defined by a collection of surface planes.</summary>
+    /// <description>
+    /// %ConvexShape is intended to be used as a temporary asset for quickly blocking out a scene or filling in approximate shapes to be later replaced with final assets. This is most easily done by using the WorldEditor's Sketch Tool.
+    /// </description>
     public unsafe class ConvexShape : SceneObject {
         public ConvexShape(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ConvexShape class.
+        /// </description>
+        /// <returns>The type info object for ConvexShape</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +114,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Material used to render the ConvexShape surface.
+        /// </description>
+        /// </value>
         public string Material {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Material"));
             set => SetFieldValue("Material", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Do not modify, for internal use.
+        /// </description>
+        /// </value>
         public string Surface {
             get => GenericMarshal.StringTo<string>(GetFieldValue("surface"));
             set => SetFieldValue("surface", GenericMarshal.ToString(value));

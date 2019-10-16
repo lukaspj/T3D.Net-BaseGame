@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An xmod datablock.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxXM_AltitudeConformData : afxXM_WeightedBaseData {
         public afxXM_AltitudeConformData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxXM_AltitudeConformData class.
+        /// </description>
+        /// <returns>The type info object for afxXM_AltitudeConformData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,31 +114,67 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Height {
             get => GenericMarshal.StringTo<float>(GetFieldValue("height"));
             set => SetFieldValue("height", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool ConformToTerrain {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("conformToTerrain"));
             set => SetFieldValue("conformToTerrain", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool ConformToInteriors {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("conformToInteriors"));
             set => SetFieldValue("conformToInteriors", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool Freeze {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("freeze"));
             set => SetFieldValue("freeze", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int InteriorTypes {
             get => GenericMarshal.StringTo<int>(GetFieldValue("interiorTypes"));
             set => SetFieldValue("interiorTypes", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int TerrainTypes {
             get => GenericMarshal.StringTo<int>(GetFieldValue("terrainTypes"));
             set => SetFieldValue("terrainTypes", GenericMarshal.ToString(value));

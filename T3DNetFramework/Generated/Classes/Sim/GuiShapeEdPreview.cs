@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>This control provides the 3D view for the Shape Editor tool, and is not intended for general purpose use.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class GuiShapeEdPreview : EditTSCtrl {
         public GuiShapeEdPreview(bool pRegister = false) 
             : base(pRegister) {
@@ -709,12 +713,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Unmount all shapes
+        /// </description>
         public void UnmountAll() {
              InternalUnsafeMethods.UnmountAll__Args _args = new InternalUnsafeMethods.UnmountAll__Args() {
              };
              InternalUnsafeMethods.UnmountAll()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Unmount the shape in the specified slot
+        /// </description>
+        /// <param name="slot">mounted shape slot</param>
         public void UnmountShape(int slot) {
              InternalUnsafeMethods.UnmountShape__Args _args = new InternalUnsafeMethods.UnmountShape__Args() {
                 slot = slot,
@@ -722,6 +733,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.UnmountShape()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the playback direction of the shape mounted in the specified slot
+        /// </description>
+        /// <param name="slot">mounted shape slot</param>
+        /// <param name="dir">playback direction (-1=backwards, 0=paused, 1=forwards)</param>
         public void SetMountThreadDir(int slot, float dir) {
              InternalUnsafeMethods.SetMountThreadDir__Args _args = new InternalUnsafeMethods.SetMountThreadDir__Args() {
                 slot = slot,
@@ -730,6 +746,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMountThreadDir()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the playback direction of the sequence playing on this mounted shape
+        /// </description>
+        /// <param name="slot">mounted shape slot</param>
+        /// <returns>direction of the sequence (-1=reverse, 0=paused, 1=forward)</returns>
         public float GetMountThreadDir(int slot) {
              InternalUnsafeMethods.GetMountThreadDir__Args _args = new InternalUnsafeMethods.GetMountThreadDir__Args() {
                 slot = slot,
@@ -738,6 +759,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the sequence position of the shape mounted in the specified slot
+        /// </description>
+        /// <param name="slot">mounted shape slot</param>
+        /// <param name="pos">sequence position (0-1)</param>
         public void SetMountThreadPos(int slot, float pos) {
              InternalUnsafeMethods.SetMountThreadPos__Args _args = new InternalUnsafeMethods.SetMountThreadPos__Args() {
                 slot = slot,
@@ -746,6 +772,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMountThreadPos()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the playback position of the sequence playing on this mounted shape
+        /// </description>
+        /// <param name="slot">mounted shape slot</param>
+        /// <returns>playback position of the sequence (0-1)</returns>
         public float GetMountThreadPos(int slot) {
              InternalUnsafeMethods.GetMountThreadPos__Args _args = new InternalUnsafeMethods.GetMountThreadPos__Args() {
                 slot = slot,
@@ -754,6 +785,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the sequence to play for the shape mounted in the specified slot
+        /// </description>
+        /// <param name="slot">mounted shape slot</param>
+        /// <param name="name">name of the sequence to play</param>
         public void SetMountThreadSequence(int slot, string name) {
              InternalUnsafeMethods.SetMountThreadSequence__Args _args = new InternalUnsafeMethods.SetMountThreadSequence__Args() {
                 slot = slot,
@@ -762,6 +798,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMountThreadSequence()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the name of the sequence playing on this mounted shape
+        /// </description>
+        /// <param name="slot">mounted shape slot</param>
+        /// <returns>name of the sequence (if any)</returns>
         public string GetMountThreadSequence(int slot) {
              InternalUnsafeMethods.GetMountThreadSequence__Args _args = new InternalUnsafeMethods.GetMountThreadSequence__Args() {
                 slot = slot,
@@ -770,6 +811,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Set the node a shape is mounted to.
+        /// </description>
+        /// <param name="slot">mounted shape slot</param>
+        /// <param name="nodename">name of the node to mount to</param>
         public void SetMountNode(int slot, string nodeName) {
              InternalUnsafeMethods.SetMountNode__Args _args = new InternalUnsafeMethods.SetMountNode__Args() {
                 slot = slot,
@@ -778,6 +824,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMountNode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Mount a shape onto the main shape at the specified node
+        /// </description>
+        /// <param name="shapePath">path to the shape to mount</param>
+        /// <param name="nodeName">name of the node on the main shape to mount to</param>
+        /// <param name="type">type of mounting to use (Object, Image or Wheel)</param>
+        /// <param name="slot">mount slot</param>
         public bool MountShape(string shapePath, string nodeName, string type, int slot) {
              InternalUnsafeMethods.MountShape__Args _args = new InternalUnsafeMethods.MountShape__Args() {
                 shapePath = shapePath,
@@ -789,12 +842,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Refreshes thread sequences (in case of removed/renamed sequences
+        /// </description>
         public void RefreshThreadSequences() {
              InternalUnsafeMethods.RefreshThreadSequences__Args _args = new InternalUnsafeMethods.RefreshThreadSequences__Args() {
              };
              InternalUnsafeMethods.RefreshThreadSequences()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the name of the sequence assigned to the active thread
+        /// </description>
         public string GetThreadSequence() {
              InternalUnsafeMethods.GetThreadSequence__Args _args = new InternalUnsafeMethods.GetThreadSequence__Args() {
              };
@@ -802,6 +861,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Sets the sequence to play for the active thread.
+        /// </description>
+        /// <param name="name">name of the sequence to play</param>
+        /// <param name="duration">transition duration (0 for no transition)</param>
+        /// <param name="pos">position in the new sequence to transition to</param>
+        /// <param name="play">if true, the new sequence will play during the transition</param>
         public void SetThreadSequence(string name, float duration = 0f, float pos = 0f, bool play = false) {
              InternalUnsafeMethods.SetThreadSequence__Args _args = new InternalUnsafeMethods.SetThreadSequence__Args() {
                 name = name,
@@ -812,6 +878,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetThreadSequence()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the time scale of all threads
+        /// </description>
+        /// <param name="scale">new time scale value</param>
         public void SetTimeScale(float scale) {
              InternalUnsafeMethods.SetTimeScale__Args _args = new InternalUnsafeMethods.SetTimeScale__Args() {
                 scale = scale,
@@ -819,6 +889,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTimeScale()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the number of threads
+        /// </description>
+        /// <returns>the number of threads</returns>
         public int GetThreadCount() {
              InternalUnsafeMethods.GetThreadCount__Args _args = new InternalUnsafeMethods.GetThreadCount__Args() {
              };
@@ -826,6 +900,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Removes the specifed thread
+        /// </description>
+        /// <param name="slot">index of the thread to remove</param>
         public void RemoveThread(int slot) {
              InternalUnsafeMethods.RemoveThread__Args _args = new InternalUnsafeMethods.RemoveThread__Args() {
                 slot = slot,
@@ -833,12 +911,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveThread()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add a new thread (initially without any sequence set)
+        /// </description>
         public void AddThread() {
              InternalUnsafeMethods.AddThread__Args _args = new InternalUnsafeMethods.AddThread__Args() {
              };
              InternalUnsafeMethods.AddThread()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Export the current shape and all mounted objects to COLLADA (.dae).
+        /// Note that animation is not exported, and all geometry is combined into a single mesh.
+        /// </description>
+        /// <param name="path">Destination filename</param>
         public void ExportToCollada(string path) {
              InternalUnsafeMethods.ExportToCollada__Args _args = new InternalUnsafeMethods.ExportToCollada__Args() {
                 path = path,
@@ -846,6 +932,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ExportToCollada()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Show or hide all objects in the shape
+        /// </description>
         public void SetAllMeshesHidden(bool hidden) {
              InternalUnsafeMethods.SetAllMeshesHidden__Args _args = new InternalUnsafeMethods.SetAllMeshesHidden__Args() {
                 hidden = hidden,
@@ -853,6 +942,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAllMeshesHidden()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Show or hide the named object in the shape
+        /// </description>
         public void SetMeshHidden(string name, bool hidden) {
              InternalUnsafeMethods.SetMeshHidden__Args _args = new InternalUnsafeMethods.SetMeshHidden__Args() {
                 name = name,
@@ -861,6 +953,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMeshHidden()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Return whether the named object is currently hidden
+        /// </description>
         public bool GetMeshHidden(string name) {
              InternalUnsafeMethods.GetMeshHidden__Args _args = new InternalUnsafeMethods.GetMeshHidden__Args() {
                 name = name,
@@ -869,6 +964,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Compute the bounding box of the shape using the current detail and node transforms
+        /// </description>
+        /// <returns>the bounding box "min.x min.y min.z max.x max.y max.z"</returns>
         public Box3F ComputeShapeBounds() {
              InternalUnsafeMethods.ComputeShapeBounds__Args _args = new InternalUnsafeMethods.ComputeShapeBounds__Args() {
              };
@@ -876,24 +975,38 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Box3F(_engineResult);
         }
 
+        /// <description>
+        /// Refresh the shape node transforms (used when a node transform has been modified externally)
+        /// </description>
         public void UpdateNodeTransforms() {
              InternalUnsafeMethods.UpdateNodeTransforms__Args _args = new InternalUnsafeMethods.UpdateNodeTransforms__Args() {
              };
              InternalUnsafeMethods.UpdateNodeTransforms()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Refresh the shape (used when the shape meshes or nodes have been added or removed)
+        /// </description>
         public void RefreshShape() {
              InternalUnsafeMethods.RefreshShape__Args _args = new InternalUnsafeMethods.RefreshShape__Args() {
              };
              InternalUnsafeMethods.RefreshShape()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Adjust the camera position and zoom to fit the shape within the view.
+        /// </description>
         public void FitToShape() {
              InternalUnsafeMethods.FitToShape__Args _args = new InternalUnsafeMethods.FitToShape__Args() {
              };
              InternalUnsafeMethods.FitToShape()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets the model to be displayed in this control
+        /// </description>
+        /// <param name="shapeName">Name of the model to display.</param>
+        /// <returns>True if the model was loaded successfully, false otherwise.</returns>
         public bool SetModel(string shapePath) {
              InternalUnsafeMethods.SetModel__Args _args = new InternalUnsafeMethods.SetModel__Args() {
                 shapePath = shapePath,
@@ -902,6 +1015,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the camera orbit position
+        /// </description>
+        /// <param name="pos">Position in the form "x y z"</param>
         public void SetOrbitPos(Point3F pos) {
 pos.Alloc();             InternalUnsafeMethods.SetOrbitPos__Args _args = new InternalUnsafeMethods.SetOrbitPos__Args() {
                 pos = pos.internalStructPtr,
@@ -909,6 +1026,9 @@ pos.Alloc();             InternalUnsafeMethods.SetOrbitPos__Args _args = new Int
              InternalUnsafeMethods.SetOrbitPos()(ObjectPtr, _args);
 pos.Free();        }
 
+        /// <description>
+        /// Called when the position of the active thread has changed, such as during playback.
+        /// </description>
         public virtual void OnThreadPosChanged(float pos, bool inTransition) {
              InternalUnsafeMethods.OnThreadPosChanged__Args _args = new InternalUnsafeMethods.OnThreadPosChanged__Args() {
                 pos = pos,
@@ -917,6 +1037,10 @@ pos.Free();        }
              InternalUnsafeMethods.OnThreadPosChanged()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiShapeEdPreview class.
+        /// </description>
+        /// <returns>The type info object for GuiShapeEdPreview</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -924,161 +1048,353 @@ pos.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, dragging the gizmo will rotate the sun direction
+        /// </description>
+        /// </value>
         public bool EditSun {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("editSun"));
             set => SetFieldValue("editSun", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Index of the selected node, or -1 if none
+        /// </description>
+        /// </value>
         public int SelectedNode {
             get => GenericMarshal.StringTo<int>(GetFieldValue("selectedNode"));
             set => SetFieldValue("selectedNode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Index of the selected object, or -1 if none
+        /// </description>
+        /// </value>
         public int SelectedObject {
             get => GenericMarshal.StringTo<int>(GetFieldValue("selectedObject"));
             set => SetFieldValue("selectedObject", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Index of the selected object detail mesh, or 0 if none
+        /// </description>
+        /// </value>
         public int SelectedObjDetail {
             get => GenericMarshal.StringTo<int>(GetFieldValue("selectedObjDetail"));
             set => SetFieldValue("selectedObjDetail", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Grid dimensions (number of rows and columns) in the form "rows cols"
+        /// </description>
+        /// </value>
         public Point2I GridDimension {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("gridDimension"));
             set => SetFieldValue("gridDimension", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Flag indicating whether to draw the grid
+        /// </description>
+        /// </value>
         public bool RenderGrid {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderGrid"));
             set => SetFieldValue("renderGrid", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Flag indicating whether to render the shape nodes
+        /// </description>
+        /// </value>
         public bool RenderNodes {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderNodes"));
             set => SetFieldValue("renderNodes", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Flag indicating whether to render the shape in 'ghost' mode (transparent)
+        /// </description>
+        /// </value>
         public bool RenderGhost {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderGhost"));
             set => SetFieldValue("renderGhost", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Flag indicating whether to render the shape bounding box
+        /// </description>
+        /// </value>
         public bool RenderBounds {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderBounds"));
             set => SetFieldValue("renderBounds", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Flag indicating whether to render the selected object's bounding box
+        /// </description>
+        /// </value>
         public bool RenderObjBox {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderObjBox"));
             set => SetFieldValue("renderObjBox", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Flag indicating whether to render the shape's collision geometry
+        /// </description>
+        /// </value>
         public bool RenderColMeshes {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderColMeshes"));
             set => SetFieldValue("renderColMeshes", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Flag indicating whether to render mounted objects
+        /// </description>
+        /// </value>
         public bool RenderMounts {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderMounts"));
             set => SetFieldValue("renderMounts", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Ambient color for the sun
+        /// </description>
+        /// </value>
         public ColorI SunDiffuse {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("sunDiffuse"));
             set => SetFieldValue("sunDiffuse", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Diffuse color for the sun
+        /// </description>
+        /// </value>
         public ColorI SunAmbient {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("sunAmbient"));
             set => SetFieldValue("sunAmbient", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// X-axis rotation angle for the sun
+        /// </description>
+        /// </value>
         public float SunAngleX {
             get => GenericMarshal.StringTo<float>(GetFieldValue("sunAngleX"));
             set => SetFieldValue("sunAngleX", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Z-axis rotation angle for the sun
+        /// </description>
+        /// </value>
         public float SunAngleZ {
             get => GenericMarshal.StringTo<float>(GetFieldValue("sunAngleZ"));
             set => SetFieldValue("sunAngleZ", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Index of the active thread, or -1 if none
+        /// </description>
+        /// </value>
         public int ActiveThread {
             get => GenericMarshal.StringTo<int>(GetFieldValue("activeThread"));
             set => SetFieldValue("activeThread", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Current position of the active thread (0-1)
+        /// </description>
+        /// </value>
         public float ThreadPos {
             get => GenericMarshal.StringTo<float>(GetFieldValue("threadPos"));
             set => SetFieldValue("threadPos", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Playback direction of the active thread
+        /// </description>
+        /// </value>
         public int ThreadDirection {
             get => GenericMarshal.StringTo<int>(GetFieldValue("threadDirection"));
             set => SetFieldValue("threadDirection", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// 'PingPong' mode of the active thread
+        /// </description>
+        /// </value>
         public bool ThreadPingPong {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("threadPingPong"));
             set => SetFieldValue("threadPingPong", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If false, the current detail is selected based on camera distance
+        /// </description>
+        /// </value>
         public bool FixedDetail {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("fixedDetail"));
             set => SetFieldValue("fixedDetail", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The current distance from the camera to the model
+        /// </description>
+        /// </value>
         public float OrbitDist {
             get => GenericMarshal.StringTo<float>(GetFieldValue("orbitDist"));
             set => SetFieldValue("orbitDist", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The current detail level
+        /// </description>
+        /// </value>
         public int CurrentDL {
             get => GenericMarshal.StringTo<int>(GetFieldValue("currentDL"));
             set => SetFieldValue("currentDL", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The size of the current detail
+        /// </description>
+        /// </value>
         public int DetailSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("detailSize"));
             set => SetFieldValue("detailSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Number of polygons in the current detail
+        /// </description>
+        /// </value>
         public int DetailPolys {
             get => GenericMarshal.StringTo<int>(GetFieldValue("detailPolys"));
             set => SetFieldValue("detailPolys", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The current pixel size of the model
+        /// </description>
+        /// </value>
         public float PixelSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("pixelSize"));
             set => SetFieldValue("pixelSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The number of materials in the current detail level
+        /// </description>
+        /// </value>
         public int NumMaterials {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numMaterials"));
             set => SetFieldValue("numMaterials", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The number of draw calls in the current detail level
+        /// </description>
+        /// </value>
         public int NumDrawCalls {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numDrawCalls"));
             set => SetFieldValue("numDrawCalls", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The number of bones in the current detail level (skins only)
+        /// </description>
+        /// </value>
         public int NumBones {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numBones"));
             set => SetFieldValue("numBones", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The number of vertex weights in the current detail level (skins only)
+        /// </description>
+        /// </value>
         public int NumWeights {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numWeights"));
             set => SetFieldValue("numWeights", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The number of collision meshes in the shape
+        /// </description>
+        /// </value>
         public int ColMeshes {
             get => GenericMarshal.StringTo<int>(GetFieldValue("colMeshes"));
             set => SetFieldValue("colMeshes", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The total number of collision polygons (all meshes) in the shape
+        /// </description>
+        /// </value>
         public int ColPolys {
             get => GenericMarshal.StringTo<int>(GetFieldValue("colPolys"));
             set => SetFieldValue("colPolys", GenericMarshal.ToString(value));

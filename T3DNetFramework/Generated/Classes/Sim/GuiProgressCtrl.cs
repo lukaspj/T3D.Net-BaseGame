@@ -14,7 +14,26 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>GUI Control which displays a horizontal bar which increases as the progress value of 0.0 - 1.0 increases.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiProgressCtrl(JS_statusBar)
+    /// 	 {
+    /// 		    //Properties not specific to this control have been omitted from this example.
+    ///      };
+    /// 
+    /// // Define the value to set the progress bar%value = "0.5f"
+    /// 
+    /// // Set the value of the progress bar, from 0.0 - 1.0
+    /// %thisGuiProgressCtrl.setValue(%value);
+    /// // Get the value of the progress bar.
+    /// %progress = %thisGuiProgressCtrl.getValue();
+    /// </code>
+    /// <see cref="GuiTextCtrl" />
+    /// <see cref="GuiControl" />
     public unsafe class GuiProgressCtrl : GuiTextCtrl {
         public GuiProgressCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +118,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiProgressCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiProgressCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

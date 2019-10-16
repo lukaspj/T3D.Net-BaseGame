@@ -14,7 +14,18 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Abstract base class for controls that store and display multiple elements in a single view.</summary>
+    /// <description>
+    /// You cannot actually instantiate this class. Instead you can use its childre:
+    /// 
+    /// - GuiConsole
+    /// - GuiTextListCtrl
+    /// - GuiTreeViewCtrl
+    /// - DbgFileView
+    /// - CreatorTree
+    /// This base class is primarily used by other internal classes or those dedicated to editors.
+    /// </description>
     public unsafe class GuiArrayCtrl : GuiControl {
         public GuiArrayCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -141,6 +152,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Call when a cell in the array is highlighted (moused over).
+        /// </description>
+        /// <param name="">@cell Coordinates of the cell</param>
         public virtual void OnCellHighlighted(Point2I cell) {
 cell.Alloc();             InternalUnsafeMethods.OnCellHighlighted__Args _args = new InternalUnsafeMethods.OnCellHighlighted__Args() {
                 cell = cell.internalStructPtr,
@@ -148,6 +163,10 @@ cell.Alloc();             InternalUnsafeMethods.OnCellHighlighted__Args _args = 
              InternalUnsafeMethods.OnCellHighlighted()(ObjectPtr, _args);
 cell.Free();        }
 
+        /// <description>
+        /// Call when a cell in the array is selected (clicked).
+        /// </description>
+        /// <param name="">@cell Coordinates of the cell</param>
         public virtual void OnCellSelected(Point2I cell) {
 cell.Alloc();             InternalUnsafeMethods.OnCellSelected__Args _args = new InternalUnsafeMethods.OnCellSelected__Args() {
                 cell = cell.internalStructPtr,
@@ -155,6 +174,10 @@ cell.Alloc();             InternalUnsafeMethods.OnCellSelected__Args _args = new
              InternalUnsafeMethods.OnCellSelected()(ObjectPtr, _args);
 cell.Free();        }
 
+        /// <description>
+        /// Get the type info object for the GuiArrayCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiArrayCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

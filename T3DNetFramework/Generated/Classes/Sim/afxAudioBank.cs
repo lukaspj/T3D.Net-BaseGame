@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies an Audio Bank effect.</summary>
+    /// <description>
+    /// afxAudioBank is very similar to the stock Torque SFXProfile datablock but it allows specification of up to 32 different sound files. The sound that actually plays is determined by the playIndex field.
+    /// 
+    /// afxAudioBank is most useful when used in combination with field substitutions, whereby a substitution statement assigned to playIndex selects a different sound (perhaps randomly) each time the effect is used.
+    /// </description>
     public unsafe class afxAudioBank : SimDataBlock {
         public afxAudioBank(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxAudioBank class.
+        /// </description>
+        /// <returns>The type info object for afxAudioBank</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +116,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// A filesystem path to the folder containing the sound files specified by the filenames[] field. All sound files used in a single AudioBank must be located in the same folder.
+        /// </description>
+        /// </value>
         public string Path {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Path"));
             set => SetFieldValue("Path", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Up to 32 names of sound files found in the path folder. The sound that is actually played by an Audio Bank effect is determined by the playIndex field.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> Filenames {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -121,16 +143,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// SFXDescription datablock to use with this set of sounds.
+        /// </description>
+        /// </value>
         public SFXDescription Description {
             get => GenericMarshal.StringTo<SFXDescription>(GetFieldValue("description"));
             set => SetFieldValue("description", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If set to true, file is pre-loaded, otherwise it is loaded on-demand.
+        /// </description>
+        /// </value>
         public bool Preload {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("preload"));
             set => SetFieldValue("preload", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// An array index that selects a sound to play from the filenames[] field. Values outside of the range of assigned filename[] entries will not play any sound.
+        /// </description>
+        /// </value>
         public int PlayIndex {
             get => GenericMarshal.StringTo<int>(GetFieldValue("playIndex"));
             set => SetFieldValue("playIndex", GenericMarshal.ToString(value));

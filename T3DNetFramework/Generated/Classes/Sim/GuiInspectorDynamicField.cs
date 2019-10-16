@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Custom field type for dynamic variable modification on SimObjects.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiInspectorDynamicField : GuiInspectorField {
         public GuiInspectorDynamicField(bool pRegister = false) 
             : base(pRegister) {
@@ -121,6 +125,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// field.renameField(newDynamicFieldName);
+        /// </description>
         public void RenameField(string newDynamicFieldName) {
              InternalUnsafeMethods.RenameField__Args _args = new InternalUnsafeMethods.RenameField__Args() {
                 newDynamicFieldName = newDynamicFieldName,
@@ -128,6 +135,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RenameField()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiInspectorDynamicField class.
+        /// </description>
+        /// <returns>The type info object for GuiInspectorDynamicField</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

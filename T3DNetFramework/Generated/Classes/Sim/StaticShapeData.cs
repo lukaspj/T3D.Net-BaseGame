@@ -14,7 +14,40 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The most basic ShapeBaseData derrived shape datablock available in Torque 3D.</summary>
+    /// <description>
+    /// When it comes to placing 3D objects in the scene, you effectively have two options:
+    /// 
+    /// 1. TSStatic objects
+    /// 
+    /// 2. ShapeBase derived objects
+    /// 
+    /// Since ShapeBase and ShapeBaseData are not meant to be instantiated in script, you will use one of its child classes instead. Several game related objects are derived from ShapeBase: Player, Vehicle, Item, and so on.
+    /// 
+    /// When you need a 3D object with datablock capabilities, you will use an object derived from ShapeBase. When you need an object with extremely low overhead, and with no other purpose than to be a 3D object in the scene, you will use TSStatic.
+    /// 
+    /// The most basic child of ShapeBase is StaticShape. It does not introduce any of the additional functionality you see in Player, Item, Vehicle or the other game play heavy classes. At its core, it is comparable to a TSStatic, but with a datbalock.  Having a datablock provides a location for common variables as well as having access to various ShapeBaseData, GameBaseData and SimDataBlock callbacks.
+    /// </description>
+    /// <code>
+    /// // Create a StaticShape using a datablock
+    /// datablock StaticShapeData(BasicShapeData)
+    /// {
+    ///   shapeFile = "art/shapes/items/kit/healthkit.dts";
+    ///   testVar = "Simple string, not a stock variable";
+    /// };
+    /// 
+    /// new StaticShape()
+    /// {
+    ///   dataBlock = "BasicShapeData";
+    ///   position = "0.0 0.0 0.0";
+    ///   rotation = "1 0 0 0";
+    ///   scale = "1 1 1";
+    /// };
+    /// </code>
+    /// <see cref="StaticShape" />
+    /// <see cref="ShapeBaseData" />
+    /// <see cref="TSStatic" />
     public unsafe class StaticShapeData : ShapeBaseData {
         public StaticShapeData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +132,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the StaticShapeData class.
+        /// </description>
+        /// <returns>The type info object for StaticShapeData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +143,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Deprecated
+        /// </description>
+        /// </value>
         public bool NoIndividualDamage {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("noIndividualDamage"));
             set => SetFieldValue("noIndividualDamage", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>An integer value which, if speficied, is added to the value retured by getType().</summary>
+        /// <description>
+        /// This allows you to extend the type mask for a StaticShape that uses this datablock.  Type masks are used for container queries, etc.
+        /// </description>
+        /// </value>
         public int DynamicType {
             get => GenericMarshal.StringTo<int>(GetFieldValue("dynamicType"));
             set => SetFieldValue("dynamicType", GenericMarshal.ToString(value));

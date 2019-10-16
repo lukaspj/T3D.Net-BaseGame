@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control that displays a Catmull-Rom spline through a number of control points.</summary>
+    /// <description>
+    /// Currently editor use only, no real application without extension.
+    /// </description>
     public unsafe class GuiFilterCtrl : GuiControl {
         public GuiFilterCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -156,12 +160,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Reset the filtering.
+        /// </description>
         public void ResetFiltering() {
              InternalUnsafeMethods.ResetFiltering__Args _args = new InternalUnsafeMethods.ResetFiltering__Args() {
              };
              InternalUnsafeMethods.ResetFiltering()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (f1, f2, ...)Reset the filter to use the specified points, spread equidistantly across the domain.
+        /// </description>
         public void SetValue(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -177,6 +187,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
 
         }
 
+        /// <description>
+        /// Return a tuple containing all the values in the filter.
+        /// </description>
         public string GetValue() {
              InternalUnsafeMethods.GetValue__Args _args = new InternalUnsafeMethods.GetValue__Args() {
              };
@@ -184,6 +197,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiFilterCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiFilterCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -191,21 +208,41 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Total number of control points in the spline curve.
+        /// </description>
+        /// </value>
         public int ControlPoints {
             get => GenericMarshal.StringTo<int>(GetFieldValue("controlPoints"));
             set => SetFieldValue("controlPoints", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Vector of control points.
+        /// </description>
+        /// </value>
         public FloatVector Filter {
             get => GenericMarshal.StringTo<FloatVector>(GetFieldValue("filter"));
             set => SetFieldValue("filter", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ShowIdentity {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showIdentity"));
             set => SetFieldValue("showIdentity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point2F Identity {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("identity"));
             set => SetFieldValue("identity", GenericMarshal.ToString(value));

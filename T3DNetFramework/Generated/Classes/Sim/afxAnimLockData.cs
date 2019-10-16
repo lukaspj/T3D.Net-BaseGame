@@ -14,7 +14,17 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies an Animation Lock effect.</summary>
+    /// <description>
+    /// Animation Lock is used to temporarily lock out user-controlled Player actions, usually while an Animation Clip is concurrently playing. Animation Clips can already do this, but must lock out user actions for the entire clip length. Sometimes you only want to block user actions for a short section of a longer playing animation, such as the part where the Player is thrown into the air from an impact. With Animation Lock, you can set a specific timespan for when user actions are blocked, independent of any Animation Clip timing.
+    /// 
+    /// The target of an Animation Lock is the constraint source object specified by the posConstraint field of the enclosing effect wrapper. The target must be a Player, a subclass of Player, or an afxModel.
+    /// 
+    /// The timing of the Animation Lock is determined by the timing fields of the enclosing effect wrapper.
+    /// 
+    /// Locking behavior timing is set by fields of the enclosing effect wrapper, so afxAnimLockData does not require any fields. However, TorqueScript syntax disallows the declaration of an empty datablock. Therefore, it is recommended that you set a dynamic field named 'priority' to zero in the body of the datablock as a workaround to this limitation.
+    /// </description>
     public unsafe class afxAnimLockData : GameBaseData {
         public afxAnimLockData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +109,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxAnimLockData class.
+        /// </description>
+        /// <returns>The type info object for afxAnimLockData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

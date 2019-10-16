@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Remnant from ancient script debugger (TGE days?)</summary>
+    /// <description>
+    /// Possibly useful for an editor tooltip.
+    /// </description>
     public unsafe class DbgFileView : GuiArrayCtrl {
         public DbgFileView(bool pRegister = false) 
             : base(pRegister) {
@@ -272,6 +276,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// (string findThis)Find the specified string in the currently viewed file and scroll it into view.
+        /// </description>
         public bool FindString(string findThis) {
              InternalUnsafeMethods.FindString__Args _args = new InternalUnsafeMethods.FindString__Args() {
                 findThis = findThis,
@@ -280,6 +287,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (int line)Remove a breakpoint from the specified line.
+        /// </description>
         public void RemoveBreak(uint line) {
              InternalUnsafeMethods.RemoveBreak__Args _args = new InternalUnsafeMethods.RemoveBreak__Args() {
                 line = line,
@@ -287,6 +297,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveBreak()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int line)Set a breakpoint at the specified line.
+        /// </description>
         public void SetBreak(uint line) {
              InternalUnsafeMethods.SetBreak__Args _args = new InternalUnsafeMethods.SetBreak__Args() {
                 line = line,
@@ -294,6 +307,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetBreak()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int line)Set a breakpoint at the specified line.
+        /// </description>
         public void SetBreakPosition(uint line) {
              InternalUnsafeMethods.SetBreakPosition__Args _args = new InternalUnsafeMethods.SetBreakPosition__Args() {
                 line = line,
@@ -301,12 +317,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetBreakPosition()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()Clear all break points in the current file.
+        /// </description>
         public void ClearBreakPositions() {
              InternalUnsafeMethods.ClearBreakPositions__Args _args = new InternalUnsafeMethods.ClearBreakPositions__Args() {
              };
              InternalUnsafeMethods.ClearBreakPositions()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (string filename)Open a file for viewing.
+        /// </description>
+        /// <remarks> This loads the file from the local system.</remarks>
         public bool Open(string filename) {
              InternalUnsafeMethods.Open__Args _args = new InternalUnsafeMethods.Open__Args() {
                 filename = filename,
@@ -315,6 +338,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()Get the currently executing file and line, if any.
+        /// </description>
+        /// <returns>A string containing the file, a tab, and then the line number. Use getField() with this.</returns>
         public string GetCurrentLine() {
              InternalUnsafeMethods.GetCurrentLine__Args _args = new InternalUnsafeMethods.GetCurrentLine__Args() {
              };
@@ -322,6 +349,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (int line, bool selected)Set the current highlighted line.
+        /// </description>
         public void SetCurrentLine(int line, bool selected) {
              InternalUnsafeMethods.SetCurrentLine__Args _args = new InternalUnsafeMethods.SetCurrentLine__Args() {
                 line = line,
@@ -330,6 +360,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCurrentLine()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the DbgFileView class.
+        /// </description>
+        /// <returns>The type info object for DbgFileView</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

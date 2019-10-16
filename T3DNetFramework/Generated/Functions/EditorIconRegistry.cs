@@ -134,6 +134,9 @@ namespace T3DNetFramework.Generated.Functions {
         }
         #endregion
 
+        /// <description>
+        /// Returns the file path to the icon file if found.
+        /// </description>
         public static string FindIconBySimObject(SimObject obj) {
              InternalUnsafeMethods.FindIconBySimObject__Args _args = new InternalUnsafeMethods.FindIconBySimObject__Args() {
                 obj = obj.ObjectPtr,
@@ -142,6 +145,7 @@ namespace T3DNetFramework.Generated.Functions {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns the file path to the icon file if found.</summary>
         public static string FindIconByClassName(string className) {
              InternalUnsafeMethods.FindIconByClassName__Args _args = new InternalUnsafeMethods.FindIconByClassName__Args() {
                 className = className,
@@ -150,12 +154,14 @@ namespace T3DNetFramework.Generated.Functions {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// 
         public static void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };
              InternalUnsafeMethods.Clear()(_args);
         }
 
+        /// 
         public static void LoadFromPath(string imagePath, bool overwrite = true) {
              InternalUnsafeMethods.LoadFromPath__Args _args = new InternalUnsafeMethods.LoadFromPath__Args() {
                 imagePath = imagePath,
@@ -164,6 +170,7 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.LoadFromPath()(_args);
         }
 
+        /// 
         public static void Add(string className, string imageFile, bool overwrite = true) {
              InternalUnsafeMethods.Add__Args _args = new InternalUnsafeMethods.Add__Args() {
                 className = className,

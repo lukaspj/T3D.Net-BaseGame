@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Inspector support for variable groups in a GuiVariableInspector.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiInspectorVariableGroup : GuiInspectorGroup {
         public GuiInspectorVariableGroup(bool pRegister = false) 
             : base(pRegister) {
@@ -140,6 +144,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// addInspectorField( GuiInspectorFieldObject )
+        /// </description>
         public void AddInspectorField(GuiInspectorField field = null) {
              InternalUnsafeMethods.AddInspectorField__Args _args = new InternalUnsafeMethods.AddInspectorField__Args() {
                 field = field.ObjectPtr,
@@ -147,6 +154,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddInspectorField()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// createInspectorField()
+        /// </description>
         public GuiInspectorField CreateInspectorField() {
              InternalUnsafeMethods.CreateInspectorField__Args _args = new InternalUnsafeMethods.CreateInspectorField__Args() {
              };
@@ -154,6 +164,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new GuiInspectorField(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiInspectorVariableGroup class.
+        /// </description>
+        /// <returns>The type info object for GuiInspectorVariableGroup</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

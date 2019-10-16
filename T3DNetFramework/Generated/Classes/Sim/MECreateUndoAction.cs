@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Material Editor create undo instance</summary>
+    /// <description>
+    /// Not intended for game development, for editors or internal use only.
+    /// </description>
     public unsafe class MECreateUndoAction : UndoAction {
         public MECreateUndoAction(bool pRegister = false) 
             : base(pRegister) {
@@ -120,6 +124,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Add the object being created to an undo action.
+        /// </description>
+        /// <param name="obj">Object being created you want to create the undo for.</param>
         public void AddObject(SimObject obj) {
              InternalUnsafeMethods.AddObject__Args _args = new InternalUnsafeMethods.AddObject__Args() {
                 obj = obj.ObjectPtr,
@@ -127,6 +135,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddObject()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the MECreateUndoAction class.
+        /// </description>
+        /// <returns>The type info object for MECreateUndoAction</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

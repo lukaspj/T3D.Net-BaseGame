@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Stores common properties for a ProximityMine.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <see cref="ProximityMine" />
     public unsafe class ProximityMineData : ItemData {
         public ProximityMineData(bool pRegister = false) 
             : base(pRegister) {
@@ -143,6 +148,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Callback invoked when a ProximityMine is about to explode.
+        /// </description>
+        /// <param name="obj">The ProximityMine object</param>
+        /// <param name="pos">The position of the mine explosion</param>
+        /// <remarks> This callback is only invoked on the server.
+        /// </remarks>
+        /// <see cref="ProximityMine" />
         public virtual void OnExplode(ProximityMine obj, Point3F pos) {
 pos.Alloc();             InternalUnsafeMethods.OnExplode__Args _args = new InternalUnsafeMethods.OnExplode__Args() {
                 obj = obj.ObjectPtr,
@@ -151,6 +164,14 @@ pos.Alloc();             InternalUnsafeMethods.OnExplode__Args _args = new Inter
              InternalUnsafeMethods.OnExplode()(ObjectPtr, _args);
 pos.Free();        }
 
+        /// <description>
+        /// Callback invoked when an object triggers the ProximityMine.
+        /// </description>
+        /// <param name="obj">The ProximityMine object</param>
+        /// <param name="target">The object that triggered the mine</param>
+        /// <remarks> This callback is only invoked on the server.
+        /// </remarks>
+        /// <see cref="ProximityMine" />
         public virtual void OnTriggered(ProximityMine obj, SceneObject target) {
              InternalUnsafeMethods.OnTriggered__Args _args = new InternalUnsafeMethods.OnTriggered__Args() {
                 obj = obj.ObjectPtr,
@@ -159,6 +180,10 @@ pos.Free();        }
              InternalUnsafeMethods.OnTriggered()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the ProximityMineData class.
+        /// </description>
+        /// <returns>The type info object for ProximityMineData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -166,46 +191,100 @@ pos.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Delay (in seconds) from when the mine is placed to when it becomes active.
+        /// </description>
+        /// </value>
         public float ArmingDelay {
             get => GenericMarshal.StringTo<float>(GetFieldValue("armingDelay"));
             set => SetFieldValue("armingDelay", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sound to play when the mine is armed (starts at the same time as the <i>armed</i> sequence if defined).
+        /// </description>
+        /// </value>
         public SFXTrack ArmingSound {
             get => GenericMarshal.StringTo<SFXTrack>(GetFieldValue("armingSound"));
             set => SetFieldValue("armingSound", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Delay (in seconds) from arming until the mine automatically triggers and explodes, even if no object has entered the trigger area.</summary>
+        /// <description>
+        /// Set to 0 to disable.
+        /// </description>
+        /// </value>
         public float AutoTriggerDelay {
             get => GenericMarshal.StringTo<float>(GetFieldValue("autoTriggerDelay"));
             set => SetFieldValue("autoTriggerDelay", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Controls whether the mine can be triggered by the object that owns it.</summary>
+        /// <description>
+        /// For example, a player could deploy mines that are only dangerous to other players and not himself.
+        /// </description>
+        /// </value>
         public bool TriggerOnOwner {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("triggerOnOwner"));
             set => SetFieldValue("triggerOnOwner", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Distance at which an activated mine will detect other objects and explode.
+        /// </description>
+        /// </value>
         public float TriggerRadius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("triggerRadius"));
             set => SetFieldValue("triggerRadius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Speed above which moving objects within the trigger radius will trigger the mine
+        /// </description>
+        /// </value>
         public float TriggerSpeed {
             get => GenericMarshal.StringTo<float>(GetFieldValue("triggerSpeed"));
             set => SetFieldValue("triggerSpeed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Delay (in seconds) from when the mine is triggered until it explodes.
+        /// </description>
+        /// </value>
         public float TriggerDelay {
             get => GenericMarshal.StringTo<float>(GetFieldValue("triggerDelay"));
             set => SetFieldValue("triggerDelay", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sound to play when the mine is triggered (starts at the same time as the <i>triggered</i> sequence if defined).
+        /// </description>
+        /// </value>
         public SFXTrack TriggerSound {
             get => GenericMarshal.StringTo<SFXTrack>(GetFieldValue("triggerSound"));
             set => SetFieldValue("triggerSound", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Offset from the mine's origin where the explosion emanates from.Sometimes a thrown mine may be slightly sunk into the ground.  This can be just enough to cause the explosion to occur under the ground, especially on flat ground, which can end up blocking the explosion.  This offset along the mine's 'up' normal allows you to raise the explosion origin to a better height.</summary>
+        /// </value>
         public float ExplosionOffset {
             get => GenericMarshal.StringTo<float>(GetFieldValue("explosionOffset"));
             set => SetFieldValue("explosionOffset", GenericMarshal.ToString(value));

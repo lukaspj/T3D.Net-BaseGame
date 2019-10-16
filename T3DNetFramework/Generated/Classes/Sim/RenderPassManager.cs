@@ -14,7 +14,14 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A grouping of render bin managers which forms a render pass.</summary>
+    /// <description>
+    /// The render pass is used to order a set of RenderBinManager objects which are used when rendering a scene.  This class does little work itself other than managing its list of render bins.
+    /// 
+    /// In 'core/scripts/client/renderManager.cs' you will find the DiffuseRenderPassManager which is used by the C++ engine to render the scene.
+    /// </description>
+    /// <see cref="RenderBinManager" />
     public unsafe class RenderPassManager : SimObject {
         public RenderPassManager(bool pRegister = false) 
             : base(pRegister) {
@@ -182,6 +189,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Removes a render bin manager.
+        /// </description>
         public void RemoveManager(RenderBinManager renderBin) {
              InternalUnsafeMethods.RemoveManager__Args _args = new InternalUnsafeMethods.RemoveManager__Args() {
                 renderBin = renderBin.ObjectPtr,
@@ -189,6 +199,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveManager()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add as a render bin manager to the pass.
+        /// </description>
         public void AddManager(RenderBinManager renderBin) {
              InternalUnsafeMethods.AddManager__Args _args = new InternalUnsafeMethods.AddManager__Args() {
                 renderBin = renderBin.ObjectPtr,
@@ -196,6 +209,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddManager()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Returns the render bin manager at the index or null if the index is out of range.
+        /// </description>
         public RenderBinManager GetManager(int index) {
              InternalUnsafeMethods.GetManager__Args _args = new InternalUnsafeMethods.GetManager__Args() {
                 index = index,
@@ -204,6 +220,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new RenderBinManager(_engineResult);
         }
 
+        /// <description>
+        /// Returns the total number of bin managers.
+        /// </description>
         public int GetManagerCount() {
              InternalUnsafeMethods.GetManagerCount__Args _args = new InternalUnsafeMethods.GetManagerCount__Args() {
              };
@@ -211,6 +230,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the RenderPassManager class.
+        /// </description>
+        /// <returns>The type info object for RenderPassManager</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

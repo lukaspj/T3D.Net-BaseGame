@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A type of marker that designates a location AI characters can take cover.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class CoverPoint : SceneObject {
         public CoverPoint(bool pRegister = false) 
             : base(pRegister) {
@@ -120,6 +124,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Returns true if someone is already using this cover point.</summary>
         public bool IsOccupied() {
              InternalUnsafeMethods.IsOccupied__Args _args = new InternalUnsafeMethods.IsOccupied__Args() {
              };
@@ -127,6 +132,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the CoverPoint class.
+        /// </description>
+        /// <returns>The type info object for CoverPoint</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -134,26 +143,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The size of this cover point.
+        /// </description>
+        /// </value>
         public CoverPointSize Size {
             get => GenericMarshal.StringTo<CoverPointSize>(GetFieldValue("size"));
             set => SetFieldValue("size", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reliability of this point as solid cover. (0...1)
+        /// </description>
+        /// </value>
         public float Quality {
             get => GenericMarshal.StringTo<float>(GetFieldValue("quality"));
             set => SetFieldValue("quality", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Can characters look left around this cover point?
+        /// </description>
+        /// </value>
         public bool PeekLeft {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("peekLeft"));
             set => SetFieldValue("peekLeft", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Can characters look right around this cover point?
+        /// </description>
+        /// </value>
         public bool PeekRight {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("peekRight"));
             set => SetFieldValue("peekRight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Can characters look over the top of this cover point?
+        /// </description>
+        /// </value>
         public bool PeekOver {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("peekOver"));
             set => SetFieldValue("peekOver", GenericMarshal.ToString(value));

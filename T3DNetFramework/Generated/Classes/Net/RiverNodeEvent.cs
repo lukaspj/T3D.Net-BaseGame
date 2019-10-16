@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Net {    
+namespace T3DNetFramework.Generated.Classes.Net {
+    /// <summary>Sends messages to the River Editor</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class RiverNodeEvent : NodeListEvent {
         public RiverNodeEvent(bool pRegister = false) 
             : base(pRegister) {
@@ -72,6 +76,10 @@ namespace T3DNetFramework.Generated.Classes.Net {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RiverNodeEvent class.
+        /// </description>
+        /// <returns>The type info object for RiverNodeEvent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

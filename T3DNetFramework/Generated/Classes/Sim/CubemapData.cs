@@ -14,7 +14,27 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Used to create static or dynamic cubemaps.</summary>
+    /// <description>
+    /// This object is used with Material, WaterObject, and other objects for cubemap reflections.
+    /// 
+    /// A simple declaration of a static cubemap:
+    /// </description>
+    /// <code>
+    /// singleton CubemapData( SkyboxCubemap )
+    /// {
+    ///    cubeFace[0] = "./skybox_1";
+    ///    cubeFace[1] = "./skybox_2";
+    ///    cubeFace[2] = "./skybox_3";
+    ///    cubeFace[3] = "./skybox_4";
+    ///    cubeFace[4] = "./skybox_5";
+    ///    cubeFace[5] = "./skybox_6";
+    /// };
+    /// </code>
+    /// <remarks> The dynamic cubemap functionality in CubemapData has been depreciated in favor of ReflectorDesc.
+    /// </remarks>
+    /// <see cref="ReflectorDesc" />
     public unsafe class CubemapData : SimObject {
         public CubemapData(bool pRegister = false) 
             : base(pRegister) {
@@ -140,6 +160,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Returns the script filename of where the CubemapData object was defined.  This is used by the material editor.
+        /// </description>
         public string GetFilename() {
              InternalUnsafeMethods.GetFilename__Args _args = new InternalUnsafeMethods.GetFilename__Args() {
              };
@@ -147,12 +170,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Update the assigned cubemaps faces.
+        /// </description>
         public void UpdateFaces() {
              InternalUnsafeMethods.UpdateFaces__Args _args = new InternalUnsafeMethods.UpdateFaces__Args() {
              };
              InternalUnsafeMethods.UpdateFaces()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the CubemapData class.
+        /// </description>
+        /// <returns>The type info object for CubemapData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -160,6 +190,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>The 6 cubemap face textures for a static cubemap.</summary>
+        /// <description>
+        /// They are in the following order:
+        ///   - cubeFace[0] is -X
+        ///   - cubeFace[1] is +X
+        ///   - cubeFace[2] is -Z
+        ///   - cubeFace[3] is +Z
+        ///   - cubeFace[4] is -Y
+        ///   - cubeFace[5] is +Y
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> CubeFace {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -170,6 +213,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <summary>Cubemap dds file.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// </value>
         public string Cubemap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("cubemap"));
             set => SetFieldValue("cubemap", GenericMarshal.ToString(value));

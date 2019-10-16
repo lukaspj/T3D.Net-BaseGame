@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class GUIAsset : AssetBase {
         public GUIAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GUIAsset class.
+        /// </description>
+        /// <returns>The type info object for GUIAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +111,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the script file for the gui
+        /// </description>
+        /// </value>
         public string ScriptFilePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("scriptFilePath"));
             set => SetFieldValue("scriptFilePath", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the gui file
+        /// </description>
+        /// </value>
         public string GUIFilePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("GUIFilePath"));
             set => SetFieldValue("GUIFilePath", GenericMarshal.ToString(value));

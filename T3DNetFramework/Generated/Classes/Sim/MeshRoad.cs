@@ -14,7 +14,15 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A strip of rectangular mesh segments defined by a 3D spline for prototyping road-shaped objects in your scene.</summary>
+    /// <description>
+    /// User may control width and depth per node, overall spline shape in three dimensions, and seperate Materials for rendering the top, bottom, and side surfaces.
+    /// 
+    /// MeshRoad is not capable of handling intersections, branches, curbs, or other desirable features in a final 'road' asset and is therefore intended for prototyping and experimentation.
+    /// 
+    /// Materials assigned to MeshRoad should tile vertically.
+    /// </description>
     public unsafe class MeshRoad : SceneObject {
         public MeshRoad(bool pRegister = false) 
             : base(pRegister) {
@@ -161,18 +169,30 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// Force trigger an inspectPostApply. This will transmit material and other fields ( not including nodes ) to client objects.
+        /// </description>
         public void PostApply() {
              InternalUnsafeMethods.PostApply__Args _args = new InternalUnsafeMethods.PostApply__Args() {
              };
              InternalUnsafeMethods.PostApply()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// Force MeshRoad to recreate its geometry.
+        /// </description>
         public void Regenerate() {
              InternalUnsafeMethods.Regenerate__Args _args = new InternalUnsafeMethods.Regenerate__Args() {
              };
              InternalUnsafeMethods.Regenerate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Intended as a helper to developers and editor scripts.
+        /// Sets the depth in meters of a particular node.
+        /// </description>
         public void SetNodeDepth(int idx, float meters) {
              InternalUnsafeMethods.SetNodeDepth__Args _args = new InternalUnsafeMethods.SetNodeDepth__Args() {
                 idx = idx,
@@ -181,6 +201,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetNodeDepth()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the MeshRoad class.
+        /// </description>
+        /// <returns>The type info object for MeshRoad</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -188,36 +212,78 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Material for the upper surface of the road.
+        /// </description>
+        /// </value>
         public string TopMaterial {
             get => GenericMarshal.StringTo<string>(GetFieldValue("topMaterial"));
             set => SetFieldValue("topMaterial", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Material for the bottom surface of the road.
+        /// </description>
+        /// </value>
         public string BottomMaterial {
             get => GenericMarshal.StringTo<string>(GetFieldValue("bottomMaterial"));
             set => SetFieldValue("bottomMaterial", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Material for the left, right, front, and back surfaces of the road.
+        /// </description>
+        /// </value>
         public string SideMaterial {
             get => GenericMarshal.StringTo<string>(GetFieldValue("sideMaterial"));
             set => SetFieldValue("sideMaterial", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The length in meters of textures mapped to the MeshRoad.
+        /// </description>
+        /// </value>
         public float TextureLength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("textureLength"));
             set => SetFieldValue("textureLength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Angle in degrees - MeshRoad will subdivide the spline if its curve is greater than this threshold.
+        /// </description>
+        /// </value>
         public float BreakAngle {
             get => GenericMarshal.StringTo<float>(GetFieldValue("breakAngle"));
             set => SetFieldValue("breakAngle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Subdivide segments widthwise this many times when generating vertices.
+        /// </description>
+        /// </value>
         public int WidthSubdivisions {
             get => GenericMarshal.StringTo<int>(GetFieldValue("widthSubdivisions"));
             set => SetFieldValue("widthSubdivisions", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Do not modify, for internal use.
+        /// </description>
+        /// </value>
         public string Node {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Node"));
             set => SetFieldValue("Node", GenericMarshal.ToString(value));

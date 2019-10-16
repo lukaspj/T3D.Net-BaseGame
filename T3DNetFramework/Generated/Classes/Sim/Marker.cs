@@ -14,7 +14,29 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A single joint, or knot, along a path. Should be stored inside a Path container object. A path markers can be</summary>
+    /// <description>
+    /// one of three primary movement types: "normal", "Position Only", or "Kink".
+    /// </description>
+    /// <code>
+    /// new path()
+    /// 	{
+    ///      isLooping = "1";
+    /// 
+    ///      new Marker()
+    /// 		{
+    /// 			seqNum = "0";
+    /// 			type = "Normal";
+    /// 			msToNext = "1000";
+    /// 			smoothingType = "Spline";
+    /// 			position = "-0.054708 -35.0612 234.802";
+    /// 			rotation = "1 0 0 0";
+    ///       };
+    /// 
+    /// 	};
+    /// </code>
+    /// <see cref="Path" />
     public unsafe class Marker : SceneObject {
         public Marker(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +121,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the Marker class.
+        /// </description>
+        /// <returns>The type info object for Marker</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +132,47 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Marker position in sequence of markers on this path.
+        /// </description>
+        /// </value>
         public int SeqNum {
             get => GenericMarshal.StringTo<int>(GetFieldValue("seqNum"));
             set => SetFieldValue("seqNum", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Type of this marker/knot. A "normal" knot will have a smooth camera translation/rotation effect.
+        /// "Position Only" will do the same for translations, leaving rotation un-touched.
+        /// Lastly, a "Kink" means the rotation will take effect immediately for an abrupt rotation change.
+        /// </description>
+        /// </value>
         public MarkerKnotType Type {
             get => GenericMarshal.StringTo<MarkerKnotType>(GetFieldValue("type"));
             set => SetFieldValue("type", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Milliseconds to next marker in sequence.
+        /// </description>
+        /// </value>
         public int MsToNext {
             get => GenericMarshal.StringTo<int>(GetFieldValue("msToNext"));
             set => SetFieldValue("msToNext", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path smoothing at this marker/knot. "Linear" means no smoothing, while "Spline" means to smooth.
+        /// </description>
+        /// </value>
         public MarkerSmoothingType SmoothingType {
             get => GenericMarshal.StringTo<MarkerSmoothingType>(GetFieldValue("smoothingType"));
             set => SetFieldValue("smoothingType", GenericMarshal.ToString(value));

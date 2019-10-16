@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Global {    
+namespace T3DNetFramework.Generated.Classes.Global {
+    /// 
     public unsafe class SimPersistID : EngineObject, ISimPersistID {
         public SimPersistID(bool pRegister = false) 
             : base(pRegister) {
@@ -115,6 +116,7 @@ namespace T3DNetFramework.Generated.Classes.Global {
         }
         #endregion
 
+        /// 
         public SimObject GetObject() {
              InternalUnsafeMethods.GetObject__Args _args = new InternalUnsafeMethods.GetObject__Args() {
              };
@@ -122,6 +124,7 @@ namespace T3DNetFramework.Generated.Classes.Global {
              return new SimObject(_engineResult);
         }
 
+        /// 
         public UUID GetUUID() {
              InternalUnsafeMethods.GetUUID__Args _args = new InternalUnsafeMethods.GetUUID__Args() {
              };
@@ -129,6 +132,10 @@ namespace T3DNetFramework.Generated.Classes.Global {
              return new UUID(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the SimPersistID class.
+        /// </description>
+        /// <returns>The type info object for SimPersistID</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>SimObject which adds, tracks, and deletes UndoAction objects.</summary>
+    /// <description>
+    /// Not intended for game development, for editors or internal use only.
+    /// </description>
     public unsafe class UndoManager : SimObject {
         public UndoManager(bool pRegister = false) 
             : base(pRegister) {
@@ -372,6 +376,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ( bool discard=false ) - Pop the current CompoundUndoAction off the stack.
+        /// </description>
         public void PopCompound(bool discard = false) {
              InternalUnsafeMethods.PopCompound__Args _args = new InternalUnsafeMethods.PopCompound__Args() {
                 discard = discard,
@@ -379,6 +386,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PopCompound()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( string name="" ) - Push a CompoundUndoAction onto the compound stack for assembly.
+        /// </description>
         public string PushCompound(string name = "") {
              InternalUnsafeMethods.PushCompound__Args _args = new InternalUnsafeMethods.PushCompound__Args() {
                 name = name,
@@ -387,6 +397,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// UndoManager.getNextRedoName();
+        /// </description>
         public string GetNextRedoName() {
              InternalUnsafeMethods.GetNextRedoName__Args _args = new InternalUnsafeMethods.GetNextRedoName__Args() {
              };
@@ -394,6 +407,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// UndoManager.getNextUndoName();
+        /// </description>
         public string GetNextUndoName() {
              InternalUnsafeMethods.GetNextUndoName__Args _args = new InternalUnsafeMethods.GetNextUndoName__Args() {
              };
@@ -401,18 +417,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// UndoManager.redo();
+        /// </description>
         public void Redo() {
              InternalUnsafeMethods.Redo__Args _args = new InternalUnsafeMethods.Redo__Args() {
              };
              InternalUnsafeMethods.Redo()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// UndoManager.undo();
+        /// </description>
         public void Undo() {
              InternalUnsafeMethods.Undo__Args _args = new InternalUnsafeMethods.Undo__Args() {
              };
              InternalUnsafeMethods.Undo()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (index)
+        /// </description>
         public int GetRedoAction(int index) {
              InternalUnsafeMethods.GetRedoAction__Args _args = new InternalUnsafeMethods.GetRedoAction__Args() {
                 index = index,
@@ -421,6 +446,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (index)
+        /// </description>
         public string GetRedoName(int index) {
              InternalUnsafeMethods.GetRedoName__Args _args = new InternalUnsafeMethods.GetRedoName__Args() {
                 index = index,
@@ -429,6 +457,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// 
         public int GetRedoCount() {
              InternalUnsafeMethods.GetRedoCount__Args _args = new InternalUnsafeMethods.GetRedoCount__Args() {
              };
@@ -436,6 +465,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (index)
+        /// </description>
         public int GetUndoAction(int index) {
              InternalUnsafeMethods.GetUndoAction__Args _args = new InternalUnsafeMethods.GetUndoAction__Args() {
                 index = index,
@@ -444,6 +476,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (index)
+        /// </description>
         public string GetUndoName(int index) {
              InternalUnsafeMethods.GetUndoName__Args _args = new InternalUnsafeMethods.GetUndoName__Args() {
                 index = index,
@@ -452,6 +487,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// 
         public int GetUndoCount() {
              InternalUnsafeMethods.GetUndoCount__Args _args = new InternalUnsafeMethods.GetUndoCount__Args() {
              };
@@ -459,12 +495,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Clears the undo manager.
+        /// </description>
         public void ClearAll() {
              InternalUnsafeMethods.ClearAll__Args _args = new InternalUnsafeMethods.ClearAll__Args() {
              };
              InternalUnsafeMethods.ClearAll()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the UndoManager class.
+        /// </description>
+        /// <returns>The type info object for UndoManager</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -472,6 +515,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Number of undo & redo levels.
+        /// </description>
+        /// </value>
         public int NumLevels {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numLevels"));
             set => SetFieldValue("numLevels", GenericMarshal.ToString(value));

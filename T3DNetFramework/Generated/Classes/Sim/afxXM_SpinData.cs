@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An xmod datablock.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxXM_SpinData : afxXM_WeightedBaseData {
         public afxXM_SpinData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxXM_SpinData class.
+        /// </description>
+        /// <returns>The type info object for afxXM_SpinData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,26 +114,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point3F SpinAxis {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("spinAxis"));
             set => SetFieldValue("spinAxis", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float SpinAngle {
             get => GenericMarshal.StringTo<float>(GetFieldValue("spinAngle"));
             set => SetFieldValue("spinAngle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float SpinAngleVariance {
             get => GenericMarshal.StringTo<float>(GetFieldValue("spinAngleVariance"));
             set => SetFieldValue("spinAngleVariance", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float SpinRate {
             get => GenericMarshal.StringTo<float>(GetFieldValue("spinRate"));
             set => SetFieldValue("spinRate", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float SpinRateVariance {
             get => GenericMarshal.StringTo<float>(GetFieldValue("spinRateVariance"));
             set => SetFieldValue("spinRateVariance", GenericMarshal.ToString(value));

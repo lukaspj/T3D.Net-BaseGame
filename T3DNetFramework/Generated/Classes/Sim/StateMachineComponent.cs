@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class StateMachineComponent : Component {
         public StateMachineComponent(bool pRegister = false) 
             : base(pRegister) {
@@ -119,6 +120,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the StateMachineComponent class.
+        /// </description>
+        /// <returns>The type info object for StateMachineComponent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -126,12 +131,26 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <summary>Called when we collide with another object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">The ShapeBase object</param>
+        /// <param name="collObj">The object we collided with</param>
+        /// <param name="vec">Collision impact vector</param>
+        /// <param name="len">Length of the impact vector</param>
         public virtual void OnStateChange() {
              InternalUnsafeMethods.OnStateChange__Args _args = new InternalUnsafeMethods.OnStateChange__Args() {
              };
              InternalUnsafeMethods.OnStateChange()(ObjectPtr, _args);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The sim time of when we started this state
+        /// </description>
+        /// </value>
         public string StateMachineFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("stateMachineFile"));
             set => SetFieldValue("stateMachineFile", GenericMarshal.ToString(value));

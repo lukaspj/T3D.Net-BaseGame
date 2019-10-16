@@ -14,7 +14,56 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>This class is responsible opening, reading, creating, and saving file contents.</summary>
+    /// <description>
+    /// FileObject acts as the interface with OS level files.  You create a new FileObject and pass into it a file's path and name.  The FileObject class supports three distinct operations for working with files:
+    /// 
+    /// <table border='1' cellpadding='1'><tr><th>Operation</th><th>%FileObject Method</th><th>Description</th></tr><tr><td>Read</td><td>openForRead()</td><td>Open the file for reading</td></tr><tr><td>Write</td><td>openForWrite()</td><td>Open the file for writing to and replace its contents (if any)</td></tr><tr><td>Append</td><td>openForAppend()</td><td>Open the file and start writing at its end</td></tr></table>
+    /// 
+    /// Before you may work with a file you need to use one of the three above methods on the FileObject.
+    /// </description>
+    /// <code>
+    /// // Create a file object for writing
+    /// %fileWrite = new FileObject();
+    /// 
+    /// // Open a file to write to, if it does not exist it will be created
+    /// %result = %fileWrite.OpenForWrite("./test.txt");
+    /// 
+    /// if ( %result )
+    /// {
+    ///    // Write a line to the text files
+    ///    %fileWrite.writeLine("READ. READ CODE. CODE");
+    /// }
+    /// 
+    /// // Close the file when finished
+    /// %fileWrite.close();
+    /// 
+    /// // Cleanup the file object
+    /// %fileWrite.delete();
+    /// 
+    /// 
+    /// // Create a file object for reading
+    /// %fileRead = new FileObject();
+    /// 
+    /// // Open a text file, if it exists
+    /// %result = %fileRead.OpenForRead("./test.txt");
+    /// 
+    /// if ( %result )
+    /// {
+    ///    // Read in the first line
+    ///    %line = %fileRead.readline();
+    /// 
+    ///    // Print the line we just read
+    ///    echo(%line);
+    /// }
+    /// 
+    /// // Close the file when finished
+    /// %fileRead.close();
+    /// 
+    /// // Cleanup the file object
+    /// %fileRead.delete();
+    /// </code>
     public unsafe class FileObject : SimObject {
         public FileObject(bool pRegister = false) 
             : base(pRegister) {
@@ -297,6 +346,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// FileObject.writeObject(SimObject, object prepend)
+        /// </description>
         public void WriteObject(string simName, string objName = "") {
              InternalUnsafeMethods.WriteObject__Args _args = new InternalUnsafeMethods.WriteObject__Args() {
                 simName = simName,
@@ -305,12 +357,57 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.WriteObject()(ObjectPtr, _args);
         }
 
+        /// <summary>Close the file.</summary>
+        /// <description>
+        /// It is EXTREMELY important that you call this function when you are finished reading or writing to a file. Failing to do so is not only a bad programming practice, but could result in bad data or corrupt files. Remember: Open, Read/Write, Close, Delete...in that order!
+        /// </description>
+        /// <code>
+        /// // Create a file object for reading
+        /// %fileRead = new FileObject();
+        /// 
+        /// // Open a text file, if it exists
+        /// %fileRead.OpenForRead("./test.txt");
+        /// 
+        /// // Peek the first line
+        /// %line = %fileRead.peekLine();
+        /// 
+        /// // Print the line we just peeked
+        /// echo(%line);
+        /// // If we peek again...
+        /// %line = %fileRead.peekLine();
+        /// 
+        /// // We will get the same output as the first time
+        /// // since the stream did not move forward
+        /// echo(%line);
+        /// 
+        /// // Close the file when finished
+        /// %fileWrite.close();
+        /// 
+        /// // Cleanup the file object
+        /// %fileWrite.delete();
+        /// </code>
         public void Close() {
              InternalUnsafeMethods.Close__Args _args = new InternalUnsafeMethods.Close__Args() {
              };
              InternalUnsafeMethods.Close()(ObjectPtr, _args);
         }
 
+        /// <summary>Write a line to the file, if it was opened for writing.</summary>
+        /// <description>
+        /// There is no limit as to what kind of text you can write. Any format and data is allowable, not just text. Be careful of what you write, as whitespace, current values, and literals will be preserved.
+        /// </description>
+        /// <param name="text">The data we are writing out to file.</param>
+        /// <code>
+        /// // Create a file object for writing
+        /// %fileWrite = new FileObject();
+        /// 
+        /// // Open a file to write to, if it does not exist it will be created
+        /// %fileWrite.OpenForWrite("./test.txt");
+        /// 
+        /// // Write a line to the text files
+        /// %fileWrite.writeLine("READ. READ CODE. CODE");
+        /// </code>
+        /// <returns>True if file was successfully opened, false otherwise</returns>
         public void WriteLine(string text) {
              InternalUnsafeMethods.WriteLine__Args _args = new InternalUnsafeMethods.WriteLine__Args() {
                 text = text,
@@ -318,6 +415,31 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.WriteLine()(ObjectPtr, _args);
         }
 
+        /// <summary>Read a line from the file without moving the stream position.</summary>
+        /// <description>
+        /// Emphasis on *line*, as in you cannot parse individual characters or chunks of data.  There is no limitation as to what kind of data you can read. Unlike readLine, the parser does not move forward after reading.
+        /// </description>
+        /// <param name="filename">Path, name, and extension of file to be read</param>
+        /// <code>
+        /// // Create a file object for reading
+        /// %fileRead = new FileObject();
+        /// 
+        /// // Open a text file, if it exists
+        /// %fileRead.OpenForRead("./test.txt");
+        /// 
+        /// // Peek the first line
+        /// %line = %fileRead.peekLine();
+        /// 
+        /// // Print the line we just peeked
+        /// echo(%line);
+        /// // If we peek again...
+        /// %line = %fileRead.peekLine();
+        /// 
+        /// // We will get the same output as the first time
+        /// // since the stream did not move forward
+        /// echo(%line);
+        /// </code>
+        /// <returns>String containing the line of data that was just peeked</returns>
         public string PeekLine() {
              InternalUnsafeMethods.PeekLine__Args _args = new InternalUnsafeMethods.PeekLine__Args() {
              };
@@ -325,6 +447,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Read a line from file.</summary>
+        /// <description>
+        /// Emphasis on *line*, as in you cannot parse individual characters or chunks of data.  There is no limitation as to what kind of data you can read.
+        /// </description>
+        /// <code>
+        /// // Create a file object for reading
+        /// %fileRead = new FileObject();
+        /// 
+        /// // Open a text file, if it exists
+        /// %fileRead.OpenForRead("./test.txt");
+        /// 
+        /// // Read in the first line
+        /// %line = %fileRead.readline();
+        /// 
+        /// // Print the line we just read
+        /// echo(%line);
+        /// </code>
+        /// <returns>String containing the line of data that was just read</returns>
         public string ReadLine() {
              InternalUnsafeMethods.ReadLine__Args _args = new InternalUnsafeMethods.ReadLine__Args() {
              };
@@ -332,6 +472,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Determines if the parser for this FileObject has reached the end of the file</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Create a file object for reading
+        /// %fileRead = new FileObject();
+        /// 
+        /// // Open a text file, if it exists
+        /// %fileRead.OpenForRead("./test.txt");
+        /// 
+        /// // Keep reading until we reach the end of the file
+        /// while( !%fileRead.isEOF() )
+        /// {
+        ///    %line = %fileRead.readline();
+        ///    echo(%line);
+        /// }
+        /// 
+        /// // Made it to the end
+        /// echo("Finished reading file");
+        /// </code>
+        /// <returns>True if the parser has reached the end of the file, false otherwise</returns>
         public bool IsEOF() {
              InternalUnsafeMethods.IsEOF__Args _args = new InternalUnsafeMethods.IsEOF__Args() {
              };
@@ -339,6 +501,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Open a specified file for writing, adding data to the end of the file</summary>
+        /// <description>
+        /// There is no limit as to what kind of file you can write. Any format and data is allowable, not just text. Unlike openForWrite(), which will erase an existing file if it is opened, openForAppend() preserves data in an existing file and adds to it.
+        /// </description>
+        /// <param name="filename">Path, name, and extension of file to append to</param>
+        /// <code>
+        /// // Create a file object for writing
+        /// %fileWrite = new FileObject();
+        /// 
+        /// // Open a file to write to, if it does not exist it will be created
+        /// // If it does exist, whatever we write will be added to the end
+        /// %result = %fileWrite.OpenForAppend("./test.txt");
+        /// </code>
+        /// <returns>True if file was successfully opened, false otherwise</returns>
         public bool OpenForAppend(string filename) {
              InternalUnsafeMethods.OpenForAppend__Args _args = new InternalUnsafeMethods.OpenForAppend__Args() {
                 filename = filename,
@@ -347,6 +523,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Open a specified file for writing</summary>
+        /// <description>
+        /// There is no limit as to what kind of file you can write. Any format and data is allowable, not just text
+        /// </description>
+        /// <param name="filename">Path, name, and extension of file to write to</param>
+        /// <code>
+        /// // Create a file object for writing
+        /// %fileWrite = new FileObject();
+        /// 
+        /// // Open a file to write to, if it does not exist it will be created
+        /// %result = %fileWrite.OpenForWrite("./test.txt");
+        /// </code>
+        /// <returns>True if file was successfully opened, false otherwise</returns>
         public bool OpenForWrite(string filename) {
              InternalUnsafeMethods.OpenForWrite__Args _args = new InternalUnsafeMethods.OpenForWrite__Args() {
                 filename = filename,
@@ -355,6 +544,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Open a specified file for reading</summary>
+        /// <description>
+        /// There is no limit as to what kind of file you can read. Any format and data contained within is accessible, not just text
+        /// </description>
+        /// <param name="filename">Path, name, and extension of file to be read</param>
+        /// <code>
+        /// // Create a file object for reading
+        /// %fileRead = new FileObject();
+        /// 
+        /// // Open a text file, if it exists
+        /// %result = %fileRead.OpenForRead("./test.txt");
+        /// </code>
+        /// <returns>True if file was successfully opened, false otherwise</returns>
         public bool OpenForRead(string filename) {
              InternalUnsafeMethods.OpenForRead__Args _args = new InternalUnsafeMethods.OpenForRead__Args() {
                 filename = filename,
@@ -363,6 +565,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the FileObject class.
+        /// </description>
+        /// <returns>The type info object for FileObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

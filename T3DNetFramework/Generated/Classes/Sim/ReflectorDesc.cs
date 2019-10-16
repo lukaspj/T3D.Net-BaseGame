@@ -14,7 +14,25 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock which defines performance and quality properties for dynamic reflections.</summary>
+    /// <description>
+    /// ReflectorDesc is not itself a reflection and does not render reflections. It is a dummy class for holding and exposing to the user a set of reflection related properties. Objects which support dynamic reflections may then reference a ReflectorDesc.
+    /// </description>
+    /// <code>
+    /// datablock ReflectorDesc( ExampleReflectorDesc )
+    /// {
+    ///    texSize = 256;
+    ///    nearDist = 0.1;
+    ///    farDist = 500;
+    ///    objectTypeMask = 0xFFFFFFFF;
+    ///    detailAdjust = 1.0;
+    ///    priority = 1.0;
+    ///    maxRateMs = 0;
+    ///    useOcclusionQuery = true;
+    /// };
+    /// </code>
+    /// <see cref="ShapeBaseData::cubeReflectorDesc" />
     public unsafe class ReflectorDesc : SimDataBlock {
         public ReflectorDesc(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +117,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ReflectorDesc class.
+        /// </description>
+        /// <returns>The type info object for ReflectorDesc</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,41 +128,89 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Size in pixels of the (square) reflection texture. For a cubemap this value is interpreted as size of each face.
+        /// </description>
+        /// </value>
         public int TexSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("texSize"));
             set => SetFieldValue("texSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Near plane distance to use when rendering this reflection. Adjust this to limit self-occlusion artifacts.
+        /// </description>
+        /// </value>
         public float NearDist {
             get => GenericMarshal.StringTo<float>(GetFieldValue("nearDist"));
             set => SetFieldValue("nearDist", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Far plane distance to use when rendering reflections.
+        /// </description>
+        /// </value>
         public float FarDist {
             get => GenericMarshal.StringTo<float>(GetFieldValue("farDist"));
             set => SetFieldValue("farDist", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object types which render into this reflection.
+        /// </description>
+        /// </value>
         public int ObjectTypeMask {
             get => GenericMarshal.StringTo<int>(GetFieldValue("objectTypeMask"));
             set => SetFieldValue("objectTypeMask", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Scale applied to lod calculation of objects rendering into this reflection ( modulates $pref::TS::detailAdjust ).
+        /// </description>
+        /// </value>
         public float DetailAdjust {
             get => GenericMarshal.StringTo<float>(GetFieldValue("detailAdjust"));
             set => SetFieldValue("detailAdjust", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Priority for updating this reflection, relative to others.
+        /// </description>
+        /// </value>
         public float Priority {
             get => GenericMarshal.StringTo<float>(GetFieldValue("priority"));
             set => SetFieldValue("priority", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If less than maxRateMs has elapsed since this relfection was last updated, then do not update it again. This 'skip' can be disabled by setting maxRateMs to zero.
+        /// </description>
+        /// </value>
         public int MaxRateMs {
             get => GenericMarshal.StringTo<int>(GetFieldValue("maxRateMs"));
             set => SetFieldValue("maxRateMs", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If available on the device use HOQs to determine if the reflective object is visible before updating its reflection.
+        /// </description>
+        /// </value>
         public bool UseOcclusionQuery {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useOcclusionQuery"));
             set => SetFieldValue("useOcclusionQuery", GenericMarshal.ToString(value));

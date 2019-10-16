@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class RibbonNode : GameBase {
         public RibbonNode(bool pRegister = false) 
             : base(pRegister) {
@@ -142,6 +143,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Turns the ribbon on or off.
+        /// </description>
+        /// <param name="active">New ribbon state</param>
         public void SetActive(bool active) {
              InternalUnsafeMethods.SetActive__Args _args = new InternalUnsafeMethods.SetActive__Args() {
                 active = active,
@@ -149,6 +154,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetActive()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Assigns the datablock for this ribbon node.
+        /// </description>
+        /// <param name="ribbonDatablock">RibbonData datablock to assign</param>
+        /// <code>
+        /// // Assign a new emitter datablock
+        /// %emitter.setRibbonDatablock( %ribbonDatablock );
+        /// </code>
         public void SetRibbonDatablock(RibbonData ribbonDatablock = null) {
              InternalUnsafeMethods.SetRibbonDatablock__Args _args = new InternalUnsafeMethods.SetRibbonDatablock__Args() {
                 ribbonDatablock = ribbonDatablock.ObjectPtr,
@@ -156,6 +169,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetRibbonDatablock()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the RibbonNode class.
+        /// </description>
+        /// <returns>The type info object for RibbonNode</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -163,11 +180,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls whether ribbon is emitted from this node.
+        /// </description>
+        /// </value>
         public bool Active {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("active"));
             set => SetFieldValue("active", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Datablock to use for the ribbon.
+        /// </description>
+        /// </value>
         public RibbonData Ribbon {
             get => GenericMarshal.StringTo<RibbonData>(GetFieldValue("Ribbon"));
             set => SetFieldValue("Ribbon", GenericMarshal.ToString(value));

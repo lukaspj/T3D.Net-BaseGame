@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An xmod datablock.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxXM_WaveColorData : afxXM_WaveBaseData {
         public afxXM_WaveColorData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxXM_WaveColorData class.
+        /// </description>
+        /// <returns>The type info object for afxXM_WaveColorData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,26 +114,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF A {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("a"));
             set => SetFieldValue("a", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF B {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("b"));
             set => SetFieldValue("b", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF AVariance {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("aVariance"));
             set => SetFieldValue("aVariance", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF BVariance {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("bVariance"));
             set => SetFieldValue("bVariance", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool SyncVariances {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("syncVariances"));
             set => SetFieldValue("syncVariances", GenericMarshal.ToString(value));

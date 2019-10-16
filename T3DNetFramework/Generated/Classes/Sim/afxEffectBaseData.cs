@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock baseclass for afxEffectWrapperData and afxEffectGroupData.</summary>
+    /// <description>
+    /// Not intended to be used directly, afxEffectBaseData exists to provide base member variables and generic functionality for the derived classes afxEffectWrapperData and afxEffectGroupData.
+    /// </description>
+    /// <see cref="afxEffectWrapperData" />
+    /// <see cref="afxEffectGroupData" />
     public unsafe class afxEffectBaseData : GameBaseData {
         public afxEffectBaseData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxEffectBaseData class.
+        /// </description>
+        /// <returns>The type info object for afxEffectBaseData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

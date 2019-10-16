@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An xmod datablock.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxXM_OscillateZodiacColorData : afxXM_WeightedBaseData {
         public afxXM_OscillateZodiacColorData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxXM_OscillateZodiacColorData class.
+        /// </description>
+        /// <returns>The type info object for afxXM_OscillateZodiacColorData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +114,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF ColorA {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("colorA"));
             set => SetFieldValue("colorA", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF ColorB {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("colorB"));
             set => SetFieldValue("colorB", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Speed {
             get => GenericMarshal.StringTo<float>(GetFieldValue("speed"));
             set => SetFieldValue("speed", GenericMarshal.ToString(value));

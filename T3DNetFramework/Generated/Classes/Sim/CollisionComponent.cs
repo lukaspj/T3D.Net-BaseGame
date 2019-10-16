@@ -14,7 +14,54 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The Box Collider component uses a box or rectangular convex shape for collisions.</summary>
+    /// <description>
+    /// Colliders are individualized components that are similarly based off the CollisionInterface core.
+    /// They are basically the entire functionality of how Torque handles collisions compacted into a single component.
+    /// A collider will both collide against and be collided with, other entities.
+    /// Individual colliders will offer different shapes. This box collider will generate a box/rectangle convex, 
+    /// while the mesh collider will take the owner Entity's rendered shape and do polysoup collision on it, etc.
+    /// 
+    /// The general flow of operations for how collisions happen is thus:
+    ///   -When the component is added(or updated) prepCollision() is called.
+    ///     This will set up our initial convex shape for usage later.
+    /// 
+    ///   -When we update via processTick(), we first test if our entity owner is mobile.
+    ///     If our owner isn't mobile(as in, they have no components that provide it a velocity to move)
+    ///     then we skip doing our active collision checks. Collisions are checked by the things moving, as
+    ///     opposed to being reactionary. If we're moving, we call updateWorkingCollisionSet().
+    ///     updateWorkingCollisionSet() estimates our bounding space for our current ticket based on our position and velocity.
+    ///     If our bounding space has changed since the last tick, we proceed to call updateWorkingList() on our convex.
+    ///     This notifies any object in the bounding space that they may be collided with, so they will call buildConvex().
+    ///     buildConvex() will set up our ConvexList with our collision convex info.
+    /// 
+    ///   -When the component that is actually causing our movement, such as SimplePhysicsBehavior, updates, it will check collisions.
+    ///     It will call checkCollisions() on us. checkCollisions() will first build a bounding shape for our convex, and test
+    ///     if we can early out because we won't hit anything based on our starting point, velocity, and tick time.
+    ///     If we don't early out, we proceed to call updateCollisions(). This builds an ExtrudePolyList, which is then extruded
+    ///     based on our velocity. We then test our extruded polies on our working list of objects we build
+    ///     up earlier via updateWorkingCollisionSet. Any collisions that happen here will be added to our mCollisionList.
+    ///     Finally, we call handleCollisionList() on our collisionList, which then queues out the colliison notice
+    ///     to the object(s) we collided with so they can do callbacks and the like. We also report back on if we did collide
+    ///     to the physics component via our bool return in checkCollisions() so it can make the physics react accordingly.
+    /// 
+    /// One interesting point to note is the usage of mBlockColliding.
+    /// This is set so that it dictates the return on checkCollisions(). If set to false, it will ensure checkCollisions()
+    /// will return false, regardless if we actually collided. This is useful, because even if checkCollisions() returns false,
+    /// we still handle the collisions so the callbacks happen. This enables us to apply a collider to an object that doesn't block
+    /// objects, but does have callbacks, so it can act as a trigger, allowing for arbitrarily shaped triggers, as any collider can
+    /// act as a trigger volume(including MeshCollider).
+    /// </description>
+    /// <code>
+    /// new CollisionComponentInstance()
+    /// {
+    ///    template = CollisionComponentTemplate;
+    ///    colliderSize = "1 1 2";
+    ///    blockColldingObject = "1";
+    /// };
+    /// </code>
+    /// <see cref="SimplePhysicsBehavior" />
     public unsafe class CollisionComponent : Component {
         public CollisionComponent(bool pRegister = false) 
             : base(pRegister) {
@@ -344,6 +391,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the CollisionComponent class.
+        /// </description>
+        /// <returns>The type info object for CollisionComponent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -351,6 +402,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public float GetBestCollisionAngle(Point3F upVector) {
 upVector.Alloc();             InternalUnsafeMethods.GetBestCollisionAngle__Args _args = new InternalUnsafeMethods.GetBestCollisionAngle__Args() {
                 upVector = upVector.internalStructPtr,
@@ -359,6 +419,15 @@ upVector.Alloc();             InternalUnsafeMethods.GetBestCollisionAngle__Args 
 upVector.Free();             return _engineResult;
         }
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public float GetCollisionAngle(int collisionIndex, Point3F upVector) {
 upVector.Alloc();             InternalUnsafeMethods.GetCollisionAngle__Args _args = new InternalUnsafeMethods.GetCollisionAngle__Args() {
                 collisionIndex = collisionIndex,
@@ -368,6 +437,15 @@ upVector.Alloc();             InternalUnsafeMethods.GetCollisionAngle__Args _arg
 upVector.Free();             return _engineResult;
         }
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public Point3F GetCollisionNormal(int collisionIndex) {
              InternalUnsafeMethods.GetCollisionNormal__Args _args = new InternalUnsafeMethods.GetCollisionNormal__Args() {
                 collisionIndex = collisionIndex,
@@ -376,6 +454,15 @@ upVector.Free();             return _engineResult;
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public int GetCollisionCount() {
              InternalUnsafeMethods.GetCollisionCount__Args _args = new InternalUnsafeMethods.GetCollisionCount__Args() {
              };
@@ -383,6 +470,15 @@ upVector.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public bool HasContact() {
              InternalUnsafeMethods.HasContact__Args _args = new InternalUnsafeMethods.HasContact__Args() {
              };
@@ -390,6 +486,10 @@ upVector.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the number of contacts this collider has hit.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public int GetContactTime() {
              InternalUnsafeMethods.GetContactTime__Args _args = new InternalUnsafeMethods.GetContactTime__Args() {
              };
@@ -397,6 +497,10 @@ upVector.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the number of contacts this collider has hit.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public Point3F GetContactPoint() {
              InternalUnsafeMethods.GetContactPoint__Args _args = new InternalUnsafeMethods.GetContactPoint__Args() {
              };
@@ -404,6 +508,10 @@ upVector.Free();             return _engineResult;
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Gets the number of contacts this collider has hit.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public int GetContactObject() {
              InternalUnsafeMethods.GetContactObject__Args _args = new InternalUnsafeMethods.GetContactObject__Args() {
              };
@@ -411,6 +519,10 @@ upVector.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the number of contacts this collider has hit.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public int GetContactMaterial() {
              InternalUnsafeMethods.GetContactMaterial__Args _args = new InternalUnsafeMethods.GetContactMaterial__Args() {
              };
@@ -418,6 +530,10 @@ upVector.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the number of contacts this collider has hit.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public Point3F GetContactNormal() {
              InternalUnsafeMethods.GetContactNormal__Args _args = new InternalUnsafeMethods.GetContactNormal__Args() {
              };
@@ -425,6 +541,10 @@ upVector.Free();             return _engineResult;
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Gets the number of contacts this collider has hit.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public int GetBestContact() {
              InternalUnsafeMethods.GetBestContact__Args _args = new InternalUnsafeMethods.GetBestContact__Args() {
              };
@@ -432,6 +552,10 @@ upVector.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the number of contacts this collider has hit.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public int GetNumberOfContacts() {
              InternalUnsafeMethods.GetNumberOfContacts__Args _args = new InternalUnsafeMethods.GetNumberOfContacts__Args() {
              };
@@ -439,26 +563,54 @@ upVector.Free();             return _engineResult;
              return _engineResult;
         }
 
+
+        /// <value>
+        /// <description>
+        /// The type of mesh data to use for collision queries.
+        /// </description>
+        /// </value>
         public CollisionMeshMeshType CollisionType {
             get => GenericMarshal.StringTo<CollisionMeshMeshType>(GetFieldValue("CollisionType"));
             set => SetFieldValue("CollisionType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The type of mesh data to use for collision queries.
+        /// </description>
+        /// </value>
         public CollisionMeshMeshType LineOfSightType {
             get => GenericMarshal.StringTo<CollisionMeshMeshType>(GetFieldValue("LineOfSightType"));
             set => SetFieldValue("LineOfSightType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The type of mesh data to use for collision queries.
+        /// </description>
+        /// </value>
         public CollisionMeshMeshType DecalType {
             get => GenericMarshal.StringTo<CollisionMeshMeshType>(GetFieldValue("DecalType"));
             set => SetFieldValue("DecalType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The type of mesh data to use for collision queries.
+        /// </description>
+        /// </value>
         public string CollisionMeshPrefix {
             get => GenericMarshal.StringTo<string>(GetFieldValue("CollisionMeshPrefix"));
             set => SetFieldValue("CollisionMeshPrefix", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool BlockCollisions {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("BlockCollisions"));
             set => SetFieldValue("BlockCollisions", GenericMarshal.ToString(value));

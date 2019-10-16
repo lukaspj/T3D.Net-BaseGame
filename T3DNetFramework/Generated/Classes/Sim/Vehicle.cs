@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Base functionality shared by all Vehicles (FlyingVehicle, HoverVehicle, WheeledVehicle).</summary>
+    /// <description>
+    /// This object implements functionality shared by all Vehicle types, but should not be instantiated directly. Create a FlyingVehicle, HoverVehicle, or WheeledVehicle instead.
+    /// </description>
+    /// <remarks> The model used for any Vehicle must include a collision mesh at detail size -1.
+    /// </remarks>
     public unsafe class Vehicle : ShapeBase {
         public Vehicle(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the Vehicle class.
+        /// </description>
+        /// <returns>The type info object for Vehicle</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +116,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// When this flag is set, the vehicle will ignore throttle changes.
+        /// </description>
+        /// </value>
         public bool DisableMove {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("disableMove"));
             set => SetFieldValue("disableMove", GenericMarshal.ToString(value));

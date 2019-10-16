@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>For static-field copying/pasting, editor use only</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class FieldBrushObject : SimObject {
         public FieldBrushObject(bool pRegister = false) 
             : base(pRegister) {
@@ -193,6 +197,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// (simObject) Paste copied static-fields to selected object./
+        /// </description>
+        /// <param name="simObject">Object to paste static-fields to.</param>
+        /// <returns>No return value.</returns>
         public void PasteFields(string simObjName) {
              InternalUnsafeMethods.PasteFields__Args _args = new InternalUnsafeMethods.PasteFields__Args() {
                 simObjName = simObjName,
@@ -200,6 +209,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PasteFields()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (simObject, [fieldList]) Copy selected static-fields for selected object./
+        /// </description>
+        /// <param name="simObject">Object to copy static-fields from.</param>
+        /// <param name="fieldList">fields to filter static-fields against.</param>
+        /// <returns>No return value.</returns>
         public void CopyFields(string simObjName, string pFieldList = "") {
              InternalUnsafeMethods.CopyFields__Args _args = new InternalUnsafeMethods.CopyFields__Args() {
                 simObjName = simObjName,
@@ -208,6 +223,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.CopyFields()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (simObject, [groupList]) Query available static-fields for selected object./
+        /// </description>
+        /// <param name="simObject">Object to query static-fields on.</param>
+        /// <param name="groupList">groups to filter static-fields against.</param>
+        /// <returns>Space-seperated static-field list.</returns>
         public string QueryFields(string simObjName, string groupList = "") {
              InternalUnsafeMethods.QueryFields__Args _args = new InternalUnsafeMethods.QueryFields__Args() {
                 simObjName = simObjName,
@@ -217,6 +238,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (simObject) Query available static-field groups for selected object./
+        /// </description>
+        /// <param name="simObject">Object to query static-field groups on.</param>
+        /// <returns>Space-seperated static-field group list.</returns>
         public string QueryGroups(string simObjName) {
              InternalUnsafeMethods.QueryGroups__Args _args = new InternalUnsafeMethods.QueryGroups__Args() {
                 simObjName = simObjName,
@@ -225,6 +251,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the FieldBrushObject class.
+        /// </description>
+        /// <returns>The type info object for FieldBrushObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -232,11 +262,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string Description {
             get => GenericMarshal.StringTo<string>(GetFieldValue("description"));
             set => SetFieldValue("description", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string SortName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("sortName"));
             set => SetFieldValue("sortName", GenericMarshal.ToString(value));

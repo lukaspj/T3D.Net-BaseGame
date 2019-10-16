@@ -14,7 +14,22 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A GUI control which renders a black square over a bitmap image. The black square will fade out, then fade back in after a determined time.</summary>
+    /// <description>
+    /// This control is especially useful for transitions and splash screens.
+    /// </description>
+    /// <code>
+    /// new GuiFadeinBitmapCtrl()
+    /// 	{
+    /// 		fadeinTime = "1000";
+    /// 		waitTime = "2000";
+    /// 		fadeoutTime = "1000";
+    /// 		done = "1";
+    /// 		// Additional GUI properties that are not specific to GuiFadeinBitmapCtrl have been omitted from this example.
+    /// 	};
+    /// </code>
+    /// <see cref="GuiBitmapCtrl" />
     public unsafe class GuiFadeinBitmapCtrl : GuiBitmapCtrl {
         public GuiFadeinBitmapCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -139,18 +154,44 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Informs the script level that this object has completed is fade cycle.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// GuiFadeInBitmapCtrl::onDone(%this)
+        /// 	{
+        /// 		// Code to run when the fade cycle completes
+        /// 	}
+        /// </code>
+        /// <see cref="GuiCore" />
         public virtual void OnDone() {
              InternalUnsafeMethods.OnDone__Args _args = new InternalUnsafeMethods.OnDone__Args() {
              };
              InternalUnsafeMethods.OnDone()(ObjectPtr, _args);
         }
 
+        /// <summary>Informs the script level that this object received a Click event from the cursor or keyboard.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// GuiFadeInBitmapCtrl::click(%this)
+        /// 	{
+        /// 		// Code to run when click occurs
+        /// 	}
+        /// </code>
+        /// <see cref="GuiCore" />
         public virtual void Click() {
              InternalUnsafeMethods.Click__Args _args = new InternalUnsafeMethods.Click__Args() {
              };
              InternalUnsafeMethods.Click()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiFadeinBitmapCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiFadeinBitmapCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -158,36 +199,78 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color to fade in from and fade out to.
+        /// </description>
+        /// </value>
         public LinearColorF FadeColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("fadeColor"));
             set => SetFieldValue("fadeColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Milliseconds for the bitmap to fade in.
+        /// </description>
+        /// </value>
         public int FadeInTime {
             get => GenericMarshal.StringTo<int>(GetFieldValue("fadeInTime"));
             set => SetFieldValue("fadeInTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Milliseconds to wait after fading in before fading out the bitmap.
+        /// </description>
+        /// </value>
         public int WaitTime {
             get => GenericMarshal.StringTo<int>(GetFieldValue("waitTime"));
             set => SetFieldValue("waitTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Milliseconds for the bitmap to fade out.
+        /// </description>
+        /// </value>
         public int FadeOutTime {
             get => GenericMarshal.StringTo<int>(GetFieldValue("fadeOutTime"));
             set => SetFieldValue("fadeOutTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Easing curve for fade-in.
+        /// </description>
+        /// </value>
         public EaseF FadeInEase {
             get => GenericMarshal.StringTo<EaseF>(GetFieldValue("fadeInEase"));
             set => SetFieldValue("fadeInEase", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Easing curve for fade-out.
+        /// </description>
+        /// </value>
         public EaseF FadeOutEase {
             get => GenericMarshal.StringTo<EaseF>(GetFieldValue("fadeOutEase"));
             set => SetFieldValue("fadeOutEase", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the fade cycle has finished running.
+        /// </description>
+        /// </value>
         public bool Done {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("done"));
             set => SetFieldValue("done", GenericMarshal.ToString(value));

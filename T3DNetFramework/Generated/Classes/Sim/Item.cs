@@ -14,7 +14,42 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Base Item class. Uses the ItemData datablock for common properties.</summary>
+    /// <description>
+    /// Items represent an object in the world, usually one that the player will interact with.  One example is a health kit on the group that is automatically picked up when the player comes into contact with it.
+    /// </description>
+    /// <code>
+    /// // This is the "health patch" dropped by a dying player.
+    /// datablock ItemData(HealthKitPatch)
+    /// {
+    ///    // Mission editor category, this datablock will show up in the
+    ///    // specified category under the "shapes" root category.
+    ///    category = "Health";
+    /// 
+    ///    className = "HealthPatch";
+    /// 
+    ///    // Basic Item properties
+    ///    shapeFile = "art/shapes/items/patch/healthpatch.dts";
+    ///    mass = 2;
+    ///    friction = 1;
+    ///    elasticity = 0.3;
+    ///    emap = true;
+    /// 
+    ///    // Dynamic properties used by the scripts
+    ///    pickupName = "a health patch";
+    ///    repairAmount = 50;
+    /// };
+    /// 
+    /// %obj = new Item()
+    /// {
+    /// 	dataBlock = HealthKitSmall;
+    /// 	parentGroup = EWCreatorWindow.objectGroup;
+    /// 	static = true;
+    /// 	rotate = true;
+    /// };
+    /// </code>
+    /// <see cref="ItemData" />
     public unsafe class Item : ShapeBase {
         public Item(bool pRegister = false) 
             : base(pRegister) {
@@ -297,6 +332,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Get the normal of the surface on which the object is stuck.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>Returns The XYZ normal from where this Item is stuck.</returns>
+        /// <code>
+        /// // Acquire the position where this Item is currently stuck
+        /// %stuckPosition = %item.getLastStickPos();
+        /// </code>
+        /// <remarks> Server side only.
+        /// </remarks>
         public string GetLastStickyNormal() {
              InternalUnsafeMethods.GetLastStickyNormal__Args _args = new InternalUnsafeMethods.GetLastStickyNormal__Args() {
              };
@@ -304,6 +350,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the position on the surface on which this Item is stuck.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>Returns The XYZ position of where this Item is stuck.</returns>
+        /// <code>
+        /// // Acquire the position where this Item is currently stuck
+        /// %stuckPosition = %item.getLastStickPos();
+        /// </code>
+        /// <remarks> Server side only.
+        /// </remarks>
         public string GetLastStickyPos() {
              InternalUnsafeMethods.GetLastStickyPos__Args _args = new InternalUnsafeMethods.GetLastStickyPos__Args() {
              };
@@ -311,6 +368,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Temporarily disable collisions against a specific ShapeBase object.</summary>
+        /// <description>
+        /// This is useful to prevent a player from immediately picking up an Item they have just thrown.  Only one object may be on the timeout list at a time.  The timeout is defined as 15 ticks.
+        /// </description>
+        /// <param name="objectID">ShapeBase object ID to disable collisions against.</param>
+        /// <returns>Returns true if the ShapeBase object requested could be found, false if it could not.</returns>
+        /// <code>
+        /// // Set the ShapeBase Object ID to disable collisions against
+        /// %ignoreColObj = %player.getID();
+        /// 
+        /// // Inform this Item object to ignore collisions temproarily against the %ignoreColObj.
+        /// %item.setCollisionTimeout(%ignoreColObj);
+        /// </code>
         public bool SetCollisionTimeout(int ignoreColObj) {
              InternalUnsafeMethods.SetCollisionTimeout__Args _args = new InternalUnsafeMethods.SetCollisionTimeout__Args() {
                 ignoreColObj = ignoreColObj,
@@ -319,6 +389,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Is the object still rotating?</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>True if the object is still rotating, false if it is not.</returns>
+        /// <code>
+        /// // Query the item on if it is or is not rotating.
+        /// %isRotating = %itemData.isRotating();
+        /// </code>
+        /// <see cref="rotate" />
         public bool IsRotating() {
              InternalUnsafeMethods.IsRotating__Args _args = new InternalUnsafeMethods.IsRotating__Args() {
              };
@@ -326,6 +406,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Is the object at rest (ie, no longer moving)?</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>True if the object is at rest, false if it is not.</returns>
+        /// <code>
+        /// // Query the item on if it is or is not at rest.
+        /// %isAtRest = %item.isAtRest();
+        /// </code>
         public bool IsAtRest() {
              InternalUnsafeMethods.IsAtRest__Args _args = new InternalUnsafeMethods.IsAtRest__Args() {
              };
@@ -333,6 +422,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Is the object static (ie, non-movable)?</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>True if the object is static, false if it is not.</returns>
+        /// <code>
+        /// // Query the item on if it is or is not static.
+        /// %isStatic = %itemData.isStatic();
+        /// </code>
+        /// <see cref="static" />
         public bool IsStatic() {
              InternalUnsafeMethods.IsStatic__Args _args = new InternalUnsafeMethods.IsStatic__Args() {
              };
@@ -340,6 +439,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Informs an Item object that it has left a liquid, along with information about the liquid type.
+        /// </description>
+        /// <param name="objID">Object ID for this Item object.</param>
+        /// <param name="liquidType">The type of liquid that this Item object has left.</param>
+        /// <remarks> Server side only.
+        /// </remarks>
+        /// <see cref="Item, ItemData, WaterObject" />
         public virtual void OnLeaveLiquid(string objID, string liquidType) {
              InternalUnsafeMethods.OnLeaveLiquid__Args _args = new InternalUnsafeMethods.OnLeaveLiquid__Args() {
                 objID = objID,
@@ -348,6 +455,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnLeaveLiquid()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Informs an Item object that it has entered liquid, along with information about the liquid type.
+        /// </description>
+        /// <param name="objID">Object ID for this Item object.</param>
+        /// <param name="waterCoverage">How much coverage of water this Item object has.</param>
+        /// <param name="liquidType">The type of liquid that this Item object has entered.</param>
+        /// <remarks> Server side only.
+        /// </remarks>
+        /// <see cref="Item, ItemData, WaterObject" />
         public virtual void OnEnterLiquid(string objID, float waterCoverage, string liquidType) {
              InternalUnsafeMethods.OnEnterLiquid__Args _args = new InternalUnsafeMethods.OnEnterLiquid__Args() {
                 objID = objID,
@@ -357,6 +473,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnEnterLiquid()(ObjectPtr, _args);
         }
 
+        /// <summary>Informs the Item object that it is now sticking to another object.</summary>
+        /// <description>
+        /// This callback is only called if the ItemData::sticky property for this Item is true.
+        /// </description>
+        /// <param name="objID">Object ID this Item object.</param>
+        /// <remarks> Server side only.
+        /// </remarks>
+        /// <see cref="Item, ItemData" />
         public virtual void OnStickyCollision(string objID) {
              InternalUnsafeMethods.OnStickyCollision__Args _args = new InternalUnsafeMethods.OnStickyCollision__Args() {
                 objID = objID,
@@ -364,6 +488,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnStickyCollision()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the Item class.
+        /// </description>
+        /// <returns>The type info object for Item</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -371,11 +499,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the object is not moving in the world.
+        /// </description>
+        /// </value>
         public bool Static {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("static"));
             set => SetFieldValue("static", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the object will automatically rotate around its Z axis.
+        /// </description>
+        /// </value>
         public bool Rotate {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("rotate"));
             set => SetFieldValue("rotate", GenericMarshal.ToString(value));

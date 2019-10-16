@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A class that manages certain AFX effects that can persist for long durations.</summary>
+    /// <description>
+    /// A class that manages certain AFX effects that can persist much longer than the duration of choreographers.
+    /// </description>
     public unsafe class afxResidueMgr : GameBase {
         public afxResidueMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxResidueMgr class.
+        /// </description>
+        /// <returns>The type info object for afxResidueMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

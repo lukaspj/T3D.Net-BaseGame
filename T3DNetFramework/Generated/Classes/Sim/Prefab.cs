@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A collection of arbitrary objects which can be allocated and manipulated as a group.</summary>
+    /// <description>
+    /// %Prefab always points to a (.prefab) file which defines its objects. In fact more than one %Prefab can reference this file and both will update if the file is modified.
+    /// 
+    /// %Prefab is a very simple object and only exists on the server. When it is created it allocates children objects by reading the (.prefab) file like a list of instructions.  It then sets their transform relative to the %Prefab and Torque networking handles the rest by ghosting the new objects to clients. %Prefab itself is not ghosted.
+    /// </description>
     public unsafe class Prefab : SceneObject {
         public Prefab(bool pRegister = false) 
             : base(pRegister) {
@@ -120,6 +126,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Called when the prefab file is loaded and children objects are created.
+        /// </description>
+        /// <param name="children">SimGroup containing all children objects.</param>
         public virtual void OnLoad(SimGroup children) {
              InternalUnsafeMethods.OnLoad__Args _args = new InternalUnsafeMethods.OnLoad__Args() {
                 children = children.ObjectPtr,
@@ -127,6 +137,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnLoad()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the Prefab class.
+        /// </description>
+        /// <returns>The type info object for Prefab</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -134,6 +148,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// (.prefab) File describing objects within this prefab.
+        /// </description>
+        /// </value>
         public string FileName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("fileName"));
             set => SetFieldValue("fileName", GenericMarshal.ToString(value));

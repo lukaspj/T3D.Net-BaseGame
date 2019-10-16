@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Used by GUIConsole system internally.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class GuiConsoleTextCtrl : GuiControl {
         public GuiConsoleTextCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiConsoleTextCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiConsoleTextCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +114,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string Expression {
             get => GenericMarshal.StringTo<string>(GetFieldValue("expression"));
             set => SetFieldValue("expression", GenericMarshal.ToString(value));

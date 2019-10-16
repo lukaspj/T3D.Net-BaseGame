@@ -14,7 +14,14 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control that displays a hierarchical tree view of a path in the game file system.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <remarks> Currently not used, most likely existed for editors. Possibly deprecated.
+    /// 
+    /// </remarks>
     public unsafe class GuiFileTreeCtrl : GuiTreeViewCtrl {
         public GuiFileTreeCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -163,12 +170,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// () - Reread the directory tree hierarchy.
+        /// </description>
         public void Reload() {
              InternalUnsafeMethods.Reload__Args _args = new InternalUnsafeMethods.Reload__Args() {
              };
              InternalUnsafeMethods.Reload()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// setSelectedPath(path) - expands the tree to the specified path
+        /// </description>
         public bool SetSelectedPath(string path) {
              InternalUnsafeMethods.SetSelectedPath__Args _args = new InternalUnsafeMethods.SetSelectedPath__Args() {
                 path = path,
@@ -177,6 +190,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// getSelectedPath() - returns the currently selected path in the tree
+        /// </description>
         public string GetSelectedPath() {
              InternalUnsafeMethods.GetSelectedPath__Args _args = new InternalUnsafeMethods.GetSelectedPath__Args() {
              };
@@ -184,6 +200,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiFileTreeCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiFileTreeCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -191,11 +211,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path in game directory that should be displayed in the control.
+        /// </description>
+        /// </value>
         public string RootPath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("rootPath"));
             set => SetFieldValue("rootPath", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Vector of file patterns.  If not empty, only files matching the pattern will be shown in the control.
+        /// </description>
+        /// </value>
         public string FileFilter {
             get => GenericMarshal.StringTo<string>(GetFieldValue("fileFilter"));
             set => SetFieldValue("fileFilter", GenericMarshal.ToString(value));

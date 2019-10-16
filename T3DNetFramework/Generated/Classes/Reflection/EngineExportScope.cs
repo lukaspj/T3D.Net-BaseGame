@@ -14,7 +14,10 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Reflection {    
+namespace T3DNetFramework.Generated.Classes.Reflection {
+    /// <description>
+    /// A scope contained a collection of exported engine API entities.
+    /// </description>
     public unsafe class EngineExportScope : EngineExport {
         public EngineExportScope(bool pRegister = false) 
             : base(pRegister) {
@@ -52,6 +55,10 @@ namespace T3DNetFramework.Generated.Classes.Reflection {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the EngineExportScope class.
+        /// </description>
+        /// <returns>The type info object for EngineExportScope</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

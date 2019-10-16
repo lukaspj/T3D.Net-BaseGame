@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An AFX customized particle emitter that emits particles along a path.</summary>
+    /// <description>
+    /// An AFX customized particle emitter that emits particles along a path.
+    /// </description>
     public unsafe class afxParticleEmitterPathData : afxParticleEmitterData {
         public afxParticleEmitterPathData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxParticleEmitterPathData class.
+        /// </description>
+        /// <returns>The type info object for afxParticleEmitterPathData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,31 +114,67 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string Paths {
             get => GenericMarshal.StringTo<string>(GetFieldValue("paths"));
             set => SetFieldValue("paths", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxParticleEmitterPath_OriginType PathOrigin {
             get => GenericMarshal.StringTo<afxParticleEmitterPath_OriginType>(GetFieldValue("pathOrigin"));
             set => SetFieldValue("pathOrigin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool GroundConform {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("groundConform"));
             set => SetFieldValue("groundConform", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool GroundConformTerrain {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("groundConformTerrain"));
             set => SetFieldValue("groundConformTerrain", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool GroundConformInteriors {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("groundConformInteriors"));
             set => SetFieldValue("groundConformInteriors", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float GroundConformHeight {
             get => GenericMarshal.StringTo<float>(GetFieldValue("groundConformHeight"));
             set => SetFieldValue("groundConformHeight", GenericMarshal.ToString(value));

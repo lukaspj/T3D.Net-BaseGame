@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class Gui3DProjectionCtrl : GuiControl {
         public Gui3DProjectionCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -140,6 +141,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ()
+        /// </description>
         public int GetAttachedTo() {
              InternalUnsafeMethods.GetAttachedTo__Args _args = new InternalUnsafeMethods.GetAttachedTo__Args() {
              };
@@ -147,6 +151,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (object)
+        /// </description>
         public void SetAttachedTo(SceneObject target = null) {
              InternalUnsafeMethods.SetAttachedTo__Args _args = new InternalUnsafeMethods.SetAttachedTo__Args() {
                 target = target.ObjectPtr,
@@ -154,6 +161,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAttachedTo()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the Gui3DProjectionCtrl class.
+        /// </description>
+        /// <returns>The type info object for Gui3DProjectionCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -161,41 +172,73 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F PointWorld {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("pointWorld"));
             set => SetFieldValue("pointWorld", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F OffsetObject {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("offsetObject"));
             set => SetFieldValue("offsetObject", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F OffsetWorld {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("offsetWorld"));
             set => SetFieldValue("offsetWorld", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point2I OffsetScreen {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("offsetScreen"));
             set => SetFieldValue("offsetScreen", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int HAlign {
             get => GenericMarshal.StringTo<int>(GetFieldValue("hAlign"));
             set => SetFieldValue("hAlign", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int VAlign {
             get => GenericMarshal.StringTo<int>(GetFieldValue("vAlign"));
             set => SetFieldValue("vAlign", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point2I UseEyePoint {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("useEyePoint"));
             set => SetFieldValue("useEyePoint", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool AutoDelete {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("autoDelete"));
             set => SetFieldValue("autoDelete", GenericMarshal.ToString(value));

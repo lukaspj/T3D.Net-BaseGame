@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a PhysicalZone effect.</summary>
+    /// <description>
+    /// A Physical Zone is a Torque effect that applies physical forces to Players and other movable objects that enter a specific region of influence. AFX has enhanced Physical Zones by allowing orientation of vector forces and adding radial forces. AFX has also optimized Physical Zone networking so that they can be constrained to moving objects for a variety of effects including repelling and flying.
+    /// </description>
     public unsafe class afxPhysicalZoneData : GameBaseData {
         public afxPhysicalZoneData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxPhysicalZoneData class.
+        /// </description>
+        /// <returns>The type info object for afxPhysicalZoneData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,36 +114,78 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// A multiplier that biases the velocity of an object every tick it is within the zone.
+        /// </description>
+        /// </value>
         public float VelocityMod {
             get => GenericMarshal.StringTo<float>(GetFieldValue("velocityMod"));
             set => SetFieldValue("velocityMod", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A multiplier that biases the influence of gravity on objects within the zone.
+        /// </description>
+        /// </value>
         public float GravityMod {
             get => GenericMarshal.StringTo<float>(GetFieldValue("gravityMod"));
             set => SetFieldValue("gravityMod", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A three-valued vector representing a directional force applied to objects withing the zone.
+        /// </description>
+        /// </value>
         public Point3F AppliedForce {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("appliedForce"));
             set => SetFieldValue("appliedForce", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Floating point values describing the outer bounds of the PhysicalZone's region of influence.
+        /// </description>
+        /// </value>
         public string Polyhedron {
             get => GenericMarshal.StringTo<string>(GetFieldValue("polyhedron"));
             set => SetFieldValue("polyhedron", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// This enumerated attribute defines the type of force used in the PhysicalZone. Possible values: vector, sphere, or cylinder.
+        /// </description>
+        /// </value>
         public PhysicalZone_ForceType ForceType {
             get => GenericMarshal.StringTo<PhysicalZone_ForceType>(GetFieldValue("forceType"));
             set => SetFieldValue("forceType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Determines if the force can be oriented by the PhysicalZone's transform matrix.
+        /// </description>
+        /// </value>
         public bool OrientForce {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("orientForce"));
             set => SetFieldValue("orientForce", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When true, an object used as the primary position constraint of a physical-zone effect will not be influenced by the forces of the zone.
+        /// </description>
+        /// </value>
         public bool ExcludeConstraintObject {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("excludeConstraintObject"));
             set => SetFieldValue("excludeConstraintObject", GenericMarshal.ToString(value));

@@ -14,7 +14,23 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Data structure for storing indexed sequences of key/value pairs.</summary>
+    /// <description>
+    /// This is a powerful array class providing PHP style arrays in TorqueScript.
+    /// 
+    /// The following features are supported:<ul>
+    /// <li>array pointers: this allows you to move forwards or backwards through the array as if it was a list, including jumping to the start or end.</li>
+    /// <li>sorting: the array can be sorted in either alphabetic or numeric mode, on the key or the value, and in ascending or descending order</li>
+    /// <li>add/remove elements: elements can be pushed/popped from the start or end of the array, or can be inserted/erased from anywhere in the middle</li>
+    /// <li>removal of duplicates: remove duplicate keys or duplicate values</li>
+    /// <li>searching: search the array and return the index of a particular key or value</li>
+    /// <li>counting: count the number of instaces of a particular value or key in the array, as well as the total number of elements</li>
+    /// <li>advanced features: array append, array crop and array duplicate</li>
+    /// </ul>
+    /// 
+    /// Array element keys and values can be strings or numbers
+    /// </description>
     public unsafe class ArrayObject : SimObject {
         public ArrayObject(bool pRegister = false) 
             : base(pRegister) {
@@ -1058,12 +1074,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Echos the array contents to the console
+        /// </description>
         public void Echo() {
              InternalUnsafeMethods.Echo__Args _args = new InternalUnsafeMethods.Echo__Args() {
              };
              InternalUnsafeMethods.Echo()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets the current pointer index.
+        /// </description>
+        /// <param name="index">New 0-based pointer index</param>
         public void SetCurrent(int index) {
              InternalUnsafeMethods.SetCurrent__Args _args = new InternalUnsafeMethods.SetCurrent__Args() {
                 index = index,
@@ -1071,6 +1094,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCurrent()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Gets the current pointer index
+        /// </description>
         public int GetCurrent() {
              InternalUnsafeMethods.GetCurrent__Args _args = new InternalUnsafeMethods.GetCurrent__Args() {
              };
@@ -1078,6 +1104,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Moves array pointer to prev position
+        /// </description>
+        /// <returns>Returns the new array pointer, or -1 if already at the start</returns>
         public int MovePrev() {
              InternalUnsafeMethods.MovePrev__Args _args = new InternalUnsafeMethods.MovePrev__Args() {
              };
@@ -1085,6 +1115,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Moves array pointer to next position
+        /// </description>
+        /// <returns>Returns the new array pointer, or -1 if already at the end</returns>
         public int MoveNext() {
              InternalUnsafeMethods.MoveNext__Args _args = new InternalUnsafeMethods.MoveNext__Args() {
              };
@@ -1092,6 +1126,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Moves array pointer to end of array
+        /// </description>
+        /// <returns>Returns the new array pointer</returns>
         public int MoveLast() {
              InternalUnsafeMethods.MoveLast__Args _args = new InternalUnsafeMethods.MoveLast__Args() {
              };
@@ -1099,6 +1137,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Moves array pointer to start of array
+        /// </description>
+        /// <returns>Returns the new array pointer</returns>
         public int MoveFirst() {
              InternalUnsafeMethods.MoveFirst__Args _args = new InternalUnsafeMethods.MoveFirst__Args() {
              };
@@ -1106,6 +1148,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Sorts the array by key in descending order using the given callback function.
+        /// </description>
+        /// <param name="functionName">Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.</param>
+        /// <see cref="sortf" />
         public void Sortfkd(string functionName) {
              InternalUnsafeMethods.Sortfkd__Args _args = new InternalUnsafeMethods.Sortfkd__Args() {
                 functionName = functionName,
@@ -1113,6 +1160,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Sortfkd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sorts the array by value in descending order using the given callback function.
+        /// </description>
+        /// <param name="functionName">Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.</param>
+        /// <see cref="sortf" />
         public void Sortfd(string functionName) {
              InternalUnsafeMethods.Sortfd__Args _args = new InternalUnsafeMethods.Sortfd__Args() {
                 functionName = functionName,
@@ -1120,6 +1172,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Sortfd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sorts the array by key in ascending order using the given callback function.
+        /// </description>
+        /// <param name="functionName">Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.</param>
+        /// <see cref="sortf" />
         public void Sortfk(string functionName) {
              InternalUnsafeMethods.Sortfk__Args _args = new InternalUnsafeMethods.Sortfk__Args() {
                 functionName = functionName,
@@ -1127,6 +1184,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Sortfk()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sorts the array by value in ascending order using the given callback function.
+        /// </description>
+        /// <param name="functionName">Name of a function that takes two arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.</param>
+        /// <code>
+        /// function mySortCallback(%a, %b)
+        /// {
+        ///    return strcmp( %a.name, %b.name );
+        /// }
+        /// 
+        /// %array.sortf( "mySortCallback" );
+        /// </code>
         public void Sortf(string functionName) {
              InternalUnsafeMethods.Sortf__Args _args = new InternalUnsafeMethods.Sortf__Args() {
                 functionName = functionName,
@@ -1134,18 +1203,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Sortf()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Numerical sorts the array by key in descending order
+        /// </description>
         public void Sortnkd() {
              InternalUnsafeMethods.Sortnkd__Args _args = new InternalUnsafeMethods.Sortnkd__Args() {
              };
              InternalUnsafeMethods.Sortnkd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Numerical sorts the array by key in ascending order
+        /// </description>
         public void Sortnka() {
              InternalUnsafeMethods.Sortnka__Args _args = new InternalUnsafeMethods.Sortnka__Args() {
              };
              InternalUnsafeMethods.Sortnka()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Numerically sorts the array by key
+        /// </description>
+        /// <param name="ascending">[optional] True for ascending sort, false for descending sort</param>
         public void Sortnk(bool ascending = false) {
              InternalUnsafeMethods.Sortnk__Args _args = new InternalUnsafeMethods.Sortnk__Args() {
                 ascending = ascending,
@@ -1153,18 +1232,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Sortnk()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Numerically sorts the array by value in descending order
+        /// </description>
         public void Sortnd() {
              InternalUnsafeMethods.Sortnd__Args _args = new InternalUnsafeMethods.Sortnd__Args() {
              };
              InternalUnsafeMethods.Sortnd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Numerically sorts the array by value in ascending order
+        /// </description>
         public void Sortna() {
              InternalUnsafeMethods.Sortna__Args _args = new InternalUnsafeMethods.Sortna__Args() {
              };
              InternalUnsafeMethods.Sortna()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Numerically sorts the array by value
+        /// </description>
+        /// <param name="ascending">[optional] True for ascending sort, false for descending sort</param>
         public void Sortn(bool ascending = false) {
              InternalUnsafeMethods.Sortn__Args _args = new InternalUnsafeMethods.Sortn__Args() {
                 ascending = ascending,
@@ -1172,18 +1261,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Sortn()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Alpha sorts the array by key in descending order
+        /// </description>
         public void Sortkd() {
              InternalUnsafeMethods.Sortkd__Args _args = new InternalUnsafeMethods.Sortkd__Args() {
              };
              InternalUnsafeMethods.Sortkd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Alpha sorts the array by key in ascending order
+        /// </description>
         public void Sortka() {
              InternalUnsafeMethods.Sortka__Args _args = new InternalUnsafeMethods.Sortka__Args() {
              };
              InternalUnsafeMethods.Sortka()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Alpha sorts the array by key
+        /// </description>
+        /// <param name="ascending">[optional] True for ascending sort, false for descending sort</param>
         public void Sortk(bool ascending = false) {
              InternalUnsafeMethods.Sortk__Args _args = new InternalUnsafeMethods.Sortk__Args() {
                 ascending = ascending,
@@ -1191,18 +1290,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Sortk()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Alpha sorts the array by value in descending order
+        /// </description>
         public void Sortd() {
              InternalUnsafeMethods.Sortd__Args _args = new InternalUnsafeMethods.Sortd__Args() {
              };
              InternalUnsafeMethods.Sortd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Alpha sorts the array by value in ascending order
+        /// </description>
         public void Sorta() {
              InternalUnsafeMethods.Sorta__Args _args = new InternalUnsafeMethods.Sorta__Args() {
              };
              InternalUnsafeMethods.Sorta()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Alpha sorts the array by value
+        /// </description>
+        /// <param name="ascending">[optional] True for ascending sort, false for descending sort</param>
         public void Sort(bool ascending = false) {
              InternalUnsafeMethods.Sort__Args _args = new InternalUnsafeMethods.Sort__Args() {
                 ascending = ascending,
@@ -1210,6 +1319,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Sort()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Appends the target array to the array object.
+        /// </description>
+        /// <param name="target">ArrayObject to append to the end of this array</param>
         public bool Append(ArrayObject target) {
              InternalUnsafeMethods.Append__Args _args = new InternalUnsafeMethods.Append__Args() {
                 target = target.ObjectPtr,
@@ -1218,6 +1331,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Removes elements with matching keys from array.
+        /// </description>
+        /// <param name="target">ArrayObject containing keys to remove from this array</param>
         public bool Crop(ArrayObject target) {
              InternalUnsafeMethods.Crop__Args _args = new InternalUnsafeMethods.Crop__Args() {
                 target = target.ObjectPtr,
@@ -1226,6 +1343,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Alters array into an exact duplicate of the target array.
+        /// </description>
+        /// <param name="target">ArrayObject to duplicate</param>
         public bool Duplicate(ArrayObject target) {
              InternalUnsafeMethods.Duplicate__Args _args = new InternalUnsafeMethods.Duplicate__Args() {
                 target = target.ObjectPtr,
@@ -1234,24 +1355,37 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Removes any elements that have duplicated keys (leaving the first instance)
+        /// </description>
         public void UniqueKey() {
              InternalUnsafeMethods.UniqueKey__Args _args = new InternalUnsafeMethods.UniqueKey__Args() {
              };
              InternalUnsafeMethods.UniqueKey()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Removes any elements that have duplicated values (leaving the first instance)
+        /// </description>
         public void UniqueValue() {
              InternalUnsafeMethods.UniqueValue__Args _args = new InternalUnsafeMethods.UniqueValue__Args() {
              };
              InternalUnsafeMethods.UniqueValue()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Emptys all elements from an array
+        /// </description>
         public void Empty() {
              InternalUnsafeMethods.Empty__Args _args = new InternalUnsafeMethods.Empty__Args() {
              };
              InternalUnsafeMethods.Empty()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Removes an element at a specific position from the array.
+        /// </description>
+        /// <param name="index">0-based index of the element to remove</param>
         public void Erase(int index) {
              InternalUnsafeMethods.Erase__Args _args = new InternalUnsafeMethods.Erase__Args() {
                 index = index,
@@ -1259,18 +1393,32 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Erase()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Removes the first element from the array
+        /// </description>
         public void Pop_front() {
              InternalUnsafeMethods.Pop_front__Args _args = new InternalUnsafeMethods.Pop_front__Args() {
              };
              InternalUnsafeMethods.Pop_front()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Removes the last element from the array
+        /// </description>
         public void Pop_back() {
              InternalUnsafeMethods.Pop_back__Args _args = new InternalUnsafeMethods.Pop_back__Args() {
              };
              InternalUnsafeMethods.Pop_back()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Adds a new element to a specified position in the array.
+        /// -<paramref name="" /> index = 0 will insert an element at the start of the array (same as push_front())
+        /// - 
+        /// </description>
+        /// <param name="key">Key for the new element</param>
+        /// <param name="value">Value for the new element</param>
+        /// <param name="index">0-based index at which to insert the new element</param>
         public void Insert(string key, string value, int index) {
              InternalUnsafeMethods.Insert__Args _args = new InternalUnsafeMethods.Insert__Args() {
                 key = key,
@@ -1280,6 +1428,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Insert()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Adds a new element to the front of an array
+        /// </description>
         public void Push_front(string key, string value = "") {
              InternalUnsafeMethods.Push_front__Args _args = new InternalUnsafeMethods.Push_front__Args() {
                 key = key,
@@ -1288,6 +1439,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Push_front()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Adds a new element to the end of an array.
+        /// </description>
+        /// <param name="key">Key for the new element</param>
+        /// <param name="value">Value for the new element</param>
         public void Push_back(string key, string value = "") {
              InternalUnsafeMethods.Push_back__Args _args = new InternalUnsafeMethods.Push_back__Args() {
                 key = key,
@@ -1296,6 +1452,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Push_back()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Adds a new element to the end of an array (same as push_back()).
+        /// </description>
+        /// <param name="key">Key for the new element</param>
+        /// <param name="value">Value for the new element</param>
         public void Add(string key, string value = "") {
              InternalUnsafeMethods.Add__Args _args = new InternalUnsafeMethods.Add__Args() {
                 key = key,
@@ -1304,6 +1465,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Add()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the number of times a particular key is found in the array.
+        /// </description>
+        /// <param name="key">Key value to count</param>
         public int CountKey(string key) {
              InternalUnsafeMethods.CountKey__Args _args = new InternalUnsafeMethods.CountKey__Args() {
                 key = key,
@@ -1312,6 +1477,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of times a particular value is found in the array.
+        /// </description>
+        /// <param name="value">Array element value to count</param>
         public int CountValue(string value) {
              InternalUnsafeMethods.CountValue__Args _args = new InternalUnsafeMethods.CountValue__Args() {
                 value = value,
@@ -1320,6 +1489,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of elements in the array.
+        /// </description>
         public int Count() {
              InternalUnsafeMethods.Count__Args _args = new InternalUnsafeMethods.Count__Args() {
              };
@@ -1327,6 +1499,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the value at the given index.
+        /// </description>
+        /// <param name="value">New array element value</param>
+        /// <param name="index">0-based index of the array element to update</param>
         public void SetValue(string value, int index) {
              InternalUnsafeMethods.SetValue__Args _args = new InternalUnsafeMethods.SetValue__Args() {
                 value = value,
@@ -1335,6 +1512,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetValue()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the key at the given index.
+        /// </description>
+        /// <param name="key">New key value</param>
+        /// <param name="index">0-based index of the array element to update</param>
         public void SetKey(string key, int index) {
              InternalUnsafeMethods.SetKey__Args _args = new InternalUnsafeMethods.SetKey__Args() {
                 key = key,
@@ -1343,6 +1525,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetKey()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the key of the array element at the submitted index.
+        /// </description>
+        /// <param name="index">0-based index of the array element to get</param>
+        /// <returns>The key associated with the array element at the specified index, or "" if the index is out of range</returns>
         public string GetKey(int index) {
              InternalUnsafeMethods.GetKey__Args _args = new InternalUnsafeMethods.GetKey__Args() {
                 index = index,
@@ -1351,6 +1538,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the value of the array element at the submitted index.
+        /// </description>
+        /// <param name="index">0-based index of the array element to get</param>
+        /// <returns>The value of the array element at the specified index, or "" if the index is out of range</returns>
         public string GetValue(int index) {
              InternalUnsafeMethods.GetValue__Args _args = new InternalUnsafeMethods.GetValue__Args() {
                 index = index,
@@ -1359,6 +1551,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Search the array from the current position for the key
+        /// </description>
+        /// <param name="value">Array key to search for</param>
+        /// <returns>Index of the first element found, or -1 if none</returns>
         public int GetIndexFromKey(string key) {
              InternalUnsafeMethods.GetIndexFromKey__Args _args = new InternalUnsafeMethods.GetIndexFromKey__Args() {
                 key = key,
@@ -1367,6 +1564,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Search the array from the current position for the element
+        /// </description>
+        /// <param name="value">Array value to search for</param>
+        /// <returns>Index of the first element found, or -1 if none</returns>
         public int GetIndexFromValue(string value) {
              InternalUnsafeMethods.GetIndexFromValue__Args _args = new InternalUnsafeMethods.GetIndexFromValue__Args() {
                 value = value,
@@ -1375,6 +1577,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the ArrayObject class.
+        /// </description>
+        /// <returns>The type info object for ArrayObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -1382,11 +1588,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Makes the keys and values case-sensitive.
+        /// By default, comparison of key and value strings will be case-insensitive.
+        /// </description>
+        /// </value>
         public bool CaseSensitive {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("caseSensitive"));
             set => SetFieldValue("caseSensitive", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Helper field which allows you to add new key['keyname'] = value pairs.
+        /// </description>
+        /// </value>
         public string Key {
             get => GenericMarshal.StringTo<string>(GetFieldValue("key"));
             set => SetFieldValue("key", GenericMarshal.ToString(value));

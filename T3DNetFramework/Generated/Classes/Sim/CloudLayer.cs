@@ -14,7 +14,15 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A layer of clouds which change shape over time and are affected by scene lighting.</summary>
+    /// <description>
+    /// %CloudLayer always renders overhead, following the camera. It is intended as part of the background of your level, rendering in front of Sky/Sun type objects and behind everything else.
+    /// 
+    /// The illusion of clouds forming and changing over time is controlled by the normal/opacity texture and the three sets of texture animation parameters. The texture is sampled three times.  The first sample defines overall cloud density, where clouds are likely to form and their general size and shape. The second two samples control how it changes over time; they are combined and used as modifiers to the first sample.
+    /// 
+    /// %CloudLayer is affected by scene lighting and is designed to be used in scenes with dynamic lighting or time of day changes.
+    /// </description>
     public unsafe class CloudLayer : SceneObject {
         public CloudLayer(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +107,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the CloudLayer class.
+        /// </description>
+        /// <returns>The type info object for CloudLayer</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +118,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// An RGBA texture which should contain normals and opacity (density).
+        /// </description>
+        /// </value>
         public string Texture {
             get => GenericMarshal.StringTo<string>(GetFieldValue("texture"));
             set => SetFieldValue("texture", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls the texture repeat of this slot.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> TexScale {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -121,6 +145,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls the direction this slot scrolls.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<Point2F> TexDirection {
             get => new DynamicFieldVector<Point2F>(
                     this, 
@@ -131,6 +161,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls the speed this slot scrolls.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> TexSpeed {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -141,26 +177,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Base cloud color before lighting.
+        /// </description>
+        /// </value>
         public LinearColorF BaseColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("baseColor"));
             set => SetFieldValue("baseColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Brightness scale so CloudLayer can be overblown if desired.
+        /// </description>
+        /// </value>
         public float Exposure {
             get => GenericMarshal.StringTo<float>(GetFieldValue("exposure"));
             set => SetFieldValue("exposure", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Fraction of sky covered by clouds 0-1.
+        /// </description>
+        /// </value>
         public float Coverage {
             get => GenericMarshal.StringTo<float>(GetFieldValue("coverage"));
             set => SetFieldValue("coverage", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Overall scalar to texture scroll speed.
+        /// </description>
+        /// </value>
         public float WindSpeed {
             get => GenericMarshal.StringTo<float>(GetFieldValue("windSpeed"));
             set => SetFieldValue("windSpeed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Abstract number which controls the curvature and height of the dome mesh.
+        /// </description>
+        /// </value>
         public float Height {
             get => GenericMarshal.StringTo<float>(GetFieldValue("height"));
             set => SetFieldValue("height", GenericMarshal.ToString(value));

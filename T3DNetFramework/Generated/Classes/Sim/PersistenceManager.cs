@@ -14,7 +14,24 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>this class manages updating SimObjects in the file they were created in non-destructively (mostly aimed at datablocks and materials).</summary>
+    /// <description>
+    /// Basic scripting interface:
+    /// 
+    ///   - Creation: new PersistenceManager(FooManager);
+    ///   - Flag objects as dirty: FooManager.setDirty(<object name or id>);
+    ///   - Remove objects from dirty list: FooManager.removeDirty(<object name or id>);
+    ///   - List all currently dirty objects: FooManager.listDirty();
+    ///   - Check to see if an object is dirty: FooManager.isDirty(<object name or id>);
+    ///   - Save dirty objects to their files: FooManager.saveDirty();
+    /// </description>
+    /// <remarks> Dirty objects don't update their files until saveDirty() is called so you can change their properties after you flag them as dirty
+    /// 
+    /// </remarks>
+    /// <remarks> Currently only used by editors, not intended for actual game development
+    /// 
+    /// </remarks>
     public unsafe class PersistenceManager : SimObject {
         public PersistenceManager(bool pRegister = false) 
             : base(pRegister) {
@@ -384,6 +401,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// (SimObject object, string fieldName)Remove a specific field from an object declaration.
+        /// </description>
         public void RemoveField(string objName, string fieldName) {
              InternalUnsafeMethods.RemoveField__Args _args = new InternalUnsafeMethods.RemoveField__Args() {
                 objName = objName,
@@ -392,6 +412,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveField()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (SimObject object, [filename])Remove an existing SimObject from a file (can optionally specify a different file than                the one it was created in.
+        /// </description>
         public void RemoveObjectFromFile(string objName, string filename = "") {
              InternalUnsafeMethods.RemoveObjectFromFile__Args _args = new InternalUnsafeMethods.RemoveObjectFromFile__Args() {
                 objName = objName,
@@ -400,12 +423,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveObjectFromFile()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()Clears all the tracked objects without saving them.
+        /// </description>
         public void ClearAll() {
              InternalUnsafeMethods.ClearAll__Args _args = new InternalUnsafeMethods.ClearAll__Args() {
              };
              InternalUnsafeMethods.ClearAll()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (SimObject object)Save a dirty SimObject to it's file.
+        /// </description>
         public bool SaveDirtyObject(string objName) {
              InternalUnsafeMethods.SaveDirtyObject__Args _args = new InternalUnsafeMethods.SaveDirtyObject__Args() {
                 objName = objName,
@@ -414,6 +443,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()Saves all of the SimObject's on the dirty list to their respective files.
+        /// </description>
         public bool SaveDirty() {
              InternalUnsafeMethods.SaveDirty__Args _args = new InternalUnsafeMethods.SaveDirty__Args() {
              };
@@ -421,12 +453,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()Prints the dirty list to the console.
+        /// </description>
         public void ListDirty() {
              InternalUnsafeMethods.ListDirty__Args _args = new InternalUnsafeMethods.ListDirty__Args() {
              };
              InternalUnsafeMethods.ListDirty()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( index )Returns the ith dirty object.
+        /// </description>
         public int GetDirtyObject(int index) {
              InternalUnsafeMethods.GetDirtyObject__Args _args = new InternalUnsafeMethods.GetDirtyObject__Args() {
                 index = index,
@@ -435,6 +473,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()Returns the number of dirty objects.
+        /// </description>
         public int GetDirtyObjectCount() {
              InternalUnsafeMethods.GetDirtyObjectCount__Args _args = new InternalUnsafeMethods.GetDirtyObjectCount__Args() {
              };
@@ -442,6 +483,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()Returns true if the manager has dirty objects to save.
+        /// </description>
         public bool HasDirty() {
              InternalUnsafeMethods.HasDirty__Args _args = new InternalUnsafeMethods.HasDirty__Args() {
              };
@@ -449,6 +493,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (SimObject object)Returns true if the SimObject is on the dirty list.
+        /// </description>
         public bool IsDirty(string objName) {
              InternalUnsafeMethods.IsDirty__Args _args = new InternalUnsafeMethods.IsDirty__Args() {
                 objName = objName,
@@ -457,6 +504,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (SimObject object)Remove a SimObject from the dirty list.
+        /// </description>
         public void RemoveDirty(string objName) {
              InternalUnsafeMethods.RemoveDirty__Args _args = new InternalUnsafeMethods.RemoveDirty__Args() {
                 objName = objName,
@@ -464,6 +514,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveDirty()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (SimObject object, [filename])Mark an existing SimObject as dirty (will be written out when saveDirty() is called).
+        /// </description>
         public void SetDirty(string objName, string fileName = "") {
              InternalUnsafeMethods.SetDirty__Args _args = new InternalUnsafeMethods.SetDirty__Args() {
                 objName = objName,
@@ -472,6 +525,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetDirty()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( fileName )Delete all of the objects that are created from the given file.
+        /// </description>
         public void DeleteObjectsFromFile(string fileName) {
              InternalUnsafeMethods.DeleteObjectsFromFile__Args _args = new InternalUnsafeMethods.DeleteObjectsFromFile__Args() {
                 fileName = fileName,
@@ -479,6 +535,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.DeleteObjectsFromFile()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the PersistenceManager class.
+        /// </description>
+        /// <returns>The type info object for PersistenceManager</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

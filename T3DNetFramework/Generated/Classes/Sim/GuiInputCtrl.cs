@@ -14,7 +14,31 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control that locks the mouse and reports all keyboard input events to script.</summary>
+    /// <description>
+    /// This is useful for implementing custom keyboard handling code, and most commonly used in Torque for a menu that allows a user to remap their in-game controls
+    /// </description>
+    /// <code>
+    /// new GuiInputCtrl(OptRemapInputCtrl)
+    /// {
+    /// 	lockMouse = "0";
+    /// 	position = "0 0";
+    /// 	extent = "64 64";
+    /// 	minExtent = "8 8";
+    /// 	horizSizing = "center";
+    /// 	vertSizing = "bottom";
+    /// 	profile = "GuiInputCtrlProfile";
+    /// 	visible = "1";
+    /// 	active = "1";
+    /// 	tooltipProfile = "GuiToolTipProfile";
+    /// 	hovertime = "1000";
+    /// 	isContainer = "0";
+    /// 	canSave = "1";
+    /// 	canSaveDynamicFields = "0";
+    /// };
+    /// </code>
+    /// <see cref="GuiMouseEventCtrl" />
     public unsafe class GuiInputCtrl : GuiMouseEventCtrl {
         public GuiInputCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -150,6 +174,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Callback that occurs when an axis event is triggered on this control</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="device">The device type triggering the input, such as mouse, joystick, gamepad, etc</param>
+        /// <param name="action">The ActionMap code for the axis</param>
+        /// <param name="axisValue">The current value of the axis</param>
         public virtual void OnAxisEvent(string device, string action, float axisValue) {
              InternalUnsafeMethods.OnAxisEvent__Args _args = new InternalUnsafeMethods.OnAxisEvent__Args() {
                 device = device,
@@ -159,6 +190,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAxisEvent()(ObjectPtr, _args);
         }
 
+        /// <summary>Callback that occurs when an input is triggered on this control</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="device">The device type triggering the input, such as keyboard, mouse, etc</param>
+        /// <param name="action">The actual event occuring, such as a key or button</param>
+        /// <param name="state">True if the action is being pressed, false if it is being release</param>
         public virtual void OnInputEvent(string device, string action, bool state) {
              InternalUnsafeMethods.OnInputEvent__Args _args = new InternalUnsafeMethods.OnInputEvent__Args() {
                 device = device,
@@ -168,6 +206,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnInputEvent()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiInputCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiInputCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -175,16 +217,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, onAxisEvent callbacks will be sent for SI_AXIS Move events (Default false).
+        /// </description>
+        /// </value>
         public bool SendAxisEvents {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("sendAxisEvents"));
             set => SetFieldValue("sendAxisEvents", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, break events for all devices will generate callbacks (Default false).
+        /// </description>
+        /// </value>
         public bool SendBreakEvents {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("sendBreakEvents"));
             set => SetFieldValue("sendBreakEvents", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, Make events will be sent for modifier keys (Default false).
+        /// </description>
+        /// </value>
         public bool SendModifierEvents {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("sendModifierEvents"));
             set => SetFieldValue("sendModifierEvents", GenericMarshal.ToString(value));

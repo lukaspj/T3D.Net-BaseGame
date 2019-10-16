@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Superclass for all ghostable networked objects.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class NetObject : SimGroup {
         public NetObject(bool pRegister = false) 
             : base(pRegister) {
@@ -283,12 +287,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Clears the scope always flag on this object.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void ClearScopeAlways() {
              InternalUnsafeMethods.ClearScopeAlways__Args _args = new InternalUnsafeMethods.ClearScopeAlways__Args() {
              };
              InternalUnsafeMethods.ClearScopeAlways()(ObjectPtr, _args);
         }
 
+        /// <summary>Checks if an object resides on the server.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>True if the object resides on the server, false otherwise.</returns>
         public bool IsServerObject() {
              InternalUnsafeMethods.IsServerObject__Args _args = new InternalUnsafeMethods.IsServerObject__Args() {
              };
@@ -296,6 +309,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Called to check if an object resides on the clientside.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>True if the object resides on the client, false otherwise.</returns>
         public bool IsClientObject() {
              InternalUnsafeMethods.IsClientObject__Args _args = new InternalUnsafeMethods.IsClientObject__Args() {
              };
@@ -303,6 +321,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Returns a pointer to the client object when on a local connection.</summary>
+        /// <description>
+        /// Short-Circuit-Netorking: this is only valid for a local-client / singleplayer situation.
+        /// </description>
+        /// <returns>The SimObject ID of the server object.</returns>
+        /// <code>
+        /// // Psuedo-code, some values left out for this example
+        /// %node = new ParticleEmitterNode(){};
+        /// %serverObject = %node.getServerObject();
+        /// if(isObject(%serverObject)
+        /// 	%serverObject.setTransform("0 0 0");
+        /// </code>
+        /// <see cref="" />
         public int GetServerObject() {
              InternalUnsafeMethods.GetServerObject__Args _args = new InternalUnsafeMethods.GetServerObject__Args() {
              };
@@ -310,6 +341,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Returns a pointer to the client object when on a local connection.</summary>
+        /// <description>
+        /// Short-Circuit-Networking: this is only valid for a local-client / singleplayer situation.
+        /// </description>
+        /// <returns>the SimObject ID of the client object.</returns>
+        /// <code>
+        /// // Psuedo-code, some values left out for this example
+        /// %node = new ParticleEmitterNode(){};
+        /// %clientObject = %node.getClientObject();
+        /// if(isObject(%clientObject)
+        /// 	%clientObject.setTransform("0 0 0");
+        /// </code>
+        /// <see cref="" />
         public int GetClientObject() {
              InternalUnsafeMethods.GetClientObject__Args _args = new InternalUnsafeMethods.GetClientObject__Args() {
              };
@@ -317,6 +361,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Get the ghost index of this object from the server.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>The ghost ID of this NetObject on the server</returns>
+        /// <code>
+        /// %ghostID = LocalClientConnection.getGhostId( %serverObject );
+        /// </code>
         public int GetGhostID() {
              InternalUnsafeMethods.GetGhostID__Args _args = new InternalUnsafeMethods.GetGhostID__Args() {
              };
@@ -324,12 +376,22 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Always scope this object on all connections.</summary>
+        /// <description>
+        /// The object is marked as ScopeAlways and is immediately ghosted to all active connections.  This function has no effect if the object is not marked as Ghostable.
+        /// </description>
         public void SetScopeAlways() {
              InternalUnsafeMethods.SetScopeAlways__Args _args = new InternalUnsafeMethods.SetScopeAlways__Args() {
              };
              InternalUnsafeMethods.SetScopeAlways()(ObjectPtr, _args);
         }
 
+        /// <summary>Undo the effects of a scopeToClient() call.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="client">The connection to remove this object's scoping from</param>
+        /// <see cref="scopeToClient()" />
         public void ClearScopeToClient(NetConnection client) {
              InternalUnsafeMethods.ClearScopeToClient__Args _args = new InternalUnsafeMethods.ClearScopeToClient__Args() {
                 client = client.ObjectPtr,
@@ -337,6 +399,29 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ClearScopeToClient()(ObjectPtr, _args);
         }
 
+        /// <summary>Cause the NetObject to be forced as scoped on the specified NetConnection.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="client">The connection this object will always be scoped to</param>
+        /// <code>
+        /// // Called to create new cameras in TorqueScript
+        /// // %this - The active GameConnection
+        /// // %spawnPoint - The spawn point location where we creat the camera
+        /// function GameConnection::spawnCamera(%this, %spawnPoint)
+        /// {
+        /// 	// If this connection's camera exists
+        /// 	if(isObject(%this.camera))
+        /// 	{
+        /// 		// Add it to the mission group to be cleaned up later
+        /// 		MissionCleanup.add( %this.camera );
+        /// 
+        /// 		// Force it to scope to the client side
+        /// 		%this.camera.scopeToClient(%this);
+        /// 	}
+        /// }
+        /// </code>
+        /// <see cref="clearScopeToClient()" />
         public void ScopeToClient(NetConnection client) {
              InternalUnsafeMethods.ScopeToClient__Args _args = new InternalUnsafeMethods.ScopeToClient__Args() {
                 client = client.ObjectPtr,
@@ -344,6 +429,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ScopeToClient()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the NetObject class.
+        /// </description>
+        /// <returns>The type info object for NetObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

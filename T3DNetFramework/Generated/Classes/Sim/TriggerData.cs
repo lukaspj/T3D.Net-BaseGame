@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Defines shared properties for Trigger objects.</summary>
+    /// <description>
+    /// The primary focus of the TriggerData datablock is the callbacks it provides when an object is within or leaves the Trigger bounds.
+    /// </description>
+    /// <see cref="Trigger." />
     public unsafe class TriggerData : GameBaseData {
         public TriggerData(bool pRegister = false) 
             : base(pRegister) {
@@ -164,6 +169,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Called when an object leaves the volume of the Trigger instance using this TriggerData.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="trigger">the Trigger instance whose volume the object left</param>
+        /// <param name="obj">the object that left the volume of the Trigger instance</param>
         public virtual void OnLeaveTrigger(Trigger trigger, GameBase obj) {
              InternalUnsafeMethods.OnLeaveTrigger__Args _args = new InternalUnsafeMethods.OnLeaveTrigger__Args() {
                 trigger = trigger.ObjectPtr,
@@ -172,6 +183,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnLeaveTrigger()(ObjectPtr, _args);
         }
 
+        /// <summary>Called every tickPeriodMS number of milliseconds (as specified in the TriggerData) whenever one or more objects are inside the volume of the trigger.</summary>
+        /// <description>
+        /// The Trigger has methods to retrieve the objects that are within the Trigger's bounds if you want to do something with them in this callback.
+        /// </description>
+        /// <param name="trigger">the Trigger instance whose volume the object is inside</param>
+        /// <see cref="tickPeriodMS" />
+        /// <see cref="Trigger::getNumObjects()" />
+        /// <see cref="Trigger::getObject()" />
         public virtual void OnTickTrigger(Trigger trigger) {
              InternalUnsafeMethods.OnTickTrigger__Args _args = new InternalUnsafeMethods.OnTickTrigger__Args() {
                 trigger = trigger.ObjectPtr,
@@ -179,6 +198,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnTickTrigger()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when an object enters the volume of the Trigger instance using this TriggerData.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="trigger">the Trigger instance whose volume the object entered</param>
+        /// <param name="obj">the object that entered the volume of the Trigger instance</param>
         public virtual void OnEnterTrigger(Trigger trigger, GameBase obj) {
              InternalUnsafeMethods.OnEnterTrigger__Args _args = new InternalUnsafeMethods.OnEnterTrigger__Args() {
                 trigger = trigger.ObjectPtr,
@@ -187,6 +212,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnEnterTrigger()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the TriggerData class.
+        /// </description>
+        /// <returns>The type info object for TriggerData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -194,11 +223,25 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Time in milliseconds between calls to onTickTrigger() while at least one object is within a Trigger's bounds.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="onTickTrigger()" />
+        /// </value>
         public int TickPeriodMS {
             get => GenericMarshal.StringTo<int>(GetFieldValue("tickPeriodMS"));
             set => SetFieldValue("tickPeriodMS", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Forces Trigger callbacks to only be called on clients.
+        /// </description>
+        /// </value>
         public bool ClientSide {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("clientSide"));
             set => SetFieldValue("clientSide", GenericMarshal.ToString(value));

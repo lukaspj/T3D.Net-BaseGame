@@ -14,7 +14,93 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>ActionMaps assign platform input events to console commands.</summary>
+    /// <description>
+    /// Any platform input event can be bound in a single, generic way. In theory, the game doesn't need to know if the event came from the keyboard, mouse, joystick or some other input device. This allows users of the game to map keys and actions according to their own preferences. Game action maps are arranged in a stack for processing so individual parts of the game can define specific actions. For example, when the player jumps into a vehicle it could push a vehicle action map and pop the default player action map.
+    /// </description>
+    /// <code>
+    /// if ( isObject( moveMap ) )
+    ///   moveMap.delete();
+    /// new ActionMap(moveMap);
+    /// </code>
+    /// <code>
+    /// // Simple function that prints to console
+    /// // %val - Sent by the device letting the user know
+    /// // if an input was pressed (true) or released (false)
+    /// function testInput(%val)
+    /// {
+    ///    if(%val)
+    ///     echo("Key is down");
+    ///    else
+    ///     echo("Key was released");
+    /// }
+    /// 
+    /// // Bind the 'K' key to the testInput function
+    /// moveMap.bind(keyboard, "k", testInput);
+    /// </code>
+    /// <code>
+    /// // Print to the console when the spacebar is pressed
+    /// function onSpaceDown()
+    /// {
+    ///    echo("Space bar down!");
+    /// }
+    /// 
+    /// // Print to the console when the spacebar is released
+    /// function onSpaceUp()
+    /// {
+    ///    echo("Space bar up!");
+    /// }
+    /// 
+    /// // Bind the commands onSpaceDown and onSpaceUp to spacebar events
+    /// moveMap.bindCmd(keyboard, "space", "onSpaceDown();", "onSpaceUp();");
+    /// </code>
+    /// <code>
+    /// // Create the two ActionMaps
+    /// if ( isObject( moveMap ) )
+    ///   moveMap.delete();
+    /// new ActionMap(moveMap);
+    /// 
+    /// if ( isObject( carMap ) )
+    ///   carMap.delete();
+    /// new ActionMap(carMap);
+    /// </code>
+    /// <code>
+    /// // Print to the console the player is jumping
+    /// function playerJump(%val)
+    /// {
+    ///    if(%val)
+    ///     echo("Player jumping!");
+    /// }
+    /// 
+    /// // Print to the console the vehicle is charging
+    /// function turboCharge()
+    /// {
+    ///    if(%val)
+    ///     echo("Vehicle turbo charging!");
+    /// }
+    /// </code>
+    /// <code>
+    /// // Bind the spacebar to the playerJump function
+    /// // when moveMap is the active ActionMap
+    /// moveMap.bind(keyboard, "space", playerJump);
+    /// 
+    /// // Bind the spacebar to the turboCharge function
+    /// // when carMap is the active ActionMap
+    /// carMap.bind(keyboard, "space", turboCharge);
+    /// </code>
+    /// <code>
+    /// // Make moveMap the active action map
+    /// // You should now be able to activate playerJump with spacebar
+    /// moveMap.push();
+    /// </code>
+    /// <code>
+    /// // Deactivate moveMap
+    /// moveMap.pop();
+    /// 
+    /// // Activate carMap
+    /// carMap.push();
+    /// </code>
     public unsafe class ActionMap : SimObject {
         public ActionMap(bool pRegister = false) 
             : base(pRegister) {
@@ -457,6 +543,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Gets the Dead zone for the specified device and action.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="device">The device that was bound.  Can be a keyboard, mouse, joystick or a gamepad.</param>
+        /// <param name="action">The device action that was bound. The action is dependant upon the device. Specify a key for keyboards.</param>
+        /// <returns>The dead zone for the specified device and action. Returns "0 0" if there is no dead zone or an empty string("") if the mapping was not found.</returns>
+        /// <code>
+        /// %deadZone = moveMap.getDeadZone( "gamepad", "thumbrx");
+        /// </code>
         public string GetDeadZone(string device, string action) {
              InternalUnsafeMethods.GetDeadZone__Args _args = new InternalUnsafeMethods.GetDeadZone__Args() {
                 device = device,
@@ -466,6 +562,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get any scaling on the specified device and action.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="device">The device that was bound. Can be keyboard, mouse, joystick or gamepad.</param>
+        /// <param name="action">The device action that was bound. The action is dependant upon the device. Specify a key for keyboards.</param>
+        /// <returns>Any scaling applied to the specified device and action.</returns>
+        /// <code>
+        /// %scale = %moveMap.getScale( "gamepad", "thumbrx");
+        /// </code>
         public float GetScale(string device, string action) {
              InternalUnsafeMethods.GetScale__Args _args = new InternalUnsafeMethods.GetScale__Args() {
                 device = device,
@@ -475,6 +581,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Determines if the specified device and action is inverted.</summary>
+        /// <description>
+        /// Should only be used for scrolling devices or gamepad/joystick axes.
+        /// </description>
+        /// <param name="device">The device that was bound. Can be a keyboard, mouse, joystick or a gamepad.</param>
+        /// <param name="action">The device action that was bound.  The action is dependant upon the device. Specify a key for keyboards.</param>
+        /// <returns>True if the specified device and action is inverted.</returns>
+        /// <code>
+        /// %if ( moveMap.isInverted( "mouse", "xaxis"))
+        ///    echo("Mouse's xAxis is inverted");
+        /// </code>
         public bool IsInverted(string device, string action) {
              InternalUnsafeMethods.IsInverted__Args _args = new InternalUnsafeMethods.IsInverted__Args() {
                 device = device,
@@ -484,6 +601,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Gets ActionMap command for the device and action.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="device">The device that was bound. Can be a keyboard, mouse, joystick or a gamepad.</param>
+        /// <param name="action">The device action that was bound.  The action is dependant upon the device. Specify a key for keyboards.</param>
+        /// <returns>The command against the specified device and action.</returns>
+        /// <code>
+        /// // Find what function is bound to a device's action
+        /// // In this example, "jump()" was assigned to the space key in another script
+        /// %command = moveMap.getCommand("keyboard", "space");
+        /// 
+        /// // Should print "jump" in the console
+        /// echo(%command)
+        /// </code>
         public string GetCommand(string device, string action) {
              InternalUnsafeMethods.GetCommand__Args _args = new InternalUnsafeMethods.GetCommand__Args() {
                 device = device,
@@ -493,6 +625,26 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Gets the ActionMap binding for the specified command.</summary>
+        /// <description>
+        /// Use getField() on the return value to get the device and action of the binding.
+        /// </description>
+        /// <param name="command">The function to search bindings for.</param>
+        /// <returns>The binding against the specified command. Returns an empty string("") if a binding wasn't found.</returns>
+        /// <code>
+        /// // Find what the function "jump()" is bound to in moveMap
+        /// %bind = moveMap.getBinding( "jump" );
+        /// 
+        /// if ( %bind !$= "" )
+        /// {
+        /// // Find out what device is used in the binding
+        ///   %device = getField( %bind, 0 );
+        /// 
+        /// // Find out what action (such as a key) is used in the binding
+        ///   %action = getField( %bind, 1 );
+        /// }
+        /// </code>
+        /// <see cref="getField" />
         public string GetBinding(string command) {
              InternalUnsafeMethods.GetBinding__Args _args = new InternalUnsafeMethods.GetBinding__Args() {
                 command = command,
@@ -501,18 +653,46 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Pop the ActionMap off the %ActionMap stack.</summary>
+        /// <description>
+        /// Deactivates an %ActionMap and removes it from the
+        /// </description>
+        /// <code>
+        /// // Deactivate moveMap
+        /// moveMap.pop();
+        /// </code>
+        /// <see cref="ActionMap" />
         public void Pop() {
              InternalUnsafeMethods.Pop__Args _args = new InternalUnsafeMethods.Pop__Args() {
              };
              InternalUnsafeMethods.Pop()(ObjectPtr, _args);
         }
 
+        /// <summary>Push the ActionMap onto the %ActionMap stack.</summary>
+        /// <description>
+        /// Activates an ActionMap and placees it at the top of the ActionMap stack.
+        /// </description>
+        /// <code>
+        /// // Make moveMap the active action map
+        /// moveMap.push();
+        /// </code>
+        /// <see cref="ActionMap" />
         public void Push() {
              InternalUnsafeMethods.Push__Args _args = new InternalUnsafeMethods.Push__Args() {
              };
              InternalUnsafeMethods.Push()(ObjectPtr, _args);
         }
 
+        /// <summary>Saves the ActionMap to a file or dumps it to the console.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">The file path to save the ActionMap to. If a filename is not specified  the ActionMap will be dumped to the console.</param>
+        /// <param name="append">Whether to write the ActionMap at the end of the file or overwrite it.</param>
+        /// <code>
+        /// // Write out the actionmap into the config.cs file
+        /// moveMap.save( "scripts/client/config.cs" );
+        /// </code>
         public void Save(string fileName = "", bool append = false) {
              InternalUnsafeMethods.Save__Args _args = new InternalUnsafeMethods.Save__Args() {
                 fileName = fileName,
@@ -521,6 +701,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Save()(ObjectPtr, _args);
         }
 
+        /// <summary>Remove any object-binding on an input device and action.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="device">The device to bind to.  Can be keyboard, mouse, joystick or gamepad.</param>
+        /// <param name="action">The device action to unbind from. The action is dependant upon the device. Specify a key for keyboards.</param>
+        /// <param name="obj">The object to perform unbind against.</param>
+        /// <returns>True if the unbind was successful, false if the device was unknown or description failed.</returns>
+        /// <code>
+        /// moveMap.unbindObj("keyboard", "numpad1", "rangeChange", %player);
+        /// </code>
         public bool UnbindObj(string device, string action, string obj) {
              InternalUnsafeMethods.UnbindObj__Args _args = new InternalUnsafeMethods.UnbindObj__Args() {
                 device = device,
@@ -531,6 +722,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Removes the binding on an input device and action.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="device">The device to unbind from. Can be a keyboard, mouse, joystick or a gamepad.</param>
+        /// <param name="action">The device action to unbind from. The action is dependant upon the device. Specify a key for keyboards.</param>
+        /// <returns>True if the unbind was successful, false if the device was unknown or description failed.</returns>
+        /// <code>
+        /// moveMap.unbind("keyboard", "space");
+        /// </code>
         public bool Unbind(string device, string action) {
              InternalUnsafeMethods.Unbind__Args _args = new InternalUnsafeMethods.Unbind__Args() {
                 device = device,
@@ -540,6 +741,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// actionMap.bindCmd( device, action, holdFunction, returnHoldTime)
+        /// </description>
         public void BindHold(string device = "", string action = "", string holdFunction = "", bool returnHoldTime = false) {
              InternalUnsafeMethods.BindHold__Args _args = new InternalUnsafeMethods.BindHold__Args() {
                 device = device,
@@ -550,6 +754,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.BindHold()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// actionMap.bindCmd( device, action, holdFunction, tapFunction, holdTime)
+        /// </description>
         public void BindContext(string device = "", string action = "", string holdFunction = "", string tapFunction = "", uint holdTime = 0) {
              InternalUnsafeMethods.BindContext__Args _args = new InternalUnsafeMethods.BindContext__Args() {
                 device = device,
@@ -561,6 +768,32 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.BindContext()(ObjectPtr, _args);
         }
 
+        /// <summary>Associates a make command and optional break command to a specified input device action.</summary>
+        /// <description>
+        /// Must include parenthesis and semicolon in the make and break command strings.
+        /// </description>
+        /// <param name="device">The device to bind to. Can be a keyboard, mouse, joystick or gamepad.</param>
+        /// <param name="action">The device action to bind to. The action is dependant upon the device. Specify a key for keyboards.</param>
+        /// <param name="makeCmd">The command to execute when the device/action is made.</param>
+        /// <param name="breakCmd">[optional] The command to execute when the device or action is unmade.</param>
+        /// <returns>True the bind was successful, false if the device was unknown or description failed.</returns>
+        /// <code>
+        /// // Print to the console when the spacebar is pressed
+        /// function onSpaceDown()
+        /// {
+        ///    echo("Space bar down!");
+        /// }
+        /// 
+        /// // Print to the console when the spacebar is released
+        /// function onSpaceUp()
+        /// {
+        ///    echo("Space bar up!");
+        /// }
+        /// 
+        /// // Bind the commands onSpaceDown() and onSpaceUp() to spacebar events
+        /// 
+        /// moveMap.bindCmd(keyboard, "space", "onSpaceDown();", "onSpaceUp();");
+        /// </code>
         public bool BindCmd(string device, string action, string makeCmd, string breakCmd = "") {
              InternalUnsafeMethods.BindCmd__Args _args = new InternalUnsafeMethods.BindCmd__Args() {
                 device = device,
@@ -572,6 +805,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (device, action, [modifier, spec, mod...], command, object)
+        /// </description>
         public bool BindObj(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -588,6 +824,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
             return _engineResult;
         }
 
+        /// <description>
+        /// actionMap.bind( device, action, [modifier, spec, mod...], command )
+        /// </description>
         public bool Bind(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -604,6 +843,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
             return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the ActionMap class.
+        /// </description>
+        /// <returns>The type info object for ActionMap</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

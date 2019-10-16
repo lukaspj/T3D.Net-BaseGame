@@ -14,7 +14,80 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A horizontal progress bar rendered from a repeating image.</summary>
+    /// <description>
+    /// This class is used give progress feedback to the user.  Unlike GuiProgressCtrl which simply renders a filled rectangle, GuiProgressBitmapCtrl renders the bar using a bitmap.
+    /// 
+    /// This bitmap can either be simple, plain image which is then stretched into the current extents of the bar as it fills up or it can be a bitmap array with three entries.  In the case of a bitmap array, the first entry in the array is used to render the left cap of the bar and the third entry in the array is used to render the right cap of the bar.  The second entry is streched in-between the two caps.
+    /// </description>
+    /// <code>
+    /// // This example shows one way to break down a long-running computation into phases
+    /// // and incrementally update a progress bar between the phases.
+    /// 
+    /// new GuiProgressBitmapCtrl( Progress )
+    /// {
+    ///    bitmap = "core/art/gui/images/loading";
+    ///    extent = "300 50";
+    ///    position = "100 100";
+    /// };
+    /// 
+    /// // Put the control on the canvas.
+    /// %wrapper = new GuiControl();
+    /// %wrapper.addObject( Progress );
+    /// Canvas.pushDialog( %wrapper );
+    /// 
+    /// // Start the computation.
+    /// schedule( 1, 0, "phase1" );
+    /// 
+    /// function phase1()
+    /// {
+    ///    Progress.setValue( 0 );
+    /// 
+    ///    // Perform some computation.
+    ///    //...
+    /// 
+    ///    // Update progress.
+    ///    Progress.setValue( 0.25 );
+    /// 
+    ///    // Schedule next phase.  Don't call directly so engine gets a change to run refresh.
+    ///    schedule( 1, 0, "phase2" );
+    /// }
+    /// 
+    /// function phase2()
+    /// {
+    ///    // Perform some computation.
+    ///    //...
+    /// 
+    ///    // Update progress.
+    ///    Progress.setValue( 0.7 );
+    /// 
+    ///    // Schedule next phase.  Don't call directly so engine gets a change to run refresh.
+    ///    schedule( 1, 0, "phase3" );
+    /// }
+    /// 
+    /// function phase3()
+    /// {
+    ///    // Perform some computation.
+    ///    //...
+    /// 
+    ///    // Update progress.
+    ///    Progress.setValue( 0.9 );
+    /// 
+    ///    // Schedule next phase.  Don't call directly so engine gets a change to run refresh.
+    ///    schedule( 1, 0, "phase4" );
+    /// }
+    /// 
+    /// function phase4()
+    /// {
+    ///    // Perform some computation.
+    ///    //...
+    /// 
+    ///    // Final update of progress.
+    ///    Progress.setValue( 1.0 );
+    /// }
+    /// </code>
+    /// <see cref="GuiProgressCtrl" />
     public unsafe class GuiProgressBitmapCtrl : GuiTextCtrl {
         public GuiProgressBitmapCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -121,6 +194,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Set the bitmap to use for rendering the progress bar.
+        /// </description>
+        /// <param name="filename">~Path to the bitmap file.</param>
+        /// <remarks> Directly assign to #bitmap rather than using this method.
+        /// 
+        /// </remarks>
+        /// <see cref="GuiProgressBitmapCtrl::setBitmap" />
         public void SetBitmap(string filename) {
              InternalUnsafeMethods.SetBitmap__Args _args = new InternalUnsafeMethods.SetBitmap__Args() {
                 filename = filename,
@@ -128,6 +209,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetBitmap()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiProgressBitmapCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiProgressBitmapCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -135,6 +220,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ~Path to the bitmap file to use for rendering the progress bar.
+        /// 
+        /// If the profile assigned to the control already has a bitmap assigned, this property need not be set in which case the bitmap from the profile is used.
+        /// </description>
+        /// </value>
         public string Bitmap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("bitmap"));
             set => SetFieldValue("bitmap", GenericMarshal.ToString(value));

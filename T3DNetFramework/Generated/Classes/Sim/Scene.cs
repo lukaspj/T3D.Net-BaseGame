@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class Scene : NetObject {
         public Scene(bool pRegister = false) 
             : base(pRegister) {
@@ -184,6 +185,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the root Scene object that is loaded.
+        /// </description>
+        /// <returns>The id of the Root Scene. Will be 0 if no root scene is loaded</returns>
         public string GetObjectsByClass(string className = "") {
              InternalUnsafeMethods.GetObjectsByClass__Args _args = new InternalUnsafeMethods.GetObjectsByClass__Args() {
                 className = className,
@@ -192,6 +197,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the root Scene object that is loaded.
+        /// </description>
+        /// <returns>The id of the Root Scene. Will be 0 if no root scene is loaded</returns>
         public void RemoveDynamicObject(SceneObject sceneObj = null) {
              InternalUnsafeMethods.RemoveDynamicObject__Args _args = new InternalUnsafeMethods.RemoveDynamicObject__Args() {
                 sceneObj = sceneObj.ObjectPtr,
@@ -199,6 +208,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveDynamicObject()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the root Scene object that is loaded.
+        /// </description>
+        /// <returns>The id of the Root Scene. Will be 0 if no root scene is loaded</returns>
         public void AddDynamicObject(SceneObject sceneObj = null) {
              InternalUnsafeMethods.AddDynamicObject__Args _args = new InternalUnsafeMethods.AddDynamicObject__Args() {
                 sceneObj = sceneObj.ObjectPtr,
@@ -206,6 +219,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddDynamicObject()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the root Scene object that is loaded.
+        /// </description>
+        /// <returns>The id of the Root Scene. Will be 0 if no root scene is loaded</returns>
         public int GetRootScene() {
              InternalUnsafeMethods.GetRootScene__Args _args = new InternalUnsafeMethods.GetRootScene__Args() {
              };
@@ -213,6 +230,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the Scene class.
+        /// </description>
+        /// <returns>The type info object for Scene</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -220,16 +241,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsSubscene {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isSubscene"));
             set => SetFieldValue("isSubscene", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsEditing {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isEditing"));
             set => SetFieldValue("isEditing", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsDirty {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isDirty"));
             set => SetFieldValue("isDirty", GenericMarshal.ToString(value));

@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class AssetBase : SimObject {
         public AssetBase(bool pRegister = false) 
             : base(pRegister) {
@@ -140,6 +141,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the AssetBase class.
+        /// </description>
+        /// <returns>The type info object for AssetBase</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -147,6 +152,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// Gets the assets' Asset Id.  This is only available if the asset was acquired from the asset manager.
+        /// </description>
+        /// <returns>The assets' Asset Id.</returns>
         public string GetAssetId() {
              InternalUnsafeMethods.GetAssetId__Args _args = new InternalUnsafeMethods.GetAssetId__Args() {
              };
@@ -154,37 +163,77 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Refresh the asset.
+        /// </description>
+        /// <returns>No return value.</returns>
         public void RefreshAsset() {
              InternalUnsafeMethods.RefreshAsset__Args _args = new InternalUnsafeMethods.RefreshAsset__Args() {
              };
              InternalUnsafeMethods.RefreshAsset()(ObjectPtr, _args);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The name of the asset.  The is not a unique identification like an asset Id.
+        /// </description>
+        /// </value>
         public string AssetName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("AssetName"));
             set => SetFieldValue("AssetName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The simple description of the asset contents.
+        /// </description>
+        /// </value>
         public string AssetDescription {
             get => GenericMarshal.StringTo<string>(GetFieldValue("AssetDescription"));
             set => SetFieldValue("AssetDescription", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// An arbitrary category that can be used to categorized assets.
+        /// </description>
+        /// </value>
         public string AssetCategory {
             get => GenericMarshal.StringTo<string>(GetFieldValue("AssetCategory"));
             set => SetFieldValue("AssetCategory", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the asset is automatically unloaded when an asset is released and has no other acquisitions or not.
+        /// </description>
+        /// </value>
         public bool AssetAutoUnload {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("AssetAutoUnload"));
             set => SetFieldValue("AssetAutoUnload", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the asset is used internally only or not.
+        /// </description>
+        /// </value>
         public bool AssetInternal {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("AssetInternal"));
             set => SetFieldValue("AssetInternal", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the asset is private or not.
+        /// </description>
+        /// </value>
         public bool AssetPrivate {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("AssetPrivate"));
             set => SetFieldValue("AssetPrivate", GenericMarshal.ToString(value));

@@ -6,6 +6,7 @@ using T3DNetFramework.Interop;
 
 namespace T3DNetFramework.Generated.Structs.Gui {
 
+    /// 
     public class RectSpacingI : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -41,17 +42,25 @@ namespace T3DNetFramework.Generated.Structs.Gui {
         
         public void Alloc() {
             internalStruct.leftPadding = LeftPadding;
+
             internalStruct.rightPadding = RightPadding;
+
             internalStruct.topPadding = TopPadding;
+
             internalStruct.bottomPadding = BottomPadding;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             LeftPadding = internalStruct.leftPadding;
+
             RightPadding = internalStruct.rightPadding;
+
             TopPadding = internalStruct.topPadding;
+
             BottomPadding = internalStruct.bottomPadding;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }

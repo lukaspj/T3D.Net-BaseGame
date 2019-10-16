@@ -14,7 +14,21 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control which adds several reactions to other GUIs via callbacks.</summary>
+    /// <description>
+    /// GuiScriptNotifyCtrl does not exist to render anything. When parented or made a child of other controls, you can toggle flags on or off to make use of its specialized callbacks. Normally these callbacks are used as utility functions by the GUI Editor, or other container classes. However, for very fancy GUI work where controls interact with each other constantly, this is a handy utility to make use of.
+    /// </description>
+    /// <code>
+    /// // Common member fields left out for sake of example
+    /// new GuiScriptNotifyCtrl()
+    /// {
+    /// 	onChildAdded = "0";
+    /// 	onChildRemoved = "0";
+    /// 	onChildResized = "0";
+    /// 	onParentResized = "0";
+    /// };
+    /// </code>
     public unsafe class GuiScriptNotifyCtrl : GuiControl {
         public GuiScriptNotifyCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -249,6 +263,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Called when this GUI gains focus.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
         public virtual void OnGainFirstResponder(uint ID) {
              InternalUnsafeMethods.OnGainFirstResponder__Args _args = new InternalUnsafeMethods.OnGainFirstResponder__Args() {
                 ID = ID,
@@ -256,6 +274,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnGainFirstResponder()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when this GUI loses focus.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
         public virtual void OnLoseFirstResponder(uint ID) {
              InternalUnsafeMethods.OnLoseFirstResponder__Args _args = new InternalUnsafeMethods.OnLoseFirstResponder__Args() {
                 ID = ID,
@@ -263,6 +285,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnLoseFirstResponder()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when this GUI's parent is resized.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
         public virtual void OnParentResized(uint ID) {
              InternalUnsafeMethods.OnParentResized__Args _args = new InternalUnsafeMethods.OnParentResized__Args() {
                 ID = ID,
@@ -270,6 +296,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnParentResized()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when a child is of this GUI is being resized.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
+        /// <param name="childID">Unique object ID of child being resized.</param>
         public virtual void OnChildResized(uint ID, uint childID) {
              InternalUnsafeMethods.OnChildResized__Args _args = new InternalUnsafeMethods.OnChildResized__Args() {
                 ID = ID,
@@ -278,6 +309,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnChildResized()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when a child is removed from this GUI.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
+        /// <param name="childID">Unique object ID of child being removed.</param>
         public virtual void OnChildRemoved(uint ID, uint childID) {
              InternalUnsafeMethods.OnChildRemoved__Args _args = new InternalUnsafeMethods.OnChildRemoved__Args() {
                 ID = ID,
@@ -286,6 +322,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnChildRemoved()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when a child is added to this GUI.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
+        /// <param name="childID">Unique object ID of child being added.</param>
         public virtual void OnChildAdded(uint ID, uint childID) {
              InternalUnsafeMethods.OnChildAdded__Args _args = new InternalUnsafeMethods.OnChildAdded__Args() {
                 ID = ID,
@@ -294,6 +335,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnChildAdded()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when this GUI is resized.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
         public virtual void OnResize(uint ID) {
              InternalUnsafeMethods.OnResize__Args _args = new InternalUnsafeMethods.OnResize__Args() {
                 ID = ID,
@@ -301,6 +346,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnResize()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiScriptNotifyCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiScriptNotifyCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -308,36 +357,78 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Enables/disables onChildAdded callback
+        /// </description>
+        /// </value>
         public bool NotifyOnChildAdded {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("notifyOnChildAdded"));
             set => SetFieldValue("notifyOnChildAdded", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Enables/disables onChildRemoved callback
+        /// </description>
+        /// </value>
         public bool NotifyOnChildRemoved {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("notifyOnChildRemoved"));
             set => SetFieldValue("notifyOnChildRemoved", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Enables/disables onChildResized callback
+        /// </description>
+        /// </value>
         public bool NotifyOnChildResized {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("notifyOnChildResized"));
             set => SetFieldValue("notifyOnChildResized", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Enables/disables onParentResized callback
+        /// </description>
+        /// </value>
         public bool NotifyOnParentResized {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("notifyOnParentResized"));
             set => SetFieldValue("notifyOnParentResized", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Enables/disables onResize callback
+        /// </description>
+        /// </value>
         public bool NotifyOnResize {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("notifyOnResize"));
             set => SetFieldValue("notifyOnResize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Enables/disables onLoseFirstResponder callback
+        /// </description>
+        /// </value>
         public bool NotifyOnLoseFirstResponder {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("notifyOnLoseFirstResponder"));
             set => SetFieldValue("notifyOnLoseFirstResponder", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Enables/disables onGainFirstResponder callback
+        /// </description>
+        /// </value>
         public bool NotifyOnGainFirstResponder {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("notifyOnGainFirstResponder"));
             set => SetFieldValue("notifyOnGainFirstResponder", GenericMarshal.ToString(value));

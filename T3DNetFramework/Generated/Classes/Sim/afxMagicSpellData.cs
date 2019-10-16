@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Defines the properties of an afxMagicSpell.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxMagicSpellData : afxChoreographerData {
         public afxMagicSpellData(bool pRegister = false) 
             : base(pRegister) {
@@ -396,6 +400,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Pushes an effect (wrapper or group) to a spell's linger phase.
+        /// </description>
         public void PushLingerEffect(afxEffectBaseData effect) {
              InternalUnsafeMethods.PushLingerEffect__Args _args = new InternalUnsafeMethods.PushLingerEffect__Args() {
                 effect = effect.ObjectPtr,
@@ -403,6 +410,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PushLingerEffect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Pushes an effect (wrapper or group) to a spell's impact phase.
+        /// </description>
         public void PushImpactEffect(afxEffectBaseData effect) {
              InternalUnsafeMethods.PushImpactEffect__Args _args = new InternalUnsafeMethods.PushImpactEffect__Args() {
                 effect = effect.ObjectPtr,
@@ -410,6 +420,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PushImpactEffect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Pushes an effect (wrapper or group) to a spell's delivery phase.
+        /// </description>
         public void PushDeliveryEffect(afxEffectBaseData effect) {
              InternalUnsafeMethods.PushDeliveryEffect__Args _args = new InternalUnsafeMethods.PushDeliveryEffect__Args() {
                 effect = effect.ObjectPtr,
@@ -417,6 +430,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PushDeliveryEffect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Pushes an effect (wrapper or group) to a spell's launch phase.
+        /// </description>
         public void PushLaunchEffect(afxEffectBaseData effect) {
              InternalUnsafeMethods.PushLaunchEffect__Args _args = new InternalUnsafeMethods.PushLaunchEffect__Args() {
                 effect = effect.ObjectPtr,
@@ -424,6 +440,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PushLaunchEffect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Pushes an effect (wrapper or group) to a spell's casting phase.
+        /// </description>
         public void PushCastingEffect(afxEffectBaseData effect) {
              InternalUnsafeMethods.PushCastingEffect__Args _args = new InternalUnsafeMethods.PushCastingEffect__Args() {
                 effect = effect.ObjectPtr,
@@ -431,12 +450,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PushCastingEffect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Resets a spell datablock during reload.
+        /// </description>
         public void Reset() {
              InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
              };
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the spell starts.
+        /// </description>
+        /// <param name="spell">the spell object</param>
         public virtual void OnActivate(afxMagicSpell spell, ShapeBase caster, SceneObject target) {
              InternalUnsafeMethods.OnActivate__Args _args = new InternalUnsafeMethods.OnActivate__Args() {
                 spell = spell.ObjectPtr,
@@ -446,6 +472,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnActivate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called during spell casting before spell instance is fully created.
+        /// </description>
         public virtual bool OnPreactivate(SimObject param_holder, ShapeBase caster, SceneObject target, SimObject extra) {
              InternalUnsafeMethods.OnPreactivate__Args _args = new InternalUnsafeMethods.OnPreactivate__Args() {
                 param_holder = param_holder.ObjectPtr,
@@ -457,6 +486,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Called at the spell's missile impact marking the end of the deliver stage and the start of the linger stage.
+        /// </description>
+        /// <param name="spell">the spell object</param>
         public virtual void OnImpact(afxMagicSpell spell, ShapeBase caster, SceneObject impacted, Point3F pos, Point3F normal) {
 pos.Alloc();normal.Alloc();             InternalUnsafeMethods.OnImpact__Args _args = new InternalUnsafeMethods.OnImpact__Args() {
                 spell = spell.ObjectPtr,
@@ -468,6 +501,10 @@ pos.Alloc();normal.Alloc();             InternalUnsafeMethods.OnImpact__Args _ar
              InternalUnsafeMethods.OnImpact()(ObjectPtr, _args);
 pos.Free();normal.Free();        }
 
+        /// <description>
+        /// Called when the spell's casting stage ends and the delivery stage begins.
+        /// </description>
+        /// <param name="spell">the spell object</param>
         public virtual void OnLaunch(afxMagicSpell spell, ShapeBase caster, SceneObject target, afxMagicMissile missile) {
              InternalUnsafeMethods.OnLaunch__Args _args = new InternalUnsafeMethods.OnLaunch__Args() {
                 spell = spell.ObjectPtr,
@@ -478,6 +515,10 @@ pos.Free();normal.Free();        }
              InternalUnsafeMethods.OnLaunch()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the spell ends unnaturally due to an interruption.
+        /// </description>
+        /// <param name="spell">the spell object</param>
         public virtual void OnInterrupt(afxMagicSpell spell, ShapeBase caster) {
              InternalUnsafeMethods.OnInterrupt__Args _args = new InternalUnsafeMethods.OnInterrupt__Args() {
                 spell = spell.ObjectPtr,
@@ -486,6 +527,10 @@ pos.Free();normal.Free();        }
              InternalUnsafeMethods.OnInterrupt()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the spell ends naturally.
+        /// </description>
+        /// <param name="spell">the spell object</param>
         public virtual void OnDeactivate(afxMagicSpell spell) {
              InternalUnsafeMethods.OnDeactivate__Args _args = new InternalUnsafeMethods.OnDeactivate__Args() {
                 spell = spell.ObjectPtr,
@@ -493,6 +538,10 @@ pos.Free();normal.Free();        }
              InternalUnsafeMethods.OnDeactivate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the spell deals damage.
+        /// </description>
+        /// <param name="spell">the spell object</param>
         public virtual void OnDamage(afxMagicSpell spell, string label, string flaver, uint target_id, float amount, byte n, Point3F pos, float ad_amount, float radius, float impulse) {
 pos.Alloc();             InternalUnsafeMethods.OnDamage__Args _args = new InternalUnsafeMethods.OnDamage__Args() {
                 spell = spell.ObjectPtr,
@@ -509,6 +558,10 @@ pos.Alloc();             InternalUnsafeMethods.OnDamage__Args _args = new Intern
              InternalUnsafeMethods.OnDamage()(ObjectPtr, _args);
 pos.Free();        }
 
+        /// <description>
+        /// Get the type info object for the afxMagicSpellData class.
+        /// </description>
+        /// <returns>The type info object for afxMagicSpellData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -516,96 +569,210 @@ pos.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float CastingDur {
             get => GenericMarshal.StringTo<float>(GetFieldValue("castingDur"));
             set => SetFieldValue("castingDur", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int NumCastingLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numCastingLoops"));
             set => SetFieldValue("numCastingLoops", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float ExtraCastingTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("extraCastingTime"));
             set => SetFieldValue("extraCastingTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxEffectBaseData AddCastingEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addCastingEffect"));
             set => SetFieldValue("addCastingEffect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float DeliveryDur {
             get => GenericMarshal.StringTo<float>(GetFieldValue("deliveryDur"));
             set => SetFieldValue("deliveryDur", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int NumDeliveryLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numDeliveryLoops"));
             set => SetFieldValue("numDeliveryLoops", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float ExtraDeliveryTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("extraDeliveryTime"));
             set => SetFieldValue("extraDeliveryTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxEffectBaseData AddLaunchEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addLaunchEffect"));
             set => SetFieldValue("addLaunchEffect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxEffectBaseData AddDeliveryEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addDeliveryEffect"));
             set => SetFieldValue("addDeliveryEffect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float LingerDur {
             get => GenericMarshal.StringTo<float>(GetFieldValue("lingerDur"));
             set => SetFieldValue("lingerDur", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int NumLingerLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numLingerLoops"));
             set => SetFieldValue("numLingerLoops", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float ExtraLingerTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("extraLingerTime"));
             set => SetFieldValue("extraLingerTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxEffectBaseData AddImpactEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addImpactEffect"));
             set => SetFieldValue("addImpactEffect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxEffectBaseData AddLingerEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addLingerEffect"));
             set => SetFieldValue("addLingerEffect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool AllowMovementInterrupts {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowMovementInterrupts"));
             set => SetFieldValue("allowMovementInterrupts", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float MovementInterruptSpeed {
             get => GenericMarshal.StringTo<float>(GetFieldValue("movementInterruptSpeed"));
             set => SetFieldValue("movementInterruptSpeed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxMagicMissileData Missile {
             get => GenericMarshal.StringTo<afxMagicMissileData>(GetFieldValue("missile"));
             set => SetFieldValue("missile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool LaunchOnServerSignal {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("launchOnServerSignal"));
             set => SetFieldValue("launchOnServerSignal", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int PrimaryTargetTypes {
             get => GenericMarshal.StringTo<int>(GetFieldValue("primaryTargetTypes"));
             set => SetFieldValue("primaryTargetTypes", GenericMarshal.ToString(value));

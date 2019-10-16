@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Represents the sky with an artist-created cubemap.</summary>
+    /// <description>
+    /// SkyBox is not a directional light and should be used in conjunction with a Sun object.
+    /// </description>
     public unsafe class SkyBox : SceneObject {
         public SkyBox(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +123,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void PostApply() {
              InternalUnsafeMethods.PostApply__Args _args = new InternalUnsafeMethods.PostApply__Args() {
              };
              InternalUnsafeMethods.PostApply()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SkyBox class.
+        /// </description>
+        /// <returns>The type info object for SkyBox</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -132,16 +141,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The name of a cubemap material for the sky box.
+        /// </description>
+        /// </value>
         public string Material {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Material"));
             set => SetFieldValue("Material", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If false the bottom of the skybox is not rendered.
+        /// </description>
+        /// </value>
         public bool DrawBottom {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("drawBottom"));
             set => SetFieldValue("drawBottom", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The height (0-1) of the fog band from the horizon to the top of the SkyBox.
+        /// </description>
+        /// </value>
         public float FogBandHeight {
             get => GenericMarshal.StringTo<float>(GetFieldValue("fogBandHeight"));
             set => SetFieldValue("fogBandHeight", GenericMarshal.ToString(value));

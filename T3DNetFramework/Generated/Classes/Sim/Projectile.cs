@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Base projectile class. Uses the ProjectileData class for properties of individual projectiles.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class Projectile : GameBase {
         public Projectile(bool pRegister = false) 
             : base(pRegister) {
@@ -120,6 +124,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Updates the projectile's positional and collision information.</summary>
+        /// <description>
+        /// This function will first delete the projectile if it is a server object and is outside it's ProjectileData::lifetime. Also responsible for applying gravity, determining collisions, triggering explosions, emitting trail particles, and calculating bounces if necessary.
+        /// </description>
+        /// <param name="seconds">Amount of time, in seconds since the simulation's start, to advance.</param>
+        /// <code>
+        /// // Tell the projectile to process a simulation event, and provide the amount of time
+        /// // that has passed since the simulation began.
+        /// %seconds = 2.0;
+        /// %projectile.presimulate(%seconds);
+        /// </code>
+        /// <remarks> This function is not called if the SimObject::hidden is true.</remarks>
         public void Presimulate(float seconds = 1f) {
              InternalUnsafeMethods.Presimulate__Args _args = new InternalUnsafeMethods.Presimulate__Args() {
                 seconds = seconds,
@@ -127,6 +143,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Presimulate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the Projectile class.
+        /// </description>
+        /// <returns>The type info object for Projectile</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -134,26 +154,59 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Starting position for the projectile.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// </value>
         public Point3F InitialPosition {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("initialPosition"));
             set => SetFieldValue("initialPosition", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Starting velocity for the projectile.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// </value>
         public Point3F InitialVelocity {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("initialVelocity"));
             set => SetFieldValue("initialVelocity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>ID number of the object that fired the projectile.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> If the projectile was fired by a WeaponImage, sourceObject will be the object that owns the WeaponImage. This is usually the player.</remarks>
+        /// </value>
         public int SourceObject {
             get => GenericMarshal.StringTo<int>(GetFieldValue("sourceObject"));
             set => SetFieldValue("sourceObject", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>The sourceObject's weapon slot that the projectile originates from.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// </value>
         public int SourceSlot {
             get => GenericMarshal.StringTo<int>(GetFieldValue("sourceSlot"));
             set => SetFieldValue("sourceSlot", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IgnoreSourceTimeout {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ignoreSourceTimeout"));
             set => SetFieldValue("ignoreSourceTimeout", GenericMarshal.ToString(value));

@@ -14,7 +14,10 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Global {    
+namespace T3DNetFramework.Generated.Classes.Global {
+    /// <description>
+    /// Legacy console system root class.  Will disappear.
+    /// </description>
     public unsafe class ConsoleObject : EngineObject {
         public ConsoleObject(bool pRegister = false) 
             : base(pRegister) {
@@ -52,6 +55,10 @@ namespace T3DNetFramework.Generated.Classes.Global {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ConsoleObject class.
+        /// </description>
+        /// <returns>The type info object for ConsoleObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

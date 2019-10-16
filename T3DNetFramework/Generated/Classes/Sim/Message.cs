@@ -14,7 +14,19 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Base class for messages</summary>
+    /// <description>
+    /// Message is the base class for C++ defined messages, and may also be used in script for script defined messages if no C++ subclass is appropriate.
+    /// 
+    /// Messages are reference counted and will be automatically deleted when their reference count reaches zero. When you dispatch a message, a reference will be added before the dispatch and freed after the dispatch. This allows for temporary messages with no additional code. If you want to keep the message around, for example to dispatch it to multiple queues, call addReference() before dispatching it and freeReference() when you are done with it. Never delete a Message object directly unless addReference() has not been called or the message has not been dispatched.
+    /// 
+    /// Message IDs are pooled similarly to datablocks, with the exception that IDs are reused. If you keep a message for longer than a single dispatch, then you should ensure that you clear any script variables that refer to it after the last freeReference(). If you don't, then it is probable that the object ID will become valid again in the future and could cause hard to track down bugs.
+    /// 
+    /// Messages have a unique type to simplify message handling code. For object messages, the type is defined as either the script defined class name or the C++ class name if no script class was defined. The message type may be obtained through the getType() method.
+    /// 
+    /// By convention, any data for the message is held in script accessible fields. Messages that need to be handled in C++ as well as script provide the relevant data through persistent fields in a subclass of Message to provide best performance on the C++ side. Script defined messages usually their through dynamic fields, and may be accessed in C++ using the SimObject::getDataField() method.
+    /// </description>
     public unsafe class Message : SimObject {
         public Message(bool pRegister = false) 
             : base(pRegister) {
@@ -200,18 +212,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// () Decrement the reference count for this message
+        /// </description>
         public void FreeReference() {
              InternalUnsafeMethods.FreeReference__Args _args = new InternalUnsafeMethods.FreeReference__Args() {
              };
              InternalUnsafeMethods.FreeReference()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () Increment the reference count for this message
+        /// </description>
         public void AddReference() {
              InternalUnsafeMethods.AddReference__Args _args = new InternalUnsafeMethods.AddReference__Args() {
              };
              InternalUnsafeMethods.AddReference()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () Get message type (script class name or C++ class name if no script defined class)
+        /// </description>
         public string GetType() {
              InternalUnsafeMethods.GetType__Args _args = new InternalUnsafeMethods.GetType__Args() {
              };
@@ -219,18 +240,40 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Script callback when a message is deleted.
+        /// </description>
+        /// <code>
+        /// function Message::onRemove(%this)
+        /// {
+        /// 	// Perform on remove code here
+        /// }
+        /// </code>
         public virtual void OnRemove() {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
              };
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Script callback when a message is first created and registered.
+        /// </description>
+        /// <code>
+        /// function Message::onAdd(%this)
+        /// {
+        /// 	// Perform on add code here
+        /// }
+        /// </code>
         public virtual void OnAdd() {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
              };
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the Message class.
+        /// </description>
+        /// <returns>The type info object for Message</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

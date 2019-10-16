@@ -14,7 +14,20 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An invisible shape that causes objects hidden from view behind it to not be rendered.</summary>
+    /// <description>
+    /// OcclusionVolume is a class for scene optimization.  It's main use is for outdoor spaces where zones and portals do not help in optimizing scene culling as they almost only make sense for modeling visibility in indoor scenarios (and for connecting indoor spaces to outdoor spaces).
+    /// 
+    /// During rendering, every object that is fully behind an occluder 
+    /// 
+    /// Be aware that occluders add overhead to scene culling.  Only if this overhead is outweighed by the time saved by not rendering hidden objects, is the occluder actually effective.  Because of this, chose only those spots for placing occluders where a significant number of objects will be culled from points that the player will actually be at during the game.
+    /// 
+    /// Like zones and portals, OcclusionVolumes may have a default box shape or a more complex
+    /// </description>
+    /// <see cref="Scene::maxOccludersPerZone" />
+    /// <see cref="Scene::occluderMinWidthPercentage" />
+    /// <see cref="Scene::occluderMinHeightPercentage" />
     public unsafe class OcclusionVolume : SceneObject {
         public OcclusionVolume(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +112,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the OcclusionVolume class.
+        /// </description>
+        /// <returns>The type info object for OcclusionVolume</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +123,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// For internal use only.
+        /// </description>
+        /// </value>
         public string Plane {
             get => GenericMarshal.StringTo<string>(GetFieldValue("plane"));
             set => SetFieldValue("plane", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// For internal use only.
+        /// </description>
+        /// </value>
         public string Point {
             get => GenericMarshal.StringTo<string>(GetFieldValue("point"));
             set => SetFieldValue("point", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// For internal use only.
+        /// </description>
+        /// </value>
         public string Edge {
             get => GenericMarshal.StringTo<string>(GetFieldValue("edge"));
             set => SetFieldValue("edge", GenericMarshal.ToString(value));

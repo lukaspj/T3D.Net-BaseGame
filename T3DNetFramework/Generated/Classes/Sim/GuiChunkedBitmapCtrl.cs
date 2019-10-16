@@ -14,7 +14,25 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>This is a control that will render a specified bitmap or a bitmap specified in a referenced variable.</summary>
+    /// <description>
+    /// This control allows you to either set a bitmap with the "bitmap" field or with the setBitmap method.  You can also choose to reference a variable in the "variable" field such as "$image" and then set "useVariable" to true.  This will cause it to synchronize the variable with the bitmap displayed (if the variable holds a valid image).  You can then change the variable and effectively changed the displayed image.
+    /// </description>
+    /// <code>
+    /// $image = "anotherbackground.png";
+    /// new GuiChunkedBitmapCtrl(ChunkedBitmap)
+    /// {
+    ///    bitmap = "background.png";
+    ///    variable = "$image";
+    ///    useVariable = false;
+    /// }
+    /// 
+    /// // This will result in the control rendering "background.png"
+    /// // If we now set the useVariable to true it will now render "anotherbackground.png"
+    /// ChunkedBitmap.useVariable = true;
+    /// </code>
+    /// <see cref="GuiControl::variable" />
     public unsafe class GuiChunkedBitmapCtrl : GuiControl {
         public GuiChunkedBitmapCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -121,6 +139,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Set the image rendered in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="filename">The image name you want to set</param>
         public void SetBitmap(string filename) {
              InternalUnsafeMethods.SetBitmap__Args _args = new InternalUnsafeMethods.SetBitmap__Args() {
                 filename = filename,
@@ -128,6 +151,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetBitmap()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiChunkedBitmapCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiChunkedBitmapCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -135,16 +162,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// This is the bitmap to render to the control.
+        /// </description>
+        /// </value>
         public string Bitmap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("bitmap"));
             set => SetFieldValue("bitmap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// This decides whether to use the "bitmap" file or a bitmap stored in "variable"
+        /// </description>
+        /// </value>
         public bool UseVariable {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useVariable"));
             set => SetFieldValue("useVariable", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// This is no longer in use
+        /// </description>
+        /// </value>
         public bool Tile {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("tile"));
             set => SetFieldValue("tile", GenericMarshal.ToString(value));

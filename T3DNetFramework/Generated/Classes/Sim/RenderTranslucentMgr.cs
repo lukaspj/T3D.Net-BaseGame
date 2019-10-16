@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A render bin for rendering translucent meshes.</summary>
+    /// <description>
+    /// This bin is used to render translucent render mesh instances and render object instances. It is generally ordered late in the RenderPassManager after all opaque geometry bins.
+    /// </description>
     public unsafe class RenderTranslucentMgr : RenderBinManager {
         public RenderTranslucentMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderTranslucentMgr class.
+        /// </description>
+        /// <returns>The type info object for RenderTranslucentMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

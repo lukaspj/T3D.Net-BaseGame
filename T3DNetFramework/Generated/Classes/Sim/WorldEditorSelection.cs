@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Specialized simset that stores the objects selected by the World Editor</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class WorldEditorSelection : SimPersistSet {
         public WorldEditorSelection(bool pRegister = false) 
             : base(pRegister) {
@@ -224,6 +228,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Remove all objects in the given set from this selection.
+        /// </description>
         public void Subtract(SimSet selection) {
              InternalUnsafeMethods.Subtract__Args _args = new InternalUnsafeMethods.Subtract__Args() {
                 selection = selection.ObjectPtr,
@@ -231,6 +238,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Subtract()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add all objects in the given set to this selection.
+        /// </description>
         public void Union(SimSet selection) {
              InternalUnsafeMethods.Union__Args _args = new InternalUnsafeMethods.Union__Args() {
                 selection = selection.ObjectPtr,
@@ -238,6 +248,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Union()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Move all objects in the selection by the given delta.
+        /// </description>
         public void Offset(Point3F delta, float gridSnap = 0f) {
 delta.Alloc();             InternalUnsafeMethods.Offset__Args _args = new InternalUnsafeMethods.Offset__Args() {
                 delta = delta.internalStructPtr,
@@ -246,6 +259,9 @@ delta.Alloc();             InternalUnsafeMethods.Offset__Args _args = new Intern
              InternalUnsafeMethods.Offset()(ObjectPtr, _args);
 delta.Free();        }
 
+        /// <description>
+        /// Return the center of the bounding box around the selection.
+        /// </description>
         public Point3F GetBoxCentroid() {
              InternalUnsafeMethods.GetBoxCentroid__Args _args = new InternalUnsafeMethods.GetBoxCentroid__Args() {
              };
@@ -253,6 +269,9 @@ delta.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Return the median of all object positions in the selection.
+        /// </description>
         public Point3F GetCentroid() {
              InternalUnsafeMethods.GetCentroid__Args _args = new InternalUnsafeMethods.GetCentroid__Args() {
              };
@@ -260,6 +279,9 @@ delta.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// True if an object with global bounds is contained in the selection.
+        /// </description>
         public bool ContainsGlobalBounds() {
              InternalUnsafeMethods.ContainsGlobalBounds__Args _args = new InternalUnsafeMethods.ContainsGlobalBounds__Args() {
              };
@@ -267,6 +289,10 @@ delta.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the WorldEditorSelection class.
+        /// </description>
+        /// <returns>The type info object for WorldEditorSelection</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

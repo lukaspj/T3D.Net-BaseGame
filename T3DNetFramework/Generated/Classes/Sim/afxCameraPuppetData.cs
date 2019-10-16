@@ -14,7 +14,15 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Camera Puppet effect.</summary>
+    /// <description>
+    /// A Camera Puppet effect is used to control the position and orientation of the camera using the AFX constraint system. Camera Puppet effects are useful for creating small cut-scenes and can add a lot of visual drama to a spell or effectron effect.
+    /// 
+    /// Effective use of Camera Puppet effects require a fairly advanced understanding of how Torque cameras work in a server-client context. Care must be taken to prevent client cameras from drifting too far out of sync from the server camera. Otherwise, obvious discontinuities in the motion will result when the Camera Puppet ends and control is restored to the server camera. Scoping problems can also result if a client camera is moved to a location that is inconsistent with the scene scoping done by the server camera.
+    /// 
+    /// Often it is useful to manage camera controlling in an isolated effectron rather than directly incorporated into a magic-spell. This way the camera controlling effectron can target the specific client associated with the spellcaster. The spellcasting player observes the spell in a dramatic cut-scene-like fashion while other players continue to observe from their own viewing locations.
+    /// </description>
     public unsafe class afxCameraPuppetData : GameBaseData {
         public afxCameraPuppetData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +107,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxCameraPuppetData class.
+        /// </description>
+        /// <returns>The type info object for afxCameraPuppetData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +118,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// This field is like the effect-wrapper fields for specifying constraint sources, but here it specifies a target for the camera-puppet effect.
+        /// </description>
+        /// </value>
         public string CameraSpec {
             get => GenericMarshal.StringTo<string>(GetFieldValue("cameraSpec"));
             set => SetFieldValue("cameraSpec", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specifies the networking model used for the camerapuppet effect. The effect can puppet just the server camera, just the client camera, or both.
+        /// Possible values: $AFX::SERVER_ONLY, $AFX::CLIENT_ONLY, or $AFX::SERVER_AND_CLIENT.
+        /// </description>
+        /// </value>
         public sbyte Networking {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("networking"));
             set => SetFieldValue("networking", GenericMarshal.ToString(value));

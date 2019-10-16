@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class CameraOrbiterComponent : Component {
         public CameraOrbiterComponent(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the CameraOrbiterComponent class.
+        /// </description>
+        /// <returns>The type info object for CameraOrbiterComponent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +111,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object world orientation.
+        /// </description>
+        /// </value>
         public float OrbitDistance {
             get => GenericMarshal.StringTo<float>(GetFieldValue("orbitDistance"));
             set => SetFieldValue("orbitDistance", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object world orientation.
+        /// </description>
+        /// </value>
         public RotationF Rotation {
             get => GenericMarshal.StringTo<RotationF>(GetFieldValue("rotation"));
             set => SetFieldValue("rotation", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object world orientation.
+        /// </description>
+        /// </value>
         public float MaxPitchAngle {
             get => GenericMarshal.StringTo<float>(GetFieldValue("maxPitchAngle"));
             set => SetFieldValue("maxPitchAngle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object world orientation.
+        /// </description>
+        /// </value>
         public float MinPitchAngle {
             get => GenericMarshal.StringTo<float>(GetFieldValue("minPitchAngle"));
             set => SetFieldValue("minPitchAngle", GenericMarshal.ToString(value));

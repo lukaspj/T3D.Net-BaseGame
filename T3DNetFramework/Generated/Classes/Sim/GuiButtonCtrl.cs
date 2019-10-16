@@ -14,7 +14,21 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The most widely used button class.</summary>
+    /// <description>
+    /// GuiButtonCtrl renders seperately of, but utilizes all of the functionality of GuiBaseButtonCtrl.
+    /// This grants GuiButtonCtrl the versatility to be either of the 3 button types.
+    /// </description>
+    /// <code>
+    /// // Create a PushButton GuiButtonCtrl that calls randomFunction when clicked
+    /// %button = new GuiButtonCtrl()
+    /// {
+    ///    profile    = "GuiButtonProfile";
+    ///    buttonType = "PushButton";
+    ///    command    = "randomFunction();";
+    /// };
+    /// </code>
     public unsafe class GuiButtonCtrl : GuiButtonBaseCtrl {
         public GuiButtonCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +113,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiButtonCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiButtonCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

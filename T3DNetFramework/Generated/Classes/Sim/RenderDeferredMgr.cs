@@ -14,7 +14,14 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The render bin which performs a z+normals deferred used in Advanced Lighting.</summary>
+    /// <description>
+    /// This render bin is used in Advanced Lighting to gather all opaque mesh render instances and render them to the g-buffer for use in lighting the scene and doing effects.
+    /// 
+    /// PostEffect and other shaders can access the output of this bin by using the #deferred texture target name.  See the edge anti-aliasing post effect for an example.
+    /// </description>
+    /// <see cref="game/core/scripts/client/postFx/edgeAA.cs" />
     public unsafe class RenderDeferredMgr : RenderTexTargetBinManager {
         public RenderDeferredMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +106,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderDeferredMgr class.
+        /// </description>
+        /// <returns>The type info object for RenderDeferredMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

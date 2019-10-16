@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Designed soley for buttons, primarily used in editor.</summary>
+    /// <description>
+    /// Currently editor use only, no real application without extension.
+    /// </description>
     public unsafe class GuiDecoyCtrl : GuiControl {
         public GuiDecoyCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiDecoyCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiDecoyCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +114,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sets this control to decoy mode
+        /// </description>
+        /// </value>
         public bool IsDecoy {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isDecoy"));
             set => SetFieldValue("isDecoy", GenericMarshal.ToString(value));

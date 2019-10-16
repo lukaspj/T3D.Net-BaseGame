@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Basically the same as RenderMeshMgr, but will override the material of the instance. Exists for backwards compatibility, not currently used, soon to be deprecated</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class ForcedMaterialMeshMgr : RenderMeshMgr {
         public ForcedMaterialMeshMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ForcedMaterialMeshMgr class.
+        /// </description>
+        /// <returns>The type info object for ForcedMaterialMeshMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +114,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Material used to draw all meshes in the render bin.
+        /// </description>
+        /// </value>
         public Material Material {
             get => GenericMarshal.StringTo<Material>(GetFieldValue("Material"));
             set => SetFieldValue("Material", GenericMarshal.ToString(value));

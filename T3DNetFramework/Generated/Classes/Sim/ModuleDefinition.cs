@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class ModuleDefinition : SimSet {
         public ModuleDefinition(bool pRegister = false) 
             : base(pRegister) {
@@ -229,6 +230,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ModuleDefinition class.
+        /// </description>
+        /// <returns>The type info object for ModuleDefinition</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -236,6 +241,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// Removes the specified moduleId as a dependency.
+        /// </description>
+        /// <param name="moduleId">The module Id to remove as a dependency.</param>
+        /// <returns>(bool success) Whether the module dependency was removed or not.</returns>
         public bool RemoveDependency(string pModuleId = "") {
              InternalUnsafeMethods.RemoveDependency__Args _args = new InternalUnsafeMethods.RemoveDependency__Args() {
                 pModuleId = pModuleId,
@@ -244,6 +254,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Adds the specified moduleId and vesionId as a dependency.
+        /// </description>
+        /// <param name="moduleId">The module Id to add as a dependency.</param>
+        /// <param name="versionId">The version Id to add as a dependency.  Using zero indicates any version.</param>
+        /// <returns>(bool success) Whether the module dependency was added or not.</returns>
         public bool AddDependency(string pModuleId = "", uint versionId = 0) {
              InternalUnsafeMethods.AddDependency__Args _args = new InternalUnsafeMethods.AddDependency__Args() {
                 pModuleId = pModuleId,
@@ -253,6 +269,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the module dependency at the specified index.
+        /// </description>
+        /// <param name="dependencyIndex">The module dependency index.</param>
+        /// <returns>(module - dependency) The module dependency at the specified index.</returns>
         public string GetDependency(uint dependencyIndex = 0) {
              InternalUnsafeMethods.GetDependency__Args _args = new InternalUnsafeMethods.GetDependency__Args() {
                 dependencyIndex = dependencyIndex,
@@ -261,6 +282,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the number of module dependencies this module definition has.
+        /// </description>
+        /// <returns>(int count) The number of module dependencies this module definition has.</returns>
         public int GetDependencyCount() {
              InternalUnsafeMethods.GetDependencyCount__Args _args = new InternalUnsafeMethods.GetDependencyCount__Args() {
              };
@@ -268,6 +293,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the module manager which this module definition is registered with (if any).
+        /// </description>
+        /// <returns>(moduleManager) The module manager which this module definition is registered with (zero if not registered).</returns>
         public int GetModuleManager() {
              InternalUnsafeMethods.GetModuleManager__Args _args = new InternalUnsafeMethods.GetModuleManager__Args() {
              };
@@ -275,6 +304,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Saves the module definition to the file it was loaded from (if any).
+        /// </description>
+        /// <returns>(bool success) Whether the module definition was saved or not.</returns>
         public bool Save() {
              InternalUnsafeMethods.Save__Args _args = new InternalUnsafeMethods.Save__Args() {
              };
@@ -282,116 +315,254 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+
+        /// <value>
+        /// <description>
+        /// A unique string Id for the module.  It can contain any characters except a comma or semi-colon (the asset scope character).
+        /// </description>
+        /// </value>
         public string ModuleId {
             get => GenericMarshal.StringTo<string>(GetFieldValue("ModuleId"));
             set => SetFieldValue("ModuleId", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The version Id.  Breaking changes to a module should use a higher version Id.
+        /// </description>
+        /// </value>
         public int VersionId {
             get => GenericMarshal.StringTo<int>(GetFieldValue("VersionId"));
             set => SetFieldValue("VersionId", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The build Id.  Non-breaking changes to a module should use a higher build Id.  Optional: If not specified then the build Id will be zero.
+        /// </description>
+        /// </value>
         public int BuildId {
             get => GenericMarshal.StringTo<int>(GetFieldValue("BuildId"));
             set => SetFieldValue("BuildId", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the module is enabled or not.  When disabled, it is effectively ignored.  Optional: If not specified then the module is enabled.
+        /// </description>
+        /// </value>
         public bool Enabled {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("enabled"));
             set => SetFieldValue("enabled", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the module should be synchronized or not.  Optional: If not specified then the module is not synchronized.
+        /// </description>
+        /// </value>
         public bool Synchronized {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("Synchronized"));
             set => SetFieldValue("Synchronized", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the module is deprecated or not.  Optional: If not specified then the module is not deprecated.
+        /// </description>
+        /// </value>
         public bool Deprecated {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("Deprecated"));
             set => SetFieldValue("Deprecated", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the merging of a module prior to a restart is critical or not.  Optional: If not specified then the module is not merge critical.
+        /// </description>
+        /// </value>
         public bool CriticalMerge {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("CriticalMerge"));
             set => SetFieldValue("CriticalMerge", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls if when this module is loaded and the create function is executed, it will replace existing objects that share names or not.
+        /// </description>
+        /// </value>
         public bool OverrideExistingObjects {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("OverrideExistingObjects"));
             set => SetFieldValue("OverrideExistingObjects", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The description typically used for debugging purposes but can be used for anything.
+        /// </description>
+        /// </value>
         public string Description {
             get => GenericMarshal.StringTo<string>(GetFieldValue("description"));
             set => SetFieldValue("description", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The author of the module.
+        /// </description>
+        /// </value>
         public string Author {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Author"));
             set => SetFieldValue("Author", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The module group used typically when loading modules as a group.
+        /// </description>
+        /// </value>
         public string Group {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Group"));
             set => SetFieldValue("Group", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The module type typically used to distinguish modules during module enumeration.  Optional: If not specified then the type is empty although this can still be used as a pseudo 'global' type for instance.
+        /// </description>
+        /// </value>
         public string Type {
             get => GenericMarshal.StringTo<string>(GetFieldValue("type"));
             set => SetFieldValue("type", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A comma-separated list of module Ids/VersionIds (<ModuleId>=<VersionId>,<ModuleId>=<VersionId>,etc) which this module depends upon. Optional: If not specified then no dependencies are assumed.
+        /// </description>
+        /// </value>
         public string Dependencies {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Dependencies"));
             set => SetFieldValue("Dependencies", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The name of the script file to compile when loading the module.  Optional.
+        /// </description>
+        /// </value>
         public string ScriptFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("scriptFile"));
             set => SetFieldValue("scriptFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The name of the function used to create the module.  Optional: If not specified then no create function is called.
+        /// </description>
+        /// </value>
         public string CreateFunction {
             get => GenericMarshal.StringTo<string>(GetFieldValue("CreateFunction"));
             set => SetFieldValue("CreateFunction", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The name of the function used to destroy the module.  Optional: If not specified then no destroy function is called.
+        /// </description>
+        /// </value>
         public string DestroyFunction {
             get => GenericMarshal.StringTo<string>(GetFieldValue("DestroyFunction"));
             set => SetFieldValue("DestroyFunction", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The name of tags asset manifest file if this module contains asset tags.  Optional: If not specified then no asset tags will be found for this module.  Currently, only a single asset tag manifest should exist.
+        /// </description>
+        /// </value>
         public string AssetTagsManifest {
             get => GenericMarshal.StringTo<string>(GetFieldValue("AssetTagsManifest"));
             set => SetFieldValue("AssetTagsManifest", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The scope set used to control the lifetime scope of objects that the module uses.  Objects added to this set are destroyed automatically when the module is unloaded.
+        /// </description>
+        /// </value>
         public int ScopeSet {
             get => GenericMarshal.StringTo<int>(GetFieldValue("ScopeSet"));
             set => SetFieldValue("ScopeSet", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The path of the module.  This is read-only and is available only after the module has been registered by a module manager.
+        /// </description>
+        /// </value>
         public string ModulePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("ModulePath"));
             set => SetFieldValue("ModulePath", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The file of the module.  This is read-only and is available only after the module has been registered by a module manager.
+        /// </description>
+        /// </value>
         public string ModuleFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("ModuleFile"));
             set => SetFieldValue("ModuleFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The file-path of the module definition.  This is read-only and is available only after the module has been registered by a module manager.
+        /// </description>
+        /// </value>
         public string ModuleFilePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("ModuleFilePath"));
             set => SetFieldValue("ModuleFilePath", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The file-path of the script-file referenced in the module definition.  This is read-only and is available only after the module has been registered by a module manager.
+        /// </description>
+        /// </value>
         public string ModuleScriptFilePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("ModuleScriptFilePath"));
             set => SetFieldValue("ModuleScriptFilePath", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A unique signature of the module definition based upon its Id, version and build.  This is read-only and is available only after the module has been registered by a module manager.
+        /// </description>
+        /// </value>
         public string Signature {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Signature"));
             set => SetFieldValue("Signature", GenericMarshal.ToString(value));

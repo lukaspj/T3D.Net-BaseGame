@@ -14,7 +14,33 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A gui control allowing a window to be subdivided into panes, each of which displays a gui control child of the GuiFrameSetCtrl.</summary>
+    /// <description>
+    /// Each gui control child will have an associated FrameDetail through which frame-specific details can be assigned. Frame-specific values override the values specified for the entire frameset.
+    /// 
+    /// Note that it is possible to have more children than frames, or more frames than children. In the former case, the extra children will not be visible (they are moved beyond the visible extent of the frameset). In the latter case, frames will be empty. For example, if a frameset had two columns and two rows but only three gui control children they would be assigned to frames as follows:
+    /// <pre>
+    ///                  1 | 2
+    ///                  -----
+    ///                  3 |
+    /// </pre>
+    /// The last frame would be blank.
+    /// </description>
+    /// <code>
+    /// new GuiFrameSetCtrl()
+    /// {
+    ///    columns = "3";
+    ///    rows = "2";
+    ///    borderWidth = "1";
+    ///    borderColor = "128 128 128";
+    ///    borderEnable = "dynamic";
+    ///    borderMovable = "dynamic";
+    ///    autoBalance = "1";
+    ///    fudgeFactor = "0";
+    ///    //Properties not specific to this control have been omitted from this example.
+    /// };
+    /// </code>
     public unsafe class GuiFrameSetCtrl : GuiContainer {
         public GuiFrameSetCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -437,12 +463,22 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Recalculates child control sizes.
+        /// </description>
         public void UpdateSizes() {
              InternalUnsafeMethods.UpdateSizes__Args _args = new InternalUnsafeMethods.UpdateSizes__Args() {
              };
              InternalUnsafeMethods.UpdateSizes()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the vertical offset of a row.
+        /// 
+        /// Note that row offsets must always be in increasing order, and therefore this offset must be between the offsets of the rows either side.
+        /// </description>
+        /// <param name="index">Index of the row to modify</param>
+        /// <param name="offset">New row offset</param>
         public void SetRowOffset(int index, int offset) {
              InternalUnsafeMethods.SetRowOffset__Args _args = new InternalUnsafeMethods.SetRowOffset__Args() {
                 index = index,
@@ -451,6 +487,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetRowOffset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the horizontal offset of a column.
+        /// 
+        /// Note that column offsets must always be in increasing order, and therefore this offset must be between the offsets of the colunns either side.
+        /// </description>
+        /// <param name="index">Index of the column to modify</param>
+        /// <param name="offset">New column offset</param>
         public void SetColumnOffset(int index, int offset) {
              InternalUnsafeMethods.SetColumnOffset__Args _args = new InternalUnsafeMethods.SetColumnOffset__Args() {
                 index = index,
@@ -459,6 +502,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetColumnOffset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the vertical offset of a row.
+        /// </description>
+        /// <param name="index">Index of the row to query</param>
+        /// <returns>Row offset in pixels</returns>
         public int GetRowOffset(int index) {
              InternalUnsafeMethods.GetRowOffset__Args _args = new InternalUnsafeMethods.GetRowOffset__Args() {
                 index = index,
@@ -467,6 +515,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the horizontal offset of a column.
+        /// </description>
+        /// <param name="index">Index of the column to query</param>
+        /// <returns>Column offset in pixels</returns>
         public int GetColumnOffset(int index) {
              InternalUnsafeMethods.GetColumnOffset__Args _args = new InternalUnsafeMethods.GetColumnOffset__Args() {
                 index = index,
@@ -475,6 +528,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of rows.
+        /// </description>
+        /// <returns>The number of rows</returns>
         public int GetRowCount() {
              InternalUnsafeMethods.GetRowCount__Args _args = new InternalUnsafeMethods.GetRowCount__Args() {
              };
@@ -482,6 +539,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of columns.
+        /// </description>
+        /// <returns>The number of columns</returns>
         public int GetColumnCount() {
              InternalUnsafeMethods.GetColumnCount__Args _args = new InternalUnsafeMethods.GetColumnCount__Args() {
              };
@@ -489,30 +550,46 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Remove the last (bottom) row.
+        /// </description>
         public void RemoveRow() {
              InternalUnsafeMethods.RemoveRow__Args _args = new InternalUnsafeMethods.RemoveRow__Args() {
              };
              InternalUnsafeMethods.RemoveRow()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Remove the last (rightmost) column.
+        /// </description>
         public void RemoveColumn() {
              InternalUnsafeMethods.RemoveColumn__Args _args = new InternalUnsafeMethods.RemoveColumn__Args() {
              };
              InternalUnsafeMethods.RemoveColumn()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add a new row.
+        /// </description>
         public void AddRow() {
              InternalUnsafeMethods.AddRow__Args _args = new InternalUnsafeMethods.AddRow__Args() {
              };
              InternalUnsafeMethods.AddRow()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add a new column.
+        /// </description>
         public void AddColumn() {
              InternalUnsafeMethods.AddColumn__Args _args = new InternalUnsafeMethods.AddColumn__Args() {
              };
              InternalUnsafeMethods.AddColumn()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the padding for this frame.
+        /// </description>
+        /// <param name="index">Index of the frame to query</param>
         public RectSpacingI GetFramePadding(int index) {
              InternalUnsafeMethods.GetFramePadding__Args _args = new InternalUnsafeMethods.GetFramePadding__Args() {
                 index = index,
@@ -521,6 +598,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new RectSpacingI(_engineResult);
         }
 
+        /// <description>
+        /// Set the padding for this frame. Padding introduces blank space on the inside edge of the frame.
+        /// </description>
+        /// <param name="index">Index of the frame to modify</param>
+        /// <param name="padding">Frame top, bottom, left, and right padding</param>
         public void FramePadding(int index, RectSpacingI padding) {
 padding.Alloc();             InternalUnsafeMethods.FramePadding__Args _args = new InternalUnsafeMethods.FramePadding__Args() {
                 index = index,
@@ -529,6 +611,12 @@ padding.Alloc();             InternalUnsafeMethods.FramePadding__Args _args = ne
              InternalUnsafeMethods.FramePadding()(ObjectPtr, _args);
 padding.Free();        }
 
+        /// <description>
+        /// Set the minimum width and height for the frame. It will not be possible for the user to resize the frame smaller than this.
+        /// </description>
+        /// <param name="index">Index of the frame to modify</param>
+        /// <param name="width">Minimum width in pixels</param>
+        /// <param name="height">Minimum height in pixels</param>
         public void FrameMinExtent(int index, int width, int height) {
              InternalUnsafeMethods.FrameMinExtent__Args _args = new InternalUnsafeMethods.FrameMinExtent__Args() {
                 index = index,
@@ -538,6 +626,11 @@ padding.Free();        }
              InternalUnsafeMethods.FrameMinExtent()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Override the <i>borderMovable</i> setting for this frame.
+        /// </description>
+        /// <param name="index">Index of the frame to modify</param>
+        /// <param name="state">New borderEnable state: "on", "off" or "dynamic"</param>
         public void FrameMovable(int index, string state = "dynamic") {
              InternalUnsafeMethods.FrameMovable__Args _args = new InternalUnsafeMethods.FrameMovable__Args() {
                 index = index,
@@ -546,6 +639,11 @@ padding.Free();        }
              InternalUnsafeMethods.FrameMovable()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Override the <i>borderEnable</i> setting for this frame.
+        /// </description>
+        /// <param name="index">Index of the frame to modify</param>
+        /// <param name="state">New borderEnable state: "on", "off" or "dynamic"</param>
         public void FrameBorder(int index, string state = "dynamic") {
              InternalUnsafeMethods.FrameBorder__Args _args = new InternalUnsafeMethods.FrameBorder__Args() {
                 index = index,
@@ -554,6 +652,10 @@ padding.Free();        }
              InternalUnsafeMethods.FrameBorder()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiFrameSetCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiFrameSetCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -561,41 +663,93 @@ padding.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// A vector of column offsets (determines the width of each column).
+        /// </description>
+        /// </value>
         public IntVector Columns {
             get => GenericMarshal.StringTo<IntVector>(GetFieldValue("columns"));
             set => SetFieldValue("columns", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A vector of row offsets (determines the height of each row).
+        /// </description>
+        /// </value>
         public IntVector Rows {
             get => GenericMarshal.StringTo<IntVector>(GetFieldValue("rows"));
             set => SetFieldValue("rows", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Width of interior borders between cells in pixels.
+        /// </description>
+        /// </value>
         public int BorderWidth {
             get => GenericMarshal.StringTo<int>(GetFieldValue("borderWidth"));
             set => SetFieldValue("borderWidth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color of interior borders between cells.
+        /// </description>
+        /// </value>
         public ColorI BorderColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("borderColor"));
             set => SetFieldValue("borderColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls whether frame borders are enabled.
+        /// 
+        /// Frames use this value unless overridden for that frame using <i>%ctrl.frameBorder(index)</i>
+        /// </description>
+        /// </value>
         public GuiFrameState BorderEnable {
             get => GenericMarshal.StringTo<GuiFrameState>(GetFieldValue("borderEnable"));
             set => SetFieldValue("borderEnable", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls whether borders can be dynamically repositioned with the mouse by the user.
+        /// 
+        /// Frames use this value unless overridden for that frame using <i>%ctrl.frameMovable(index)</i>
+        /// </description>
+        /// </value>
         public GuiFrameState BorderMovable {
             get => GenericMarshal.StringTo<GuiFrameState>(GetFieldValue("borderMovable"));
             set => SetFieldValue("borderMovable", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, row and column offsets are automatically scaled to match the new extents when the control is resized.
+        /// </description>
+        /// </value>
         public bool AutoBalance {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("autoBalance"));
             set => SetFieldValue("autoBalance", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Offset for row and column dividers in pixels
+        /// </description>
+        /// </value>
         public int FudgeFactor {
             get => GenericMarshal.StringTo<int>(GetFieldValue("fudgeFactor"));
             set => SetFieldValue("fudgeFactor", GenericMarshal.ToString(value));

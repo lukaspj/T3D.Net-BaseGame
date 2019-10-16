@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class guiAnimBitmapCtrl : GuiBitmapCtrl {
         public guiAnimBitmapCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -161,6 +162,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// triggered when a frame increments
+        /// </description>
         public virtual void OnFrame(int frameIndex, int frame) {
              InternalUnsafeMethods.OnFrame__Args _args = new InternalUnsafeMethods.OnFrame__Args() {
                 frameIndex = frameIndex,
@@ -169,18 +173,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnFrame()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// triggered when an animation completes
+        /// </description>
         public virtual void OnCompleted() {
              InternalUnsafeMethods.OnCompleted__Args _args = new InternalUnsafeMethods.OnCompleted__Args() {
              };
              InternalUnsafeMethods.OnCompleted()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// triggered when a loop completes
+        /// </description>
         public virtual void OnLoop() {
              InternalUnsafeMethods.OnLoop__Args _args = new InternalUnsafeMethods.OnLoop__Args() {
              };
              InternalUnsafeMethods.OnLoop()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the guiAnimBitmapCtrl class.
+        /// </description>
+        /// <returns>The type info object for guiAnimBitmapCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -188,36 +202,85 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>The number of frames, in rows and columns stored in textureName (when animateTexture is true).</summary>
+        /// <description>
+        /// A maximum of 256 frames can be stored in a single texture when using mAnimTexTiling. Value should be "NumColumns NumRows", for example "4 4".
+        /// </description>
+        /// </value>
         public Point2I AnimTexTiling {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("animTexTiling"));
             set => SetFieldValue("animTexTiling", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>A list of frames and/or frame ranges to use for particle animation if animateTexture is true.</summary>
+        /// <description>
+        /// Each frame token must be separated by whitespace. A frame token must be a positive integer frame number or a range of frame numbers separated with a '-'. The range separator, '-', cannot have any whitspace around it.
+        /// 
+        /// Ranges can be specified to move through the frames in reverse as well as forward (eg. 19-14). Frame numbers exceeding the number of tiles will wrap.
+        /// </description>
+        /// <code>
+        /// mAnimTexFrames = "0-16 20 19 18 17 31-21";
+        /// </code>
+        /// </value>
         public string AnimTexFrames {
             get => GenericMarshal.StringTo<string>(GetFieldValue("animTexFrames"));
             set => SetFieldValue("animTexFrames", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// loop?
+        /// </description>
+        /// </value>
         public bool Loop {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("loop"));
             set => SetFieldValue("loop", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// play?
+        /// </description>
+        /// </value>
         public bool Play {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("play"));
             set => SetFieldValue("play", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// play reversed?
+        /// </description>
+        /// </value>
         public bool Reverse {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("reverse"));
             set => SetFieldValue("reverse", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Frame Rate
+        /// </description>
+        /// </value>
         public int Fps {
             get => GenericMarshal.StringTo<int>(GetFieldValue("fps"));
             set => SetFieldValue("fps", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Index of currently Displaying Frame
+        /// </description>
+        /// </value>
         public int CurFrame {
             get => GenericMarshal.StringTo<int>(GetFieldValue("curFrame"));
             set => SetFieldValue("curFrame", GenericMarshal.ToString(value));

@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class MeshComponent : Component {
         public MeshComponent(bool pRegister = false) 
             : base(pRegister) {
@@ -300,6 +301,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the MeshComponent class.
+        /// </description>
+        /// <returns>The type info object for MeshComponent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -307,6 +312,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <summary>Change one of the materials on the shape.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public bool SetMatInstField(uint slot = 0, string field = "", string value = "") {
              InternalUnsafeMethods.SetMatInstField__Args _args = new InternalUnsafeMethods.SetMatInstField__Args() {
                 slot = slot,
@@ -317,6 +326,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Change one of the materials on the shape.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void ChangeMaterial(uint slot = 0, MaterialAsset newMat = null) {
              InternalUnsafeMethods.ChangeMaterial__Args _args = new InternalUnsafeMethods.ChangeMaterial__Args() {
                 slot = slot,
@@ -325,6 +338,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ChangeMaterial()(ObjectPtr, _args);
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public int GetNodeByName(string nodeName) {
              InternalUnsafeMethods.GetNodeByName__Args _args = new InternalUnsafeMethods.GetNodeByName__Args() {
                 nodeName = nodeName,
@@ -333,6 +354,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public Point3F GetNodeRotation(int node = -1) {
              InternalUnsafeMethods.GetNodeRotation__Args _args = new InternalUnsafeMethods.GetNodeRotation__Args() {
                 node = node,
@@ -341,6 +370,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public Point3F GetNodePosition(int node = -1) {
              InternalUnsafeMethods.GetNodePosition__Args _args = new InternalUnsafeMethods.GetNodePosition__Args() {
                 node = node,
@@ -349,6 +386,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public Point3F GetNodeEulerRot(int node = -1, bool radToDeg = true) {
              InternalUnsafeMethods.GetNodeEulerRot__Args _args = new InternalUnsafeMethods.GetNodeEulerRot__Args() {
                 node = node,
@@ -358,6 +403,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public TransformF GetNodeTransform(int node = -1) {
              InternalUnsafeMethods.GetNodeTransform__Args _args = new InternalUnsafeMethods.GetNodeTransform__Args() {
                 node = node,
@@ -366,6 +419,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new TransformF(_engineResult);
         }
 
+        /// <summary>Mount objB to this object at the desired slot with optional transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objB">Object to mount onto us</param>
+        /// <param name="slot">Mount slot ID</param>
+        /// <param name="txfm">(optional) mount offset transform</param>
+        /// <returns>true if successful, false if failed (objB is not valid)</returns>
         public bool MountObject(SceneObject objB, string node, TransformF txfm = null) {
 txfm = txfm ?? new TransformF("0 0 0 1 0 0 0 true");
 txfm.Alloc();             InternalUnsafeMethods.MountObject__Args _args = new InternalUnsafeMethods.MountObject__Args() {
@@ -377,6 +438,12 @@ txfm.Alloc();             InternalUnsafeMethods.MountObject__Args _args = new In
 txfm.Free();             return _engineResult;
         }
 
+        /// <summary>Get the cobject we're in contact with.</summary>
+        /// <description>
+        /// The controlling client is the one that will send moves to us to act on.
+        /// </description>
+        /// <returns>the ID of the controlling GameConnection, or 0 if this object is not controlled by any client.</returns>
+        /// <see cref="GameConnection" />
         public Box3F GetShapeBounds() {
              InternalUnsafeMethods.GetShapeBounds__Args _args = new InternalUnsafeMethods.GetShapeBounds__Args() {
              };
@@ -384,11 +451,23 @@ txfm.Free();             return _engineResult;
              return new Box3F(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The mode of batching this shape should be rendered with.
+        /// </description>
+        /// </value>
         public BatchingMode BatchingMode {
             get => GenericMarshal.StringTo<BatchingMode>(GetFieldValue("BatchingMode"));
             set => SetFieldValue("BatchingMode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The asset Id used for the mesh.
+        /// </description>
+        /// </value>
         public string MeshAsset {
             get => GenericMarshal.StringTo<string>(GetFieldValue("MeshAsset"));
             set => SetFieldValue("MeshAsset", GenericMarshal.ToString(value));

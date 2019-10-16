@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A spellbook object.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxSpellBook : GameBase {
         public afxSpellBook(bool pRegister = false) 
             : base(pRegister) {
@@ -182,12 +186,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ...
+        /// </description>
         public void StartAllSpellCooldown() {
              InternalUnsafeMethods.StartAllSpellCooldown__Args _args = new InternalUnsafeMethods.StartAllSpellCooldown__Args() {
              };
              InternalUnsafeMethods.StartAllSpellCooldown()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get spell RPG datablock for spell stored at spellbook index, (page, slot).
+        /// </description>
         public int GetSpellRPGData(Point2I bookSlot) {
 bookSlot.Alloc();             InternalUnsafeMethods.GetSpellRPGData__Args _args = new InternalUnsafeMethods.GetSpellRPGData__Args() {
                 bookSlot = bookSlot.internalStructPtr,
@@ -196,6 +206,9 @@ bookSlot.Alloc();             InternalUnsafeMethods.GetSpellRPGData__Args _args 
 bookSlot.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Get spell datablock for spell stored at spellbook index, (page, slot).
+        /// </description>
         public int GetSpellData(Point2I bookSlot) {
 bookSlot.Alloc();             InternalUnsafeMethods.GetSpellData__Args _args = new InternalUnsafeMethods.GetSpellData__Args() {
                 bookSlot = bookSlot.internalStructPtr,
@@ -204,6 +217,9 @@ bookSlot.Alloc();             InternalUnsafeMethods.GetSpellData__Args _args = n
 bookSlot.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// ...
+        /// </description>
         public int GetPageSlotIndex(Point2I bookSlot) {
 bookSlot.Alloc();             InternalUnsafeMethods.GetPageSlotIndex__Args _args = new InternalUnsafeMethods.GetPageSlotIndex__Args() {
                 bookSlot = bookSlot.internalStructPtr,
@@ -212,6 +228,10 @@ bookSlot.Alloc();             InternalUnsafeMethods.GetPageSlotIndex__Args _args
 bookSlot.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the afxSpellBook class.
+        /// </description>
+        /// <returns>The type info object for afxSpellBook</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

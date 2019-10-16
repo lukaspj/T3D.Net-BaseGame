@@ -136,6 +136,10 @@ namespace T3DNetFramework.Generated.Functions {
         }
         #endregion
 
+        /// <description>
+        /// Dump the banlist to a file.
+        /// </description>
+        /// <param name="filename">Path of the file to write the list to.</param>
         public static void Export(string filename) {
              InternalUnsafeMethods.Export__Args _args = new InternalUnsafeMethods.Export__Args() {
                 filename = filename,
@@ -143,6 +147,33 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.Export()(_args);
         }
 
+        /// <description>
+        /// Is someone banned?
+        /// </description>
+        /// <param name="uniqueId">Unique ID of the player.</param>
+        /// <param name="transportAddress">Address from which the player connected.</param>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// // This script function is called before a client connection
+        /// // is accepted.  Returning  will accept the connection,
+        /// // anything else will be sent back as an error to the client.
+        /// // All the connect args are passed also to onConnectRequest
+        /// function GameConnection::onConnectRequest( %client, %netAddress, %name )
+        /// {
+        /// 	  // Find out who is trying to connect
+        /// 	  echo("Connect request from: "@ %netAddress);
+        /// 
+        /// 	  // Are they allowed in?
+        /// 	  if(BanList::isBanned(%client.guid, %netAddress))
+        /// 		  return "CR_YOUAREBANNED";
+        /// 
+        /// 	  // Is there room for an unbanned player?
+        /// 	  if($Server::PlayerCount >= $pref::Server::MaxPlayers)
+        /// 		  return "CR_SERVERFULL";
+        /// 	  return ;
+        /// }
+        /// 
+        /// </code>
         public static bool IsBanned(int uniqueId, string transportAddress) {
              InternalUnsafeMethods.IsBanned__Args _args = new InternalUnsafeMethods.IsBanned__Args() {
                 uniqueId = uniqueId,
@@ -152,6 +183,14 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// Unban someone.
+        /// </description>
+        /// <param name="uniqueId">Unique ID of the player.</param>
+        /// <param name="transportAddress">Address from which the player connected.</param>
+        /// <code>
+        /// BanList::removeBan(%userID, %ipAddress);
+        /// </code>
         public static void RemoveBan(int uniqueId, string transportAddress) {
              InternalUnsafeMethods.RemoveBan__Args _args = new InternalUnsafeMethods.RemoveBan__Args() {
                 uniqueId = uniqueId,
@@ -160,6 +199,28 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.RemoveBan()(_args);
         }
 
+        /// <description>
+        /// Ban a user for banLength seconds.
+        /// </description>
+        /// <param name="uniqueId">Unique ID of the player.</param>
+        /// <param name="transportAddress">Address from which the player connected.</param>
+        /// <param name="banLength">Time period over which to ban the player.</param>
+        /// <code>
+        /// // Kick someone off the server
+        /// // %client - This is the connection to the person we are kicking
+        /// function kick(%client)
+        /// {
+        /// 		// Let the server know what happened
+        /// 		messageAll( 'MsgAdminForce', '\c2The Admin has kicked %1.', %client.playerName);
+        /// 
+        /// 		// If it is not an AI Player, execute the ban.
+        /// 		if (!%client.isAIControlled())
+        /// 			BanList::add(%client.guid, %client.getAddress(), $pref::Server::KickBanTime);
+        /// 
+        /// 		// Let the player know they messed up
+        /// 		%client.delete("You have been kicked from this server");
+        /// }
+        /// </code>
         public static void Add(int uniqueId, string transportAddress, int banLength) {
              InternalUnsafeMethods.Add__Args _args = new InternalUnsafeMethods.Add__Args() {
                 uniqueId = uniqueId,
@@ -169,6 +230,28 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.Add()(_args);
         }
 
+        /// <description>
+        /// Ban a user until a given time.
+        /// </description>
+        /// <param name="uniqueId">Unique ID of the player.</param>
+        /// <param name="transportAddress">Address from which the player connected.</param>
+        /// <param name="banTime">Time at which they will be allowed back in.</param>
+        /// <code>
+        /// // Kick someone off the server
+        /// // %client - This is the connection to the person we are kicking
+        /// function kick(%client)
+        /// {
+        /// 		// Let the server know what happened
+        /// 		messageAll( 'MsgAdminForce', '\c2The Admin has kicked %1.', %client.playerName);
+        /// 
+        /// 		// If it is not an AI Player, execute the ban.
+        /// 		if (!%client.isAIControlled())
+        /// 			BanList::addAbsolute(%client.guid, %client.getAddress(), $pref::Server::KickBanTime);
+        /// 
+        /// 		// Let the player know they messed up
+        /// 		%client.delete("You have been kicked from this server");
+        /// }
+        /// </code>
         public static void AddAbsolute(int uniqueId, string transportAddress, int banTime) {
              InternalUnsafeMethods.AddAbsolute__Args _args = new InternalUnsafeMethods.AddAbsolute__Args() {
                 uniqueId = uniqueId,

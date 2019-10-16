@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A container that allows to view one or more possibly larger controls inside its area by providing horizontal and/or vertical scroll bars.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class GuiScrollCtrl : GuiContainer {
         public GuiScrollCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -282,12 +286,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Refresh sizing and positioning of child controls.
+        /// </description>
         public void ComputeSizes() {
              InternalUnsafeMethods.ComputeSizes__Args _args = new InternalUnsafeMethods.ComputeSizes__Args() {
              };
              InternalUnsafeMethods.ComputeSizes()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the current Y coordinate of the scrolled content.
+        /// </description>
+        /// <returns>The current Y coordinate of the scrolled content.</returns>
         public int GetScrollPositionY() {
              InternalUnsafeMethods.GetScrollPositionY__Args _args = new InternalUnsafeMethods.GetScrollPositionY__Args() {
              };
@@ -295,6 +306,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the current X coordinate of the scrolled content.
+        /// </description>
+        /// <returns>The current X coordinate of the scrolled content.</returns>
         public int GetScrollPositionX() {
              InternalUnsafeMethods.GetScrollPositionX__Args _args = new InternalUnsafeMethods.GetScrollPositionX__Args() {
              };
@@ -302,6 +317,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the current coordinates of the scrolled content.
+        /// </description>
+        /// <returns>The current position of the scrolled content.</returns>
         public Point2I GetScrollPosition() {
              InternalUnsafeMethods.GetScrollPosition__Args _args = new InternalUnsafeMethods.GetScrollPosition__Args() {
              };
@@ -309,6 +328,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point2I(_engineResult);
         }
 
+        /// <description>
+        /// Scroll the control so that the given child<paramref name="" /> control is visible.
+        /// 
+        /// 
+        /// </description>
+        /// <param name="control">A child control.</param>
         public void ScrollToObject(GuiControl control) {
              InternalUnsafeMethods.ScrollToObject__Args _args = new InternalUnsafeMethods.ScrollToObject__Args() {
                 control = control.ObjectPtr,
@@ -316,6 +341,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ScrollToObject()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the position of the scrolled content.
+        /// </description>
+        /// <param name="x">Position on X axis.</param>
+        /// <param name="y">Position on y axis.</param>
         public void SetScrollPosition(int x, int y) {
              InternalUnsafeMethods.SetScrollPosition__Args _args = new InternalUnsafeMethods.SetScrollPosition__Args() {
                 x = x,
@@ -324,24 +354,37 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetScrollPosition()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Scroll all the way to the bottom of the vertical scrollbar and the left of the horizontal bar.
+        /// </description>
         public void ScrollToBottom() {
              InternalUnsafeMethods.ScrollToBottom__Args _args = new InternalUnsafeMethods.ScrollToBottom__Args() {
              };
              InternalUnsafeMethods.ScrollToBottom()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Scroll all the way to the top of the vertical and left of the horizontal scrollbar.
+        /// </description>
         public void ScrollToTop() {
              InternalUnsafeMethods.ScrollToTop__Args _args = new InternalUnsafeMethods.ScrollToTop__Args() {
              };
              InternalUnsafeMethods.ScrollToTop()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called each time the child controls are scrolled by some amount.
+        /// </description>
         public virtual void OnScroll() {
              InternalUnsafeMethods.OnScroll__Args _args = new InternalUnsafeMethods.OnScroll__Args() {
              };
              InternalUnsafeMethods.OnScroll()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiScrollCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiScrollCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -349,41 +392,85 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool WillFirstRespond {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("willFirstRespond"));
             set => SetFieldValue("willFirstRespond", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When to display the horizontal scrollbar.
+        /// </description>
+        /// </value>
         public GuiScrollBarBehavior HScrollBar {
             get => GenericMarshal.StringTo<GuiScrollBarBehavior>(GetFieldValue("hScrollBar"));
             set => SetFieldValue("hScrollBar", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When to display the vertical scrollbar.
+        /// </description>
+        /// </value>
         public GuiScrollBarBehavior VScrollBar {
             get => GenericMarshal.StringTo<GuiScrollBarBehavior>(GetFieldValue("vScrollBar"));
             set => SetFieldValue("vScrollBar", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Horizontal scrolling not allowed if set.
+        /// </description>
+        /// </value>
         public bool LockHorizScroll {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("lockHorizScroll"));
             set => SetFieldValue("lockHorizScroll", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Vertical scrolling not allowed if set.
+        /// </description>
+        /// </value>
         public bool LockVertScroll {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("lockVertScroll"));
             set => SetFieldValue("lockVertScroll", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ConstantThumbHeight {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("constantThumbHeight"));
             set => SetFieldValue("constantThumbHeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Padding region to put around child contents.
+        /// </description>
+        /// </value>
         public Point2I ChildMargin {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("childMargin"));
             set => SetFieldValue("childMargin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Pixels/Tick - if not positive then mousewheel scrolling occurs instantly (like other scrolling).
+        /// </description>
+        /// </value>
         public int MouseWheelScrollSpeed {
             get => GenericMarshal.StringTo<int>(GetFieldValue("mouseWheelScrollSpeed"));
             set => SetFieldValue("mouseWheelScrollSpeed", GenericMarshal.ToString(value));

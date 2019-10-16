@@ -14,7 +14,10 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Reflection {    
+namespace T3DNetFramework.Generated.Classes.Reflection {
+    /// <description>
+    /// Information about an engine function.
+    /// </description>
     public unsafe class EngineFunctionInfo : EngineExport {
         public EngineFunctionInfo(bool pRegister = false) 
             : base(pRegister) {
@@ -52,6 +55,10 @@ namespace T3DNetFramework.Generated.Classes.Reflection {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the EngineFunctionInfo class.
+        /// </description>
+        /// <returns>The type info object for EngineFunctionInfo</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

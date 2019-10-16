@@ -14,7 +14,71 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Represents a position, direction and field of view to render a scene from.</summary>
+    /// <description>
+    /// A camera is typically manipulated by a GameConnection.  When set as the connection's control object, the camera handles all movement actions ($mvForwardAction, $mvPitch, etc.) just like a Player.
+    /// </description>
+    /// <code>
+    /// // Set an already created camera as the GameConnection's control object
+    /// %connection.setControlObject(%camera);
+    /// </code>
+    /// <code>
+    /// // Create a camera in the level and set its position to a given spawn point.
+    /// // Note: The camera starts in the standard fly mode.
+    /// %cam = new Camera() {
+    ///    datablock = "Observer";
+    /// };
+    /// MissionCleanup.add( %cam );
+    /// %cam.setTransform( %spawnPoint.getTransform() );
+    /// </code>
+    /// <code>
+    /// // Create a camera at the given spawn point for the specified
+    /// // GameConnection i.e. the client.  Uses the standard
+    /// // Sim::spawnObject() function to create the camera using the
+    /// // defined default settings.
+    /// // Note: The camera starts in the standard fly mode.
+    /// function GameConnection::spawnCamera(%this, %spawnPoint)
+    /// {
+    ///    // Set the control object to the default camera
+    ///    if (!isObject(%this.camera))
+    ///    {
+    ///       if (isDefined("$Game::DefaultCameraClass"))
+    ///          %this.camera = spawnObject($Game::DefaultCameraClass, $Game::DefaultCameraDataBlock);
+    ///    }
+    /// 
+    ///    // If we have a camera then set up some properties
+    ///    if (isObject(%this.camera))
+    ///    {
+    ///       // Make sure we're cleaned up when the mission ends
+    ///       MissionCleanup.add( %this.camera );
+    /// 
+    ///       // Make sure the camera is always in scope for the connection
+    ///       %this.camera.scopeToClient(%this);
+    /// 
+    ///       // Send all user input from the connection to the camera
+    ///       %this.setControlObject(%this.camera);
+    /// 
+    ///       if (isDefined("%spawnPoint"))
+    ///       {
+    ///          // Attempt to treat %spawnPoint as an object, such as a
+    ///          // SpawnSphere class.
+    ///          if (getWordCount(%spawnPoint) == 1 && isObject(%spawnPoint))
+    ///          {
+    ///             %this.camera.setTransform(%spawnPoint.getTransform());
+    ///          }
+    ///          else
+    ///          {
+    ///             // Treat %spawnPoint as an AngleAxis transform
+    ///             %this.camera.setTransform(%spawnPoint);
+    ///          }
+    ///       }
+    ///    }
+    /// }
+    /// </code>
+    /// <see cref="CameraData" />
+    /// <see cref="CameraMotionMode" />
+    /// <see cref="Camera::movementSpeed" />
     public unsafe class Camera : ShapeBase {
         public Camera(bool pRegister = false) 
             : base(pRegister) {
@@ -748,6 +812,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Point the camera at the specified position.  Does not work in Orbit or Track modes.
+        /// </description>
+        /// <param name="point">The position to point the camera at.</param>
         public void LookAt(Point3F point) {
 point.Alloc();             InternalUnsafeMethods.LookAt__Args _args = new InternalUnsafeMethods.LookAt__Args() {
                 point = point.internalStructPtr,
@@ -755,6 +823,12 @@ point.Alloc();             InternalUnsafeMethods.LookAt__Args _args = new Intern
              InternalUnsafeMethods.LookAt()(ObjectPtr, _args);
 point.Free();        }
 
+        /// <description>
+        /// Move the camera to fully view the given radius.
+        /// </description>
+        /// <remarks> For this operation to take affect a valid edit orbit point must first be specified.  See Camera::setEditOrbitPoint().
+        /// </remarks>
+        /// <param name="radius">The radius to view.</param>
         public void AutoFitRadius(float radius) {
              InternalUnsafeMethods.AutoFitRadius__Args _args = new InternalUnsafeMethods.AutoFitRadius__Args() {
                 radius = radius,
@@ -762,6 +836,10 @@ point.Free();        }
              InternalUnsafeMethods.AutoFitRadius()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the editor camera's orbit point.
+        /// </description>
+        /// <param name="point">The point the camera will orbit in the form of "x y z".</param>
         public void SetEditOrbitPoint(Point3F point) {
 point.Alloc();             InternalUnsafeMethods.SetEditOrbitPoint__Args _args = new InternalUnsafeMethods.SetEditOrbitPoint__Args() {
                 point = point.internalStructPtr,
@@ -769,6 +847,12 @@ point.Alloc();             InternalUnsafeMethods.SetEditOrbitPoint__Args _args =
              InternalUnsafeMethods.SetEditOrbitPoint()(ObjectPtr, _args);
 point.Free();        }
 
+        /// <description>
+        /// Set if there is a valid editor camera orbit point.
+        /// When validPoint is set to false the Camera operates as if it is in Fly mode rather than an Orbit mode.
+        /// </description>
+        /// <param name="validPoint">Indicates the validity of the orbit point.</param>
+        /// <remarks> Only used when Camera is in Edit Orbit Mode.</remarks>
         public void SetValidEditOrbitPoint(bool validPoint) {
              InternalUnsafeMethods.SetValidEditOrbitPoint__Args _args = new InternalUnsafeMethods.SetValidEditOrbitPoint__Args() {
                 validPoint = validPoint,
@@ -776,6 +860,10 @@ point.Free();        }
              InternalUnsafeMethods.SetValidEditOrbitPoint()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Is the camera in edit orbit mode?
+        /// </description>
+        /// <returns>true if the camera is in edit orbit mode.</returns>
         public bool IsEditOrbitMode() {
              InternalUnsafeMethods.IsEditOrbitMode__Args _args = new InternalUnsafeMethods.IsEditOrbitMode__Args() {
              };
@@ -783,6 +871,11 @@ point.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the Newton mode camera brake multiplier when trigger[1] is active.
+        /// </description>
+        /// <param name="multiplier">The brake multiplier to apply.</param>
+        /// <remarks> Only used when Camera is in Newton mode.</remarks>
         public void SetBrakeMultiplier(float multiplier) {
              InternalUnsafeMethods.SetBrakeMultiplier__Args _args = new InternalUnsafeMethods.SetBrakeMultiplier__Args() {
                 multiplier = multiplier,
@@ -790,6 +883,11 @@ point.Free();        }
              InternalUnsafeMethods.SetBrakeMultiplier()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the Newton mode camera speed multiplier when trigger[0] is active.
+        /// </description>
+        /// <param name="multiplier">The speed multiplier to apply.</param>
+        /// <remarks> Only used when Camera is in Newton mode.</remarks>
         public void SetSpeedMultiplier(float multiplier) {
              InternalUnsafeMethods.SetSpeedMultiplier__Args _args = new InternalUnsafeMethods.SetSpeedMultiplier__Args() {
                 multiplier = multiplier,
@@ -797,6 +895,11 @@ point.Free();        }
              InternalUnsafeMethods.SetSpeedMultiplier()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the force applied to a Newton mode camera while moving.
+        /// </description>
+        /// <param name="force">The force applied to the camera while attempting to move.</param>
+        /// <remarks> Only used when Camera is in Newton mode.</remarks>
         public void SetFlyForce(float force) {
              InternalUnsafeMethods.SetFlyForce__Args _args = new InternalUnsafeMethods.SetFlyForce__Args() {
                 force = force,
@@ -804,6 +907,11 @@ point.Free();        }
              InternalUnsafeMethods.SetFlyForce()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the drag for a Newton mode camera.
+        /// </description>
+        /// <param name="drag">The drag applied to the camera while moving.</param>
+        /// <remarks> Only used when Camera is in Newton mode.</remarks>
         public void SetDrag(float drag) {
              InternalUnsafeMethods.SetDrag__Args _args = new InternalUnsafeMethods.SetDrag__Args() {
                 drag = drag,
@@ -811,6 +919,11 @@ point.Free();        }
              InternalUnsafeMethods.SetDrag()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the velocity for the camera.
+        /// </description>
+        /// <param name="velocity">The camera's velocity in the form of "x y z".</param>
+        /// <remarks> Only affects the Camera when in Newton mode.</remarks>
         public void SetVelocity(Point3F velocity) {
 velocity.Alloc();             InternalUnsafeMethods.SetVelocity__Args _args = new InternalUnsafeMethods.SetVelocity__Args() {
                 velocity = velocity.internalStructPtr,
@@ -818,6 +931,11 @@ velocity.Alloc();             InternalUnsafeMethods.SetVelocity__Args _args = ne
              InternalUnsafeMethods.SetVelocity()(ObjectPtr, _args);
 velocity.Free();        }
 
+        /// <description>
+        /// Get the velocity for the camera.
+        /// </description>
+        /// <returns>The camera's velocity in the form of "x y z".</returns>
+        /// <remarks> Only useful when the Camera is in Newton mode.</remarks>
         public Point3F GetVelocity() {
              InternalUnsafeMethods.GetVelocity__Args _args = new InternalUnsafeMethods.GetVelocity__Args() {
              };
@@ -825,6 +943,11 @@ velocity.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Set the mass for a Newton mode camera.
+        /// </description>
+        /// <param name="mass">The mass used during ease-in and ease-out calculations.</param>
+        /// <remarks> Only used when Camera is in Newton mode.</remarks>
         public void SetMass(float mass) {
              InternalUnsafeMethods.SetMass__Args _args = new InternalUnsafeMethods.SetMass__Args() {
                 mass = mass,
@@ -832,6 +955,11 @@ velocity.Free();        }
              InternalUnsafeMethods.SetMass()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the angular drag for a Newton mode camera.
+        /// </description>
+        /// <param name="drag">The angular drag applied while the camera is rotating.</param>
+        /// <remarks> Only takes affect when Camera::newtonRotation is set to true.</remarks>
         public void SetAngularDrag(float drag) {
              InternalUnsafeMethods.SetAngularDrag__Args _args = new InternalUnsafeMethods.SetAngularDrag__Args() {
                 drag = drag,
@@ -839,6 +967,11 @@ velocity.Free();        }
              InternalUnsafeMethods.SetAngularDrag()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the angular force for a Newton mode camera.
+        /// </description>
+        /// <param name="force">The angular force applied when attempting to rotate the camera.</param>
+        /// <remarks> Only takes affect when Camera::newtonRotation is set to true.</remarks>
         public void SetAngularForce(float force) {
              InternalUnsafeMethods.SetAngularForce__Args _args = new InternalUnsafeMethods.SetAngularForce__Args() {
                 force = force,
@@ -846,6 +979,11 @@ velocity.Free();        }
              InternalUnsafeMethods.SetAngularForce()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the angular velocity for a Newton mode camera.
+        /// </description>
+        /// <param name="velocity">The angular velocity infor form of "x y z".</param>
+        /// <remarks> Only takes affect when Camera::newtonRotation is set to true.</remarks>
         public void SetAngularVelocity(Point3F velocity) {
 velocity.Alloc();             InternalUnsafeMethods.SetAngularVelocity__Args _args = new InternalUnsafeMethods.SetAngularVelocity__Args() {
                 velocity = velocity.internalStructPtr,
@@ -853,6 +991,11 @@ velocity.Alloc();             InternalUnsafeMethods.SetAngularVelocity__Args _ar
              InternalUnsafeMethods.SetAngularVelocity()(ObjectPtr, _args);
 velocity.Free();        }
 
+        /// <description>
+        /// Get the angular velocity for a Newton mode camera.
+        /// </description>
+        /// <returns>The angular velocity in the form of "x y z".</returns>
+        /// <remarks> Only returns useful results when Camera::newtonRotation is set to true.</remarks>
         public Point3F GetAngularVelocity() {
              InternalUnsafeMethods.GetAngularVelocity__Args _args = new InternalUnsafeMethods.GetAngularVelocity__Args() {
              };
@@ -860,6 +1003,10 @@ velocity.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Is this a Newton Fly mode camera with damped rotation?
+        /// </description>
+        /// <returns>true if the camera uses a damped rotation.  i.e. Camera::newtonRotation is set to true.</returns>
         public bool IsRotationDamped() {
              InternalUnsafeMethods.IsRotationDamped__Args _args = new InternalUnsafeMethods.IsRotationDamped__Args() {
              };
@@ -867,24 +1014,45 @@ velocity.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the camera to fly freely, but with ease-in and ease-out.
+        /// 
+        /// This method allows for the same 6 degrees of freedom as Camera::setFlyMode() but activates the ease-in and ease-out on the camera's movement.  To also activate Newton mode for the camera's rotation, set Camera::newtonRotation to true.
+        /// </description>
         public void SetNewtonFlyMode() {
              InternalUnsafeMethods.SetNewtonFlyMode__Args _args = new InternalUnsafeMethods.SetNewtonFlyMode__Args() {
              };
              InternalUnsafeMethods.SetNewtonFlyMode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the camera to fly freely.
+        /// 
+        /// Allows the camera to have 6 degrees of freedom.  Provides for instantaneous motion and rotation unless one of the Newton fields has been set to true.  See Camera::newtonMode and Camera::newtonRotation.
+        /// </description>
         public void SetFlyMode() {
              InternalUnsafeMethods.SetFlyMode__Args _args = new InternalUnsafeMethods.SetFlyMode__Args() {
              };
              InternalUnsafeMethods.SetFlyMode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the editor camera to orbit around a point set with Camera::setEditOrbitPoint().
+        /// </description>
+        /// <remarks> This method is generally used only within the World Editor and other tools.  To orbit about an object or point within a game, see Camera::setOrbitMode() and its helper methods.
+        /// </remarks>
         public void SetEditOrbitMode() {
              InternalUnsafeMethods.SetEditOrbitMode__Args _args = new InternalUnsafeMethods.SetEditOrbitMode__Args() {
              };
              InternalUnsafeMethods.SetEditOrbitMode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the camera to track a given object.
+        /// </description>
+        /// <param name="trackObject">The object to track.</param>
+        /// <param name="offset">[optional] An offset added to the camera's position.  Default is no offset.</param>
+        /// <returns>false if the given object could not be found.</returns>
         public bool SetTrackObject(GameBase trackObject, Point3F offset = null) {
 offset = offset ?? new Point3F("0 0 0");
 offset.Alloc();             InternalUnsafeMethods.SetTrackObject__Args _args = new InternalUnsafeMethods.SetTrackObject__Args() {
@@ -895,6 +1063,16 @@ offset.Alloc();             InternalUnsafeMethods.SetTrackObject__Args _args = n
 offset.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Set the camera to orbit around a given point.
+        /// </description>
+        /// <param name="orbitPoint">The point to orbit around.  In the form of "x y z ax ay az aa" such as returned by SceneObject::getTransform().</param>
+        /// <param name="minDistance">The minimum distance allowed to the orbit object or point.</param>
+        /// <param name="maxDistance">The maximum distance allowed from the orbit object or point.</param>
+        /// <param name="initDistance">The initial distance from the orbit object or point.</param>
+        /// <param name="offset">[optional] An offset added to the camera's position.  Default is no offset.</param>
+        /// <param name="locked">[optional] Indicates the camera does not receive input from the player.  Default is false.</param>
+        /// <see cref="Camera::setOrbitMode()" />
         public void SetOrbitPoint(TransformF orbitPoint, float minDistance, float maxDistance, float initDistance, Point3F offset = null, bool locked = false) {
 orbitPoint.Alloc();offset = offset ?? new Point3F("0 0 0");
 offset.Alloc();             InternalUnsafeMethods.SetOrbitPoint__Args _args = new InternalUnsafeMethods.SetOrbitPoint__Args() {
@@ -908,6 +1086,19 @@ offset.Alloc();             InternalUnsafeMethods.SetOrbitPoint__Args _args = ne
              InternalUnsafeMethods.SetOrbitPoint()(ObjectPtr, _args);
 orbitPoint.Free();offset.Free();        }
 
+        /// <description>
+        /// Set the camera to orbit around a given object.
+        /// </description>
+        /// <param name="orbitObject">The object to orbit around.</param>
+        /// <param name="rotation">The initial camera rotation about the object in radians in the form of "x y z".</param>
+        /// <param name="minDistance">The minimum distance allowed to the orbit object or point.</param>
+        /// <param name="maxDistance">The maximum distance allowed from the orbit object or point.</param>
+        /// <param name="initDistance">The initial distance from the orbit object or point.</param>
+        /// <param name="ownClientObject">[optional] Are we orbiting an object that is owned by us?  Default is false.</param>
+        /// <param name="offset">[optional] An offset added to the camera's position.  Default is no offset.</param>
+        /// <param name="locked">[optional] Indicates the camera does not receive input from the player.  Default is false.</param>
+        /// <returns>false if the given object could not be found.</returns>
+        /// <see cref="Camera::setOrbitMode()" />
         public bool SetOrbitObject(GameBase orbitObject, Point3F rotation, float minDistance, float maxDistance, float initDistance, bool ownClientObject = false, Point3F offset = null, bool locked = false) {
 rotation.Alloc();offset = offset ?? new Point3F("0 0 0");
 offset.Alloc();             InternalUnsafeMethods.SetOrbitObject__Args _args = new InternalUnsafeMethods.SetOrbitObject__Args() {
@@ -924,6 +1115,19 @@ offset.Alloc();             InternalUnsafeMethods.SetOrbitObject__Args _args = n
 rotation.Free();offset.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Set the camera to orbit around the given object, or if none is given, around the given point.
+        /// </description>
+        /// <param name="orbitObject">The object to orbit around.  If no object is given (0 or blank string is passed in) use the orbitPoint instead</param>
+        /// <param name="orbitPoint">The point to orbit around when no object is given.  In the form of "x y z ax ay az aa" such as returned by SceneObject::getTransform().</param>
+        /// <param name="minDistance">The minimum distance allowed to the orbit object or point.</param>
+        /// <param name="maxDistance">The maximum distance allowed from the orbit object or point.</param>
+        /// <param name="initDistance">The initial distance from the orbit object or point.</param>
+        /// <param name="ownClientObj">[optional] Are we orbiting an object that is owned by us?  Default is false.</param>
+        /// <param name="offset">[optional] An offset added to the camera's position.  Default is no offset.</param>
+        /// <param name="locked">[optional] Indicates the camera does not receive input from the player.  Default is false.</param>
+        /// <see cref="Camera::setOrbitObject()" />
+        /// <see cref="Camera::setOrbitPoint()" />
         public void SetOrbitMode(GameBase orbitObject, TransformF orbitPoint, float minDistance, float maxDistance, float initDistance, bool ownClientObj = false, Point3F offset = null, bool locked = false) {
 orbitPoint.Alloc();offset = offset ?? new Point3F("0 0 0");
 offset.Alloc();             InternalUnsafeMethods.SetOrbitMode__Args _args = new InternalUnsafeMethods.SetOrbitMode__Args() {
@@ -939,6 +1143,12 @@ offset.Alloc();             InternalUnsafeMethods.SetOrbitMode__Args _args = new
              InternalUnsafeMethods.SetOrbitMode()(ObjectPtr, _args);
 orbitPoint.Free();offset.Free();        }
 
+        /// <description>
+        /// Set the camera's offset.
+        /// 
+        /// The offset is added to the camera's position when set to CameraMode::OrbitObject.
+        /// </description>
+        /// <param name="offset">The distance to offset the camera by in the form of "x y z".</param>
         public void SetOffset(Point3F offset) {
 offset.Alloc();             InternalUnsafeMethods.SetOffset__Args _args = new InternalUnsafeMethods.SetOffset__Args() {
                 offset = offset.internalStructPtr,
@@ -946,6 +1156,12 @@ offset.Alloc();             InternalUnsafeMethods.SetOffset__Args _args = new In
              InternalUnsafeMethods.SetOffset()(ObjectPtr, _args);
 offset.Free();        }
 
+        /// <description>
+        /// Get the camera's offset from its orbit or tracking point.
+        /// 
+        /// The offset is added to the camera's position when set to CameraMode::OrbitObject.
+        /// </description>
+        /// <returns>The offset in the form of "x y z".</returns>
         public Point3F GetOffset() {
              InternalUnsafeMethods.GetOffset__Args _args = new InternalUnsafeMethods.GetOffset__Args() {
              };
@@ -953,6 +1169,11 @@ offset.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Set the camera's Euler rotation in radians.
+        /// </description>
+        /// <param name="rot">The rotation in radians in the form of "x y z".</param>
+        /// <remarks> Rotation around the Y axis is ignored</remarks>
         public void SetRotation(Point3F rot) {
 rot.Alloc();             InternalUnsafeMethods.SetRotation__Args _args = new InternalUnsafeMethods.SetRotation__Args() {
                 rot = rot.internalStructPtr,
@@ -960,6 +1181,10 @@ rot.Alloc();             InternalUnsafeMethods.SetRotation__Args _args = new Int
              InternalUnsafeMethods.SetRotation()(ObjectPtr, _args);
 rot.Free();        }
 
+        /// <description>
+        /// Get the camera's Euler rotation in radians.
+        /// </description>
+        /// <returns>The rotation in radians in the form of "x y z".</returns>
         public Point3F GetRotation() {
              InternalUnsafeMethods.GetRotation__Args _args = new InternalUnsafeMethods.GetRotation__Args() {
              };
@@ -967,6 +1192,10 @@ rot.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the camera's position in the world.
+        /// </description>
+        /// <returns>The position in the form of "x y z".</returns>
         public Point3F GetPosition() {
              InternalUnsafeMethods.GetPosition__Args _args = new InternalUnsafeMethods.GetPosition__Args() {
              };
@@ -974,6 +1203,10 @@ rot.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Returns the current camera control mode.
+        /// </description>
+        /// <see cref="CameraMotionMode" />
         public CameraMotionMode GetMode() {
              InternalUnsafeMethods.GetMode__Args _args = new InternalUnsafeMethods.GetMode__Args() {
              };
@@ -981,6 +1214,10 @@ rot.Free();        }
              return (CameraMotionMode)_engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the Camera class.
+        /// </description>
+        /// <returns>The type info object for Camera</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -988,51 +1225,111 @@ rot.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The current camera control mode.
+        /// </description>
+        /// </value>
         public CameraMotionMode ControlMode {
             get => GenericMarshal.StringTo<CameraMotionMode>(GetFieldValue("controlMode"));
             set => SetFieldValue("controlMode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Apply smoothing (acceleration and damping) to camera movements.
+        /// </description>
+        /// </value>
         public bool NewtonMode {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("newtonMode"));
             set => SetFieldValue("newtonMode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Apply smoothing (acceleration and damping) to camera rotations.
+        /// </description>
+        /// </value>
         public bool NewtonRotation {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("newtonRotation"));
             set => SetFieldValue("newtonRotation", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The camera's mass (Newton mode only).  Default value is 10.
+        /// </description>
+        /// </value>
         public float Mass {
             get => GenericMarshal.StringTo<float>(GetFieldValue("mass"));
             set => SetFieldValue("mass", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Drag on camera when moving (Newton mode only).  Default value is 2.
+        /// </description>
+        /// </value>
         public float Drag {
             get => GenericMarshal.StringTo<float>(GetFieldValue("drag"));
             set => SetFieldValue("drag", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Force applied on camera when asked to move (Newton mode only).  Default value is 500.
+        /// </description>
+        /// </value>
         public float Force {
             get => GenericMarshal.StringTo<float>(GetFieldValue("force"));
             set => SetFieldValue("force", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Drag on camera when rotating (Newton mode only).  Default value is 2.
+        /// </description>
+        /// </value>
         public float AngularDrag {
             get => GenericMarshal.StringTo<float>(GetFieldValue("angularDrag"));
             set => SetFieldValue("angularDrag", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Force applied on camera when asked to rotate (Newton mode only).  Default value is 100.
+        /// </description>
+        /// </value>
         public float AngularForce {
             get => GenericMarshal.StringTo<float>(GetFieldValue("angularForce"));
             set => SetFieldValue("angularForce", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Speed multiplier when triggering the accelerator (Newton mode only).  Default value is 2.
+        /// </description>
+        /// </value>
         public float SpeedMultiplier {
             get => GenericMarshal.StringTo<float>(GetFieldValue("speedMultiplier"));
             set => SetFieldValue("speedMultiplier", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Speed multiplier when triggering the brake (Newton mode only).  Default value is 2.
+        /// </description>
+        /// </value>
         public float BrakeMultiplier {
             get => GenericMarshal.StringTo<float>(GetFieldValue("brakeMultiplier"));
             set => SetFieldValue("brakeMultiplier", GenericMarshal.ToString(value));

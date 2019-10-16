@@ -14,7 +14,23 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control to playing Theora videos.</summary>
+    /// <description>
+    /// This control can be used to play videos in the Theora video format.  The videos may include audio in Vorbis format.  The codecs for both formats are integrated with the engine and no codecs must be present on the user's machine.
+    /// </description>
+    /// <code>
+    /// %video = new GuiTheoraCtrl()
+    /// {
+    ///    theoraFile = "videos/intro.ogv";
+    ///    playOnWake = false;
+    ///    stopOnSleep = true;
+    /// }
+    /// 
+    /// Canvas.setContent( %video );
+    /// %video.play();
+    /// </code>
+    /// <see href="http://www.theora.org" />
     public unsafe class GuiTheoraCtrl : GuiControl {
         public GuiTheoraCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -222,6 +238,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Test whether the video has finished playing.
+        /// </description>
+        /// <returns>True if the video has finished playing, false otherwise.</returns>
         public bool IsPlaybackDone() {
              InternalUnsafeMethods.IsPlaybackDone__Args _args = new InternalUnsafeMethods.IsPlaybackDone__Args() {
              };
@@ -229,6 +249,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the current playback time.
+        /// </description>
+        /// <returns>The elapsed playback time in seconds.</returns>
         public float GetCurrentTime() {
              InternalUnsafeMethods.GetCurrentTime__Args _args = new InternalUnsafeMethods.GetCurrentTime__Args() {
              };
@@ -236,24 +260,41 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Stop playback of the video.  The next call to play() will then start playback from the beginning of the video.
+        /// 
+        /// While stopped, the control renders empty with just the background color.
+        /// </description>
         public void Stop() {
              InternalUnsafeMethods.Stop__Args _args = new InternalUnsafeMethods.Stop__Args() {
              };
              InternalUnsafeMethods.Stop()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Pause playback of the video.  If the video is not currently playing, the call is ignored.
+        /// 
+        /// While stopped, the control displays the last frame.
+        /// </description>
         public void Pause() {
              InternalUnsafeMethods.Pause__Args _args = new InternalUnsafeMethods.Pause__Args() {
              };
              InternalUnsafeMethods.Pause()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Start playing the video.  If the video is already playing, the call is ignored.
+        /// </description>
         public void Play() {
              InternalUnsafeMethods.Play__Args _args = new InternalUnsafeMethods.Play__Args() {
              };
              InternalUnsafeMethods.Play()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the video file to play.  If a video is already playing, playback is stopped and the new video file is loaded.
+        /// </description>
+        /// <param name="filename">The video file to load.</param>
         public void SetFile(string filename) {
              InternalUnsafeMethods.SetFile__Args _args = new InternalUnsafeMethods.SetFile__Args() {
                 filename = filename,
@@ -261,6 +302,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetFile()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiTheoraCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTheoraCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -268,41 +313,91 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Theora video file to play.
+        /// </description>
+        /// </value>
         public string TheoraFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("theoraFile"));
             set => SetFieldValue("theoraFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Fill color when video is not playing.
+        /// </description>
+        /// </value>
         public ColorI BackgroundColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("backgroundColor"));
             set => SetFieldValue("backgroundColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to start playing video when control is woken up.
+        /// </description>
+        /// </value>
         public bool PlayOnWake {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("playOnWake"));
             set => SetFieldValue("playOnWake", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Loop playback.
+        /// </description>
+        /// </value>
         public bool Loop {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("loop"));
             set => SetFieldValue("loop", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to stop video when control is set to sleep.
+        /// 
+        /// If this is not set to true, the video will be paused when the control is put to sleep.  This is because there is no support for seeking in the video stream in the player backend and letting the time source used to synchronize video (either audio or a raw timer) get far ahead of frame decoding will cause possibly very long delays when the control is woken up again.
+        /// </description>
+        /// </value>
         public bool StopOnSleep {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("stopOnSleep"));
             set => SetFieldValue("stopOnSleep", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to automatically match control extents to the video size.
+        /// </description>
+        /// </value>
         public bool MatchVideoSize {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("matchVideoSize"));
             set => SetFieldValue("matchVideoSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, displays an overlay on top of the video with useful debugging information.
+        /// </description>
+        /// </value>
         public bool RenderDebugInfo {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderDebugInfo"));
             set => SetFieldValue("renderDebugInfo", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The routine to use for Y'CbCr to RGB conversion.
+        /// </description>
+        /// </value>
         public GuiTheoraTranscoder Transcoder {
             get => GenericMarshal.StringTo<GuiTheoraTranscoder>(GetFieldValue("transcoder"));
             set => SetFieldValue("transcoder", GenericMarshal.ToString(value));

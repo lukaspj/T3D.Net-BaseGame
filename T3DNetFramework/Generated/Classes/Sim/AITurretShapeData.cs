@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Defines properties for an AITurretShape object.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <see cref="AITurretShape" />
+    /// <see cref="TurretShapeData" />
     public unsafe class AITurretShapeData : TurretShapeData {
         public AITurretShapeData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the AITurretShapeData class.
+        /// </description>
+        /// <returns>The type info object for AITurretShapeData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,46 +116,112 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Maximum number of degrees to scan left and right.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Maximum scan heading is 90 degrees.
+        /// </remarks>
+        /// </value>
         public float MaxScanHeading {
             get => GenericMarshal.StringTo<float>(GetFieldValue("maxScanHeading"));
             set => SetFieldValue("maxScanHeading", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Maximum number of degrees to scan up and down.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Maximum scan pitch is 90 degrees.
+        /// </remarks>
+        /// </value>
         public float MaxScanPitch {
             get => GenericMarshal.StringTo<float>(GetFieldValue("maxScanPitch"));
             set => SetFieldValue("maxScanPitch", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Maximum distance to scan.</summary>
+        /// <description>
+        /// When combined with maxScanHeading and maxScanPitch this forms a 3D scanning wedge used to initially locate a target.
+        /// </description>
+        /// </value>
         public float MaxScanDistance {
             get => GenericMarshal.StringTo<float>(GetFieldValue("maxScanDistance"));
             set => SetFieldValue("maxScanDistance", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>How often should we perform a full scan when looking for a target.</summary>
+        /// <description>
+        /// Expressed as the number of ticks between full scans, but no less than 1.
+        /// </description>
+        /// </value>
         public int ScanTickFrequency {
             get => GenericMarshal.StringTo<int>(GetFieldValue("scanTickFrequency"));
             set => SetFieldValue("scanTickFrequency", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Random amount that should be added to the scan tick frequency each scan period.</summary>
+        /// <description>
+        /// Expressed as the number of ticks to randomly add, but no less than zero.
+        /// </description>
+        /// </value>
         public int ScanTickFrequencyVariance {
             get => GenericMarshal.StringTo<int>(GetFieldValue("scanTickFrequencyVariance"));
             set => SetFieldValue("scanTickFrequencyVariance", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>How long after the turret has lost the target should it still track it.</summary>
+        /// <description>
+        /// Expressed in seconds.
+        /// </description>
+        /// </value>
         public float TrackLostTargetTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("trackLostTargetTime"));
             set => SetFieldValue("trackLostTargetTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Maximum distance that the weapon will fire upon a target.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// </value>
         public float MaxWeaponRange {
             get => GenericMarshal.StringTo<float>(GetFieldValue("maxWeaponRange"));
             set => SetFieldValue("maxWeaponRange", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Velocity used to lead target.</summary>
+        /// <description>
+        /// If value <= 0, don't lead target.
+        /// </description>
+        /// </value>
         public float WeaponLeadVelocity {
             get => GenericMarshal.StringTo<float>(GetFieldValue("weaponLeadVelocity"));
             set => SetFieldValue("weaponLeadVelocity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of this state.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StateName {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -156,6 +232,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the state to transition to when the turret is at rest (static).
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StateTransitionOnAtRest {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -166,6 +248,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the state to transition to when the turret is not at rest (not static).
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StateTransitionOnNotAtRest {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -176,6 +264,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the state to transition to when the turret gains a target.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StateTransitionOnTarget {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -186,6 +280,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the state to transition to when the turret loses a target.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StateTransitionOnNoTarget {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -196,6 +296,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the state to transition to when the turret goes from deactivated to activated.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StateTransitionOnActivated {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -206,6 +312,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the state to transition to when the turret goes from activated to deactivated
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StateTransitionOnDeactivated {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -216,6 +328,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the state to transition to when we have been in this state for stateTimeoutValue seconds.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StateTransitionOnTimeout {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -226,6 +344,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Time in seconds to wait before transitioning to stateTransitionOnTimeout.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> StateTimeoutValue {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -236,6 +360,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// If false, this state ignores stateTimeoutValue and transitions immediately if other transition conditions are met.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> StateWaitForTimeout {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -246,6 +376,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The first state with this set to true is the state entered by the client when it receives the 'fire' event.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> StateFire {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -256,6 +392,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Indicates the turret should perform a continuous scan looking for targets.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> StateScan {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -266,6 +408,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <summary>Direction of the animation to play in this state.</summary>
+        /// <description>
+        /// True is forward, false is backward.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> StateDirection {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -276,6 +425,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the sequence to play on entry to this state.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StateSequence {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -286,6 +441,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the timeScale of the stateSequence animation will be adjusted such that the sequence plays for stateTimeoutValue seconds.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> StateScaleAnimation {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -296,6 +457,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <summary>Method to execute on entering this state.</summary>
+        /// <description>
+        /// Scoped to AITurretShapeData.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> StateScript {
             get => new DynamicFieldVector<string>(
                     this, 

@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Visual preview of a specified Material</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiMaterialPreview : GuiTSCtrl {
         public GuiMaterialPreview(bool pRegister = false) 
             : base(pRegister) {
@@ -224,6 +228,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Sets the color of the ambient light in the scene.
+        /// </description>
         public void SetAmbientLightColor(LinearColorF color) {
 color.Alloc();             InternalUnsafeMethods.SetAmbientLightColor__Args _args = new InternalUnsafeMethods.SetAmbientLightColor__Args() {
                 color = color.internalStructPtr,
@@ -231,6 +238,9 @@ color.Alloc();             InternalUnsafeMethods.SetAmbientLightColor__Args _arg
              InternalUnsafeMethods.SetAmbientLightColor()(ObjectPtr, _args);
 color.Free();        }
 
+        /// <description>
+        /// Sets the color of the light in the scene.
+        /// </description>
         public void SetLightColor(LinearColorF color) {
 color.Alloc();             InternalUnsafeMethods.SetLightColor__Args _args = new InternalUnsafeMethods.SetLightColor__Args() {
                 color = color.internalStructPtr,
@@ -238,12 +248,19 @@ color.Alloc();             InternalUnsafeMethods.SetLightColor__Args _args = new
              InternalUnsafeMethods.SetLightColor()(ObjectPtr, _args);
 color.Free();        }
 
+        /// <description>
+        /// Resets the viewport to default zoom, pan, rotate and lighting.
+        /// </description>
         public void Reset() {
              InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
              };
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets the distance at which the camera orbits the object. Clamped to the acceptable range defined in the class by min and max orbit distances.
+        /// </description>
+        /// <param name="distance">The distance to set the orbit to (will be clamped).</param>
         public void SetOrbitDistance(float distance) {
              InternalUnsafeMethods.SetOrbitDistance__Args _args = new InternalUnsafeMethods.SetOrbitDistance__Args() {
                 distance = distance,
@@ -251,12 +268,19 @@ color.Free();        }
              InternalUnsafeMethods.SetOrbitDistance()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Deletes the preview model.
+        /// </description>
         public void DeleteModel() {
              InternalUnsafeMethods.DeleteModel__Args _args = new InternalUnsafeMethods.DeleteModel__Args() {
              };
              InternalUnsafeMethods.DeleteModel()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets the model to be displayed in this control
+        /// </description>
+        /// <param name="shapeName">Name of the model to display.</param>
         public void SetModel(string shapeName) {
              InternalUnsafeMethods.SetModel__Args _args = new InternalUnsafeMethods.SetModel__Args() {
                 shapeName = shapeName,
@@ -264,6 +288,10 @@ color.Free();        }
              InternalUnsafeMethods.SetModel()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiMaterialPreview class.
+        /// </description>
+        /// <returns>The type info object for GuiMaterialPreview</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

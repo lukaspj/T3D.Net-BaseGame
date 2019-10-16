@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A base datablock inherited by AFX Particle Emitter effects.</summary>
+    /// <description>
+    /// A base datablock inherited by AFX Particle Emitter effects.
+    /// </description>
     public unsafe class afxParticleEmitterData : ParticleEmitterData {
         public afxParticleEmitterData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxParticleEmitterData class.
+        /// </description>
+        /// <returns>The type info object for afxParticleEmitterData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,26 +114,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the initial velocity of emitted particles is multiplied by the fade amount of the containing effect wrapper. As the effect fades-in and out, so does the initial velocity of new particles.
+        /// </description>
+        /// </value>
         public bool FadeVelocity {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("fadeVelocity"));
             set => SetFieldValue("fadeVelocity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the ejection offset of emitted particles is multiplied by the fade amount of the containing effect wrapper. As the effect fades-in and out, so does the ejection offset of new particles.
+        /// </description>
+        /// </value>
         public bool FadeOffset {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("fadeOffset"));
             set => SetFieldValue("fadeOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// General direction vector used for emitting particles. Its exact interpretation is determined by the particle emitter subclass.
+        /// </description>
+        /// </value>
         public Point3F Vector {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("vector"));
             set => SetFieldValue("vector", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sets whether the vector field should be interpreted as a vector in the world coordinate system.
+        /// </description>
+        /// </value>
         public bool VectorIsWorld {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("vectorIsWorld"));
             set => SetFieldValue("vectorIsWorld", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A string of paths to be used as transform paths. Each path name must reference an afxPathData datablock. Transform paths are used to translate particles along a given path or series of paths.
+        /// </description>
+        /// </value>
         public string PathsTransform {
             get => GenericMarshal.StringTo<string>(GetFieldValue("pathsTransform"));
             set => SetFieldValue("pathsTransform", GenericMarshal.ToString(value));

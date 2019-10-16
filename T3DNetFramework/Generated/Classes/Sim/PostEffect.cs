@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A fullscreen shader effect.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class PostEffect : SimGroup {
         public PostEffect(bool pRegister = false) 
             : base(pRegister) {
@@ -456,12 +460,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Remove all shader macros.
+        /// </description>
         public void ClearShaderMacros() {
              InternalUnsafeMethods.ClearShaderMacros__Args _args = new InternalUnsafeMethods.ClearShaderMacros__Args() {
              };
              InternalUnsafeMethods.ClearShaderMacros()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Remove a shader macro. This will usually be called within the preProcess callback.
+        /// </description>
+        /// <param name="key">Macro to remove.</param>
         public void RemoveShaderMacro(string key) {
              InternalUnsafeMethods.RemoveShaderMacro__Args _args = new InternalUnsafeMethods.RemoveShaderMacro__Args() {
                 key = key,
@@ -469,6 +480,22 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveShaderMacro()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Adds a macro to the effect's shader or sets an existing one's value. This will usually be called within the onAdd or preProcess callback.
+        /// </description>
+        /// <param name="key">lval of the macro.</param>
+        /// <param name="value">rval of the macro, or may be empty.</param>
+        /// <code>
+        /// function MyPfx::onAdd( %this )
+        /// {
+        ///    %this.setShaderMacro( "NUM_SAMPLES", "10" );
+        ///    %this.setShaderMacro( "HIGH_QUALITY_MODE" );
+        ///    
+        ///    // In the shader looks like... 
+        ///    // #define NUM_SAMPLES 10
+        ///    // #define HIGH_QUALITY_MODE
+        /// }
+        /// </code>
         public void SetShaderMacro(string key, string value = "") {
              InternalUnsafeMethods.SetShaderMacro__Args _args = new InternalUnsafeMethods.SetShaderMacro__Args() {
                 key = key,
@@ -477,6 +504,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetShaderMacro()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Dumps this PostEffect shader's disassembly to a temporary text file.
+        /// </description>
+        /// <returns>Full path to the dumped file or an empty string if failed.</returns>
         public string DumpShaderDisassembly() {
              InternalUnsafeMethods.DumpShaderDisassembly__Args _args = new InternalUnsafeMethods.DumpShaderDisassembly__Args() {
              };
@@ -484,6 +515,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <returns>Width over height of the backbuffer.</returns>
         public float GetAspectRatio() {
              InternalUnsafeMethods.GetAspectRatio__Args _args = new InternalUnsafeMethods.GetAspectRatio__Args() {
              };
@@ -491,6 +523,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Sets the value of a uniform defined in the shader. This will usually be called within the setShaderConsts callback. Array type constants are not supported.
+        /// </description>
+        /// <param name="name">Name of the constanst, prefixed with '$'.</param>
+        /// <param name="value">Value to set, space seperate values with more than one element.</param>
+        /// <code>
+        /// function MyPfx::setShaderConsts( %this )
+        /// {
+        ///    // example float4 uniform
+        ///    %this.setShaderConst( "$colorMod", "1.0 0.9 1.0 1.0" );
+        ///    // example float1 uniform
+        ///    %this.setShaderConst( "$strength", "3.0" );
+        ///    // example integer uniform
+        ///    %this.setShaderConst( "$loops", "5" );}
+        /// </code>
         public void SetShaderConst(string name, string value) {
              InternalUnsafeMethods.SetShaderConst__Args _args = new InternalUnsafeMethods.SetShaderConst__Args() {
                 name = name,
@@ -499,6 +546,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetShaderConst()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// This is used to set the texture file and load the texture on a running effect. If the texture file is not different from the current file nothing is changed.  If the texture cannot be found a null texture is assigned.
+        /// </description>
+        /// <param name="index">The texture stage index.</param>
+        /// <param name="filePath">The file name of the texture to set.</param>
         public void SetTexture(int index, string filePath) {
              InternalUnsafeMethods.SetTexture__Args _args = new InternalUnsafeMethods.SetTexture__Args() {
                 index = index,
@@ -507,6 +559,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTexture()(ObjectPtr, _args);
         }
 
+        /// <returns>True if the effect is enabled.</returns>
         public bool IsEnabled() {
              InternalUnsafeMethods.IsEnabled__Args _args = new InternalUnsafeMethods.IsEnabled__Args() {
              };
@@ -514,6 +567,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Toggles the effect between enabled / disabled.
+        /// </description>
+        /// <returns>True if effect is enabled.</returns>
         public bool Toggle() {
              InternalUnsafeMethods.Toggle__Args _args = new InternalUnsafeMethods.Toggle__Args() {
              };
@@ -521,24 +578,37 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Disables the effect.
+        /// </description>
         public void Disable() {
              InternalUnsafeMethods.Disable__Args _args = new InternalUnsafeMethods.Disable__Args() {
              };
              InternalUnsafeMethods.Disable()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Enables the effect.
+        /// </description>
         public void Enable() {
              InternalUnsafeMethods.Enable__Args _args = new InternalUnsafeMethods.Enable__Args() {
              };
              InternalUnsafeMethods.Enable()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Reloads the effect shader and textures.
+        /// </description>
         public void Reload() {
              InternalUnsafeMethods.Reload__Args _args = new InternalUnsafeMethods.Reload__Args() {
              };
              InternalUnsafeMethods.Reload()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the PostEffect class.
+        /// </description>
+        /// <returns>The type info object for PostEffect</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -546,12 +616,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// Called when this effect becomes disabled.
+        /// </description>
         public virtual void OnDisabled() {
              InternalUnsafeMethods.OnDisabled__Args _args = new InternalUnsafeMethods.OnDisabled__Args() {
              };
              InternalUnsafeMethods.OnDisabled()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when this effect becomes enabled. If the user returns false from this callback the effect will not be enabled.
+        /// </description>
+        /// <returns>True to allow this effect to be enabled.</returns>
         public virtual bool OnEnabled() {
              InternalUnsafeMethods.OnEnabled__Args _args = new InternalUnsafeMethods.OnEnabled__Args() {
              };
@@ -559,74 +636,167 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Called immediate before processing this effect. This is the user's chance to set the value of shader uniforms (constants).
+        /// </description>
+        /// <see cref="setShaderConst" />
         public virtual void SetShaderConsts() {
              InternalUnsafeMethods.SetShaderConsts__Args _args = new InternalUnsafeMethods.SetShaderConsts__Args() {
              };
              InternalUnsafeMethods.SetShaderConsts()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when an effect is processed but before textures are bound. This allows the user to change texture related paramaters or macros at runtime.
+        /// </description>
+        /// <code>
+        /// function SSAOPostFx::preProcess( %this )
+        /// {
+        ///    if ( $SSAOPostFx::quality !$= %this.quality )
+        ///    {
+        ///       %this.quality = mClamp( mRound( $SSAOPostFx::quality ), 0, 2 );
+        ///       
+        ///       %this.setShaderMacro( "QUALITY", %this.quality );
+        ///    }
+        ///    %this.targetScale = $SSAOPostFx::targetScale;
+        /// }
+        /// </code>
+        /// <see cref="setShaderConst" />
+        /// <see cref="setShaderMacro" />
         public virtual void PreProcess() {
              InternalUnsafeMethods.PreProcess__Args _args = new InternalUnsafeMethods.PreProcess__Args() {
              };
              InternalUnsafeMethods.PreProcess()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when this object is first created and registered.
+        /// </description>
         public virtual void OnAdd() {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
              };
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of a GFXShaderData for this effect.
+        /// </description>
+        /// </value>
         public string Shader {
             get => GenericMarshal.StringTo<string>(GetFieldValue("shader"));
             set => SetFieldValue("shader", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of a GFXStateBlockData for this effect.
+        /// </description>
+        /// </value>
         public GFXStateBlockData StateBlock {
             get => GenericMarshal.StringTo<GFXStateBlockData>(GetFieldValue("stateBlock"));
             set => SetFieldValue("stateBlock", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// String identifier of this effect's target texture.
+        /// </description>
+        /// <see cref="PFXTextureIdentifiers" />
+        /// </value>
         public string Target {
             get => GenericMarshal.StringTo<string>(GetFieldValue("target"));
             set => SetFieldValue("target", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Optional string identifier for this effect's target depth/stencil texture.
+        /// </description>
+        /// <see cref="PFXTextureIdentifiers" />
+        /// </value>
         public string TargetDepthStencil {
             get => GenericMarshal.StringTo<string>(GetFieldValue("targetDepthStencil"));
             set => SetFieldValue("targetDepthStencil", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If targetSize is zero this is used to set a relative size from the current target.
+        /// </description>
+        /// </value>
         public Point2F TargetScale {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("targetScale"));
             set => SetFieldValue("targetScale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If non-zero this is used as the absolute target size.
+        /// </description>
+        /// </value>
         public Point2I TargetSize {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("targetSize"));
             set => SetFieldValue("targetSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Format of the target texture, not applicable if writing to the backbuffer.
+        /// </description>
+        /// </value>
         public GFXFormat TargetFormat {
             get => GenericMarshal.StringTo<GFXFormat>(GetFieldValue("targetFormat"));
             set => SetFieldValue("targetFormat", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color to which the target texture is cleared before rendering.
+        /// </description>
+        /// </value>
         public LinearColorF TargetClearColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("targetClearColor"));
             set => SetFieldValue("targetClearColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Describes when the target texture should be cleared.
+        /// </description>
+        /// </value>
         public PFXTargetClear TargetClear {
             get => GenericMarshal.StringTo<PFXTargetClear>(GetFieldValue("targetClear"));
             set => SetFieldValue("targetClear", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specifies how the viewport should be set up for a target texture.
+        /// </description>
+        /// </value>
         public PFXTargetViewport TargetViewport {
             get => GenericMarshal.StringTo<PFXTargetViewport>(GetFieldValue("targetViewport"));
             set => SetFieldValue("targetViewport", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Input textures to this effect ( samplers ).
+        /// </description>
+        /// <see cref="PFXTextureIdentifiers" />
+        /// </value>
         public DynamicFieldVector<string> Texture {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -637,6 +807,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Set input texture to be sRGB
+        /// </description>
+        /// </value>
         public DynamicFieldVector<bool> TextureSRGB {
             get => new DynamicFieldVector<bool>(
                     this, 
@@ -647,41 +823,89 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// When to process this effect during the frame.
+        /// </description>
+        /// </value>
         public PFXRenderTime RenderTime {
             get => GenericMarshal.StringTo<PFXRenderTime>(GetFieldValue("renderTime"));
             set => SetFieldValue("renderTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of a renderBin, used if renderTime is PFXBeforeBin or PFXAfterBin.
+        /// </description>
+        /// </value>
         public string RenderBin {
             get => GenericMarshal.StringTo<string>(GetFieldValue("renderBin"));
             set => SetFieldValue("renderBin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// PostEffects are processed in DESCENDING order of renderPriority if more than one has the same renderBin/Time.
+        /// </description>
+        /// </value>
         public float RenderPriority {
             get => GenericMarshal.StringTo<float>(GetFieldValue("renderPriority"));
             set => SetFieldValue("renderPriority", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Is this effect processed during reflection render passes.
+        /// </description>
+        /// </value>
         public bool AllowReflectPass {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowReflectPass"));
             set => SetFieldValue("allowReflectPass", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Is the effect on.
+        /// </description>
+        /// </value>
         public bool Enabled {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("enabled"));
             set => SetFieldValue("enabled", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allows you to turn on a PostEffect for only a single frame.
+        /// </description>
+        /// </value>
         public bool OnThisFrame {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("onThisFrame"));
             set => SetFieldValue("onThisFrame", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allows you to turn on a PostEffect for only a single frame.
+        /// </description>
+        /// </value>
         public bool OneFrameOnly {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("oneFrameOnly"));
             set => SetFieldValue("oneFrameOnly", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Skip processing of this PostEffect and its children even if its parent is enabled. Parent and sibling PostEffects in the chain are still processed.
+        /// </description>
+        /// </value>
         public bool Skip {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("skip"));
             set => SetFieldValue("skip", GenericMarshal.ToString(value));

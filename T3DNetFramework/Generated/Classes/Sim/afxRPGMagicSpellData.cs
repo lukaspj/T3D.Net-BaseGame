@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock for defining RPG aspects of a spell.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxRPGMagicSpellData : GameBaseData {
         public afxRPGMagicSpellData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxRPGMagicSpellData class.
+        /// </description>
+        /// <returns>The type info object for afxRPGMagicSpellData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,31 +114,67 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string SpellName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("spellName"));
             set => SetFieldValue("spellName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string Desc {
             get => GenericMarshal.StringTo<string>(GetFieldValue("desc"));
             set => SetFieldValue("desc", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxRPGMagicSpell_TargetType Target {
             get => GenericMarshal.StringTo<afxRPGMagicSpell_TargetType>(GetFieldValue("target"));
             set => SetFieldValue("target", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Range {
             get => GenericMarshal.StringTo<float>(GetFieldValue("range"));
             set => SetFieldValue("range", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int ManaCost {
             get => GenericMarshal.StringTo<int>(GetFieldValue("manaCost"));
             set => SetFieldValue("manaCost", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public DynamicFieldVector<sbyte> ReagentCost {
             get => new DynamicFieldVector<sbyte>(
                     this, 
@@ -141,6 +185,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> ReagentName {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -151,31 +201,55 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float CastingDur {
             get => GenericMarshal.StringTo<float>(GetFieldValue("castingDur"));
             set => SetFieldValue("castingDur", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string IconBitmap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("iconBitmap"));
             set => SetFieldValue("iconBitmap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string SourcePack {
             get => GenericMarshal.StringTo<string>(GetFieldValue("sourcePack"));
             set => SetFieldValue("sourcePack", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsPlaceholder {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isPlaceholder"));
             set => SetFieldValue("isPlaceholder", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public sbyte FreeTargetStyle {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("freeTargetStyle"));
             set => SetFieldValue("freeTargetStyle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool TargetOptional {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("targetOptional"));
             set => SetFieldValue("targetOptional", GenericMarshal.ToString(value));

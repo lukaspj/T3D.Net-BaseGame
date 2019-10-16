@@ -14,7 +14,18 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A container</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// // Create
+    /// </code>
+    /// <remarks> Only GuiTabPageCtrls must be added to GuiTabBookCtrls.  If an object of a different class is added to the control, it will be reassigned to either the active page or the tab book's parent.
+    /// 
+    /// </remarks>
+    /// <see cref="GuiTabPageCtrl" />
     public unsafe class GuiTabBookCtrl : GuiContainer {
         public GuiTabBookCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -208,6 +219,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the index of the currently selected tab page.
+        /// </description>
+        /// <returns>Index of the selected tab page or -1 if no tab page is selected.</returns>
         public int GetSelectedPage() {
              InternalUnsafeMethods.GetSelectedPage__Args _args = new InternalUnsafeMethods.GetSelectedPage__Args() {
              };
@@ -215,6 +230,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the selected tab page.
+        /// </description>
+        /// <param name="index">Index of the tab page.</param>
         public void SelectPage(int index) {
              InternalUnsafeMethods.SelectPage__Args _args = new InternalUnsafeMethods.SelectPage__Args() {
                 index = index,
@@ -222,6 +241,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SelectPage()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add a new tab page to the control.
+        /// </description>
+        /// <param name="title">Title text for the tab page header.</param>
         public void AddPage(string title = "") {
              InternalUnsafeMethods.AddPage__Args _args = new InternalUnsafeMethods.AddPage__Args() {
                 title = title,
@@ -229,6 +252,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddPage()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the user right-clicks on a tab page header.
+        /// </description>
+        /// <param name="text">Text of the page header for the tab that is being selected.</param>
+        /// <param name="index">Index of the tab page being selected.</param>
         public virtual void OnTabRightClick(string text, uint index) {
              InternalUnsafeMethods.OnTabRightClick__Args _args = new InternalUnsafeMethods.OnTabRightClick__Args() {
                 text = text,
@@ -237,6 +265,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnTabRightClick()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when a new tab page is selected.
+        /// </description>
+        /// <param name="text">Text of the page header for the tab that is being selected.</param>
+        /// <param name="index">Index of the tab page being selected.</param>
         public virtual void OnTabSelected(string text, uint index) {
              InternalUnsafeMethods.OnTabSelected__Args _args = new InternalUnsafeMethods.OnTabSelected__Args() {
                 text = text,
@@ -245,6 +278,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnTabSelected()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiTabBookCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTabBookCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -252,41 +289,89 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Where to place the tab page headers.
+        /// </description>
+        /// </value>
         public GuiTabPosition TabPosition {
             get => GenericMarshal.StringTo<GuiTabPosition>(GetFieldValue("tabPosition"));
             set => SetFieldValue("tabPosition", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Spacing to put between individual tab page headers.
+        /// </description>
+        /// </value>
         public int TabMargin {
             get => GenericMarshal.StringTo<int>(GetFieldValue("tabMargin"));
             set => SetFieldValue("tabMargin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Minimum width allocated to a tab page header.
+        /// </description>
+        /// </value>
         public int MinTabWidth {
             get => GenericMarshal.StringTo<int>(GetFieldValue("minTabWidth"));
             set => SetFieldValue("minTabWidth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Height of tab page headers.
+        /// </description>
+        /// </value>
         public int TabHeight {
             get => GenericMarshal.StringTo<int>(GetFieldValue("tabHeight"));
             set => SetFieldValue("tabHeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether reordering tabs with the mouse is allowed.
+        /// </description>
+        /// </value>
         public bool AllowReorder {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowReorder"));
             set => SetFieldValue("allowReorder", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Index of page to select on first onWake() call (-1 to disable).
+        /// </description>
+        /// </value>
         public int DefaultPage {
             get => GenericMarshal.StringTo<int>(GetFieldValue("defaultPage"));
             set => SetFieldValue("defaultPage", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Index of currently selected page.
+        /// </description>
+        /// </value>
         public int SelectedPage {
             get => GenericMarshal.StringTo<int>(GetFieldValue("selectedPage"));
             set => SetFieldValue("selectedPage", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// X offset of first tab page header.
+        /// </description>
+        /// </value>
         public int FrontTabPadding {
             get => GenericMarshal.StringTo<int>(GetFieldValue("frontTabPadding"));
             set => SetFieldValue("frontTabPadding", GenericMarshal.ToString(value));

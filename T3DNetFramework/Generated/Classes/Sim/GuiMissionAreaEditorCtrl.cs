@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Specialized GUI used for editing the MissionArea in a level</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiMissionAreaEditorCtrl : EditTSCtrl {
         public GuiMissionAreaEditorCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -142,6 +146,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public string GetSelectedMissionArea() {
              InternalUnsafeMethods.GetSelectedMissionArea__Args _args = new InternalUnsafeMethods.GetSelectedMissionArea__Args() {
              };
@@ -149,6 +154,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// 
         public void SetSelectedMissionArea(string missionAreaName = "") {
              InternalUnsafeMethods.SetSelectedMissionArea__Args _args = new InternalUnsafeMethods.SetSelectedMissionArea__Args() {
                 missionAreaName = missionAreaName,
@@ -156,6 +162,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSelectedMissionArea()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiMissionAreaEditorCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiMissionAreaEditorCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

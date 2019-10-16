@@ -14,7 +14,21 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A camera that moves along a path. The camera can then be made to travel along this path forwards or backwards.</summary>
+    /// <description>
+    /// A camera's path is made up of knots, which define a position, rotation and speed for the camera.  Traversal from one knot to another may be either linear or using a Catmull-Rom spline.  If the knot is part of a spline, then it may be a normal knot or defined as a kink.  Kinked knots are a hard transition on the spline rather than a smooth one.  A knot may also be defined as a position only.  In this case the knot is treated as a normal knot but is ignored when determining how to smoothly rotate the camera while it is travelling along the path (the algorithm moves on to the next knot in the path for determining rotation).
+    /// 
+    /// The datablock field for a PathCamera is a previously created PathCameraData, which acts as the interface between the script and the engine for this PathCamera object.
+    /// </description>
+    /// <see cref="PathCameraData" />
+    /// <code>
+    /// %newPathCamera = new PathCamera()
+    /// {
+    ///   dataBlock = LoopingCam;
+    ///   position = "0 0 300 1 0 0 0";
+    /// };
+    /// </code>
     public unsafe class PathCamera : ShapeBase {
         public PathCamera(bool pRegister = false) 
             : base(pRegister) {
@@ -277,12 +291,43 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Removes the knot at the front of the camera's path.
+        /// </description>
+        /// <code>
+        /// // Remove the first knot in the camera's path.
+        /// %pathCamera.popFront();
+        /// </code>
         public void PopFront() {
              InternalUnsafeMethods.PopFront__Args _args = new InternalUnsafeMethods.PopFront__Args() {
              };
              InternalUnsafeMethods.PopFront()(ObjectPtr, _args);
         }
 
+        /// <summary>Adds a new knot to the front of a path camera's path.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="transform">Transform for the new knot. In the form of "x y z ax ay az aa" such as returned by SceneObject::getTransform()</param>
+        /// <param name="speed">Speed setting for this knot.</param>
+        /// <param name="type">Knot type (Normal, Position Only, Kink).</param>
+        /// <param name="path">%Path type (Linear, Spline).</param>
+        /// <code>
+        /// // Transform vector for new knot. (Pos_X,Pos_Y,Pos_Z,Rot_X,Rot_Y,Rot_Z,Angle)
+        /// %transform = "15.0 5.0 5.0 1.4 1.0 0.2 1.0"
+        /// 
+        /// // Speed setting for knot.
+        /// %speed = "1.0";
+        /// 
+        /// // Knot type. (Normal, Position Only, Kink)
+        /// %type = "Normal";
+        /// 
+        /// // Path Type. (Linear, Spline)
+        /// %path = "Linear";
+        /// 
+        /// // Inform the path camera to add a new knot to the front of its path
+        /// %pathCamera.pushFront(%transform, %speed, %type, %path);
+        /// </code>
         public void PushFront(TransformF transform, float speed = 1f, string type = "Normal", string path = "Linear") {
 transform.Alloc();             InternalUnsafeMethods.PushFront__Args _args = new InternalUnsafeMethods.PushFront__Args() {
                 transform = transform.internalStructPtr,
@@ -293,6 +338,30 @@ transform.Alloc();             InternalUnsafeMethods.PushFront__Args _args = new
              InternalUnsafeMethods.PushFront()(ObjectPtr, _args);
 transform.Free();        }
 
+        /// <summary>Adds a new knot to the back of a path camera's path.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="transform">Transform for the new knot.  In the form of "x y z ax ay az aa" such as returned by SceneObject::getTransform()</param>
+        /// <param name="speed">Speed setting for this knot.</param>
+        /// <param name="type">Knot type (Normal, Position Only, Kink).</param>
+        /// <param name="path">%Path type (Linear, Spline).</param>
+        /// <code>
+        /// // Transform vector for new knot. (Pos_X Pos_Y Pos_Z Rot_X Rot_Y Rot_Z Angle)
+        /// %transform = "15.0 5.0 5.0 1.4 1.0 0.2 1.0"
+        /// 
+        /// // Speed setting for knot.
+        /// %speed = "1.0"
+        /// 
+        /// // Knot type. (Normal, Position Only, Kink)
+        /// %type = "Normal";
+        /// 
+        /// // Path Type. (Linear, Spline)
+        /// %path = "Linear";
+        /// 
+        /// // Inform the path camera to add a new knot to the back of its path
+        /// %pathCamera.pushBack(%transform,%speed,%type,%path);
+        /// </code>
         public void PushBack(TransformF transform, float speed = 1f, string type = "Normal", string path = "Linear") {
 transform.Alloc();             InternalUnsafeMethods.PushBack__Args _args = new InternalUnsafeMethods.PushBack__Args() {
                 transform = transform.internalStructPtr,
@@ -303,6 +372,18 @@ transform.Alloc();             InternalUnsafeMethods.PushBack__Args _args = new 
              InternalUnsafeMethods.PushBack()(ObjectPtr, _args);
 transform.Free();        }
 
+        /// <summary>Clear the camera's path and set the camera's current transform as the start of the new path.</summary>
+        /// <description>
+        /// What specifically occurs is a new knot is created from the camera's current transform.  Then the current path is cleared and the new knot is pushed onto the path.  Any previous target is cleared and the camera's movement state is set to Forward.  The camera is now ready for a new path to be defined.
+        /// </description>
+        /// <param name="speed">Speed for the camera to move along its path after being reset.</param>
+        /// <code>
+        /// //Determine the new movement speed of this camera. If not set, the speed will default to 1.0.
+        /// %speed = "0.50";
+        /// 
+        /// // Inform the path camera to start a new path at// the camera's current position, and set the new // path's speed value.
+        /// %pathCamera.reset(%speed);
+        /// </code>
         public void Reset(float speed = 1f) {
              InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
                 speed = speed,
@@ -310,6 +391,19 @@ transform.Free();        }
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the movement state for this path camera.
+        /// </description>
+        /// <param name="newState">New movement state type for this camera. Forward, Backward or Stop.</param>
+        /// <code>
+        /// // Set the state type (forward, backward, stop).
+        /// // In this example, the camera will travel from the first node
+        /// // to the last node (or target if given with setTarget())
+        /// %state = "forward";
+        /// 
+        /// // Inform the pathCamera to change its movement state to the defined value.
+        /// %pathCamera.setState(%state);
+        /// </code>
         public void SetState(string newState = "forward") {
              InternalUnsafeMethods.SetState__Args _args = new InternalUnsafeMethods.SetState__Args() {
                 newState = newState,
@@ -317,6 +411,18 @@ transform.Free();        }
              InternalUnsafeMethods.SetState()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the movement target for this camera along its path.</summary>
+        /// <description>
+        /// The camera will attempt to move along the path to the given target in the direction provided by setState() (the default is forwards).  Once the camera moves past this target it will come to a stop, and the target state will be cleared.
+        /// </description>
+        /// <param name="position">Target position, between 0.0 (path start) and 1.0 (path end), for the camera to move to along its path.</param>
+        /// <code>
+        /// // Set the position target, between 0.0 (path start) and 1.0 (path end), for this camera to move to.
+        /// %position = "0.50";
+        /// 
+        /// // Inform the pathCamera of the new target position it will move to.
+        /// %pathCamera.setTarget(%position);
+        /// </code>
         public void SetTarget(float position = 1f) {
              InternalUnsafeMethods.SetTarget__Args _args = new InternalUnsafeMethods.SetTarget__Args() {
                 position = position,
@@ -324,6 +430,17 @@ transform.Free();        }
              InternalUnsafeMethods.SetTarget()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the current position of the camera along the path.
+        /// </description>
+        /// <param name="position">Position along the path, from 0.0 (path start) - 1.0 (path end), to place the camera.</param>
+        /// <code>
+        /// // Set the camera on a position along its path from 0.0 - 1.0.
+        /// %position = "0.35";
+        /// 
+        /// // Force the pathCamera to its new position along the path.
+        /// %pathCamera.setPosition(%position);
+        /// </code>
         public void SetPosition(float position = 0f) {
              InternalUnsafeMethods.SetPosition__Args _args = new InternalUnsafeMethods.SetPosition__Args() {
                 position = position,
@@ -331,6 +448,10 @@ transform.Free();        }
              InternalUnsafeMethods.SetPosition()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// A script callback that indicates the path camera has arrived at a specific node in its path.  Server side only.
+        /// </description>
+        /// <param name="Node">Unique ID assigned to this node.</param>
         public virtual void OnNode(int node) {
              InternalUnsafeMethods.OnNode__Args _args = new InternalUnsafeMethods.OnNode__Args() {
                 node = node,
@@ -338,6 +459,10 @@ transform.Free();        }
              InternalUnsafeMethods.OnNode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the PathCamera class.
+        /// </description>
+        /// <returns>The type info object for PathCamera</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

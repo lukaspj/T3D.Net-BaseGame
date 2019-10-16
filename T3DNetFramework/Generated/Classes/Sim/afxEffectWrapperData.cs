@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that describes an Effect Wrapper.</summary>
+    /// <description>
+    /// Conceptually an effect wrapper encloses a building-block effect and acts as a handle for adding the effect to a choreographer. Effect wrapper fields primarily deal with effect timing, constraints, and conditional effect execution.
+    /// </description>
+    /// <see cref="afxEffectBaseData" />
+    /// <see cref="afxEffectGroupData" />
     public unsafe class afxEffectWrapperData : afxEffectBaseData {
         public afxEffectWrapperData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxEffectWrapperData class.
+        /// </description>
+        /// <returns>The type info object for afxEffectWrapperData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,146 +116,320 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public SimDataBlock Effect {
             get => GenericMarshal.StringTo<SimDataBlock>(GetFieldValue("effect"));
             set => SetFieldValue("effect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string EffectName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("effectName"));
             set => SetFieldValue("effectName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string Constraint {
             get => GenericMarshal.StringTo<string>(GetFieldValue("constraint"));
             set => SetFieldValue("constraint", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string PosConstraint {
             get => GenericMarshal.StringTo<string>(GetFieldValue("posConstraint"));
             set => SetFieldValue("posConstraint", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string PosConstraint2 {
             get => GenericMarshal.StringTo<string>(GetFieldValue("posConstraint2"));
             set => SetFieldValue("posConstraint2", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string OrientConstraint {
             get => GenericMarshal.StringTo<string>(GetFieldValue("orientConstraint"));
             set => SetFieldValue("orientConstraint", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string LifeConstraint {
             get => GenericMarshal.StringTo<string>(GetFieldValue("lifeConstraint"));
             set => SetFieldValue("lifeConstraint", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool IsConstraintSrc {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isConstraintSrc"));
             set => SetFieldValue("isConstraintSrc", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool GhostIsConstraintSrc {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ghostIsConstraintSrc"));
             set => SetFieldValue("ghostIsConstraintSrc", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Delay {
             get => GenericMarshal.StringTo<float>(GetFieldValue("delay"));
             set => SetFieldValue("delay", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Lifetime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("lifetime"));
             set => SetFieldValue("lifetime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float FadeInTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("fadeInTime"));
             set => SetFieldValue("fadeInTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float ResidueLifetime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("residueLifetime"));
             set => SetFieldValue("residueLifetime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point2F FadeInEase {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("fadeInEase"));
             set => SetFieldValue("fadeInEase", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point2F FadeOutEase {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("fadeOutEase"));
             set => SetFieldValue("fadeOutEase", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float LifetimeBias {
             get => GenericMarshal.StringTo<float>(GetFieldValue("lifetimeBias"));
             set => SetFieldValue("lifetimeBias", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float FadeOutTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("fadeOutTime"));
             set => SetFieldValue("fadeOutTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float RateFactor {
             get => GenericMarshal.StringTo<float>(GetFieldValue("rateFactor"));
             set => SetFieldValue("rateFactor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float ScaleFactor {
             get => GenericMarshal.StringTo<float>(GetFieldValue("scaleFactor"));
             set => SetFieldValue("scaleFactor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool IsLooping {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isLooping"));
             set => SetFieldValue("isLooping", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int LoopCount {
             get => GenericMarshal.StringTo<int>(GetFieldValue("loopCount"));
             set => SetFieldValue("loopCount", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float LoopGapTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("loopGapTime"));
             set => SetFieldValue("loopGapTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool IgnoreTimeFactor {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ignoreTimeFactor"));
             set => SetFieldValue("ignoreTimeFactor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool PropagateTimeFactor {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("propagateTimeFactor"));
             set => SetFieldValue("propagateTimeFactor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool EffectEnabled {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("effectEnabled"));
             set => SetFieldValue("effectEnabled", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public ByteRange RankingRange {
             get => GenericMarshal.StringTo<ByteRange>(GetFieldValue("rankingRange"));
             set => SetFieldValue("rankingRange", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public ByteRange LevelOfDetailRange {
             get => GenericMarshal.StringTo<ByteRange>(GetFieldValue("levelOfDetailRange"));
             set => SetFieldValue("levelOfDetailRange", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int LifeConditions {
             get => GenericMarshal.StringTo<int>(GetFieldValue("lifeConditions"));
             set => SetFieldValue("lifeConditions", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public DynamicFieldVector<int> ExecConditions {
             get => new DynamicFieldVector<int>(
                     this, 
@@ -256,6 +440,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public DynamicFieldVector<int> ExecOffConditions {
             get => new DynamicFieldVector<int>(
                     this, 
@@ -266,6 +456,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public DynamicFieldVector<afxXM_BaseData> XfmModifiers {
             get => new DynamicFieldVector<afxXM_BaseData>(
                     this, 
@@ -276,51 +472,111 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Box3F ForcedBBox {
             get => GenericMarshal.StringTo<Box3F>(GetFieldValue("forcedBBox"));
             set => SetFieldValue("forcedBBox", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool UpdateForcedBBox {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("updateForcedBBox"));
             set => SetFieldValue("updateForcedBBox", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public sbyte SortPriority {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("sortPriority"));
             set => SetFieldValue("sortPriority", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point3F Direction {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("direction"));
             set => SetFieldValue("direction", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Speed {
             get => GenericMarshal.StringTo<float>(GetFieldValue("speed"));
             set => SetFieldValue("speed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Mass {
             get => GenericMarshal.StringTo<float>(GetFieldValue("mass"));
             set => SetFieldValue("mass", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool BorrowAltitudes {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("borrowAltitudes"));
             set => SetFieldValue("borrowAltitudes", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public string VisibilityKeys {
             get => GenericMarshal.StringTo<string>(GetFieldValue("visibilityKeys"));
             set => SetFieldValue("visibilityKeys", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int GroupIndex {
             get => GenericMarshal.StringTo<int>(GetFieldValue("groupIndex"));
             set => SetFieldValue("groupIndex", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int InheritGroupTiming {
             get => GenericMarshal.StringTo<int>(GetFieldValue("inheritGroupTiming"));
             set => SetFieldValue("inheritGroupTiming", GenericMarshal.ToString(value));

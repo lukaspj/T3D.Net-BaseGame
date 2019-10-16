@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Base class for game objects which use datablocks, networking, are editable, and need to process ticks.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class GameBase : SceneObject {
         public GameBase(bool pRegister = false) 
             : base(pRegister) {
@@ -209,6 +213,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Applies a radial impulse to the object using the given origin and force.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="origin">World point of origin of the radial impulse.</param>
+        /// <param name="radius">The radius of the impulse area.</param>
+        /// <param name="magnitude">The strength of the impulse.</param>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public void ApplyRadialImpulse(Point3F origin, float radius, float magnitude) {
 origin.Alloc();             InternalUnsafeMethods.ApplyRadialImpulse__Args _args = new InternalUnsafeMethods.ApplyRadialImpulse__Args() {
                 origin = origin.internalStructPtr,
@@ -218,6 +231,15 @@ origin.Alloc();             InternalUnsafeMethods.ApplyRadialImpulse__Args _args
              InternalUnsafeMethods.ApplyRadialImpulse()(ObjectPtr, _args);
 origin.Free();        }
 
+        /// <summary>Apply an impulse to this object as defined by a world position and velocity vector.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">impulse world position</param>
+        /// <param name="vel">impulse velocity (impulse force F = m * v)</param>
+        /// <returns>Always true</returns>
+        /// <remarks> Not all objects that derrive from GameBase have this defined.
+        /// </remarks>
         public bool ApplyImpulse(Point3F pos, Point3F vel) {
 pos.Alloc();vel.Alloc();             InternalUnsafeMethods.ApplyImpulse__Args _args = new InternalUnsafeMethods.ApplyImpulse__Args() {
                 pos = pos.internalStructPtr,
@@ -227,6 +249,13 @@ pos.Alloc();vel.Alloc();             InternalUnsafeMethods.ApplyImpulse__Args _a
 pos.Free();vel.Free();             return _engineResult;
         }
 
+        /// <summary>Assign this GameBase to use the specified datablock.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="data">new datablock to use</param>
+        /// <returns>true if successful, false if failed.</returns>
+        /// <see cref="getDataBlock()" />
         public bool SetDataBlock(GameBaseData data) {
              InternalUnsafeMethods.SetDataBlock__Args _args = new InternalUnsafeMethods.SetDataBlock__Args() {
                 data = data.ObjectPtr,
@@ -235,6 +264,12 @@ pos.Free();vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Get the datablock used by this object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the datablock this GameBase is using.</returns>
+        /// <see cref="setDataBlock()" />
         public int GetDataBlock() {
              InternalUnsafeMethods.GetDataBlock__Args _args = new InternalUnsafeMethods.GetDataBlock__Args() {
              };
@@ -242,6 +277,10 @@ pos.Free();vel.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the GameBase class.
+        /// </description>
+        /// <returns>The type info object for GameBase</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -249,6 +288,11 @@ pos.Free();vel.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <summary>Called when the client controlling the object changes.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="controlled">true if a client now controls this object, false if no client controls this object.</param>
         public virtual void SetControl(bool controlled) {
              InternalUnsafeMethods.SetControl__Args _args = new InternalUnsafeMethods.SetControl__Args() {
                 controlled = controlled,
@@ -256,6 +300,12 @@ pos.Free();vel.Free();             return _engineResult;
              InternalUnsafeMethods.SetControl()(ObjectPtr, _args);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script datablock used for game objects.
+        /// </description>
+        /// </value>
         public GameBaseData DataBlock {
             get => GenericMarshal.StringTo<GameBaseData>(GetFieldValue("dataBlock"));
             set => SetFieldValue("dataBlock", GenericMarshal.ToString(value));

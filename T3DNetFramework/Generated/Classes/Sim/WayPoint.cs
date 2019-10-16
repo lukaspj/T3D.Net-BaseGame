@@ -14,7 +14,30 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Special type of marker, distinguished by a name and team ID number</summary>
+    /// <description>
+    /// The original Torque engines were built from a multi-player game called Tribes. The Tribes series featured various team based game modes, such as capture the flag. The WayPoint class survived the conversion from game (Tribes) to game engine (Torque).
+    /// 
+    /// Essentially, this is a MissionMarker with the addition of two variables: markerName and team. Whenever a WayPoint is created, it is added to a unique global list called WayPointSet. You can iterate through this set, seeking out specific markers determined by their markerName and team ID. This avoids the overhead of constantly calling commandToClient and commandToServer to determine a WayPoint object's name, unique ID, etc.
+    /// </description>
+    /// <remarks> The <i>markerName<i> field was previously called <i>name</i>, but was changed because this conflicted with the SimObject name field. Existing scripts that relied on the WayPoint <i>name</i> field will need to be updated.
+    /// 
+    /// </remarks>
+    /// <code>
+    /// new WayPoint()
+    /// {
+    ///    team = "1";
+    ///    dataBlock = "WayPointMarker";
+    ///    position = "-0.0224786 1.53471 2.93219";
+    ///    rotation = "1 0 0 0";
+    ///    scale = "1 1 1";
+    ///    canSave = "1";
+    ///    canSaveDynamicFields = "1";
+    /// };
+    /// </code>
+    /// <see cref="MissionMarker" />
+    /// <see cref="MissionMarkerData" />
     public unsafe class WayPoint : MissionMarker {
         public WayPoint(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +122,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the WayPoint class.
+        /// </description>
+        /// <returns>The type info object for WayPoint</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +133,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Unique name representing this waypoint
+        /// </description>
+        /// </value>
         public string MarkerName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("markerName"));
             set => SetFieldValue("markerName", GenericMarshal.ToString(value));

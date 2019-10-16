@@ -14,7 +14,40 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control that displays a value between its minimal and maximal bounds using a slider placed on a vertical or horizontal axis.</summary>
+    /// <description>
+    /// A slider displays a value and allows that value to be changed by dragging a thumb control along the axis of the slider.  In this way, the value is changed between its allowed minimum and maximum.
+    /// 
+    /// To hook up script code to the value changes of a slider, use the #command and #altCommand properties.  #command is executed once the thumb is released by the user whereas #altCommand is called any time the slider value changes. When changing the slider value from script, however, trigger of #altCommand is suppressed by default.
+    /// 
+    /// The orientation of a slider is automatically determined from the ratio of its width to its height.  If a slider is taller than it is wide, it will be rendered with a vertical orientation.  If it is wider than it is tall, it will be rendered with a horizontal orientation.
+    /// 
+    /// The rendering of a slider depends on the bitmap in the slider's profile.  This bitmap must be a bitmap array comprised of at least five bitmap rectangles.  The rectangles are used such that:
+    /// 
+    /// - Rectangle #1: Left edge of slider
+    /// - Rectangle #2: Center piece of slider; this is stretched between the left and right edge
+    /// - Rectangle #3: Right edge of slider
+    /// - Rectangle #4: Thumb button in normal state
+    /// - Rectangle #5: Thumb button in highlighted (mouse-over) state
+    /// </description>
+    /// <code>
+    /// // Create a sound source and a slider that changes the volume of the source.
+    /// 
+    /// %source = sfxPlayOnce( "art/sound/testing", AudioLoop2D );
+    /// 
+    /// new GuiSlider()
+    /// {
+    ///    // Update the sound source volume when the slider is being dragged and released.
+    ///    command = %source@ ".setVolume( $ThisControl.value );";
+    /// 
+    ///    // Limit the range to 0..1 since that is the allowable range for sound volumes.
+    ///    range = "0 1";
+    /// };
+    /// 
+    /// </code>
+    /// <see cref="GuiTextEditSliderCtrl" />
+    /// <see cref="GuiTextEditSliderBitmapCtrl" />
     public unsafe class GuiSliderCtrl : GuiControl {
         public GuiSliderCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -183,6 +216,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Returns true if the thumb is currently being dragged by the user.  This method is mainly useful for scrubbing type sliders where the slider position is sync'd to a changing value.  When the user is dragging the thumb, however, the sync'ing should pause and not get in the way of the user.
+        /// </description>
         public bool IsThumbBeingDragged() {
              InternalUnsafeMethods.IsThumbBeingDragged__Args _args = new InternalUnsafeMethods.IsThumbBeingDragged__Args() {
              };
@@ -190,6 +226,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set position of the thumb on the slider.
+        /// </description>
+        /// <param name="pos">New slider position (from range.x to range.y)</param>
+        /// <param name="doCallback">If true, the altCommand callback will be invoked</param>
         public void SetValue(float pos, bool doCallback = false) {
              InternalUnsafeMethods.SetValue__Args _args = new InternalUnsafeMethods.SetValue__Args() {
                 pos = pos,
@@ -198,6 +239,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetValue()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the current value of the slider based on the position of the thumb.
+        /// </description>
+        /// <returns>Slider position (from range.x to range.y).</returns>
         public float GetValue() {
              InternalUnsafeMethods.GetValue__Args _args = new InternalUnsafeMethods.GetValue__Args() {
              };
@@ -205,12 +250,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Called when the left mouse button is dragged across the slider.
+        /// </description>
         public virtual void OnMouseDragged() {
              InternalUnsafeMethods.OnMouseDragged__Args _args = new InternalUnsafeMethods.OnMouseDragged__Args() {
              };
              InternalUnsafeMethods.OnMouseDragged()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiSliderCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiSliderCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -218,21 +270,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Min and max values corresponding to left and right slider position.
+        /// </description>
+        /// </value>
         public Point2F Range {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("range"));
             set => SetFieldValue("range", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Spacing between tick marks in pixels. 0=off.
+        /// </description>
+        /// </value>
         public int Ticks {
             get => GenericMarshal.StringTo<int>(GetFieldValue("ticks"));
             set => SetFieldValue("ticks", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to snap the slider to tick marks.
+        /// </description>
+        /// </value>
         public bool Snap {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("snap"));
             set => SetFieldValue("snap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The value corresponding to the current slider position.
+        /// </description>
+        /// </value>
         public float Value {
             get => GenericMarshal.StringTo<float>(GetFieldValue("value"));
             set => SetFieldValue("value", GenericMarshal.ToString(value));

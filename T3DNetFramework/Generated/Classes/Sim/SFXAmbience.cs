@@ -14,7 +14,35 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that describes an ambient sound space.</summary>
+    /// <description>
+    /// Each ambience datablock captures the properties of a unique ambient sound space.  A sound space is comprised of:
+    /// - an ambient audio track that is played when the listener is inside the space,
+    /// - a reverb environment that is active inside the space, and
+    /// - a number of SFXStates that are activated when entering the space and deactivated when exiting it.
+    /// 
+    /// Each of these properties is optional.
+    /// 
+    /// An important characteristic of ambient audio spaces is that their unique nature is not determined by their location in space but rather by their SFXAmbience datablock.  This means that the same SFXAmbience datablock assigned to multiple locations in a level represents the same unique audio space to the sound system.
+    /// 
+    /// This is an important distinction for the ambient sound mixer which will activate a given ambient audio space only once at any one time regardless of how many intersecting audio spaces with the same SFXAmbience datablock assigned the listener may currently be in.
+    /// 
+    /// All SFXAmbience instances are automatically added to the global
+    /// </description>
+    /// <code>
+    /// singleton SFXAmbience( Underwater )
+    /// {
+    ///    environment = AudioEnvUnderwater;
+    ///    soundTrack = ScubaSoundList;
+    ///    states[ 0 ] = AudioLocationUnderwater;
+    /// };
+    /// </code>
+    /// <see cref="SFXEnvironment" />
+    /// <see cref="SFXTrack" />
+    /// <see cref="SFXState" />
+    /// <see cref="LevelInfo::soundAmbience" />
+    /// <see cref="Zone::soundAmbience" />
     public unsafe class SFXAmbience : SimDataBlock {
         public SFXAmbience(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +127,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the SFXAmbience class.
+        /// </description>
+        /// <returns>The type info object for SFXAmbience</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,26 +138,62 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reverb environment active in the ambience zone.
+        /// </description>
+        /// </value>
         public SFXEnvironment Environment {
             get => GenericMarshal.StringTo<SFXEnvironment>(GetFieldValue("environment"));
             set => SetFieldValue("environment", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sound track to play in the ambience zone.
+        /// </description>
+        /// </value>
         public SFXTrack SoundTrack {
             get => GenericMarshal.StringTo<SFXTrack>(GetFieldValue("soundTrack"));
             set => SetFieldValue("soundTrack", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The rolloff factor to apply to distance-based volume attenuation in this space.
+        /// Defaults to 1.0.
+        /// </description>
+        /// <remarks> This applies to the logarithmic distance model only.
+        /// 
+        /// </remarks>
+        /// </value>
         public float RolloffFactor {
             get => GenericMarshal.StringTo<float>(GetFieldValue("rolloffFactor"));
             set => SetFieldValue("rolloffFactor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The factor to apply to the doppler affect in this space.
+        /// Defaults to 0.5.
+        /// </description>
+        /// </value>
         public float DopplerFactor {
             get => GenericMarshal.StringTo<float>(GetFieldValue("dopplerFactor"));
             set => SetFieldValue("dopplerFactor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// States to activate when the ambient zone is entered.
+        /// When the ambient sound state is entered, all states associated with the state will be activated (given that they are not disabled) and deactivated when the space is exited again.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<SFXState> States {
             get => new DynamicFieldVector<SFXState>(
                     this, 

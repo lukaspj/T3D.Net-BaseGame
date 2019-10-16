@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Abstract base class for controls that render 3D scenes.</summary>
+    /// <description>
+    /// GuiTSCtrl is the base class for controls that render 3D camera views in Torque.  The class itself does not implement a concrete scene rendering.  Use GuiObjectView to display invidiual shapes in the Gui and GameTSCtrl to render full scenes.
+    /// </description>
+    /// <see cref="GameTSCtrl" />
+    /// <see cref="GuiObjectView" />
     public unsafe class GuiTSCtrl : GuiContainer {
         public GuiTSCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -203,6 +209,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Sets the current stereo texture to an offscreen canvas
+        /// </description>
+        /// <param name="canvas">The desired canvas.</param>
         public void SetStereoGui(GuiOffscreenCanvas canvas) {
              InternalUnsafeMethods.SetStereoGui__Args _args = new InternalUnsafeMethods.SetStereoGui__Args() {
                 canvas = canvas.ObjectPtr,
@@ -210,6 +220,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetStereoGui()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Given the camera's current FOV, get the distance from the camera's viewpoint at which the given radius will fit in the render area.
+        /// </description>
+        /// <param name="radius">Radius in world-space units which should fit in the view.</param>
+        /// <returns>The distance from the viewpoint at which the given radius would be fully visible.</returns>
         public float CalculateViewDistance(float radius) {
              InternalUnsafeMethods.CalculateViewDistance__Args _args = new InternalUnsafeMethods.CalculateViewDistance__Args() {
                 radius = radius,
@@ -218,6 +233,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the ratio between world-space units and pixels.
+        /// </description>
+        /// <returns>The amount of world-space units covered by the extent of a single pixel.</returns>
         public Point2F GetWorldToScreenScale() {
              InternalUnsafeMethods.GetWorldToScreenScale__Args _args = new InternalUnsafeMethods.GetWorldToScreenScale__Args() {
              };
@@ -225,6 +244,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point2F(_engineResult);
         }
 
+        /// <description>
+        /// Transform world-space coordinates to screen-space (x, y, depth) coordinates.
+        /// </description>
+        /// <param name="worldPosition">The world-space position to transform to screen-space.</param>
+        /// <returns>The</returns>
         public Point3F Project(Point3F worldPosition) {
 worldPosition.Alloc();             InternalUnsafeMethods.Project__Args _args = new InternalUnsafeMethods.Project__Args() {
                 worldPosition = worldPosition.internalStructPtr,
@@ -233,6 +257,12 @@ worldPosition.Alloc();             InternalUnsafeMethods.Project__Args _args = n
 worldPosition.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Transform 3D screen-space coordinates (x, y, depth) to world space.
+        /// This method can be, for example, used to find the world-space position relating to the current mouse cursor position.
+        /// </description>
+        /// <param name="screenPosition">The x/y position on the screen plus the depth from the screen-plane outwards.</param>
+        /// <returns>The world-space position corresponding to the given screen-space coordinates.</returns>
         public Point3F Unproject(Point3F screenPosition) {
 screenPosition.Alloc();             InternalUnsafeMethods.Unproject__Args _args = new InternalUnsafeMethods.Unproject__Args() {
                 screenPosition = screenPosition.internalStructPtr,
@@ -241,6 +271,10 @@ screenPosition.Alloc();             InternalUnsafeMethods.Unproject__Args _args 
 screenPosition.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiTSCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTSCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -248,21 +282,46 @@ screenPosition.Free();             return new Point3F(_engineResult);
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Z rotation angle of camera.
+        /// </description>
+        /// </value>
         public float CameraZRot {
             get => GenericMarshal.StringTo<float>(GetFieldValue("cameraZRot"));
             set => SetFieldValue("cameraZRot", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The vertical field of view in degrees or zero to use the normal camera FOV.
+        /// </description>
+        /// </value>
         public float ForceFOV {
             get => GenericMarshal.StringTo<float>(GetFieldValue("forceFOV"));
             set => SetFieldValue("forceFOV", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The share of the per-frame reflection update work this control's rendering should run.
+        /// The reflect update priorities of all visible GuiTSCtrls are added together and each control is assigned a share of the per-frame reflection update time according to its percentage of the total priority value.
+        /// </description>
+        /// </value>
         public float ReflectPriority {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reflectPriority"));
             set => SetFieldValue("reflectPriority", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Indicates how this control should render its contents.
+        /// </description>
+        /// </value>
         public GuiTSRenderStyles RenderStyle {
             get => GenericMarshal.StringTo<GuiTSRenderStyles>(GetFieldValue("renderStyle"));
             set => SetFieldValue("renderStyle", GenericMarshal.ToString(value));

@@ -14,7 +14,14 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An example scene object which renders using a callback.</summary>
+    /// <description>
+    /// This class implements a basic SceneObject that can exist in the world at a 3D position and render itself. Note that RenderObjectExample handles its own rendering by submitting itself as an ObjectRenderInst (see renderInstance
+    /// enderPassmanager.h) along with a delegate for its render() function. However, the preffered rendering method in the engine is to submit a MeshRenderInst along with a Material, vertex buffer, primitive buffer, and transform and allow the RenderMeshMgr handle the actual rendering. You can see this implemented in RenderMeshExample.
+    /// 
+    /// See the C++ code for implementation details.
+    /// </description>
     public unsafe class RenderObjectExample : SceneObject {
         public RenderObjectExample(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +106,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderObjectExample class.
+        /// </description>
+        /// <returns>The type info object for RenderObjectExample</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

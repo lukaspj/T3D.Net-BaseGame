@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Base class for almost all objects involved in the simulation.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class SimObject : ConsoleObject, ISimObject {
         public SimObject(bool pRegister = false) 
             : base(pRegister) {
@@ -1382,18 +1386,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void InspectPostApply() {
              InternalUnsafeMethods.InspectPostApply__Args _args = new InternalUnsafeMethods.InspectPostApply__Args() {
              };
              InternalUnsafeMethods.InspectPostApply()(ObjectPtr, _args);
         }
 
+        /// 
         public void InspectPreApply() {
              InternalUnsafeMethods.InspectPreApply__Args _args = new InternalUnsafeMethods.InspectPreApply__Args() {
              };
              InternalUnsafeMethods.InspectPreApply()(ObjectPtr, _args);
         }
 
+        /// 
         public bool IsLocked() {
              InternalUnsafeMethods.IsLocked__Args _args = new InternalUnsafeMethods.IsLocked__Args() {
              };
@@ -1401,6 +1408,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public void SetMods(bool modStaticFields, bool modDynamicFields) {
              InternalUnsafeMethods.SetMods__Args _args = new InternalUnsafeMethods.SetMods__Args() {
                 modStaticFields = modStaticFields,
@@ -1409,6 +1417,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMods()(ObjectPtr, _args);
         }
 
+        /// 
         public void CopyFrom(SimObject parent) {
              InternalUnsafeMethods.CopyFrom__Args _args = new InternalUnsafeMethods.CopyFrom__Args() {
                 parent = parent.ObjectPtr,
@@ -1416,6 +1425,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.CopyFrom()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Return some behind-the-scenes information on the object.
+        /// </description>
+        /// <returns>An ArrayObject filled with internal information about the object.</returns>
         public ArrayObject GetDebugInfo() {
              InternalUnsafeMethods.GetDebugInfo__Args _args = new InternalUnsafeMethods.GetDebugInfo__Args() {
              };
@@ -1423,6 +1436,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new ArrayObject(_engineResult);
         }
 
+        /// <description>
+        /// Retrieve the value of a static field by index.
+        /// </description>
+        /// <param name="index">The index of the static field.</param>
+        /// <returns>The value of the static field with the given index or "".</returns>
         public string GetField(int index) {
              InternalUnsafeMethods.GetField__Args _args = new InternalUnsafeMethods.GetField__Args() {
                 index = index,
@@ -1431,6 +1449,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public int GetFieldCount() {
              InternalUnsafeMethods.GetFieldCount__Args _args = new InternalUnsafeMethods.GetFieldCount__Args() {
              };
@@ -1438,6 +1460,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get a value of a dynamic field by index.
+        /// </description>
+        /// <param name="index">The index of the dynamic field.</param>
+        /// <returns>The value of the dynamic field at the given index or "".</returns>
         public string GetDynamicField(int index) {
              InternalUnsafeMethods.GetDynamicField__Args _args = new InternalUnsafeMethods.GetDynamicField__Args() {
                 index = index,
@@ -1446,6 +1473,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the number of dynamic fields defined on the object.
+        /// </description>
+        /// <returns>The number of dynamic fields defined on the object.</returns>
         public int GetDynamicFieldCount() {
              InternalUnsafeMethods.GetDynamicFieldCount__Args _args = new InternalUnsafeMethods.GetDynamicFieldCount__Args() {
              };
@@ -1453,6 +1484,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( float time, string method, string args... ) Delay an invocation of a method.
+        /// </description>
+        /// <param name="time">The number of milliseconds after which to invoke the method.  This is a soft limit.</param>
+        /// <param name="method">The method to call.</param>
+        /// <param name="args">The arguments with which to call the method.</param>
+        /// <returns>The numeric ID of the created schedule.  Can be used to cancel the call.</returns>
         public int Schedule(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -1469,12 +1507,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
             return _engineResult;
         }
 
+        /// <description>
+        /// Delete and remove the object.
+        /// </description>
         public void Delete() {
              InternalUnsafeMethods.Delete__Args _args = new InternalUnsafeMethods.Delete__Args() {
              };
              InternalUnsafeMethods.Delete()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the group that this object is contained in.
+        /// </description>
+        /// <remarks> If not assigned to particular SimGroup, an object belongs to RootGroup.
+        /// </remarks>
+        /// <returns>The SimGroup object to which the object belongs.</returns>
         public SimGroup GetGroup() {
              InternalUnsafeMethods.GetGroup__Args _args = new InternalUnsafeMethods.GetGroup__Args() {
              };
@@ -1482,6 +1529,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimGroup(_engineResult);
         }
 
+        /// <description>
+        /// Get the underlying unique numeric ID of the object.
+        /// </description>
+        /// <remarks> Object IDs are unique only during single engine runs.
+        /// </remarks>
+        /// <returns>The unique numeric ID of the object.</returns>
         public int GetId() {
              InternalUnsafeMethods.GetId__Args _args = new InternalUnsafeMethods.GetId__Args() {
              };
@@ -1489,6 +1542,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the namespace of this object is a direct or indirect child to the given namespace.
+        /// </description>
+        /// <param name="name">The name of a namespace.</param>
+        /// <returns>True if the given namespace name is within the namespace hierarchy of this object.</returns>
         public bool IsInNamespaceHierarchy(string name) {
              InternalUnsafeMethods.IsInNamespaceHierarchy__Args _args = new InternalUnsafeMethods.IsInNamespaceHierarchy__Args() {
                 name = name,
@@ -1497,6 +1555,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether this object is a member of the specified class.
+        /// </description>
+        /// <param name="className">Name of a native C++ class.</param>
+        /// <returns>True if this object is an instance of the given C++ class or any of its super classes.</returns>
         public bool IsMemberOfClass(string className) {
              InternalUnsafeMethods.IsMemberOfClass__Args _args = new InternalUnsafeMethods.IsMemberOfClass__Args() {
                 className = className,
@@ -1505,12 +1568,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Dump the native C++ class hierarchy of this object's C++ class to the console.
+        /// </description>
         public void DumpClassHierarchy() {
              InternalUnsafeMethods.DumpClassHierarchy__Args _args = new InternalUnsafeMethods.DumpClassHierarchy__Args() {
              };
              InternalUnsafeMethods.DumpClassHierarchy()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the internal name of the object.
+        /// </description>
+        /// <returns>The internal name of the object.</returns>
         public string GetInternalName() {
              InternalUnsafeMethods.GetInternalName__Args _args = new InternalUnsafeMethods.GetInternalName__Args() {
              };
@@ -1518,6 +1588,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Set the internal name of the object.
+        /// </description>
+        /// <param name="newInternalName">The new internal name for the object.</param>
         public void SetInternalName(string newInternalName) {
              InternalUnsafeMethods.SetInternalName__Args _args = new InternalUnsafeMethods.SetInternalName__Args() {
                 newInternalName = newInternalName,
@@ -1525,6 +1599,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetInternalName()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( string method, string args... ) Dynamically call a method on an object.
+        /// </description>
+        /// <param name="method">Name of method to call.</param>
+        /// <param name="args">Zero or more arguments for the method.</param>
+        /// <returns>The result of the method call.</returns>
         public string Call(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -1541,6 +1621,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Set the console type code for the given field.
+        /// </description>
+        /// <param name="fieldName">The name of the dynamic field to change to type for.</param>
+        /// <param name="type">The name of the console type.</param>
+        /// <remarks> This only works for dynamic fields.  Types of static fields cannot be changed.</remarks>
         public void SetFieldType(string fieldName, string type) {
              InternalUnsafeMethods.SetFieldType__Args _args = new InternalUnsafeMethods.SetFieldType__Args() {
                 fieldName = fieldName,
@@ -1549,6 +1635,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetFieldType()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the console type code of the given field.
+        /// </description>
+        /// <returns>The numeric type code for the underlying console type of the given field.</returns>
         public string GetFieldType(string fieldName) {
              InternalUnsafeMethods.GetFieldType__Args _args = new InternalUnsafeMethods.GetFieldType__Args() {
                 fieldName = fieldName,
@@ -1557,6 +1647,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Set the value of the given field on this object.
+        /// </description>
+        /// <param name="fieldName">The name of the field to assign to.  If it includes an array index, the index will be parsed out.</param>
+        /// <param name="value">The new value to assign to the field.</param>
+        /// <param name="index">Optional argument to specify an index for an array field.</param>
+        /// <returns>True.</returns>
         public bool SetFieldValue(string fieldName, string value, int index = -1) {
              InternalUnsafeMethods.SetFieldValue__Args _args = new InternalUnsafeMethods.SetFieldValue__Args() {
                 fieldName = fieldName,
@@ -1567,6 +1664,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Return the value of the given field on this object.
+        /// </description>
+        /// <param name="fieldName">The name of the field.  If it includes a field index, the index is parsed out.</param>
+        /// <param name="index">Optional parameter to specify the index of an array field separately.</param>
+        /// <returns>The value of the given field or "" if undefined.</returns>
         public string GetFieldValue(string fieldName, int index = -1) {
              InternalUnsafeMethods.GetFieldValue__Args _args = new InternalUnsafeMethods.GetFieldValue__Args() {
                 fieldName = fieldName,
@@ -1576,6 +1679,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Test whether the given field is defined on this object.
+        /// </description>
+        /// <param name="fieldName">The name of the field.</param>
+        /// <returns>True if the object implements the given field.</returns>
         public bool IsField(string fieldName) {
              InternalUnsafeMethods.IsField__Args _args = new InternalUnsafeMethods.IsField__Args() {
                 fieldName = fieldName,
@@ -1584,6 +1692,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the name of the C++ class which the object is an instance of.
+        /// </description>
+        /// <returns>The name of the C++ class of the object.</returns>
         public string GetClassName() {
              InternalUnsafeMethods.GetClassName__Args _args = new InternalUnsafeMethods.GetClassName__Args() {
              };
@@ -1591,6 +1703,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the global name of the object.
+        /// </description>
+        /// <returns>The global name assigned to the object.</returns>
         public string GetName() {
              InternalUnsafeMethods.GetName__Args _args = new InternalUnsafeMethods.GetName__Args() {
              };
@@ -1598,6 +1714,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Set the global name of the object.
+        /// </description>
+        /// <param name="newName">The new global name to assign to the object.</param>
+        /// <remarks> If name changing is disallowed on the object, the method will fail with a console error.</remarks>
         public void SetName(string newName) {
              InternalUnsafeMethods.SetName__Args _args = new InternalUnsafeMethods.SetName__Args() {
                 newName = newName,
@@ -1605,6 +1726,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetName()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Save out the object to the given file.
+        /// </description>
+        /// <param name="fileName">The name of the file to save to.</param>
+        /// <param name="selectedOnly">If true, only objects marked as selected will be saved out.</param>
+        /// <param name="preAppendString">Text which will be preprended directly to the object serialization.</param>
+        /// <param name="True">on success, false on failure.</param>
         public bool Save(string fileName, bool selectedOnly = false, string preAppendString = "") {
              InternalUnsafeMethods.Save__Args _args = new InternalUnsafeMethods.Save__Args() {
                 fileName = fileName,
@@ -1615,6 +1743,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Dump a description of all fields and methods defined on this object to the console.
+        /// </description>
+        /// <param name="detailed">Whether to print detailed information about members.</param>
         public void Dump(bool detailed = false) {
              InternalUnsafeMethods.Dump__Args _args = new InternalUnsafeMethods.Dump__Args() {
                 detailed = detailed,
@@ -1622,6 +1754,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Dump()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// List the methods defined on this object.
+        /// 
+        /// Each description is a newline-separated vector with the following elements:
+        /// - Minimum number of arguments.
+        /// - Maximum number of arguments.
+        /// - Prototype string.
+        /// - Full script file path (if script method).
+        /// - Line number of method definition in script (if script method).
+        /// 
+        /// - Documentation string (not including prototype).  This takes up the remainder of the vector.
+        /// </description>
+        /// <returns>An ArrayObject populated with (name,description) pairs of all methods defined on the object.</returns>
         public ArrayObject DumpMethods() {
              InternalUnsafeMethods.DumpMethods__Args _args = new InternalUnsafeMethods.DumpMethods__Args() {
              };
@@ -1629,6 +1774,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new ArrayObject(_engineResult);
         }
 
+        /// <description>
+        /// Hide/unhide the object.
+        /// </description>
+        /// <param name="value">If true, the object will be hidden; if false, the object will be unhidden.</param>
         public void SetHidden(bool value = true) {
              InternalUnsafeMethods.SetHidden__Args _args = new InternalUnsafeMethods.SetHidden__Args() {
                 value = value,
@@ -1636,6 +1785,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetHidden()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Lock/unlock the object in the editor.
+        /// </description>
+        /// <param name="value">If true, the object will be locked; if false, the object will be unlocked.</param>
         public void SetLocked(bool value = true) {
              InternalUnsafeMethods.SetLocked__Args _args = new InternalUnsafeMethods.SetLocked__Args() {
                 value = value,
@@ -1643,6 +1796,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetLocked()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Create a copy of this object and all its subobjects.
+        /// </description>
+        /// <returns>An exact duplicate of this object and all objects it references.</returns>
         public SimObject DeepClone() {
              InternalUnsafeMethods.DeepClone__Args _args = new InternalUnsafeMethods.DeepClone__Args() {
              };
@@ -1650,6 +1807,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimObject(_engineResult);
         }
 
+        /// <description>
+        /// Create a copy of this object.
+        /// </description>
+        /// <returns>An exact duplicate of this object.</returns>
         public SimObject Clone() {
              InternalUnsafeMethods.Clone__Args _args = new InternalUnsafeMethods.Clone__Args() {
              };
@@ -1657,6 +1818,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimObject(_engineResult);
         }
 
+        /// <description>
+        /// Set whether this object can be renamed from its first name.
+        /// </description>
+        /// <param name="value">If true, renaming is allowed for this object; if false, trying to change the name of the object will generate a console error.</param>
         public void SetNameChangeAllowed(bool value = true) {
              InternalUnsafeMethods.SetNameChangeAllowed__Args _args = new InternalUnsafeMethods.SetNameChangeAllowed__Args() {
                 value = value,
@@ -1664,6 +1829,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetNameChangeAllowed()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get whether this object may be renamed.
+        /// </description>
+        /// <returns>True if this object can be renamed; false otherwise.</returns>
         public bool IsNameChangeAllowed() {
              InternalUnsafeMethods.IsNameChangeAllowed__Args _args = new InternalUnsafeMethods.IsNameChangeAllowed__Args() {
              };
@@ -1671,6 +1840,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set/clear the editor-only flag on this object.
+        /// </description>
+        /// <param name="value">If true, the object is marked as existing only for the editor.</param>
         public void SetEditorOnly(bool value = true) {
              InternalUnsafeMethods.SetEditorOnly__Args _args = new InternalUnsafeMethods.SetEditorOnly__Args() {
                 value = value,
@@ -1678,6 +1851,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetEditorOnly()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Return true if the object is only used by the editor.
+        /// </description>
+        /// <returns>True if this object exists only for the sake of editing.</returns>
         public bool IsEditorOnly() {
              InternalUnsafeMethods.IsEditorOnly__Args _args = new InternalUnsafeMethods.IsEditorOnly__Args() {
              };
@@ -1685,6 +1862,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set whether the object will be included in saves.
+        /// </description>
+        /// <param name="value">If true, the object will be included in saves; if false, it will be excluded.</param>
         public void SetCanSave(bool value = true) {
              InternalUnsafeMethods.SetCanSave__Args _args = new InternalUnsafeMethods.SetCanSave__Args() {
                 value = value,
@@ -1692,6 +1873,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCanSave()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get whether the object will be included in saves.
+        /// </description>
+        /// <returns>True if the object will be saved; false otherwise.</returns>
         public bool GetCanSave() {
              InternalUnsafeMethods.GetCanSave__Args _args = new InternalUnsafeMethods.GetCanSave__Args() {
              };
@@ -1699,12 +1884,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Assign a persistent ID to the object if it does not already have one.
+        /// </description>
         public void AssignPersistentId() {
              InternalUnsafeMethods.AssignPersistentId__Args _args = new InternalUnsafeMethods.AssignPersistentId__Args() {
              };
              InternalUnsafeMethods.AssignPersistentId()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Copy fields from another object onto this one.  The objects must be of same type. Everything from the object will overwrite what's in this object; extra fields in this object will remain. This includes dynamic fields.
+        /// </description>
+        /// <param name="fromObject">The object from which to copy fields.</param>
         public void AssignFieldsFrom(SimObject fromObject) {
              InternalUnsafeMethods.AssignFieldsFrom__Args _args = new InternalUnsafeMethods.AssignFieldsFrom__Args() {
                 fromObject = fromObject.ObjectPtr,
@@ -1712,6 +1904,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AssignFieldsFrom()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the line number at which the object is defined in its file.
+        /// </description>
+        /// <returns>The line number of the object's definition in script.</returns>
+        /// <see cref="getFilename()" />
         public int GetDeclarationLine() {
              InternalUnsafeMethods.GetDeclarationLine__Args _args = new InternalUnsafeMethods.GetDeclarationLine__Args() {
              };
@@ -1719,6 +1916,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Sets the object's file name and path
+        /// </description>
+        /// <param name="fileName">The name of the file to associate this object with.</param>
         public void SetFilename(string fileName) {
              InternalUnsafeMethods.SetFilename__Args _args = new InternalUnsafeMethods.SetFilename__Args() {
                 fileName = fileName,
@@ -1726,6 +1927,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetFilename()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Returns the filename the object is attached to.
+        /// </description>
+        /// <returns>The name of the file the object is associated with; usually the file the object was loaded from.</returns>
         public string GetFilename() {
              InternalUnsafeMethods.GetFilename__Args _args = new InternalUnsafeMethods.GetFilename__Args() {
              };
@@ -1733,6 +1938,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Set whether the object has been marked as expanded. (in editor)
+        /// </description>
+        /// <param name="state">True if the object is to be marked expanded; false if not.</param>
         public void SetIsExpanded(bool state = true) {
              InternalUnsafeMethods.SetIsExpanded__Args _args = new InternalUnsafeMethods.SetIsExpanded__Args() {
                 state = state,
@@ -1740,6 +1949,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetIsExpanded()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get whether the object has been marked as expanded. (in editor)
+        /// </description>
+        /// <returns>True if the object is marked expanded.</returns>
         public bool IsExpanded() {
              InternalUnsafeMethods.IsExpanded__Args _args = new InternalUnsafeMethods.IsExpanded__Args() {
              };
@@ -1747,6 +1960,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set whether the object has been marked as selected. (in editor)
+        /// </description>
+        /// <param name="state">True if object is to be marked selected; false if not.</param>
         public void SetIsSelected(bool state = true) {
              InternalUnsafeMethods.SetIsSelected__Args _args = new InternalUnsafeMethods.SetIsSelected__Args() {
                 state = state,
@@ -1754,6 +1971,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetIsSelected()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get whether the object has been marked as selected. (in editor)
+        /// </description>
+        /// <returns>True if the object is currently selected.</returns>
         public bool IsSelected() {
              InternalUnsafeMethods.IsSelected__Args _args = new InternalUnsafeMethods.IsSelected__Args() {
              };
@@ -1761,6 +1982,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Assign a superclass namespace to this object.
+        /// </description>
+        /// <param name="name">The name of the 'superClass' namespace for this object.</param>
         public void SetSuperClassNamespace(string name) {
              InternalUnsafeMethods.SetSuperClassNamespace__Args _args = new InternalUnsafeMethods.SetSuperClassNamespace__Args() {
                 name = name,
@@ -1768,6 +1993,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSuperClassNamespace()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Assign a class namespace to this object.
+        /// </description>
+        /// <param name="name">The name of the 'class' namespace for this object.</param>
         public void SetClassNamespace(string name) {
              InternalUnsafeMethods.SetClassNamespace__Args _args = new InternalUnsafeMethods.SetClassNamespace__Args() {
                 name = name,
@@ -1775,6 +2004,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetClassNamespace()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the name of the superclass namespace assigned to this object.
+        /// </description>
+        /// <returns>The name of the 'superClass' namespace.</returns>
         public string GetSuperClassNamespace() {
              InternalUnsafeMethods.GetSuperClassNamespace__Args _args = new InternalUnsafeMethods.GetSuperClassNamespace__Args() {
              };
@@ -1782,6 +2015,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the name of the class namespace assigned to this object.
+        /// </description>
+        /// <returns>The name of the 'class' namespace.</returns>
         public string GetClassNamespace() {
              InternalUnsafeMethods.GetClassNamespace__Args _args = new InternalUnsafeMethods.GetClassNamespace__Args() {
              };
@@ -1789,6 +2026,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Test whether the object belongs directly or indirectly to the given group.
+        /// </description>
+        /// <param name="group">The SimGroup object.</param>
+        /// <returns>True if the object is a child of the given group or a child of a group that the given group is directly or indirectly a child to.</returns>
         public bool IsChildOfGroup(SimGroup group) {
              InternalUnsafeMethods.IsChildOfGroup__Args _args = new InternalUnsafeMethods.IsChildOfGroup__Args() {
                 group = group.ObjectPtr,
@@ -1797,6 +2039,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the given method is defined on this object.
+        /// </description>
+        /// <param name="The">name of the method.</param>
+        /// <returns>True if the object implements the given method.</returns>
         public bool IsMethod(string methodName) {
              InternalUnsafeMethods.IsMethod__Args _args = new InternalUnsafeMethods.IsMethod__Args() {
                 methodName = methodName,
@@ -1805,12 +2052,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Dump the hierarchy of this object up to RootGroup to the console.
+        /// </description>
         public void DumpGroupHierarchy() {
              InternalUnsafeMethods.DumpGroupHierarchy__Args _args = new InternalUnsafeMethods.DumpGroupHierarchy__Args() {
              };
              InternalUnsafeMethods.DumpGroupHierarchy()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SimObject class.
+        /// </description>
+        /// <returns>The type info object for SimObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -1818,56 +2072,122 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Optional global name of this object.
+        /// </description>
+        /// </value>
         public new string Name {
             get => GetName();
             set => SetName(value);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Optional name that may be used to lookup this object within a SimSet.
+        /// </description>
+        /// </value>
         public string InternalName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("internalName"));
             set => SetFieldValue("internalName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Group hierarchy parent of the object.
+        /// </description>
+        /// </value>
         public SimObject ParentGroup {
             get => GenericMarshal.StringTo<SimObject>(GetFieldValue("parentGroup"));
             set => SetFieldValue("parentGroup", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script class of object.
+        /// </description>
+        /// </value>
         public string Class {
             get => GenericMarshal.StringTo<string>(GetFieldValue("class"));
             set => SetFieldValue("class", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script super-class of object.
+        /// </description>
+        /// </value>
         public string SuperClass {
             get => GenericMarshal.StringTo<string>(GetFieldValue("superClass"));
             set => SetFieldValue("superClass", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script class of object.
+        /// </description>
+        /// </value>
         public string ClassName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("className"));
             set => SetFieldValue("className", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the object is visible.
+        /// </description>
+        /// </value>
         public bool Hidden {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("hidden"));
             set => SetFieldValue("hidden", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the object can be edited.
+        /// </description>
+        /// </value>
         public bool Locked {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("locked"));
             set => SetFieldValue("locked", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the object can be saved out. If false, the object is purely transient in nature.
+        /// </description>
+        /// </value>
         public bool CanSave {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("canSave"));
             set => SetFieldValue("canSave", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// True if dynamic fields (added at runtime) should be saved. Defaults to true.
+        /// </description>
+        /// </value>
         public bool CanSaveDynamicFields {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("canSaveDynamicFields"));
             set => SetFieldValue("canSaveDynamicFields", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The universally unique identifier for the object.
+        /// </description>
+        /// </value>
         public SimPersistID PersistentId {
             get => GenericMarshal.StringTo<SimPersistID>(GetFieldValue("persistentId"));
             set => SetFieldValue("persistentId", GenericMarshal.ToString(value));

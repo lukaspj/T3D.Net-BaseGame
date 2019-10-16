@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Container for GuiMaterialPreview</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiMaterialCtrl : GuiContainer {
         public GuiMaterialCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -122,6 +126,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ( string materialName )Set the material to be displayed in the control.
+        /// </description>
         public bool SetMaterial(string materialName) {
              InternalUnsafeMethods.SetMaterial__Args _args = new InternalUnsafeMethods.SetMaterial__Args() {
                 materialName = materialName,
@@ -130,6 +137,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the GuiMaterialCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiMaterialCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -137,6 +148,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string MaterialName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("materialName"));
             set => SetFieldValue("materialName", GenericMarshal.ToString(value));

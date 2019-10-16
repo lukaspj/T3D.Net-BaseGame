@@ -6,6 +6,7 @@ using T3DNetFramework.Interop;
 
 namespace T3DNetFramework.Generated.Structs.Global {
 
+    /// 
     public class ByteRange : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -45,6 +46,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class Polyhedron : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -78,20 +80,26 @@ namespace T3DNetFramework.Generated.Structs.Global {
         public void Alloc() {
             PointList.Alloc();
             internalStruct.pointList = PointList.internalStruct;
+
             PlaneList.Alloc();
             internalStruct.planeList = PlaneList.internalStruct;
+
             EdgeList.Alloc();
             internalStruct.edgeList = EdgeList.internalStruct;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             PointList?.Free();
             PointList = new Point3FVector(internalStruct.pointList);
+
             PlaneList?.Free();
             PlaneList = new PlaneFVector(internalStruct.planeList);
+
             EdgeList?.Free();
             EdgeList = new EdgeVector(internalStruct.edgeList);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -108,6 +116,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class StringVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -140,15 +149,21 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
+
             internalStruct.arraySize = ArraySize;
+
             internalStruct.array = GenericMarshal.ToPtr(Array);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             ElementCount = internalStruct.elementCount;
+
             ArraySize = internalStruct.arraySize;
+
             Array = GenericMarshal.FromPtr<string>(internalStruct.array, ElementCount, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -165,6 +180,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class EdgeVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -197,15 +213,21 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
+
             internalStruct.arraySize = ArraySize;
+
             internalStruct.array = GenericMarshal.ToPtr(Array);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             ElementCount = internalStruct.elementCount;
+
             ArraySize = internalStruct.arraySize;
+
             Array = GenericMarshal.FromPtr<Edge>(internalStruct.array, ElementCount, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -222,6 +244,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class PlaneFVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -254,15 +277,21 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
+
             internalStruct.arraySize = ArraySize;
+
             internalStruct.array = GenericMarshal.ToPtr(Array);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             ElementCount = internalStruct.elementCount;
+
             ArraySize = internalStruct.arraySize;
+
             Array = GenericMarshal.FromPtr<PlaneF>(internalStruct.array, ElementCount, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -279,6 +308,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class Point3FVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -311,15 +341,21 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
+
             internalStruct.arraySize = ArraySize;
+
             internalStruct.array = GenericMarshal.ToPtr(Array);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             ElementCount = internalStruct.elementCount;
+
             ArraySize = internalStruct.arraySize;
+
             Array = GenericMarshal.FromPtr<Point3F>(internalStruct.array, ElementCount, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -336,6 +372,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class FloatVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -368,15 +405,21 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
+
             internalStruct.arraySize = ArraySize;
+
             internalStruct.array = GenericMarshal.ToPtr(Array);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             ElementCount = internalStruct.elementCount;
+
             ArraySize = internalStruct.arraySize;
+
             Array = GenericMarshal.FromPtr<float>(internalStruct.array, ElementCount, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -393,6 +436,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class IntVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -425,15 +469,21 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
+
             internalStruct.arraySize = ArraySize;
+
             internalStruct.array = GenericMarshal.ToPtr(Array);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             ElementCount = internalStruct.elementCount;
+
             ArraySize = internalStruct.arraySize;
+
             Array = GenericMarshal.FromPtr<int>(internalStruct.array, ElementCount, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -450,6 +500,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class BoolVector : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -482,15 +533,21 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.elementCount = ElementCount;
+
             internalStruct.arraySize = ArraySize;
+
             internalStruct.array = GenericMarshal.ToPtr(Array);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             ElementCount = internalStruct.elementCount;
+
             ArraySize = internalStruct.arraySize;
+
             Array = GenericMarshal.FromPtr<bool>(internalStruct.array, ElementCount, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -507,6 +564,9 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// <description>
+    /// RGBA color quadruple in 32bit floating-point precision per channel.
+    /// </description>
     public class LinearColorF : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -542,17 +602,25 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.red = Red;
+
             internalStruct.green = Green;
+
             internalStruct.blue = Blue;
+
             internalStruct.alpha = Alpha;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             Red = internalStruct.red;
+
             Green = internalStruct.green;
+
             Blue = internalStruct.blue;
+
             Alpha = internalStruct.alpha;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -570,6 +638,9 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// <description>
+    /// RGBA color quadruple in 8bit integer precision per channel.
+    /// </description>
     public class ColorI : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -605,17 +676,25 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.red = Red;
+
             internalStruct.green = Green;
+
             internalStruct.blue = Blue;
+
             internalStruct.alpha = Alpha;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             Red = internalStruct.red;
+
             Green = internalStruct.green;
+
             Blue = internalStruct.blue;
+
             Alpha = internalStruct.alpha;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -633,6 +712,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class UUID : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -674,21 +754,33 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.a = A;
+
             internalStruct.b = B;
+
             internalStruct.c = C;
+
             internalStruct.d = D;
+
             internalStruct.e = E;
+
             internalStruct.f = GenericMarshal.ToPtr(F);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             A = internalStruct.a;
+
             B = internalStruct.b;
+
             C = internalStruct.c;
+
             D = internalStruct.d;
+
             E = internalStruct.e;
+
             F = GenericMarshal.FromPtr<byte>(internalStruct.f, 6, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -708,6 +800,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class Edge : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -737,13 +830,17 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.face = GenericMarshal.ToPtr(Face);
+
             internalStruct.vertex = GenericMarshal.ToPtr(Vertex);
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             Face = GenericMarshal.FromPtr<uint>(internalStruct.face, 2, true);
+
             Vertex = GenericMarshal.FromPtr<uint>(internalStruct.vertex, 2, true);
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }
@@ -759,6 +856,7 @@ namespace T3DNetFramework.Generated.Structs.Global {
     }
 
 
+    /// 
     public class PlaneF : IEngineStruct {
         [StructLayout(LayoutKind.Explicit)]
         public struct InternalStruct {
@@ -794,17 +892,25 @@ namespace T3DNetFramework.Generated.Structs.Global {
         
         public void Alloc() {
             internalStruct.x = X;
+
             internalStruct.y = Y;
+
             internalStruct.z = Z;
+
             internalStruct.d = D;
+
             internalStructPtr = StructMarshal.StructToIntPtr(internalStruct);
         }
         
         public void Free() {
             X = internalStruct.x;
+
             Y = internalStruct.y;
+
             Z = internalStruct.z;
+
             D = internalStruct.d;
+
             if (internalStructPtr != IntPtr.Zero) {
                 StructMarshal.FreeStructPtr<InternalStruct>(internalStructPtr);
             }

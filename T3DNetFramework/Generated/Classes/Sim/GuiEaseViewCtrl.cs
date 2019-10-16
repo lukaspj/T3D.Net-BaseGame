@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Control to visualize an EaseF.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
+    /// <see cref="EaseF" />
     public unsafe class GuiEaseViewCtrl : GuiControl {
         public GuiEaseViewCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +104,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiEaseViewCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiEaseViewCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +115,37 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public EaseF Ease {
             get => GenericMarshal.StringTo<EaseF>(GetFieldValue("ease"));
             set => SetFieldValue("ease", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public LinearColorF EaseColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("easeColor"));
             set => SetFieldValue("easeColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float EaseWidth {
             get => GenericMarshal.StringTo<float>(GetFieldValue("easeWidth"));
             set => SetFieldValue("easeWidth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public LinearColorF AxisColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("axisColor"));
             set => SetFieldValue("axisColor", GenericMarshal.ToString(value));

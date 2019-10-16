@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Very old GUI used for terrain preview</summary>
+    /// <description>
+    /// Deprecated
+    /// </description>
     public unsafe class GuiTerrPreviewCtrl : GuiControl {
         public GuiTerrPreviewCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -243,6 +247,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Accepts a 4-tuple in the same form as getValue returns.
+        /// </description>
+        /// <see cref="GuiTerrPreviewCtrl::getValue()" />
         public void SetValue(string tuple) {
              InternalUnsafeMethods.SetValue__Args _args = new InternalUnsafeMethods.SetValue__Args() {
                 tuple = tuple,
@@ -250,6 +258,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetValue()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Returns a 4-tuple containing: root_x root_y origin_x origin_y
+        /// </description>
         public string GetValue() {
              InternalUnsafeMethods.GetValue__Args _args = new InternalUnsafeMethods.GetValue__Args() {
              };
@@ -257,6 +268,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return a Point2F containing the position of the origin.
+        /// </description>
         public Point2F GetOrigin() {
              InternalUnsafeMethods.GetOrigin__Args _args = new InternalUnsafeMethods.GetOrigin__Args() {
              };
@@ -264,6 +278,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point2F(_engineResult);
         }
 
+        /// <description>
+        /// (float x, float y)Set the origin of the view.
+        /// </description>
         public void SetOrigin(Point2F pos) {
 pos.Alloc();             InternalUnsafeMethods.SetOrigin__Args _args = new InternalUnsafeMethods.SetOrigin__Args() {
                 pos = pos.internalStructPtr,
@@ -271,6 +288,9 @@ pos.Alloc();             InternalUnsafeMethods.SetOrigin__Args _args = new Inter
              InternalUnsafeMethods.SetOrigin()(ObjectPtr, _args);
 pos.Free();        }
 
+        /// <description>
+        /// Return a Point2F representing the position of the root.
+        /// </description>
         public Point2F GetRoot() {
              InternalUnsafeMethods.GetRoot__Args _args = new InternalUnsafeMethods.GetRoot__Args() {
              };
@@ -278,18 +298,28 @@ pos.Free();        }
              return new Point2F(_engineResult);
         }
 
+        /// <description>
+        /// Add the origin to the root and reset the origin.
+        /// </description>
         public void SetRoot() {
              InternalUnsafeMethods.SetRoot__Args _args = new InternalUnsafeMethods.SetRoot__Args() {
              };
              InternalUnsafeMethods.SetRoot()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Reset the view of the terrain.
+        /// </description>
         public void Reset() {
              InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
              };
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiTerrPreviewCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTerrPreviewCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

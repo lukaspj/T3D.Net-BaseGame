@@ -14,7 +14,16 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Brief Desc.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// // Comment:
+    /// %okButton = new ClassObject()
+    /// instantiation
+    /// </code>
     public unsafe class GuiContainer : GuiControl {
         public GuiContainer(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +108,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiContainer class.
+        /// </description>
+        /// <returns>The type info object for GuiContainer</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,36 +119,64 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public GuiDockingType Docking {
             get => GenericMarshal.StringTo<GuiDockingType>(GetFieldValue("docking"));
             set => SetFieldValue("docking", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public RectSpacingI Margin {
             get => GenericMarshal.StringTo<RectSpacingI>(GetFieldValue("margin"));
             set => SetFieldValue("margin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public RectSpacingI Padding {
             get => GenericMarshal.StringTo<RectSpacingI>(GetFieldValue("padding"));
             set => SetFieldValue("padding", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool AnchorTop {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("anchorTop"));
             set => SetFieldValue("anchorTop", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool AnchorBottom {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("anchorBottom"));
             set => SetFieldValue("anchorBottom", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool AnchorLeft {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("anchorLeft"));
             set => SetFieldValue("anchorLeft", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool AnchorRight {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("anchorRight"));
             set => SetFieldValue("anchorRight", GenericMarshal.ToString(value));

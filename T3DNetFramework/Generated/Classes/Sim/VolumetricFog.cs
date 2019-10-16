@@ -14,7 +14,44 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Volumetric Fog Object class. Main class defining the Volumetric</summary>
+    /// <description>
+    /// Fog objects in the scene. Used in conjunction with the VolumetricFogRTManager
+    /// class which is responsible for the required rendertargets.
+    /// 
+    /// Methods (exposed to script):
+    ///  setFogColorF(color) Changes the overall fog color (color.rgba range 0.0 - 1.0).
+    /// ; setFogColor(color) Changes the overall fog color color.rgba range 0 - 255).
+    /// ; setFogDensity(density) Changes the overall fog density.
+    ///  setFogModulation(strength, speed1, speed2) changes the strength
+    ///  and the speeds of the 2 animation layers.
+    /// 
+    /// Callbacks:
+    /// onEnterFog triggered whenever the controlobject (Player or Camera) enters the Fog.
+    ///  (current Fog object and the controlobject are exposed to script.
+    /// onLeaveFog triggered whenever the controlobject (Player or Camera) left the Fog.
+    ///  (current Fog object and the controlobject are exposed to script.
+    /// </description>
+    /// <code>
+    /// new VolumetricFog()
+    ///  {
+    ///  shapeName = "art/environment/FogRCube.dts";
+    ///  fogColor = "200 200 200 128";
+    ///  fogDensity = "0.2";
+    ///  ignoreWater = "0";
+    ///  MinSize = "250";
+    ///  FadeSize = "750";
+    ///  texture = "art/environment/FogMod_heavy.dds";
+    ///  tiles = "1.5";
+    ///  modStrength = "0.2";
+    ///  PrimSpeed = "-0.01 0.04";
+    ///  SecSpeed = "0.02 -0.02";
+    ///  position = "748.644 656.371 65.3506"; 
+    ///  rotation = "0 0 1 20.354";
+    ///  scale = "40 30 6";
+    ///  };
+    /// </code>
     public unsafe class VolumetricFog : SceneObject {
         public VolumetricFog(bool pRegister = false) 
             : base(pRegister) {
@@ -294,6 +331,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>returns true if control object is inside the fog</summary>
+        /// <description>
+        /// .
+        /// </description>
         public bool IsInsideFog() {
              InternalUnsafeMethods.IsInsideFog__Args _args = new InternalUnsafeMethods.IsInsideFog__Args() {
              };
@@ -301,6 +342,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Changes the lightrays postfx when inside the fog</summary>
+        /// <description>
+        /// .
+        /// </description>
+        /// <param name="on_off">set to true to modification of the lightray postfx.</param>
+        /// <param name="strength">lightray strength.</param>
         public void SetFogLightray(bool on_off, float strength) {
              InternalUnsafeMethods.SetFogLightray__Args _args = new InternalUnsafeMethods.SetFogLightray__Args() {
                 on_off = on_off,
@@ -309,6 +356,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetFogLightray()(ObjectPtr, _args);
         }
 
+        /// <summary>Changes the glow postfx when inside the fog</summary>
+        /// <description>
+        /// .
+        /// </description>
+        /// <param name="on_off">set to true to enable glow.</param>
+        /// <param name="strength">glow strength.</param>
         public void SetFogGlow(bool on_off, float strength) {
              InternalUnsafeMethods.SetFogGlow__Args _args = new InternalUnsafeMethods.SetFogGlow__Args() {
                 on_off = on_off,
@@ -317,6 +370,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetFogGlow()(ObjectPtr, _args);
         }
 
+        /// <summary>Changes the modulation of the fog</summary>
+        /// <description>
+        /// .
+        /// </description>
+        /// <param name="new_strenght">the new strength of the modulation.</param>
+        /// <param name="new_speed1">the new speed (x y) of the modulation layer 1.</param>
+        /// <param name="new_speed2">the new speed (x y) of the modulation layer 2.</param>
         public void SetFogModulation(float new_strenght, Point2F new_speed1, Point2F new_speed2) {
 new_speed1.Alloc();new_speed2.Alloc();             InternalUnsafeMethods.SetFogModulation__Args _args = new InternalUnsafeMethods.SetFogModulation__Args() {
                 new_strenght = new_strenght,
@@ -326,6 +386,11 @@ new_speed1.Alloc();new_speed2.Alloc();             InternalUnsafeMethods.SetFogM
              InternalUnsafeMethods.SetFogModulation()(ObjectPtr, _args);
 new_speed1.Free();new_speed2.Free();        }
 
+        /// <summary>Changes the density of the fog</summary>
+        /// <description>
+        /// .
+        /// </description>
+        /// <param name="new_density">the new fog density.</param>
         public void SetFogDensity(float new_density) {
              InternalUnsafeMethods.SetFogDensity__Args _args = new InternalUnsafeMethods.SetFogDensity__Args() {
                 new_density = new_density,
@@ -333,6 +398,11 @@ new_speed1.Free();new_speed2.Free();        }
              InternalUnsafeMethods.SetFogDensity()(ObjectPtr, _args);
         }
 
+        /// <summary>Changes the color of the fog</summary>
+        /// <description>
+        /// .
+        /// </description>
+        /// <param name="new_color">the new fog color (rgb 0-255, a is ignored.</param>
         public void SetFogColor(ColorI new_color) {
 new_color.Alloc();             InternalUnsafeMethods.SetFogColor__Args _args = new InternalUnsafeMethods.SetFogColor__Args() {
                 new_color = new_color.internalStructPtr,
@@ -340,6 +410,11 @@ new_color.Alloc();             InternalUnsafeMethods.SetFogColor__Args _args = n
              InternalUnsafeMethods.SetFogColor()(ObjectPtr, _args);
 new_color.Free();        }
 
+        /// <summary>Changes the color of the fog</summary>
+        /// <description>
+        /// .
+        /// </description>
+        /// <param name="new_color">the new fog color (rgb 0.0 - 1.0, a is ignored.</param>
         public void SetFogColorF(LinearColorF new_color) {
 new_color.Alloc();             InternalUnsafeMethods.SetFogColorF__Args _args = new InternalUnsafeMethods.SetFogColorF__Args() {
                 new_color = new_color.internalStructPtr,
@@ -347,6 +422,11 @@ new_color.Alloc();             InternalUnsafeMethods.SetFogColorF__Args _args = 
              InternalUnsafeMethods.SetFogColorF()(ObjectPtr, _args);
 new_color.Free();        }
 
+        /// <summary>Called when an object left the volume of the Fog instance.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">the controlobject leaving the fog.</param>
         public virtual void OnLeaveFog(uint obj) {
              InternalUnsafeMethods.OnLeaveFog__Args _args = new InternalUnsafeMethods.OnLeaveFog__Args() {
                 obj = obj,
@@ -354,6 +434,11 @@ new_color.Free();        }
              InternalUnsafeMethods.OnLeaveFog()(ObjectPtr, _args);
         }
 
+        /// <summary>Called when an object enters the volume of the Fog instance.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="obj">the controlobject entering the fog.</param>
         public virtual void OnEnterFog(uint obj) {
              InternalUnsafeMethods.OnEnterFog__Args _args = new InternalUnsafeMethods.OnEnterFog__Args() {
                 obj = obj,
@@ -361,6 +446,10 @@ new_color.Free();        }
              InternalUnsafeMethods.OnEnterFog()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the VolumetricFog class.
+        /// </description>
+        /// <returns>The type info object for VolumetricFog</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -368,86 +457,188 @@ new_color.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path and filename of the model file (.DTS, .DAE) to use for this Volume.
+        /// </description>
+        /// </value>
         public string ShapeName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("shapeName"));
             set => SetFieldValue("shapeName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Fog color RGBA (Alpha is ignored)
+        /// </description>
+        /// </value>
         public ColorI FogColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("fogColor"));
             set => SetFieldValue("fogColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Overal fog density value (0 disables the fog).
+        /// </description>
+        /// </value>
         public float FogDensity {
             get => GenericMarshal.StringTo<float>(GetFieldValue("fogDensity"));
             set => SetFieldValue("fogDensity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Set to true if volumetric fog should continue while submerged.
+        /// </description>
+        /// </value>
         public bool IgnoreWater {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ignoreWater"));
             set => SetFieldValue("ignoreWater", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Min size (in pixels) for fog to be rendered.
+        /// </description>
+        /// </value>
         public float MinSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("MinSize"));
             set => SetFieldValue("MinSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Object size in pixels at which the FX-fading kicks in (0 disables fading).
+        /// </description>
+        /// </value>
         public float FadeSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("fadeSize"));
             set => SetFieldValue("fadeSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A texture which contains Fogdensity modulator in the red channel and color with 1-green channel. No texture disables modulation.
+        /// </description>
+        /// </value>
         public string Texture {
             get => GenericMarshal.StringTo<string>(GetFieldValue("texture"));
             set => SetFieldValue("texture", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// How many times the texture is mapped to the object.
+        /// </description>
+        /// </value>
         public float Tiles {
             get => GenericMarshal.StringTo<float>(GetFieldValue("tiles"));
             set => SetFieldValue("tiles", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Overall strength of the density modulation (0 disables modulation).
+        /// </description>
+        /// </value>
         public float ModStrength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("modStrength"));
             set => SetFieldValue("modStrength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Overall primary speed of the density modulation (x-speed(u) y-speed(v))
+        /// </description>
+        /// </value>
         public Point2F PrimSpeed {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("PrimSpeed"));
             set => SetFieldValue("PrimSpeed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Overall secundary speed of the density modulation (x-speed(u) y-speed(v))
+        /// </description>
+        /// </value>
         public Point2F SecSpeed {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("SecSpeed"));
             set => SetFieldValue("SecSpeed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Set to true if volumetric fog should be reflected.
+        /// </description>
+        /// </value>
         public bool Reflectable {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("Reflectable"));
             set => SetFieldValue("Reflectable", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Strength of the reflections (0 disables the fog).
+        /// </description>
+        /// </value>
         public float ReflectStrength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("ReflectStrength"));
             set => SetFieldValue("ReflectStrength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Set to true if volumetric fog should use glow PostFX.
+        /// </description>
+        /// </value>
         public bool UseGlow {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useGlow"));
             set => SetFieldValue("useGlow", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Overall strength of the glow PostFX.
+        /// </description>
+        /// </value>
         public float GlowStrength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("glowStrength"));
             set => SetFieldValue("glowStrength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Set to true if volumetric fog should modify the brightness of the Lightrays.
+        /// </description>
+        /// </value>
         public bool ModLightRay {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("modLightRay"));
             set => SetFieldValue("modLightRay", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Modifier for LightRay PostFX when inside Fog.
+        /// </description>
+        /// </value>
         public float LightRayMod {
             get => GenericMarshal.StringTo<float>(GetFieldValue("lightRayMod"));
             set => SetFieldValue("lightRayMod", GenericMarshal.ToString(value));

@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Represents one or more rigid bodies defined in a single mesh file with a limited lifetime.</summary>
+    /// <description>
+    /// A PhysicsDebris object can be viewed as a single system capable of generating multiple
+    /// </description>
     public unsafe class PhysicsDebris : GameBase {
         public PhysicsDebris(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the PhysicsDebris class.
+        /// </description>
+        /// <returns>The type info object for PhysicsDebris</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

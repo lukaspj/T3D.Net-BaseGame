@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Mooring effect.</summary>
+    /// <description>
+    /// A Mooring is an invisible effect object which can be positioned and oriented within a scene like other objects. Its main purpose is to serve as a common mount point for other effects within the same choreographer. Typically one uses AFX animation features to create movement for a Mooring and then other effects are bound to it using effect-to-effect constraints (#effect).
+    /// </description>
     public unsafe class afxMooringData : GameBaseData {
         public afxMooringData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxMooringData class.
+        /// </description>
+        /// <returns>The type info object for afxMooringData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +114,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specifies whether to display an axis to help visualize the position and orientation of the mooring.
+        /// </description>
+        /// </value>
         public bool DisplayAxisMarker {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("displayAxisMarker"));
             set => SetFieldValue("displayAxisMarker", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// This field is only meaningful for networking settings of SCOPE_ALWAYS and GHOSTABLE. In these cases, client moorings are ghosting a mooring on the server, and trackPosOnly determines if the client moorings need to be updated with the server mooring's complete transform or just its position. If only the position needs to be tracked, setting trackPosOnly to true will reduce the network traffic.
+        /// </description>
+        /// </value>
         public bool TrackPosOnly {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("trackPosOnly"));
             set => SetFieldValue("trackPosOnly", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specifies the networking model used for the mooring and should be one of: $AFX::SCOPE_ALWAYS, $AFX::GHOSTABLE, $AFX::SERVER_ONLY, or $AFX::CLIENT_ONLY
+        /// </description>
+        /// </value>
         public sbyte Networking {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("networking"));
             set => SetFieldValue("networking", GenericMarshal.ToString(value));

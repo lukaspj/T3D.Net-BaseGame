@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Console Message effect.</summary>
+    /// <description>
+    /// Console Message effects are useful for debugging purposes when you want to make sure that an effect with a certain kind of timing is actually getting executed and for evaluating some kinds of field substitutions.
+    /// </description>
     public unsafe class afxConsoleMessageData : GameBaseData {
         public afxConsoleMessageData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxConsoleMessageData class.
+        /// </description>
+        /// <returns>The type info object for afxConsoleMessageData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +114,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// A text message to be displayed when the effect is executed.
+        /// </description>
+        /// </value>
         public string Message {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Message"));
             set => SetFieldValue("Message", GenericMarshal.ToString(value));

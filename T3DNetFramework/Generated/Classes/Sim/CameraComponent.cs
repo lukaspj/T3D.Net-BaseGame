@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class CameraComponent : Component {
         public CameraComponent(bool pRegister = false) 
             : base(pRegister) {
@@ -242,6 +243,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the CameraComponent class.
+        /// </description>
+        /// <returns>The type info object for CameraComponent</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -249,6 +254,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <summary>Called on the server when the client has requested a FOV change.</summary>
+        /// <description>
+        /// When the client requests that its field of view should be changed (because they want to use a sniper scope, for example) this new FOV needs to be validated by the server.  This method is called if it exists (it is optional) to validate the requested FOV, and modify it if necessary.  This could be as simple as checking that the FOV falls within a correct range, to making sure that the FOV matches the capabilities of the current weapon.
+        /// 
+        /// Following this method, ShapeBase ensures that the given FOV still falls within the datablock's mCameraMinFov and mCameraMaxFov.  If that is good enough for your purposes, then you do not need to define the validateCameraFov() callback for your ShapeBase.
+        /// </description>
+        /// <param name="fov">The FOV that has been requested by the client.</param>
+        /// <returns>The FOV as validated by the server.</returns>
+        /// <see cref="ShapeBaseData" />
         public virtual float ValidateCameraFov(float fov) {
              InternalUnsafeMethods.ValidateCameraFov__Args _args = new InternalUnsafeMethods.ValidateCameraFov__Args() {
                 fov = fov,
@@ -257,6 +271,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public Point3F GetWorldPosition() {
              InternalUnsafeMethods.GetWorldPosition__Args _args = new InternalUnsafeMethods.GetWorldPosition__Args() {
              };
@@ -264,6 +282,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public void SetForwardVector(Point3F newForward = null) {
 newForward = newForward ?? new Point3F("0 0 0");
 newForward.Alloc();             InternalUnsafeMethods.SetForwardVector__Args _args = new InternalUnsafeMethods.SetForwardVector__Args() {
@@ -272,6 +294,10 @@ newForward.Alloc();             InternalUnsafeMethods.SetForwardVector__Args _ar
              InternalUnsafeMethods.SetForwardVector()(ObjectPtr, _args);
 newForward.Free();        }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public Point3F GetUpVector() {
              InternalUnsafeMethods.GetUpVector__Args _args = new InternalUnsafeMethods.GetUpVector__Args() {
              };
@@ -279,6 +305,10 @@ newForward.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public Point3F GetRightVector() {
              InternalUnsafeMethods.GetRightVector__Args _args = new InternalUnsafeMethods.GetRightVector__Args() {
              };
@@ -286,6 +316,10 @@ newForward.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public Point3F GetForwardVector() {
              InternalUnsafeMethods.GetForwardVector__Args _args = new InternalUnsafeMethods.GetForwardVector__Args() {
              };
@@ -293,6 +327,11 @@ newForward.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <summary>We get the first behavior of the requested type on our owner object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>(string name) The type of the behavior we're requesting</returns>
         public string GetMode() {
              InternalUnsafeMethods.GetMode__Args _args = new InternalUnsafeMethods.GetMode__Args() {
              };
@@ -300,41 +339,73 @@ newForward.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float FOV {
             get => GenericMarshal.StringTo<float>(GetFieldValue("FOV"));
             set => SetFieldValue("FOV", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float MinFOV {
             get => GenericMarshal.StringTo<float>(GetFieldValue("MinFOV"));
             set => SetFieldValue("MinFOV", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float MaxFOV {
             get => GenericMarshal.StringTo<float>(GetFieldValue("MaxFOV"));
             set => SetFieldValue("MaxFOV", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point2I ScreenAspect {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("ScreenAspect"));
             set => SetFieldValue("ScreenAspect", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string TargetNode {
             get => GenericMarshal.StringTo<string>(GetFieldValue("targetNode"));
             set => SetFieldValue("targetNode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F PositionOffset {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("positionOffset"));
             set => SetFieldValue("positionOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public RotationF RotationOffset {
             get => GenericMarshal.StringTo<RotationF>(GetFieldValue("rotationOffset"));
             set => SetFieldValue("rotationOffset", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool UseParentTransform {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useParentTransform"));
             set => SetFieldValue("useParentTransform", GenericMarshal.ToString(value));

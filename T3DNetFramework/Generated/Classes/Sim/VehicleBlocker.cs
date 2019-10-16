@@ -14,7 +14,14 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Legacy class from Tribes, originally used for blocking Vehicle objects.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <remarks> This is no longer useful and should be deprecated soon.
+    /// 
+    /// </remarks>
     public unsafe class VehicleBlocker : SceneObject {
         public VehicleBlocker(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +106,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the VehicleBlocker class.
+        /// </description>
+        /// <returns>The type info object for VehicleBlocker</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +117,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F Dimensions {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("dimensions"));
             set => SetFieldValue("dimensions", GenericMarshal.ToString(value));

@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A basic effects choreographer.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxEffectron : afxChoreographer {
         public afxEffectron(bool pRegister = false) 
             : base(pRegister) {
@@ -160,18 +164,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Activates an effectron that was started with postponeActivation=true.
+        /// </description>
         public void Activate() {
              InternalUnsafeMethods.Activate__Args _args = new InternalUnsafeMethods.Activate__Args() {
              };
              InternalUnsafeMethods.Activate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Interrupts and deletes a running effectron.
+        /// </description>
         public void Interrupt() {
              InternalUnsafeMethods.Interrupt__Args _args = new InternalUnsafeMethods.Interrupt__Args() {
              };
              InternalUnsafeMethods.Interrupt()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets the time-factor for the effectron.
+        /// </description>
         public void SetTimeFactor(float factor) {
              InternalUnsafeMethods.SetTimeFactor__Args _args = new InternalUnsafeMethods.SetTimeFactor__Args() {
                 factor = factor,
@@ -179,6 +192,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTimeFactor()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the afxEffectron class.
+        /// </description>
+        /// <returns>The type info object for afxEffectron</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

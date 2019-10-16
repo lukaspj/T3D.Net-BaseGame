@@ -14,7 +14,27 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A named checkbox that can be toggled on and off.</summary>
+    /// <description>
+    /// A GuiCheckBoxCtrl displays a text label next to a checkbox that can be toggled on and off by the user. Checkboxes are usually used to present boolean choices like, for example, a switch to toggle fullscreen video on and off.
+    /// </description>
+    /// <code>
+    /// // Create a checkbox that allows to toggle fullscreen on and off.
+    /// new GuiCheckBoxCtrl( FullscreenToggle )
+    /// {
+    ///    text = "Fullscreen";
+    /// };
+    /// 
+    /// // Set the initial state to match the current fullscreen setting.
+    /// FullscreenToggle.setStateOn( Canvas.isFullscreen() );
+    /// 
+    /// // Define function to be called when checkbox state is toggled.
+    /// function FullscreenToggle::onClick( %this )
+    /// {
+    ///    Canvas.toggleFullscreen();
+    /// }
+    /// </code>
     public unsafe class GuiCheckBoxCtrl : GuiButtonBaseCtrl {
         public GuiCheckBoxCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -142,6 +162,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Test whether the checkbox is currently checked.
+        /// </description>
+        /// <returns>True if the checkbox is currently ticked, false otherwise.</returns>
         public bool IsStateOn() {
              InternalUnsafeMethods.IsStateOn__Args _args = new InternalUnsafeMethods.IsStateOn__Args() {
              };
@@ -149,6 +173,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set whether the checkbox is ticked or not.
+        /// </description>
+        /// <param name="newState">If true the box will be checked, if false, it will be unchecked.</param>
+        /// <remarks> This method will </remarks>
         public void SetStateOn(bool newState) {
              InternalUnsafeMethods.SetStateOn__Args _args = new InternalUnsafeMethods.SetStateOn__Args() {
                 newState = newState,
@@ -156,6 +185,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetStateOn()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiCheckBoxCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiCheckBoxCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

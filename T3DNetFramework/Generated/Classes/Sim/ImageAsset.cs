@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class ImageAsset : AssetBase {
         public ImageAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ImageAsset class.
+        /// </description>
+        /// <returns>The type info object for ImageAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +111,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the image file.
+        /// </description>
+        /// </value>
         public string ImageFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("imageFile"));
             set => SetFieldValue("imageFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Should the image use mips? (Currently unused).
+        /// </description>
+        /// </value>
         public bool UseMips {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useMips"));
             set => SetFieldValue("useMips", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Is the image in an HDR format? (Currently unused)
+        /// </description>
+        /// </value>
         public bool IsHDRImage {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isHDRImage"));
             set => SetFieldValue("isHDRImage", GenericMarshal.ToString(value));

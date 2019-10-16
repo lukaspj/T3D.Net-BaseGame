@@ -14,7 +14,20 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Represents a large body of water stretching to the horizon in all directions.</summary>
+    /// <description>
+    /// WaterPlane's position is defined only height, the z element of position, it is infinite in xy and depth. %WaterPlane is designed to represent the ocean on an island scene and viewed from ground level; other uses may not be appropriate and a WaterBlock may be used.
+    /// </description>
+    /// <see cref="WaterObject for inherited functionality.
+    /// 
+    /// Limitations:
+    /// 
+    /// Because %WaterPlane cannot be projected exactly to the far-clip distance, other objects nearing this distance can have noticible artifacts as they clip through first the %WaterPlane and then the far plane.
+    /// 
+    /// To avoid this large objects should be positioned such that they will not line up with the far-clip from vantage points the player is expected to be. In particular, your TerrainBlock should be completely contained by the far-clip distance.
+    /// 
+    /// Viewing %WaterPlane from a high altitude with a tight far-clip distance will accentuate this limitation. %WaterPlane is primarily designed to be viewed from ground level." />
     public unsafe class WaterPlane : WaterObject {
         public WaterPlane(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +112,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the WaterPlane class.
+        /// </description>
+        /// <returns>The type info object for WaterPlane</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +123,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Spacing between vertices in the WaterBlock mesh
+        /// </description>
+        /// </value>
         public int GridSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("gridSize"));
             set => SetFieldValue("gridSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Duplicate of gridElementSize for backwards compatility
+        /// </description>
+        /// </value>
         public float GridElementSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("gridElementSize"));
             set => SetFieldValue("gridElementSize", GenericMarshal.ToString(value));

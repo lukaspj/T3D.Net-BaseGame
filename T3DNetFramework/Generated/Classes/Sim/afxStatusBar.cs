@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A GUI status bar for tracking and displaying health and energy of ShapeBase objects.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxStatusBar : GuiControl {
         public afxStatusBar(bool pRegister = false) 
             : base(pRegister) {
@@ -161,12 +165,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Clear out any ShapeBase-derived object associated with the status-bar.
+        /// </description>
         public void ClearShape() {
              InternalUnsafeMethods.ClearShape__Args _args = new InternalUnsafeMethods.ClearShape__Args() {
              };
              InternalUnsafeMethods.ClearShape()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Associate a ShapeBase-derived object with the status-bar.
+        /// </description>
         public void SetShape(ShapeBase shape) {
              InternalUnsafeMethods.SetShape__Args _args = new InternalUnsafeMethods.SetShape__Args() {
                 shape = shape.ObjectPtr,
@@ -174,6 +184,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetShape()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the progress percentage on the status-bar.
+        /// </description>
         public void SetProgress(float percentDone) {
              InternalUnsafeMethods.SetProgress__Args _args = new InternalUnsafeMethods.SetProgress__Args() {
                 percentDone = percentDone,
@@ -181,6 +194,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetProgress()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the afxStatusBar class.
+        /// </description>
+        /// <returns>The type info object for afxStatusBar</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -188,16 +205,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF FillColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("fillColor"));
             set => SetFieldValue("fillColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool DisplayEnergy {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("displayEnergy"));
             set => SetFieldValue("displayEnergy", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool MonitorPlayer {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("monitorPlayer"));
             set => SetFieldValue("monitorPlayer", GenericMarshal.ToString(value));

@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Provides the code necessary to handle the low level management of the string tables for localization</summary>
+    /// <description>
+    /// One LangTable is created for each mod, as well as one for the C++ code. LangTable is responsible for obtaining the correct strings from each and relaying it to the appropriate controls.
+    /// </description>
+    /// <see cref="Localization for a full description" />
     public unsafe class LangTable : SimObject {
         public LangTable(bool pRegister = false) 
             : base(pRegister) {
@@ -249,6 +254,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Used to find out how many languages are in the table</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>Size of the vector containing the languages, numerical</returns>
         public int GetNumLang() {
              InternalUnsafeMethods.GetNumLang__Args _args = new InternalUnsafeMethods.GetNumLang__Args() {
              };
@@ -256,6 +269,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (int language)
+        /// </description>
+        /// <summary>Return the readable name of the language table</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="language">Numerical ID of the language table to access</param>
+        /// <returns>String containing the name of the table, NULL if ID was invalid or name was never specified</returns>
         public string GetLangName(int langId) {
              InternalUnsafeMethods.GetLangName__Args _args = new InternalUnsafeMethods.GetLangName__Args() {
                 langId = langId,
@@ -264,6 +286,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Get the ID of the current language table</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>Numerical ID of the current language table</returns>
         public int GetCurrentLanguage() {
              InternalUnsafeMethods.GetCurrentLanguage__Args _args = new InternalUnsafeMethods.GetCurrentLanguage__Args() {
              };
@@ -271,6 +301,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (int language)
+        /// </description>
+        /// <summary>Sets the current language table for grabbing text</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="language">ID of the table</param>
         public void SetCurrentLanguage(int langId) {
              InternalUnsafeMethods.SetCurrentLanguage__Args _args = new InternalUnsafeMethods.SetCurrentLanguage__Args() {
                 langId = langId,
@@ -278,6 +316,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCurrentLanguage()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int language)
+        /// </description>
+        /// <summary>Sets the default language table</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="language">ID of the table</param>
         public void SetDefaultLanguage(int langId) {
              InternalUnsafeMethods.SetDefaultLanguage__Args _args = new InternalUnsafeMethods.SetDefaultLanguage__Args() {
                 langId = langId,
@@ -285,6 +331,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetDefaultLanguage()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (string filename)
+        /// </description>
+        /// <summary>Grabs a string from the specified table</summary>
+        /// <description>
+        /// If an invalid is passed, the function will attempt to to grab from the default table
+        /// </description>
+        /// <param name="filename">Name of the language table to access</param>
+        /// <returns>Text from the specified language table, "" if ID was invalid and default table is not set</returns>
         public string GetString(uint id) {
              InternalUnsafeMethods.GetString__Args _args = new InternalUnsafeMethods.GetString__Args() {
                 id = id,
@@ -293,6 +348,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (string filename, [string languageName])
+        /// </description>
+        /// <summary>Adds a language to the table</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="filename">Name and path to the language file</param>
+        /// <param name="languageName">Optional name to assign to the new language entry</param>
+        /// <returns>True If file was successfully found and language created</returns>
         public int AddLanguage(string filename = "", string languageName = "") {
              InternalUnsafeMethods.AddLanguage__Args _args = new InternalUnsafeMethods.AddLanguage__Args() {
                 filename = filename,
@@ -302,6 +367,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the LangTable class.
+        /// </description>
+        /// <returns>The type info object for LangTable</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

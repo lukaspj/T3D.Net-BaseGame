@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Terrain action used for leveling varying terrain heights smoothly.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class TerrainSmoothAction : UndoAction {
         public TerrainSmoothAction(bool pRegister = false) 
             : base(pRegister) {
@@ -122,6 +126,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ( TerrainBlock obj, F32 factor, U32 steps )
+        /// </description>
         public void Smooth(TerrainBlock terrain, float factor, uint steps) {
              InternalUnsafeMethods.Smooth__Args _args = new InternalUnsafeMethods.Smooth__Args() {
                 terrain = terrain.ObjectPtr,
@@ -131,6 +138,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Smooth()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the TerrainSmoothAction class.
+        /// </description>
+        /// <returns>The type info object for TerrainSmoothAction</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

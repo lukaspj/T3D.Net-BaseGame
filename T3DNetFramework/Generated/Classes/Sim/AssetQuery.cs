@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class AssetQuery : SimObject {
         public AssetQuery(bool pRegister = false) 
             : base(pRegister) {
@@ -183,6 +184,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the AssetQuery class.
+        /// </description>
+        /// <returns>The type info object for AssetQuery</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -190,6 +195,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// Gets the asset Id at the specified query result index.
+        /// </description>
+        /// <param name="resultIndex">The query result index to use.</param>
+        /// <returns>(assetId)The asset Id at the specified index or NULL if not valid.</returns>
         public string GetAsset(int resultIndex = -1) {
              InternalUnsafeMethods.GetAsset__Args _args = new InternalUnsafeMethods.GetAsset__Args() {
                 resultIndex = resultIndex,
@@ -198,6 +208,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Gets the count of asset Id results.
+        /// </description>
+        /// <returns>(int)The count of asset Id results.</returns>
         public int GetCount() {
              InternalUnsafeMethods.GetCount__Args _args = new InternalUnsafeMethods.GetCount__Args() {
              };
@@ -205,6 +219,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Sets the asset query to a copy of the specified asset query.
+        /// </description>
+        /// <param name="assetQuery">The asset query to copy.</param>
+        /// <returns>Whether the operation succeeded or not.</returns>
         public bool Set(int queryId) {
              InternalUnsafeMethods.Set__Args _args = new InternalUnsafeMethods.Set__Args() {
                 queryId = queryId,
@@ -213,12 +232,22 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Clears all asset Id results.Clears all asset Id results.
+        /// </description>
+        /// <returns>() No return value.</returns>
         public void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };
              InternalUnsafeMethods.Clear()(ObjectPtr, _args);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Gets the number of results in the asset query.
+        /// </description>
+        /// </value>
         public int Count {
             get => GenericMarshal.StringTo<int>(GetFieldValue("count"));
             set => SetFieldValue("count", GenericMarshal.ToString(value));

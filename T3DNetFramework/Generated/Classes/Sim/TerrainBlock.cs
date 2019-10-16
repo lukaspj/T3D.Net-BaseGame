@@ -14,7 +14,27 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Represent a terrain object in a Torque 3D level</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new TerrainBlock(theTerrain)
+    /// {
+    ///    terrainFile = "art/terrains/Deathball Desert_0.ter";
+    ///    squareSize = "2";
+    ///    tile = "0";
+    ///    baseTexSize = "1024";
+    ///    screenError = "16";
+    ///    position = "-1024 -1024 179.978";
+    ///    rotation = "1 0 0 0";
+    ///    scale = "1 1 1";
+    ///    isRenderEnabled = "true";
+    ///    canSaveDynamicFields = "1";
+    /// };
+    /// </code>
+    /// <see cref="TerrainMaterial" />
     public unsafe class TerrainBlock : SceneObject {
         public TerrainBlock(bool pRegister = false) 
             : base(pRegister) {
@@ -231,6 +251,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public static int Import(string terrainName, string heightMapFile, float metersPerPixel, float heightScale, string opacityLayerFiles, string materialsStr, bool flipYAxis = true) {
              InternalUnsafeMethods.Import__Args _args = new InternalUnsafeMethods.Import__Args() {
                 terrainName = terrainName,
@@ -245,6 +266,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// 
         public static int CreateNew(string terrainName, uint resolution, string materialName, bool genNoise) {
              InternalUnsafeMethods.CreateNew__Args _args = new InternalUnsafeMethods.CreateNew__Args() {
                 terrainName = terrainName,
@@ -256,6 +278,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string filePrefix, [string format]) - export the terrain block's layer maps to bitmap files (default: png)
+        /// </description>
         public bool ExportLayerMaps(string filePrefixStr, string format = "png") {
              InternalUnsafeMethods.ExportLayerMaps__Args _args = new InternalUnsafeMethods.ExportLayerMaps__Args() {
                 filePrefixStr = filePrefixStr,
@@ -265,6 +290,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string filename, [string format]) - export the terrain block's heightmap to a bitmap file (default: png)
+        /// </description>
         public bool ExportHeightMap(string fileNameStr, string format = "png") {
              InternalUnsafeMethods.ExportHeightMap__Args _args = new InternalUnsafeMethods.ExportHeightMap__Args() {
                 fileNameStr = fileNameStr,
@@ -274,6 +302,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Saves the terrain block's terrain file to the specified file name.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">Name and path of file to save terrain data to.</param>
+        /// <returns>True if file save was successful, false otherwise</returns>
         public bool Save(string fileName) {
              InternalUnsafeMethods.Save__Args _args = new InternalUnsafeMethods.Save__Args() {
                 fileName = fileName,
@@ -282,6 +316,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the TerrainBlock class.
+        /// </description>
+        /// <returns>The type info object for TerrainBlock</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -289,41 +327,85 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The source terrain data file.
+        /// </description>
+        /// </value>
         public string TerrainFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("terrainFile"));
             set => SetFieldValue("terrainFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Allows the terrain to cast shadows onto itself and other objects.
+        /// </description>
+        /// </value>
         public bool CastShadows {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("castShadows"));
             set => SetFieldValue("castShadows", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Indicates the spacing between points on the XY plane on the terrain.
+        /// </description>
+        /// </value>
         public float SquareSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("squareSize"));
             set => SetFieldValue("squareSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Size of base texture size per meter.
+        /// </description>
+        /// </value>
         public int BaseTexSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("baseTexSize"));
             set => SetFieldValue("baseTexSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public baseTexFormat BaseTexFormat {
             get => GenericMarshal.StringTo<baseTexFormat>(GetFieldValue("baseTexFormat"));
             set => SetFieldValue("baseTexFormat", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Light map dimensions in pixels.
+        /// </description>
+        /// </value>
         public int LightMapSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("lightMapSize"));
             set => SetFieldValue("lightMapSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Not yet implemented.
+        /// </description>
+        /// </value>
         public int ScreenError {
             get => GenericMarshal.StringTo<int>(GetFieldValue("screenError"));
             set => SetFieldValue("screenError", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IgnoreZodiacs {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ignoreZodiacs"));
             set => SetFieldValue("ignoreZodiacs", GenericMarshal.ToString(value));

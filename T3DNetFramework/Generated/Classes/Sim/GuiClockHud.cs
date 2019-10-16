@@ -14,7 +14,20 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Basic HUD clock. Displays the current simulation time offset from some base.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiClockHud(){
+    /// 	fillColor = "0.0 1.0 0.0 1.0"; // Fills with a solid green color
+    /// 	frameColor = "1.0 1.0 1.0 1.0"; // Solid white frame color
+    /// 	textColor = "1.0 1.0 1.0 1.0"; // Solid white text Color
+    /// 	showFill = "true";
+    /// 	showFrame = "true";
+    /// };
+    /// </code>
     public unsafe class GuiClockHud : GuiControl {
         public GuiClockHud(bool pRegister = false) 
             : base(pRegister) {
@@ -161,6 +174,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Returns the current time, in seconds.
+        /// </description>
+        /// <returns>timeInseconds Current time, in seconds</returns>
+        /// <code>
+        /// // Get the current time from the GuiClockHud control
+        /// %timeInSeconds = %guiClockHud.getTime();
+        /// </code>
         public float GetTime() {
              InternalUnsafeMethods.GetTime__Args _args = new InternalUnsafeMethods.GetTime__Args() {
              };
@@ -168,6 +189,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Sets a time for a countdown clock.</summary>
+        /// <description>
+        /// Setting the time like this will cause the clock to count backwards from the specified time.
+        /// </description>
+        /// <param name="timeInSeconds">Time to set the clock, in seconds (IE: 00:02 would be 120)</param>
+        /// <see cref="setTime" />
         public void SetReverseTime(float timeInSeconds = 60f) {
              InternalUnsafeMethods.SetReverseTime__Args _args = new InternalUnsafeMethods.SetReverseTime__Args() {
                 timeInSeconds = timeInSeconds,
@@ -175,6 +202,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetReverseTime()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets the current base time for the clock.
+        /// </description>
+        /// <param name="timeInSeconds">Time to set the clock, in seconds (IE: 00:02 would be 120)</param>
+        /// <code>
+        /// // Define the time, in seconds
+        /// %timeInSeconds = 120;
+        /// 
+        /// // Change the time on the GuiClockHud control
+        /// %guiClockHud.setTime(%timeInSeconds);
+        /// </code>
         public void SetTime(float timeInSeconds = 60f) {
              InternalUnsafeMethods.SetTime__Args _args = new InternalUnsafeMethods.SetTime__Args() {
                 timeInSeconds = timeInSeconds,
@@ -182,6 +220,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTime()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiClockHud class.
+        /// </description>
+        /// <returns>The type info object for GuiClockHud</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -189,26 +231,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, draws a background color behind the control.
+        /// </description>
+        /// </value>
         public bool ShowFill {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showFill"));
             set => SetFieldValue("showFill", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, draws a frame around the control.
+        /// </description>
+        /// </value>
         public bool ShowFrame {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showFrame"));
             set => SetFieldValue("showFrame", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Standard color for the background of the control.
+        /// </description>
+        /// </value>
         public LinearColorF FillColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("fillColor"));
             set => SetFieldValue("fillColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color for the control's frame.
+        /// </description>
+        /// </value>
         public LinearColorF FrameColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("frameColor"));
             set => SetFieldValue("frameColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color for the text on this control.
+        /// </description>
+        /// </value>
         public LinearColorF TextColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("textColor"));
             set => SetFieldValue("textColor", GenericMarshal.ToString(value));

@@ -14,7 +14,18 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Description of a reverb environment.</summary>
+    /// <description>
+    /// A reverb environment specifies how the audio mixer should render advanced environmental audio effects.  
+    /// 
+    /// To use reverb environments in your level, set up one or more ambient audio spaces, assign reverb environments appropriately, and then attach the SFXAmbiences to your LevelInfo (taking effect globally) or Zone objects (taking effect locally).
+    /// 
+    /// To define your own custom reverb environments, it is usually easiest to adapt one of the pre-existing reverb definitions:
+    /// </description>
+    /// <see href="http://www.atc.creative.com/algorithms/eax20.pdf" />
+    /// <see href="http://connect.creativelabs.com/developer/Gaming/Forms/AllItems.aspx" />
+    /// <see cref="SFXAmbience::environment" />
     public unsafe class SFXEnvironment : SimDataBlock {
         public SFXEnvironment(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +110,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the SFXEnvironment class.
+        /// </description>
+        /// <returns>The type info object for SFXEnvironment</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,56 +121,122 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Density of reverb environment.
+        /// </description>
+        /// </value>
         public float ReverbDensity {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbDensity"));
             set => SetFieldValue("reverbDensity", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Environment diffusion.
+        /// </description>
+        /// </value>
         public float ReverbDiffusion {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbDiffusion"));
             set => SetFieldValue("reverbDiffusion", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reverb Gain Level.
+        /// </description>
+        /// </value>
         public float ReverbGain {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbGain"));
             set => SetFieldValue("reverbGain", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reverb Gain to high frequencies
+        /// </description>
+        /// </value>
         public float ReverbGainHF {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbGainHF"));
             set => SetFieldValue("reverbGainHF", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reverb Gain to high frequencies
+        /// </description>
+        /// </value>
         public float ReverbGainLF {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbGainLF"));
             set => SetFieldValue("reverbGainLF", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Decay time for the reverb.
+        /// </description>
+        /// </value>
         public float ReverbDecayTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbDecayTime"));
             set => SetFieldValue("reverbDecayTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// High frequency decay time ratio.
+        /// </description>
+        /// </value>
         public float ReverbDecayHFRatio {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbDecayHFRatio"));
             set => SetFieldValue("reverbDecayHFRatio", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// High frequency decay time ratio.
+        /// </description>
+        /// </value>
         public float ReverbDecayLFRatio {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbDecayLFRatio"));
             set => SetFieldValue("reverbDecayLFRatio", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reflection Gain.
+        /// </description>
+        /// </value>
         public float ReflectionsGain {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reflectionsGain"));
             set => SetFieldValue("reflectionsGain", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// How long to delay reflections.
+        /// </description>
+        /// </value>
         public float ReflectionDelay {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reflectionDelay"));
             set => SetFieldValue("reflectionDelay", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reflection reverberation panning vector.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> ReflectionsPan {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -166,16 +247,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Late reverb gain amount.
+        /// </description>
+        /// </value>
         public float LateReverbGain {
             get => GenericMarshal.StringTo<float>(GetFieldValue("lateReverbGain"));
             set => SetFieldValue("lateReverbGain", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Late reverb delay time.
+        /// </description>
+        /// </value>
         public float LateReverbDelay {
             get => GenericMarshal.StringTo<float>(GetFieldValue("lateReverbDelay"));
             set => SetFieldValue("lateReverbDelay", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Late reverberation panning vector.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> LateReverbPan {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -186,46 +285,100 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reverb echo time.
+        /// </description>
+        /// </value>
         public float ReverbEchoTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbEchoTime"));
             set => SetFieldValue("reverbEchoTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reverb echo depth.
+        /// </description>
+        /// </value>
         public float ReverbEchoDepth {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbEchoDepth"));
             set => SetFieldValue("reverbEchoDepth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reverb Modulation time.
+        /// </description>
+        /// </value>
         public float ReverbModTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbModTime"));
             set => SetFieldValue("reverbModTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reverb Modulation time.
+        /// </description>
+        /// </value>
         public float ReverbModDepth {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbModDepth"));
             set => SetFieldValue("reverbModDepth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// High Frequency air absorbtion
+        /// </description>
+        /// </value>
         public float AirAbsorbtionGainHF {
             get => GenericMarshal.StringTo<float>(GetFieldValue("airAbsorbtionGainHF"));
             set => SetFieldValue("airAbsorbtionGainHF", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reverb High Frequency Reference.
+        /// </description>
+        /// </value>
         public float ReverbHFRef {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbHFRef"));
             set => SetFieldValue("reverbHFRef", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Reverb Low Frequency Reference.
+        /// </description>
+        /// </value>
         public float ReverbLFRef {
             get => GenericMarshal.StringTo<float>(GetFieldValue("reverbLFRef"));
             set => SetFieldValue("reverbLFRef", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Rolloff factor for reverb.
+        /// </description>
+        /// </value>
         public float RoomRolloffFactor {
             get => GenericMarshal.StringTo<float>(GetFieldValue("roomRolloffFactor"));
             set => SetFieldValue("roomRolloffFactor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// High Frequency decay limit.
+        /// </description>
+        /// </value>
         public int DecayHFLimit {
             get => GenericMarshal.StringTo<int>(GetFieldValue("decayHFLimit"));
             set => SetFieldValue("decayHFLimit", GenericMarshal.ToString(value));

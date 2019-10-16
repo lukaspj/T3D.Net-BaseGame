@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A non-rendering render bin used to enable/disable a RenderPassStateToken.</summary>
+    /// <description>
+    /// This is a utility RenderBinManager which does not render any render instances.  Its only used to define a point in the render bin order at which a RenderPassStateToken is triggered.
+    /// </description>
+    /// <see cref="RenderPassStateToken" />
     public unsafe class RenderPassStateBin : RenderBinManager {
         public RenderPassStateBin(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +104,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderPassStateBin class.
+        /// </description>
+        /// <returns>The type info object for RenderPassStateBin</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +115,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public RenderPassStateToken StateToken {
             get => GenericMarshal.StringTo<RenderPassStateToken>(GetFieldValue("stateToken"));
             set => SetFieldValue("stateToken", GenericMarshal.ToString(value));

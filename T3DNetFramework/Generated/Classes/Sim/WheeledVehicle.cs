@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A wheeled vehicle.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class WheeledVehicle : Vehicle {
         public WheeledVehicle(bool pRegister = false) 
             : base(pRegister) {
@@ -212,6 +216,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Get the number of wheels on this vehicle.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the number of wheels (equal to the number of hub nodes defined in the model)</returns>
         public int GetWheelCount() {
              InternalUnsafeMethods.GetWheelCount__Args _args = new InternalUnsafeMethods.GetWheelCount__Args() {
              };
@@ -219,6 +228,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set the WheeledVehicleSpring datablock for this wheel.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="wheel">index of the wheel to set (hub node #)</param>
+        /// <param name="spring">WheeledVehicleSpring datablock</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <code>
+        /// %obj.setWheelSpring( 0, FrontSpring );
+        /// </code>
         public bool SetWheelSpring(int wheel, WheeledVehicleSpring spring) {
              InternalUnsafeMethods.SetWheelSpring__Args _args = new InternalUnsafeMethods.SetWheelSpring__Args() {
                 wheel = wheel,
@@ -228,6 +247,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set the WheeledVehicleTire datablock for this wheel.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="wheel">index of the wheel to set (hub node #)</param>
+        /// <param name="tire">WheeledVehicleTire datablock</param>
+        /// <returns>true if successful, false if failed</returns>
+        /// <code>
+        /// %obj.setWheelTire( 0, FrontTire );
+        /// </code>
         public bool SetWheelTire(int wheel, WheeledVehicleTire tire) {
              InternalUnsafeMethods.SetWheelTire__Args _args = new InternalUnsafeMethods.SetWheelTire__Args() {
                 wheel = wheel,
@@ -237,6 +266,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set whether the wheel is powered (has torque applied from the engine).</summary>
+        /// <description>
+        /// A rear wheel drive car for example would set the front wheels to false, and the rear wheels to true.
+        /// </description>
+        /// <param name="wheel">index of the wheel to set (hub node #)</param>
+        /// <param name="powered">flag indicating whether to power the wheel or not</param>
+        /// <returns>true if successful, false if failed</returns>
         public bool SetWheelPowered(int wheel, bool powered) {
              InternalUnsafeMethods.SetWheelPowered__Args _args = new InternalUnsafeMethods.SetWheelPowered__Args() {
                 wheel = wheel,
@@ -246,6 +282,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set how much the wheel is affected by steering.</summary>
+        /// <description>
+        /// The steering factor controls how much the wheel is rotated by the vehicle steering. For example, most cars would have their front wheels set to 1.0, and their rear wheels set to 0 since only the front wheels should turn.
+        /// 
+        /// Negative values will turn the wheel in the opposite direction to the steering angle.
+        /// </description>
+        /// <param name="wheel">index of the wheel to set (hub node #)</param>
+        /// <param name="steering">steering factor from -1 (full inverse) to 1 (full)</param>
+        /// <returns>true if successful, false if failed</returns>
         public bool SetWheelSteering(int wheel, float steering) {
              InternalUnsafeMethods.SetWheelSteering__Args _args = new InternalUnsafeMethods.SetWheelSteering__Args() {
                 wheel = wheel,
@@ -255,6 +300,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the WheeledVehicle class.
+        /// </description>
+        /// <returns>The type info object for WheeledVehicle</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

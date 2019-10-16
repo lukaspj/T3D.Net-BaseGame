@@ -14,7 +14,32 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Environmental object that triggers a day/night cycle in level.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <remarks> TimeOfDay only works in Advanced Lighting with a Sub object or ScatterSky
+    /// 
+    /// </remarks>
+    /// <code>
+    /// new TimeOfDay(tod)
+    /// {
+    ///    axisTilt = "23.44";
+    ///    dayLength = "120";
+    ///    startTime = "0.15";
+    ///    time = "0.15";
+    ///    play = "0";
+    ///    azimuthOverride = "572.958";
+    ///    dayScale = "1";
+    ///    nightScale = "1.5";
+    ///    position = "598.399 550.652 196.297";
+    ///    rotation = "1 0 0 0";
+    ///    scale = "1 1 1";
+    ///    canSave = "1";
+    ///    canSaveDynamicFields = "1";
+    /// };
+    /// </code>
     public unsafe class TimeOfDay : SceneObject {
         public TimeOfDay(bool pRegister = false) 
             : base(pRegister) {
@@ -208,6 +233,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void Animate(float elevation, float degreesPerSecond) {
              InternalUnsafeMethods.Animate__Args _args = new InternalUnsafeMethods.Animate__Args() {
                 elevation = elevation,
@@ -216,6 +242,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Animate()(ObjectPtr, _args);
         }
 
+        /// 
         public void SetDayLength(float seconds) {
              InternalUnsafeMethods.SetDayLength__Args _args = new InternalUnsafeMethods.SetDayLength__Args() {
                 seconds = seconds,
@@ -223,6 +250,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetDayLength()(ObjectPtr, _args);
         }
 
+        /// 
         public void SetPlay(bool enabled) {
              InternalUnsafeMethods.SetPlay__Args _args = new InternalUnsafeMethods.SetPlay__Args() {
                 enabled = enabled,
@@ -230,6 +258,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetPlay()(ObjectPtr, _args);
         }
 
+        /// 
         public void SetTimeOfDay(float time) {
              InternalUnsafeMethods.SetTimeOfDay__Args _args = new InternalUnsafeMethods.SetTimeOfDay__Args() {
                 time = time,
@@ -237,6 +266,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTimeOfDay()(ObjectPtr, _args);
         }
 
+        /// 
         public void AddTimeOfDayEvent(float elevation, string identifier) {
              InternalUnsafeMethods.AddTimeOfDayEvent__Args _args = new InternalUnsafeMethods.AddTimeOfDayEvent__Args() {
                 elevation = elevation,
@@ -245,6 +275,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddTimeOfDayEvent()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the TimeOfDay class.
+        /// </description>
+        /// <returns>The type info object for TimeOfDay</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -252,41 +286,85 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The angle in degrees between global equator and tropic.
+        /// </description>
+        /// </value>
         public float AxisTilt {
             get => GenericMarshal.StringTo<float>(GetFieldValue("axisTilt"));
             set => SetFieldValue("axisTilt", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The length of a virtual day in real world seconds.
+        /// </description>
+        /// </value>
         public float DayLength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("dayLength"));
             set => SetFieldValue("dayLength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float StartTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("startTime"));
             set => SetFieldValue("startTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Current time of day.
+        /// </description>
+        /// </value>
         public float Time {
             get => GenericMarshal.StringTo<float>(GetFieldValue("time"));
             set => SetFieldValue("time", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// True when the TimeOfDay object is operating.
+        /// </description>
+        /// </value>
         public bool Play {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("play"));
             set => SetFieldValue("play", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float AzimuthOverride {
             get => GenericMarshal.StringTo<float>(GetFieldValue("azimuthOverride"));
             set => SetFieldValue("azimuthOverride", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Scalar applied to time that elapses while the sun is up.
+        /// </description>
+        /// </value>
         public float DayScale {
             get => GenericMarshal.StringTo<float>(GetFieldValue("dayScale"));
             set => SetFieldValue("dayScale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Scalar applied to time that elapses while the sun is down.
+        /// </description>
+        /// </value>
         public float NightScale {
             get => GenericMarshal.StringTo<float>(GetFieldValue("nightScale"));
             set => SetFieldValue("nightScale", GenericMarshal.ToString(value));

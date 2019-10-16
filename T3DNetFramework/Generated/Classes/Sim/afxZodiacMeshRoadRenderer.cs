@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A render bin for zodiac rendering on MeshRoad objects.</summary>
+    /// <description>
+    /// This bin renders instances of AFX zodiac effects onto MeshRoad surfaces.
+    /// </description>
     public unsafe class afxZodiacMeshRoadRenderer : RenderBinManager {
         public afxZodiacMeshRoadRenderer(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxZodiacMeshRoadRenderer class.
+        /// </description>
+        /// <returns>The type info object for afxZodiacMeshRoadRenderer</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

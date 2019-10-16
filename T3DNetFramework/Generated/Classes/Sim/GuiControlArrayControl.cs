@@ -14,7 +14,16 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Brief Desc.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// // Comment:
+    /// %okButton = new ClassObject()
+    /// instantiation
+    /// </code>
     public unsafe class GuiControlArrayControl : GuiControl {
         public GuiControlArrayControl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +108,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiControlArrayControl class.
+        /// </description>
+        /// <returns>The type info object for GuiControlArrayControl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,26 +119,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Number of colums in the array.
+        /// </description>
+        /// </value>
         public int ColCount {
             get => GenericMarshal.StringTo<int>(GetFieldValue("colCount"));
             set => SetFieldValue("colCount", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Size of each individual column.
+        /// </description>
+        /// </value>
         public IntVector ColSizes {
             get => GenericMarshal.StringTo<IntVector>(GetFieldValue("colSizes"));
             set => SetFieldValue("colSizes", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Heigth of a row in the array.
+        /// </description>
+        /// </value>
         public int RowSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("rowSize"));
             set => SetFieldValue("rowSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Padding to put between rows.
+        /// </description>
+        /// </value>
         public int RowSpacing {
             get => GenericMarshal.StringTo<int>(GetFieldValue("rowSpacing"));
             set => SetFieldValue("rowSpacing", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Padding to put between columns.
+        /// </description>
+        /// </value>
         public int ColSpacing {
             get => GenericMarshal.StringTo<int>(GetFieldValue("colSpacing"));
             set => SetFieldValue("colSpacing", GenericMarshal.ToString(value));

@@ -14,7 +14,23 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A gui control that is used to display an image.</summary>
+    /// <description>
+    /// The image is stretched to the constraints of the control by default. However, the control can also
+    /// tile the image as well.
+    /// 
+    /// The image itself is stored inside the GuiBitmapCtrl::bitmap field. The boolean value that decides
+    /// whether the image is stretched or tiled is stored inside the GuiBitmapCtrl::wrap field.
+    /// </description>
+    /// <code>
+    /// // Create a tiling GuiBitmapCtrl that displays "myImage.png"
+    /// %bitmapCtrl = new GuiBitmapCtrl()
+    /// {
+    ///    bitmap = "myImage.png";
+    ///    wrap = "true";
+    /// };
+    /// </code>
     public unsafe class GuiBitmapCtrl : GuiControl {
         public GuiBitmapCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -168,6 +184,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Set a texture as the image.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="namedtexture">The name of the texture (NamedTexTarget).</param>
+        /// <returns>true if the texture exists.</returns>
         public bool SetNamedTexture(string namedtexture) {
              InternalUnsafeMethods.SetNamedTexture__Args _args = new InternalUnsafeMethods.SetNamedTexture__Args() {
                 namedtexture = namedtexture,
@@ -176,6 +198,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( String filename | String filename, bool resize ) Assign an image to the control.
+        /// </description>
         public void SetBitmap(string fileRoot, bool resize = false) {
              InternalUnsafeMethods.SetBitmap__Args _args = new InternalUnsafeMethods.SetBitmap__Args() {
                 fileRoot = fileRoot,
@@ -184,6 +209,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetBitmap()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the offset of the bitmap within the control.
+        /// </description>
+        /// <param name="x">The x-axis offset of the image.</param>
+        /// <param name="y">The y-axis offset of the image.</param>
         public void SetValue(int x, int y) {
              InternalUnsafeMethods.SetValue__Args _args = new InternalUnsafeMethods.SetValue__Args() {
                 x = x,
@@ -192,6 +222,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetValue()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiBitmapCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiBitmapCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -199,16 +233,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The bitmap file to display in the control.
+        /// </description>
+        /// </value>
         public string Bitmap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("bitmap"));
             set => SetFieldValue("bitmap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// color mul
+        /// </description>
+        /// </value>
         public ColorI Color {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("color"));
             set => SetFieldValue("color", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the bitmap is tiled inside the control rather than stretched to fit.
+        /// </description>
+        /// </value>
         public bool Wrap {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("wrap"));
             set => SetFieldValue("wrap", GenericMarshal.ToString(value));

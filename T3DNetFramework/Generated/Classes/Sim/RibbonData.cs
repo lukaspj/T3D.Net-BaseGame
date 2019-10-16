@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class RibbonData : GameBaseData {
         public RibbonData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RibbonData class.
+        /// </description>
+        /// <returns>The type info object for RibbonData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +111,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The size of the ribbon at the specified keyframe.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> Size {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -116,6 +127,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The colour of the ribbon at the specified keyframe.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<LinearColorF> Color {
             get => new DynamicFieldVector<LinearColorF>(
                     this, 
@@ -126,6 +143,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The position of the keyframe along the lifetime of the ribbon.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<float> Position {
             get => new DynamicFieldVector<float>(
                     this, 
@@ -136,46 +159,100 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// The amount of segments the Ribbon can maximally have in length.
+        /// </description>
+        /// </value>
         public int RibbonLength {
             get => GenericMarshal.StringTo<int>(GetFieldValue("ribbonLength"));
             set => SetFieldValue("ribbonLength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// How many segments to add each update.
+        /// </description>
+        /// </value>
         public int SegmentsPerUpdate {
             get => GenericMarshal.StringTo<int>(GetFieldValue("segmentsPerUpdate"));
             set => SetFieldValue("segmentsPerUpdate", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The amount of segments to skip each update.
+        /// </description>
+        /// </value>
         public int SkipAmount {
             get => GenericMarshal.StringTo<int>(GetFieldValue("skipAmount"));
             set => SetFieldValue("skipAmount", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the ribbon will fade away after deletion.
+        /// </description>
+        /// </value>
         public bool UseFadeOut {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useFadeOut"));
             set => SetFieldValue("useFadeOut", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// How much to fade the ribbon with each update, after deletion.
+        /// </description>
+        /// </value>
         public float FadeAwayStep {
             get => GenericMarshal.StringTo<float>(GetFieldValue("fadeAwayStep"));
             set => SetFieldValue("fadeAwayStep", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The material the ribbon uses for rendering.
+        /// </description>
+        /// </value>
         public string RibbonMaterial {
             get => GenericMarshal.StringTo<string>(GetFieldValue("ribbonMaterial"));
             set => SetFieldValue("ribbonMaterial", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// How much to scale each 'tile' with, where 1 means the material is stretchedacross the whole ribbon. (If TexcoordsRelativeToDistance is true, this is in meters.)
+        /// </description>
+        /// </value>
         public float TileScale {
             get => GenericMarshal.StringTo<float>(GetFieldValue("tileScale"));
             set => SetFieldValue("tileScale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, this prevents 'floating' texture coordinates.
+        /// </description>
+        /// </value>
         public bool FixedTexcoords {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("fixedTexcoords"));
             set => SetFieldValue("fixedTexcoords", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, texture coordinates are scaled relative to distance, this prevents'stretched' textures.
+        /// </description>
+        /// </value>
         public bool TexcoordsRelativeToDistance {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("texcoordsRelativeToDistance"));
             set => SetFieldValue("texcoordsRelativeToDistance", GenericMarshal.ToString(value));

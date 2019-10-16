@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An event which signals the editors to undo the last action</summary>
+    /// <description>
+    /// Not intended for game development, for editors or internal use only.
+    /// </description>
     public unsafe class UndoAction : SimObject {
         public UndoAction(bool pRegister = false) 
             : base(pRegister) {
@@ -161,18 +165,27 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// () - Reo action contained in undo.
+        /// </description>
         public void Redo() {
              InternalUnsafeMethods.Redo__Args _args = new InternalUnsafeMethods.Redo__Args() {
              };
              InternalUnsafeMethods.Redo()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Undo action contained in undo.
+        /// </description>
         public void Undo() {
              InternalUnsafeMethods.Undo__Args _args = new InternalUnsafeMethods.Undo__Args() {
              };
              InternalUnsafeMethods.Undo()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// action.addToManager([undoManager])
+        /// </description>
         public void AddToManager(string undoManager = "") {
              InternalUnsafeMethods.AddToManager__Args _args = new InternalUnsafeMethods.AddToManager__Args() {
                 undoManager = undoManager,
@@ -180,6 +193,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddToManager()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the UndoAction class.
+        /// </description>
+        /// <returns>The type info object for UndoAction</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -187,6 +204,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// A brief description of the action, for UI representation of this undo/redo action.
+        /// </description>
+        /// </value>
         public string ActionName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("actionName"));
             set => SetFieldValue("actionName", GenericMarshal.ToString(value));

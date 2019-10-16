@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Legacy remnant from old Torque particle editor</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiParticleGraphCtrl : GuiControl {
         public GuiParticleGraphCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -758,12 +762,22 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ()This will reset the currently selected point to nothing.
+        /// </description>
+        /// <returns>No return value.</returns>
         public void ResetSelectedPoint() {
              InternalUnsafeMethods.ResetSelectedPoint__Args _args = new InternalUnsafeMethods.ResetSelectedPoint__Args() {
              };
              InternalUnsafeMethods.ResetSelectedPoint()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID, string graphName) Set the name of the given plot.
+        /// </description>
+        /// <param name="plotID">The plot to modify.</param>
+        /// <param name="graphName">The name to set on the plot.</param>
+        /// <returns>No return value.</returns>
         public void SetGraphName(int plotID, string graphName) {
              InternalUnsafeMethods.SetGraphName__Args _args = new InternalUnsafeMethods.SetGraphName__Args() {
                 plotID = plotID,
@@ -772,6 +786,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetGraphName()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (bool renderGraphTooltip)Set whether or not to render the graph tooltip.
+        /// </description>
+        /// <returns>No return value.</returns>
         public void SetRenderGraphTooltip(bool autoRemove) {
              InternalUnsafeMethods.SetRenderGraphTooltip__Args _args = new InternalUnsafeMethods.SetRenderGraphTooltip__Args() {
                 autoRemove = autoRemove,
@@ -779,6 +797,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetRenderGraphTooltip()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (bool clamped)Set whether the x position of the selected graph point should be clamped
+        /// </description>
+        /// <returns>No return value.</returns>
         public void SetPointXMovementClamped(bool autoRemove) {
              InternalUnsafeMethods.SetPointXMovementClamped__Args _args = new InternalUnsafeMethods.SetPointXMovementClamped__Args() {
                 autoRemove = autoRemove,
@@ -786,6 +808,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetPointXMovementClamped()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (bool renderAll)Set whether or not a position should be rendered on every point or just the last selected.
+        /// </description>
+        /// <returns>No return value.</returns>
         public void SetRenderAll(bool autoRemove) {
              InternalUnsafeMethods.SetRenderAll__Args _args = new InternalUnsafeMethods.SetRenderAll__Args() {
                 autoRemove = autoRemove,
@@ -793,6 +819,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetRenderAll()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (bool autoRemove) Set whether or not a point should be deleted when you drag another one over it.
+        /// </description>
+        /// <returns>No return value.</returns>
         public void SetAutoRemove(bool autoRemove) {
              InternalUnsafeMethods.SetAutoRemove__Args _args = new InternalUnsafeMethods.SetAutoRemove__Args() {
                 autoRemove = autoRemove,
@@ -800,6 +830,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAutoRemove()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (bool autoMax) Set whether the max will automatically be set when adding points (ie if you add a value over the current max, the max is increased to that value).
+        /// </description>
+        /// <returns>No return value.</returns>
         public void SetAutoGraphMax(bool autoMax) {
              InternalUnsafeMethods.SetAutoGraphMax__Args _args = new InternalUnsafeMethods.SetAutoGraphMax__Args() {
                 autoMax = autoMax,
@@ -807,6 +841,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAutoGraphMax()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID, bool isHidden)Set whether the graph number passed is hidden or not.
+        /// </description>
+        /// <returns>No return value.</returns>
         public void SetGraphHidden(int plotID, bool isHidden) {
              InternalUnsafeMethods.SetGraphHidden__Args _args = new InternalUnsafeMethods.SetGraphHidden__Args() {
                 plotID = plotID,
@@ -815,6 +853,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetGraphHidden()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID, float maxY)Set the max Y value of the graph of plotID.
+        /// </description>
+        /// <param name="plotID">The plot to modify.</param>
+        /// <param name="maxY">The maximum y value.</param>
+        /// <returns>No return Value.</returns>
         public void SetGraphMaxY(int plotID, float maxX) {
              InternalUnsafeMethods.SetGraphMaxY__Args _args = new InternalUnsafeMethods.SetGraphMaxY__Args() {
                 plotID = plotID,
@@ -823,6 +867,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetGraphMaxY()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID, float maxX)Set the max X value of the graph of plotID.
+        /// </description>
+        /// <param name="plotID">The plot to modify.</param>
+        /// <param name="maxX">The maximum x value.</param>
+        /// <returns>No return Value.</returns>
         public void SetGraphMaxX(int plotID, float maxX) {
              InternalUnsafeMethods.SetGraphMaxX__Args _args = new InternalUnsafeMethods.SetGraphMaxX__Args() {
                 plotID = plotID,
@@ -831,6 +881,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetGraphMaxX()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID, float maxX, float maxY) Set the max values of the graph of plotID.
+        /// </description>
+        /// <param name="plotID">The plot to modify</param>
+        /// <param name="maxX,maxY">The maximum bound of the value range.</param>
+        /// <returns>No return value.</returns>
         public void SetGraphMax(int plotID, float maxX, float maxY) {
              InternalUnsafeMethods.SetGraphMax__Args _args = new InternalUnsafeMethods.SetGraphMax__Args() {
                 plotID = plotID,
@@ -840,6 +896,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetGraphMax()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID, float minY) Set the min Y value of the graph of plotID.
+        /// </description>
+        /// <param name="plotID">The plot to modify.</param>
+        /// <param name="minY">The minimum y value.</param>
+        /// <returns>No return Value.</returns>
         public void SetGraphMinY(int plotID, float minX) {
              InternalUnsafeMethods.SetGraphMinY__Args _args = new InternalUnsafeMethods.SetGraphMinY__Args() {
                 plotID = plotID,
@@ -848,6 +910,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetGraphMinY()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID, float minX) Set the min X value of the graph of plotID.
+        /// </description>
+        /// <param name="plotID">The plot to modify.</param>
+        /// <param name="minX">The minimum x value.</param>
+        /// <returns>No return Value.</returns>
         public void SetGraphMinX(int plotID, float minX) {
              InternalUnsafeMethods.SetGraphMinX__Args _args = new InternalUnsafeMethods.SetGraphMinX__Args() {
                 plotID = plotID,
@@ -856,6 +924,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetGraphMinX()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID, float minX, float minY) Set the min values of the graph of plotID.
+        /// </description>
+        /// <param name="plotID">The plot to modify</param>
+        /// <param name="minX,minY">The minimum bound of the value range.</param>
+        /// <returns>No return value.</returns>
         public void SetGraphMin(int plotID, float minX, float minY) {
              InternalUnsafeMethods.SetGraphMin__Args _args = new InternalUnsafeMethods.SetGraphMin__Args() {
                 plotID = plotID,
@@ -865,6 +939,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetGraphMin()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID) Get the name of the graph passed.
+        /// </description>
+        /// <returns>Returns the name of the plot</returns>
         public string GetGraphName(int plotID) {
              InternalUnsafeMethods.GetGraphName__Args _args = new InternalUnsafeMethods.GetGraphName__Args() {
                 plotID = plotID,
@@ -873,6 +951,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (int plotID) Get the maximum values of the graph ranges.
+        /// </description>
+        /// <returns>Returns the maximum of the range formatted as "x-max y-max"</returns>
         public Point2F GetGraphMax(int plotID) {
              InternalUnsafeMethods.GetGraphMax__Args _args = new InternalUnsafeMethods.GetGraphMax__Args() {
                 plotID = plotID,
@@ -881,6 +963,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point2F(_engineResult);
         }
 
+        /// <description>
+        /// (int plotID) Get the minimum values of the graph ranges.
+        /// </description>
+        /// <returns>Returns the minimum of the range formatted as "x-min y-min"</returns>
         public Point2F GetGraphMin(int plotID) {
              InternalUnsafeMethods.GetGraphMin__Args _args = new InternalUnsafeMethods.GetGraphMin__Args() {
                 plotID = plotID,
@@ -889,6 +975,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point2F(_engineResult);
         }
 
+        /// <description>
+        /// (int plotID)Get the color of the graph passed.
+        /// </description>
+        /// <returns>Returns the color of the graph as a string of RGB values formatted as "R G B"</returns>
         public LinearColorF GetGraphColor(int plotID) {
              InternalUnsafeMethods.GetGraphColor__Args _args = new InternalUnsafeMethods.GetGraphColor__Args() {
                 plotID = plotID,
@@ -897,6 +987,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new LinearColorF(_engineResult);
         }
 
+        /// <description>
+        /// (int plotID, float x, float y)
+        /// Gets the index of the point passed on the plotID passed (graph ID).
+        /// </description>
+        /// <param name="plotID">The plot you wish to check.</param>
+        /// <param name="x,y">The coordinates of the point to get.</param>
+        /// <returns>Returns the index of the point.</returns>
         public int GetPlotIndex(int plotID, float x, float y) {
              InternalUnsafeMethods.GetPlotIndex__Args _args = new InternalUnsafeMethods.GetPlotIndex__Args() {
                 plotID = plotID,
@@ -907,6 +1004,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (int plotID, int samples)Get a data point from the plot specified, samples from the start of the graph.
+        /// </description>
+        /// <returns>The data point ID</returns>
         public Point2F GetPlotPoint(int plotID, int samples) {
              InternalUnsafeMethods.GetPlotPoint__Args _args = new InternalUnsafeMethods.GetPlotPoint__Args() {
                 plotID = plotID,
@@ -916,6 +1017,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point2F(_engineResult);
         }
 
+        /// <description>
+        /// (int plotID, int samples)
+        /// </description>
+        /// <returns>Returns true or false whether or not the point in the plot passed is an existing point.</returns>
         public bool IsExistingPoint(int plotID, int samples) {
              InternalUnsafeMethods.IsExistingPoint__Args _args = new InternalUnsafeMethods.IsExistingPoint__Args() {
                 plotID = plotID,
@@ -925,6 +1030,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()Gets the selected Point on the Plot (a.k.a. graph).
+        /// </description>
+        /// <returns>The last selected point ID</returns>
         public int GetSelectedPoint() {
              InternalUnsafeMethods.GetSelectedPoint__Args _args = new InternalUnsafeMethods.GetSelectedPoint__Args() {
              };
@@ -932,6 +1041,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// () Gets the selected Plot (a.k.a. graph).
+        /// </description>
+        /// <returns>The plot's ID.</returns>
         public int GetSelectedPlot() {
              InternalUnsafeMethods.GetSelectedPlot__Args _args = new InternalUnsafeMethods.GetSelectedPlot__Args() {
              };
@@ -939,6 +1052,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (int plotID, int i, float x, float y)Change a data point to the given plot and plot position.
+        /// </description>
+        /// <param name="plotID">The plot you want to access</param>
+        /// <param name="i">The data point.</param>
+        /// <param name="x,y">The plot position.</param>
+        /// <returns>No return value.</returns>
         public int ChangePlotPoint(int plotID, int i, float x, float y) {
              InternalUnsafeMethods.ChangePlotPoint__Args _args = new InternalUnsafeMethods.ChangePlotPoint__Args() {
                 plotID = plotID,
@@ -950,6 +1070,14 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (int plotID, int i, float x, float y)
+        /// Insert a data point to the given plot and plot position.
+        /// </description>
+        /// <param name="plotID">The plot you want to access</param>
+        /// <param name="i">The data point.</param>
+        /// <param name="x,y">The plot position.</param>
+        /// <returns>No return value.</returns>
         public void InsertPlotPoint(int plotID, int i, float x, float y) {
              InternalUnsafeMethods.InsertPlotPoint__Args _args = new InternalUnsafeMethods.InsertPlotPoint__Args() {
                 plotID = plotID,
@@ -960,6 +1088,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.InsertPlotPoint()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID, float x, float y, bool setAdded = true;)Add a data point to the given plot.
+        /// </description>
+        /// <returns></returns>
         public int AddPlotPoint(int plotID, float x, float y, bool setAdded = true) {
              InternalUnsafeMethods.AddPlotPoint__Args _args = new InternalUnsafeMethods.AddPlotPoint__Args() {
                 plotID = plotID,
@@ -971,12 +1103,20 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()Clear all of the graphs.
+        /// </description>
+        /// <returns>No return value</returns>
         public void ClearAllGraphs() {
              InternalUnsafeMethods.ClearAllGraphs__Args _args = new InternalUnsafeMethods.ClearAllGraphs__Args() {
              };
              InternalUnsafeMethods.ClearAllGraphs()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID)Clear the graph of the given plot.
+        /// </description>
+        /// <returns>No return value</returns>
         public void ClearGraph(int plotID) {
              InternalUnsafeMethods.ClearGraph__Args _args = new InternalUnsafeMethods.ClearGraph__Args() {
                 plotID = plotID,
@@ -984,6 +1124,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ClearGraph()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int plotID)Set the selected plot (a.k.a. graph).
+        /// </description>
+        /// <returns>No return value</returns>
         public void SetSelectedPlot(int plotID) {
              InternalUnsafeMethods.SetSelectedPlot__Args _args = new InternalUnsafeMethods.SetSelectedPlot__Args() {
                 plotID = plotID,
@@ -991,6 +1135,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSelectedPlot()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (int point)Set the selected point on the graph.
+        /// </description>
+        /// <returns>No return value</returns>
         public void SetSelectedPoint(int point) {
              InternalUnsafeMethods.SetSelectedPoint__Args _args = new InternalUnsafeMethods.SetSelectedPoint__Args() {
                 point = point,
@@ -998,6 +1146,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSelectedPoint()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiParticleGraphCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiParticleGraphCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

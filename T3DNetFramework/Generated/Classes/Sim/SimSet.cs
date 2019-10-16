@@ -14,7 +14,19 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A collection of SimObjects.</summary>
+    /// <description>
+    /// It is often necessary to keep track of an arbitrary set of SimObjects. For instance, Torque's networking code needs to not only keep track of the set of objects which need to be ghosted, but also the set of objects which must <i>always</i> be ghosted. It does this by working with two sets. The first of these is the RootGroup (which is actually a SimGroup) and the second is the GhostAlwaysSet, which contains objects which must always be ghosted to the client.
+    /// 
+    /// Some general notes on SimSets:
+    /// 
+    /// - Membership is not exclusive. A SimObject may be a member of multiple SimSets.
+    /// 
+    /// - A SimSet does not destroy subobjects when it is destroyed.
+    /// 
+    /// - A SimSet may hold an arbitrary number of objects.
+    /// </description>
     public unsafe class SimSet : SimObject {
         public SimSet(bool pRegister = false) 
             : base(pRegister) {
@@ -542,6 +554,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Test whether the given object may be added to the set.
+        /// </description>
+        /// <param name="obj">The object to test for potential membership.</param>
+        /// <returns>True if the object may be added to the set, false otherwise.</returns>
         public bool AcceptsAsChild(SimObject obj) {
              InternalUnsafeMethods.AcceptsAsChild__Args _args = new InternalUnsafeMethods.AcceptsAsChild__Args() {
                 obj = obj.ObjectPtr,
@@ -550,6 +567,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( string callbackFunction ) Sort the objects in the set using the given comparison function.
+        /// </description>
+        /// <param name="callbackFunction">Name of a function that takes two object arguments A and B and returns -1 if A is less, 1 if B is less, and 0 if both are equal.</param>
         public void Sort(string callbackFunction) {
              InternalUnsafeMethods.Sort__Args _args = new InternalUnsafeMethods.Sort__Args() {
                 callbackFunction = callbackFunction,
@@ -557,6 +578,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Sort()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Make the given object the last object in the set.
+        /// </description>
+        /// <param name="obj">The object to bring to the last position.  Must be contained in the set.</param>
         public void PushToBack(SimObject obj) {
              InternalUnsafeMethods.PushToBack__Args _args = new InternalUnsafeMethods.PushToBack__Args() {
                 obj = obj.ObjectPtr,
@@ -564,6 +589,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PushToBack()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Make the given object the first object in the set.
+        /// </description>
+        /// <param name="obj">The object to bring to the frontmost position.  Must be contained in the set.</param>
         public void BringToFront(SimObject obj) {
              InternalUnsafeMethods.BringToFront__Args _args = new InternalUnsafeMethods.BringToFront__Args() {
                 obj = obj.ObjectPtr,
@@ -571,6 +600,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.BringToFront()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Find an object in the set by its internal name.
+        /// </description>
+        /// <param name="internalName">The internal name of the object to look for.</param>
+        /// <param name="searchChildren">If true, SimSets contained in the set will be recursively searched for the object.</param>
+        /// <returns>The object with the given internal name or 0 if no match was found.</returns>
         public SimObject FindObjectByInternalName(string internalName, bool searchChildren = false) {
              InternalUnsafeMethods.FindObjectByInternalName__Args _args = new InternalUnsafeMethods.FindObjectByInternalName__Args() {
                 internalName = internalName,
@@ -580,6 +615,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimObject(_engineResult);
         }
 
+        /// <description>
+        /// Test whether the given object belongs to the set.
+        /// </description>
+        /// <param name="obj">The object.</param>
+        /// <returns>True if the object is contained in the set; false otherwise.</returns>
         public bool IsMember(SimObject obj) {
              InternalUnsafeMethods.IsMember__Args _args = new InternalUnsafeMethods.IsMember__Args() {
                 obj = obj.ObjectPtr,
@@ -588,6 +628,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Return the index of the given object in this set.
+        /// </description>
+        /// <param name="obj">The object for which to return the index.  Must be contained in the set.</param>
+        /// <returns>The index of the object or -1 if the object is not contained in the set.</returns>
         public int GetObjectIndex(SimObject obj) {
              InternalUnsafeMethods.GetObjectIndex__Args _args = new InternalUnsafeMethods.GetObjectIndex__Args() {
                 obj = obj.ObjectPtr,
@@ -596,6 +641,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the object at the given index.
+        /// </description>
+        /// <param name="index">The object index.</param>
+        /// <returns>The object at the given index or -1 if index is out of range.</returns>
         public SimObject GetObject(uint index) {
              InternalUnsafeMethods.GetObject__Args _args = new InternalUnsafeMethods.GetObject__Args() {
                 index = index,
@@ -604,6 +654,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimObject(_engineResult);
         }
 
+        /// <description>
+        /// () Get the number of direct and indirect child objects contained in the set.
+        /// </description>
+        /// <returns>The number of objects contained in the set as well as in other sets contained directly or indirectly in the set.</returns>
         public int GetFullCount() {
              InternalUnsafeMethods.GetFullCount__Args _args = new InternalUnsafeMethods.GetFullCount__Args() {
              };
@@ -611,6 +665,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of direct and indirect child objects contained in the set.
+        /// </description>
+        /// <returns>The number of objects contained in the set as well as in other sets contained directly or indirectly in the set.</returns>
         public static uint GetCountRecursive(SimSet set) {
              InternalUnsafeMethods.GetCountRecursive__Args _args = new InternalUnsafeMethods.GetCountRecursive__Args() {
                 set = set.ObjectPtr,
@@ -619,6 +677,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of objects contained in the set.
+        /// </description>
+        /// <returns>The number of objects contained in the set.</returns>
         public int GetCount() {
              InternalUnsafeMethods.GetCount__Args _args = new InternalUnsafeMethods.GetCount__Args() {
              };
@@ -626,6 +688,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Make sure child1 is ordered right before child2 in the set.
+        /// </description>
+        /// <param name="child1">The first child.  The object must already be contained in the set.</param>
+        /// <param name="child2">The second child.  The object must already be contained in the set.</param>
         public void ReorderChild(SimObject child1, SimObject child2) {
              InternalUnsafeMethods.ReorderChild__Args _args = new InternalUnsafeMethods.ReorderChild__Args() {
                 child1 = child1.ObjectPtr,
@@ -634,6 +701,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ReorderChild()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( string method, string args... ) Call a method on all objects contained in the set.
+        /// </description>
+        /// <param name="method">The name of the method to call.</param>
+        /// <param name="args">The arguments to the method.</param>
+        /// <remarks> This method does not recurse into child SimSets.
+        /// 
+        /// </remarks>
+        /// <see cref="callOnChildren" />
         public void CallOnChildrenNoRecurse(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -649,6 +725,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
 
         }
 
+        /// <description>
+        /// ( string method, string args... ) Call a method on all objects contained in the set.
+        /// </description>
+        /// <param name="method">The name of the method to call.</param>
+        /// <param name="args">The arguments to the method.</param>
+        /// <remarks> This method recurses into all SimSets that are children to the set.
+        /// 
+        /// </remarks>
+        /// <see cref="callOnChildrenNoRecurse" />
         public void CallOnChildren(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -664,6 +749,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
 
         }
 
+        /// <description>
+        /// Return a random object from the set.
+        /// </description>
+        /// <returns>A randomly selected object from the set or -1 if the set is empty.</returns>
         public SimObject GetRandom() {
              InternalUnsafeMethods.GetRandom__Args _args = new InternalUnsafeMethods.GetRandom__Args() {
              };
@@ -671,18 +760,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimObject(_engineResult);
         }
 
+        /// <description>
+        /// () Delete all objects in the set.
+        /// </description>
         public void DeleteAllObjects() {
              InternalUnsafeMethods.DeleteAllObjects__Args _args = new InternalUnsafeMethods.DeleteAllObjects__Args() {
              };
              InternalUnsafeMethods.DeleteAllObjects()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Remove all objects from the set.
+        /// </description>
         public void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };
              InternalUnsafeMethods.Clear()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ( SimObject objects... ) Remove the given objects from the set.
+        /// </description>
+        /// <param name="objects">The objects to remove from the set.</param>
         public void Remove(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -698,6 +797,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
 
         }
 
+        /// <description>
+        /// ( SimObject objects... ) Add the given objects to the set.
+        /// </description>
+        /// <param name="objects">The objects to add to the set.</param>
         public void Add(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -713,12 +816,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
 
         }
 
+        /// <description>
+        /// Dump a list of all objects contained in the set to the console.
+        /// </description>
         public void ListObjects() {
              InternalUnsafeMethods.ListObjects__Args _args = new InternalUnsafeMethods.ListObjects__Args() {
              };
              InternalUnsafeMethods.ListObjects()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when an object is removed from the set.
+        /// </description>
+        /// <param name="object">The object that was removed.</param>
         public virtual void OnObjectRemoved(SimObject _object) {
              InternalUnsafeMethods.OnObjectRemoved__Args _args = new InternalUnsafeMethods.OnObjectRemoved__Args() {
                 _object = _object.ObjectPtr,
@@ -726,6 +836,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnObjectRemoved()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when an object is added to the set.
+        /// </description>
+        /// <param name="object">The object that was added.</param>
         public virtual void OnObjectAdded(SimObject _object) {
              InternalUnsafeMethods.OnObjectAdded__Args _args = new InternalUnsafeMethods.OnObjectAdded__Args() {
                 _object = _object.ObjectPtr,
@@ -733,6 +847,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnObjectAdded()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SimSet class.
+        /// </description>
+        /// <returns>The type info object for SimSet</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

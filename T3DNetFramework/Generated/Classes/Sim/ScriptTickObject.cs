@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A ScriptObject that responds to tick and frame events.</summary>
+    /// <description>
+    /// ScriptTickObject is a ScriptObject that adds callbacks for tick and frame events.  Use setProcessTicks() to enable or disable the onInterpolateTick() and onProcessTick() callbacks.  The callOnAdvanceTime property determines if the onAdvanceTime() callback is called.
+    /// </description>
+    /// <see cref="ScriptObject" />
     public unsafe class ScriptTickObject : ScriptObject {
         public ScriptTickObject(bool pRegister = false) 
             : base(pRegister) {
@@ -204,6 +209,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Is this object wanting to receive tick notifications.</summary>
+        /// <description>
+        /// If this object is set to receive tick notifications then its onInterpolateTick() and onProcessTick() callbacks are called.
+        /// </description>
+        /// <returns>True if object wants tick notifications</returns>
         public bool IsProcessingTicks() {
              InternalUnsafeMethods.IsProcessingTicks__Args _args = new InternalUnsafeMethods.IsProcessingTicks__Args() {
              };
@@ -211,6 +221,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Sets this object as either tick processing or not.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="tick">This object's onInterpolateTick() and onProcessTick() callbacks are called if set to true.</param>
         public void SetProcessTicks(bool tick) {
              InternalUnsafeMethods.SetProcessTicks__Args _args = new InternalUnsafeMethods.SetProcessTicks__Args() {
                 tick = tick,
@@ -218,6 +233,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetProcessTicks()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// This is called every frame regardless if the object is set to process ticks, but only if the callOnAdvanceTime property is set to true.
+        /// </description>
+        /// <param name="timeDelta">The time delta for this frame.</param>
+        /// <see cref="callOnAdvanceTime" />
         public virtual void OnAdvanceTime(float timeDelta) {
              InternalUnsafeMethods.OnAdvanceTime__Args _args = new InternalUnsafeMethods.OnAdvanceTime__Args() {
                 timeDelta = timeDelta,
@@ -225,12 +245,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAdvanceTime()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called once every 32ms if this object is set to process ticks.
+        /// </description>
         public virtual void OnProcessTick() {
              InternalUnsafeMethods.OnProcessTick__Args _args = new InternalUnsafeMethods.OnProcessTick__Args() {
              };
              InternalUnsafeMethods.OnProcessTick()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// This is called every frame, but only if the object is set to process ticks.
+        /// </description>
+        /// <param name="delta">The time delta for this frame.</param>
         public virtual void OnInterpolateTick(float delta) {
              InternalUnsafeMethods.OnInterpolateTick__Args _args = new InternalUnsafeMethods.OnInterpolateTick__Args() {
                 delta = delta,
@@ -238,6 +265,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnInterpolateTick()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the ScriptTickObject class.
+        /// </description>
+        /// <returns>The type info object for ScriptTickObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -245,6 +276,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Call the onAdvaceTime() callback.
+        /// </description>
+        /// </value>
         public bool CallOnAdvanceTime {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("callOnAdvanceTime"));
             set => SetFieldValue("callOnAdvanceTime", GenericMarshal.ToString(value));

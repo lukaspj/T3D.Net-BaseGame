@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A ResponseCurve<F32> wrapped as a SimObject.</summary>
+    /// <description>
+    /// Currently no applied use, not network ready, not intended for game development, for editors or internal use only.
+    /// </description>
     public unsafe class SimResponseCurve : SimObject {
         public SimResponseCurve(bool pRegister = false) 
             : base(pRegister) {
@@ -162,12 +166,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// clear()
+        /// </description>
         public void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };
              InternalUnsafeMethods.Clear()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// getValue( F32 time )
+        /// </description>
         public float GetValue(float time) {
              InternalUnsafeMethods.GetValue__Args _args = new InternalUnsafeMethods.GetValue__Args() {
                 time = time,
@@ -176,6 +186,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// addPoint( F32 value, F32 time )
+        /// </description>
         public void AddPoint(float value, float time) {
              InternalUnsafeMethods.AddPoint__Args _args = new InternalUnsafeMethods.AddPoint__Args() {
                 value = value,
@@ -184,6 +197,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddPoint()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SimResponseCurve class.
+        /// </description>
+        /// <returns>The type info object for SimResponseCurve</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

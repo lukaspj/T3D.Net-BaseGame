@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Visual representation of color box used with the GuiColorPickerCtrl</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiGradientCtrl : GuiControl {
         public GuiGradientCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -140,6 +144,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get color value
+        /// </description>
         public LinearColorF GetColor(int idx) {
              InternalUnsafeMethods.GetColor__Args _args = new InternalUnsafeMethods.GetColor__Args() {
                 idx = idx,
@@ -148,6 +155,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new LinearColorF(_engineResult);
         }
 
+        /// <description>
+        /// Get color count
+        /// </description>
         public int GetColorCount() {
              InternalUnsafeMethods.GetColorCount__Args _args = new InternalUnsafeMethods.GetColorCount__Args() {
              };
@@ -155,6 +165,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the GuiGradientCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiGradientCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -162,31 +176,55 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public LinearColorF BaseColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("baseColor"));
             set => SetFieldValue("baseColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public LinearColorF PickColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("pickColor"));
             set => SetFieldValue("pickColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public GuiGradientPickMode DisplayMode {
             get => GenericMarshal.StringTo<GuiGradientPickMode>(GetFieldValue("displayMode"));
             set => SetFieldValue("displayMode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ActionOnMove {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("actionOnMove"));
             set => SetFieldValue("actionOnMove", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool ShowReticle {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showReticle"));
             set => SetFieldValue("showReticle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int SwatchFactor {
             get => GenericMarshal.StringTo<int>(GetFieldValue("swatchFactor"));
             set => SetFieldValue("swatchFactor", GenericMarshal.ToString(value));

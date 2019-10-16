@@ -14,7 +14,33 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A spline along which various objects can move along. The spline object acts like a container for Marker objects, which make</summary>
+    /// <description>
+    /// up the joints, or knots, along the path. Paths can be assigned a speed, can be looping or non-looping. Each of a path's markers can be
+    /// one of three primary movement types: "normal", "Position Only", or "Kink".
+    /// </description>
+    /// <code>
+    /// new path()
+    /// 	{
+    ///      isLooping = "1";
+    /// 
+    ///      new Marker()
+    /// 		{
+    /// 			seqNum = "0";
+    /// 			type = "Normal";
+    /// 			msToNext = "1000";
+    /// 			smoothingType = "Spline";
+    /// 			position = "-0.054708 -35.0612 234.802";
+    /// 			rotation = "1 0 0 0";
+    ///       };
+    /// 
+    /// 	};
+    /// </code>
+    /// <see cref="Marker" />
+    /// <see cref="NetConnection::transmitPaths()" />
+    /// <see cref="NetConnection::clearPaths()" />
+    /// <see cref="Path" />
     public unsafe class Path : SimGroup {
         public Path(bool pRegister = false) 
             : base(pRegister) {
@@ -119,6 +145,15 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Returns the PathID (not the object ID) of this path.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>PathID (not the object ID) of this path.</returns>
+        /// <code>
+        /// // Acquire the PathID of this path object.
+        /// %pathID = %thisPath.getPathId();
+        /// </code>
         public int GetPathId() {
              InternalUnsafeMethods.GetPathId__Args _args = new InternalUnsafeMethods.GetPathId__Args() {
              };
@@ -126,6 +161,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the Path class.
+        /// </description>
+        /// <returns>The type info object for Path</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -133,6 +172,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// If this is true, the loop is closed, otherwise it is open.
+        /// </description>
+        /// </value>
         public bool IsLooping {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isLooping"));
             set => SetFieldValue("isLooping", GenericMarshal.ToString(value));

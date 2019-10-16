@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A render bin for the glow pass.</summary>
+    /// <description>
+    /// When the glow buffer PostEffect is enabled this bin gathers mesh render instances with glow materials and renders them to the #glowbuffer offscreen render target.
+    /// 
+    /// This render target is then used by the 'GlowPostFx' PostEffect to blur and render the glowing portions of the screen.
+    /// </description>
     public unsafe class RenderGlowMgr : RenderTexTargetBinManager {
         public RenderGlowMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderGlowMgr class.
+        /// </description>
+        /// <returns>The type info object for RenderGlowMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

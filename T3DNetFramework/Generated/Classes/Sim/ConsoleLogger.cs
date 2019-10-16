@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <description>
+    /// A class designed to be used as a console consumer and log the data it receives to a file.
+    /// </description>
+    /// <see cref="dumpConsoleFunctions" />
+    /// <see cref="dumpConsoleClasses" />
     public unsafe class ConsoleLogger : SimObject {
         public ConsoleLogger(bool pRegister = false) 
             : base(pRegister) {
@@ -141,6 +146,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// () Detaches the logger from the console and stops writing to file
+        /// </description>
+        /// <code>
+        /// // Create the logger
+        /// // Will automatically start writing to testLogging.txt with normal priority
+        /// new ConsoleLogger(logger, "testLogging.txt", false);
+        /// 
+        /// // Send something to the console, with the logger consumes and writes to file
+        /// echo("This is logged to the file");
+        /// 
+        /// // Stop logging, but do not delete the logger
+        /// logger.detach();
+        /// 
+        /// echo("This is not logged to the file");
+        /// 
+        /// // Attach the logger to the console again
+        /// logger.attach();
+        /// 
+        /// // Logging has resumed
+        /// echo("Logging has resumed");
+        /// </code>
         public bool Detach() {
              InternalUnsafeMethods.Detach__Args _args = new InternalUnsafeMethods.Detach__Args() {
              };
@@ -148,6 +175,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// () Attaches the logger to the console and begins writing to file
+        /// </description>
+        /// <code>
+        /// // Create the logger
+        /// // Will automatically start writing to testLogging.txt with normal priority
+        /// new ConsoleLogger(logger, "testLogging.txt", false);
+        /// 
+        /// // Send something to the console, with the logger consumes and writes to file
+        /// echo("This is logged to the file");
+        /// 
+        /// // Stop logging, but do not delete the logger
+        /// logger.detach();
+        /// 
+        /// echo("This is not logged to the file");
+        /// 
+        /// // Attach the logger to the console again
+        /// logger.attach();
+        /// 
+        /// // Logging has resumed
+        /// echo("Logging has resumed");
+        /// </code>
         public bool Attach() {
              InternalUnsafeMethods.Attach__Args _args = new InternalUnsafeMethods.Attach__Args() {
              };
@@ -155,6 +204,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the ConsoleLogger class.
+        /// </description>
+        /// <returns>The type info object for ConsoleLogger</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -162,6 +215,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Determines the priority level and attention the logged entry gets when recorded
+        /// </description>
+        /// </value>
         public LogLevel Level {
             get => GenericMarshal.StringTo<LogLevel>(GetFieldValue("level"));
             set => SetFieldValue("level", GenericMarshal.ToString(value));

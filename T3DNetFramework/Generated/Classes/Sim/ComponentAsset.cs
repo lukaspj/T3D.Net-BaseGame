@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class ComponentAsset : AssetBase {
         public ComponentAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the ComponentAsset class.
+        /// </description>
+        /// <returns>The type info object for ComponentAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,31 +111,67 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Unique Name of the component. Defines the namespace of the scripts for the component.
+        /// </description>
+        /// </value>
         public string ComponentName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("componentName"));
             set => SetFieldValue("componentName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Class of object this component uses.
+        /// </description>
+        /// </value>
         public string ComponentClass {
             get => GenericMarshal.StringTo<string>(GetFieldValue("componentClass"));
             set => SetFieldValue("componentClass", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The human-readble name for the component.
+        /// </description>
+        /// </value>
         public string FriendlyName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("friendlyName"));
             set => SetFieldValue("friendlyName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The category of the component for organizing in the editor.
+        /// </description>
+        /// </value>
         public string ComponentType {
             get => GenericMarshal.StringTo<string>(GetFieldValue("componentType"));
             set => SetFieldValue("componentType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Simple description of the component.
+        /// </description>
+        /// </value>
         public string Description {
             get => GenericMarshal.StringTo<string>(GetFieldValue("description"));
             set => SetFieldValue("description", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A script file with additional scripted functionality for this component.
+        /// </description>
+        /// </value>
         public string ScriptFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("scriptFile"));
             set => SetFieldValue("scriptFile", GenericMarshal.ToString(value));

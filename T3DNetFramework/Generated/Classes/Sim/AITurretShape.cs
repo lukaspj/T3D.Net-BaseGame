@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class AITurretShape : TurretShape {
         public AITurretShape(bool pRegister = false) 
             : base(pRegister) {
@@ -513,12 +514,22 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Recenter the turret's weapon.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void RecenterTurret() {
              InternalUnsafeMethods.RecenterTurret__Args _args = new InternalUnsafeMethods.RecenterTurret__Args() {
              };
              InternalUnsafeMethods.RecenterTurret()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the firing state of the given gun slot.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="slot">The gun to modify.  Valid range is 0-3 that corresponds to the weapon mount point.</param>
+        /// <param name="fire">Set to true to activate the gun.  False to deactivate it.</param>
         public void SetGunSlotFiring(int slot, bool fire) {
              InternalUnsafeMethods.SetGunSlotFiring__Args _args = new InternalUnsafeMethods.SetGunSlotFiring__Args() {
                 slot = slot,
@@ -527,6 +538,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetGunSlotFiring()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the firing state of the turret's guns.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fire">Set to true to activate all guns.  False to deactivate them.</param>
         public void SetAllGunsFiring(bool fire) {
              InternalUnsafeMethods.SetAllGunsFiring__Args _args = new InternalUnsafeMethods.SetAllGunsFiring__Args() {
                 fire = fire,
@@ -534,6 +550,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAllGunsFiring()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the turret's defined projectile velocity that helps with target leading.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>The defined weapon projectile speed, or 0 if leading is disabled.</returns>
         public float GetWeaponLeadVelocity() {
              InternalUnsafeMethods.GetWeaponLeadVelocity__Args _args = new InternalUnsafeMethods.GetWeaponLeadVelocity__Args() {
              };
@@ -541,6 +562,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set the turret's projectile velocity to help lead the target.</summary>
+        /// <description>
+        /// This value normally comes from AITurretShapeData::weaponLeadVelocity but this method allows you to override the datablock value.  This can be useful if the turret changes ammunition, uses a different weapon than the default, is damaged, etc.
+        /// </description>
+        /// <remarks> Setting this to 0 will disable target leading.
+        /// </remarks>
         public void SetWeaponLeadVelocity(float velocity) {
              InternalUnsafeMethods.SetWeaponLeadVelocity__Args _args = new InternalUnsafeMethods.SetWeaponLeadVelocity__Args() {
                 velocity = velocity,
@@ -548,12 +575,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetWeaponLeadVelocity()(ObjectPtr, _args);
         }
 
+        /// <summary>Resets the turret's target tracking.</summary>
+        /// <description>
+        /// Only resets the internal target tracking.  Does not modify the turret's facing.
+        /// </description>
         public void ResetTarget() {
              InternalUnsafeMethods.ResetTarget__Args _args = new InternalUnsafeMethods.ResetTarget__Args() {
              };
              InternalUnsafeMethods.ResetTarget()(ObjectPtr, _args);
         }
 
+        /// <summary>Get the turret's current target.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>The object that is the target's current target, or 0 if no target.</returns>
         public SimObject GetTarget() {
              InternalUnsafeMethods.GetTarget__Args _args = new InternalUnsafeMethods.GetTarget__Args() {
              };
@@ -561,6 +597,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimObject(_engineResult);
         }
 
+        /// <summary>Indicates if the turret has a target.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>True if the turret has a target.</returns>
         public bool HasTarget() {
              InternalUnsafeMethods.HasTarget__Args _args = new InternalUnsafeMethods.HasTarget__Args() {
              };
@@ -568,42 +609,74 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Stop the turret from tracking the current target.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void StopTrackingTarget() {
              InternalUnsafeMethods.StopTrackingTarget__Args _args = new InternalUnsafeMethods.StopTrackingTarget__Args() {
              };
              InternalUnsafeMethods.StopTrackingTarget()(ObjectPtr, _args);
         }
 
+        /// <summary>Have the turret track the current target.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void StartTrackingTarget() {
              InternalUnsafeMethods.StartTrackingTarget__Args _args = new InternalUnsafeMethods.StartTrackingTarget__Args() {
              };
              InternalUnsafeMethods.StartTrackingTarget()(ObjectPtr, _args);
         }
 
+        /// <summary>Stop scanning for targets.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Only impacts the scanning for new targets.  Does not effect a turret's current target lock.
+        /// </remarks>
         public void StopScanForTargets() {
              InternalUnsafeMethods.StopScanForTargets__Args _args = new InternalUnsafeMethods.StopScanForTargets__Args() {
              };
              InternalUnsafeMethods.StopScanForTargets()(ObjectPtr, _args);
         }
 
+        /// <summary>Begin scanning for a target.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void StartScanForTargets() {
              InternalUnsafeMethods.StartScanForTargets__Args _args = new InternalUnsafeMethods.StartScanForTargets__Args() {
              };
              InternalUnsafeMethods.StartScanForTargets()(ObjectPtr, _args);
         }
 
+        /// <summary>Deactivate a turret from an active state.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void DeactivateTurret() {
              InternalUnsafeMethods.DeactivateTurret__Args _args = new InternalUnsafeMethods.DeactivateTurret__Args() {
              };
              InternalUnsafeMethods.DeactivateTurret()(ObjectPtr, _args);
         }
 
+        /// <summary>Activate a turret from a deactive state.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public void ActivateTurret() {
              InternalUnsafeMethods.ActivateTurret__Args _args = new InternalUnsafeMethods.ActivateTurret__Args() {
              };
              InternalUnsafeMethods.ActivateTurret()(ObjectPtr, _args);
         }
 
+        /// <summary>Set the turret's current state.</summary>
+        /// <description>
+        /// Normally the turret's state comes from updating the state machine but this method allows you to override this and jump to the requested state immediately.
+        /// </description>
+        /// <param name="newState">The name of the new state.</param>
+        /// <param name="force">Is true then force the full processing of the new state even if it is the same as the current state.  If false then only the time out value is reset and the state's script method is called, if any.</param>
         public void SetTurretState(string newState, bool force = false) {
              InternalUnsafeMethods.SetTurretState__Args _args = new InternalUnsafeMethods.SetTurretState__Args() {
                 newState = newState,
@@ -612,6 +685,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTurretState()(ObjectPtr, _args);
         }
 
+        /// <summary>Returns the object in the ignore list at index.</summary>
+        /// <description>
+        /// All objects in this list will be ignored by the turret's targeting.
+        /// </description>
+        /// <param name="index">The index of the object in the ignore list being retrieved.</param>
         public SimObject GetIgnoreListObject(int index) {
              InternalUnsafeMethods.GetIgnoreListObject__Args _args = new InternalUnsafeMethods.GetIgnoreListObject__Args() {
                 index = index,
@@ -620,6 +698,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimObject(_engineResult);
         }
 
+        /// <summary>Returns the number of objects in the turrets ignore list.</summary>
+        /// <description>
+        /// All objects in this list will be ignored by the turret's targeting.
+        /// </description>
         public int IgnoreListCount() {
              InternalUnsafeMethods.IgnoreListCount__Args _args = new InternalUnsafeMethods.IgnoreListCount__Args() {
              };
@@ -627,12 +709,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Removes all objects from the turret's ignore list.</summary>
+        /// <description>
+        /// All objects in this list will be ignored by the turret's targeting.
+        /// </description>
         public void ClearIgnoreList() {
              InternalUnsafeMethods.ClearIgnoreList__Args _args = new InternalUnsafeMethods.ClearIgnoreList__Args() {
              };
              InternalUnsafeMethods.ClearIgnoreList()(ObjectPtr, _args);
         }
 
+        /// <summary>Removes object from the turret's ignore list.</summary>
+        /// <description>
+        /// All objects in this list will be ignored by the turret's targeting.
+        /// </description>
+        /// <param name="obj">The ShapeBase object to once again allow for targeting.</param>
         public void RemoveFromIgnoreList(ShapeBase obj) {
              InternalUnsafeMethods.RemoveFromIgnoreList__Args _args = new InternalUnsafeMethods.RemoveFromIgnoreList__Args() {
                 obj = obj.ObjectPtr,
@@ -640,6 +731,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveFromIgnoreList()(ObjectPtr, _args);
         }
 
+        /// <summary>Adds object to the turret's ignore list.</summary>
+        /// <description>
+        /// All objects in this list will be ignored by the turret's targeting.
+        /// </description>
+        /// <param name="obj">The ShapeBase object to ignore.</param>
         public void AddToIgnoreList(ShapeBase obj) {
              InternalUnsafeMethods.AddToIgnoreList__Args _args = new InternalUnsafeMethods.AddToIgnoreList__Args() {
                 obj = obj.ObjectPtr,
@@ -647,6 +743,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddToIgnoreList()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the AITurretShape class.
+        /// </description>
+        /// <returns>The type info object for AITurretShape</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

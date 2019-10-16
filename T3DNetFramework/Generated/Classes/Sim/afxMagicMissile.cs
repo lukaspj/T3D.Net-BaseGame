@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Magic-missile class used internally by afxMagicSpell. Properties of individual missile types are defined using afxMagicMissileData.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxMagicMissile : GameBase {
         public afxMagicMissile(bool pRegister = false) 
             : base(pRegister) {
@@ -141,6 +145,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Set the starting velocity for a magic-missile.
+        /// </description>
         public void SetStartingVelocity(float velocity) {
              InternalUnsafeMethods.SetStartingVelocity__Args _args = new InternalUnsafeMethods.SetStartingVelocity__Args() {
                 velocity = velocity,
@@ -148,6 +155,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetStartingVelocity()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the starting velocity-vector for a magic-missile.
+        /// </description>
         public void SetStartingVelocityVector(Point3F velocityVec) {
 velocityVec.Alloc();             InternalUnsafeMethods.SetStartingVelocityVector__Args _args = new InternalUnsafeMethods.SetStartingVelocityVector__Args() {
                 velocityVec = velocityVec.internalStructPtr,
@@ -155,6 +165,10 @@ velocityVec.Alloc();             InternalUnsafeMethods.SetStartingVelocityVector
              InternalUnsafeMethods.SetStartingVelocityVector()(ObjectPtr, _args);
 velocityVec.Free();        }
 
+        /// <description>
+        /// Get the type info object for the afxMagicMissile class.
+        /// </description>
+        /// <returns>The type info object for afxMagicMissile</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -162,11 +176,23 @@ velocityVec.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Initial starting position for this missile.
+        /// </description>
+        /// </value>
         public Point3F InitialPosition {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("initialPosition"));
             set => SetFieldValue("initialPosition", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Initial starting velocity for this missile.
+        /// </description>
+        /// </value>
         public Point3F InitialVelocity {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("initialVelocity"));
             set => SetFieldValue("initialVelocity", GenericMarshal.ToString(value));

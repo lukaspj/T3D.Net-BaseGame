@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a StaticShape effect.</summary>
+    /// <description>
+    /// afxStaticShapeData inherits from StaticShapeData and adds some AFX specific fields. StaticShape effects should be specified using afxStaticShapeData rather than StaticShapeData datablocks.
+    /// </description>
     public unsafe class afxStaticShapeData : StaticShapeData {
         public afxStaticShapeData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxStaticShapeData class.
+        /// </description>
+        /// <returns>The type info object for afxStaticShapeData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,26 +114,56 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// An animation sequence in the StaticShape to play.
+        /// </description>
+        /// </value>
         public string Sequence {
             get => GenericMarshal.StringTo<string>(GetFieldValue("sequence"));
             set => SetFieldValue("sequence", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool IgnoreSceneAmbient {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ignoreSceneAmbient"));
             set => SetFieldValue("ignoreSceneAmbient", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool UseCustomSceneAmbient {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useCustomSceneAmbient"));
             set => SetFieldValue("useCustomSceneAmbient", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF CustomSceneAmbient {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("customSceneAmbient"));
             set => SetFieldValue("customSceneAmbient", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When true, the StaticShape effect will leave behind the StaticShape object as a permanent part of the scene.
+        /// </description>
+        /// </value>
         public bool DoSpawn {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("doSpawn"));
             set => SetFieldValue("doSpawn", GenericMarshal.ToString(value));

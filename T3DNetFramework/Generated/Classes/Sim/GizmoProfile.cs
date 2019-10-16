@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>This class contains behavior and rendering properties used by the Gizmo class</summary>
+    /// <description>
+    /// Not intended for game development, for editors or internal use only.
+    /// </description>
     public unsafe class GizmoProfile : SimObject {
         public GizmoProfile(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GizmoProfile class.
+        /// </description>
+        /// <returns>The type info object for GizmoProfile</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,101 +114,181 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public GizmoAlignment Alignment {
             get => GenericMarshal.StringTo<GizmoAlignment>(GetFieldValue("alignment"));
             set => SetFieldValue("alignment", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public GizmoMode Mode {
             get => GenericMarshal.StringTo<GizmoMode>(GetFieldValue("mode"));
             set => SetFieldValue("mode", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool SnapToGrid {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("snapToGrid"));
             set => SetFieldValue("snapToGrid", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool AllowSnapRotations {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowSnapRotations"));
             set => SetFieldValue("allowSnapRotations", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float RotationSnap {
             get => GenericMarshal.StringTo<float>(GetFieldValue("rotationSnap"));
             set => SetFieldValue("rotationSnap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool AllowSnapScale {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("allowSnapScale"));
             set => SetFieldValue("allowSnapScale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float ScaleSnap {
             get => GenericMarshal.StringTo<float>(GetFieldValue("scaleSnap"));
             set => SetFieldValue("scaleSnap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderWhenUsed {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderWhenUsed"));
             set => SetFieldValue("renderWhenUsed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderInfoText {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderInfoText"));
             set => SetFieldValue("renderInfoText", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderPlane {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderPlane"));
             set => SetFieldValue("renderPlane", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderPlaneHashes {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderPlaneHashes"));
             set => SetFieldValue("renderPlaneHashes", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderSolid {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderSolid"));
             set => SetFieldValue("renderSolid", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool RenderMoveGrid {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("renderMoveGrid"));
             set => SetFieldValue("renderMoveGrid", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public ColorI GridColor {
             get => GenericMarshal.StringTo<ColorI>(GetFieldValue("gridColor"));
             set => SetFieldValue("gridColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float PlaneDim {
             get => GenericMarshal.StringTo<float>(GetFieldValue("planeDim"));
             set => SetFieldValue("planeDim", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point3F GridSize {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("gridSize"));
             set => SetFieldValue("gridSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int ScreenLength {
             get => GenericMarshal.StringTo<int>(GetFieldValue("screenLength"));
             set => SetFieldValue("screenLength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float RotateScalar {
             get => GenericMarshal.StringTo<float>(GetFieldValue("rotateScalar"));
             set => SetFieldValue("rotateScalar", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public float ScaleScalar {
             get => GenericMarshal.StringTo<float>(GetFieldValue("scaleScalar"));
             set => SetFieldValue("scaleScalar", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int Flags {
             get => GenericMarshal.StringTo<int>(GetFieldValue("flags"));
             set => SetFieldValue("flags", GenericMarshal.ToString(value));

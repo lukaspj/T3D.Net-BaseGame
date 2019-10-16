@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An example scene object which renders a DTS.</summary>
+    /// <description>
+    /// This class implements a basic SceneObject that can exist in the world at a 3D position and render itself. There are several valid ways to render an object in Torque. This class makes use of the 'TS' (three space) shape system. TS manages loading the various mesh formats supported by Torque as well was rendering those meshes (including LOD and animation...though this example doesn't include any animation over time).
+    /// 
+    /// See the C++ code for implementation details.
+    /// </description>
     public unsafe class RenderShapeExample : SceneObject {
         public RenderShapeExample(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderShapeExample class.
+        /// </description>
+        /// <returns>The type info object for RenderShapeExample</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +116,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The path to the DTS shape file.
+        /// </description>
+        /// </value>
         public string ShapeFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("shapeFile"));
             set => SetFieldValue("shapeFile", GenericMarshal.ToString(value));

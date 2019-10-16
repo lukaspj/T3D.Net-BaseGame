@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a dynamic Spot Light effect.</summary>
+    /// <description>
+    /// A Spot Light effect that uses the T3D SpotLight object. afxT3DSpotLightData has the same fields found in SpotLight but in a datablock structure.
+    /// </description>
     public unsafe class afxT3DSpotLightData : afxT3DLightBaseData {
         public afxT3DSpotLightData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxT3DSpotLightData class.
+        /// </description>
+        /// <returns>The type info object for afxT3DSpotLightData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +114,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Range {
             get => GenericMarshal.StringTo<float>(GetFieldValue("range"));
             set => SetFieldValue("range", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float InnerAngle {
             get => GenericMarshal.StringTo<float>(GetFieldValue("innerAngle"));
             set => SetFieldValue("innerAngle", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float OuterAngle {
             get => GenericMarshal.StringTo<float>(GetFieldValue("outerAngle"));
             set => SetFieldValue("outerAngle", GenericMarshal.ToString(value));

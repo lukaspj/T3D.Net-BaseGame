@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Defines the properties of a WheeledVehicle spring.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class WheeledVehicleSpring : SimDataBlock {
         public WheeledVehicleSpring(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the WheeledVehicleSpring class.
+        /// </description>
+        /// <returns>The type info object for WheeledVehicleSpring</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +114,49 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Maximum spring length. ie. how far the wheel can extend from the root hub position.</summary>
+        /// <description>
+        /// This should be set to the vertical (Z) distance the hub travels in the associated spring animation.
+        /// </description>
+        /// </value>
         public float Length {
             get => GenericMarshal.StringTo<float>(GetFieldValue("length"));
             set => SetFieldValue("length", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Maximum spring force (when compressed to minimum length, 0).</summary>
+        /// <description>
+        /// Increasing this will make the vehicle suspension ride higher (for a given vehicle mass), and also make the vehicle more bouncy when landing jumps.
+        /// </description>
+        /// </value>
         public float Force {
             get => GenericMarshal.StringTo<float>(GetFieldValue("force"));
             set => SetFieldValue("force", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Force applied to slow changes to the extension of this spring.</summary>
+        /// <description>
+        /// Increasing this makes the suspension stiffer which can help stabilise bouncy vehicles.
+        /// </description>
+        /// </value>
         public float Damping {
             get => GenericMarshal.StringTo<float>(GetFieldValue("damping"));
             set => SetFieldValue("damping", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Force applied to equalize extension of the spring on the opposite wheel.</summary>
+        /// <description>
+        /// This force helps to keep the suspension balanced when opposite wheels are at different heights.
+        /// </description>
+        /// </value>
         public float AntiSwayForce {
             get => GenericMarshal.StringTo<float>(GetFieldValue("antiSwayForce"));
             set => SetFieldValue("antiSwayForce", GenericMarshal.ToString(value));

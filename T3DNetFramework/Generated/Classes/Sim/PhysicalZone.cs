@@ -14,7 +14,24 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Physical Zones are areas that modify the player's gravity and/or velocity and/or applied force.</summary>
+    /// <description>
+    /// The datablock properties determine how the physics, velocity and applied forces affect a player who enters this zone.
+    /// </description>
+    /// <code>
+    /// new PhysicalZone(Team1JumpPad) {
+    /// velocityMod = "1";gravityMod = "0";
+    /// appliedForce = "0 0 20000";
+    /// polyhedron = "0.0000000 0.0000000 0.0000000 1.0000000 0.0000000 0.0000000 0.0000000 -1.0000000 0.0000000 0.0000000 0.0000000 1.0000000";
+    /// position = "273.559 -166.371 249.856";
+    /// rotation = "0 0 1 13.0216";
+    /// scale = "8 4.95 28.31";
+    /// isRenderEnabled = "true";
+    /// canSaveDynamicFields = "1";
+    /// enabled = "1";
+    /// };
+    /// </code>
     public unsafe class PhysicalZone : SceneObject {
         public PhysicalZone(bool pRegister = false) 
             : base(pRegister) {
@@ -139,18 +156,36 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Deactivate the physical zone's effects.
+        /// </description>
+        /// <code>
+        /// // Deactivate effects for a specific physical zone.
+        /// %thisPhysicalZone.deactivate();
+        /// </code>
         public void Deactivate() {
              InternalUnsafeMethods.Deactivate__Args _args = new InternalUnsafeMethods.Deactivate__Args() {
              };
              InternalUnsafeMethods.Deactivate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Activate the physical zone's effects.
+        /// </description>
+        /// <code>
+        /// // Activate effects for a specific physical zone.
+        /// %thisPhysicalZone.activate();
+        /// </code>
         public void Activate() {
              InternalUnsafeMethods.Activate__Args _args = new InternalUnsafeMethods.Activate__Args() {
              };
              InternalUnsafeMethods.Activate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the PhysicalZone class.
+        /// </description>
+        /// <returns>The type info object for PhysicalZone</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -158,31 +193,63 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Multiply velocity of objects entering zone by this value every tick.
+        /// </description>
+        /// </value>
         public float VelocityMod {
             get => GenericMarshal.StringTo<float>(GetFieldValue("velocityMod"));
             set => SetFieldValue("velocityMod", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Gravity in PhysicalZone. Multiplies against standard gravity.
+        /// </description>
+        /// </value>
         public float GravityMod {
             get => GenericMarshal.StringTo<float>(GetFieldValue("gravityMod"));
             set => SetFieldValue("gravityMod", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Three-element floating point value representing forces in three axes to apply to objects entering PhysicalZone.
+        /// </description>
+        /// </value>
         public Point3F AppliedForce {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("appliedForce"));
             set => SetFieldValue("appliedForce", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The polyhedron type is really a quadrilateral and consists of a cornerpoint followed by three vectors representing the edges extending from the corner.
+        /// </description>
+        /// </value>
         public FloatVector Polyhedron {
             get => GenericMarshal.StringTo<FloatVector>(GetFieldValue("polyhedron"));
             set => SetFieldValue("polyhedron", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public PhysicalZone_ForceType ForceType {
             get => GenericMarshal.StringTo<PhysicalZone_ForceType>(GetFieldValue("forceType"));
             set => SetFieldValue("forceType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool OrientForce {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("orientForce"));
             set => SetFieldValue("orientForce", GenericMarshal.ToString(value));

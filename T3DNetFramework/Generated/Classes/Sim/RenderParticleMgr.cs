@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A render bin which renders particle geometry.</summary>
+    /// <description>
+    /// This render bin gathers particle render instances, sorts, and renders them. It is currently used by ParticleEmitter and LightFlareData.
+    /// </description>
     public unsafe class RenderParticleMgr : RenderTexTargetBinManager {
         public RenderParticleMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderParticleMgr class.
+        /// </description>
+        /// <returns>The type info object for RenderParticleMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Defines the properties of an afxEffectron.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxEffectronData : afxChoreographerData {
         public afxEffectronData(bool pRegister = false) 
             : base(pRegister) {
@@ -140,6 +144,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Pushes an effect (wrapper or group) to an effectron's phase.
+        /// </description>
         public void PushEffect(afxEffectBaseData effect) {
              InternalUnsafeMethods.PushEffect__Args _args = new InternalUnsafeMethods.PushEffect__Args() {
                 effect = effect.ObjectPtr,
@@ -147,12 +154,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PushEffect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Resets an effectron datablock during reload.
+        /// </description>
         public void Reset() {
              InternalUnsafeMethods.Reset__Args _args = new InternalUnsafeMethods.Reset__Args() {
              };
              InternalUnsafeMethods.Reset()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the afxEffectronData class.
+        /// </description>
+        /// <returns>The type info object for afxEffectronData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -160,16 +174,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Duration {
             get => GenericMarshal.StringTo<float>(GetFieldValue("duration"));
             set => SetFieldValue("duration", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int NumLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numLoops"));
             set => SetFieldValue("numLoops", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public afxEffectBaseData AddEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addEffect"));
             set => SetFieldValue("addEffect", GenericMarshal.ToString(value));

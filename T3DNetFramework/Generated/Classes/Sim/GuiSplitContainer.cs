@@ -14,7 +14,41 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A container that splits its area between two child controls.</summary>
+    /// <description>
+    /// A GuiSplitContainer can be used to dynamically subdivide an area between two child controls.  A splitter bar is placed between the two controls and allows to dynamically adjust the sizing ratio between the two sides.  Splitting can be either horizontal (subdividing top and bottom) or vertical (subdividing left and right) depending on #orientation.
+    /// 
+    /// By using #fixedPanel, one of the panels can be chosen to remain at a fixed size (#fixedSize).
+    /// </description>
+    /// <code>
+    /// // Create a vertical splitter with a fixed-size left panel.
+    /// %splitter = new GuiSplitContainer()
+    /// {
+    ///    orientation = "Vertical";
+    ///    fixedPanel = "FirstPanel";
+    ///    fixedSize = 100;
+    /// 
+    ///    new GuiScrollCtrl()
+    ///    {
+    ///       new GuiMLTextCtrl()
+    ///       {
+    ///          text = %longText;
+    ///       };
+    ///    };
+    /// 
+    ///    new GuiScrollCtrl()
+    ///    {
+    ///       new GuiMLTextCtrl()
+    ///       {
+    ///          text = %moreLongText;
+    ///       };
+    ///    };
+    /// };
+    /// </code>
+    /// <remarks> The children placed inside GuiSplitContainers must be GuiContainers.
+    /// 
+    /// </remarks>
     public unsafe class GuiSplitContainer : GuiContainer {
         public GuiSplitContainer(bool pRegister = false) 
             : base(pRegister) {
@@ -120,6 +154,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Set the position of the split handle.
+        /// </description>
         public void SetSplitPoint(Point2I splitPoint) {
 splitPoint.Alloc();             InternalUnsafeMethods.SetSplitPoint__Args _args = new InternalUnsafeMethods.SetSplitPoint__Args() {
                 splitPoint = splitPoint.internalStructPtr,
@@ -127,6 +164,10 @@ splitPoint.Alloc();             InternalUnsafeMethods.SetSplitPoint__Args _args 
              InternalUnsafeMethods.SetSplitPoint()(ObjectPtr, _args);
 splitPoint.Free();        }
 
+        /// <description>
+        /// Get the type info object for the GuiSplitContainer class.
+        /// </description>
+        /// <returns>The type info object for GuiSplitContainer</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -134,26 +175,58 @@ splitPoint.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to split between top and bottom (horizontal) or between left and right (vertical).
+        /// </description>
+        /// </value>
         public GuiSplitOrientation Orientation {
             get => GenericMarshal.StringTo<GuiSplitOrientation>(GetFieldValue("orientation"));
             set => SetFieldValue("orientation", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Width of the splitter bar between the two sides.  Default is 2.
+        /// </description>
+        /// </value>
         public int SplitterSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("splitterSize"));
             set => SetFieldValue("splitterSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Point on control through which the splitter goes.
+        /// 
+        /// Changed relatively if size of control changes.
+        /// </description>
+        /// </value>
         public Point2I SplitPoint {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("splitPoint"));
             set => SetFieldValue("splitPoint", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Which (if any) side of the splitter to keep at a fixed size.
+        /// </description>
+        /// </value>
         public GuiSplitFixedPanel FixedPanel {
             get => GenericMarshal.StringTo<GuiSplitFixedPanel>(GetFieldValue("fixedPanel"));
             set => SetFieldValue("fixedPanel", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Width of the fixed panel specified by #fixedPanel (if any).
+        /// </description>
+        /// </value>
         public int FixedSize {
             get => GenericMarshal.StringTo<int>(GetFieldValue("fixedSize"));
             set => SetFieldValue("fixedSize", GenericMarshal.ToString(value));

@@ -14,7 +14,10 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Reflection {    
+namespace T3DNetFramework.Generated.Classes.Reflection {
+    /// <description>
+    /// Information about an engine type.
+    /// </description>
     public unsafe class EngineTypeInfo : EngineExportScope {
         public EngineTypeInfo(bool pRegister = false) 
             : base(pRegister) {
@@ -92,6 +95,10 @@ namespace T3DNetFramework.Generated.Classes.Reflection {
         }
         #endregion
 
+        /// <description>
+        /// Get the type that this type subtypes from.
+        /// </description>
+        /// <returns>The supertype info instance or NULL.</returns>
         public EngineTypeInfo GetSuperType() {
              InternalUnsafeMethods.GetSuperType__Args _args = new InternalUnsafeMethods.GetSuperType__Args() {
              };
@@ -99,6 +106,10 @@ namespace T3DNetFramework.Generated.Classes.Reflection {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// Get the kind of the type.
+        /// </description>
+        /// <returns>The type kind.</returns>
         public EngineTypeKind GetTypeKind() {
              InternalUnsafeMethods.GetTypeKind__Args _args = new InternalUnsafeMethods.GetTypeKind__Args() {
              };
@@ -106,6 +117,10 @@ namespace T3DNetFramework.Generated.Classes.Reflection {
              return (EngineTypeKind)_engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the EngineTypeInfo class.
+        /// </description>
+        /// <returns>The type info object for EngineTypeInfo</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -113,8 +128,20 @@ namespace T3DNetFramework.Generated.Classes.Reflection {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Kind of type.
+        /// </description>
+        /// </value>
         public EngineTypeKind TypeKind => GetTypeKind();
 
+
+        /// <value>
+        /// <description>
+        /// Type that this type subtypes from.
+        /// </description>
+        /// </value>
         public EngineTypeInfo SuperType => GetSuperType();
     }
 }

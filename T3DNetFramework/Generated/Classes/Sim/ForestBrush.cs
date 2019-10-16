@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Container class for ForestBrushElements</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class ForestBrush : SimGroup {
         public ForestBrush(bool pRegister = false) 
             : base(pRegister) {
@@ -122,6 +126,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ( ForestItemData obj )
+        /// </description>
         public bool ContainsItemData(string obj) {
              InternalUnsafeMethods.ContainsItemData__Args _args = new InternalUnsafeMethods.ContainsItemData__Args() {
                 obj = obj,
@@ -130,6 +137,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the ForestBrush class.
+        /// </description>
+        /// <returns>The type info object for ForestBrush</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

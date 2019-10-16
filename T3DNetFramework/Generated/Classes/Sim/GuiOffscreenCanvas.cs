@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class GuiOffscreenCanvas : GuiCanvas {
         public GuiOffscreenCanvas(bool pRegister = false) 
             : base(pRegister) {
@@ -139,18 +140,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void MarkDirty() {
              InternalUnsafeMethods.MarkDirty__Args _args = new InternalUnsafeMethods.MarkDirty__Args() {
              };
              InternalUnsafeMethods.MarkDirty()(ObjectPtr, _args);
         }
 
+        /// 
         public void ResetTarget() {
              InternalUnsafeMethods.ResetTarget__Args _args = new InternalUnsafeMethods.ResetTarget__Args() {
              };
              InternalUnsafeMethods.ResetTarget()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiOffscreenCanvas class.
+        /// </description>
+        /// <returns>The type info object for GuiOffscreenCanvas</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -158,26 +165,46 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public Point2I TargetSize {
             get => GenericMarshal.StringTo<Point2I>(GetFieldValue("targetSize"));
             set => SetFieldValue("targetSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public GFXFormat TargetFormat {
             get => GenericMarshal.StringTo<GFXFormat>(GetFieldValue("targetFormat"));
             set => SetFieldValue("targetFormat", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string TargetName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("targetName"));
             set => SetFieldValue("targetName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool DynamicTarget {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("dynamicTarget"));
             set => SetFieldValue("dynamicTarget", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool UseDepth {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useDepth"));
             set => SetFieldValue("useDepth", GenericMarshal.ToString(value));

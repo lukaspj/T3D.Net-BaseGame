@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control for showing pages of options that are gamepad friendly.</summary>
+    /// <description>
+    /// Each row in this control allows the selection of one value from a set of options using the keyboard, gamepad or mouse. The row is rendered as 2 columns: the first column contains the row label, the second column contains left and right arrows (for mouse picking) and the currently selected value.
+    /// </description>
+    /// <see cref="GuiGameListOptionsProfile" />
     public unsafe class GuiGameListOptionsCtrl : GuiGameListMenuCtrl {
         public GuiGameListOptionsCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -200,6 +205,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Sets the list of options on the given row.
+        /// </description>
+        /// <param name="row">Index of the row to set options on.</param>
+        /// <param name="optionsList">A tab separated list of options for the control.</param>
         public void SetOptions(int row, string optionsList) {
              InternalUnsafeMethods.SetOptions__Args _args = new InternalUnsafeMethods.SetOptions__Args() {
                 row = row,
@@ -208,6 +218,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetOptions()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the row's current option to the one specified
+        /// </description>
+        /// <param name="row">Index of the row to set an option on.</param>
+        /// <param name="option">The option to be made active.</param>
+        /// <returns>True if the row contained the option and was set, false otherwise.</returns>
         public bool SelectOption(int row, string option) {
              InternalUnsafeMethods.SelectOption__Args _args = new InternalUnsafeMethods.SelectOption__Args() {
                 row = row,
@@ -217,6 +233,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Gets the text for the currently selected option of the given row.
+        /// </description>
+        /// <param name="row">Index of the row to get the option from.</param>
+        /// <returns>A string representing the text currently displayed as the selected option on the given row. If there is no such displayed text then the empty string is returned.</returns>
         public string GetCurrentOption(int row) {
              InternalUnsafeMethods.GetCurrentOption__Args _args = new InternalUnsafeMethods.GetCurrentOption__Args() {
                 row = row,
@@ -225,6 +246,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Add a row to the list control.
+        /// </description>
+        /// <param name="label">The text to display on the row as a label.</param>
+        /// <param name="options">A tab separated list of options.</param>
+        /// <param name="wrapOptions">Specify true to allow options to wrap at each end or false to prevent wrapping.</param>
+        /// <param name="callback">Name of a script function to use as a callback when this row is activated.</param>
+        /// <param name="icon">[optional] Index of the icon to use as a marker.</param>
+        /// <param name="yPad">[optional] An extra amount of height padding before the row. Does nothing on the first row.</param>
+        /// <param name="enabled">[optional] If this row is initially enabled.</param>
         public void AddRow(string label, string options, bool wrapOptions, string callback, int icon = -1, int yPad = 0, bool enabled = true) {
              InternalUnsafeMethods.AddRow__Args _args = new InternalUnsafeMethods.AddRow__Args() {
                 label = label,
@@ -238,6 +269,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddRow()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiGameListOptionsCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiGameListOptionsCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

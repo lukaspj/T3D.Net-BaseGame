@@ -14,7 +14,29 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control that plots one or more curves in a chart.</summary>
+    /// <description>
+    /// Up to 6 individual curves can be plotted in the graph.  Each plotted curve can have its own display style including its own charting style (#plotType) and color (#plotColor).
+    /// 
+    /// The data points on each curve can be added in one of two ways:
+    /// 
+    /// - Manually by calling addDatum().  This causes new data points to be added to the left end of the plotting curve.
+    /// - Automatically by letting the graph plot the values of a variable over time.  This is achieved by calling addAutoPlot and specifying the variable and update frequency.
+    /// </description>
+    /// <code>
+    /// // Create a graph that plots a red polyline graph of the FPS counter in a 1 second (1000 milliseconds) interval.
+    /// new GuiGraphCtrl( FPSGraph )
+    /// {
+    ///    plotType[ 0 ] = "PolyLine";
+    ///    plotColor[ 0 ] = "1 0 0";
+    ///    plotVariable[ 0 ] = "fps::real";
+    ///    plotInterval[ 0 ] = 1000;
+    /// };
+    /// </code>
+    /// <remarks> Each curve has a maximum number of 200 data points it can have at any one time.  Adding more data points to a curve will cause older data points to be removed.
+    /// 
+    /// </remarks>
     public unsafe class GuiGraphCtrl : GuiControl {
         public GuiGraphCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -226,6 +248,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ( int plotID1, int plotID2, ... ) Set the scale of all specified plots to the maximum scale among them.
+        /// </description>
+        /// <param name="plotID1">Index of plotting curve.</param>
+        /// <param name="plotID2">Index of plotting curve.</param>
         public void MatchScale(params string[] args) { 
             List<string> _argList = new List<string>() {"", ""};
             _argList.AddRange(args);
@@ -241,6 +268,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
 
         }
 
+        /// <description>
+        /// Change the charting type of the given plotting curve.
+        /// </description>
+        /// <param name="plotId">Index of the plotting curve.  Must be 0<=plotId<6.</param>
+        /// <param name="graphType">Charting type to use for the curve.</param>
+        /// <remarks> Instead of calling this method, you can directly assign to #plotType.</remarks>
         public void SetGraphType(int plotId, GuiGraphType graphType) {
              InternalUnsafeMethods.SetGraphType__Args _args = new InternalUnsafeMethods.SetGraphType__Args() {
                 plotId = plotId,
@@ -249,6 +282,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetGraphType()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Stop automatic variable plotting for the given curve.
+        /// </description>
+        /// <param name="plotId">Index of the plotting curve.  Must be 0<=plotId<6.</param>
         public void RemoveAutoPlot(int plotId) {
              InternalUnsafeMethods.RemoveAutoPlot__Args _args = new InternalUnsafeMethods.RemoveAutoPlot__Args() {
                 plotId = plotId,
@@ -256,6 +293,16 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveAutoPlot()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Sets up the given plotting curve to automatically plot the value of the<paramref name="" /> variable with a frequency of 
+        /// </description>
+        /// <param name="plotId">Index of the plotting curve.  Must be 0<=plotId<6.</param>
+        /// <param name="variable">Name of the global variable.</param>
+        /// <param name="updateFrequency">Frequency with which to add new data points to the plotting curve (in milliseconds).</param>
+        /// <code>
+        /// // Plot FPS counter at 1 second intervals.
+        /// %graph.addAutoPlot( 0, "fps::real", 1000 );
+        /// </code>
         public void AddAutoPlot(int plotId, string variable, int updateFrequency) {
              InternalUnsafeMethods.AddAutoPlot__Args _args = new InternalUnsafeMethods.AddAutoPlot__Args() {
                 plotId = plotId,
@@ -265,6 +312,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddAutoPlot()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get a data point on the given plotting curve.
+        /// </description>
+        /// <param name="plotId">Index of the plotting curve from which to fetch the data point.  Must be 0<=plotId<6.</param>
+        /// <param name="index">Index of the data point on the curve.</param>
+        /// <returns>The value of the data point or -1 if<paramref name="" /> plotId or </returns>
         public float GetDatum(int plotId, int index) {
              InternalUnsafeMethods.GetDatum__Args _args = new InternalUnsafeMethods.GetDatum__Args() {
                 plotId = plotId,
@@ -274,6 +327,13 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Add a data point to the plot's curve.
+        /// </description>
+        /// <param name="plotId">Index of the plotting curve to which to add the data point.  Must be 0<=plotId<6.</param>
+        /// <param name="value">Value of the data point to add to the curve.</param>
+        /// <remarks> Data values are added to the </remarks>
+        /// <remarks> A maximum number of 200 data points can be added to any single plotting curve at any one time.  If this limit is exceeded, data points on the right end of the curve are culled.</remarks>
         public void AddDatum(int plotId, float value) {
              InternalUnsafeMethods.AddDatum__Args _args = new InternalUnsafeMethods.AddDatum__Args() {
                 plotId = plotId,
@@ -282,6 +342,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddDatum()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiGraphCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiGraphCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -289,11 +353,25 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Ratio of where to place the center coordinate of the graph on the Y axis. 0.5=middle height of control.
+        /// 
+        /// This allows to account for graphs that have only positive or only negative data points, for example.
+        /// </description>
+        /// </value>
         public float CenterY {
             get => GenericMarshal.StringTo<float>(GetFieldValue("centerY"));
             set => SetFieldValue("centerY", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color to use for the plotting curves in the graph.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<LinearColorF> PlotColor {
             get => new DynamicFieldVector<LinearColorF>(
                     this, 
@@ -304,6 +382,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Charting type of the plotting curves.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<GuiGraphType> PlotType {
             get => new DynamicFieldVector<GuiGraphType>(
                     this, 
@@ -314,6 +398,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the variable to automatically plot on the curves.  If empty, auto-plotting is disabled for the respective curve.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> PlotVariable {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -324,6 +414,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// Interval between auto-plots of #plotVariable for the respective curve (in milliseconds).
+        /// </description>
+        /// </value>
         public DynamicFieldVector<int> PlotInterval {
             get => new DynamicFieldVector<int>(
                     this, 

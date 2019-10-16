@@ -14,7 +14,21 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A script-level OOP object which allows binding of a class, superClass and arguments along with declaration of methods.</summary>
+    /// <description>
+    /// ScriptObjects are extrodinarily powerful objects that allow defining of any type of data required. They can optionally have
+    /// a class and a superclass defined for added control of multiple ScriptObjects through a simple class definition.
+    /// </description>
+    /// <code>
+    /// new ScriptObject(Game)
+    /// {
+    ///    class = "DeathMatchGame";
+    ///    superClass = GameCore;
+    ///    genre = "Action FPS"; // Note the new, non-Torque variable
+    /// };
+    /// </code>
+    /// <see cref="SimObject" />
     public unsafe class ScriptObject : SimObject {
         public ScriptObject(bool pRegister = false) 
             : base(pRegister) {
@@ -141,6 +155,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Called when this ScriptObject is removed from the system.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
         public virtual void OnRemove(uint ID) {
              InternalUnsafeMethods.OnRemove__Args _args = new InternalUnsafeMethods.OnRemove__Args() {
                 ID = ID,
@@ -148,6 +166,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnRemove()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when this ScriptObject is added to the system.
+        /// </description>
+        /// <param name="ID">Unique object ID assigned when created (%this in script).</param>
         public virtual void OnAdd(uint ID) {
              InternalUnsafeMethods.OnAdd__Args _args = new InternalUnsafeMethods.OnAdd__Args() {
                 ID = ID,
@@ -155,6 +177,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnAdd()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the ScriptObject class.
+        /// </description>
+        /// <returns>The type info object for ScriptObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

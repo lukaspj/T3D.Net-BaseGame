@@ -190,6 +190,9 @@ namespace T3DNetFramework.Generated.Functions {
         }
         #endregion
 
+        /// <description>
+        /// Returns the card name.
+        /// </description>
         public static string GetBestDepthFormat() {
              InternalUnsafeMethods.GetBestDepthFormat__Args _args = new InternalUnsafeMethods.GetBestDepthFormat__Args() {
              };
@@ -197,6 +200,11 @@ namespace T3DNetFramework.Generated.Functions {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Used to query the value of a specific card capability.
+        /// </description>
+        /// <param name="name">The name of the capability being queried.</param>
+        /// <param name="defaultValue">The value to return if the capability is not defined.</param>
         public static int QueryProfile(string name, int defaultValue) {
              InternalUnsafeMethods.QueryProfile__Args _args = new InternalUnsafeMethods.QueryProfile__Args() {
                 name = name,
@@ -206,6 +214,11 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// Used to set the value for a specific card capability.
+        /// </description>
+        /// <param name="name">The name of the capability being set.</param>
+        /// <param name="value">The value to set for that capability.</param>
         public static void SetCapability(string name, int value) {
              InternalUnsafeMethods.SetCapability__Args _args = new InternalUnsafeMethods.SetCapability__Args() {
                 name = name,
@@ -214,6 +227,9 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.SetCapability()(_args);
         }
 
+        /// <description>
+        /// Returns the amount of video memory in megabytes.
+        /// </description>
         public static int GetVideoMemoryMB() {
              InternalUnsafeMethods.GetVideoMemoryMB__Args _args = new InternalUnsafeMethods.GetVideoMemoryMB__Args() {
              };
@@ -221,6 +237,9 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns the renderer name.  For example D3D11 or OpenGL.
+        /// </description>
         public static string GetRenderer() {
              InternalUnsafeMethods.GetRenderer__Args _args = new InternalUnsafeMethods.GetRenderer__Args() {
              };
@@ -228,6 +247,9 @@ namespace T3DNetFramework.Generated.Functions {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns the card vendor name.
+        /// </description>
         public static string GetVendor() {
              InternalUnsafeMethods.GetVendor__Args _args = new InternalUnsafeMethods.GetVendor__Args() {
              };
@@ -235,6 +257,9 @@ namespace T3DNetFramework.Generated.Functions {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns the card name.
+        /// </description>
         public static string GetCard() {
              InternalUnsafeMethods.GetCard__Args _args = new InternalUnsafeMethods.GetCard__Args() {
              };
@@ -242,6 +267,9 @@ namespace T3DNetFramework.Generated.Functions {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns the driver version string.
+        /// </description>
         public static string GetVersion() {
              InternalUnsafeMethods.GetVersion__Args _args = new InternalUnsafeMethods.GetVersion__Args() {
              };

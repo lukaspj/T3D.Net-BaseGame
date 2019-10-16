@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Swatch selector that appears inside the GuiGradientCtrl object. These objects are automatically created by GuiGradientCtrl.</summary>
+    /// <description>
+    /// Currently only appears to be editor specific
+    /// </description>
+    /// <see cref="GuiSwatchButtonCtrl" />
+    /// <see cref="GuiGradientCtrl" />
     public unsafe class GuiGradientSwatchCtrl : GuiSwatchButtonCtrl {
         public GuiGradientSwatchCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -139,18 +145,48 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Called whenever the left mouse button performs a double click while in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // The left mouse button has performed a double click on the control, causing the callback to occur.
+        /// GuiGradientSwatchCtrl::onDoubleClick(%this)
+        /// 	{
+        /// 		// Code to run when the callback occurs
+        /// 	}
+        /// </code>
+        /// <see cref="GuiControl" />
+        /// <see cref="GuiSwatchButtonCtrl" />
         public virtual void OnDoubleClick() {
              InternalUnsafeMethods.OnDoubleClick__Args _args = new InternalUnsafeMethods.OnDoubleClick__Args() {
              };
              InternalUnsafeMethods.OnDoubleClick()(ObjectPtr, _args);
         }
 
+        /// <summary>Called whenever the left mouse button has entered the down state while in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // The left mouse button is down on the control, causing the callback to occur.
+        /// GuiGradientSwatchCtrl::onMouseDown(%this)
+        /// 	{
+        /// 		// Code to run when the callback occurs
+        /// 	}
+        /// </code>
+        /// <see cref="GuiControl" />
+        /// <see cref="GuiSwatchButtonCtrl" />
         public virtual void OnMouseDown() {
              InternalUnsafeMethods.OnMouseDown__Args _args = new InternalUnsafeMethods.OnMouseDown__Args() {
              };
              InternalUnsafeMethods.OnMouseDown()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiGradientSwatchCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiGradientSwatchCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

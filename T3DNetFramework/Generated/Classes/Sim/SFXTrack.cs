@@ -14,7 +14,18 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Abstract base class for sound data that can be played back by the sound system.</summary>
+    /// <description>
+    /// The term "track" is used in the sound system to refer to any entity that can be played back as a sound source.  These can be individual files (SFXProfile), patterns of other tracks (SFXPlayList), or special sound data defined by a device layer (SFXFMODEvent).
+    /// 
+    /// Any track must be paired with a SFXDescription that tells the sound system how to set up playback for the track.
+    /// 
+    /// All objects that are of type SFXTrack will automatically be added to
+    /// </description>
+    /// <remarks> This class cannot be instantiated directly.
+    /// 
+    /// </remarks>
     public unsafe class SFXTrack : SimDataBlock {
         public SFXTrack(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +110,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the SFXTrack class.
+        /// </description>
+        /// <returns>The type info object for SFXTrack</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +121,26 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Playback setup description for this track.
+        /// 
+        /// If unassigned, the description named "AudioEffects" will automatically be assigned to the track.  If this description is not defined, track creation will fail.
+        /// </description>
+        /// </value>
         public SFXDescription Description {
             get => GenericMarshal.StringTo<SFXDescription>(GetFieldValue("description"));
             set => SetFieldValue("description", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Parameters to automatically attach to SFXSources created from this track.
+        /// Individual parameters are identified by their #internalName.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> Parameters {
             get => new DynamicFieldVector<string>(
                     this, 

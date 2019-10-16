@@ -14,7 +14,29 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The TerrainMaterial class orginizes the material settings for a single terrain material layer.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <remarks> You should not be creating TerrainMaterials by hand in code. All TerrainMaterials should be created in the editors, as intended by the system.
+    /// 
+    /// </remarks>
+    /// <code>
+    /// // Created by the Terrain Painter tool in the World Editor
+    /// new TerrainMaterial()
+    /// {
+    /// 	internalName = "grass1";
+    /// 	diffuseMap = "art/terrains/Test/grass1";
+    /// 	detailMap = "art/terrains/Test/grass1_d";
+    /// 	detailSize = "10";
+    /// 	isManaged = "1";
+    /// 	detailBrightness = "1";
+    /// 	Enabled = "1";
+    /// 	diffuseSize = "200";
+    /// };
+    /// </code>
+    /// <see cref="Materials" />
     public unsafe class TerrainMaterial : SimObject {
         public TerrainMaterial(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +121,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the TerrainMaterial class.
+        /// </description>
+        /// <returns>The type info object for TerrainMaterial</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,66 +132,144 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Base texture for the material
+        /// </description>
+        /// </value>
         public string DiffuseMap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("diffuseMap"));
             set => SetFieldValue("diffuseMap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Used to scale the diffuse map to the material square
+        /// </description>
+        /// </value>
         public float DiffuseSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("diffuseSize"));
             set => SetFieldValue("diffuseSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Bump map for the material
+        /// </description>
+        /// </value>
         public string NormalMap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("normalMap"));
             set => SetFieldValue("normalMap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Detail map for the material
+        /// </description>
+        /// </value>
         public string DetailMap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("detailMap"));
             set => SetFieldValue("detailMap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Used to scale the detail map to the material square
+        /// </description>
+        /// </value>
         public float DetailSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("detailSize"));
             set => SetFieldValue("detailSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Exponentially sharpens or lightens the detail map rendering on the material
+        /// </description>
+        /// </value>
         public float DetailStrength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("detailStrength"));
             set => SetFieldValue("detailStrength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Changes how far camera can see the detail map rendering on the material
+        /// </description>
+        /// </value>
         public float DetailDistance {
             get => GenericMarshal.StringTo<float>(GetFieldValue("detailDistance"));
             set => SetFieldValue("detailDistance", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Makes that terrain material project along the sides of steep slopes instead of projected downwards
+        /// </description>
+        /// </value>
         public bool UseSideProjection {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useSideProjection"));
             set => SetFieldValue("useSideProjection", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Macro map for the material
+        /// </description>
+        /// </value>
         public string MacroMap {
             get => GenericMarshal.StringTo<string>(GetFieldValue("macroMap"));
             set => SetFieldValue("macroMap", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Used to scale the Macro map to the material square
+        /// </description>
+        /// </value>
         public float MacroSize {
             get => GenericMarshal.StringTo<float>(GetFieldValue("macroSize"));
             set => SetFieldValue("macroSize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Exponentially sharpens or lightens the Macro map rendering on the material
+        /// </description>
+        /// </value>
         public float MacroStrength {
             get => GenericMarshal.StringTo<float>(GetFieldValue("macroStrength"));
             set => SetFieldValue("macroStrength", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Changes how far camera can see the Macro map rendering on the material
+        /// </description>
+        /// </value>
         public float MacroDistance {
             get => GenericMarshal.StringTo<float>(GetFieldValue("macroDistance"));
             set => SetFieldValue("macroDistance", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Used to scale the height from the normal map to give some self occlusion effect (aka parallax) to the terrain material
+        /// </description>
+        /// </value>
         public float ParallaxScale {
             get => GenericMarshal.StringTo<float>(GetFieldValue("parallaxScale"));
             set => SetFieldValue("parallaxScale", GenericMarshal.ToString(value));

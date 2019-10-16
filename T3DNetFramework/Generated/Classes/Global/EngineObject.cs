@@ -14,7 +14,10 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Global {    
+namespace T3DNetFramework.Generated.Classes.Global {
+    /// <description>
+    /// Abstract base class for all objects exposed through the engine API.
+    /// </description>
     public unsafe class EngineObject : ConsoleObjectBase {
         public EngineObject(bool pRegister = false) 
             : base(pRegister) {
@@ -153,6 +156,10 @@ namespace T3DNetFramework.Generated.Classes.Global {
         }
         #endregion
 
+        /// <description>
+        /// Install an opaque pointer on the object that the control layer can use to associate data with the object.
+        /// </description>
+        /// <param name="ptr">A pointer.</param>
         public void SetUserData(IntPtr ptr) {
              InternalUnsafeMethods.SetUserData__Args _args = new InternalUnsafeMethods.SetUserData__Args() {
                 ptr = ptr,
@@ -160,6 +167,10 @@ namespace T3DNetFramework.Generated.Classes.Global {
              InternalUnsafeMethods.SetUserData()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the opaque user data pointer installed on the object.
+        /// </description>
+        /// <returns>The user data pointer previously installed on the object; NULL by default.</returns>
         public IntPtr GetUserData() {
              InternalUnsafeMethods.GetUserData__Args _args = new InternalUnsafeMethods.GetUserData__Args() {
              };
@@ -167,18 +178,30 @@ namespace T3DNetFramework.Generated.Classes.Global {
              return _engineResult;
         }
 
+        /// <description>
+        /// Decrease the reference count of the given object.  If the count drops to zero, the object will be deleted.
+        /// </description>
+        /// <param name="object">An object.</param>
         public void Release() {
              InternalUnsafeMethods.Release__Args _args = new InternalUnsafeMethods.Release__Args() {
              };
              InternalUnsafeMethods.Release()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Increase the reference count of the given object.
+        /// </description>
+        /// <param name="object">An object.</param>
         public void AddRef() {
              InternalUnsafeMethods.AddRef__Args _args = new InternalUnsafeMethods.AddRef__Args() {
              };
              InternalUnsafeMethods.AddRef()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Return the type descriptor for the type the object is an instance of.
+        /// </description>
+        /// <returns>The type descriptor for the object's dynamic type.</returns>
         public EngineTypeInfo GetType() {
              InternalUnsafeMethods.GetType__Args _args = new InternalUnsafeMethods.GetType__Args() {
              };
@@ -186,6 +209,10 @@ namespace T3DNetFramework.Generated.Classes.Global {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// Get the type info object for the EngineObject class.
+        /// </description>
+        /// <returns>The type info object for EngineObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

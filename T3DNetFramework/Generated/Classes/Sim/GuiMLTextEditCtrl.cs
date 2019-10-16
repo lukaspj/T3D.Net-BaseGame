@@ -14,7 +14,25 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A text entry control that accepts the Gui Markup Language ('ML') tags and multiple lines.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiMLTextEditCtrl()
+    /// 	{
+    /// 		lineSpacing = "2";
+    /// 		allowColorChars = "0";
+    /// 		maxChars = "-1";
+    /// 		deniedSound = "DeniedSoundProfile";
+    /// 		text = "";
+    /// 		escapeCommand = "onEscapeScriptFunction();";
+    /// 	  //Properties not specific to this control have been omitted from this example.
+    /// 	};
+    /// </code>
+    /// <see cref="GuiMLTextCtrl" />
+    /// <see cref="GuiControl" />
     public unsafe class GuiMLTextEditCtrl : GuiMLTextCtrl {
         public GuiMLTextEditCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +117,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiMLTextEditCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiMLTextEditCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +128,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script function to run whenever the 'escape' key is pressed when this control is in focus.
+        /// </description>
+        /// </value>
         public string EscapeCommand {
             get => GenericMarshal.StringTo<string>(GetFieldValue("escapeCommand"));
             set => SetFieldValue("escapeCommand", GenericMarshal.ToString(value));

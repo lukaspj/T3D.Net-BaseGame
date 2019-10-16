@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A flying vehicle.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class FlyingVehicle : Vehicle {
         public FlyingVehicle(bool pRegister = false) 
             : base(pRegister) {
@@ -121,6 +125,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Set whether the vehicle should temporarily use the createHoverHeight specified in the datablock.</summary>
+        /// <description>
+        /// This can help avoid problems with spawning.
+        /// </description>
+        /// <param name="enabled">true to use the datablock createHoverHeight, false otherwise</param>
         public void UseCreateHeight(bool enabled) {
              InternalUnsafeMethods.UseCreateHeight__Args _args = new InternalUnsafeMethods.UseCreateHeight__Args() {
                 enabled = enabled,
@@ -128,6 +137,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.UseCreateHeight()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the FlyingVehicle class.
+        /// </description>
+        /// <returns>The type info object for FlyingVehicle</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

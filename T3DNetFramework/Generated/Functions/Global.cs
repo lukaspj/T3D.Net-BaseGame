@@ -12567,12 +12567,16 @@ namespace T3DNetFramework.Generated.Functions {
         }
         #endregion
 
+        /// 
         public static void CycleResources() {
              InternalUnsafeMethods.CycleResources__Args _args = new InternalUnsafeMethods.CycleResources__Args() {
              };
              InternalUnsafeMethods.CycleResources()(_args);
         }
 
+        /// <description>
+        /// isKoreanBuild()
+        /// </description>
         public static bool IsKoreanBuild() {
              InternalUnsafeMethods.IsKoreanBuild__Args _args = new InternalUnsafeMethods.IsKoreanBuild__Args() {
              };
@@ -12580,6 +12584,25 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( ... )
+        /// </description>
+        /// <summary>Install the math library with specified extensions.</summary>
+        /// <description>
+        /// Possible parameters are:
+        /// 
+        ///     - 'DETECT' Autodetect math lib settings.
+        /// 
+        ///     - 'C' Enable the C math routines. C routines are always enabled.
+        /// 
+        ///     - 'FPU' Enable floating point unit routines.
+        /// 
+        ///     - 'MMX' Enable MMX math routines.
+        /// 
+        ///     - '3DNOW' Enable 3dNow! math routines.
+        /// 
+        ///     - 'SSE' Enable SSE math routines.
+        /// </description>
         public static void MathInit(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -12595,6 +12618,17 @@ namespace T3DNetFramework.Generated.Functions {
 
         }
 
+        /// <description>
+        /// (string executable, string args, string directory)
+        /// </description>
+        /// <summary>Launches an outside executable or batch file</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="executable">Name of the executable or batch file</param>
+        /// <param name="args">Optional list of arguments, in string format, to pass to the executable</param>
+        /// <param name="directory">Optional string containing path to output or shell</param>
+        /// <returns>true if executed, false if not</returns>
         public static bool ShellExecute(string executable, string args = "", string directory = "") {
              InternalUnsafeMethods.ShellExecute__Args _args = new InternalUnsafeMethods.ShellExecute__Args() {
                 executable = executable,
@@ -12605,6 +12639,17 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string device, float xRumble, float yRumble)
+        /// </description>
+        /// <summary>Activates the vibration motors in the specified controller.</summary>
+        /// <description>
+        /// The controller will constantly at it's xRumble and yRumble intensities until changed or told to stop.Valid inputs for xRumble/yRumble are [0 - 1].
+        /// </description>
+        /// <param name="device">Name of the device to rumble.</param>
+        /// <param name="xRumble">Intensity to apply to the left motor.</param>
+        /// <param name="yRumble">Intensity to apply to the right motor.</param>
+        /// <remarks> in an Xbox 360 controller, the left motor is low-frequency, while the right motor is high-frequency.</remarks>
         public static void Rumble(string device, float xRumble, float yRumble) {
              InternalUnsafeMethods.Rumble__Args _args = new InternalUnsafeMethods.Rumble__Args() {
                 device = device,
@@ -12614,12 +12659,41 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.Rumble()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Prints information to the console stating if DirectInput and a Joystick are enabled and active.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void EchoInputState() {
              InternalUnsafeMethods.EchoInputState__Args _args = new InternalUnsafeMethods.EchoInputState__Args() {
              };
              InternalUnsafeMethods.EchoInputState()(_args);
         }
 
+        /// <description>
+        /// ( int controllerID, string property, bool currentD )
+        /// </description>
+        /// <summary>Queries the current state of a connected Xbox 360 controller.</summary>
+        /// <description>
+        /// XInput Properties:
+        /// 
+        ///  - XI_THUMBLX, XI_THUMBLY - X and Y axes of the left thumbstick. 
+        ///  - XI_THUMBRX, XI_THUMBRY - X and Y axes of the right thumbstick. 
+        ///  - XI_LEFT_TRIGGER, XI_RIGHT_TRIGGER - Left and Right triggers. 
+        ///  - SI_UPOV, SI_DPOV, SI_LPOV, SI_RPOV - Up, Down, Left, and Right on the directional pad.
+        ///  - XI_START, XI_BACK - The Start and Back buttons.
+        ///  - XI_LEFT_THUMB, XI_RIGHT_THUMB - Clicking in the left and right thumbstick.
+        ///  - XI_LEFT_SHOULDER, XI_RIGHT_SHOULDER - Left and Right bumpers.
+        ///  - XI_A, XI_B , XI_X, XI_Y - The A, B, X, and Y buttons.
+        /// </description>
+        /// <param name="controllerID">Zero-based index of the controller to return information about.</param>
+        /// <param name="property">Name of input action being queried, such as "XI_THUMBLX".</param>
+        /// <param name="current">True checks current device in action.</param>
+        /// <returns>Button queried - 1 if the button is pressed, 0 if it's not.</returns>
+        /// <returns>Thumbstick queried - Int representing displacement from rest position.</returns>
+        /// <returns>%Trigger queried - Int from 0 to 255 representing how far the trigger is displaced.</returns>
         public static int GetXInputState(int controllerID, string properties, bool current = false) {
              InternalUnsafeMethods.GetXInputState__Args _args = new InternalUnsafeMethods.GetXInputState__Args() {
                 controllerID = controllerID,
@@ -12630,6 +12704,15 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( int controllerID )
+        /// </description>
+        /// <summary>Checks to see if an Xbox 360 controller is connected</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="controllerID">Zero-based index of the controller to check.</param>
+        /// <returns>1 if the controller is connected, 0 if it isn't, and 205 if XInput hasn't been initialized.</returns>
         public static bool IsXInputConnected(int controllerID) {
              InternalUnsafeMethods.IsXInputConnected__Args _args = new InternalUnsafeMethods.IsXInputConnected__Args() {
                 controllerID = controllerID,
@@ -12638,18 +12721,42 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Rebuilds the XInput section of the InputManager</summary>
+        /// <description>
+        /// Requests a full refresh of events for all controllers. Useful when called at the beginning of game code after actionMaps are set up to hook up all appropriate events.
+        /// </description>
         public static void ResetXInput() {
              InternalUnsafeMethods.ResetXInput__Args _args = new InternalUnsafeMethods.ResetXInput__Args() {
              };
              InternalUnsafeMethods.ResetXInput()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Disables XInput for Xbox 360 controllers.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void DisableXInput() {
              InternalUnsafeMethods.DisableXInput__Args _args = new InternalUnsafeMethods.DisableXInput__Args() {
              };
              InternalUnsafeMethods.DisableXInput()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Enables XInput for Xbox 360 controllers.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> XInput is enabled by default. Disable to use an Xbox 360 Controller as a joystick device.
+        /// 
+        /// </remarks>
         public static bool EnableXInput() {
              InternalUnsafeMethods.EnableXInput__Args _args = new InternalUnsafeMethods.EnableXInput__Args() {
              };
@@ -12657,6 +12764,14 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Queries input manager to see if a joystick is enabled</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>1 if a joystick exists and is enabled, 0 if it's not.</returns>
         public static bool IsJoystickEnabled() {
              InternalUnsafeMethods.IsJoystickEnabled__Args _args = new InternalUnsafeMethods.IsJoystickEnabled__Args() {
              };
@@ -12664,12 +12779,32 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Disables use of the joystick.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> DirectInput must be enabled and active to use this function.
+        /// 
+        /// </remarks>
         public static void DisableJoystick() {
              InternalUnsafeMethods.DisableJoystick__Args _args = new InternalUnsafeMethods.DisableJoystick__Args() {
              };
              InternalUnsafeMethods.DisableJoystick()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Enables use of the joystick.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> DirectInput must be enabled and active to use this function.
+        /// 
+        /// </remarks>
         public static bool EnableJoystick() {
              InternalUnsafeMethods.EnableJoystick__Args _args = new InternalUnsafeMethods.EnableJoystick__Args() {
              };
@@ -12677,6 +12812,9 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// enableWinConsole(bool);
+        /// </description>
         public static void EnableWinConsole(bool flag) {
              InternalUnsafeMethods.EnableWinConsole__Args _args = new InternalUnsafeMethods.EnableWinConsole__Args() {
                 flag = flag,
@@ -12684,12 +12822,20 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.EnableWinConsole()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Initializes variables that track device and vendor information/IDs</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void InitDisplayDeviceInfo() {
              InternalUnsafeMethods.InitDisplayDeviceInfo__Args _args = new InternalUnsafeMethods.InitDisplayDeviceInfo__Args() {
              };
              InternalUnsafeMethods.InitDisplayDeviceInfo()(_args);
         }
 
+        /// <summary>Update all tiles in a given NavMesh that intersect the given object's world box.</summary>
         public static void NavMeshUpdateOne(int meshid = 0, int objid = 0, bool remove = false) {
              InternalUnsafeMethods.NavMeshUpdateOne__Args _args = new InternalUnsafeMethods.NavMeshUpdateOne__Args() {
                 meshid = meshid,
@@ -12699,6 +12845,7 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.NavMeshUpdateOne()(_args);
         }
 
+        /// <summary>Flag this object as not generating a navmesh result.</summary>
         public static void NavMeshIgnore(int objid = 0, bool _ignore = true) {
              InternalUnsafeMethods.NavMeshIgnore__Args _args = new InternalUnsafeMethods.NavMeshIgnore__Args() {
                 objid = objid,
@@ -12707,6 +12854,7 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.NavMeshIgnore()(_args);
         }
 
+        /// <summary>Update all NavMesh tiles that intersect the given object's world box.</summary>
         public static void NavMeshUpdateAroundObject(int objid = 0, bool remove = false) {
              InternalUnsafeMethods.NavMeshUpdateAroundObject__Args _args = new InternalUnsafeMethods.NavMeshUpdateAroundObject__Args() {
                 objid = objid,
@@ -12715,6 +12863,7 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.NavMeshUpdateAroundObject()(_args);
         }
 
+        /// <summary>Update all NavMesh tiles that intersect the given object's world box.</summary>
         public static void NavMeshUpdateAll(int objid = 0, bool remove = false) {
              InternalUnsafeMethods.NavMeshUpdateAll__Args _args = new InternalUnsafeMethods.NavMeshUpdateAll__Args() {
                 objid = objid,
@@ -12723,6 +12872,7 @@ namespace T3DNetFramework.Generated.Functions {
              InternalUnsafeMethods.NavMeshUpdateAll()(_args);
         }
 
+        /// <summary>Get the EventManager object for all NavMesh updates.</summary>
         public static int GetNavMeshEventManager() {
              InternalUnsafeMethods.GetNavMeshEventManager__Args _args = new InternalUnsafeMethods.GetNavMeshEventManager__Args() {
              };
@@ -12730,6 +12880,9 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string passthru, string text...)Like error(), but first argument is returned.
+        /// </description>
         public static string ErrorThru(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -12746,6 +12899,9 @@ namespace T3DNetFramework.Generated.Functions {
             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (string passthru, string text...)Like warn(), but first argument is returned.
+        /// </description>
         public static string WarnThru(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -12762,6 +12918,9 @@ namespace T3DNetFramework.Generated.Functions {
             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (string passthru, string text...)Like echo(), but first argument is returned.
+        /// </description>
         public static string EchoThru(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -12778,6 +12937,9 @@ namespace T3DNetFramework.Generated.Functions {
             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns the greater of the two arguments.
+        /// </description>
         public static float GetMaxF(float a, float b) {
              InternalUnsafeMethods.GetMaxF__Args _args = new InternalUnsafeMethods.GetMaxF__Args() {
                 a = a,
@@ -12787,6 +12949,9 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns the lesser of the two arguments.
+        /// </description>
         public static float GetMinF(float a, float b) {
              InternalUnsafeMethods.GetMinF__Args _args = new InternalUnsafeMethods.GetMinF__Args() {
                 a = a,
@@ -12796,6 +12961,11 @@ namespace T3DNetFramework.Generated.Functions {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns color scaled by scalar (color*scalar).
+        /// </description>
+        /// <param name="color">The color to be scaled.</param>
+        /// <param name="scalar">The amount to scale the color.</param>
         public static string ColorScale(LinearColorF color, float scalar) {
 color.Alloc();             InternalUnsafeMethods.ColorScale__Args _args = new InternalUnsafeMethods.ColorScale__Args() {
                 color = color.internalStructPtr,
@@ -12805,6 +12975,13 @@ color.Alloc();             InternalUnsafeMethods.ColorScale__Args _args = new In
 color.Free();             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Coverts an HSV formatted color into an RBG color.
+        /// </description>
+        /// <param name="hue">The hue of the color (0-360).</param>
+        /// <param name="sat">The saturation of the color (0-1).</param>
+        /// <param name="val">The value of the color (0-1).</param>
+        /// <param name="alpha">The alpha of the color (0-1).</param>
         public static string GetColorFromHSV(float hue = 0f, float sat = 0f, float val = 1f, float alpha = 1f) {
              InternalUnsafeMethods.GetColorFromHSV__Args _args = new InternalUnsafeMethods.GetColorFromHSV__Args() {
                 hue = hue,
@@ -12816,6 +12993,10 @@ color.Free();             return StringMarshal.IntPtrToUtf8String(_engineResult)
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns true if script compiler had a syntax error. Useful for detecting syntax errors after reloading a script.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool WasSyntaxError() {
              InternalUnsafeMethods.WasSyntaxError__Args _args = new InternalUnsafeMethods.WasSyntaxError__Args() {
              };
@@ -12823,18 +13004,30 @@ color.Free();             return StringMarshal.IntPtrToUtf8String(_engineResult)
              return _engineResult;
         }
 
+        /// <summary>Called after a series of datablocks are reloaded to trigger some important actions on the reloaded datablocks.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void TouchDataBlocks() {
              InternalUnsafeMethods.TouchDataBlocks__Args _args = new InternalUnsafeMethods.TouchDataBlocks__Args() {
              };
              InternalUnsafeMethods.TouchDataBlocks()(_args);
         }
 
+        /// <summary>Called before a series of datablocks are reloaded to help distinguish reloaded datablocks from already loaded ones.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void MarkDataBlocks() {
              InternalUnsafeMethods.MarkDataBlocks__Args _args = new InternalUnsafeMethods.MarkDataBlocks__Args() {
              };
              InternalUnsafeMethods.MarkDataBlocks()(_args);
         }
 
+        /// <summary>Returns the current location of the free target.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static Point3F GetFreeTargetPosition() {
              InternalUnsafeMethods.GetFreeTargetPosition__Args _args = new InternalUnsafeMethods.GetFreeTargetPosition__Args() {
              };
@@ -12842,6 +13035,10 @@ color.Free();             return StringMarshal.IntPtrToUtf8String(_engineResult)
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Move the transform to the new relative position.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static MatrixF MoveTransformRel(MatrixF xfrm, Point3F pos) {
 xfrm.Alloc();pos.Alloc();             InternalUnsafeMethods.MoveTransformRel__Args _args = new InternalUnsafeMethods.MoveTransformRel__Args() {
                 xfrm = xfrm.internalStructPtr,
@@ -12851,6 +13048,10 @@ xfrm.Alloc();pos.Alloc();             InternalUnsafeMethods.MoveTransformRel__Ar
 xfrm.Free();pos.Free();             return new MatrixF(_engineResult);
         }
 
+        /// <summary>Move the transform to the new absolute position.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static MatrixF MoveTransformAbs(MatrixF xfrm, Point3F pos) {
 xfrm.Alloc();pos.Alloc();             InternalUnsafeMethods.MoveTransformAbs__Args _args = new InternalUnsafeMethods.MoveTransformAbs__Args() {
                 xfrm = xfrm.internalStructPtr,
@@ -12860,6 +13061,10 @@ xfrm.Alloc();pos.Alloc();             InternalUnsafeMethods.MoveTransformAbs__Ar
 xfrm.Free();pos.Free();             return new MatrixF(_engineResult);
         }
 
+        /// <summary>Multiply the vector by the affine inverse of the transform.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static Point3F MatrixInverseMulVector(MatrixF xfrm, Point3F vector) {
 xfrm.Alloc();vector.Alloc();             InternalUnsafeMethods.MatrixInverseMulVector__Args _args = new InternalUnsafeMethods.MatrixInverseMulVector__Args() {
                 xfrm = xfrm.internalStructPtr,
@@ -12869,6 +13074,9 @@ xfrm.Alloc();vector.Alloc();             InternalUnsafeMethods.MatrixInverseMulV
 xfrm.Free();vector.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get a random direction vector.
+        /// </description>
         public static Point3F GetRandomDir(Point3F axis = null, float thetaMin = 0f, float thetaMax = 180f, float phiMin = 0f, float phiMax = 360f) {
 axis = axis ?? new Point3F("0 0 0");
 axis.Alloc();             InternalUnsafeMethods.GetRandomDir__Args _args = new InternalUnsafeMethods.GetRandomDir__Args() {
@@ -12882,6 +13090,9 @@ axis.Alloc();             InternalUnsafeMethods.GetRandomDir__Args _args = new I
 axis.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get a random float number between a and b.
+        /// </description>
         public static float GetRandomF(float a = 3.40282e+38f, float b = 3.40282e+38f) {
              InternalUnsafeMethods.GetRandomF__Args _args = new InternalUnsafeMethods.GetRandomF__Args() {
                 a = a,
@@ -12891,6 +13102,9 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Performs a raycast from points start to end and returns the ID of nearest intersecting object with a type found in the specified mask. Returns -1 if no object is found.
+        /// </description>
         public static int RolloverRayCast(Point3F start, Point3F end, uint mask) {
 start.Alloc();end.Alloc();             InternalUnsafeMethods.RolloverRayCast__Args _args = new InternalUnsafeMethods.RolloverRayCast__Args() {
                 start = start.internalStructPtr,
@@ -12901,6 +13115,9 @@ start.Alloc();end.Alloc();             InternalUnsafeMethods.RolloverRayCast__Ar
 start.Free();end.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// ...
+        /// </description>
         public static string AfxGetEngine() {
              InternalUnsafeMethods.AfxGetEngine__Args _args = new InternalUnsafeMethods.AfxGetEngine__Args() {
              };
@@ -12908,6 +13125,9 @@ start.Free();end.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ...
+        /// </description>
         public static string AfxGetVersion() {
              InternalUnsafeMethods.AfxGetVersion__Args _args = new InternalUnsafeMethods.AfxGetVersion__Args() {
              };
@@ -12915,12 +13135,18 @@ start.Free();end.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ...
+        /// </description>
         public static void AfxEndMissionNotify() {
              InternalUnsafeMethods.AfxEndMissionNotify__Args _args = new InternalUnsafeMethods.AfxEndMissionNotify__Args() {
              };
              InternalUnsafeMethods.AfxEndMissionNotify()(_args);
         }
 
+        /// <description>
+        /// Instantiates a selectron.
+        /// </description>
         public static int StartSelectron(SceneObject selectedObj = null, uint subcode = 0, SimObject extra = null) {
              InternalUnsafeMethods.StartSelectron__Args _args = new InternalUnsafeMethods.StartSelectron__Args() {
                 selectedObj = selectedObj.ObjectPtr,
@@ -12931,6 +13157,9 @@ start.Free();end.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Instantiates the magic spell defined by datablock and cast by caster.
+        /// </description>
         public static int CastSpell(afxMagicSpellData datablock = null, ShapeBase caster = null, SceneObject target = null, SimObject extra = null) {
              InternalUnsafeMethods.CastSpell__Args _args = new InternalUnsafeMethods.CastSpell__Args() {
                 datablock = datablock.ObjectPtr,
@@ -12942,6 +13171,9 @@ start.Free();end.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Called to display a screen message.
+        /// </description>
         public static void DisplayScreenMessage(GameConnection client, string message) {
              InternalUnsafeMethods.DisplayScreenMessage__Args _args = new InternalUnsafeMethods.DisplayScreenMessage__Args() {
                 client = client.ObjectPtr,
@@ -12950,12 +13182,18 @@ start.Free();end.Free();             return _engineResult;
              InternalUnsafeMethods.DisplayScreenMessage()(_args);
         }
 
+        /// <description>
+        /// A callout called on clients by spells when the casting stage ends.
+        /// </description>
         public static void OnCastingEnd() {
              InternalUnsafeMethods.OnCastingEnd__Args _args = new InternalUnsafeMethods.OnCastingEnd__Args() {
              };
              InternalUnsafeMethods.OnCastingEnd()(_args);
         }
 
+        /// <description>
+        /// A callout called periodically on clients by spells to indicate casting progress.
+        /// </description>
         public static void OnCastingProgressUpdate(float frac) {
              InternalUnsafeMethods.OnCastingProgressUpdate__Args _args = new InternalUnsafeMethods.OnCastingProgressUpdate__Args() {
                 frac = frac,
@@ -12963,12 +13201,18 @@ start.Free();end.Free();             return _engineResult;
              InternalUnsafeMethods.OnCastingProgressUpdate()(_args);
         }
 
+        /// <description>
+        /// A callout called on clients by spells when the casting stage begins.
+        /// </description>
         public static void OnCastingStart() {
              InternalUnsafeMethods.OnCastingStart__Args _args = new InternalUnsafeMethods.OnCastingStart__Args() {
              };
              InternalUnsafeMethods.OnCastingStart()(_args);
         }
 
+        /// <description>
+        /// Instantiates the effectron defined by datablock.
+        /// </description>
         public static int StartEffectron(afxEffectronData datablock = null, string constraintSource = "", string constraintName = "", SimObject extra = null) {
              InternalUnsafeMethods.StartEffectron__Args _args = new InternalUnsafeMethods.StartEffectron__Args() {
                 datablock = datablock.ObjectPtr,
@@ -12980,6 +13224,10 @@ start.Free();end.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Callback that occurs when an input device is disconnected from the system.
+        /// </description>
+        /// <param name="sdlIndex">The index of the device that was removed.</param>
         public static void OnSDLDeviceDisconnected(int sdlIndex) {
              InternalUnsafeMethods.OnSDLDeviceDisconnected__Args _args = new InternalUnsafeMethods.OnSDLDeviceDisconnected__Args() {
                 sdlIndex = sdlIndex,
@@ -12987,6 +13235,12 @@ start.Free();end.Free();             return _engineResult;
              InternalUnsafeMethods.OnSDLDeviceDisconnected()(_args);
         }
 
+        /// <description>
+        /// Callback that occurs when an input device is connected to the system.
+        /// </description>
+        /// <param name="sdlIndex">The index that will be used by sdl to refer to the device.</param>
+        /// <param name="deviceName">The name that the device reports. This will be the return value of SDL_JoystickNameForIndex or SDL_GameControllerNameForIndex depending on the device type.</param>
+        /// <param name="deviceType">The type of device connected. See SDLInputManager::getDeviceType() for possible string values.</param>
         public static void OnSDLDeviceConnected(int sdlIndex, string deviceName, string deviceType) {
              InternalUnsafeMethods.OnSDLDeviceConnected__Args _args = new InternalUnsafeMethods.OnSDLDeviceConnected__Args() {
                 sdlIndex = sdlIndex,
@@ -12996,6 +13250,7 @@ start.Free();end.Free();             return _engineResult;
              InternalUnsafeMethods.OnSDLDeviceConnected()(_args);
         }
 
+        /// 
         public static string SetShadowVizLight(string name = "") {
              InternalUnsafeMethods.SetShadowVizLight__Args _args = new InternalUnsafeMethods.SetShadowVizLight__Args() {
                 name = name,
@@ -13004,6 +13259,10 @@ start.Free();end.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns a list of supported shape formats in filter form.
+        /// Example output: DSQ Files|*.dsq|COLLADA Files|*.dae|
+        /// </description>
         public static string GetFormatFilters() {
              InternalUnsafeMethods.GetFormatFilters__Args _args = new InternalUnsafeMethods.GetFormatFilters__Args() {
              };
@@ -13011,6 +13270,9 @@ start.Free();end.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns a list of supported shape format extensions separated by tabs.Example output: *.dsq TAB *.dae TAB
+        /// </description>
         public static string GetFormatExtensions() {
              InternalUnsafeMethods.GetFormatExtensions__Args _args = new InternalUnsafeMethods.GetFormatExtensions__Args() {
              };
@@ -13018,6 +13280,26 @@ start.Free();end.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (string filename, SimGroup parentGroup=Scene, SimObject baseObject=-1)Load all light instances from a COLLADA (.dae) file and add to the scene.
+        /// </description>
+        /// <param name="filename">COLLADA filename to load lights from</param>
+        /// <param name="parentGroup">(optional) name of an existing simgroup to add the new lights to (defaults to root Scene)</param>
+        /// <param name="baseObject">(optional) name of an object to use as the origin (useful if you are loading the lights for a collada scene and have moved or rotated the geometry)</param>
+        /// <returns>true if successful, false otherwise</returns>
+        /// <code>
+        /// // load the lights in room.dae
+        /// loadColladaLights( "art/shapes/collada/room.dae" );
+        /// 
+        /// // load the lights in room.dae and add them to the RoomLights group
+        /// loadColladaLights( "art/shapes/collada/room.dae", "RoomLights" );
+        /// 
+        /// // load the lights in room.dae and use the transform of the "Room"
+        /// object as the origin
+        /// loadColladaLights( "art/shapes/collada/room.dae", "", "Room" );
+        /// </code>
+        /// <remarks> Currently for editor use only
+        /// </remarks>
         public static bool LoadColladaLights(string filename, string parentGroup = "", string baseObject = "") {
              InternalUnsafeMethods.LoadColladaLights__Args _args = new InternalUnsafeMethods.LoadColladaLights__Args() {
                 filename = filename,
@@ -13028,6 +13310,13 @@ start.Free();end.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// (string shapePath, GuiTreeViewCtrl ctrl) Collect scene information from a COLLADA file and store it in a GuiTreeView control. This function is used by the COLLADA import gui to show a preview of the scene contents prior to import, and is probably not much use for anything else.
+        /// </description>
+        /// <param name="shapePath">COLLADA filename</param>
+        /// <param name="ctrl">GuiTreeView control to add elements to</param>
+        /// <param name="loadCachedDts">dictates if it should try and load the cached dts file if it exists</param>
+        /// <returns>true if successful, false otherwise</returns>
         public static bool EnumColladaForImport(string shapePath = "", string ctrl = "", bool loadCachedDts = true) {
              InternalUnsafeMethods.EnumColladaForImport__Args _args = new InternalUnsafeMethods.EnumColladaForImport__Args() {
                 shapePath = shapePath,
@@ -13038,6 +13327,11 @@ start.Free();end.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// () - Generate a TAML schema file of all engine types.
+        /// The schema file is specified using the console variable '$pref::T2D::TAMLSchema'.
+        /// </description>
+        /// <returns>Whether the schema file was writtent or not.</returns>
         public static bool GenerateTamlSchema() {
              InternalUnsafeMethods.GenerateTamlSchema__Args _args = new InternalUnsafeMethods.GenerateTamlSchema__Args() {
              };
@@ -13045,6 +13339,12 @@ start.Free();end.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// (filename, [format]) - Read an object from a file using Taml.
+        /// </description>
+        /// <param name="filename">The filename to read from.</param>
+        /// <param name="format">The file format to use.  Optional: Defaults to 'xml'.  Can be set to 'binary'.</param>
+        /// <returns>(Object) The object read from the file or an empty string if read failed.</returns>
         public static string TamlRead(string filename, string format = "xml") {
              InternalUnsafeMethods.TamlRead__Args _args = new InternalUnsafeMethods.TamlRead__Args() {
                 filename = filename,
@@ -13054,6 +13354,14 @@ start.Free();end.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (object, filename, [format], [compressed]) - Writes an object to a file using Taml.
+        /// </description>
+        /// <param name="object">The object to write.</param>
+        /// <param name="filename">The filename to write to.</param>
+        /// <param name="format">The file format to use.  Optional: Defaults to 'xml'.  Can be set to 'binary'.</param>
+        /// <param name="compressed">Whether ZIP compression is used on binary formatting or not.  Optional: Defaults to 'true'.</param>
+        /// <returns>Whether the write was successful or not.</returns>
         public static bool TamlWrite(SimObject simObject, string filename, string format = "xml", bool compressed = true) {
              InternalUnsafeMethods.TamlWrite__Args _args = new InternalUnsafeMethods.TamlWrite__Args() {
                 simObject = simObject.ObjectPtr,
@@ -13065,12 +13373,16 @@ start.Free();end.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Dumps all ProcessObjects in ServerProcessList and ClientProcessList to the console.
+        /// </description>
         public static void DumpProcessList() {
              InternalUnsafeMethods.DumpProcessList__Args _args = new InternalUnsafeMethods.DumpProcessList__Args() {
              };
              InternalUnsafeMethods.DumpProcessList()(_args);
         }
 
+        /// 
         public static void SetDatablockCacheCRC(uint crc) {
              InternalUnsafeMethods.SetDatablockCacheCRC__Args _args = new InternalUnsafeMethods.SetDatablockCacheCRC__Args() {
                 crc = crc,
@@ -13078,6 +13390,7 @@ start.Free();end.Free();             return _engineResult;
              InternalUnsafeMethods.SetDatablockCacheCRC()(_args);
         }
 
+        /// 
         public static int ExtractDatablockCacheCRC(string fileName) {
              InternalUnsafeMethods.ExtractDatablockCacheCRC__Args _args = new InternalUnsafeMethods.ExtractDatablockCacheCRC__Args() {
                 fileName = fileName,
@@ -13086,6 +13399,7 @@ start.Free();end.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// 
         public static int GetDatablockCacheCRC() {
              InternalUnsafeMethods.GetDatablockCacheCRC__Args _args = new InternalUnsafeMethods.GetDatablockCacheCRC__Args() {
              };
@@ -13093,6 +13407,7 @@ start.Free();end.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// 
         public static bool IsDatablockCacheSaved() {
              InternalUnsafeMethods.IsDatablockCacheSaved__Args _args = new InternalUnsafeMethods.IsDatablockCacheSaved__Args() {
              };
@@ -13100,12 +13415,20 @@ start.Free();end.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// 
         public static void ResetDatablockCache() {
              InternalUnsafeMethods.ResetDatablockCache__Args _args = new InternalUnsafeMethods.ResetDatablockCache__Args() {
              };
              InternalUnsafeMethods.ResetDatablockCache()(_args);
         }
 
+        /// <summary>Called on the client each time a datablock has been received.</summary>
+        /// <description>
+        /// This callback is typically used to notify the player of how far along in the datablock download process they are.
+        /// </description>
+        /// <param name="index">The index of the datablock just received.</param>
+        /// <param name="total">The total number of datablocks to be received.</param>
+        /// <see cref="GameConnection, GameConnection::transmitDataBlocks(), GameConnection::onDataBlocksDone()" />
         public static void OnDataBlockObjectReceived(uint index, uint total) {
              InternalUnsafeMethods.OnDataBlockObjectReceived__Args _args = new InternalUnsafeMethods.OnDataBlockObjectReceived__Args() {
                 index = index,
@@ -13114,6 +13437,15 @@ start.Free();end.Free();             return _engineResult;
              InternalUnsafeMethods.OnDataBlockObjectReceived()(_args);
         }
 
+        /// <description>
+        /// Edit specified decal of the decal manager.
+        /// </description>
+        /// <param name="decalID">ID of the decal to edit.</param>
+        /// <param name="pos">World position for the decal.</param>
+        /// <param name="normal">Decal normal vector (if the decal was a tire lying flat on a surface, this is the vector pointing in the direction of the axle).</param>
+        /// <param name="rotAroundNormal">Angle (in radians) to rotate this decal around its normal vector.</param>
+        /// <param name="decalScale">Scale factor applied to the decal.</param>
+        /// <returns>Returns true if successful, false if decalID not found.</returns>
         public static bool DecalManagerEditDecal(int decalID, Point3F pos, Point3F normal, float rotAroundNormal, float decalScale) {
 pos.Alloc();normal.Alloc();             InternalUnsafeMethods.DecalManagerEditDecal__Args _args = new InternalUnsafeMethods.DecalManagerEditDecal__Args() {
                 decalID = decalID,
@@ -13126,6 +13458,18 @@ pos.Alloc();normal.Alloc();             InternalUnsafeMethods.DecalManagerEditDe
 pos.Free();normal.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Remove specified decal from the scene.
+        /// </description>
+        /// <param name="decalID">ID of the decal to remove.</param>
+        /// <returns>Returns true if successful, false if decal ID not found.</returns>
+        /// <code>
+        /// // Specify a decal ID to be removed
+        /// %decalID = 1;
+        /// 
+        /// // Tell the decal manager to remove the specified decal ID.
+        /// decalManagerRemoveDecal( %decalId )
+        /// </code>
         public static bool DecalManagerRemoveDecal(int decalID) {
              InternalUnsafeMethods.DecalManagerRemoveDecal__Args _args = new InternalUnsafeMethods.DecalManagerRemoveDecal__Args() {
                 decalID = decalID,
@@ -13134,6 +13478,26 @@ pos.Free();normal.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Adds a new decal to the decal manager.
+        /// </description>
+        /// <param name="position">World position for the decal.</param>
+        /// <param name="normal">Decal normal vector (if the decal was a tire lying flat on a surface, this is the vector pointing in the direction of the axle).</param>
+        /// <param name="rot">Angle (in radians) to rotate this decal around its normal vector.</param>
+        /// <param name="scale">Scale factor applied to the decal.</param>
+        /// <param name="decalData">DecalData datablock to use for the new decal.</param>
+        /// <param name="isImmortal">Whether or not this decal is immortal. If immortal, it does not expire automatically and must be removed explicitly.</param>
+        /// <returns>Returns the ID of the new Decal object or -1 on failure.</returns>
+        /// <code>
+        /// // Specify the decal position
+        /// %position = "1.0 1.0 1.0";
+        /// 
+        /// // Specify the up vector
+        /// %normal = "0.0 0.0 1.0";
+        /// 
+        /// // Add the new decal.
+        /// %decalObj = decalManagerAddDecal( %position, %normal, 0.5, 0.35, ScorchBigDecal, false );
+        /// </code>
         public static int DecalManagerAddDecal(Point3F position, Point3F normal, float rot, float scale, DecalData decalData, bool isImmortal = false) {
 position.Alloc();normal.Alloc();             InternalUnsafeMethods.DecalManagerAddDecal__Args _args = new InternalUnsafeMethods.DecalManagerAddDecal__Args() {
                 position = position.internalStructPtr,
@@ -13147,12 +13511,27 @@ position.Alloc();normal.Alloc();             InternalUnsafeMethods.DecalManagerA
 position.Free();normal.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Removes all decals currently loaded in the decal manager.
+        /// </description>
+        /// <code>
+        /// // Tell the decal manager to remove all existing decals.
+        /// decalManagerClear();
+        /// </code>
         public static void DecalManagerClear() {
              InternalUnsafeMethods.DecalManagerClear__Args _args = new InternalUnsafeMethods.DecalManagerClear__Args() {
              };
              InternalUnsafeMethods.DecalManagerClear()(_args);
         }
 
+        /// <description>
+        /// Returns whether the decal manager has unsaved modifications.
+        /// </description>
+        /// <returns>True if the decal manager has unsaved modifications, false if everything has been saved.</returns>
+        /// <code>
+        /// // Ask the decal manager if it has unsaved modifications.
+        /// %hasUnsavedModifications = decalManagerDirty();
+        /// </code>
         public static bool DecalManagerDirty() {
              InternalUnsafeMethods.DecalManagerDirty__Args _args = new InternalUnsafeMethods.DecalManagerDirty__Args() {
              };
@@ -13160,6 +13539,17 @@ position.Free();normal.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Clears existing decals and replaces them with decals loaded from the specified file.
+        /// </description>
+        /// <param name="fileName">Filename to load the decals from.</param>
+        /// <returns>True if the decal manager was able to load the requested file, false if it could not.</returns>
+        /// <code>
+        /// // Set the filename to load the decals from.
+        /// %fileName = "./missionDecals.mis.decals";
+        /// // Inform the decal manager to load the decals from the entered filename.
+        /// decalManagerLoad( %fileName );
+        /// </code>
         public static bool DecalManagerLoad(string fileName) {
              InternalUnsafeMethods.DecalManagerLoad__Args _args = new InternalUnsafeMethods.DecalManagerLoad__Args() {
                 fileName = fileName,
@@ -13168,6 +13558,17 @@ position.Free();normal.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Saves the decals for the active mission in the entered filename.
+        /// </description>
+        /// <param name="decalSaveFile">Filename to save the decals to.</param>
+        /// <code>
+        /// // Set the filename to save the decals in. If no filename is set, then the
+        /// // decals will default to <activeMissionName>.mis.decals
+        /// %fileName = "./missionDecals.mis.decals";
+        /// // Inform the decal manager to save the decals for the active mission.
+        /// decalManagerSave( %fileName );
+        /// </code>
         public static void DecalManagerSave(string decalSaveFile = "") {
              InternalUnsafeMethods.DecalManagerSave__Args _args = new InternalUnsafeMethods.DecalManagerSave__Args() {
                 decalSaveFile = decalSaveFile,
@@ -13175,6 +13576,9 @@ position.Free();normal.Free();             return _engineResult;
              InternalUnsafeMethods.DecalManagerSave()(_args);
         }
 
+        /// <description>
+        /// physicsDebugDraw( bool enable )
+        /// </description>
         public static void PhysicsDebugDraw(bool enable) {
              InternalUnsafeMethods.PhysicsDebugDraw__Args _args = new InternalUnsafeMethods.PhysicsDebugDraw__Args() {
                 enable = enable,
@@ -13182,18 +13586,27 @@ position.Free();normal.Free();             return _engineResult;
              InternalUnsafeMethods.PhysicsDebugDraw()(_args);
         }
 
+        /// <description>
+        /// physicsRestoreState()
+        /// </description>
         public static void PhysicsRestoreState() {
              InternalUnsafeMethods.PhysicsRestoreState__Args _args = new InternalUnsafeMethods.PhysicsRestoreState__Args() {
              };
              InternalUnsafeMethods.PhysicsRestoreState()(_args);
         }
 
+        /// <description>
+        /// physicsStoreState()
+        /// </description>
         public static void PhysicsStoreState() {
              InternalUnsafeMethods.PhysicsStoreState__Args _args = new InternalUnsafeMethods.PhysicsStoreState__Args() {
              };
              InternalUnsafeMethods.PhysicsStoreState()(_args);
         }
 
+        /// <description>
+        /// physicsGetTimeScale()
+        /// </description>
         public static float PhysicsGetTimeScale() {
              InternalUnsafeMethods.PhysicsGetTimeScale__Args _args = new InternalUnsafeMethods.PhysicsGetTimeScale__Args() {
              };
@@ -13201,6 +13614,9 @@ position.Free();normal.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// physicsSetTimeScale( F32 scale )
+        /// </description>
         public static void PhysicsSetTimeScale(float scale) {
              InternalUnsafeMethods.PhysicsSetTimeScale__Args _args = new InternalUnsafeMethods.PhysicsSetTimeScale__Args() {
                 scale = scale,
@@ -13208,6 +13624,9 @@ position.Free();normal.Free();             return _engineResult;
              InternalUnsafeMethods.PhysicsSetTimeScale()(_args);
         }
 
+        /// <description>
+        /// physicsStopSimulation( String worldName )
+        /// </description>
         public static bool PhysicsSimulationEnabled() {
              InternalUnsafeMethods.PhysicsSimulationEnabled__Args _args = new InternalUnsafeMethods.PhysicsSimulationEnabled__Args() {
              };
@@ -13215,6 +13634,9 @@ position.Free();normal.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// physicsStopSimulation( String worldName )
+        /// </description>
         public static void PhysicsStopSimulation(string worldName) {
              InternalUnsafeMethods.PhysicsStopSimulation__Args _args = new InternalUnsafeMethods.PhysicsStopSimulation__Args() {
                 worldName = worldName,
@@ -13222,6 +13644,9 @@ position.Free();normal.Free();             return _engineResult;
              InternalUnsafeMethods.PhysicsStopSimulation()(_args);
         }
 
+        /// <description>
+        /// physicsStartSimulation( String worldName )
+        /// </description>
         public static void PhysicsStartSimulation(string worldName) {
              InternalUnsafeMethods.PhysicsStartSimulation__Args _args = new InternalUnsafeMethods.PhysicsStartSimulation__Args() {
                 worldName = worldName,
@@ -13229,6 +13654,9 @@ position.Free();normal.Free();             return _engineResult;
              InternalUnsafeMethods.PhysicsStartSimulation()(_args);
         }
 
+        /// <description>
+        /// physicsDestroyWorld( String worldName )
+        /// </description>
         public static void PhysicsDestroyWorld(string worldName) {
              InternalUnsafeMethods.PhysicsDestroyWorld__Args _args = new InternalUnsafeMethods.PhysicsDestroyWorld__Args() {
                 worldName = worldName,
@@ -13236,6 +13664,9 @@ position.Free();normal.Free();             return _engineResult;
              InternalUnsafeMethods.PhysicsDestroyWorld()(_args);
         }
 
+        /// <description>
+        /// physicsInitWorld( String worldName )
+        /// </description>
         public static bool PhysicsInitWorld(string worldName) {
              InternalUnsafeMethods.PhysicsInitWorld__Args _args = new InternalUnsafeMethods.PhysicsInitWorld__Args() {
                 worldName = worldName,
@@ -13244,12 +13675,18 @@ position.Free();normal.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// physicsDestroy()
+        /// </description>
         public static void PhysicsDestroy() {
              InternalUnsafeMethods.PhysicsDestroy__Args _args = new InternalUnsafeMethods.PhysicsDestroy__Args() {
              };
              InternalUnsafeMethods.PhysicsDestroy()(_args);
         }
 
+        /// <description>
+        /// physicsInit( [string library] )
+        /// </description>
         public static bool PhysicsInit(string library = "default") {
              InternalUnsafeMethods.PhysicsInit__Args _args = new InternalUnsafeMethods.PhysicsInit__Args() {
                 library = library,
@@ -13258,6 +13695,13 @@ position.Free();normal.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// physicsPluginPresent()
+        /// </description>
+        /// <summary>Returns true if a physics plugin exists and is initialized.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool PhysicsPluginPresent() {
              InternalUnsafeMethods.PhysicsPluginPresent__Args _args = new InternalUnsafeMethods.PhysicsPluginPresent__Args() {
              };
@@ -13265,18 +13709,53 @@ position.Free();normal.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Activates the shape replicator.
+        /// </description>
+        /// <code>
+        /// // Call the function
+        /// StartClientReplication()
+        /// </code>
         public static void StartClientReplication() {
              InternalUnsafeMethods.StartClientReplication__Args _args = new InternalUnsafeMethods.StartClientReplication__Args() {
              };
              InternalUnsafeMethods.StartClientReplication()(_args);
         }
 
+        /// <description>
+        /// Activates the foliage replicator.
+        /// </description>
+        /// <code>
+        /// // Call the function
+        /// StartFoliageReplication();
+        /// </code>
         public static void StartFoliageReplication() {
              InternalUnsafeMethods.StartFoliageReplication__Args _args = new InternalUnsafeMethods.StartFoliageReplication__Args() {
              };
              InternalUnsafeMethods.StartFoliageReplication()(_args);
         }
 
+        /// <summary>Calculates how much an explosion effects a specific object.</summary>
+        /// <description>
+        /// Use this to determine how much damage to apply to objects based on their distance from the explosion's center point, and whether the explosion is blocked by other objects.
+        /// </description>
+        /// <param name="pos">Center position of the explosion.</param>
+        /// <param name="id">Id of the object of which to check coverage.</param>
+        /// <param name="covMask">Mask of object types that may block the explosion.</param>
+        /// <returns>Coverage value from 0 (not affected by the explosion) to 1 (fully affected)</returns>
+        /// <code>
+        /// // Get the position of the explosion.
+        /// %position = %explosion.getPosition();
+        /// 
+        /// // Set a list of TypeMasks (defined in gameFunctioncs.cpp), seperated by the | character.
+        /// %TypeMasks = $TypeMasks::StaticObjectType | $TypeMasks::ItemObjectType
+        /// 
+        /// // Acquire the damage value from 0.0f - 1.0f.
+        /// %coverage = calcExplosionCoverage( %position, %sceneObject, %TypeMasks );
+        /// 
+        /// // Apply damage to object
+        /// %sceneObject.applyDamage( %coverage * 20 );
+        /// </code>
         public static float CalcExplosionCoverage(Point3F pos, int id, uint covMask) {
 pos.Alloc();             InternalUnsafeMethods.CalcExplosionCoverage__Args _args = new InternalUnsafeMethods.CalcExplosionCoverage__Args() {
                 pos = pos.internalStructPtr,
@@ -13287,6 +13766,9 @@ pos.Alloc();             InternalUnsafeMethods.CalcExplosionCoverage__Args _args
 pos.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Get the MissionArea object, if any.
+        /// </description>
         public static MissionArea GetMissionAreaServerObject() {
              InternalUnsafeMethods.GetMissionAreaServerObject__Args _args = new InternalUnsafeMethods.GetMissionAreaServerObject__Args() {
              };
@@ -13294,12 +13776,30 @@ pos.Free();             return _engineResult;
              return new MissionArea(_engineResult);
         }
 
+        /// <summary>Prevents mouse movement from being processed</summary>
+        /// <description>
+        /// In the source, whenever a mouse move event occurs GameTSCtrl::onMouseMove() is called. Whenever snapToggle() is called, it will flag a variable that can prevent this from happening: gSnapLine. This variable is not exposed to script, so you need to call this function to trigger it.
+        /// </description>
+        /// <code>
+        /// // Snapping is off by default, so we will toggle
+        /// // it on first:
+        /// PlayGui.snapToggle();
+        /// 
+        /// // Mouse movement should be disabled
+        /// // Let's turn it back on
+        /// PlayGui.snapToggle();
+        /// </code>
         public static void SnapToggle() {
              InternalUnsafeMethods.SnapToggle__Args _args = new InternalUnsafeMethods.SnapToggle__Args() {
              };
              InternalUnsafeMethods.SnapToggle()(_args);
         }
 
+        /// <summary>Set the FOV of the camera.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="FOV">The camera's new FOV in degrees</param>
         public static void SetFov(float FOV) {
              InternalUnsafeMethods.SetFov__Args _args = new InternalUnsafeMethods.SetFov__Args() {
                 FOV = FOV,
@@ -13307,6 +13807,11 @@ pos.Free();             return _engineResult;
              InternalUnsafeMethods.SetFov()(_args);
         }
 
+        /// <summary>Set the zoom speed of the camera.</summary>
+        /// <description>
+        /// This affects how quickly the camera changes from one field of view to another.
+        /// </description>
+        /// <param name="speed">The camera's zoom speed in ms per 90deg FOV change</param>
         public static void SetZoomSpeed(int speed) {
              InternalUnsafeMethods.SetZoomSpeed__Args _args = new InternalUnsafeMethods.SetZoomSpeed__Args() {
                 speed = speed,
@@ -13314,6 +13819,11 @@ pos.Free();             return _engineResult;
              InternalUnsafeMethods.SetZoomSpeed()(_args);
         }
 
+        /// <summary>Set the default FOV for a camera.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="defaultFOV">The default field of view in degrees</param>
         public static void SetDefaultFov(float defaultFOV) {
              InternalUnsafeMethods.SetDefaultFov__Args _args = new InternalUnsafeMethods.SetDefaultFov__Args() {
                 defaultFOV = defaultFOV,
@@ -13321,6 +13831,17 @@ pos.Free();             return _engineResult;
              InternalUnsafeMethods.SetDefaultFov()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Get more results from a previous call to containerFindFirst().</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> You must call containerFindFirst() to begin the search.
+        /// </remarks>
+        /// <returns>The next object found, or an empty string if nothing else was found.</returns>
+        /// <see cref="containerFindFirst()" />
         public static string ContainerFindNext() {
              InternalUnsafeMethods.ContainerFindNext__Args _args = new InternalUnsafeMethods.ContainerFindNext__Args() {
              };
@@ -13328,6 +13849,15 @@ pos.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (int mask, Point3F point, float x, float y, float z)
+        /// </description>
+        /// <summary>Find objects matching the bitmask type within a box centered at point, with extents x, y, z.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>The first object found, or an empty string if nothing was found.  Thereafter, you can get more results using containerFindNext().</returns>
+        /// <see cref="containerFindNext" />
         public static string ContainerFindFirst(uint typeMask, Point3F origin, Point3F size) {
 origin.Alloc();size.Alloc();             InternalUnsafeMethods.ContainerFindFirst__Args _args = new InternalUnsafeMethods.ContainerFindFirst__Args() {
                 typeMask = typeMask,
@@ -13338,6 +13868,12 @@ origin.Alloc();size.Alloc();             InternalUnsafeMethods.ContainerFindFirs
 origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Finds all entities that have the provided tags.
+        /// </description>
+        /// <param name="searchingGroup">The SimGroup to search inside. If null, we'll search the entire dictionary(this can be slow!).</param>
+        /// <param name="tags">Word delimited list of tags to search for. If multiple tags are included, the list is eclusively parsed, requiring all tags provided to be found on an entity for a match.</param>
+        /// <returns>A word list of IDs of entities that match the tag search terms.</returns>
         public static string FindEntitiesByTag(SimGroup searchingGroup = null, string tags = "") {
              InternalUnsafeMethods.FindEntitiesByTag__Args _args = new InternalUnsafeMethods.FindEntitiesByTag__Args() {
                 searchingGroup = searchingGroup.ObjectPtr,
@@ -13347,6 +13883,15 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (...)
+        /// </description>
+        /// <summary>Creates a new AIConnection, and passes arguments to its onConnect script callback.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>The newly created AIConnection</returns>
+        /// <see cref="GameConnection for parameter information" />
         public static int AiConnect(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -13363,6 +13908,9 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
             return _engineResult;
         }
 
+        /// <description>
+        /// 'playerName'[, 'AIClassType'] );
+        /// </description>
         public static int AiAddPlayer(string name, string ns = "") {
              InternalUnsafeMethods.AiAddPlayer__Args _args = new InternalUnsafeMethods.AiAddPlayer__Args() {
                 name = name,
@@ -13372,6 +13920,10 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the root Scene object that is loaded.
+        /// </description>
+        /// <returns>The id of the Root Scene. Will be 0 if no root scene is loaded</returns>
         public static int GetRootScene() {
              InternalUnsafeMethods.GetRootScene__Args _args = new InternalUnsafeMethods.GetRootScene__Args() {
              };
@@ -13379,6 +13931,10 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the root Scene object that is loaded.
+        /// </description>
+        /// <returns>The id of the Root Scene. Will be 0 if no root scene is loaded</returns>
         public static Scene GetScene(uint sceneId = 0) {
              InternalUnsafeMethods.GetScene__Args _args = new InternalUnsafeMethods.GetScene__Args() {
                 sceneId = sceneId,
@@ -13387,12 +13943,18 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              return new Scene(_engineResult);
         }
 
+        /// <description>
+        /// Creates a 64x64 normal map texture filled with noise. The texture is saved to randNormTex.png in the location of the game executable.
+        /// </description>
         public static void DumpRandomNormalMap() {
              InternalUnsafeMethods.DumpRandomNormalMap__Args _args = new InternalUnsafeMethods.DumpRandomNormalMap__Args() {
              };
              InternalUnsafeMethods.DumpRandomNormalMap()(_args);
         }
 
+        /// <description>
+        /// tsUpdateImposterImages( bool forceupdate )
+        /// </description>
         public static void TsUpdateImposterImages(bool forceUpdate = false) {
              InternalUnsafeMethods.TsUpdateImposterImages__Args _args = new InternalUnsafeMethods.TsUpdateImposterImages__Args() {
                 forceUpdate = forceUpdate,
@@ -13400,6 +13962,11 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              InternalUnsafeMethods.TsUpdateImposterImages()(_args);
         }
 
+        /// <summary>Resizes the rendertargets of the Volumetric Fog object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="new_quality">new quality for the rendertargets 1 = full size, 2 = halfsize, 3 = 1/3, 4 = 1/4 ...</param>
         public static int SetFogVolumeQuality(uint new_quality) {
              InternalUnsafeMethods.SetFogVolumeQuality__Args _args = new InternalUnsafeMethods.SetFogVolumeQuality__Args() {
                 new_quality = new_quality,
@@ -13408,6 +13975,13 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              return _engineResult;
         }
 
+        /// <description>
+        /// (Point3F pos) - gets the terrain height at the specified position.
+        /// </description>
+        /// <param name="pos">The world space point. Can be formatted as either ("x y z") or (x,y,z)</param>
+        /// <remarks> This function is useful if you simply want to grab the terrain height underneath an object.
+        /// </remarks>
+        /// <returns>Returns the terrain height at the given point as an F32 value.</returns>
         public static float GetTerrainHeightBelowPosition(string ptOrX, string y = "", string z = "") {
              InternalUnsafeMethods.GetTerrainHeightBelowPosition__Args _args = new InternalUnsafeMethods.GetTerrainHeightBelowPosition__Args() {
                 ptOrX = ptOrX,
@@ -13418,6 +13992,12 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              return _engineResult;
         }
 
+        /// <description>
+        /// (Point2 pos) - gets the terrain height at the specified position.
+        /// </description>
+        /// <param name="pos">The world space point, minus the z (height) value
+        ///  Can be formatted as either ("x y") or (x,y)</param>
+        /// <returns>Returns the terrain height at the given point as an F32 value.</returns>
         public static float GetTerrainHeight(string ptOrX, string y = "") {
              InternalUnsafeMethods.GetTerrainHeight__Args _args = new InternalUnsafeMethods.GetTerrainHeight__Args() {
                 ptOrX = ptOrX,
@@ -13427,6 +14007,11 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              return _engineResult;
         }
 
+        /// <description>
+        /// (Point3F x/y/z) Gets the terrain block that is located under the given world point.
+        /// </description>
+        /// <param name="x/y/z">The world coordinates (floating point values) you wish to query at. These can be formatted as either a string ("x y z") or separately as (x, y, z)</param>
+        /// <returns>Returns the ID of the requested terrain block (0 if not found).</returns>
         public static int GetTerrainUnderWorldPoint(string ptOrX, string y = "", string z = "") {
              InternalUnsafeMethods.GetTerrainUnderWorldPoint__Args _args = new InternalUnsafeMethods.GetTerrainUnderWorldPoint__Args() {
                 ptOrX = ptOrX,
@@ -13437,12 +14022,32 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              return _engineResult;
         }
 
+        /// <summary>Load all Path information from the mission.</summary>
+        /// <description>
+        /// This function is usually called from the loadMissionStage2() server-side function after the mission file has loaded.  Internally it places all Paths into the server's PathManager.  From this point the Paths are ready for transmission to the clients.
+        /// </description>
+        /// <code>
+        /// // Inform the engine to load all Path information from the mission.
+        /// pathOnMissionLoadDone();
+        /// </code>
+        /// <see cref="NetConnection::transmitPaths()" />
+        /// <see cref="NetConnection::clearPaths()" />
+        /// <see cref="Path" />
         public static void PathOnMissionLoadDone() {
              InternalUnsafeMethods.PathOnMissionLoadDone__Args _args = new InternalUnsafeMethods.PathOnMissionLoadDone__Args() {
              };
              InternalUnsafeMethods.PathOnMissionLoadDone()(_args);
         }
 
+        /// <description>
+        /// Return the SceneObject that contains the given zone.
+        /// </description>
+        /// <param name="zoneId">ID of zone.</param>
+        /// <returns>A SceneObject or NULL if the given<paramref name="" /> zoneId is invalid.
+        /// 
+        /// </returns>
+        /// <remarks> Only valid on the client.
+        /// </remarks>
         public static SceneObject SceneGetZoneOwner(uint zoneId) {
              InternalUnsafeMethods.SceneGetZoneOwner__Args _args = new InternalUnsafeMethods.SceneGetZoneOwner__Args() {
                 zoneId = zoneId,
@@ -13451,6 +14056,12 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              return new SceneObject(_engineResult);
         }
 
+        /// <description>
+        /// Dump the current zoning states of all zone spaces in the scene to the console.
+        /// </description>
+        /// <param name="updateFirst">If true, zoning states are brought up to date first; if false, the zoning states are dumped as is.</param>
+        /// <remarks> Only valid on the client.
+        /// </remarks>
         public static void SceneDumpZoneStates(bool updateFirst = true) {
              InternalUnsafeMethods.SceneDumpZoneStates__Args _args = new InternalUnsafeMethods.SceneDumpZoneStates__Args() {
                 updateFirst = updateFirst,
@@ -13458,6 +14069,17 @@ origin.Free();size.Free();             return StringMarshal.IntPtrToUtf8String(_
              InternalUnsafeMethods.SceneDumpZoneStates()(_args);
         }
 
+        /// <summary>Cast a ray from start to end, checking for collision against items matching mask.</summary>
+        /// <description>
+        /// If pExempt is specified, then it is temporarily excluded from collision checks (For instance, you might want to exclude the player if said player was firing a weapon.)
+        /// </description>
+        /// <param name="start">An XYZ vector containing the tail position of the ray.</param>
+        /// <param name="end">An XYZ vector containing the head position of the ray</param>
+        /// <param name="mask">A bitmask corresponding to the type of objects to check for</param>
+        /// <param name="pExempt">An optional ID for a single object that ignored for this raycast</param>
+        /// <param name="useClientContainer">Optionally indicates the search should be within the client container.</param>
+        /// <returns>A string containing either null, if nothing was struck, or these fields:
+        /// <ul><li>The ID of the object that was struck.</li><li>The x, y, z position that it was struck.</li><li>The x, y, z of the normal of the face that was struck.</li><li>The distance between the start point and the position we hit.</li></ul></returns>
         public static string ContainerRayCast(Point3F start, Point3F end, uint mask, SceneObject pExempt = null, bool useClientContainer = false) {
 start.Alloc();end.Alloc();             InternalUnsafeMethods.ContainerRayCast__Args _args = new InternalUnsafeMethods.ContainerRayCast__Args() {
                 start = start.internalStructPtr,
@@ -13470,6 +14092,13 @@ start.Alloc();end.Alloc();             InternalUnsafeMethods.ContainerRayCast__A
 start.Free();end.Free();             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the distance of the closest point of the current item from the center of the current initContainerRadiusSearch.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="useClientContainer">Optionally indicates the search should be within the client container.</param>
+        /// <returns>distance from the closest point of the current object to the center of the search</returns>
+        /// <see cref="containerSearchNext" />
         public static float ContainerSearchCurrRadiusDist(bool useClientContainer = false) {
              InternalUnsafeMethods.ContainerSearchCurrRadiusDist__Args _args = new InternalUnsafeMethods.ContainerSearchCurrRadiusDist__Args() {
                 useClientContainer = useClientContainer,
@@ -13478,6 +14107,13 @@ start.Free();end.Free();             return StringMarshal.IntPtrToUtf8String(_en
              return _engineResult;
         }
 
+        /// <summary>Get distance of the center of the current item from the center of the current initContainerRadiusSearch.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="useClientContainer">Optionally indicates the search should be within the client container.</param>
+        /// <returns>distance from the center of the current object to the center of the search</returns>
+        /// <see cref="containerSearchNext" />
         public static float ContainerSearchCurrDist(bool useClientContainer = false) {
              InternalUnsafeMethods.ContainerSearchCurrDist__Args _args = new InternalUnsafeMethods.ContainerSearchCurrDist__Args() {
                 useClientContainer = useClientContainer,
@@ -13486,6 +14122,26 @@ start.Free();end.Free();             return StringMarshal.IntPtrToUtf8String(_en
              return _engineResult;
         }
 
+        /// <summary>Get next item from a search started with initContainerRadiusSearch() or initContainerTypeSearch().</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="useClientContainer">Optionally indicates the search should be within the client container.</param>
+        /// <returns>the next object found in the search, or null if no more</returns>
+        /// <code>
+        /// // print the names of all nearby ShapeBase derived objects
+        /// %position = %obj.getPosition;
+        /// %radius = 20;
+        /// %mask = $TypeMasks::ShapeBaseObjectType;
+        /// initContainerRadiusSearch( %position, %radius, %mask );
+        /// while ( (%targetObject = containerSearchNext()) != 0 )
+        /// {
+        ///    echo( "Found: "@ %targetObject.getName() );
+        /// }
+        /// 
+        /// </code>
+        /// <see cref="initContainerRadiusSearch()" />
+        /// <see cref="initContainerTypeSearch()" />
         public static SceneObject ContainerSearchNext(bool useClientContainer = false) {
              InternalUnsafeMethods.ContainerSearchNext__Args _args = new InternalUnsafeMethods.ContainerSearchNext__Args() {
                 useClientContainer = useClientContainer,
@@ -13494,6 +14150,13 @@ start.Free();end.Free();             return StringMarshal.IntPtrToUtf8String(_en
              return new SceneObject(_engineResult);
         }
 
+        /// <summary>Start a search for all items of the types specified by the bitset mask.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="mask">Bitmask of object types to include in the search</param>
+        /// <param name="useClientContainer">Optionally indicates the search should be within the client container.</param>
+        /// <see cref="containerSearchNext" />
         public static void InitContainerTypeSearch(uint mask, bool useClientContainer = false) {
              InternalUnsafeMethods.InitContainerTypeSearch__Args _args = new InternalUnsafeMethods.InitContainerTypeSearch__Args() {
                 mask = mask,
@@ -13502,6 +14165,15 @@ start.Free();end.Free();             return StringMarshal.IntPtrToUtf8String(_en
              InternalUnsafeMethods.InitContainerTypeSearch()(_args);
         }
 
+        /// <summary>Start a search for items at the given position and within the given radius, filtering by mask.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pos">Center position for the search</param>
+        /// <param name="radius">Search radius</param>
+        /// <param name="mask">Bitmask of object types to include in the search</param>
+        /// <param name="useClientContainer">Optionally indicates the search should be within the client container.</param>
+        /// <see cref="containerSearchNext" />
         public static void InitContainerRadiusSearch(Point3F pos, float radius, uint mask, bool useClientContainer = false) {
 pos.Alloc();             InternalUnsafeMethods.InitContainerRadiusSearch__Args _args = new InternalUnsafeMethods.InitContainerRadiusSearch__Args() {
                 pos = pos.internalStructPtr,
@@ -13512,6 +14184,19 @@ pos.Alloc();             InternalUnsafeMethods.InitContainerRadiusSearch__Args _
              InternalUnsafeMethods.InitContainerRadiusSearch()(_args);
 pos.Free();        }
 
+        /// <summary>See if any objects of the given types are present in box of given extent.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Extent parameter is last since only one radius is often needed.  If one radius is provided, the yRadius and zRadius are assumed to be the same.  Unfortunately, if you need to use the client container, you'll need to set all of the radius parameters.  Fortunately, this function is mostly used on the server.
+        /// </remarks>
+        /// <param name="mask">Indicates the type of objects we are checking against.</param>
+        /// <param name="center">Center of box.</param>
+        /// <param name="xRadius">Search radius in the x-axis. See note above.</param>
+        /// <param name="yRadius">Search radius in the y-axis. See note above.</param>
+        /// <param name="zRadius">Search radius in the z-axis. See note above.</param>
+        /// <param name="useClientContainer">Optionally indicates the search should be within the client container.</param>
+        /// <returns>true if the box is empty, false if any object is found.</returns>
         public static bool ContainerBoxEmpty(uint mask, Point3F center, float xRadius, float yRadius = -1f, float zRadius = -1f, bool useClientContainer = false) {
 center.Alloc();             InternalUnsafeMethods.ContainerBoxEmpty__Args _args = new InternalUnsafeMethods.ContainerBoxEmpty__Args() {
                 mask = mask,
@@ -13525,6 +14210,9 @@ center.Alloc();             InternalUnsafeMethods.ContainerBoxEmpty__Args _args 
 center.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Set the reflection texture format.
+        /// </description>
         public static void SetReflectFormat(GFXFormat format) {
              InternalUnsafeMethods.SetReflectFormat__Args _args = new InternalUnsafeMethods.SetReflectFormat__Args() {
                 format = (int)format,
@@ -13532,18 +14220,23 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.SetReflectFormat()(_args);
         }
 
+        /// 
         public static void ClearClientPaths() {
              InternalUnsafeMethods.ClearClientPaths__Args _args = new InternalUnsafeMethods.ClearClientPaths__Args() {
              };
              InternalUnsafeMethods.ClearClientPaths()(_args);
         }
 
+        /// 
         public static void ClearServerPaths() {
              InternalUnsafeMethods.ClearServerPaths__Args _args = new InternalUnsafeMethods.ClearServerPaths__Args() {
              };
              InternalUnsafeMethods.ClearServerPaths()(_args);
         }
 
+        /// <description>
+        /// string sShadowSystemName
+        /// </description>
         public static bool SetShadowManager(string sShadowSystemName = "") {
              InternalUnsafeMethods.SetShadowManager__Args _args = new InternalUnsafeMethods.SetShadowManager__Args() {
                 sShadowSystemName = sShadowSystemName,
@@ -13552,12 +14245,19 @@ center.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Deactivates and then activates the currently active light manager.This causes most shaders to be regenerated and is often used when global rendering changes have occured.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void ResetLightManager() {
              InternalUnsafeMethods.ResetLightManager__Args _args = new InternalUnsafeMethods.ResetLightManager__Args() {
              };
              InternalUnsafeMethods.ResetLightManager()(_args);
         }
 
+        /// <description>
+        /// Returns the active light manager name.
+        /// </description>
         public static string GetActiveLightManager() {
              InternalUnsafeMethods.GetActiveLightManager__Args _args = new InternalUnsafeMethods.GetActiveLightManager__Args() {
              };
@@ -13565,6 +14265,9 @@ center.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns a tab seperated list of light manager names.
+        /// </description>
         public static string GetLightManagerNames() {
              InternalUnsafeMethods.GetLightManagerNames__Args _args = new InternalUnsafeMethods.GetLightManagerNames__Args() {
              };
@@ -13572,6 +14275,14 @@ center.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Will generate static lighting for the scene if supported by the active light manager.
+        /// 
+        /// If mode is "forceAlways", the lightmaps will be regenerated regardless of whether lighting cache files can be written to. If mode is "forceWritable", then the lightmaps will be regenerated only if the lighting cache files can be written.
+        /// </description>
+        /// <param name="completeCallbackFn">The name of the function to execute when the lighting is complete.</param>
+        /// <param name="mode">One of "forceAlways",  "forceWritable" or "loadOnly".</param>
+        /// <returns>Returns true if the scene lighting process was started.</returns>
         public static bool LightScene(string completeCallbackFn = "", string mode = "") {
              InternalUnsafeMethods.LightScene__Args _args = new InternalUnsafeMethods.LightScene__Args() {
                 completeCallbackFn = completeCallbackFn,
@@ -13581,6 +14292,10 @@ center.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Finds and activates the named light manager.
+        /// </description>
+        /// <returns>Returns true if the light manager is found and activated.</returns>
         public static bool SetLightManager(string name) {
              InternalUnsafeMethods.SetLightManager__Args _args = new InternalUnsafeMethods.SetLightManager__Args() {
                 name = name,
@@ -13589,6 +14304,10 @@ center.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// A callback called by the engine when a light manager is deactivated.
+        /// </description>
+        /// <param name="name">The name of the light manager being deactivated.</param>
         public static void OnLightManagerDeactivate(string name) {
              InternalUnsafeMethods.OnLightManagerDeactivate__Args _args = new InternalUnsafeMethods.OnLightManagerDeactivate__Args() {
                 name = name,
@@ -13596,6 +14315,10 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.OnLightManagerDeactivate()(_args);
         }
 
+        /// <description>
+        /// A callback called by the engine when a light manager is activated.
+        /// </description>
+        /// <param name="name">The name of the light manager being activated.</param>
         public static void OnLightManagerActivate(string name) {
              InternalUnsafeMethods.OnLightManagerActivate__Args _args = new InternalUnsafeMethods.OnLightManagerActivate__Args() {
                 name = name,
@@ -13603,6 +14326,7 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.OnLightManagerActivate()(_args);
         }
 
+        /// 
         public static string GetMapEntry(string texName) {
              InternalUnsafeMethods.GetMapEntry__Args _args = new InternalUnsafeMethods.GetMapEntry__Args() {
                 texName = texName,
@@ -13611,12 +14335,24 @@ center.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Dumps a formatted list of currently allocated material instances to the console.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void DumpMaterialInstances() {
              InternalUnsafeMethods.DumpMaterialInstances__Args _args = new InternalUnsafeMethods.DumpMaterialInstances__Args() {
              };
              InternalUnsafeMethods.DumpMaterialInstances()(_args);
         }
 
+        /// <description>
+        /// (string texName)
+        /// </description>
+        /// <summary>Returns the name of the material mapped to this texture.</summary>
+        /// <description>
+        /// If no materials are found, an empty string is returned.
+        /// </description>
+        /// <param name="texName">Name of the texture</param>
         public static string GetMaterialMapping(string texName) {
              InternalUnsafeMethods.GetMaterialMapping__Args _args = new InternalUnsafeMethods.GetMaterialMapping__Args() {
                 texName = texName,
@@ -13625,6 +14361,15 @@ center.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (string texName, string matName)
+        /// </description>
+        /// <summary>Maps the given texture to the given material.</summary>
+        /// <description>
+        /// Generates a console warning before overwriting.
+        /// 
+        /// Material maps are used by terrain and interiors for triggering effects when an object moves onto a terrain block or interior surface using the associated texture.
+        /// </description>
         public static void AddMaterialMapping(string texName, string matName) {
              InternalUnsafeMethods.AddMaterialMapping__Args _args = new InternalUnsafeMethods.AddMaterialMapping__Args() {
                 texName = texName,
@@ -13633,12 +14378,25 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.AddMaterialMapping()(_args);
         }
 
+        /// <summary>Flushes all procedural shaders and re-initializes all active material instances.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void ReInitMaterials() {
              InternalUnsafeMethods.ReInitMaterials__Args _args = new InternalUnsafeMethods.ReInitMaterials__Args() {
              };
              InternalUnsafeMethods.ReInitMaterials()(_args);
         }
 
+        /// <summary>Used to exclude/prevent all other instances using the same identifier specified</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Not used on OSX, Xbox, or in Win debug builds
+        /// 
+        /// </remarks>
+        /// <param name="appIdentifier">Name of the app set up for exclusive use.</param>
+        /// <returns>False if another app is running that specified the same appIdentifier</returns>
         public static bool ExcludeOtherInstance(string appIdentifer) {
              InternalUnsafeMethods.ExcludeOtherInstance__Args _args = new InternalUnsafeMethods.ExcludeOtherInstance__Args() {
                 appIdentifer = appIdentifer,
@@ -13647,6 +14405,20 @@ center.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <summary>Strip TorqueML control characters from the specified string, returning a 'clean' version.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="inString">String to strip TorqueML control characters from.</param>
+        /// <code>
+        /// // Define the string to strip TorqueML control characters from
+        /// %string = "<font:Arial:24>How Now <color:c43c12>Brown <color:000000>Cow";
+        /// 
+        /// // Request the stripped version of the string
+        /// %strippedString = StripMLControlChars(%string);
+        /// </code>
+        /// <returns>Version of the inputted string with all TorqueML characters removed.</returns>
+        /// <see cref="References" />
         public static string StripMLControlChars(string inString) {
              InternalUnsafeMethods.StripMLControlChars__Args _args = new InternalUnsafeMethods.StripMLControlChars__Args() {
                 inString = inString,
@@ -13655,6 +14427,13 @@ center.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Takes a screenshot with optional tiling to produce huge screenshots.
+        /// </description>
+        /// <param name="file">The output image file path.</param>
+        /// <param name="format">Either JPEG or PNG.</param>
+        /// <param name="tileCount">If greater than 1 will tile the current screen size to take a large format screenshot.</param>
+        /// <param name="tileOverlap">The amount of horizontal and vertical overlap between the tiles used to remove tile edge artifacts from post effects.</param>
         public static void ScreenShot(string file, string format, uint tileCount = 1, float tileOverlap = 0f) {
              InternalUnsafeMethods.ScreenShot__Args _args = new InternalUnsafeMethods.ScreenShot__Args() {
                 file = file,
@@ -13665,6 +14444,9 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.ScreenShot()(_args);
         }
 
+        /// <description>
+        /// Returns a list of texture profiles in the format: ProfileName TextureCount TextureMB
+        /// </description>
         public static string GetTextureProfileStats() {
              InternalUnsafeMethods.GetTextureProfileStats__Args _args = new InternalUnsafeMethods.GetTextureProfileStats__Args() {
              };
@@ -13672,30 +14454,47 @@ center.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Dumps a list of all active texture objects to the console.
+        /// </description>
+        /// <remarks> This function is only available in debug builds.
+        /// </remarks>
         public static void DumpTextureObjects() {
              InternalUnsafeMethods.DumpTextureObjects__Args _args = new InternalUnsafeMethods.DumpTextureObjects__Args() {
              };
              InternalUnsafeMethods.DumpTextureObjects()(_args);
         }
 
+        /// <description>
+        /// Reload all the textures from disk.
+        /// </description>
         public static void ReloadTextures() {
              InternalUnsafeMethods.ReloadTextures__Args _args = new InternalUnsafeMethods.ReloadTextures__Args() {
              };
              InternalUnsafeMethods.ReloadTextures()(_args);
         }
 
+        /// <description>
+        /// Release the unused pooled textures in texture manager freeing up video memory.
+        /// </description>
         public static void CleanupTexturePool() {
              InternalUnsafeMethods.CleanupTexturePool__Args _args = new InternalUnsafeMethods.CleanupTexturePool__Args() {
              };
              InternalUnsafeMethods.CleanupTexturePool()(_args);
         }
 
+        /// <description>
+        /// Releases all textures and resurrects the texture manager.
+        /// </description>
         public static void FlushTextureCache() {
              InternalUnsafeMethods.FlushTextureCache__Args _args = new InternalUnsafeMethods.FlushTextureCache__Args() {
              };
              InternalUnsafeMethods.FlushTextureCache()(_args);
         }
 
+        /// <description>
+        /// File1,file2,file3,file4,[chanels for r g b and a locations],saveAs
+        /// </description>
         public static void SaveCompositeTexture(string pathR = "", string pathG = "", string pathB = "", string pathA = "", string inputKeyString = "", string saveAs = "") {
              InternalUnsafeMethods.SaveCompositeTexture__Args _args = new InternalUnsafeMethods.SaveCompositeTexture__Args() {
                 pathR = pathR,
@@ -13708,6 +14507,10 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.SaveCompositeTexture()(_args);
         }
 
+        /// <description>
+        /// Removes an existing global macro by name.
+        /// </description>
+        /// <see cref="addGlobalShaderMacro" />
         public static void RemoveGlobalShaderMacro(string name) {
              InternalUnsafeMethods.RemoveGlobalShaderMacro__Args _args = new InternalUnsafeMethods.RemoveGlobalShaderMacro__Args() {
                 name = name,
@@ -13715,6 +14518,10 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.RemoveGlobalShaderMacro()(_args);
         }
 
+        /// <description>
+        /// Adds a global shader macro which will be merged with the script defined macros on every shader.  The macro will replace the value of an existing macro of the same name.  For the new macro to take effect all the shaders in the system need to be reloaded.
+        /// </description>
+        /// <see cref="resetLightManager, removeGlobalShaderMacro" />
         public static void AddGlobalShaderMacro(string name, string value = "") {
              InternalUnsafeMethods.AddGlobalShaderMacro__Args _args = new InternalUnsafeMethods.AddGlobalShaderMacro__Args() {
                 name = name,
@@ -13723,6 +14530,9 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.AddGlobalShaderMacro()(_args);
         }
 
+        /// <description>
+        /// Returns the width, height, and bitdepth of the screen/desktop.
+        /// </description>
         public static Point3F GetDesktopResolution() {
              InternalUnsafeMethods.GetDesktopResolution__Args _args = new InternalUnsafeMethods.GetDesktopResolution__Args() {
              };
@@ -13730,12 +14540,18 @@ center.Free();             return _engineResult;
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// forces the gbuffer to be reinitialized in cases of improper/lack of buffer clears.
+        /// </description>
         public static void ResetGFX() {
              InternalUnsafeMethods.ResetGFX__Args _args = new InternalUnsafeMethods.ResetGFX__Args() {
              };
              InternalUnsafeMethods.ResetGFX()(_args);
         }
 
+        /// <description>
+        /// Returns the best texture format for storage of HDR data for the active device.
+        /// </description>
         public static GFXFormat GetBestHDRFormat() {
              InternalUnsafeMethods.GetBestHDRFormat__Args _args = new InternalUnsafeMethods.GetBestHDRFormat__Args() {
              };
@@ -13743,6 +14559,9 @@ center.Free();             return _engineResult;
              return (GFXFormat)_engineResult;
         }
 
+        /// <description>
+        /// Get the string describing the active GFX device.
+        /// </description>
         public static string GetDisplayDeviceInformation() {
              InternalUnsafeMethods.GetDisplayDeviceInformation__Args _args = new InternalUnsafeMethods.GetDisplayDeviceInformation__Args() {
              };
@@ -13750,6 +14569,14 @@ center.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Sets the pixel shader version for the active device.</summary>
+        /// <description>
+        /// This can be used to force a lower pixel shader version than is supported by the device for testing or performance optimization.
+        /// </description>
+        /// <param name="version">The floating point shader version number.</param>
+        /// <remarks> This will only affect shaders/materials created after the call and should be used before the game begins.
+        /// </remarks>
+        /// <see cref="$pref::Video::forcedPixVersion" />
         public static void SetPixelShaderVersion(float version) {
              InternalUnsafeMethods.SetPixelShaderVersion__Args _args = new InternalUnsafeMethods.SetPixelShaderVersion__Args() {
                 version = version,
@@ -13757,6 +14584,9 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.SetPixelShaderVersion()(_args);
         }
 
+        /// <description>
+        /// Returns the pixel shader version for the active device.
+        /// </description>
         public static float GetPixelShaderVersion() {
              InternalUnsafeMethods.GetPixelShaderVersion__Args _args = new InternalUnsafeMethods.GetPixelShaderVersion__Args() {
              };
@@ -13764,6 +14594,10 @@ center.Free();             return _engineResult;
              return _engineResult;
         }
 
+        /// <description>
+        /// Dumps a description of all state blocks.
+        /// </description>
+        /// <param name="filePath">A file to dump the state blocks to or an empty string to write to the console.</param>
         public static void DescribeGFXStateBlocks(string filePath) {
              InternalUnsafeMethods.DescribeGFXStateBlocks__Args _args = new InternalUnsafeMethods.DescribeGFXStateBlocks__Args() {
                 filePath = filePath,
@@ -13771,6 +14605,26 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.DescribeGFXStateBlocks()(_args);
         }
 
+        /// <summary>Dumps a description of GFX resources to a file or the console.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="resourceTypes">A space seperated list of resource types or an empty string for all resources.</param>
+        /// <param name="filePath">A file to dump the list to or an empty string to write to the console.</param>
+        /// <param name="unflaggedOnly">If true only unflagged resources are dumped. See flagCurrentGFXResources.</param>
+        /// <remarks> The resource types can be one or more of the following:
+        /// 
+        ///   - texture
+        ///   - texture target
+        ///   - window target
+        ///   - vertex buffers
+        ///   - primitive buffers
+        ///   - fences
+        ///   - cubemaps
+        ///   - shaders
+        ///   - stateblocks
+        /// 
+        /// </remarks>
         public static void DescribeGFXResources(string resourceTypes, string filePath, bool unflaggedOnly = false) {
              InternalUnsafeMethods.DescribeGFXResources__Args _args = new InternalUnsafeMethods.DescribeGFXResources__Args() {
                 resourceTypes = resourceTypes,
@@ -13780,18 +14634,31 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.DescribeGFXResources()(_args);
         }
 
+        /// <description>
+        /// Clears the flagged state on all allocated GFX resources. See flagCurrentGFXResources for usage details.
+        /// </description>
+        /// <see cref="flagCurrentGFXResources, listGFXResources, describeGFXResources" />
         public static void ClearGFXResourceFlags() {
              InternalUnsafeMethods.ClearGFXResourceFlags__Args _args = new InternalUnsafeMethods.ClearGFXResourceFlags__Args() {
              };
              InternalUnsafeMethods.ClearGFXResourceFlags()(_args);
         }
 
+        /// <summary>Flags all currently allocated GFX resources.</summary>
+        /// <description>
+        /// Used for resource allocation and leak tracking by flagging current resources then dumping a list of unflagged resources at some later point in execution.
+        /// </description>
+        /// <see cref="listGFXResources, clearGFXResourceFlags, describeGFXResources" />
         public static void FlagCurrentGFXResources() {
              InternalUnsafeMethods.FlagCurrentGFXResources__Args _args = new InternalUnsafeMethods.FlagCurrentGFXResources__Args() {
              };
              InternalUnsafeMethods.FlagCurrentGFXResources()(_args);
         }
 
+        /// <description>
+        /// Returns a list of the unflagged GFX resources. See flagCurrentGFXResources for usage details.
+        /// </description>
+        /// <see cref="flagCurrentGFXResources, clearGFXResourceFlags, describeGFXResources" />
         public static void ListGFXResources(bool unflaggedOnly = false) {
              InternalUnsafeMethods.ListGFXResources__Args _args = new InternalUnsafeMethods.ListGFXResources__Args() {
                 unflaggedOnly = unflaggedOnly,
@@ -13799,6 +14666,9 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.ListGFXResources()(_args);
         }
 
+        /// <description>
+        /// Returns a tab-seperated string of the detected devices across all adapters.
+        /// </description>
         public static string GetDisplayDeviceList() {
              InternalUnsafeMethods.GetDisplayDeviceList__Args _args = new InternalUnsafeMethods.GetDisplayDeviceList__Args() {
              };
@@ -13806,6 +14676,12 @@ center.Free();             return _engineResult;
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Copy the specified old font to a new name. The new copy will not have a platform font backing it, and so will never have characters added to it. But this is useful for making copies of fonts to add postprocessing effects to via exportCachedFont.
+        /// </description>
+        /// <param name="oldFontName">The name of the font face to copy.</param>
+        /// <param name="oldFontSize">The size of the font to copy.</param>
+        /// <param name="newFontName">The name of the new font face.</param>
         public static void DuplicateCachedFont(string oldFontName, int oldFontSize, string newFontName) {
              InternalUnsafeMethods.DuplicateCachedFont__Args _args = new InternalUnsafeMethods.DuplicateCachedFont__Args() {
                 oldFontName = oldFontName,
@@ -13815,6 +14691,14 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.DuplicateCachedFont()(_args);
         }
 
+        /// <description>
+        /// Import an image strip from exportCachedFont. Call with the same parameters you called exportCachedFont.
+        /// </description>
+        /// <param name="faceName">The name of the font face.</param>
+        /// <param name="fontSize">The size of the font in pixels.</param>
+        /// <param name="fileName">The file name and path for the input PNG.</param>
+        /// <param name="padding">The padding between characters.</param>
+        /// <param name="kerning">The kerning between characters.</param>
         public static void ImportCachedFont(string faceName, int fontSize, string fileName, int padding, int kerning) {
              InternalUnsafeMethods.ImportCachedFont__Args _args = new InternalUnsafeMethods.ImportCachedFont__Args() {
                 faceName = faceName,
@@ -13826,6 +14710,14 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.ImportCachedFont()(_args);
         }
 
+        /// <description>
+        /// Export specified font to the specified filename as a PNG. The image can then be processed in Photoshop or another tool and reimported using importCachedFont. Characters in the font are exported as one long strip.
+        /// </description>
+        /// <param name="faceName">The name of the font face.</param>
+        /// <param name="fontSize">The size of the font in pixels.</param>
+        /// <param name="fileName">The file name and path for the output PNG.</param>
+        /// <param name="padding">The padding between characters.</param>
+        /// <param name="kerning">The kerning between characters.</param>
         public static void ExportCachedFont(string faceName, int fontSize, string fileName, int padding, int kerning) {
              InternalUnsafeMethods.ExportCachedFont__Args _args = new InternalUnsafeMethods.ExportCachedFont__Args() {
                 faceName = faceName,
@@ -13837,6 +14729,13 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.ExportCachedFont()(_args);
         }
 
+        /// <description>
+        /// Populate the font cache for all fonts with Unicode code points in the specified range.
+        /// </description>
+        /// <param name="rangeStart">The start Unicode point.</param>
+        /// <param name="rangeEnd">The end Unicode point.</param>
+        /// <remarks> We only support BMP-0, so code points range from 0 to 65535.
+        /// </remarks>
         public static void PopulateAllFontCacheRange(uint rangeStart, uint rangeEnd) {
              InternalUnsafeMethods.PopulateAllFontCacheRange__Args _args = new InternalUnsafeMethods.PopulateAllFontCacheRange__Args() {
                 rangeStart = rangeStart,
@@ -13845,6 +14744,9 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.PopulateAllFontCacheRange()(_args);
         }
 
+        /// <description>
+        /// Populate the font cache for all fonts with characters from the specified string.
+        /// </description>
         public static void PopulateAllFontCacheString(string _string) {
              InternalUnsafeMethods.PopulateAllFontCacheString__Args _args = new InternalUnsafeMethods.PopulateAllFontCacheString__Args() {
                 _string = _string,
@@ -13852,18 +14754,33 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.PopulateAllFontCacheString()(_args);
         }
 
+        /// <description>
+        /// Force all cached fonts to serialize themselves to the cache.
+        /// </description>
         public static void WriteFontCache() {
              InternalUnsafeMethods.WriteFontCache__Args _args = new InternalUnsafeMethods.WriteFontCache__Args() {
              };
              InternalUnsafeMethods.WriteFontCache()(_args);
         }
 
+        /// <description>
+        /// Dumps to the console a full description of all cached fonts, along with info on the codepoints each contains.
+        /// </description>
         public static void DumpFontCacheStatus() {
              InternalUnsafeMethods.DumpFontCacheStatus__Args _args = new InternalUnsafeMethods.DumpFontCacheStatus__Args() {
              };
              InternalUnsafeMethods.DumpFontCacheStatus()(_args);
         }
 
+        /// <description>
+        /// Populate the font cache for the specified font with Unicode code points in the specified range.
+        /// </description>
+        /// <param name="faceName">The name of the font face.</param>
+        /// <param name="fontSize">The size of the font in pixels.</param>
+        /// <param name="rangeStart">The start Unicode point.</param>
+        /// <param name="rangeEnd">The end Unicode point.</param>
+        /// <remarks> We only support BMP-0, so code points range from 0 to 65535.
+        /// </remarks>
         public static void PopulateFontCacheRange(string faceName, int fontSize, uint rangeStart, uint rangeEnd) {
              InternalUnsafeMethods.PopulateFontCacheRange__Args _args = new InternalUnsafeMethods.PopulateFontCacheRange__Args() {
                 faceName = faceName,
@@ -13874,6 +14791,12 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.PopulateFontCacheRange()(_args);
         }
 
+        /// <description>
+        /// Populate the font cache for the specified font with characters from the specified string.
+        /// </description>
+        /// <param name="faceName">The name of the font face.</param>
+        /// <param name="fontSize">The size of the font in pixels.</param>
+        /// <param name="string">The string to populate.</param>
         public static void PopulateFontCacheString(string faceName, int fontSize, string _string) {
              InternalUnsafeMethods.PopulateFontCacheString__Args _args = new InternalUnsafeMethods.PopulateFontCacheString__Args() {
                 faceName = faceName,
@@ -13883,6 +14806,9 @@ center.Free();             return _engineResult;
              InternalUnsafeMethods.PopulateFontCacheString()(_args);
         }
 
+        /// <description>
+        /// Load a journal file and capture it video.
+        /// </description>
         public static void PlayJournalToVideo(string journalFile, string videoFile = "", string encoder = "THEORA", float framerate = 30f, Point2I resolution = null) {
 resolution = resolution ?? new Point2I("0 0");
 resolution.Alloc();             InternalUnsafeMethods.PlayJournalToVideo__Args _args = new InternalUnsafeMethods.PlayJournalToVideo__Args() {
@@ -13895,12 +14821,20 @@ resolution.Alloc();             InternalUnsafeMethods.PlayJournalToVideo__Args _
              InternalUnsafeMethods.PlayJournalToVideo()(_args);
 resolution.Free();        }
 
+        /// <description>
+        /// Stops the video capture session.
+        /// </description>
+        /// <see cref="startVideoCapture" />
         public static void StopVideoCapture() {
              InternalUnsafeMethods.StopVideoCapture__Args _args = new InternalUnsafeMethods.StopVideoCapture__Args() {
              };
              InternalUnsafeMethods.StopVideoCapture()(_args);
         }
 
+        /// <description>
+        /// Begins a video capture session.
+        /// </description>
+        /// <see cref="stopVideoCapture" />
         public static void StartVideoCapture(GuiCanvas canvas, string filename, string encoder = "THEORA", float framerate = 30f, Point2I resolution = null) {
 resolution = resolution ?? new Point2I("0 0");
 resolution.Alloc();             InternalUnsafeMethods.StartVideoCapture__Args _args = new InternalUnsafeMethods.StartVideoCapture__Args() {
@@ -13913,6 +14847,9 @@ resolution.Alloc();             InternalUnsafeMethods.StartVideoCapture__Args _a
              InternalUnsafeMethods.StartVideoCapture()(_args);
 resolution.Free();        }
 
+        /// <description>
+        /// Returns image info in the following format: width TAB height TAB bytesPerPixel. It will return an empty string if the file is not found.
+        /// </description>
         public static string GetBitmapInfo(string filename) {
              InternalUnsafeMethods.GetBitmapInfo__Args _args = new InternalUnsafeMethods.GetBitmapInfo__Args() {
                 filename = filename,
@@ -13921,6 +14858,9 @@ resolution.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Returns the count of active DDSs files in memory.
+        /// </description>
         public static int GetActiveDDSFiles() {
              InternalUnsafeMethods.GetActiveDDSFiles__Args _args = new InternalUnsafeMethods.GetActiveDDSFiles__Args() {
              };
@@ -13928,6 +14868,17 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// (string queueName, string message)
+        /// </description>
+        /// <summary>Dispatch a message object to a queue</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="queueName">Queue to dispatch the message to</param>
+        /// <param name="message">Message to dispatch</param>
+        /// <returns>true for success, false for failure</returns>
+        /// <see cref="dispatchMessage" />
         public static bool DispatchMessageObject(string queueName = "", string message = "") {
              InternalUnsafeMethods.DispatchMessageObject__Args _args = new InternalUnsafeMethods.DispatchMessageObject__Args() {
                 queueName = queueName,
@@ -13937,6 +14888,18 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// (string queueName, string message, string data)
+        /// </description>
+        /// <summary>Dispatch a message to a queue</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="queueName">Queue to dispatch the message to</param>
+        /// <param name="message">Message to dispatch</param>
+        /// <param name="data">Data for message</param>
+        /// <returns>True for success, false for failure</returns>
+        /// <see cref="dispatchMessageObject" />
         public static bool DispatchMessage(string queueName, string message, string data = "") {
              InternalUnsafeMethods.DispatchMessage__Args _args = new InternalUnsafeMethods.DispatchMessage__Args() {
                 queueName = queueName,
@@ -13947,6 +14910,15 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// (string queueName, string listener)
+        /// </description>
+        /// <summary>Unregisters an event message</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="queueName">String containing the name of queue</param>
+        /// <param name="listener">Name of event messenger</param>
         public static void UnregisterMessageListener(string queueName, string listenerName) {
              InternalUnsafeMethods.UnregisterMessageListener__Args _args = new InternalUnsafeMethods.UnregisterMessageListener__Args() {
                 queueName = queueName,
@@ -13955,6 +14927,15 @@ resolution.Free();        }
              InternalUnsafeMethods.UnregisterMessageListener()(_args);
         }
 
+        /// <description>
+        /// (string queueName, string listener)
+        /// </description>
+        /// <summary>Registers an event message</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="queueName">String containing the name of queue to attach listener to</param>
+        /// <param name="listener">Name of event messenger</param>
         public static bool RegisterMessageListener(string queueName, string listenerName) {
              InternalUnsafeMethods.RegisterMessageListener__Args _args = new InternalUnsafeMethods.RegisterMessageListener__Args() {
                 queueName = queueName,
@@ -13964,6 +14945,14 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// (string queueName)
+        /// </description>
+        /// <summary>Unregisters a dispatcher queue</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="queueName">String containing the name of queue</param>
         public static void UnregisterMessageQueue(string queueName) {
              InternalUnsafeMethods.UnregisterMessageQueue__Args _args = new InternalUnsafeMethods.UnregisterMessageQueue__Args() {
                 queueName = queueName,
@@ -13971,6 +14960,14 @@ resolution.Free();        }
              InternalUnsafeMethods.UnregisterMessageQueue()(_args);
         }
 
+        /// <description>
+        /// (string queueName)
+        /// </description>
+        /// <summary>Registeres a dispatcher queue</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="queueName">String containing the name of queue</param>
         public static void RegisterMessageQueue(string queueName) {
              InternalUnsafeMethods.RegisterMessageQueue__Args _args = new InternalUnsafeMethods.RegisterMessageQueue__Args() {
                 queueName = queueName,
@@ -13978,6 +14975,14 @@ resolution.Free();        }
              InternalUnsafeMethods.RegisterMessageQueue()(_args);
         }
 
+        /// <description>
+        /// (string queueName)
+        /// </description>
+        /// <summary>Determines if a dispatcher queue exists</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="queueName">String containing the name of queue</param>
         public static bool IsQueueRegistered(string queueName) {
              InternalUnsafeMethods.IsQueueRegistered__Args _args = new InternalUnsafeMethods.IsQueueRegistered__Args() {
                 queueName = queueName,
@@ -13986,6 +14991,7 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// 
         public static SimObject FindDataBlockByName(string pName) {
              InternalUnsafeMethods.FindDataBlockByName__Args _args = new InternalUnsafeMethods.FindDataBlockByName__Args() {
                 pName = pName,
@@ -13994,6 +15000,7 @@ resolution.Free();        }
              return new SimObject(_engineResult);
         }
 
+        /// 
         public static SimObject FindObjectByName(string pName) {
              InternalUnsafeMethods.FindObjectByName__Args _args = new InternalUnsafeMethods.FindObjectByName__Args() {
                 pName = pName,
@@ -14002,6 +15009,7 @@ resolution.Free();        }
              return new SimObject(_engineResult);
         }
 
+        /// 
         public static SimObject FindObjectById(uint pId) {
              InternalUnsafeMethods.FindObjectById__Args _args = new InternalUnsafeMethods.FindObjectById__Args() {
                 pId = pId,
@@ -14010,6 +15018,7 @@ resolution.Free();        }
              return new SimObject(_engineResult);
         }
 
+        /// 
         public static void SetConsoleBool(string name, bool value) {
              InternalUnsafeMethods.SetConsoleBool__Args _args = new InternalUnsafeMethods.SetConsoleBool__Args() {
                 name = name,
@@ -14018,6 +15027,7 @@ resolution.Free();        }
              InternalUnsafeMethods.SetConsoleBool()(_args);
         }
 
+        /// 
         public static bool GetConsoleBool(string name) {
              InternalUnsafeMethods.GetConsoleBool__Args _args = new InternalUnsafeMethods.GetConsoleBool__Args() {
                 name = name,
@@ -14026,6 +15036,7 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// 
         public static void SetConsoleFloat(string name, float value) {
              InternalUnsafeMethods.SetConsoleFloat__Args _args = new InternalUnsafeMethods.SetConsoleFloat__Args() {
                 name = name,
@@ -14034,6 +15045,7 @@ resolution.Free();        }
              InternalUnsafeMethods.SetConsoleFloat()(_args);
         }
 
+        /// 
         public static float GetConsoleFloat(string name) {
              InternalUnsafeMethods.GetConsoleFloat__Args _args = new InternalUnsafeMethods.GetConsoleFloat__Args() {
                 name = name,
@@ -14042,6 +15054,7 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// 
         public static void SetConsoleInt(string name, int value) {
              InternalUnsafeMethods.SetConsoleInt__Args _args = new InternalUnsafeMethods.SetConsoleInt__Args() {
                 name = name,
@@ -14050,6 +15063,7 @@ resolution.Free();        }
              InternalUnsafeMethods.SetConsoleInt()(_args);
         }
 
+        /// 
         public static int GetConsoleInt(string name) {
              InternalUnsafeMethods.GetConsoleInt__Args _args = new InternalUnsafeMethods.GetConsoleInt__Args() {
                 name = name,
@@ -14058,6 +15072,7 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// 
         public static void SetConsoleString(string name, string value) {
              InternalUnsafeMethods.SetConsoleString__Args _args = new InternalUnsafeMethods.SetConsoleString__Args() {
                 name = name,
@@ -14066,6 +15081,7 @@ resolution.Free();        }
              InternalUnsafeMethods.SetConsoleString()(_args);
         }
 
+        /// 
         public static string GetConsoleString(string name) {
              InternalUnsafeMethods.GetConsoleString__Args _args = new InternalUnsafeMethods.GetConsoleString__Args() {
                 name = name,
@@ -14074,6 +15090,17 @@ resolution.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Display a modal message box using the platform's native message box implementation.
+        /// </description>
+        /// <param name="title">The title to display on the message box window.</param>
+        /// <param name="message">The text message to display in the box.</param>
+        /// <param name="buttons">Which buttons to put on the message box.</param>
+        /// <param name="icons">Which icon to show next to the message.</param>
+        /// <returns>One of $MROK, $MRCancel, $MRRetry, and $MRDontSave identifying the button that the user pressed.</returns>
+        /// <code>
+        /// messageBox( "Error", "" );
+        /// </code>
         public static int MessageBox(string title, string message, MBButtons buttons = MBButtons.OkCancel, MBIcons icons = MBIcons.Information) {
              InternalUnsafeMethods.MessageBox__Args _args = new InternalUnsafeMethods.MessageBox__Args() {
                 title = title,
@@ -14085,12 +15112,26 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Resets the profiler, clearing it of all its data.</summary>
+        /// <description>
+        /// If the profiler is currently running, it will first be disabled. All markers will retain their current enabled/disabled status.
+        /// </description>
         public static void ProfilerReset() {
              InternalUnsafeMethods.ProfilerReset__Args _args = new InternalUnsafeMethods.ProfilerReset__Args() {
              };
              InternalUnsafeMethods.ProfilerReset()(_args);
         }
 
+        /// <summary>Dumps current profiling stats to a file.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> If the profiler is currently running, it will be disabled.
+        /// </remarks>
+        /// <param name="fileName">Name and path of file to save profiling stats to. Must use forward slashes (/). Will attempt to create the file if it does not already exist.</param>
+        /// <code>
+        /// profilerDumpToFile( "C:/Torque/log1.txt" );
+        /// </code>
         public static void ProfilerDumpToFile(string fileName) {
              InternalUnsafeMethods.ProfilerDumpToFile__Args _args = new InternalUnsafeMethods.ProfilerDumpToFile__Args() {
                 fileName = fileName,
@@ -14098,12 +15139,26 @@ resolution.Free();        }
              InternalUnsafeMethods.ProfilerDumpToFile()(_args);
         }
 
+        /// <summary>Dumps current profiling stats to the console window.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Markers disabled with profilerMarkerEnable() will be skipped over. If the profiler is currently running, it will be disabled.
+        /// </remarks>
         public static void ProfilerDump() {
              InternalUnsafeMethods.ProfilerDump__Args _args = new InternalUnsafeMethods.ProfilerDump__Args() {
              };
              InternalUnsafeMethods.ProfilerDump()(_args);
         }
 
+        /// <summary>Enables or disables the profiler.</summary>
+        /// <description>
+        /// Data is only gathered while the profiler is enabled.
+        /// </description>
+        /// <remarks> Profiler is not available in shipping builds.
+        /// T3D has predefined profiling areas surrounded by markers, but you may need to define additional markers (in C++) around areas you wish to profile, by using the PROFILE_START( markerName ); and PROFILE_END(); macros.
+        /// 
+        /// </remarks>
         public static void ProfilerEnable(bool enable) {
              InternalUnsafeMethods.ProfilerEnable__Args _args = new InternalUnsafeMethods.ProfilerEnable__Args() {
                 enable = enable,
@@ -14111,6 +15166,15 @@ resolution.Free();        }
              InternalUnsafeMethods.ProfilerEnable()(_args);
         }
 
+        /// <summary>Enable or disable a specific profile.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="enable">Optional paramater to enable or disable the profile.</param>
+        /// <param name="markerName">Name of a specific marker to enable or disable.</param>
+        /// <remarks> Calling this function will first call profilerReset(), clearing all data from profiler. All profile markers are enabled by default.
+        /// 
+        /// </remarks>
         public static void ProfilerMarkerEnable(string markerName, bool enable = true) {
              InternalUnsafeMethods.ProfilerMarkerEnable__Args _args = new InternalUnsafeMethods.ProfilerMarkerEnable__Args() {
                 markerName = markerName,
@@ -14119,6 +15183,9 @@ resolution.Free();        }
              InternalUnsafeMethods.ProfilerMarkerEnable()(_args);
         }
 
+        /// <description>
+        /// stopPrecisionTimer( S32 id ) - Stop and destroy timer with the passed id.  Returns the elapsed milliseconds.
+        /// </description>
         public static int StopPrecisionTimer(int id) {
              InternalUnsafeMethods.StopPrecisionTimer__Args _args = new InternalUnsafeMethods.StopPrecisionTimer__Args() {
                 id = id,
@@ -14127,6 +15194,9 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// startPrecisionTimer() - Create and start a high resolution platform timer. Returns the timer id.
+        /// </description>
         public static int StartPrecisionTimer() {
              InternalUnsafeMethods.StartPrecisionTimer__Args _args = new InternalUnsafeMethods.StartPrecisionTimer__Args() {
              };
@@ -14134,6 +15204,13 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get a string explaining the last redbook error.
+        /// </description>
+        /// <summary>Deprecated</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static string RedbookGetLastError() {
              InternalUnsafeMethods.RedbookGetLastError__Args _args = new InternalUnsafeMethods.RedbookGetLastError__Args() {
              };
@@ -14141,6 +15218,13 @@ resolution.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (int index) Get name of specified Redbook device.
+        /// </description>
+        /// <summary>Deprecated</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static string RedbookGetDeviceName(int index) {
              InternalUnsafeMethods.RedbookGetDeviceName__Args _args = new InternalUnsafeMethods.RedbookGetDeviceName__Args() {
                 index = index,
@@ -14149,6 +15233,13 @@ resolution.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// get the number of redbook devices.
+        /// </description>
+        /// <summary>Deprecated</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static int RedbookGetDeviceCount() {
              InternalUnsafeMethods.RedbookGetDeviceCount__Args _args = new InternalUnsafeMethods.RedbookGetDeviceCount__Args() {
              };
@@ -14156,6 +15247,13 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// (float volume) Set playback volume.
+        /// </description>
+        /// <summary>Deprecated</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool RedbookSetVolume(float volume) {
              InternalUnsafeMethods.RedbookSetVolume__Args _args = new InternalUnsafeMethods.RedbookSetVolume__Args() {
                 volume = volume,
@@ -14164,6 +15262,13 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the volume.
+        /// </description>
+        /// <summary>Deprecated</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static float RedbookGetVolume() {
              InternalUnsafeMethods.RedbookGetVolume__Args _args = new InternalUnsafeMethods.RedbookGetVolume__Args() {
              };
@@ -14171,6 +15276,13 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Return the number of tracks.
+        /// </description>
+        /// <summary>Deprecated</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static int RedbookGetTrackCount() {
              InternalUnsafeMethods.RedbookGetTrackCount__Args _args = new InternalUnsafeMethods.RedbookGetTrackCount__Args() {
              };
@@ -14178,6 +15290,13 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Stop playing.
+        /// </description>
+        /// <summary>Deprecated</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool RedbookStop() {
              InternalUnsafeMethods.RedbookStop__Args _args = new InternalUnsafeMethods.RedbookStop__Args() {
              };
@@ -14185,6 +15304,13 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// (int track) Play the selected track.
+        /// </description>
+        /// <summary>Deprecated</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool RedbookPlay(int track) {
              InternalUnsafeMethods.RedbookPlay__Args _args = new InternalUnsafeMethods.RedbookPlay__Args() {
                 track = track,
@@ -14193,6 +15319,13 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Close the current Redbook device.
+        /// </description>
+        /// <summary>Deprecated</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool RedbookClose() {
              InternalUnsafeMethods.RedbookClose__Args _args = new InternalUnsafeMethods.RedbookClose__Args() {
              };
@@ -14200,6 +15333,13 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// (string device=NULL)
+        /// </description>
+        /// <summary>Deprecated</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool RedbookOpen(string device = "") {
              InternalUnsafeMethods.RedbookOpen__Args _args = new InternalUnsafeMethods.RedbookOpen__Args() {
                 device = device,
@@ -14208,6 +15348,18 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Dumps a snapshot of current memory to a file.</summary>
+        /// <description>
+        /// The total memory used will also be output to the console.
+        /// This function will attempt to create the file if it does not already exist.
+        /// </description>
+        /// <param name="fileName">Name and path of file to save profiling stats to. Must use forward slashes (/)</param>
+        /// <code>
+        /// dumpMemSnapshot( "C:/Torque/ProfilerLogs/profilerlog1.txt" );
+        /// </code>
+        /// <remarks> Available in debug builds only. In torqueConfig.h, TORQUE_DISABLE_MEMORY_MANAGER must be undefined to use this function.
+        /// 
+        /// </remarks>
         public static void DumpMemSnapshot(string fileName) {
              InternalUnsafeMethods.DumpMemSnapshot__Args _args = new InternalUnsafeMethods.DumpMemSnapshot__Args() {
                 fileName = fileName,
@@ -14215,6 +15367,14 @@ resolution.Free();        }
              InternalUnsafeMethods.DumpMemSnapshot()(_args);
         }
 
+        /// <summary>Dumps information about the given allocated memory block.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="allocNum">Memory block to dump information about.</param>
+        /// <remarks> Available in debug builds only. In torqueConfig.h, TORQUE_DISABLE_MEMORY_MANAGER must be undefined to use this function.
+        /// 
+        /// </remarks>
         public static void DumpAlloc(int allocNum) {
              InternalUnsafeMethods.DumpAlloc__Args _args = new InternalUnsafeMethods.DumpAlloc__Args() {
                 allocNum = allocNum,
@@ -14222,6 +15382,18 @@ resolution.Free();        }
              InternalUnsafeMethods.DumpAlloc()(_args);
         }
 
+        /// <summary>Dumps all unflagged memory allocations.</summary>
+        /// <description>
+        /// Dumps all memory allocations that were made after a call to flagCurrentAllocs(). Helpful when used with flagCurrentAllocs() for detecting memory leaks and analyzing general memory usage.
+        /// </description>
+        /// <param name="fileName">Optional file path and location to dump all memory allocations not flagged by flagCurrentAllocs(). If left blank, data will be dumped to the console.</param>
+        /// <code>
+        /// dumpMemSnapshot(); // dumps info to console
+        /// dumpMemSnapshot( "C:/Torque/profilerlog1.txt" ); // dumps info to file
+        /// </code>
+        /// <remarks> Available in debug builds only. In torqueConfig.h, TORQUE_DISABLE_MEMORY_MANAGER must be undefined to use this function.
+        /// 
+        /// </remarks>
         public static void DumpUnflaggedAllocs(string fileName = "") {
              InternalUnsafeMethods.DumpUnflaggedAllocs__Args _args = new InternalUnsafeMethods.DumpUnflaggedAllocs__Args() {
                 fileName = fileName,
@@ -14229,24 +15401,39 @@ resolution.Free();        }
              InternalUnsafeMethods.DumpUnflaggedAllocs()(_args);
         }
 
+        /// <summary>Flags all current memory allocations.</summary>
+        /// <description>
+        /// Flags all current memory allocations for exclusion in subsequent calls to dumpUnflaggedAllocs(). Helpful in detecting memory leaks and analyzing memory usage.
+        /// </description>
         public static void FlagCurrentAllocs() {
              InternalUnsafeMethods.FlagCurrentAllocs__Args _args = new InternalUnsafeMethods.FlagCurrentAllocs__Args() {
              };
              InternalUnsafeMethods.FlagCurrentAllocs()(_args);
         }
 
+        /// <summary>Dumps some useful statistics regarding free memory.</summary>
+        /// <description>
+        /// Dumps an analysis of 'free chunks' of memory. Does not print how much memory is free.
+        /// </description>
         public static void FreeMemoryDump() {
              InternalUnsafeMethods.FreeMemoryDump__Args _args = new InternalUnsafeMethods.FreeMemoryDump__Args() {
              };
              InternalUnsafeMethods.FreeMemoryDump()(_args);
         }
 
+        /// <summary>Used to validate memory space for the game.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void ValidateMemory() {
              InternalUnsafeMethods.ValidateMemory__Args _args = new InternalUnsafeMethods.ValidateMemory__Args() {
              };
              InternalUnsafeMethods.ValidateMemory()(_args);
         }
 
+        /// <description>
+        /// setMainDotCsDir()
+        /// </description>
         public static void SetMainDotCsDir(string path) {
              InternalUnsafeMethods.SetMainDotCsDir__Args _args = new InternalUnsafeMethods.SetMainDotCsDir__Args() {
                 path = path,
@@ -14254,6 +15441,9 @@ resolution.Free();        }
              InternalUnsafeMethods.SetMainDotCsDir()(_args);
         }
 
+        /// <description>
+        /// getUserHomeDirectory()
+        /// </description>
         public static string GetUserHomeDirectory() {
              InternalUnsafeMethods.GetUserHomeDirectory__Args _args = new InternalUnsafeMethods.GetUserHomeDirectory__Args() {
              };
@@ -14261,6 +15451,9 @@ resolution.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// getUserDataDirectory()
+        /// </description>
         public static string GetUserDataDirectory() {
              InternalUnsafeMethods.GetUserDataDirectory__Args _args = new InternalUnsafeMethods.GetUserDataDirectory__Args() {
              };
@@ -14268,6 +15461,12 @@ resolution.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Creates a name and extension for a potential temporary file</summary>
+        /// <description>
+        /// This does not create the actual file. It simply creates a random name for a file that does not exist.
+        /// </description>
+        /// <remarks> This is legacy function brought over from TGB, and does not appear to have much use. Possibly deprecate?
+        /// </remarks>
         public static string GetTemporaryFileName() {
              InternalUnsafeMethods.GetTemporaryFileName__Args _args = new InternalUnsafeMethods.GetTemporaryFileName__Args() {
              };
@@ -14275,6 +15474,16 @@ resolution.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns the OS temporary directory, "C:/Users/Mich/AppData/Local/Temp" for example</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> This can be useful to adhering to OS standards and practices, but not really used in Torque 3D right now.
+        /// </remarks>
+        /// <remarks> Be very careful when getting into OS level File I/O.</remarks>
+        /// <returns>String containing path to OS temp directory</returns>
+        /// <remarks> This is legacy function brought over from TGB, and does not appear to have much use. Possibly deprecate?
+        /// </remarks>
         public static string GetTemporaryDirectory() {
              InternalUnsafeMethods.GetTemporaryDirectory__Args _args = new InternalUnsafeMethods.GetTemporaryDirectory__Args() {
              };
@@ -14282,6 +15491,9 @@ resolution.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Fatal Script Assertion
+        /// </description>
         public static void Assert(bool condition, string message) {
              InternalUnsafeMethods.Assert__Args _args = new InternalUnsafeMethods.Assert__Args() {
                 condition = condition,
@@ -14290,6 +15502,19 @@ resolution.Free();        }
              InternalUnsafeMethods.Assert()(_args);
         }
 
+        /// <description>
+        /// ( int a, int b )
+        /// </description>
+        /// <summary>Returns a random number based on parameters passed in..</summary>
+        /// <description>
+        /// If no parameters are passed in, getRandom() will return a float between 0.0 and 1.0. If one parameter is passed an integer between 0 and the passed in value will be returned. Two parameters will return an integer between the specified numbers.
+        /// </description>
+        /// <param name="a">If this is the only parameter, a number between 0 and a is returned. Elsewise represents the lower bound.</param>
+        /// <param name="b">Upper bound on the random number.  The random number will be <=<paramref name="" /> b.
+        /// </param>
+        /// <returns>A pseudo-random integer between<paramref name="" /> a and </returns>
+        /// <remarks> All parameters are optional.</remarks>
+        /// <see cref="setRandomSeed" />
         public static float GetRandom(int a = 2147483647, int b = 2147483647) {
              InternalUnsafeMethods.GetRandom__Args _args = new InternalUnsafeMethods.GetRandom__Args() {
                 a = a,
@@ -14299,6 +15524,10 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the current seed used by the random number generator.
+        /// </description>
+        /// <returns>The current random number generator seed value.</returns>
         public static int GetRandomSeed() {
              InternalUnsafeMethods.GetRandomSeed__Args _args = new InternalUnsafeMethods.GetRandomSeed__Args() {
              };
@@ -14306,6 +15535,12 @@ resolution.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the current seed for the random number generator.
+        /// Based on this seed, a repeatable sequence of numbers will be produced by getRandom().
+        /// </description>
+        /// <param name="seed">The seed with which to initialize the randon number generator with.  The same seed will always leed tothe same sequence of pseudo-random numbers.
+        /// If -1, the current timestamp will be used as the seed which is a good basis for randomization.</param>
         public static void SetRandomSeed(int seed = -1) {
              InternalUnsafeMethods.SetRandomSeed__Args _args = new InternalUnsafeMethods.SetRandomSeed__Args() {
                 seed = seed,
@@ -14313,6 +15548,11 @@ resolution.Free();        }
              InternalUnsafeMethods.SetRandomSeed()(_args);
         }
 
+        /// <description>
+        /// Get the center point of an axis-aligned box.
+        /// </description>
+        /// <param name="b">A Box3F, in string format using "minExtentX minExtentY minExtentZ maxExtentX maxExtentY maxExtentZ"</param>
+        /// <returns>Center of the box.</returns>
         public static Point3F GetBoxCenter(Box3F box) {
 box.Alloc();             InternalUnsafeMethods.GetBoxCenter__Args _args = new InternalUnsafeMethods.GetBoxCenter__Args() {
                 box = box.internalStructPtr,
@@ -14321,6 +15561,13 @@ box.Alloc();             InternalUnsafeMethods.GetBoxCenter__Args _args = new In
 box.Free();             return new Point3F(_engineResult);
         }
 
+        /// <summary>Multiply the given point by the given transform assuming that w=1.</summary>
+        /// <description>
+        /// This function will multiply the given vector such that translation with take effect.
+        /// </description>
+        /// <param name="transform">A transform.</param>
+        /// <param name="point">A vector.</param>
+        /// <returns>The transformed vector.</returns>
         public static Point3F MatrixMulPoint(TransformF transform, Point3F point) {
 transform.Alloc();point.Alloc();             InternalUnsafeMethods.MatrixMulPoint__Args _args = new InternalUnsafeMethods.MatrixMulPoint__Args() {
                 transform = transform.internalStructPtr,
@@ -14330,6 +15577,13 @@ transform.Alloc();point.Alloc();             InternalUnsafeMethods.MatrixMulPoin
 transform.Free();point.Free();             return new Point3F(_engineResult);
         }
 
+        /// <summary>Multiply the vector by the transform assuming that w=0.</summary>
+        /// <description>
+        /// This function will multiply the given vector by the given transform such that translation will not affect the vector.
+        /// </description>
+        /// <param name="transform">A transform.</param>
+        /// <param name="vector">A vector.</param>
+        /// <returns>The transformed vector.</returns>
         public static Point3F MatrixMulVector(TransformF transform, Point3F vector) {
 transform.Alloc();vector.Alloc();             InternalUnsafeMethods.MatrixMulVector__Args _args = new InternalUnsafeMethods.MatrixMulVector__Args() {
                 transform = transform.internalStructPtr,
@@ -14339,6 +15593,13 @@ transform.Alloc();vector.Alloc();             InternalUnsafeMethods.MatrixMulVec
 transform.Free();vector.Free();             return new Point3F(_engineResult);
         }
 
+        /// <summary>Multiply the two matrices.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="left">First transform.</param>
+        /// <param name="right">Right transform.</param>
+        /// <returns>Concatenation of the two transforms.</returns>
         public static TransformF MatrixMultiply(TransformF left, TransformF right) {
 left.Alloc();right.Alloc();             InternalUnsafeMethods.MatrixMultiply__Args _args = new InternalUnsafeMethods.MatrixMultiply__Args() {
                 left = left.internalStructPtr,
@@ -14348,6 +15609,8 @@ left.Alloc();right.Alloc();             InternalUnsafeMethods.MatrixMultiply__Ar
 left.Free();right.Free();             return new TransformF(_engineResult);
         }
 
+        /// <param name="Vector3F">X, Y, and Z rotation in *radians*.</param>
+        /// <returns>A transform based on the given orientation.</returns>
         public static TransformF MatrixCreateFromEuler(Point3F angles) {
 angles.Alloc();             InternalUnsafeMethods.MatrixCreateFromEuler__Args _args = new InternalUnsafeMethods.MatrixCreateFromEuler__Args() {
                 angles = angles.internalStructPtr,
@@ -14356,6 +15619,12 @@ angles.Alloc();             InternalUnsafeMethods.MatrixCreateFromEuler__Args _a
 angles.Free();             return new TransformF(_engineResult);
         }
 
+        /// <description>
+        /// Create a transform from the given translation and orientation.
+        /// </description>
+        /// <param name="position">The translation vector for the transform.</param>
+        /// <param name="orientation">The axis and rotation that orients the transform.</param>
+        /// <returns>A transform based on the given position and orientation.</returns>
         public static TransformF MatrixCreate(Point3F position, AngAxisF orientation) {
 position.Alloc();orientation.Alloc();             InternalUnsafeMethods.MatrixCreate__Args _args = new InternalUnsafeMethods.MatrixCreate__Args() {
                 position = position.internalStructPtr,
@@ -14365,6 +15634,12 @@ position.Alloc();orientation.Alloc();             InternalUnsafeMethods.MatrixCr
 position.Free();orientation.Free();             return new TransformF(_engineResult);
         }
 
+        /// <description>
+        /// Compute the reflection of a vector based on a normal.
+        /// </description>
+        /// <param name="a">The vector.</param>
+        /// <param name="b">The normal.</param>
+        /// <returns>The reflected vector.</returns>
         public static Point3F VectorReflect(Point3F vec, Point3F normal) {
 vec.Alloc();normal.Alloc();             InternalUnsafeMethods.VectorReflect__Args _args = new InternalUnsafeMethods.VectorReflect__Args() {
                 vec = vec.internalStructPtr,
@@ -14374,6 +15649,35 @@ vec.Alloc();normal.Alloc();             InternalUnsafeMethods.VectorReflect__Arg
 vec.Free();normal.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Linearly interpolate between two vectors by<paramref name="" /> t.
+        /// 
+        /// </description>
+        /// <param name="a">Vector to start interpolation from.</param>
+        /// <param name="b">Vector to interpolate to.</param>
+        /// <param name="t">Interpolation factor (0-1).  At zero,<paramref name="" /> a is returned and at one, </param>
+        /// <returns>An interpolated vector between<paramref name="" /> a and </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorLerp( %a, %b );
+        /// //
+        /// // The point between vector a, (ax, ay, az), and vector b, (bx, by, bz), which is
+        /// // weighted by the interpolation factor, t, is
+        /// //
+        /// //     r = a + t * ( b - a )
+        /// //       = ( ax + t * ( bx - ax ), ay + t * ( by - ay ), az + t * ( bz - az ) )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// 
+        /// %a = "1 1 0";
+        /// %b = "2 0 1";
+        /// %v = "0.25";
+        /// 
+        /// // %r = "( 1 + 0.25 * ( 2 - 1 ), 1 + 0.25 * ( 0 - 1 ), 0 + 0.25 * ( 1 - 0 ) )";
+        /// // %r = "1.25 0.75 0.25";
+        /// %r = VectorLerp( %a, %b );
+        /// </code>
         public static Point3F VectorLerp(Point3F a, Point3F b, float t) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorLerp__Args _args = new InternalUnsafeMethods.VectorLerp__Args() {
                 a = a.internalStructPtr,
@@ -14384,6 +15688,9 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorLerp__Args _args = 
 a.Free();b.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// (Vector3F, float) rotate a vector in 2d
+        /// </description>
         public static string VectorRot(Point3F v, float angle) {
 v.Alloc();             InternalUnsafeMethods.VectorRot__Args _args = new InternalUnsafeMethods.VectorRot__Args() {
                 v = v.internalStructPtr,
@@ -14393,6 +15700,11 @@ v.Alloc();             InternalUnsafeMethods.VectorRot__Args _args = new Interna
 v.Free();             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Create an orthogonal basis from the given vector.
+        /// </description>
+        /// <param name="aaf">The vector to create the orthogonal basis from.</param>
+        /// <returns>A matrix representing the orthogonal basis.</returns>
         public static MatrixF VectorOrthoBasis(AngAxisF aa) {
 aa.Alloc();             InternalUnsafeMethods.VectorOrthoBasis__Args _args = new InternalUnsafeMethods.VectorOrthoBasis__Args() {
                 aa = aa.internalStructPtr,
@@ -14401,6 +15713,31 @@ aa.Alloc();             InternalUnsafeMethods.VectorOrthoBasis__Args _args = new
 aa.Free();             return new MatrixF(_engineResult);
         }
 
+        /// <description>
+        /// Calculate the magnitude of the given vector.
+        /// </description>
+        /// <param name="v">A vector.</param>
+        /// <returns>The length of vector<paramref name="" /> v.
+        /// 
+        /// </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorLen( %a );
+        /// //
+        /// // The length or magnitude of  vector a, (ax, ay, az), is:
+        /// //
+        /// //     ||a|| = Sqrt( ax * ax + ay * ay + az * az )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// 
+        /// %a = "1 1 0";
+        /// 
+        /// // %r = mSqrt( 1 * 1 + 1 * 1 + 0 * 0 );
+        /// // %r = mSqrt( 2 );
+        /// // %r = 1.414;
+        /// %r = VectorLen( %a );
+        /// </code>
         public static float VectorLen(Point3F v) {
 v.Alloc();             InternalUnsafeMethods.VectorLen__Args _args = new InternalUnsafeMethods.VectorLen__Args() {
                 v = v.internalStructPtr,
@@ -14409,6 +15746,23 @@ v.Alloc();             InternalUnsafeMethods.VectorLen__Args _args = new Interna
 v.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Gets the midpoint between the two vectors.
+        /// </description>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The vector (<paramref name="" /> a + </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorMidPoint( %a, %b );
+        /// //
+        /// // The midpoint of vector a, (ax, ay, az), and vector b, (bx, by, bz) is:
+        /// //
+        /// //     (a + b)/2 = ( (ax + bx) /2, ay + by) /2, (az + bz) /2 )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// </code>
         public static Point3F VectorMidPoint(Point3F a, Point3F b) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorMidPoint__Args _args = new InternalUnsafeMethods.VectorMidPoint__Args() {
                 a = a.internalStructPtr,
@@ -14418,6 +15772,32 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorMidPoint__Args _arg
 a.Free();b.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Compute the distance between two vectors.
+        /// </description>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The length(<paramref name="" /> b - </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorDist( %a, %b );
+        /// //
+        /// // The distance between vector a, (ax, ay, az), and vector b, (bx, by, bz), is
+        /// //
+        /// //     a -> b = ||( b - a )||
+        /// //            = ||( bx - ax, by - ay, bz - az )||
+        /// //            = mSqrt( ( bx - ax ) * ( bx - ax ) + ( by - ay ) * ( by - ay ) + ( bz - az ) * ( bz - az ) )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// 
+        /// %a = "1 1 0";
+        /// %b = "2 0 1";
+        /// 
+        /// // %r = mSqrt( ( 2 - 1 ) * ( 2 - 1) + ( 0 - 1 ) * ( 0 - 1 ) + ( 1 - 0 ) * ( 1 - 0 ) );
+        /// // %r = mSqrt( 3 );
+        /// %r = VectorDist( %a, %b );
+        /// </code>
         public static float VectorDist(Point3F a, Point3F b) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorDist__Args _args = new InternalUnsafeMethods.VectorDist__Args() {
                 a = a.internalStructPtr,
@@ -14427,6 +15807,30 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorDist__Args _args = 
 a.Free();b.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Calculcate the cross product of two vectors.
+        /// </description>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The cross product<paramref name="" /> x </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorCross( %a, %b );
+        /// //
+        /// // The cross product of vector a, (ax, ay, az), and vector b, (bx, by, bz), is
+        /// //
+        /// //     a x b = ( ( ay * bz ) - ( az * by ), ( az * bx ) - ( ax * bz ), ( ax * by ) - ( ay * bx ) )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// 
+        /// %a = "1 1 0";
+        /// %b = "2 0 1";
+        /// 
+        /// // %r = "( ( 1 * 1 ) - ( 0 * 0 ), ( 0 * 2 ) - ( 1 * 1 ), ( 1 * 0 ) - ( 1 * 2 ) )";
+        /// // %r = "1 -1 -2";
+        /// %r = VectorCross( %a, %b );
+        /// </code>
         public static Point3F VectorCross(Point3F a, Point3F b) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorCross__Args _args = new InternalUnsafeMethods.VectorCross__Args() {
                 a = a.internalStructPtr,
@@ -14436,6 +15840,30 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorCross__Args _args =
 a.Free();b.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Compute the dot product of two vectors.
+        /// </description>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The dot product<paramref name="" /> a * </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorDot( %a, %b );
+        /// //
+        /// // The dot product between vector a, (ax, ay, az), and vector b, (bx, by, bz), is:
+        /// //
+        /// //     a . b = ( ax * bx + ay * by + az * bz )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// 
+        /// %a = "1 1 0";
+        /// %b = "2 0 1";
+        /// 
+        /// // %r = "( 1 * 2 + 1 * 0 + 0 * 1 )";
+        /// // %r = 2;
+        /// %r = VectorDot( %a, %b );
+        /// </code>
         public static float VectorDot(Point3F a, Point3F b) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorDot__Args _args = new InternalUnsafeMethods.VectorDot__Args() {
                 a = a.internalStructPtr,
@@ -14445,6 +15873,32 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorDot__Args _args = n
 a.Free();b.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Brings a vector into its unit form, i.e. such that it has the magnitute 1.
+        /// </description>
+        /// <param name="v">The vector to normalize.</param>
+        /// <returns>The vector<paramref name="" /> v scaled to length 1.
+        /// 
+        /// </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorNormalize( %a );
+        /// //
+        /// // The normalized vector a, (ax, ay, az), is:
+        /// //
+        /// //     a^ = a / ||a||
+        /// //        = ( ax / ||a||, ay / ||a||, az / ||a|| )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// 
+        /// %a = "1 1 0";
+        /// %l = 1.414;
+        /// 
+        /// // %r = "( 1 / 1.141, 1 / 1.141, 0 / 1.141 )";
+        /// // %r = "0.707 0.707 0";
+        /// %r = VectorNormalize( %a );
+        /// </code>
         public static Point3F VectorNormalize(Point3F v) {
 v.Alloc();             InternalUnsafeMethods.VectorNormalize__Args _args = new InternalUnsafeMethods.VectorNormalize__Args() {
                 v = v.internalStructPtr,
@@ -14453,6 +15907,30 @@ v.Alloc();             InternalUnsafeMethods.VectorNormalize__Args _args = new I
 v.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Divide two vectors.
+        /// </description>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The vector<paramref name="" /> a / </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorDiv( %a, %b );
+        /// //
+        /// // The division of vector a, (ax, ay, az), and vector b, (bx, by, bz) is:
+        /// //
+        /// //     a * b = ( ax / bx, ay / by, az / bz )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// 
+        /// %a = "1 1 1";
+        /// %b = "2 2 2";
+        /// 
+        /// // %r = "( 1 / 2, 1 / 2, 1 / 2 )";
+        /// // %r = "0.5 0.5 0.5";
+        /// %r = VectorDiv( %a, %b );
+        /// </code>
         public static Point3F VectorDiv(Point3F a, Point3F b) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorDiv__Args _args = new InternalUnsafeMethods.VectorDiv__Args() {
                 a = a.internalStructPtr,
@@ -14462,6 +15940,30 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorDiv__Args _args = n
 a.Free();b.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Multiplies two vectors.
+        /// </description>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The vector<paramref name="" /> a * </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorMul( %a, %b );
+        /// //
+        /// // The multiplication of vector a, (ax, ay, az), and vector b, (bx, by, bz) is:
+        /// //
+        /// //     a * b = ( ax * bx, ay * by, az * bz )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// 
+        /// %a = "1 0 0";
+        /// %b = "0 1 0";
+        /// 
+        /// // %r = "( 1 * 0, 0 * 1, 0 * 0 )";
+        /// // %r = "0 0 0";
+        /// %r = VectorMul( %a, %b );
+        /// </code>
         public static Point3F VectorMul(Point3F a, Point3F b) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorMul__Args _args = new InternalUnsafeMethods.VectorMul__Args() {
                 a = a.internalStructPtr,
@@ -14471,6 +15973,30 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorMul__Args _args = n
 a.Free();b.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Scales a vector by a scalar.
+        /// </description>
+        /// <param name="a">The vector to scale.</param>
+        /// <param name="scalar">The scale factor.</param>
+        /// <returns>The vector<paramref name="" /> a * </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorScale( %a, %v );
+        /// //
+        /// // Scaling vector a, (ax, ay, az), but the scalar, v, is:
+        /// //
+        /// //     a * v = ( ax * v, ay * v, az * v )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// 
+        /// %a = "1 1 0";
+        /// %v = "2";
+        /// 
+        /// // %r = "( 1 * 2, 1 * 2, 0 * 2 )";
+        /// // %r = "2 2 0";
+        /// %r = VectorScale( %a, %v );
+        /// </code>
         public static Point3F VectorScale(Point3F a, float scalar) {
 a.Alloc();             InternalUnsafeMethods.VectorScale__Args _args = new InternalUnsafeMethods.VectorScale__Args() {
                 a = a.internalStructPtr,
@@ -14480,6 +16006,30 @@ a.Alloc();             InternalUnsafeMethods.VectorScale__Args _args = new Inter
 a.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Subtract two vectors.
+        /// </description>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The vector<paramref name="" /> a - </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorSub( %a, %b );
+        /// //
+        /// // The difference of vector a, (ax, ay, az), and vector b, (bx, by, bz) is:
+        /// //
+        /// //     a - b = ( ax - bx, ay - by, az - bz )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// 
+        /// %a = "1 0 0";
+        /// %b = "0 1 0";
+        /// 
+        /// // %r = "( 1 - 0, 0 - 1, 0 - 0 )";
+        /// // %r = "1 -1 0";
+        /// %r = VectorSub( %a, %b );
+        /// </code>
         public static Point3F VectorSub(Point3F a, Point3F b) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorSub__Args _args = new InternalUnsafeMethods.VectorSub__Args() {
                 a = a.internalStructPtr,
@@ -14489,6 +16039,29 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorSub__Args _args = n
 a.Free();b.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Add two vectors.
+        /// </description>
+        /// <param name="a">The first vector.</param>
+        /// <param name="b">The second vector.</param>
+        /// <returns>The vector<paramref name="" /> a + </returns>
+        /// <code>
+        /// //-----------------------------------------------------------------------------
+        /// //
+        /// // VectorAdd( %a, %b );
+        /// //
+        /// // The sum of vector a, (ax, ay, az), and vector b, (bx, by, bz) is:
+        /// //
+        /// //     a + b = ( ax + bx, ay + by, az + bz )
+        /// //
+        /// //-----------------------------------------------------------------------------
+        /// %a = "1 0 0";
+        /// %b = "0 1 0";
+        /// 
+        /// // %r = "( 1 + 0, 0 + 1, 0 + 0 )";
+        /// // %r = "1 1 0";
+        /// %r = VectorAdd( %a, %b );
+        /// </code>
         public static Point3F VectorAdd(Point3F a, Point3F b) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorAdd__Args _args = new InternalUnsafeMethods.VectorAdd__Args() {
                 a = a.internalStructPtr,
@@ -14498,6 +16071,10 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.VectorAdd__Args _args = n
 a.Free();b.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Gets the direction from the rotation's angles.
+        /// </description>
+        /// <param name="Our">rotation.</param>
         public static Point3F GetRotationDirection(RotationF rot) {
 rot.Alloc();             InternalUnsafeMethods.GetRotationDirection__Args _args = new InternalUnsafeMethods.GetRotationDirection__Args() {
                 rot = rot.internalStructPtr,
@@ -14506,6 +16083,10 @@ rot.Alloc();             InternalUnsafeMethods.GetRotationDirection__Args _args 
 rot.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Gets the up vector of a rotation.
+        /// </description>
+        /// <param name="Our">rotation.</param>
         public static Point3F GetRotationUpVector(RotationF rot) {
 rot.Alloc();             InternalUnsafeMethods.GetRotationUpVector__Args _args = new InternalUnsafeMethods.GetRotationUpVector__Args() {
                 rot = rot.internalStructPtr,
@@ -14514,6 +16095,10 @@ rot.Alloc();             InternalUnsafeMethods.GetRotationUpVector__Args _args =
 rot.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Gets the right vector of a rotation.
+        /// </description>
+        /// <param name="Our">rotation.</param>
         public static Point3F GetRotationRightVector(RotationF rot) {
 rot.Alloc();             InternalUnsafeMethods.GetRotationRightVector__Args _args = new InternalUnsafeMethods.GetRotationRightVector__Args() {
                 rot = rot.internalStructPtr,
@@ -14522,6 +16107,9 @@ rot.Alloc();             InternalUnsafeMethods.GetRotationRightVector__Args _arg
 rot.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the forward vector of a rotation.
+        /// </description>
         public static Point3F GetRotationForwardVector(RotationF rot) {
 rot.Alloc();             InternalUnsafeMethods.GetRotationForwardVector__Args _args = new InternalUnsafeMethods.GetRotationForwardVector__Args() {
                 rot = rot.internalStructPtr,
@@ -14530,6 +16118,12 @@ rot.Alloc();             InternalUnsafeMethods.GetRotationForwardVector__Args _a
 rot.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Sets the up vector of the rotation.
+        /// </description>
+        /// <param name="Starting">rotation.</param>
+        /// <param name="New">up vector.</param>
+        /// <returns>New rotation with the set up vector.</returns>
         public static RotationF SetRotationUpVector(RotationF rot, Point3F upVec) {
 rot.Alloc();upVec.Alloc();             InternalUnsafeMethods.SetRotationUpVector__Args _args = new InternalUnsafeMethods.SetRotationUpVector__Args() {
                 rot = rot.internalStructPtr,
@@ -14539,6 +16133,12 @@ rot.Alloc();upVec.Alloc();             InternalUnsafeMethods.SetRotationUpVector
 rot.Free();upVec.Free();             return new RotationF(_engineResult);
         }
 
+        /// <description>
+        /// Sets the right vector of the rotation.
+        /// </description>
+        /// <param name="Starting">rotation.</param>
+        /// <param name="New">up vector.</param>
+        /// <returns>New rotation with the set right vector.</returns>
         public static RotationF SetRotationRightVector(RotationF rot, Point3F rightVec) {
 rot.Alloc();rightVec.Alloc();             InternalUnsafeMethods.SetRotationRightVector__Args _args = new InternalUnsafeMethods.SetRotationRightVector__Args() {
                 rot = rot.internalStructPtr,
@@ -14548,6 +16148,13 @@ rot.Alloc();rightVec.Alloc();             InternalUnsafeMethods.SetRotationRight
 rot.Free();rightVec.Free();             return new RotationF(_engineResult);
         }
 
+        /// <description>
+        /// Provides a rotation orientation to look at a target from a given position.
+        /// </description>
+        /// <param name="origin">Position of the object doing the looking.</param>
+        /// <param name="target">Position to be looked at.</param>
+        /// <param name="up">The up angle to orient the rotation.</param>
+        /// <returns>v orientation result.</returns>
         public static RotationF RotationLookAt(Point3F origin = null, Point3F target = null, Point3F up = null) {
 origin = origin ?? new Point3F("0 0 0");
 origin.Alloc();target = target ?? new Point3F("0 0 0");
@@ -14561,6 +16168,13 @@ up.Alloc();             InternalUnsafeMethods.RotationLookAt__Args _args = new I
 origin.Free();target.Free();up.Free();             return new RotationF(_engineResult);
         }
 
+        /// <description>
+        /// Interpolates between two rotations.
+        /// </description>
+        /// <param name="a">Rotation one.</param>
+        /// <param name="b">Rotation two.</param>
+        /// <param name="factor">The amount to interpolate between the two.</param>
+        /// <returns>v, interpolated result.</returns>
         public static RotationF InterpolateRotation(RotationF a, RotationF b, float factor) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.InterpolateRotation__Args _args = new InternalUnsafeMethods.InterpolateRotation__Args() {
                 a = a.internalStructPtr,
@@ -14571,6 +16185,12 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.InterpolateRotation__Args
 a.Free();b.Free();             return new RotationF(_engineResult);
         }
 
+        /// <description>
+        /// Subtracts two rotations.
+        /// </description>
+        /// <param name="a">Rotation one.</param>
+        /// <param name="b">Rotation two.</param>
+        /// <returns>v difference of both rotations.</returns>
         public static RotationF SubtractRotation(RotationF a, RotationF b) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.SubtractRotation__Args _args = new InternalUnsafeMethods.SubtractRotation__Args() {
                 a = a.internalStructPtr,
@@ -14580,6 +16200,12 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.SubtractRotation__Args _a
 a.Free();b.Free();             return new RotationF(_engineResult);
         }
 
+        /// <description>
+        /// Adds two rotations together.
+        /// </description>
+        /// <param name="a">Rotation one.</param>
+        /// <param name="b">Rotation two.</param>
+        /// <returns>v sum of both rotations.</returns>
         public static RotationF AddRotation(RotationF a, RotationF b) {
 a.Alloc();b.Alloc();             InternalUnsafeMethods.AddRotation__Args _args = new InternalUnsafeMethods.AddRotation__Args() {
                 a = a.internalStructPtr,
@@ -14589,6 +16215,13 @@ a.Alloc();b.Alloc();             InternalUnsafeMethods.AddRotation__Args _args =
 a.Free();b.Free();             return new RotationF(_engineResult);
         }
 
+        /// <description>
+        /// Returns signed angle between two vectors, using a normal for orientation.
+        /// </description>
+        /// <param name="vecA">First input vector.</param>
+        /// <param name="vecB">Second input vector.</param>
+        /// <param name="norm">Normal/Cross Product vector.</param>
+        /// <returns>Angle between both vectors in radians.</returns>
         public static float MGetSignedAngleBetweenVectors(Point3F vecA = null, Point3F vecB = null, Point3F norm = null) {
 vecA = vecA ?? new Point3F("0 0 0");
 vecA.Alloc();vecB = vecB ?? new Point3F("0 0 0");
@@ -14602,6 +16235,12 @@ norm.Alloc();             InternalUnsafeMethods.MGetSignedAngleBetweenVectors__A
 vecA.Free();vecB.Free();norm.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Returns angle between two vectors.
+        /// </description>
+        /// <param name="vecA">First input vector.</param>
+        /// <param name="vecB">Second input vector.</param>
+        /// <returns>Angle between both vectors in radians.</returns>
         public static float MGetAngleBetweenVectors(Point3F vecA, Point3F vecB) {
 vecA.Alloc();vecB.Alloc();             InternalUnsafeMethods.MGetAngleBetweenVectors__Args _args = new InternalUnsafeMethods.MGetAngleBetweenVectors__Args() {
                 vecA = vecA.internalStructPtr,
@@ -14611,6 +16250,11 @@ vecA.Alloc();vecB.Alloc();             InternalUnsafeMethods.MGetAngleBetweenVec
 vecA.Free();vecB.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Returns a randomized point inside a sphere of a given radius.
+        /// </description>
+        /// <param name="radius">The radius of the sphere to find a point in.</param>
+        /// <returns>Randomized point inside a sphere.</returns>
         public static Point3F MRandomPointInSphere(float radius) {
              InternalUnsafeMethods.MRandomPointInSphere__Args _args = new InternalUnsafeMethods.MRandomPointInSphere__Args() {
                 radius = radius,
@@ -14619,6 +16263,13 @@ vecA.Free();vecB.Free();             return _engineResult;
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Returns a randomized direction based on a starting axis and the min/max angles.
+        /// </description>
+        /// <param name="axis">Main axis to deviate the direction from.</param>
+        /// <param name="angleMin">minimum amount of deviation from the axis.</param>
+        /// <param name="angleMax">maximum amount of deviation from the axis.</param>
+        /// <returns>Randomized direction vector.</returns>
         public static Point3F MRandomDir(Point3F axis, float angleMin, float angleMax) {
 axis.Alloc();             InternalUnsafeMethods.MRandomDir__Args _args = new InternalUnsafeMethods.MRandomDir__Args() {
                 axis = axis.internalStructPtr,
@@ -14629,6 +16280,11 @@ axis.Alloc();             InternalUnsafeMethods.MRandomDir__Args _args = new Int
 axis.Free();             return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Returns whether the value is an exact power of two.
+        /// </description>
+        /// <param name="v">Input value.</param>
+        /// <returns>Whether the specified value is an exact power of two.</returns>
         public static bool MIsPow2(int v) {
              InternalUnsafeMethods.MIsPow2__Args _args = new InternalUnsafeMethods.MIsPow2__Args() {
                 v = v,
@@ -14637,6 +16293,10 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Return the value of 2*PI (full-circle in radians).
+        /// </description>
+        /// <returns>The value of 2*PI.</returns>
         public static float M2Pi() {
              InternalUnsafeMethods.M2Pi__Args _args = new InternalUnsafeMethods.M2Pi__Args() {
              };
@@ -14644,6 +16304,10 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Return the value of PI (half-circle in radians).
+        /// </description>
+        /// <returns>The value of PI.</returns>
         public static float MPi() {
              InternalUnsafeMethods.MPi__Args _args = new InternalUnsafeMethods.MPi__Args() {
              };
@@ -14651,6 +16315,13 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate linearly interpolated value between two specified numbers using specified normalized time.
+        /// </description>
+        /// <param name="v1">Interpolate From Input value.</param>
+        /// <param name="v2">Interpolate To Input value.</param>
+        /// <param name="time">Normalized time used to interpolate values (0-1).</param>
+        /// <returns>The interpolated value between the two specified values at normalized time t.</returns>
         public static float MLerp(float v1, float v2, float time) {
              InternalUnsafeMethods.MLerp__Args _args = new InternalUnsafeMethods.MLerp__Args() {
                 v1 = v1,
@@ -14661,6 +16332,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the lesser of two specified numbers.
+        /// </description>
+        /// <param name="v1">Input value.</param>
+        /// <param name="v2">Input value.</param>
+        /// <returns>The lesser value of the two specified values.</returns>
         public static float GetMin(float v1, float v2) {
              InternalUnsafeMethods.GetMin__Args _args = new InternalUnsafeMethods.GetMin__Args() {
                 v1 = v1,
@@ -14670,6 +16347,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the greater of two specified numbers.
+        /// </description>
+        /// <param name="v1">Input value.</param>
+        /// <param name="v2">Input value.</param>
+        /// <returns>The greater value of the two specified values.</returns>
         public static float GetMax(float v1, float v2) {
              InternalUnsafeMethods.GetMax__Args _args = new InternalUnsafeMethods.GetMax__Args() {
                 v1 = v1,
@@ -14679,6 +16362,13 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Wrap the specified value between two bounds.
+        /// </description>
+        /// <param name="v">Input value.</param>
+        /// <param name="min">Minimum Bound.</param>
+        /// <param name="max">Maximum Bound.</param>
+        /// <returns>The specified value wrapped to the specified bounds.</returns>
         public static int MWrap(int v, int min, int max) {
              InternalUnsafeMethods.MWrap__Args _args = new InternalUnsafeMethods.MWrap__Args() {
                 v = v,
@@ -14689,6 +16379,13 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Wrap the specified value between two bounds.
+        /// </description>
+        /// <param name="v">Input value.</param>
+        /// <param name="min">Minimum Bound.</param>
+        /// <param name="max">Maximum Bound.</param>
+        /// <returns>The specified value wrapped to the specified bounds.</returns>
         public static float MWrapF(float v, float min, float max) {
              InternalUnsafeMethods.MWrapF__Args _args = new InternalUnsafeMethods.MWrapF__Args() {
                 v = v,
@@ -14699,6 +16396,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Clamp the specified value between 0 and 1 (inclusive).
+        /// </description>
+        /// <param name="v">Input value.</param>
+        /// <returns>The specified value clamped between 0 and 1 (inclusive).</returns>
         public static float MSaturate(float v) {
              InternalUnsafeMethods.MSaturate__Args _args = new InternalUnsafeMethods.MSaturate__Args() {
                 v = v,
@@ -14707,6 +16409,13 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Clamp the specified value between two bounds.
+        /// </description>
+        /// <param name="v">Input value.</param>
+        /// <param name="min">Minimum Bound.</param>
+        /// <param name="max">Maximum Bound.</param>
+        /// <returns>The specified value clamped to the specified bounds.</returns>
         public static float MClamp(float v, float min, float max) {
              InternalUnsafeMethods.MClamp__Args _args = new InternalUnsafeMethods.MClamp__Args() {
                 v = v,
@@ -14717,6 +16426,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Convert specified degrees into radians.
+        /// </description>
+        /// <param name="degrees">Input Value (in degrees).</param>
+        /// <returns>The specified degrees value converted to radians.</returns>
         public static float MDegToRad(float degrees) {
              InternalUnsafeMethods.MDegToRad__Args _args = new InternalUnsafeMethods.MDegToRad__Args() {
                 degrees = degrees,
@@ -14725,6 +16439,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Convert specified radians into degrees.
+        /// </description>
+        /// <param name="radians">Input Value (in radians).</param>
+        /// <returns>The specified radians value converted to degrees.</returns>
         public static float MRadToDeg(float radians) {
              InternalUnsafeMethods.MRadToDeg__Args _args = new InternalUnsafeMethods.MRadToDeg__Args() {
                 radians = radians,
@@ -14733,6 +16452,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the arc-tangent (slope) of a line defined by rise and run.
+        /// </description>
+        /// <param name="rise">of line.</param>
+        /// <param name="run">of line.</param>
+        /// <returns>The arc-tangent (slope) of a line defined by rise and run.</returns>
         public static float MAtan(float rise, float run) {
              InternalUnsafeMethods.MAtan__Args _args = new InternalUnsafeMethods.MAtan__Args() {
                 rise = rise,
@@ -14742,6 +16467,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the arc-cosine of v.
+        /// </description>
+        /// <param name="v">Input Value (in radians).</param>
+        /// <returns>The arc-cosine of the input value.</returns>
         public static float MAcos(float v) {
              InternalUnsafeMethods.MAcos__Args _args = new InternalUnsafeMethods.MAcos__Args() {
                 v = v,
@@ -14750,6 +16480,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the arc-sine of v.
+        /// </description>
+        /// <param name="v">Input Value (in radians).</param>
+        /// <returns>The arc-sine of the input value.</returns>
         public static float MAsin(float v) {
              InternalUnsafeMethods.MAsin__Args _args = new InternalUnsafeMethods.MAsin__Args() {
                 v = v,
@@ -14758,6 +16493,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the tangent of v.
+        /// </description>
+        /// <param name="v">Input Value (in radians).</param>
+        /// <returns>The tangent of the input value.</returns>
         public static float MTan(float v) {
              InternalUnsafeMethods.MTan__Args _args = new InternalUnsafeMethods.MTan__Args() {
                 v = v,
@@ -14766,6 +16506,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the cosine of v.
+        /// </description>
+        /// <param name="v">Input Value (in radians).</param>
+        /// <returns>The cosine of the input value.</returns>
         public static float MCos(float v) {
              InternalUnsafeMethods.MCos__Args _args = new InternalUnsafeMethods.MCos__Args() {
                 v = v,
@@ -14774,6 +16519,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the sine of v.
+        /// </description>
+        /// <param name="v">Input Value (in radians).</param>
+        /// <returns>The sine of the input value.</returns>
         public static float MSin(float v) {
              InternalUnsafeMethods.MSin__Args _args = new InternalUnsafeMethods.MSin__Args() {
                 v = v,
@@ -14782,6 +16532,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the natural logarithm of v.
+        /// </description>
+        /// <param name="v">Input Value.</param>
+        /// <returns>The natural logarithm of the input value.</returns>
         public static float MLog(float v) {
              InternalUnsafeMethods.MLog__Args _args = new InternalUnsafeMethods.MLog__Args() {
                 v = v,
@@ -14790,6 +16545,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate b raised to the p-th power.
+        /// </description>
+        /// <param name="v">Input Value.</param>
+        /// <param name="p">Power to raise value by.</param>
+        /// <returns>v raised to the p-th power.</returns>
         public static float MPow(float v, float p) {
              InternalUnsafeMethods.MPow__Args _args = new InternalUnsafeMethods.MPow__Args() {
                 v = v,
@@ -14799,6 +16560,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the square-root of v.
+        /// </description>
+        /// <param name="v">Input Value.</param>
+        /// <returns>The square-root of the input value.</returns>
         public static float MSqrt(float v) {
              InternalUnsafeMethods.MSqrt__Args _args = new InternalUnsafeMethods.MSqrt__Args() {
                 v = v,
@@ -14807,6 +16573,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the remainder of v/d.
+        /// </description>
+        /// <param name="v">Input Value.</param>
+        /// <param name="d">Divisor Value.</param>
+        /// <returns>The remainder of v/d.</returns>
         public static float MFMod(float v, float d) {
              InternalUnsafeMethods.MFMod__Args _args = new InternalUnsafeMethods.MFMod__Args() {
                 v = v,
@@ -14816,6 +16588,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate absolute value of specified value.
+        /// </description>
+        /// <param name="v">Input Value.</param>
+        /// <returns>Absolute value of specified value.</returns>
         public static float MAbs(float v) {
              InternalUnsafeMethods.MAbs__Args _args = new InternalUnsafeMethods.MAbs__Args() {
                 v = v,
@@ -14824,6 +16601,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Formats the specified number to the given number of decimal places.
+        /// </description>
+        /// <param name="v">Number to format.</param>
+        /// <param name="precision">Number of decimal places to format to (1-9).</param>
+        /// <returns>Number formatted to the specified number of decimal places.</returns>
         public static string MFloatLength(float v, uint precision) {
              InternalUnsafeMethods.MFloatLength__Args _args = new InternalUnsafeMethods.MFloatLength__Args() {
                 v = v,
@@ -14833,6 +16616,11 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Round v up to the nearest integer.
+        /// </description>
+        /// <param name="v">Number to convert to integer.</param>
+        /// <returns>Number converted to integer.</returns>
         public static int MCeil(float v) {
              InternalUnsafeMethods.MCeil__Args _args = new InternalUnsafeMethods.MCeil__Args() {
                 v = v,
@@ -14841,6 +16629,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Round v to the nth decimal place or the nearest whole number by default.
+        /// </description>
+        /// <param name="v">Value to roundn</param>
+        /// <param name="n">Number of decimal places to round to, 0 by defaultn</param>
+        /// <returns>The rounded value as a S32.</returns>
         public static float MRoundColour(float v, int n = 0) {
              InternalUnsafeMethods.MRoundColour__Args _args = new InternalUnsafeMethods.MRoundColour__Args() {
                 v = v,
@@ -14850,6 +16644,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Round v to the nth decimal place or the nearest whole number by default.
+        /// </description>
+        /// <param name="v">Value to roundn</param>
+        /// <returns>The rounded value as a S32.</returns>
         public static int MRound(float v) {
              InternalUnsafeMethods.MRound__Args _args = new InternalUnsafeMethods.MRound__Args() {
                 v = v,
@@ -14858,6 +16657,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Round v down to the nearest integer.
+        /// </description>
+        /// <param name="v">Number to convert to integer.</param>
+        /// <returns>Number converted to integer.</returns>
         public static int MFloor(float v) {
              InternalUnsafeMethods.MFloor__Args _args = new InternalUnsafeMethods.MFloor__Args() {
                 v = v,
@@ -14866,6 +16670,15 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Solve a quartic equation (4th degree polynomial) of form a*x^4 + b*x^3 + c*x^2 + d*x + e = 0.
+        /// </description>
+        /// <param name="a">First Coefficient.</param>
+        /// <param name="b">Second Coefficient.</param>
+        /// <param name="c">Third Coefficient.</param>
+        /// <param name="d">Fourth Coefficient.</param>
+        /// <param name="e">Fifth Coefficient.</param>
+        /// <returns>A 5-tuple, containing: (sol x0 x1 x2 c3). (sol) is the number of solutions(being 0, 1, 2, 3 or 4), and (x0), (x1), (x2) and (x3) are the solutions, if any.</returns>
         public static string MSolveQuartic(float a, float b, float c, float d, float e) {
              InternalUnsafeMethods.MSolveQuartic__Args _args = new InternalUnsafeMethods.MSolveQuartic__Args() {
                 a = a,
@@ -14878,6 +16691,14 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Solve a cubic equation (3rd degree polynomial) of form a*x^3 + b*x^2 + c*x + d = 0.
+        /// </description>
+        /// <param name="a">First Coefficient.</param>
+        /// <param name="b">Second Coefficient.</param>
+        /// <param name="c">Third Coefficient.</param>
+        /// <param name="d">Fourth Coefficient.</param>
+        /// <returns>A 4-tuple, containing: (sol x0 x1 x2). (sol) is the number of solutions(being 0, 1, 2 or 3), and (x0), (x1) and (x2) are the solutions, if any.</returns>
         public static string MSolveCubic(float a, float b, float c, float d) {
              InternalUnsafeMethods.MSolveCubic__Args _args = new InternalUnsafeMethods.MSolveCubic__Args() {
                 a = a,
@@ -14889,6 +16710,13 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Solve a quadratic equation (2nd degree polynomial) of form a*x^2 + b*x + c = 0.
+        /// </description>
+        /// <param name="a">First Coefficient.</param>
+        /// <param name="b">Second Coefficient.</param>
+        /// <param name="c">Third Coefficient.</param>
+        /// <returns>A triple, containing: (sol x0 x1). (sol) is the number of solutions(being 0, 1, or 2), and (x0) and (x1) are the solutions, if any.</returns>
         public static string MSolveQuadratic(float a, float b, float c) {
              InternalUnsafeMethods.MSolveQuadratic__Args _args = new InternalUnsafeMethods.MSolveQuadratic__Args() {
                 a = a,
@@ -14899,6 +16727,13 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (pattern, [state]) -
+        /// </description>
+        /// <summary>Enable sampling for all keys that match the given name pattern. Slashes are treated as separators.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void EnableSamples(string pattern, bool state = true) {
              InternalUnsafeMethods.EnableSamples__Args _args = new InternalUnsafeMethods.EnableSamples__Args() {
                 pattern = pattern,
@@ -14907,12 +16742,26 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.EnableSamples()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Stops the rendering sampler</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void StopSampling() {
              InternalUnsafeMethods.StopSampling__Args _args = new InternalUnsafeMethods.StopSampling__Args() {
              };
              InternalUnsafeMethods.StopSampling()(_args);
         }
 
+        /// <description>
+        /// (location, [backend]) -
+        /// </description>
+        /// <summary>Takes a string informing the backend where to store sample data and optionally a name of the specific logging backend to use.  The default is the CSV backend. In most cases, the logging store will be a file name.</summary>
+        /// <code>
+        /// beginSampling( "mysamples.csv" );
+        /// </code>
         public static void BeginSampling(string location, string backend = "CSV") {
              InternalUnsafeMethods.BeginSampling__Args _args = new InternalUnsafeMethods.BeginSampling__Args() {
                 location = location,
@@ -14921,18 +16770,40 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.BeginSampling()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Reset FPS stats (fps::)</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void ResetFPSTracker() {
              InternalUnsafeMethods.ResetFPSTracker__Args _args = new InternalUnsafeMethods.ResetFPSTracker__Args() {
              };
              InternalUnsafeMethods.ResetFPSTracker()(_args);
         }
 
+        /// <summary>Dump the current contents of the networked string table to the console.</summary>
+        /// <description>
+        /// The results are returned in three columns.  The first column is the network string ID.  The second column is the string itself.  The third column is the reference count to the network string.
+        /// </description>
+        /// <remarks> This function is available only in debug builds.
+        /// 
+        /// </remarks>
         public static void DumpNetStringTable() {
              InternalUnsafeMethods.DumpNetStringTable__Args _args = new InternalUnsafeMethods.DumpNetStringTable__Args() {
              };
              InternalUnsafeMethods.DumpNetStringTable()(_args);
         }
 
+        /// <description>
+        /// allowConnections(bool allow)
+        /// </description>
+        /// <summary>Sets whether or not the global NetInterface allows connections from remote hosts.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="allow">Set to true to allow remote connections.</param>
         public static void AllowConnections(bool allow) {
              InternalUnsafeMethods.AllowConnections__Args _args = new InternalUnsafeMethods.AllowConnections__Args() {
                 allow = allow,
@@ -14940,6 +16811,11 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.AllowConnections()(_args);
         }
 
+        /// <summary>Returns the current %ActionMap.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <see cref="ActionMap" />
         public static ActionMap GetCurrentActionMap() {
              InternalUnsafeMethods.GetCurrentActionMap__Args _args = new InternalUnsafeMethods.GetCurrentActionMap__Args() {
              };
@@ -14947,6 +16823,7 @@ axis.Free();             return new Point3F(_engineResult);
              return new ActionMap(_engineResult);
         }
 
+        /// <summary>Compiles a LSO language file. if createIndex is true, will also create languageMap.cs with the global variables for each string index. The input file must follow this example layout: TXT_HELLO_WORLD = Hello world in english!</summary>
         public static void CompileLanguage(string inputFile, bool createMap = false) {
              InternalUnsafeMethods.CompileLanguage__Args _args = new InternalUnsafeMethods.CompileLanguage__Args() {
                 inputFile = inputFile,
@@ -14955,6 +16832,14 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.CompileLanguage()(_args);
         }
 
+        /// <description>
+        /// (string LangTable)
+        /// </description>
+        /// <summary>Sets the primary LangTable used by the game</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="LangTable">ID of the core LangTable</param>
         public static void SetCoreLangTable(string lgTable) {
              InternalUnsafeMethods.SetCoreLangTable__Args _args = new InternalUnsafeMethods.SetCoreLangTable__Args() {
                 lgTable = lgTable,
@@ -14962,6 +16847,14 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.SetCoreLangTable()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Gets the primary LangTable used by the game</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>ID of the core LangTable</returns>
         public static int GetCoreLangTable() {
              InternalUnsafeMethods.GetCoreLangTable__Args _args = new InternalUnsafeMethods.GetCoreLangTable__Args() {
              };
@@ -14969,24 +16862,46 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Dumps information about String memory usage</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void DumpStringMemStats() {
              InternalUnsafeMethods.DumpStringMemStats__Args _args = new InternalUnsafeMethods.DumpStringMemStats__Args() {
              };
              InternalUnsafeMethods.DumpStringMemStats()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public static void SbmDumpStrings() {
              InternalUnsafeMethods.SbmDumpStrings__Args _args = new InternalUnsafeMethods.SbmDumpStrings__Args() {
              };
              InternalUnsafeMethods.SbmDumpStrings()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public static void SbmDumpStats() {
              InternalUnsafeMethods.SbmDumpStats__Args _args = new InternalUnsafeMethods.SbmDumpStats__Args() {
              };
              InternalUnsafeMethods.SbmDumpStats()(_args);
         }
 
+        /// <description>
+        /// Force the resource at specified input path to be reloaded
+        /// </description>
+        /// <param name="path">Path to the resource to be reloaded</param>
+        /// <code>
+        /// reloadResource( "art/shapes/box.dts" );
+        /// </code>
+        /// <remarks> Currently used by editors only
+        /// </remarks>
         public static void ReloadResource(string path) {
              InternalUnsafeMethods.ReloadResource__Args _args = new InternalUnsafeMethods.ReloadResource__Args() {
                 path = path,
@@ -14994,12 +16909,17 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.ReloadResource()(_args);
         }
 
+        /// <summary>List the currently managed resources</summary>
+        /// <description>
+        /// Currently used by editors only, internal
+        /// </description>
         public static void ResourceDump() {
              InternalUnsafeMethods.ResourceDump__Args _args = new InternalUnsafeMethods.ResourceDump__Args() {
              };
              InternalUnsafeMethods.ResourceDump()(_args);
         }
 
+        /// 
         public static int GetMaxFrameAllocation() {
              InternalUnsafeMethods.GetMaxFrameAllocation__Args _args = new InternalUnsafeMethods.GetMaxFrameAllocation__Args() {
              };
@@ -15007,6 +16927,14 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// (bool enabled)
+        /// </description>
+        /// <summary>Enables logging of the connection protocols</summary>
+        /// <description>
+        /// When enabled a lot of network debugging information is sent to the console.
+        /// </description>
+        /// <param name="enabled">True to enable, false to disable</param>
         public static void DNetSetLogging(bool enabled) {
              InternalUnsafeMethods.DNetSetLogging__Args _args = new InternalUnsafeMethods.DNetSetLogging__Args() {
                 enabled = enabled,
@@ -15014,6 +16942,12 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.DNetSetLogging()(_args);
         }
 
+        /// <summary>Gets a byte-based stock color by name.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="stockColorName">- The stock color name to retrieve.</param>
+        /// <returns>The stock color that matches the specified color name.  Returns nothing if the color name is not found.</returns>
         public static ColorI GetStockColorI(string stockColorName) {
              InternalUnsafeMethods.GetStockColorI__Args _args = new InternalUnsafeMethods.GetStockColorI__Args() {
                 stockColorName = stockColorName,
@@ -15022,6 +16956,12 @@ axis.Free();             return new Point3F(_engineResult);
              return new ColorI(_engineResult);
         }
 
+        /// <summary>Gets a floating-point-based stock color by name.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="stockColorName">- The stock color name to retrieve.</param>
+        /// <returns>The stock color that matches the specified color name.  Returns nothing if the color name is not found.</returns>
         public static LinearColorF GetStockColorF(string stockColorName) {
              InternalUnsafeMethods.GetStockColorF__Args _args = new InternalUnsafeMethods.GetStockColorF__Args() {
                 stockColorName = stockColorName,
@@ -15030,6 +16970,12 @@ axis.Free();             return new Point3F(_engineResult);
              return new LinearColorF(_engineResult);
         }
 
+        /// <summary>Gets whether the specified name is a stock color or not.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="stockColorName">- The stock color name to test for.</param>
+        /// <returns>Whether the specified name is a stock color or not.</returns>
         public static bool IsStockColor(string stockColorName) {
              InternalUnsafeMethods.IsStockColor__Args _args = new InternalUnsafeMethods.IsStockColor__Args() {
                 stockColorName = stockColorName,
@@ -15038,6 +16984,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Gets the stock color name at the specified index.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="stockColorIndex">The zero-based index of the stock color name to retrieve.</param>
+        /// <returns>The stock color name at the specified index or nothing if the string is invalid.</returns>
         public static string GetStockColorName(int stockColorIndex) {
              InternalUnsafeMethods.GetStockColorName__Args _args = new InternalUnsafeMethods.GetStockColorName__Args() {
                 stockColorIndex = stockColorIndex,
@@ -15046,6 +16998,11 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Gets a count of available stock colors.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>A count of available stock colors.</returns>
         public static int GetStockColorCount() {
              InternalUnsafeMethods.GetStockColorCount__Args _args = new InternalUnsafeMethods.GetStockColorCount__Args() {
              };
@@ -15053,12 +17010,18 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// ()Forcibly disconnects any attached script debugging client.
+        /// </description>
         public static void DbgDisconnect() {
              InternalUnsafeMethods.DbgDisconnect__Args _args = new InternalUnsafeMethods.DbgDisconnect__Args() {
              };
              InternalUnsafeMethods.DbgDisconnect()(_args);
         }
 
+        /// <description>
+        /// ()Returns true if a script debugging client is connected else return false.
+        /// </description>
         public static bool DbgIsConnected() {
              InternalUnsafeMethods.DbgIsConnected__Args _args = new InternalUnsafeMethods.DbgIsConnected__Args() {
              };
@@ -15066,6 +17029,9 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// ( int port, string password, bool waitForClient )Open a debug server port on the specified port, requiring the specified password, and optionally waiting for the debug client to connect.
+        /// </description>
         public static void DbgSetParameters(int port, string password, bool waitForClient = false) {
              InternalUnsafeMethods.DbgSetParameters__Args _args = new InternalUnsafeMethods.DbgSetParameters__Args() {
                 port = port,
@@ -15075,6 +17041,14 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.DbgSetParameters()(_args);
         }
 
+        /// <summary>Initializes and open the telnet console.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="port">Port to listen on for console connections (0 will shut down listening).</param>
+        /// <param name="consolePass">Password for read/write access to console.</param>
+        /// <param name="listenPass">Password for read access to console.</param>
+        /// <param name="remoteEcho">[optional] Enable echoing back to the client, off by default.</param>
         public static void TelnetSetParameters(int port, string consolePass, string listenPass, bool remoteEcho = false) {
              InternalUnsafeMethods.TelnetSetParameters__Args _args = new InternalUnsafeMethods.TelnetSetParameters__Args() {
                 port = port,
@@ -15085,6 +17059,11 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.TelnetSetParameters()(_args);
         }
 
+        /// <summary>Loads a serialized object from a file.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="Name">and path to text file containing the object</param>
         public static SimObject LoadObject(string filename) {
              InternalUnsafeMethods.LoadObject__Args _args = new InternalUnsafeMethods.LoadObject__Args() {
                 filename = filename,
@@ -15093,6 +17072,12 @@ axis.Free();             return new Point3F(_engineResult);
              return new SimObject(_engineResult);
         }
 
+        /// <summary>Serialize the object to a file.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="object">The object to serialize.</param>
+        /// <param name="filename">The file name and path.</param>
         public static bool SaveObject(SimObject _object, string filename) {
              InternalUnsafeMethods.SaveObject__Args _args = new InternalUnsafeMethods.SaveObject__Args() {
                 _object = _object.ObjectPtr,
@@ -15102,6 +17087,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Call the given function for each instance of the given class.
+        /// </description>
+        /// <param name="className">Name of the class for which to enumerate instances.</param>
+        /// <param name="functionName">Name of function to call and pass each instance of the given class.</param>
+        /// <remarks> This function is only available in debug builds and primarily meant as an aid in debugging.</remarks>
         public static void DebugEnumInstances(string className, string functionName) {
              InternalUnsafeMethods.DebugEnumInstances__Args _args = new InternalUnsafeMethods.DebugEnumInstances__Args() {
                 className = className,
@@ -15110,18 +17101,37 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.DebugEnumInstances()(_args);
         }
 
+        /// <description>
+        /// Delete all the datablocks we've downloaded.
+        /// 
+        /// This is usually done in preparation of downloading a new set of datablocks, such as occurs on a mission change, but it's also good post-mission cleanup.
+        /// </description>
         public static void DeleteDataBlocks() {
              InternalUnsafeMethods.DeleteDataBlocks__Args _args = new InternalUnsafeMethods.DeleteDataBlocks__Args() {
              };
              InternalUnsafeMethods.DeleteDataBlocks()(_args);
         }
 
+        /// <description>
+        /// Preload all datablocks in client mode.
+        /// 
+        /// (Server parameter is set to false).  This will take some time to complete.
+        /// </description>
         public static void PreloadClientDataBlocks() {
              InternalUnsafeMethods.PreloadClientDataBlocks__Args _args = new InternalUnsafeMethods.PreloadClientDataBlocks__Args() {
              };
              InternalUnsafeMethods.PreloadClientDataBlocks()(_args);
         }
 
+        /// <description>
+        /// ( string name )
+        /// </description>
+        /// <summary>Return true if the given name makes for a valid object name.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="name">Name of object</param>
+        /// <returns>True if name is allowed, false if denied (usually because it starts with a number, _, or invalid character</returns>
         public static bool IsValidObjectName(string name) {
              InternalUnsafeMethods.IsValidObjectName__Args _args = new InternalUnsafeMethods.IsValidObjectName__Args() {
                 name = name,
@@ -15130,6 +17140,15 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// ( String baseName, SimSet set, bool searchChildren )
+        /// </description>
+        /// <summary>Returns a unique unused internal name within the SimSet/Group based on a given base name.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Currently only used by editors
+        /// </remarks>
         public static string GetUniqueInternalName(string baseName, string setString, bool searchChildren) {
              InternalUnsafeMethods.GetUniqueInternalName__Args _args = new InternalUnsafeMethods.GetUniqueInternalName__Args() {
                 baseName = baseName,
@@ -15140,6 +17159,15 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ( String baseName )
+        /// </description>
+        /// <summary>Returns a unique unused SimObject name based on a given base name.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Currently only used by editors
+        /// </remarks>
         public static string GetUniqueName(string baseName) {
              InternalUnsafeMethods.GetUniqueName__Args _args = new InternalUnsafeMethods.GetUniqueName__Args() {
                 baseName = baseName,
@@ -15148,6 +17176,9 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// schedule(time, refobject|0, command, <arg1...argN>)
+        /// </description>
         public static int Schedule(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -15164,6 +17195,9 @@ axis.Free();             return new Point3F(_engineResult);
             return _engineResult;
         }
 
+        /// <description>
+        /// getTimeSinceStart(%scheduleId);
+        /// </description>
         public static int GetTimeSinceStart(int scheduleId) {
              InternalUnsafeMethods.GetTimeSinceStart__Args _args = new InternalUnsafeMethods.GetTimeSinceStart__Args() {
                 scheduleId = scheduleId,
@@ -15172,6 +17206,9 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// getScheduleDuration(%scheduleId);
+        /// </description>
         public static int GetScheduleDuration(int scheduleId) {
              InternalUnsafeMethods.GetScheduleDuration__Args _args = new InternalUnsafeMethods.GetScheduleDuration__Args() {
                 scheduleId = scheduleId,
@@ -15180,6 +17217,9 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// getEventTimeLeft(scheduleId) Get the time left in ms until this event will trigger.
+        /// </description>
         public static int GetEventTimeLeft(int scheduleId) {
              InternalUnsafeMethods.GetEventTimeLeft__Args _args = new InternalUnsafeMethods.GetEventTimeLeft__Args() {
                 scheduleId = scheduleId,
@@ -15188,6 +17228,9 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// isEventPending(%scheduleId);
+        /// </description>
         public static bool IsEventPending(int scheduleId) {
              InternalUnsafeMethods.IsEventPending__Args _args = new InternalUnsafeMethods.IsEventPending__Args() {
                 scheduleId = scheduleId,
@@ -15196,6 +17239,9 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// cancelAll(objectId): cancel pending events on the specified object.  Events will be automatically cancelled if object is deleted.
+        /// </description>
         public static void CancelAll(string objectId) {
              InternalUnsafeMethods.CancelAll__Args _args = new InternalUnsafeMethods.CancelAll__Args() {
                 objectId = objectId,
@@ -15203,6 +17249,9 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.CancelAll()(_args);
         }
 
+        /// <description>
+        /// cancel(eventId)
+        /// </description>
         public static void Cancel(int eventId) {
              InternalUnsafeMethods.Cancel__Args _args = new InternalUnsafeMethods.Cancel__Args() {
                 eventId = eventId,
@@ -15210,6 +17259,9 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.Cancel()(_args);
         }
 
+        /// <description>
+        /// spawnObject(class [, dataBlock, name, properties, script])
+        /// </description>
         public static int SpawnObject(string spawnClass, string spawnDataBlock = "", string spawnName = "", string spawnProperties = "", string spawnScript = "") {
              InternalUnsafeMethods.SpawnObject__Args _args = new InternalUnsafeMethods.SpawnObject__Args() {
                 spawnClass = spawnClass,
@@ -15222,6 +17274,9 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// isObject(object)
+        /// </description>
         public static bool IsObject(string objectName) {
              InternalUnsafeMethods.IsObject__Args _args = new InternalUnsafeMethods.IsObject__Args() {
                 objectName = objectName,
@@ -15230,6 +17285,9 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// nameToID(object)
+        /// </description>
         public static int NameToID(string objectName) {
              InternalUnsafeMethods.NameToID__Args _args = new InternalUnsafeMethods.NameToID__Args() {
                 objectName = objectName,
@@ -15238,6 +17296,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Retrofits a filepath that uses old Torque style</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>String containing filepath with new formatting</returns>
         public static string ExpandOldFilename(string filename) {
              InternalUnsafeMethods.ExpandOldFilename__Args _args = new InternalUnsafeMethods.ExpandOldFilename__Args() {
                 filename = filename,
@@ -15246,6 +17309,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Grabs the full path of a specified file</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="filename">Name of the local file to locate</param>
+        /// <returns>String containing the full filepath on disk</returns>
         public static string ExpandFilename(string filename) {
              InternalUnsafeMethods.ExpandFilename__Args _args = new InternalUnsafeMethods.ExpandFilename__Args() {
                 filename = filename,
@@ -15254,6 +17323,13 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Create the given directory or the path leading to the given filename.</summary>
+        /// <description>
+        /// If
+        /// </description>
+        /// <paramref name="" /> path ends in a trailing slash, then all components in the given path will be created as directories (if not already in place).  If <param name="path">The path to create.</param>
+        /// <remarks> Only present in a Tools build of Torque.
+        /// </remarks>
         public static bool CreatePath(string path) {
              InternalUnsafeMethods.CreatePath__Args _args = new InternalUnsafeMethods.CreatePath__Args() {
                 path = path,
@@ -15262,6 +17338,16 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Set the current working directory.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="path">The absolute or relative (to the current working directory) path of the directory which should be made the new working directory.</param>
+        /// <returns>True if the working directory was successfully changed to<paramref name="" /> path, false otherwise.
+        /// 
+        /// </returns>
+        /// <remarks> Only present in a Tools build of Torque.
+        /// </remarks>
         public static bool SetCurrentDirectory(string path) {
              InternalUnsafeMethods.SetCurrentDirectory__Args _args = new InternalUnsafeMethods.SetCurrentDirectory__Args() {
                 path = path,
@@ -15270,6 +17356,14 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Return the current working directory.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>The absolute path of the current working directory.</returns>
+        /// <remarks> Only present in a Tools build of Torque.
+        /// </remarks>
+        /// <see cref="getWorkingDirectory()" />
         public static string GetCurrentDirectory() {
              InternalUnsafeMethods.GetCurrentDirectory__Args _args = new InternalUnsafeMethods.GetCurrentDirectory__Args() {
              };
@@ -15277,6 +17371,17 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Copy a file to a new location.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fromFile">%Path of the file to copy.</param>
+        /// <param name="toFile">%Path where to copy<paramref name="" /> fromFile to.
+        /// </param>
+        /// <param name="noOverwrite">If true, then<paramref name="" /> fromFile will not overwrite a file that may already exist at </param>
+        /// <returns>True if the file was successfully copied, false otherwise.</returns>
+        /// <remarks> Only present in a Tools build of Torque.
+        /// </remarks>
         public static bool PathCopy(string fromFile = "", string toFile = "", bool noOverwrite = true) {
              InternalUnsafeMethods.PathCopy__Args _args = new InternalUnsafeMethods.PathCopy__Args() {
                 fromFile = fromFile,
@@ -15287,6 +17392,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Open the given<paramref name="" /> file through the system.  This will usually open the file in its associated application.
+        /// </summary>
+        /// <param name="file">%Path of the file to open.</param>
+        /// <remarks> Only present in a Tools build of Torque.
+        /// </remarks>
         public static void OpenFile(string file) {
              InternalUnsafeMethods.OpenFile__Args _args = new InternalUnsafeMethods.OpenFile__Args() {
                 file = file,
@@ -15294,6 +17404,13 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.OpenFile()(_args);
         }
 
+        /// <summary>Open the given folder in the system's file manager.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="path">full path to a directory.</param>
+        /// <remarks> Only present in a Tools build of Torque.
+        /// </remarks>
         public static void OpenFolder(string path) {
              InternalUnsafeMethods.OpenFolder__Args _args = new InternalUnsafeMethods.OpenFolder__Args() {
                 path = path,
@@ -15301,6 +17418,11 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.OpenFolder()(_args);
         }
 
+        /// <summary>Get the absolute path to the directory that contains the main.cs script from which the engine was started.</summary>
+        /// <description>
+        /// This directory will usually contain all the game assets and, in a user-side game installation, will usually be read-only.
+        /// </description>
+        /// <returns>The path to the main game assets.</returns>
         public static string GetMainDotCsDir() {
              InternalUnsafeMethods.GetMainDotCsDir__Args _args = new InternalUnsafeMethods.GetMainDotCsDir__Args() {
              };
@@ -15308,6 +17430,11 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Gets the name of the game's executable</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>String containing this game's executable name</returns>
         public static string GetExecutableName() {
              InternalUnsafeMethods.GetExecutableName__Args _args = new InternalUnsafeMethods.GetExecutableName__Args() {
              };
@@ -15315,6 +17442,13 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Combines two separate strings containing a file path and file name together into a single string</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="path">String containing file path</param>
+        /// <param name="file">String containing file name</param>
+        /// <returns>String containing concatenated file name and path</returns>
         public static string PathConcat(string path = "", string file = "") {
              InternalUnsafeMethods.PathConcat__Args _args = new InternalUnsafeMethods.PathConcat__Args() {
                 path = path,
@@ -15324,6 +17458,13 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Turns a full or local path to a relative one</summary>
+        /// <description>
+        /// For example, "./game/art" becomes "game/art"
+        /// </description>
+        /// <param name="path">Full path (may include a file) to convert</param>
+        /// <param name="to">Optional base path used for the conversion.  If not supplied the current working directory is used.</param>
+        /// <returns>String containing relative path</returns>
         public static string MakeRelativePath(string path = "", string to = "") {
              InternalUnsafeMethods.MakeRelativePath__Args _args = new InternalUnsafeMethods.MakeRelativePath__Args() {
                 path = path,
@@ -15333,6 +17474,13 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Converts a relative file path to a full path</summary>
+        /// <description>
+        /// For example, "./console.log" becomes "C:/Torque/t3d/examples/FPS Example/game/console.log"
+        /// </description>
+        /// <param name="path">Name of file or path to check</param>
+        /// <param name="cwd">Optional current working directory from which to build the full path.</param>
+        /// <returns>String containing non-relative directory of path</returns>
         public static string MakeFullPath(string path = "", string cwd = "") {
              InternalUnsafeMethods.MakeFullPath__Args _args = new InternalUnsafeMethods.MakeFullPath__Args() {
                 path = path,
@@ -15342,6 +17490,11 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Reports the current directory</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>String containing full file path of working directory</returns>
         public static string GetWorkingDirectory() {
              InternalUnsafeMethods.GetWorkingDirectory__Args _args = new InternalUnsafeMethods.GetWorkingDirectory__Args() {
              };
@@ -15349,6 +17502,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the path of a file (removes name and extension)</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">Name and path of file to check</param>
+        /// <returns>String containing the path, minus name and extension</returns>
         public static string FilePath(string fileName) {
              InternalUnsafeMethods.FilePath__Args _args = new InternalUnsafeMethods.FilePath__Args() {
                 fileName = fileName,
@@ -15357,6 +17516,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get only the file name of a path and file name string (removes path)</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">Name and path of file to check</param>
+        /// <returns>String containing the file name, minus the path</returns>
         public static string FileName(string fileName) {
              InternalUnsafeMethods.FileName__Args _args = new InternalUnsafeMethods.FileName__Args() {
                 fileName = fileName,
@@ -15365,6 +17530,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the base of a file name (removes extension and path)</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">Name and path of file to check</param>
+        /// <returns>String containing the file name, minus extension and path</returns>
         public static string FileBase(string fileName) {
              InternalUnsafeMethods.FileBase__Args _args = new InternalUnsafeMethods.FileBase__Args() {
                 fileName = fileName,
@@ -15373,6 +17544,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the extension of a file</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">Name and path of file</param>
+        /// <returns>String containing the extension, such as ".exe" or ".cs"</returns>
         public static string FileExt(string fileName) {
              InternalUnsafeMethods.FileExt__Args _args = new InternalUnsafeMethods.FileExt__Args() {
                 fileName = fileName,
@@ -15381,6 +17558,14 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Delete a file from the hard drive</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="path">Name and path of the file to delete</param>
+        /// <remarks> THERE IS NO RECOVERY FROM THIS. Deleted file is gone for good.
+        /// </remarks>
+        /// <returns>True if file was successfully deleted</returns>
         public static bool FileDelete(string path) {
              InternalUnsafeMethods.FileDelete__Args _args = new InternalUnsafeMethods.FileDelete__Args() {
                 path = path,
@@ -15389,6 +17574,9 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Returns a platform specific formatted string with the creation time for the file.</summary>
+        /// <param name="fileName">Name and path of file to check</param>
+        /// <returns>Formatted string (OS specific) containing created time, "9/3/2010 12:33:47 PM" for example</returns>
         public static string FileCreatedTime(string fileName) {
              InternalUnsafeMethods.FileCreatedTime__Args _args = new InternalUnsafeMethods.FileCreatedTime__Args() {
                 fileName = fileName,
@@ -15397,6 +17585,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns a platform specific formatted string with the last modified time for the file.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">Name and path of file to check</param>
+        /// <returns>Formatted string (OS specific) containing modified time, "9/3/2010 12:33:47 PM" for example</returns>
         public static string FileModifiedTime(string fileName) {
              InternalUnsafeMethods.FileModifiedTime__Args _args = new InternalUnsafeMethods.FileModifiedTime__Args() {
                 fileName = fileName,
@@ -15405,6 +17599,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Determines the size of a file on disk</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">Name and path of the file to check</param>
+        /// <returns>Returns filesize in bytes, or -1 if no file</returns>
         public static int FileSize(string fileName) {
              InternalUnsafeMethods.FileSize__Args _args = new InternalUnsafeMethods.FileSize__Args() {
                 fileName = fileName,
@@ -15413,6 +17613,13 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Gathers a list of directories starting at the given path.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="path">String containing the path of the directory</param>
+        /// <param name="depth">Depth of search, as in how many subdirectories to parse through</param>
+        /// <returns>Tab delimited string containing list of directories found during search, "" if no files were found</returns>
         public static string GetDirectoryList(string path = "", int depth = 0) {
              InternalUnsafeMethods.GetDirectoryList__Args _args = new InternalUnsafeMethods.GetDirectoryList__Args() {
                 path = path,
@@ -15422,18 +17629,34 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Stop watching resources for file changes</summary>
+        /// <description>
+        /// Typically this is called during shutdownCore().
+        /// </description>
+        /// <see cref="startFileChangeNotifications()" />
         public static void StopFileChangeNotifications() {
              InternalUnsafeMethods.StopFileChangeNotifications__Args _args = new InternalUnsafeMethods.StopFileChangeNotifications__Args() {
              };
              InternalUnsafeMethods.StopFileChangeNotifications()(_args);
         }
 
+        /// <summary>Start watching resources for file changes</summary>
+        /// <description>
+        /// Typically this is called during initializeCore().
+        /// </description>
+        /// <see cref="stopFileChangeNotifications()" />
         public static void StartFileChangeNotifications() {
              InternalUnsafeMethods.StartFileChangeNotifications__Args _args = new InternalUnsafeMethods.StartFileChangeNotifications__Args() {
              };
              InternalUnsafeMethods.StartFileChangeNotifications()(_args);
         }
 
+        /// <summary>Determines if a file name can be written to using File I/O</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">Name and path of file to check</param>
+        /// <returns>Returns true if the file can be written to.</returns>
         public static bool IsWriteableFileName(string fileName) {
              InternalUnsafeMethods.IsWriteableFileName__Args _args = new InternalUnsafeMethods.IsWriteableFileName__Args() {
                 fileName = fileName,
@@ -15442,6 +17665,14 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Determines if a specified directory exists or not</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="directory">String containing path in the form of "foo/bar"</param>
+        /// <returns>Returns true if the directory was found.</returns>
+        /// <remarks> Do not include a trailing slash '/'.
+        /// </remarks>
         public static bool IsDirectory(string directory) {
              InternalUnsafeMethods.IsDirectory__Args _args = new InternalUnsafeMethods.IsDirectory__Args() {
                 directory = directory,
@@ -15450,6 +17681,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Determines if the specified file exists or not</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">The path to the file.</param>
+        /// <returns>Returns true if the file was found.</returns>
         public static bool IsFile(string fileName) {
              InternalUnsafeMethods.IsFile__Args _args = new InternalUnsafeMethods.IsFile__Args() {
                 fileName = fileName,
@@ -15458,6 +17695,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Provides the CRC checksum of the given file.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="fileName">The path to the file.</param>
+        /// <returns>The calculated CRC checksum of the file, or -1 if the file could not be found.</returns>
         public static int GetFileCRC(string fileName) {
              InternalUnsafeMethods.GetFileCRC__Args _args = new InternalUnsafeMethods.GetFileCRC__Args() {
                 fileName = fileName,
@@ -15466,6 +17709,20 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Returns the number of files in the directory tree that match the given patterns</summary>
+        /// <description>
+        /// If you're interested in a list of files that match the given patterns and not just the number of files, use findFirstFileMultiExpr() and findNextFileMultiExpr().
+        /// </description>
+        /// <param name="pattern">The path and file name pattern to match against, such as *.cs.  Separate multiple patterns with TABs.  For example: "*.cs" TAB "*.dso"</param>
+        /// <param name="recurse">If true, the search will exhaustively recurse into subdirectories of the given path and match the given filename pattern.</param>
+        /// <returns>Number of files located using the patterns</returns>
+        /// <code>
+        /// // Count all DTS or Collada models
+        /// %filePatterns = "*.dts" TAB "*.dae";
+        /// echo( "Nunmer of shape files:" SPC getFileCountMultiExpr( %filePatterns ) );
+        /// </code>
+        /// <see cref="findFirstFileMultiExpr()" />
+        /// <see cref="findNextFileMultiExpr()" />
         public static int GetFileCountMultiExpr(string pattern = "", bool recurse = true) {
              InternalUnsafeMethods.GetFileCountMultiExpr__Args _args = new InternalUnsafeMethods.GetFileCountMultiExpr__Args() {
                 pattern = pattern,
@@ -15475,6 +17732,23 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Returns the next file matching a search begun in findFirstFileMultiExpr().</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pattern">The path and file name pattern to match against.  This is optional and may be left out as it is not used by the code.  It is here for legacy reasons.</param>
+        /// <returns>String of the next matching file path, or an empty string if no matching files were found.</returns>
+        /// <code>
+        /// // Find all DTS or Collada models
+        /// %filePatterns = "*.dts" TAB "*.dae";
+        /// %fullPath = findFirstFileMultiExpr( %filePatterns );
+        /// while ( %fullPath !$= "" )
+        /// {
+        ///    echo( %fullPath );
+        ///    %fullPath = findNextFileMultiExpr( %filePatterns );
+        /// }
+        /// </code>
+        /// <see cref="findFirstFileMultiExpr()" />
         public static string FindNextFileMultiExpr(string pattern = "") {
              InternalUnsafeMethods.FindNextFileMultiExpr__Args _args = new InternalUnsafeMethods.FindNextFileMultiExpr__Args() {
                 pattern = pattern,
@@ -15483,6 +17757,31 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns the first file in the directory system matching the given patterns.</summary>
+        /// <description>
+        /// Use the corresponding findNextFileMultiExpr() to step through the results.  If you're only interested in the number of files returned by the pattern match, use getFileCountMultiExpr().
+        /// 
+        /// This function differs from findFirstFile() in that it supports multiple search patterns to be passed in.
+        /// </description>
+        /// <remarks> You cannot run multiple simultaneous file system searches with these functions.  Each call to findFirstFile() and findFirstFileMultiExpr() initiates a new search and renders a previous search invalid.
+        /// 
+        /// </remarks>
+        /// <param name="pattern">The path and file name pattern to match against, such as *.cs.  Separate multiple patterns with TABs.  For example: "*.cs" TAB "*.dso"</param>
+        /// <param name="recurse">If true, the search will exhaustively recurse into subdirectories of the given path and match the given filename patterns.</param>
+        /// <returns>String of the first matching file path, or an empty string if no matching files were found.</returns>
+        /// <code>
+        /// // Find all DTS or Collada models
+        /// %filePatterns = "*.dts" TAB "*.dae";
+        /// %fullPath = findFirstFileMultiExpr( %filePatterns );
+        /// while ( %fullPath !$= "" )
+        /// {
+        ///    echo( %fullPath );
+        ///    %fullPath = findNextFileMultiExpr( %filePatterns );
+        /// }
+        /// </code>
+        /// <see cref="findNextFileMultiExpr()" />
+        /// <see cref="getFileCountMultiExpr()" />
+        /// <see cref="findFirstFile()" />
         public static string FindFirstFileMultiExpr(string pattern = "", bool recurse = true) {
              InternalUnsafeMethods.FindFirstFileMultiExpr__Args _args = new InternalUnsafeMethods.FindFirstFileMultiExpr__Args() {
                 pattern = pattern,
@@ -15492,6 +17791,22 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns the number of files in the directory tree that match the given patterns</summary>
+        /// <description>
+        /// This function differs from getFileCountMultiExpr() in that it supports a single search pattern being passed in.
+        /// 
+        /// If you're interested in a list of files that match the given pattern and not just the number of files, use findFirstFile() and findNextFile().
+        /// </description>
+        /// <param name="pattern">The path and file name pattern to match against.</param>
+        /// <param name="recurse">If true, the search will exhaustively recurse into subdirectories of the given path and match the given filename pattern counting files in subdirectories.</param>
+        /// <returns>Number of files located using the pattern</returns>
+        /// <code>
+        /// // Count the number of .cs files in a subdirectory and its subdirectories.
+        /// getFileCount( "subdirectory/*.cs" );
+        /// </code>
+        /// <see cref="findFirstFile()" />
+        /// <see cref="findNextFile()" />
+        /// <see cref="getFileCountMultiExpr()" />
         public static int GetFileCount(string pattern = "", bool recurse = true) {
              InternalUnsafeMethods.GetFileCount__Args _args = new InternalUnsafeMethods.GetFileCount__Args() {
                 pattern = pattern,
@@ -15501,6 +17816,18 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Returns the next file matching a search begun in findFirstFile().</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="pattern">The path and file name pattern to match against.  This is optional and may be left out as it is not used by the code.  It is here for legacy reasons.</param>
+        /// <returns>The path of the next filename matched by the search or an empty string if no more files match.</returns>
+        /// <code>
+        /// // Execute all .cs files in a subdirectory and its subdirectories.
+        /// for( %file = findFirstFile( "subdirectory/*.cs" ); %file !$= ""; %file = findNextFile() )
+        ///    exec( %file );
+        /// </code>
+        /// <see cref="findFirstFile()" />
         public static string FindNextFile(string pattern = "") {
              InternalUnsafeMethods.FindNextFile__Args _args = new InternalUnsafeMethods.FindNextFile__Args() {
                 pattern = pattern,
@@ -15509,6 +17836,26 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns the first file in the directory system matching the given pattern.</summary>
+        /// <description>
+        /// Use the corresponding findNextFile() to step through the results.  If you're only interested in the number of files returned by the pattern match, use getFileCount().
+        /// 
+        /// This function differs from findFirstFileMultiExpr() in that it supports a single search pattern being passed in.
+        /// </description>
+        /// <remarks> You cannot run multiple simultaneous file system searches with these functions.  Each call to findFirstFile() and findFirstFileMultiExpr() initiates a new search and renders a previous search invalid.
+        /// 
+        /// </remarks>
+        /// <param name="pattern">The path and file name pattern to match against.</param>
+        /// <param name="recurse">If true, the search will exhaustively recurse into subdirectories of the given path and match the given filename pattern.</param>
+        /// <returns>The path of the first file matched by the search or an empty string if no matching file could be found.</returns>
+        /// <code>
+        /// // Execute all .cs files in a subdirectory and its subdirectories.
+        /// for( %file = findFirstFile( "subdirectory/*.cs" ); %file !$= ""; %file = findNextFile() )
+        ///    exec( %file );
+        /// </code>
+        /// <see cref="findNextFile()" />
+        /// <see cref="getFileCount()" />
+        /// <see cref="findFirstFileMultiExpr()" />
         public static string FindFirstFile(string pattern = "", bool recurse = true) {
              InternalUnsafeMethods.FindFirstFile__Args _args = new InternalUnsafeMethods.FindFirstFile__Args() {
                 pattern = pattern,
@@ -15518,6 +17865,10 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Create a XML document containing a dump of the entire exported engine API.
+        /// </description>
+        /// <returns>A SimXMLDocument containing a dump of the engine's export information or NULL if the operation failed.</returns>
         public static SimXMLDocument ExportEngineAPIToXML() {
              InternalUnsafeMethods.ExportEngineAPIToXML__Args _args = new InternalUnsafeMethods.ExportEngineAPIToXML__Args() {
              };
@@ -15525,12 +17876,24 @@ axis.Free();             return new Point3F(_engineResult);
              return new SimXMLDocument(_engineResult);
         }
 
+        /// <summary>Dumps all current EngineObject instances to the console.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> This function is only available in debug builds.
+        /// 
+        /// </remarks>
         public static void DebugDumpAllObjects() {
              InternalUnsafeMethods.DebugDumpAllObjects__Args _args = new InternalUnsafeMethods.DebugDumpAllObjects__Args() {
              };
              InternalUnsafeMethods.DebugDumpAllObjects()(_args);
         }
 
+        /// <description>
+        /// Dumps the engine scripting documentation to the specified file overwriting any existing content.
+        /// </description>
+        /// <param name="outputFile">The relative or absolute output file path and name.</param>
+        /// <returns>Returns true if successful.</returns>
         public static bool DumpEngineDocs(string outputFile) {
              InternalUnsafeMethods.DumpEngineDocs__Args _args = new InternalUnsafeMethods.DumpEngineDocs__Args() {
                 outputFile = outputFile,
@@ -15539,6 +17902,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Links childNS to parentNS.</summary>
+        /// <description>
+        /// Links childNS to parentNS, or nothing if parentNS is NULL.
+        /// Will unlink the namespace from previous namespace if a parent already exists.
+        /// </description>
         public static bool LinkNamespaces(string childNSName, string parentNSName) {
              InternalUnsafeMethods.LinkNamespaces__Args _args = new InternalUnsafeMethods.LinkNamespaces__Args() {
                 childNSName = childNSName,
@@ -15548,6 +17916,12 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Determines the memory consumption of a class or object.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="objectOrClass">The object or class being measured.</param>
+        /// <returns>Returns the total size of an object in bytes.</returns>
         public static int sizeOf(string objectOrClass) {
              InternalUnsafeMethods.sizeOf__Args _args = new InternalUnsafeMethods.sizeOf__Args() {
                 objectOrClass = objectOrClass,
@@ -15556,12 +17930,24 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Dumps network statistics for each class to the console.</summary>
+        /// <description>
+        /// The returned <i>avg</i>, <i>min</i> and <i>max</i> values are in bits sent per update.  The <i>num</i> value is the total number of events collected.
+        /// </description>
+        /// <remarks> This method only works when TORQUE_NET_STATS is defined in torqueConfig.h.
+        /// </remarks>
         public static void DumpNetStats() {
              InternalUnsafeMethods.DumpNetStats__Args _args = new InternalUnsafeMethods.DumpNetStats__Args() {
              };
              InternalUnsafeMethods.DumpNetStats()(_args);
         }
 
+        /// <summary>Provide a list of classes that belong to the given category.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="category">The category name.</param>
+        /// <returns>A tab delimited list of classes.</returns>
         public static string EnumerateConsoleClassesByCategory(string category) {
              InternalUnsafeMethods.EnumerateConsoleClassesByCategory__Args _args = new InternalUnsafeMethods.EnumerateConsoleClassesByCategory__Args() {
                 category = category,
@@ -15570,6 +17956,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns a list of classes that derive from the named class.</summary>
+        /// <description>
+        /// If the named class is omitted this dumps all the classes.
+        /// </description>
+        /// <param name="className">The optional base class name.</param>
+        /// <returns>A tab delimited list of classes.</returns>
         public static string EnumerateConsoleClasses(string className = "") {
              InternalUnsafeMethods.EnumerateConsoleClasses__Args _args = new InternalUnsafeMethods.EnumerateConsoleClasses__Args() {
                 className = className,
@@ -15578,6 +17970,11 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns the category of the given class.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="className">The name of the class.</param>
         public static string GetCategoryOfClass(string className) {
              InternalUnsafeMethods.GetCategoryOfClass__Args _args = new InternalUnsafeMethods.GetCategoryOfClass__Args() {
                 className = className,
@@ -15586,6 +17983,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns the description string for the named class.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="className">The name of the class.</param>
+        /// <returns>The class description in string format.</returns>
         public static string GetDescriptionOfClass(string className) {
              InternalUnsafeMethods.GetDescriptionOfClass__Args _args = new InternalUnsafeMethods.GetDescriptionOfClass__Args() {
                 className = className,
@@ -15594,6 +17997,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns true if the class is derived from the super class.</summary>
+        /// <description>
+        /// If either class doesn't exist this returns false.
+        /// </description>
+        /// <param name="className">The class name.</param>
+        /// <param name="superClassName">The super class to look for.</param>
         public static bool IsMemberOfClass(string className, string superClassName) {
              InternalUnsafeMethods.IsMemberOfClass__Args _args = new InternalUnsafeMethods.IsMemberOfClass__Args() {
                 className = className,
@@ -15603,6 +18012,10 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Returns true if the passed identifier is the name of a declared class.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool IsClass(string identifier) {
              InternalUnsafeMethods.IsClass__Args _args = new InternalUnsafeMethods.IsClass__Args() {
                 identifier = identifier,
@@ -15611,6 +18024,10 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Returns a space delimited list of the active packages in stack order.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static string GetPackageList() {
              InternalUnsafeMethods.GetPackageList__Args _args = new InternalUnsafeMethods.GetPackageList__Args() {
              };
@@ -15618,6 +18035,10 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Deactivates a previously activated package.</summary>
+        /// <description>
+        /// The package is deactivated by removing its namespace linkages to any function or method. If there are any packages above this one in the stack they are deactivated as well. If the package is not on the stack this function does nothing.
+        /// </description>
         public static void DeactivatePackage(string packageName) {
              InternalUnsafeMethods.DeactivatePackage__Args _args = new InternalUnsafeMethods.DeactivatePackage__Args() {
                 packageName = packageName,
@@ -15625,6 +18046,10 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.DeactivatePackage()(_args);
         }
 
+        /// <summary>Activates an existing package.</summary>
+        /// <description>
+        /// The activation occurs by updating the namespace linkage of existing functions and methods. If the package is already activated the function does nothing.
+        /// </description>
         public static void ActivatePackage(string packageName) {
              InternalUnsafeMethods.ActivatePackage__Args _args = new InternalUnsafeMethods.ActivatePackage__Args() {
                 packageName = packageName,
@@ -15632,6 +18057,10 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.ActivatePackage()(_args);
         }
 
+        /// <summary>Returns true if the identifier is the name of a declared package.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool IsPackage(string identifier) {
              InternalUnsafeMethods.IsPackage__Args _args = new InternalUnsafeMethods.IsPackage__Args() {
                 identifier = identifier,
@@ -15640,12 +18069,20 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Prints the scripting call stack to the console log.</summary>
+        /// <description>
+        /// Used to trace functions called from within functions. Can help discover what functions were called (and not yet exited) before the current point in scripts.
+        /// </description>
         public static void Backtrace() {
              InternalUnsafeMethods.Backtrace__Args _args = new InternalUnsafeMethods.Backtrace__Args() {
              };
              InternalUnsafeMethods.Backtrace()(_args);
         }
 
+        /// <description>
+        /// Get max number of allowable dynamic vertices in a single vertex buffer.
+        /// </description>
+        /// <returns>the max number of allowable dynamic vertices in a single vertex buffer</returns>
         public static int GetMaxDynamicVerts() {
              InternalUnsafeMethods.GetMaxDynamicVerts__Args _args = new InternalUnsafeMethods.GetMaxDynamicVerts__Args() {
              };
@@ -15653,6 +18090,10 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the engine has been compiled with TORQUE_TOOLS, i.e. if it includes tool-related functionality.
+        /// </description>
+        /// <returns>True if this is a tool build; false otherwise.</returns>
         public static bool IsToolBuild() {
              InternalUnsafeMethods.IsToolBuild__Args _args = new InternalUnsafeMethods.IsToolBuild__Args() {
              };
@@ -15660,6 +18101,10 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the engine has been compiled with TORQUE_DEBUG, i.e. if it includes debugging functionality.
+        /// </description>
+        /// <returns>True if this is a debug build; false otherwise.</returns>
         public static bool IsDebugBuild() {
              InternalUnsafeMethods.IsDebugBuild__Args _args = new InternalUnsafeMethods.IsDebugBuild__Args() {
              };
@@ -15667,6 +18112,10 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the engine has been compiled with TORQUE_SHIPPING, i.e. in a form meant for final release.
+        /// </description>
+        /// <returns>True if this is a shipping build; false otherwise.</returns>
         public static bool IsShippingBuild() {
              InternalUnsafeMethods.IsShippingBuild__Args _args = new InternalUnsafeMethods.IsShippingBuild__Args() {
              };
@@ -15674,12 +18123,24 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Drops the engine into the native C++ debugger.
+        /// 
+        /// This function triggers a debug break and drops the process into the IDE's debugger.  If the process is not running with a debugger attached it will generate a runtime error on most platforms.
+        /// </description>
+        /// <remarks> This function is not available in shipping builds.</remarks>
         public static void Debug() {
              InternalUnsafeMethods.Debug__Args _args = new InternalUnsafeMethods.Debug__Args() {
              };
              InternalUnsafeMethods.Debug()(_args);
         }
 
+        /// <description>
+        /// Enable or disable tracing in the script code VM.
+        /// 
+        /// When enabled, the script code runtime will trace the invocation and returns from all functions that are called and log them to the console. This is helpful in observing the flow of the script program.
+        /// </description>
+        /// <param name="enable">New setting for script trace execution, on by default.</param>
         public static void Trace(bool enable = true) {
              InternalUnsafeMethods.Trace__Args _args = new InternalUnsafeMethods.Trace__Args() {
                 enable = enable,
@@ -15687,6 +18148,19 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.Trace()(_args);
         }
 
+        /// <description>
+        /// Undefine all global variables matching the given name<paramref name="" /> pattern.
+        /// 
+        /// </description>
+        /// <param name="pattern">A global variable name pattern.  Must begin with '$'.</param>
+        /// <code>
+        /// // Define a global variable in the "My" namespace.
+        /// $My::Variable = "value";
+        /// 
+        /// // Undefine all variable in the "My" namespace.
+        /// deleteVariables( "$My::*" );
+        /// </code>
+        /// <see cref="strIsMatchExpr" />
         public static void DeleteVariables(string pattern) {
              InternalUnsafeMethods.DeleteVariables__Args _args = new InternalUnsafeMethods.DeleteVariables__Args() {
                 pattern = pattern,
@@ -15694,6 +18168,19 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.DeleteVariables()(_args);
         }
 
+        /// <description>
+        /// Write out the definitions of all global variables matching the given name<paramref name="" /> pattern.
+        /// If 
+        /// </description>
+        /// <param name="pattern">A global variable name pattern.  Must begin with '$'.</param>
+        /// <param name="filename">%Path of the file to which to write the definitions or "" to write the definitions to the console.</param>
+        /// <param name="append">If true and<paramref name="" /> fileName is not "", then the definitions are appended to the specified file. Otherwise existing contents of the file (if any) will be overwritten.
+        /// 
+        /// </param>
+        /// <code>
+        /// // Write out all preference variables to a prefs.cs file.
+        /// export( "$prefs::*", "prefs.cs" );
+        /// </code>
         public static void Export(string pattern, string filename = "", bool append = false) {
              InternalUnsafeMethods.Export__Args _args = new InternalUnsafeMethods.Export__Args() {
                 pattern = pattern,
@@ -15703,6 +18190,16 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.Export()(_args);
         }
 
+        /// <summary>Manually execute a special script file that contains game or editor preferences</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="relativeFileName">Name and path to file from project folder</param>
+        /// <param name="noCalls">Deprecated</param>
+        /// <param name="journalScript">Deprecated</param>
+        /// <returns>True if script was successfully executed</returns>
+        /// <remarks> Appears to be useless in Torque 3D, should be deprecated
+        /// </remarks>
         public static bool ExecPrefs(string relativeFileName, bool noCalls = false, bool journalScript = false) {
              InternalUnsafeMethods.ExecPrefs__Args _args = new InternalUnsafeMethods.ExecPrefs__Args() {
                 relativeFileName = relativeFileName,
@@ -15713,6 +18210,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// ([relativeFileName])
+        /// </description>
+        /// <remarks> Appears to be useless in Torque 3D, should be deprecated
+        /// </remarks>
         public static string GetPrefsPath(string relativeFileName = "") {
              InternalUnsafeMethods.GetPrefsPath__Args _args = new InternalUnsafeMethods.GetPrefsPath__Args() {
                 relativeFileName = relativeFileName,
@@ -15721,12 +18223,31 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Pop and restore the last setting of $instantGroup off the stack.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Currently only used for editors
+        /// 
+        /// </remarks>
         public static void PopInstantGroup() {
              InternalUnsafeMethods.PopInstantGroup__Args _args = new InternalUnsafeMethods.PopInstantGroup__Args() {
              };
              InternalUnsafeMethods.PopInstantGroup()(_args);
         }
 
+        /// <description>
+        /// ([group])
+        /// </description>
+        /// <summary>Pushes the current $instantGroup on a stack and sets it to the given value (or clears it).</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <remarks> Currently only used for editors
+        /// </remarks>
         public static void PushInstantGroup(string group = "") {
              InternalUnsafeMethods.PushInstantGroup__Args _args = new InternalUnsafeMethods.PushInstantGroup__Args() {
                 group = group,
@@ -15734,6 +18255,16 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.PushInstantGroup()(_args);
         }
 
+        /// <description>
+        /// (string path)
+        /// </description>
+        /// <summary>Attempts to extract a mod directory from path. Returns empty string on failure.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="File">path of mod folder</param>
+        /// <remarks> This is no longer relevant in Torque 3D (which does not use mod folders), should be deprecated
+        /// </remarks>
         public static string GetModNameFromPath(string path) {
              InternalUnsafeMethods.GetModNameFromPath__Args _args = new InternalUnsafeMethods.GetModNameFromPath__Args() {
                 path = path,
@@ -15742,6 +18273,9 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ()Returns true if the calling script is a tools script.
+        /// </description>
         public static bool IsCurrentScriptToolScript() {
              InternalUnsafeMethods.IsCurrentScriptToolScript__Args _args = new InternalUnsafeMethods.IsCurrentScriptToolScript__Args() {
              };
@@ -15749,6 +18283,18 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// (string varName)
+        /// </description>
+        /// <summary>Determines if a variable exists and contains a value</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="varName">Name of the variable to search for</param>
+        /// <returns>True if the variable was defined in script, false if not</returns>
+        /// <code>
+        /// isDefined( "$myVar" );
+        /// </code>
         public static bool IsDefined(string varName, string varValue = "") {
              InternalUnsafeMethods.IsDefined__Args _args = new InternalUnsafeMethods.IsDefined__Args() {
                 varName = varName,
@@ -15758,6 +18304,16 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// (string namespace, string method)
+        /// </description>
+        /// <summary>Provides the name of the package the method belongs to</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="namespace">Class or namespace, such as Player</param>
+        /// <param name="method">Name of the funciton to search for</param>
+        /// <returns>The name of the method's package</returns>
         public static string GetMethodPackage(string nameSpace, string method) {
              InternalUnsafeMethods.GetMethodPackage__Args _args = new InternalUnsafeMethods.GetMethodPackage__Args() {
                 nameSpace = nameSpace,
@@ -15767,6 +18323,16 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (string namespace, string method)
+        /// </description>
+        /// <summary>Determines if a class/namespace method exists</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="namespace">Class or namespace, such as Player</param>
+        /// <param name="method">Name of the function to search for</param>
+        /// <returns>True if the method exists, false if not</returns>
         public static bool IsMethod(string nameSpace, string method) {
              InternalUnsafeMethods.IsMethod__Args _args = new InternalUnsafeMethods.IsMethod__Args() {
                 nameSpace = nameSpace,
@@ -15776,6 +18342,15 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// (string funcName)
+        /// </description>
+        /// <summary>Provides the name of the package the function belongs to</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="funcName">String containing name of the function</param>
+        /// <returns>The name of the function's package</returns>
         public static string GetFunctionPackage(string funcName) {
              InternalUnsafeMethods.GetFunctionPackage__Args _args = new InternalUnsafeMethods.GetFunctionPackage__Args() {
                 funcName = funcName,
@@ -15784,6 +18359,15 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (string funcName)
+        /// </description>
+        /// <summary>Determines if a function exists or not</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="funcName">String containing name of the function</param>
+        /// <returns>True if the function exists, false if not</returns>
         public static bool IsFunction(string funcName) {
              InternalUnsafeMethods.IsFunction__Args _args = new InternalUnsafeMethods.IsFunction__Args() {
                 funcName = funcName,
@@ -15792,6 +18376,16 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// (string varName, string value)
+        /// </description>
+        /// <summary>Sets the value of the named variable.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="varName">Name of the variable to locate</param>
+        /// <param name="value">New value of the variable</param>
+        /// <returns>True if variable was successfully found and set</returns>
         public static void SetVariable(string varName, string value) {
              InternalUnsafeMethods.SetVariable__Args _args = new InternalUnsafeMethods.SetVariable__Args() {
                 varName = varName,
@@ -15800,6 +18394,14 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.SetVariable()(_args);
         }
 
+        /// <description>
+        /// (string varName)
+        /// </description>
+        /// <summary>Returns the value of the named variable or an empty string if not found.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>Value contained by varName, "" if the variable does not exist</returns>
         public static string GetVariable(string varName) {
              InternalUnsafeMethods.GetVariable__Args _args = new InternalUnsafeMethods.GetVariable__Args() {
                 varName = varName,
@@ -15808,6 +18410,9 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// eval(consoleString)
+        /// </description>
         public static string Eval(string consoleString) {
              InternalUnsafeMethods.Eval__Args _args = new InternalUnsafeMethods.Eval__Args() {
                 consoleString = consoleString,
@@ -15816,6 +18421,19 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Execute the given script file.
+        /// </description>
+        /// <param name="fileName">Path to the file to execute</param>
+        /// <param name="noCalls">Deprecated</param>
+        /// <param name="journalScript">Deprecated</param>
+        /// <returns>True if the script was successfully executed, false if not.</returns>
+        /// <code>
+        /// // Execute the init.cs script file found in the same directory as the current script file.
+        /// exec( "./init.cs" );
+        /// </code>
+        /// <see cref="compile" />
+        /// <see cref="eval" />
         public static bool Exec(string fileName, bool noCalls = false, bool journalScript = false) {
              InternalUnsafeMethods.Exec__Args _args = new InternalUnsafeMethods.Exec__Args() {
                 fileName = fileName,
@@ -15826,6 +18444,19 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Compile a file to bytecode.
+        /// 
+        /// This function will read the TorqueScript code in the specified file, compile it to internal bytecode, and, if DSO generation is enabled or<paramref name="" /> overrideNoDDSO is true, will store the compiled code in a .dso file in the current DSO path mirrorring the path of 
+        /// </description>
+        /// <param name="fileName">Path to the file to compile to bytecode.</param>
+        /// <param name="overrideNoDSO">If true, force generation of DSOs even if the engine is compiled to not generate write compiled code to DSO files.</param>
+        /// <returns>True if the file was successfully compiled, false if not.</returns>
+        /// <remarks> The definitions contained in the given file will not be made available and no code will actually be executed.  Use exec() for that.
+        /// 
+        /// </remarks>
+        /// <see cref="getDSOPath" />
+        /// <see cref="exec" />
         public static bool Compile(string fileName, bool overrideNoDSO = false) {
              InternalUnsafeMethods.Compile__Args _args = new InternalUnsafeMethods.Compile__Args() {
                 fileName = fileName,
@@ -15835,6 +18466,16 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the absolute path to the file in which the compiled code for the given script file will be stored.
+        /// </description>
+        /// <param name="scriptFileName">%Path to the .cs script file.</param>
+        /// <returns>The absolute path to the .dso file for the given script file.</returns>
+        /// <remarks> The compiler will store newly compiled DSOs in the prefs path but pre-existing DSOs will be loaded from the current paths.
+        /// 
+        /// </remarks>
+        /// <see cref="compile" />
+        /// <see cref="getPrefsPath" />
         public static string GetDSOPath(string scriptFileName) {
              InternalUnsafeMethods.GetDSOPath__Args _args = new InternalUnsafeMethods.GetDSOPath__Args() {
                 scriptFileName = scriptFileName,
@@ -15843,6 +18484,19 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ( string functionName, string args... ) Apply the given arguments to the specified global function and return the result of the call.
+        /// </description>
+        /// <param name="functionName">The name of the function to call.  This function must be in the global namespace, i.e. you cannot call a function in a namespace through #call.  Use eval() for that.</param>
+        /// <returns>The result of the function call.</returns>
+        /// <code>
+        /// function myFunction( %arg )
+        /// {
+        ///   return ( %arg SPC "World!" );
+        /// }
+        /// 
+        /// echo( call( "myFunction", "Hello" ) ); // Prints "Hello World!" to the console.
+        /// </code>
         public static string Call(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -15859,6 +18513,10 @@ axis.Free();             return new Point3F(_engineResult);
             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Generate a new universally unique identifier (UUID).
+        /// </description>
+        /// <returns>A newly generated UUID.</returns>
         public static UUID GenerateUUID() {
              InternalUnsafeMethods.GenerateUUID__Args _args = new InternalUnsafeMethods.GenerateUUID__Args() {
              };
@@ -15866,6 +18524,13 @@ axis.Free();             return new Point3F(_engineResult);
              return new UUID(_engineResult);
         }
 
+        /// <description>
+        /// Count the number of bits that are set in the given 32 bit integer.
+        /// </description>
+        /// <param name="v">An integer value.</param>
+        /// <returns>The number of bits that are set in<paramref name="" /> v.
+        /// 
+        /// </returns>
         public static int CountBits(int v) {
              InternalUnsafeMethods.CountBits__Args _args = new InternalUnsafeMethods.CountBits__Args() {
                 v = v,
@@ -15874,6 +18539,11 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether Torque is running in web-deployment mode.
+        /// In this mode, Torque will usually run within a browser and certain restrictions apply (e.g. Torque will not be able to enter fullscreen exclusive mode).
+        /// </description>
+        /// <returns>True if Torque is running in web-deployment mode.</returns>
         public static bool GetWebDeployment() {
              InternalUnsafeMethods.GetWebDeployment__Args _args = new InternalUnsafeMethods.GetWebDeployment__Args() {
              };
@@ -15881,12 +18551,26 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Close our startup splash window.
+        /// </description>
+        /// <remarks> This is currently only implemented on Windows.
+        /// 
+        /// </remarks>
         public static void CloseSplashWindow() {
              InternalUnsafeMethods.CloseSplashWindow__Args _args = new InternalUnsafeMethods.CloseSplashWindow__Args() {
              };
              InternalUnsafeMethods.CloseSplashWindow()(_args);
         }
 
+        /// <description>
+        /// Display a startup splash window suitable for showing while the engine still starts up.
+        /// </description>
+        /// <remarks> This is currently only implemented on Windows.
+        /// 
+        /// </remarks>
+        /// <param name="path">relative path to splash screen image to display.</param>
+        /// <returns>True if the splash window could be successfully initialized.</returns>
         public static bool DisplaySplashWindow(string path = "") {
              InternalUnsafeMethods.DisplaySplashWindow__Args _args = new InternalUnsafeMethods.DisplaySplashWindow__Args() {
                 path = path,
@@ -15895,6 +18579,13 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Open the given URL or file in the user's web browser.
+        /// </description>
+        /// <param name="address">The address to open.  If this is not prefixed by a protocol specifier ("...://"), then the function checks whether the address refers to a file or directory and if so, prepends "file://" to<paramref name="" /> adress; if the file check fails, "http://" is prepended to </param>
+        /// <code>
+        /// gotoWebPage( "http://www.garagegames.com" );
+        /// </code>
         public static void GotoWebPage(string address) {
              InternalUnsafeMethods.GotoWebPage__Args _args = new InternalUnsafeMethods.GotoWebPage__Args() {
                 address = address,
@@ -15902,6 +18593,12 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.GotoWebPage()(_args);
         }
 
+        /// <description>
+        /// Shut down the engine and exit its process.
+        /// This function cleanly uninitializes the engine and then exits back to the system with a given return status code.
+        /// </description>
+        /// <param name="status">The status code to return to the OS.</param>
+        /// <see cref="quitWithErrorMessage" />
         public static void QuitWithStatus(int status = 0) {
              InternalUnsafeMethods.QuitWithStatus__Args _args = new InternalUnsafeMethods.QuitWithStatus__Args() {
                 status = status,
@@ -15909,6 +18606,15 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.QuitWithStatus()(_args);
         }
 
+        /// <description>
+        /// Display an error message box showing the given<paramref name="" /> message and then shut down the engine and exit its process.
+        /// This function cleanly uninitialized the engine and then exits back to the system with a process exit status indicating an error.
+        /// 
+        /// 
+        /// </description>
+        /// <param name="message">The message to log to the console and show in an error message box.</param>
+        /// <param name="status">The status code to return to the OS.</param>
+        /// <see cref="quit" />
         public static void QuitWithErrorMessage(string message, int status = 0) {
              InternalUnsafeMethods.QuitWithErrorMessage__Args _args = new InternalUnsafeMethods.QuitWithErrorMessage__Args() {
                 message = message,
@@ -15917,18 +18623,34 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.QuitWithErrorMessage()(_args);
         }
 
+        /// 
         public static void RealQuit() {
              InternalUnsafeMethods.RealQuit__Args _args = new InternalUnsafeMethods.RealQuit__Args() {
              };
              InternalUnsafeMethods.RealQuit()(_args);
         }
 
+        /// <description>
+        /// Shut down the engine and exit its process.
+        /// This function cleanly uninitializes the engine and then exits back to the system with a process exit status indicating a clean exit.
+        /// </description>
+        /// <see cref="quitWithErrorMessage" />
         public static void Quit() {
              InternalUnsafeMethods.Quit__Args _args = new InternalUnsafeMethods.Quit__Args() {
              };
              InternalUnsafeMethods.Quit()(_args);
         }
 
+        /// <summary>Determines how log files are written.</summary>
+        /// <description>
+        /// Sets the operational mode of the console logging system.
+        /// </description>
+        /// <param name="mode">Parameter specifying the logging mode.  This can be:
+        /// - 1: Open and close the console log file for each seperate string of output.  This will ensure that all parts get written out to disk and that no parts remain in intermediate buffers even if the process crashes.
+        /// - 2: Keep the log file open and write to it continuously.  This will make the system operate faster but if the process crashes, parts of the output may not have been written to disk yet and will be missing from the log.
+        /// 
+        /// Additionally, when changing the log mode and thus opening a new log file, either of the two mode values may be combined by binary OR with 0x4 to cause the logging system to flush all console log messages that had already been issued to the console system into the newly created log file.</param>
+        /// <remarks> Xbox 360 does not support logging to a file. Use Platform::OutputDebugStr in C++ instead.</remarks>
         public static void SetLogMode(int mode) {
              InternalUnsafeMethods.SetLogMode__Args _args = new InternalUnsafeMethods.SetLogMode__Args() {
                 mode = mode,
@@ -15936,6 +18658,31 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.SetLogMode()(_args);
         }
 
+        /// <description>
+        /// Replace all escape sequences in<paramref name="" /> text with their respective character codes.
+        /// 
+        /// This function replaces all escape sequences (\\n, \\t, etc) in the given string with the respective characters they represent.
+        /// 
+        /// The primary use of this function is for converting strings from their literal form into their compiled/translated form, as is normally done by the TorqueScript compiler.
+        /// 
+        /// 
+        /// </description>
+        /// <param name="text">A string.</param>
+        /// <returns>A duplicate of<paramref name="" /> text with all escape sequences replaced by their respective character codes.
+        /// 
+        /// </returns>
+        /// <code>
+        /// // Print:
+        /// //
+        /// //    str
+        /// //    ing
+        /// //
+        /// // to the console.  Note how the backslash in the string must be escaped here
+        /// // in order to prevent the TorqueScript compiler from collapsing the escape
+        /// // sequence in the resulting string.
+        /// echo( collapseEscape( "str\ning" ) );
+        /// </code>
+        /// <see cref="expandEscape" />
         public static string CollapseEscape(string text) {
              InternalUnsafeMethods.CollapseEscape__Args _args = new InternalUnsafeMethods.CollapseEscape__Args() {
                 text = text,
@@ -15944,6 +18691,12 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Replace all characters in<paramref name="" /> text that need to be escaped for the string to be a valid string literal with their respective escape sequences.
+        /// 
+        /// All characters in </summary>
+        /// <param name="text">A string</param>
+        /// <returns>A duplicate of the text parameter with all unescaped characters that cannot appear in string literals replaced by their respective escape sequences.</returns>
+        /// <see cref="collapseEscape" />
         public static string ExpandEscape(string text) {
              InternalUnsafeMethods.ExpandEscape__Args _args = new InternalUnsafeMethods.ExpandEscape__Args() {
                 text = text,
@@ -15952,6 +18705,15 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Logs the value of the given variable to the console.</summary>
+        /// <description>
+        /// Prints a string of the form "<variableName> = <variable value>" to the console.
+        /// </description>
+        /// <param name="variableName">Name of the local or global variable to print.</param>
+        /// <code>
+        /// %var = 1;
+        /// debugv( "%var" ); // Prints "%var = 1"
+        /// </code>
         public static void Debugv(string variableName) {
              InternalUnsafeMethods.Debugv__Args _args = new InternalUnsafeMethods.Debugv__Args() {
                 variableName = variableName,
@@ -15959,6 +18721,14 @@ axis.Free();             return new Point3F(_engineResult);
              InternalUnsafeMethods.Debugv()(_args);
         }
 
+        /// <description>
+        /// ( string message... )
+        /// </description>
+        /// <summary>Logs an error message to the console.</summary>
+        /// <description>
+        /// Concatenates all given arguments to a single string and prints the string to the console as an error message (in the in-game console, these will show up using a red font by default). A newline is added automatically after the text.
+        /// </description>
+        /// <param name="message">Any number of string arguments.</param>
         public static void Error(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -15974,6 +18744,14 @@ axis.Free();             return new Point3F(_engineResult);
 
         }
 
+        /// <description>
+        /// ( string message... )
+        /// </description>
+        /// <summary>Logs a warning message to the console.</summary>
+        /// <description>
+        /// Concatenates all given arguments to a single string and prints the string to the console as a warning message (in the in-game console, these will show up using a turquoise font by default). A newline is added automatically after the text.
+        /// </description>
+        /// <param name="message">Any number of string arguments.</param>
         public static void Warn(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -15989,6 +18767,14 @@ axis.Free();             return new Point3F(_engineResult);
 
         }
 
+        /// <description>
+        /// ( string message... )
+        /// </description>
+        /// <summary>Logs a message to the console.</summary>
+        /// <description>
+        /// Concatenates all given arguments to a single string and prints the string to the console. A newline is added automatically after the text.
+        /// </description>
+        /// <param name="message">Any number of string arguments.</param>
         public static void Echo(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -16004,6 +18790,17 @@ axis.Free();             return new Point3F(_engineResult);
 
         }
 
+        /// <description>
+        /// ( string textTagString )
+        /// </description>
+        /// <summary>Extracts the tag from a tagged string</summary>
+        /// <description>
+        /// Should only be used within the context of a function that receives a tagged string, and is not meant to be used outside of this context.
+        /// </description>
+        /// <param name="textTagString">The tagged string to extract.</param>
+        /// <returns>The tag ID of the string.</returns>
+        /// <see cref="\ref syntaxDataTypes under Tagged %Strings" />
+        /// <see cref="detag()" />
         public static string GetTag(string textTagString) {
              InternalUnsafeMethods.GetTag__Args _args = new InternalUnsafeMethods.GetTag__Args() {
                 textTagString = textTagString,
@@ -16012,6 +18809,20 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Returns the string from a tag string.</summary>
+        /// <description>
+        /// Should only be used within the context of a function that receives a tagged string, and is not meant to be used outside of this context.  Use getTaggedString() to convert a tagged string ID back into a regular string at any time.
+        /// </description>
+        /// <code>
+        /// // From scripts/client/message.cs
+        /// function clientCmdChatMessage(%sender, %voice, %pitch, %msgString, %a1, %a2, %a3, %a4, %a5, %a6, %a7, %a8, %a9, %a10)
+        /// {
+        ///    onChatMessage(detag(%msgString), %voice, %pitch);
+        /// }
+        /// </code>
+        /// <see cref="\ref syntaxDataTypes under Tagged %Strings" />
+        /// <see cref="getTag()" />
+        /// <see cref="getTaggedString()" />
         public static string Detag(string str) {
              InternalUnsafeMethods.Detag__Args _args = new InternalUnsafeMethods.Detag__Args() {
                 str = str,
@@ -16020,6 +18831,20 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return the number of<paramref name="" /> delimiters substrings in 
+        /// </description>
+        /// <param name="text">A<paramref name="" /> delimiters list of substrings.
+        /// </param>
+        /// <param name="delimiters">Character or characters that separate the list of substrings in<paramref name="" /> text.
+        /// </param>
+        /// <returns>The number of<paramref name="" /> delimiters substrings in </returns>
+        /// <code>
+        /// getTokenCount( "a b c d e", " " ) // Returns 5
+        /// </code>
+        /// <see cref="getWordCount" />
+        /// <see cref="getFieldCount" />
+        /// <see cref="getRecordCount" />
         public static int GetTokenCount(string text, string delimiters) {
              InternalUnsafeMethods.GetTokenCount__Args _args = new InternalUnsafeMethods.GetTokenCount__Args() {
                 text = text,
@@ -16029,6 +18854,24 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Remove the substring in<paramref name="" /> text separated by 
+        /// </description>
+        /// <param name="text">A<paramref name="" /> delimiters list of substrings.
+        /// </param>
+        /// <param name="delimiters">Character or characters that separate the list of substrings in<paramref name="" /> text.
+        /// </param>
+        /// <param name="index">The zero-based index of the word in<paramref name="" /> text.
+        /// </param>
+        /// <returns>A new string with the substring at the given index removed or the original string if<paramref name="" /> index is out of range.
+        /// 
+        /// </returns>
+        /// <code>
+        /// removeToken( "a b c d", " ", 2 ) // Returns "a b d"
+        /// </code>
+        /// <see cref="removeWord" />
+        /// <see cref="removeField" />
+        /// <see cref="removeRecord" />
         public static string RemoveToken(string text, string delimiters, int index) {
              InternalUnsafeMethods.RemoveToken__Args _args = new InternalUnsafeMethods.RemoveToken__Args() {
                 text = text,
@@ -16039,6 +18882,23 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Replace the substring in<paramref name="" /> text separated by 
+        /// </description>
+        /// <param name="text">A<paramref name="" /> delimiters list of substrings.
+        /// </param>
+        /// <param name="delimiters">Character or characters that separate the list of substrings in<paramref name="" /> text.
+        /// </param>
+        /// <param name="index">The zero-based index of the substring to replace.</param>
+        /// <param name="replacement">The string with which to replace the substring.</param>
+        /// <returns>A new string with the substring at the given<paramref name="" /> index replaced by </returns>
+        /// <code>
+        /// setToken( "a b c d", " ", 2, "f" ) // Returns "a b f d"
+        /// </code>
+        /// <see cref="getToken" />
+        /// <see cref="setWord" />
+        /// <see cref="setField" />
+        /// <see cref="setRecord" />
         public static string SetToken(string text, string delimiters, int index, string replacement) {
              InternalUnsafeMethods.SetToken__Args _args = new InternalUnsafeMethods.SetToken__Args() {
                 text = text,
@@ -16050,6 +18910,25 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Extract a range of substrings separated by<paramref name="" /> delimiters at the given 
+        /// </description>
+        /// <param name="text">A<paramref name="" /> delimiters list of substrings.
+        /// </param>
+        /// <param name="delimiters">Character or characters that separate the list of substrings in<paramref name="" /> text.
+        /// </param>
+        /// <param name="startIndex">The zero-based index of the first substring to extract from<paramref name="" /> text.
+        /// </param>
+        /// <param name="endIndex">The zero-based index of the last substring to extract from<paramref name="" /> text.  If this is -1, all words beginning with </param>
+        /// <returns>A string containing the specified range of substrings from<paramref name="" /> text or "" if </returns>
+        /// <code>
+        /// getTokens( "a b c d", " ", 1, 2, ) // Returns "b c"
+        /// </code>
+        /// <see cref="getToken" />
+        /// <see cref="getTokenCount" />
+        /// <see cref="getWords" />
+        /// <see cref="getFields" />
+        /// <see cref="getRecords" />
         public static string GetTokens(string text, string delimiters, int startIndex, int endIndex = -1) {
              InternalUnsafeMethods.GetTokens__Args _args = new InternalUnsafeMethods.GetTokens__Args() {
                 text = text,
@@ -16061,6 +18940,23 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Extract the substring at the given<paramref name="" /> index in the 
+        /// </description>
+        /// <param name="text">A<paramref name="" /> delimiters list of substrings.
+        /// </param>
+        /// <param name="delimiters">Character or characters that separate the list of substrings in<paramref name="" /> text.
+        /// </param>
+        /// <param name="index">The zero-based index of the substring to extract.</param>
+        /// <returns>The substring at the given index or "" if the index is out of range.</returns>
+        /// <code>
+        /// getToken( "a b c d", " ", 2 ) // Returns "c"
+        /// </code>
+        /// <see cref="getTokens" />
+        /// <see cref="getTokenCount" />
+        /// <see cref="getWord" />
+        /// <see cref="getField" />
+        /// <see cref="getRecord" />
         public static string GetToken(string text, string delimiters, int index) {
              InternalUnsafeMethods.GetToken__Args _args = new InternalUnsafeMethods.GetToken__Args() {
                 text = text,
@@ -16071,6 +18967,27 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ( string str, string token, string delimiters ) Tokenize a string using a set of delimiting characters.
+        /// This function first skips all leading charaters in<paramref name="" /> str that are contained in 
+        /// </description>
+        /// <param name="str">A string.</param>
+        /// <param name="token">The name of the variable in which to store the current token.  This variable is set in the scope in which nextToken is called.</param>
+        /// <param name="delimiters">A string of characters.  Each character is considered a delimiter.</param>
+        /// <returns>The remainder of<paramref name="" /> str after the token has been parsed out or "" if no more tokens were found in </returns>
+        /// <code>
+        /// // Prints:
+        /// // a
+        /// // b
+        /// // c
+        /// %str = "a   b c";
+        /// while ( %str !$= "" )
+        /// {
+        ///    // First time, stores "a" in the variable %token and sets %str to "b c".
+        ///    %str = nextToken( %str, "token", " " );
+        ///    echo( %token );
+        /// }
+        /// </code>
         public static string NextToken(string str1, string token, string delim) {
              InternalUnsafeMethods.NextToken__Args _args = new InternalUnsafeMethods.NextToken__Args() {
                 str1 = str1,
@@ -16081,6 +18998,17 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return all but the first word in<paramref name="" /> text.
+        /// 
+        /// </description>
+        /// <param name="text">A list of words separated by newlines, spaces, and/or tabs.</param>
+        /// <returns><paramref name="" /> text with the first word removed.
+        /// 
+        /// </returns>
+        /// <remarks> This is equal to 
+        /// </remarks>
+        /// <see cref="getWords" />
         public static string RestWords(string text) {
              InternalUnsafeMethods.RestWords__Args _args = new InternalUnsafeMethods.RestWords__Args() {
                 text = text,
@@ -16089,6 +19017,15 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return the first word in<paramref name="" /> text.
+        /// 
+        /// </description>
+        /// <param name="text">A list of words separated by newlines, spaces, and/or tabs.</param>
+        /// <returns>The word at index 0 in<paramref name="" /> text or "" if </returns>
+        /// <remarks> This is equal to 
+        /// </remarks>
+        /// <see cref="getWord" />
         public static string FirstWord(string text) {
              InternalUnsafeMethods.FirstWord__Args _args = new InternalUnsafeMethods.FirstWord__Args() {
                 text = text,
@@ -16097,6 +19034,19 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return the number of newline-separated records in<paramref name="" /> text.
+        /// 
+        /// </description>
+        /// <param name="text">A list of records separated by newlines.</param>
+        /// <returns>The number of newline-sepearated elements in<paramref name="" /> text.
+        /// 
+        /// </returns>
+        /// <code>
+        /// getRecordCount( "a b" NL "c d" NL "e f" ) // Returns 3
+        /// </code>
+        /// <see cref="getWordCount" />
+        /// <see cref="getFieldCount" />
         public static int GetRecordCount(string text) {
              InternalUnsafeMethods.GetRecordCount__Args _args = new InternalUnsafeMethods.GetRecordCount__Args() {
                 text = text,
@@ -16105,6 +19055,18 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Remove the record in<paramref name="" /> text at the given 
+        /// </description>
+        /// <param name="text">A list of records separated by newlines.</param>
+        /// <param name="index">The zero-based index of the record in<paramref name="" /> text.
+        /// </param>
+        /// <returns>A new string with the record at the given<paramref name="" /> index removed or the original string if </returns>
+        /// <code>
+        /// removeRecord( "a b" NL "c d" NL "e f", 1 ) // Returns "a b" NL "e f"
+        /// </code>
+        /// <see cref="removeWord" />
+        /// <see cref="removeField" />
         public static string RemoveRecord(string text, int index) {
              InternalUnsafeMethods.RemoveRecord__Args _args = new InternalUnsafeMethods.RemoveRecord__Args() {
                 text = text,
@@ -16114,6 +19076,19 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Replace the record in<paramref name="" /> text at the given 
+        /// </description>
+        /// <param name="text">A list of records separated by newlines.</param>
+        /// <param name="index">The zero-based index of the record to replace.</param>
+        /// <param name="replacement">The string with which to replace the record.</param>
+        /// <returns>A new string with the record at the given<paramref name="" /> index replaced by </returns>
+        /// <code>
+        /// setRecord( "a b" NL "c d" NL "e f", 1, "g h" ) // Returns "a b" NL "g h" NL "e f"
+        /// </code>
+        /// <see cref="getRecord" />
+        /// <see cref="setWord" />
+        /// <see cref="setField" />
         public static string SetRecord(string text, int index, string replacement) {
              InternalUnsafeMethods.SetRecord__Args _args = new InternalUnsafeMethods.SetRecord__Args() {
                 text = text,
@@ -16124,6 +19099,21 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Extract a range of records from the given<paramref name="" /> startIndex onwards thru 
+        /// </description>
+        /// <param name="text">A list of records separated by newlines.</param>
+        /// <param name="startIndex">The zero-based index of the first record to extract from<paramref name="" /> text.
+        /// </param>
+        /// <param name="endIndex">The zero-based index of the last record to extract from<paramref name="" /> text.  If this is -1, all records beginning with </param>
+        /// <returns>A string containing the specified range of records from<paramref name="" /> text or "" if </returns>
+        /// <code>
+        /// getRecords( "a b" NL "c d" NL "e f", 1 ) // Returns "c d" NL "e f"
+        /// </code>
+        /// <see cref="getRecord" />
+        /// <see cref="getRecordCount" />
+        /// <see cref="getWords" />
+        /// <see cref="getFields" />
         public static string GetRecords(string text, int startIndex, int endIndex = -1) {
              InternalUnsafeMethods.GetRecords__Args _args = new InternalUnsafeMethods.GetRecords__Args() {
                 text = text,
@@ -16134,6 +19124,21 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Extract the record at the given<paramref name="" /> index in the newline-separated list in 
+        /// </description>
+        /// <param name="text">A list of records separated by newlines.</param>
+        /// <param name="index">The zero-based index of the record to extract.</param>
+        /// <returns>The record at the given index or "" if<paramref name="" /> index is out of range.
+        /// 
+        /// </returns>
+        /// <code>
+        /// getRecord( "a b" NL "c d" NL "e f", 1 ) // Returns "c d"
+        /// </code>
+        /// <see cref="getRecords" />
+        /// <see cref="getRecordCount" />
+        /// <see cref="getWord" />
+        /// <see cref="getField" />
         public static string GetRecord(string text, int index) {
              InternalUnsafeMethods.GetRecord__Args _args = new InternalUnsafeMethods.GetRecord__Args() {
                 text = text,
@@ -16143,6 +19148,19 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return the number of newline and/or tab separated fields in<paramref name="" /> text.
+        /// 
+        /// </description>
+        /// <param name="text">A list of fields separated by newlines and/or tabs.</param>
+        /// <returns>The number of newline and/or tab sepearated elements in<paramref name="" /> text.
+        /// 
+        /// </returns>
+        /// <code>
+        /// getFieldCount( "a b" TAB "c d" TAB "e f" ) // Returns 3
+        /// </code>
+        /// <see cref="getWordCount" />
+        /// <see cref="getRecordCount" />
         public static int GetFieldCount(string text) {
              InternalUnsafeMethods.GetFieldCount__Args _args = new InternalUnsafeMethods.GetFieldCount__Args() {
                 text = text,
@@ -16151,6 +19169,20 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Remove the field in<paramref name="" /> text at the given 
+        /// </description>
+        /// <param name="text">A list of fields separated by newlines and/or tabs.</param>
+        /// <param name="index">The zero-based index of the field in<paramref name="" /> text.
+        /// </param>
+        /// <returns>A new string with the field at the given index removed or the original string if<paramref name="" /> index is out of range.
+        /// 
+        /// </returns>
+        /// <code>
+        /// removeField( "a b" TAB "c d" TAB "e f", 1 ) // Returns "a b" TAB "e f"
+        /// </code>
+        /// <see cref="removeWord" />
+        /// <see cref="removeRecord" />
         public static string RemoveField(string text, int index) {
              InternalUnsafeMethods.RemoveField__Args _args = new InternalUnsafeMethods.RemoveField__Args() {
                 text = text,
@@ -16160,6 +19192,19 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Replace the field in<paramref name="" /> text at the given 
+        /// </description>
+        /// <param name="text">A list of fields separated by newlines and/or tabs.</param>
+        /// <param name="index">The zero-based index of the field to replace.</param>
+        /// <param name="replacement">The string with which to replace the field.</param>
+        /// <returns>A new string with the field at the given<paramref name="" /> index replaced by </returns>
+        /// <code>
+        /// setField( "a b" TAB "c d" TAB "e f", 1, "g h" ) // Returns "a b" TAB "g h" TAB "e f"
+        /// </code>
+        /// <see cref="getField" />
+        /// <see cref="setWord" />
+        /// <see cref="setRecord" />
         public static string SetField(string text, int index, string replacement) {
              InternalUnsafeMethods.SetField__Args _args = new InternalUnsafeMethods.SetField__Args() {
                 text = text,
@@ -16170,6 +19215,21 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Extract a range of fields from the given<paramref name="" /> startIndex onwards thru 
+        /// </description>
+        /// <param name="text">A list of fields separated by newlines and/or tabs.</param>
+        /// <param name="startIndex">The zero-based index of the first field to extract from<paramref name="" /> text.
+        /// </param>
+        /// <param name="endIndex">The zero-based index of the last field to extract from<paramref name="" /> text.  If this is -1, all fields beginning with </param>
+        /// <returns>A string containing the specified range of fields from<paramref name="" /> text or "" if </returns>
+        /// <code>
+        /// getFields( "a b" TAB "c d" TAB "e f", 1 ) // Returns "c d" TAB "e f"
+        /// </code>
+        /// <see cref="getField" />
+        /// <see cref="getFieldCount" />
+        /// <see cref="getWords" />
+        /// <see cref="getRecords" />
         public static string GetFields(string text, int startIndex, int endIndex = -1) {
              InternalUnsafeMethods.GetFields__Args _args = new InternalUnsafeMethods.GetFields__Args() {
                 text = text,
@@ -16180,6 +19240,19 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Extract the field at the given<paramref name="" /> index in the newline and/or tab separated list in 
+        /// </description>
+        /// <param name="text">A list of fields separated by newlines and/or tabs.</param>
+        /// <param name="index">The zero-based index of the field to extract.</param>
+        /// <returns>The field at the given index or "" if the index is out of range.</returns>
+        /// <code>
+        /// getField( "a b" TAB "c d" TAB "e f", 1 ) // Returns "c d"
+        /// </code>
+        /// <see cref="getFields" />
+        /// <see cref="getFieldCount" />
+        /// <see cref="getWord" />
+        /// <see cref="getRecord" />
         public static string GetField(string text, int index) {
              InternalUnsafeMethods.GetField__Args _args = new InternalUnsafeMethods.GetField__Args() {
                 text = text,
@@ -16189,6 +19262,8 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>returns weekday as a word given a number or "" if number is bad</summary>
+        /// <returns>weekday as a word given a number or "" if number is bad</returns>
         public static string WeekdayNumToStr(int num, bool abbreviate = false) {
              InternalUnsafeMethods.WeekdayNumToStr__Args _args = new InternalUnsafeMethods.WeekdayNumToStr__Args() {
                 num = num,
@@ -16198,6 +19273,8 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>returns month as a word given a number or "" if number is bad</summary>
+        /// <returns>month as a word given a number or "" if number is bad</returns>
         public static string MonthNumToStr(int num, bool abbreviate = false) {
              InternalUnsafeMethods.MonthNumToStr__Args _args = new InternalUnsafeMethods.MonthNumToStr__Args() {
                 num = num,
@@ -16207,6 +19284,20 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return the number of whitespace-separated words in<paramref name="" /> text.
+        /// Words in 
+        /// </description>
+        /// <param name="text">A whitespace-separated list of words.</param>
+        /// <returns>The number of whitespace-separated words in<paramref name="" /> text.
+        /// 
+        /// </returns>
+        /// <code>
+        /// getWordCount( "a b c d e" ) // Returns 5
+        /// </code>
+        /// <see cref="getTokenCount" />
+        /// <see cref="getFieldCount" />
+        /// <see cref="getRecordCount" />
         public static int GetWordCount(string text) {
              InternalUnsafeMethods.GetWordCount__Args _args = new InternalUnsafeMethods.GetWordCount__Args() {
                 text = text,
@@ -16215,6 +19306,21 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Remove the word in<paramref name="" /> text at the given 
+        /// </description>
+        /// <param name="text">A whitespace-separated list of words.</param>
+        /// <param name="index">The zero-based index of the word in<paramref name="" /> text.
+        /// </param>
+        /// <returns>A new string with the word at the given index removed or the original string if<paramref name="" /> index is out of range.
+        /// 
+        /// </returns>
+        /// <code>
+        /// removeWord( "a b c d", 2 ) // Returns "a b d"
+        /// </code>
+        /// <see cref="removeToken" />
+        /// <see cref="removeField" />
+        /// <see cref="removeRecord" />
         public static string RemoveWord(string text, int index) {
              InternalUnsafeMethods.RemoveWord__Args _args = new InternalUnsafeMethods.RemoveWord__Args() {
                 text = text,
@@ -16224,6 +19330,20 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Replace the word in<paramref name="" /> text at the given 
+        /// </description>
+        /// <param name="text">A whitespace-separated list of words.</param>
+        /// <param name="index">The zero-based index of the word to replace.</param>
+        /// <param name="replacement">The string with which to replace the word.</param>
+        /// <returns>A new string with the word at the given<paramref name="" /> index replaced by </returns>
+        /// <code>
+        /// setWord( "a b c d", 2, "f" ) // Returns "a b f d"
+        /// </code>
+        /// <see cref="getWord" />
+        /// <see cref="setToken" />
+        /// <see cref="setField" />
+        /// <see cref="setRecord" />
         public static string SetWord(string text, int index, string replacement) {
              InternalUnsafeMethods.SetWord__Args _args = new InternalUnsafeMethods.SetWord__Args() {
                 text = text,
@@ -16234,6 +19354,22 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Extract a range of words from the given<paramref name="" /> startIndex onwards thru 
+        /// </description>
+        /// <param name="text">A whitespace-separated list of words.</param>
+        /// <param name="startIndex">The zero-based index of the first word to extract from<paramref name="" /> text.
+        /// </param>
+        /// <param name="endIndex">The zero-based index of the last word to extract from<paramref name="" /> text.  If this is -1, all words beginning with </param>
+        /// <returns>A string containing the specified range of words from<paramref name="" /> text or "" if </returns>
+        /// <code>
+        /// getWords( "a b c d", 1, 2, ) // Returns "b c"
+        /// </code>
+        /// <see cref="getWord" />
+        /// <see cref="getWordCount" />
+        /// <see cref="getTokens" />
+        /// <see cref="getFields" />
+        /// <see cref="getRecords" />
         public static string GetWords(string text, int startIndex, int endIndex = -1) {
              InternalUnsafeMethods.GetWords__Args _args = new InternalUnsafeMethods.GetWords__Args() {
                 text = text,
@@ -16244,6 +19380,20 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Extract the word at the given<paramref name="" /> index in the whitespace-separated list in 
+        /// </description>
+        /// <param name="text">A whitespace-separated list of words.</param>
+        /// <param name="index">The zero-based index of the word to extract.</param>
+        /// <returns>The word at the given index or "" if the index is out of range.</returns>
+        /// <code>
+        /// getWord( "a b c", 1 ) // Returns "b"
+        /// </code>
+        /// <see cref="getWords" />
+        /// <see cref="getWordCount" />
+        /// <see cref="getToken" />
+        /// <see cref="getField" />
+        /// <see cref="getRecord" />
         public static string GetWord(string text, int index) {
              InternalUnsafeMethods.GetWord__Args _args = new InternalUnsafeMethods.GetWord__Args() {
                 text = text,
@@ -16253,6 +19403,9 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// [string1, string2, ...]Adds case sensitive strings to the StringTable.
+        /// </description>
         public static void AddCaseSensitiveStrings(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -16268,6 +19421,16 @@ axis.Free();             return new Point3F(_engineResult);
 
         }
 
+        /// <description>
+        /// Returns true if the string is a valid ip address, excepts localhost.
+        /// </description>
+        /// <param name="str">The string to test.</param>
+        /// <returns>true if<paramref name="" /> str is a valid ip address and false if not
+        /// 
+        /// </returns>
+        /// <code>
+        /// isValidIP( "localhost" ) // Returns true.
+        /// </code>
         public static bool IsValidIP(string str) {
              InternalUnsafeMethods.IsValidIP__Args _args = new InternalUnsafeMethods.IsValidIP__Args() {
                 str = str,
@@ -16276,6 +19439,16 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns true if the string is a valid port number.
+        /// </description>
+        /// <param name="str">The string to test.</param>
+        /// <returns>true if<paramref name="" /> str is a port and false if not
+        /// 
+        /// </returns>
+        /// <code>
+        /// isValidPort( "8080" ) // Returns true.
+        /// </code>
         public static bool IsValidPort(string str) {
              InternalUnsafeMethods.IsValidPort__Args _args = new InternalUnsafeMethods.IsValidPort__Args() {
                 str = str,
@@ -16284,6 +19457,17 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns true if the string is a float.
+        /// </description>
+        /// <param name="str">The string to test.</param>
+        /// <param name="sciOk">Test for correct scientific notation and accept it (ex. 1.2e+14)</param>
+        /// <returns>true if<paramref name="" /> str is a float and false if not
+        /// 
+        /// </returns>
+        /// <code>
+        /// isFloat( "13.5" ) // Returns true.
+        /// </code>
         public static bool IsFloat(string str, bool sciOk = false) {
              InternalUnsafeMethods.IsFloat__Args _args = new InternalUnsafeMethods.IsFloat__Args() {
                 str = str,
@@ -16293,6 +19477,16 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns true if the string is an integer.
+        /// </description>
+        /// <param name="str">The string to test.</param>
+        /// <returns>true if<paramref name="" /> str is an integer and false if not
+        /// 
+        /// </returns>
+        /// <code>
+        /// isInt( "13" ) // Returns true.
+        /// </code>
         public static bool IsInt(string str) {
              InternalUnsafeMethods.IsInt__Args _args = new InternalUnsafeMethods.IsInt__Args() {
                 str = str,
@@ -16301,6 +19495,14 @@ axis.Free();             return new Point3F(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Parse a Toggle Case word into separate words.
+        /// </description>
+        /// <param name="str">The string to parse.</param>
+        /// <returns>new string space separated.</returns>
+        /// <code>
+        /// strToggleCaseToWords( "HelloWorld" ) // Returns "Hello World".
+        /// </code>
         public static string StrToggleCaseToWords(string str) {
              InternalUnsafeMethods.StrToggleCaseToWords__Args _args = new InternalUnsafeMethods.StrToggleCaseToWords__Args() {
                 str = str,
@@ -16309,6 +19511,14 @@ axis.Free();             return new Point3F(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Convert from a HSB (hue, saturation, brightness) to an integer RGB (red, green, blue) color. HSB is also know as HSL or HSV as well, with the last letter standing for lightness or value.
+        /// </description>
+        /// <param name="hsb">HSB (hue, saturation, brightness) value to be converted.</param>
+        /// <returns>Integer color value to be converted in the form "R G B A", where R is red, G is green, B is blue, and A is alpha. Alpha isn't handled/converted so only pay attention to the RGB value</returns>
+        /// <code>
+        /// ColorHSBToRGB( "240 100 100" ) // Returns "0 0 255 0".
+        /// </code>
         public static ColorI ColorHSBToRGB(Point3I hsb) {
 hsb.Alloc();             InternalUnsafeMethods.ColorHSBToRGB__Args _args = new InternalUnsafeMethods.ColorHSBToRGB__Args() {
                 hsb = hsb.internalStructPtr,
@@ -16317,6 +19527,14 @@ hsb.Alloc();             InternalUnsafeMethods.ColorHSBToRGB__Args _args = new I
 hsb.Free();             return new ColorI(_engineResult);
         }
 
+        /// <description>
+        /// Convert from a hex color value to an integer RGB (red, green, blue) color (00 - FF to 0 to 255).
+        /// </description>
+        /// <param name="hex">Hex color value (#000000 - #FFFFFF) to be converted to an RGB (red, green, blue) value.</param>
+        /// <returns>Integer color value to be converted in the form "R G B A", where R is red, G is green, B is blue, and A is alpha. Alpha isn't handled/converted so only pay attention to the RGB value</returns>
+        /// <code>
+        /// ColorHEXToRGB( "#0000FF" ) // Returns "0 0 255 0".
+        /// </code>
         public static ColorI ColorHEXToRGB(string hex) {
              InternalUnsafeMethods.ColorHEXToRGB__Args _args = new InternalUnsafeMethods.ColorHEXToRGB__Args() {
                 hex = hex,
@@ -16325,6 +19543,14 @@ hsb.Free();             return new ColorI(_engineResult);
              return new ColorI(_engineResult);
         }
 
+        /// <description>
+        /// Convert from a integer RGB (red, green, blue) color to HSB (hue, saturation, brightness). HSB is also know as HSL or HSV as well, with the last letter standing for lightness or value.
+        /// </description>
+        /// <param name="color">Integer color value to be converted in the form "R G B A", where R is red, G is green, B is blue, and A is alpha. It excepts an alpha, but keep in mind this will not be converted.</param>
+        /// <returns>HSB color value, alpha isn't handled/converted so it is only the RGB value</returns>
+        /// <code>
+        /// ColorRBGToHSB( "0 0 255 128" ) // Returns "240 100 100".
+        /// </code>
         public static string ColorRGBToHSB(ColorI color) {
 color.Alloc();             InternalUnsafeMethods.ColorRGBToHSB__Args _args = new InternalUnsafeMethods.ColorRGBToHSB__Args() {
                 color = color.internalStructPtr,
@@ -16333,6 +19559,14 @@ color.Alloc();             InternalUnsafeMethods.ColorRGBToHSB__Args _args = new
 color.Free();             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Convert from a integer RGB (red, green, blue) color to hex color value (0 to 255 to 00 - FF).
+        /// </description>
+        /// <param name="color">Integer color value to be converted in the form "R G B A", where R is red, G is green, B is blue, and A is alpha. It excepts an alpha, but keep in mind this will not be converted.</param>
+        /// <returns>Hex color value (#000000 - #FFFFFF), alpha isn't handled/converted so it is only the RGB value</returns>
+        /// <code>
+        /// ColorRBGToHEX( "0 0 255 128" ) // Returns "#0000FF".
+        /// </code>
         public static string ColorRGBToHEX(ColorI color) {
 color.Alloc();             InternalUnsafeMethods.ColorRGBToHEX__Args _args = new InternalUnsafeMethods.ColorRGBToHEX__Args() {
                 color = color.internalStructPtr,
@@ -16341,6 +19575,14 @@ color.Alloc();             InternalUnsafeMethods.ColorRGBToHEX__Args _args = new
 color.Free();             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Convert from a integer color to an float color (0 to 255 to 0.0 - 1.0).
+        /// </description>
+        /// <param name="color">Integer color value to be converted in the form "R G B A", where R is red, G is green, B is blue, and A is alpha.</param>
+        /// <returns>Converted color value (0.0 - 1.0)</returns>
+        /// <code>
+        /// ColorIntToFloat( "0 0 255 128" ) // Returns "0 0 1 0.5".
+        /// </code>
         public static LinearColorF ColorIntToFloat(ColorI color) {
 color.Alloc();             InternalUnsafeMethods.ColorIntToFloat__Args _args = new InternalUnsafeMethods.ColorIntToFloat__Args() {
                 color = color.internalStructPtr,
@@ -16349,6 +19591,14 @@ color.Alloc();             InternalUnsafeMethods.ColorIntToFloat__Args _args = n
 color.Free();             return new LinearColorF(_engineResult);
         }
 
+        /// <description>
+        /// Convert from a float color to an integer color (0.0 - 1.0 to 0 to 255).
+        /// </description>
+        /// <param name="color">Float color value to be converted in the form "R G B A", where R is red, G is green, B is blue, and A is alpha.</param>
+        /// <returns>Converted color value (0 - 255)</returns>
+        /// <code>
+        /// ColorFloatToInt( "0 0 1 0.5" ) // Returns "0 0 255 128".
+        /// </code>
         public static ColorI ColorFloatToInt(LinearColorF color) {
 color.Alloc();             InternalUnsafeMethods.ColorFloatToInt__Args _args = new InternalUnsafeMethods.ColorFloatToInt__Args() {
                 color = color.internalStructPtr,
@@ -16357,6 +19607,17 @@ color.Alloc();             InternalUnsafeMethods.ColorFloatToInt__Args _args = n
 color.Free();             return new ColorI(_engineResult);
         }
 
+        /// <description>
+        /// Find the last occurrence of the given character in the given string.
+        /// </description>
+        /// <param name="str">The string to search.</param>
+        /// <param name="chr">The character to look for.  Only the first character of this string will be searched for.</param>
+        /// <param name="start">The index into<paramref name="" /> str at which to start searching for the given character.
+        /// </param>
+        /// <returns>The index of the last occurrence of<paramref name="" /> chr in </returns>
+        /// <code>
+        /// strrchrpos( "test", "t" ) // Returns 3.
+        /// </code>
         public static int Strrchrpos(string str, string chr, int start = 0) {
              InternalUnsafeMethods.Strrchrpos__Args _args = new InternalUnsafeMethods.Strrchrpos__Args() {
                 str = str,
@@ -16367,6 +19628,17 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Find the first occurrence of the given character in the given string.
+        /// </description>
+        /// <param name="str">The string to search.</param>
+        /// <param name="chr">The character to look for.  Only the first character of this string will be searched for.</param>
+        /// <param name="start">The index into<paramref name="" /> str at which to start searching for the given character.
+        /// </param>
+        /// <returns>The index of the first occurrence of<paramref name="" /> chr in </returns>
+        /// <code>
+        /// strchrpos( "test", "s" ) // Returns 2.
+        /// </code>
         public static int Strchrpos(string str, string chr, int start = 0) {
              InternalUnsafeMethods.Strchrpos__Args _args = new InternalUnsafeMethods.Strchrpos__Args() {
                 str = str,
@@ -16377,6 +19649,19 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Test whether the given string ends with the given suffix.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="str">The string to test.</param>
+        /// <param name="suffix">The potential suffix of<paramref name="" /> str.
+        /// </param>
+        /// <param name="caseSensitive">If true, the comparison will be case-sensitive; if false, differences in casing will not be taken into account.</param>
+        /// <returns>True if the last characters in<paramref name="" /> str match the complete contents of </returns>
+        /// <code>
+        /// startsWith( "TEST123", "123" ) // Returns true.
+        /// </code>
+        /// <see cref="startsWith" />
         public static bool EndsWith(string str, string suffix, bool caseSensitive = false) {
              InternalUnsafeMethods.EndsWith__Args _args = new InternalUnsafeMethods.EndsWith__Args() {
                 str = str,
@@ -16387,6 +19672,18 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the given string begins with the given prefix.
+        /// </description>
+        /// <param name="str">The string to test.</param>
+        /// <param name="prefix">The potential prefix of<paramref name="" /> str.
+        /// </param>
+        /// <param name="caseSensitive">If true, the comparison will be case-sensitive; if false, differences in casing will not be taken into account.</param>
+        /// <returns>True if the first characters in<paramref name="" /> str match the complete contents of </returns>
+        /// <code>
+        /// startsWith( "TEST123", "test" ) // Returns true.
+        /// </code>
+        /// <see cref="endsWith" />
         public static bool StartsWith(string str, string prefix, bool caseSensitive = false) {
              InternalUnsafeMethods.StartsWith__Args _args = new InternalUnsafeMethods.StartsWith__Args() {
                 str = str,
@@ -16397,6 +19694,17 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the character at the given position is an alpha-numeric character.
+        /// Alpha-numeric characters are characters that are either alphabetic (a-z, A-Z) or numbers (0-9).
+        /// </description>
+        /// <param name="str">The string to test.</param>
+        /// <param name="index">The index of a character in<paramref name="" /> str.
+        /// </param>
+        /// <returns>True if the character at the given index in<paramref name="" /> str is an alpha-numeric character; false otherwise.
+        /// 
+        /// </returns>
+        /// <see cref="isspace" />
         public static bool Isalnum(string str, int index) {
              InternalUnsafeMethods.Isalnum__Args _args = new InternalUnsafeMethods.Isalnum__Args() {
                 str = str,
@@ -16406,6 +19714,17 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Test whether the character at the given position is a whitespace character.
+        /// Characters such as tab, space, or newline are considered whitespace.
+        /// </description>
+        /// <param name="str">The string to test.</param>
+        /// <param name="index">The index of a character in<paramref name="" /> str.
+        /// </param>
+        /// <returns>True if the character at the given index in<paramref name="" /> str is a whitespace character; false otherwise.
+        /// 
+        /// </returns>
+        /// <see cref="isalnum" />
         public static bool Isspace(string str, int index) {
              InternalUnsafeMethods.Isspace__Args _args = new InternalUnsafeMethods.Isspace__Args() {
                 str = str,
@@ -16415,6 +19734,12 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the first occuring number from<paramref name="" /> str.
+        /// 
+        /// </description>
+        /// <param name="str">The string from which to read out the first number.</param>
+        /// <returns>String representation of the number or  if no number.</returns>
         public static string GetFirstNumber(string str) {
              InternalUnsafeMethods.GetFirstNumber__Args _args = new InternalUnsafeMethods.GetFirstNumber__Args() {
                 str = str,
@@ -16423,6 +19748,15 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Strip a numeric suffix from the given string.
+        /// </description>
+        /// <param name="str">The string from which to strip its numeric suffix.</param>
+        /// <returns>The string<paramref name="" /> str without its number suffix or the original string </returns>
+        /// <code>
+        /// stripTrailingNumber( "test123" ) // Returns "test".
+        /// </code>
+        /// <see cref="getTrailingNumber" />
         public static string StripTrailingNumber(string str) {
              InternalUnsafeMethods.StripTrailingNumber__Args _args = new InternalUnsafeMethods.StripTrailingNumber__Args() {
                 str = str,
@@ -16431,6 +19765,15 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the numeric suffix of the given input string.
+        /// </description>
+        /// <param name="str">The string from which to read out the numeric suffix.</param>
+        /// <returns>The numeric value of the number suffix of<paramref name="" /> str or -1 if </returns>
+        /// <code>
+        /// getTrailingNumber( "test123" ) // Returns '123'.
+        /// </code>
+        /// <see cref="stripTrailingNumber" />
         public static int GetTrailingNumber(string str) {
              InternalUnsafeMethods.GetTrailingNumber__Args _args = new InternalUnsafeMethods.GetTrailingNumber__Args() {
                 str = str,
@@ -16439,6 +19782,18 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Match a multiple patterns against a single string.
+        /// </description>
+        /// <param name="patterns">A tab-separated list of patterns.  Each pattern can include charaters, '*' to match any number of characters and '?' to match a single character.  Each of the patterns is tried in turn.</param>
+        /// <param name="str">The string which should be matched against<paramref name="" /> patterns.
+        /// </param>
+        /// <param name="caseSensitive">If true, characters in the pattern are matched in case-sensitive fashion against this string.  If false, differences in casing are ignored.</param>
+        /// <returns>True if<paramref name="" /> str matches any of the given </returns>
+        /// <code>
+        /// strIsMatchMultipleExpr( "*.cs *.gui *.mis", "mymission.mis" ) // Returns true.
+        /// </code>
+        /// <see cref="strIsMatchExpr" />
         public static bool StrIsMatchMultipleExpr(string patterns, string str, bool caseSensitive = false) {
              InternalUnsafeMethods.StrIsMatchMultipleExpr__Args _args = new InternalUnsafeMethods.StrIsMatchMultipleExpr__Args() {
                 patterns = patterns,
@@ -16449,6 +19804,18 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Match a pattern against a string.
+        /// </description>
+        /// <param name="pattern">The wildcard pattern to match against.  The pattern can include characters, '*' to match any number of characters and '?' to match a single character.</param>
+        /// <param name="str">The string which should be matched against<paramref name="" /> pattern.
+        /// </param>
+        /// <param name="caseSensitive">If true, characters in the pattern are matched in case-sensitive fashion against this string.  If false, differences in casing are ignored.</param>
+        /// <returns>True if<paramref name="" /> str matches the given </returns>
+        /// <code>
+        /// strIsMatchExpr( "f?o*R", "foobar" ) // Returns true.
+        /// </code>
+        /// <see cref="strIsMatchMultipleExpr" />
         public static bool StrIsMatchExpr(string pattern, string str, bool caseSensitive = false) {
              InternalUnsafeMethods.StrIsMatchExpr__Args _args = new InternalUnsafeMethods.StrIsMatchExpr__Args() {
                 pattern = pattern,
@@ -16459,6 +19826,14 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Return a substring of<paramref name="" /> str starting at </summary>
+        /// <param name="str">The string from which to extract a substring.</param>
+        /// <param name="start">The offset at which to start copying out characters.</param>
+        /// <param name="numChars">Optional argument to specify the number of characters to copy.  If this is -1, all characters up the end of the input string are copied.</param>
+        /// <returns>A string that contains the given portion of the input string.</returns>
+        /// <code>
+        /// getSubStr( "foobar", 1, 2 ) // Returns "oo".
+        /// </code>
         public static string GetSubStr(string str, int start, int numChars = -1) {
              InternalUnsafeMethods.GetSubStr__Args _args = new InternalUnsafeMethods.GetSubStr__Args() {
                 str = str,
@@ -16469,6 +19844,18 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return a string that repeats<paramref name="" /> str 
+        /// </description>
+        /// <param name="str">The string to repeat multiple times.</param>
+        /// <param name="numTimes">The number of times to repeat<paramref name="" /> str in the result string.
+        /// </param>
+        /// <param name="delimiter">The string to put between each repetition of<paramref name="" /> str.
+        /// </param>
+        /// <returns>A string containing<paramref name="" /> str repeated </returns>
+        /// <code>
+        /// strrepeat( "a", 5, "b" ) // Returns "ababababa".
+        /// </code>
         public static string Strrepeat(string str, int numTimes, string delimiter = "") {
              InternalUnsafeMethods.Strrepeat__Args _args = new InternalUnsafeMethods.Strrepeat__Args() {
                 str = str,
@@ -16479,6 +19866,18 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Replace all occurrences of<paramref name="" /> from in 
+        /// </description>
+        /// <param name="source">The string in which to replace the occurrences of<paramref name="" /> from.
+        /// </param>
+        /// <param name="from">The string to replace in<paramref name="" /> source.
+        /// </param>
+        /// <param name="to">The string with which to replace occurrences of</param>
+        /// <returns>A string with all occurrences of<paramref name="" /> from in </returns>
+        /// <code>
+        /// strreplace( "aabbccbb", "bb", "ee" ) // Returns "aaeeccee".
+        /// </code>
         public static string Strreplace(string source, string from, string to) {
              InternalUnsafeMethods.Strreplace__Args _args = new InternalUnsafeMethods.Strreplace__Args() {
                 source = source,
@@ -16489,6 +19888,13 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Find the last occurrence of the given character in<paramref name="" /> str.
+        /// </description>
+        /// <param name="str">The string to search.</param>
+        /// <param name="chr">The character to search for.  Only the first character from the string is taken.</param>
+        /// <returns>The remainder of the input string starting with the given character or the empty string if the character could not be found.</returns>
+        /// <see cref="strchr" />
         public static string Strrchr(string str, string chr) {
              InternalUnsafeMethods.Strrchr__Args _args = new InternalUnsafeMethods.Strrchr__Args() {
                 str = str,
@@ -16498,6 +19904,14 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Find the first occurrence of the given character in<paramref name="" /> str.
+        /// 
+        /// </description>
+        /// <param name="str">The string to search.</param>
+        /// <param name="chr">The character to search for.  Only the first character from the string is taken.</param>
+        /// <returns>The remainder of the input string starting with the given character or the empty string if the character could not be found.</returns>
+        /// <see cref="strrchr" />
         public static string Strchr(string str, string chr) {
              InternalUnsafeMethods.Strchr__Args _args = new InternalUnsafeMethods.Strchr__Args() {
                 str = str,
@@ -16507,6 +19921,17 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return an all upper-case version of the given string.
+        /// </description>
+        /// <param name="str">A string.</param>
+        /// <returns>A version of<paramref name="" /> str with all characters converted to upper-case.
+        /// 
+        /// </returns>
+        /// <code>
+        /// strupr( "TesT1" ) // Returns "TEST1"
+        /// </code>
+        /// <see cref="strlwr" />
         public static string Strupr(string str) {
              InternalUnsafeMethods.Strupr__Args _args = new InternalUnsafeMethods.Strupr__Args() {
                 str = str,
@@ -16515,6 +19940,17 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return an all lower-case version of the given string.
+        /// </description>
+        /// <param name="str">A string.</param>
+        /// <returns>A version of<paramref name="" /> str with all characters converted to lower-case.
+        /// 
+        /// </returns>
+        /// <code>
+        /// strlwr( "TesT1" ) // Returns "test1"
+        /// </code>
+        /// <see cref="strupr" />
         public static string Strlwr(string str) {
              InternalUnsafeMethods.Strlwr__Args _args = new InternalUnsafeMethods.Strlwr__Args() {
                 str = str,
@@ -16523,6 +19959,16 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Remove all occurrences of characters contained in<paramref name="" /> chars from 
+        /// </description>
+        /// <param name="str">The string to filter characters out from.</param>
+        /// <param name="chars">A string of characters to filter out from<paramref name="" /> str.
+        /// </param>
+        /// <returns>A version of<paramref name="" /> str with all occurrences of characters contained in </returns>
+        /// <code>
+        /// stripChars( "teststring", "se" ); // Returns "tttring".
+        /// </code>
         public static string StripChars(string str, string chars) {
              InternalUnsafeMethods.StripChars__Args _args = new InternalUnsafeMethods.StripChars__Args() {
                 str = str,
@@ -16532,6 +19978,16 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Remove leading and trailing whitespace from the string.
+        /// </description>
+        /// <param name="str">A string.</param>
+        /// <returns>A string that is the same as<paramref name="" /> str but with any leading (i.e. leftmost) and trailing (i.e. rightmost) whitespace removed.
+        /// 
+        /// </returns>
+        /// <code>
+        /// trim( "   string  " ); // Returns "string".
+        /// </code>
         public static string Trim(string str) {
              InternalUnsafeMethods.Trim__Args _args = new InternalUnsafeMethods.Trim__Args() {
                 str = str,
@@ -16540,6 +19996,18 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Remove trailing whitespace from the string.
+        /// </description>
+        /// <param name="str">A string.</param>
+        /// <returns>A string that is the same as<paramref name="" /> str but with any trailing (i.e. rightmost) whitespace removed.
+        /// 
+        /// </returns>
+        /// <code>
+        /// rtrim( "   string  " ); // Returns "   string".
+        /// </code>
+        /// <see cref="ltrim" />
+        /// <see cref="trim" />
         public static string Rtrim(string str) {
              InternalUnsafeMethods.Rtrim__Args _args = new InternalUnsafeMethods.Rtrim__Args() {
                 str = str,
@@ -16548,6 +20016,18 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Remove leading whitespace from the string.
+        /// </description>
+        /// <param name="str">A string.</param>
+        /// <returns>A string that is the same as<paramref name="" /> str but with any leading (i.e. leftmost) whitespace removed.
+        /// 
+        /// </returns>
+        /// <code>
+        /// ltrim( "   string  " ); // Returns "string  ".
+        /// </code>
+        /// <see cref="rtrim" />
+        /// <see cref="trim" />
         public static string Ltrim(string str) {
              InternalUnsafeMethods.Ltrim__Args _args = new InternalUnsafeMethods.Ltrim__Args() {
                 str = str,
@@ -16556,6 +20036,15 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Find the start of<paramref name="" /> needle in 
+        /// </description>
+        /// <param name="haystack">The string to search.</param>
+        /// <param name="needle">The string to search for.</param>
+        /// <returns>The index at which the first occurrence of<paramref name="" /> needle was found in </returns>
+        /// <code>
+        /// strposr( "b ab", "b", 1 ) // Returns 2.
+        /// </code>
         public static int Strposr(string haystack, string needle, int offset = 0) {
              InternalUnsafeMethods.Strposr__Args _args = new InternalUnsafeMethods.Strposr__Args() {
                 haystack = haystack,
@@ -16566,6 +20055,15 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Find the start of<paramref name="" /> needle in 
+        /// </description>
+        /// <param name="haystack">The string to search.</param>
+        /// <param name="needle">The string to search for.</param>
+        /// <returns>The index at which the first occurrence of<paramref name="" /> needle was found in </returns>
+        /// <code>
+        /// strpos( "b ab", "b", 1 ) // Returns 3.
+        /// </code>
         public static int Strpos(string haystack, string needle, int offset = 0) {
              InternalUnsafeMethods.Strpos__Args _args = new InternalUnsafeMethods.Strpos__Args() {
                 haystack = haystack,
@@ -16576,6 +20074,15 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Find the start of<paramref name="" /> substring in the given 
+        /// </description>
+        /// <param name="string">The string to search.</param>
+        /// <param name="substring">The string to search for.</param>
+        /// <returns>The index into<paramref name="" /> string at which the first occurrence of </returns>
+        /// <code>
+        /// strstr( "abcd", "c" ) // Returns 2.
+        /// </code>
         public static int Strstr(string _string, string substring) {
              InternalUnsafeMethods.Strstr__Args _args = new InternalUnsafeMethods.Strstr__Args() {
                 _string = _string,
@@ -16585,6 +20092,13 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Calculate the length of a string in characters, skipping everything between and including first and last.
+        /// </description>
+        /// <param name="str">A string.</param>
+        /// <param name="first">First character to look for to skip block of text.</param>
+        /// <param name="last">Second character to look for to skip block of text.</param>
+        /// <returns>The length of the given string skipping blocks of text between characters.</returns>
         public static int Strlenskip(string str, string first, string last) {
              InternalUnsafeMethods.Strlenskip__Args _args = new InternalUnsafeMethods.Strlenskip__Args() {
                 str = str,
@@ -16595,6 +20109,13 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the length of the given string in bytes.
+        /// </description>
+        /// <remarks> This does <b>not</b> return a true character count for strings with multi-byte characters!
+        /// </remarks>
+        /// <param name="str">A string.</param>
+        /// <returns>The length of the given string in bytes.</returns>
         public static int Strlen(string str) {
              InternalUnsafeMethods.Strlen__Args _args = new InternalUnsafeMethods.Strlen__Args() {
                 str = str,
@@ -16603,6 +20124,31 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Compares two strings using "natural order" case-<b>insensitive</b> comparison.
+        /// Natural order means that rather than solely comparing single character code values, strings are ordered in a natural way.  For example, the string "hello10" is considered greater than the string "hello2" even though the first numeric character in "hello10" actually has a smaller character value than the corresponding character in "hello2".  However, since 10 is greater than 2, strnatcmp will put "hello10" after "hello2".
+        /// </description>
+        /// <param name="str1">The first string.</param>
+        /// <param name="str2">The second string.</param>
+        /// <returns>0 if the strings are equal, a value >0 if<paramref name="" /> str1 comes after </returns>
+        /// <code>
+        /// // Bubble sort 10 elements of %array using natural order
+        /// do
+        /// {
+        ///    %swapped = false;
+        ///    for( %i = 0; %i < 10 - 1; %i ++ )
+        ///       if( strnatcmp( %array[ %i ], %array[ %i + 1 ] ) > 0 )
+        ///       {
+        ///          %temp = %array[ %i ];
+        ///          %array[ %i ] = %array[ %i + 1 ];
+        ///          %array[ %i + 1 ] = %temp;
+        ///          %swapped = true;
+        ///       }
+        /// }
+        /// while( %swapped );
+        /// </code>
+        /// <see cref="stricmp" />
+        /// <see cref="strnatcmp" />
         public static int Strinatcmp(string str1, string str2) {
              InternalUnsafeMethods.Strinatcmp__Args _args = new InternalUnsafeMethods.Strinatcmp__Args() {
                 str1 = str1,
@@ -16612,6 +20158,31 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Compares two strings using "natural order" case-<b>sensitive</b> comparison.
+        /// Natural order means that rather than solely comparing single character code values, strings are ordered in a natural way.  For example, the string "hello10" is considered greater than the string "hello2" even though the first numeric character in "hello10" actually has a smaller character value than the corresponding character in "hello2".  However, since 10 is greater than 2, strnatcmp will put "hello10" after "hello2".
+        /// </description>
+        /// <param name="str1">The first string.</param>
+        /// <param name="str2">The second string.</param>
+        /// <returns>0 if the strings are equal, a value >0 if<paramref name="" /> str1 comes after </returns>
+        /// <code>
+        /// // Bubble sort 10 elements of %array using natural order
+        /// do
+        /// {
+        ///    %swapped = false;
+        ///    for( %i = 0; %i < 10 - 1; %i ++ )
+        ///       if( strnatcmp( %array[ %i ], %array[ %i + 1 ] ) > 0 )
+        ///       {
+        ///          %temp = %array[ %i ];
+        ///          %array[ %i ] = %array[ %i + 1 ];
+        ///          %array[ %i + 1 ] = %temp;
+        ///          %swapped = true;
+        ///       }
+        /// }
+        /// while( %swapped );
+        /// </code>
+        /// <see cref="strcmp" />
+        /// <see cref="strinatcmp" />
         public static int Strnatcmp(string str1, string str2) {
              InternalUnsafeMethods.Strnatcmp__Args _args = new InternalUnsafeMethods.Strnatcmp__Args() {
                 str1 = str1,
@@ -16621,6 +20192,18 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Compares two strings using case-<b>insensitive</b> comparison.
+        /// </description>
+        /// <param name="str1">The first string.</param>
+        /// <param name="str2">The second string.</param>
+        /// <returns>0 if both strings are equal, a value <0 if the first character different in str1 has a smaller character code value than the character at the same position in str2, and a value >0 otherwise.</returns>
+        /// <code>
+        /// if( stricmp( "FOObar", "foobar" ) == 0 )
+        ///    echo( "this is always true" );
+        /// </code>
+        /// <see cref="strcmp" />
+        /// <see cref="strinatcmp" />
         public static int Stricmp(string str1, string str2) {
              InternalUnsafeMethods.Stricmp__Args _args = new InternalUnsafeMethods.Stricmp__Args() {
                 str1 = str1,
@@ -16630,6 +20213,18 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Compares two strings using case-<b>sensitive</b> comparison.
+        /// </description>
+        /// <param name="str1">The first string.</param>
+        /// <param name="str2">The second string.</param>
+        /// <returns>0 if both strings are equal, a value <0 if the first character different in str1 has a smaller character code value than the character at the same position in str2, and a value >1 otherwise.</returns>
+        /// <code>
+        /// if( strcmp( %var, "foobar" ) == 0 )
+        ///    echo( "%var is equal to 'foobar'" );
+        /// </code>
+        /// <see cref="stricmp" />
+        /// <see cref="strnatcmp" />
         public static int Strcmp(string str1, string str2) {
              InternalUnsafeMethods.Strcmp__Args _args = new InternalUnsafeMethods.Strcmp__Args() {
                 str1 = str1,
@@ -16639,6 +20234,16 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Format the given value as a string using printf-style formatting.
+        /// </description>
+        /// <param name="format">A printf-style format string.</param>
+        /// <param name="value">The value argument matching the given format string.</param>
+        /// <code>
+        /// // Convert the given integer value to a string in a hex notation.
+        /// %hex = strformat( "%x", %value );
+        /// </code>
+        /// <see href="http://en.wikipedia.org/wiki/Printf" />
         public static string Strformat(string format, string value) {
              InternalUnsafeMethods.Strformat__Args _args = new InternalUnsafeMethods.Strformat__Args() {
                 format = format,
@@ -16648,6 +20253,11 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return the integer character code value corresponding to the first character in the given string.
+        /// </description>
+        /// <param name="chr">a (one-character) string.</param>
+        /// <returns>the UTF32 code value for the first character in the given string.</returns>
         public static int Strasc(string chr) {
              InternalUnsafeMethods.Strasc__Args _args = new InternalUnsafeMethods.Strasc__Args() {
                 chr = chr,
@@ -16656,6 +20266,12 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Dumps all declared console functions to the console.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="dumpScript">Optional parameter specifying whether or not functions defined in script should be dumped.</param>
+        /// <param name="dumpEngine">Optional parameter specitying whether or not functions defined in the engine should be dumped.</param>
         public static void DumpConsoleFunctions(bool dumpScript = true, bool dumpEngine = true) {
              InternalUnsafeMethods.DumpConsoleFunctions__Args _args = new InternalUnsafeMethods.DumpConsoleFunctions__Args() {
                 dumpScript = dumpScript,
@@ -16664,6 +20280,12 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.DumpConsoleFunctions()(_args);
         }
 
+        /// <summary>Dumps all declared console classes to the console.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="dumpScript">Optional parameter specifying whether or not classes defined in script should be dumped.</param>
+        /// <param name="dumpEngine">Optional parameter specifying whether or not classes defined in the engine should be dumped.</param>
         public static void DumpConsoleClasses(bool dumpScript = true, bool dumpEngine = true) {
              InternalUnsafeMethods.DumpConsoleClasses__Args _args = new InternalUnsafeMethods.DumpConsoleClasses__Args() {
                 dumpScript = dumpScript,
@@ -16672,6 +20294,13 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.DumpConsoleClasses()(_args);
         }
 
+        /// <summary>Logs a warning message to the console.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="message">The message text.</param>
+        /// <remarks> By default, warnings will appear turquoise in the console.
+        /// </remarks>
         public static void LogWarning(string message) {
              InternalUnsafeMethods.LogWarning__Args _args = new InternalUnsafeMethods.LogWarning__Args() {
                 message = message,
@@ -16679,6 +20308,13 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.LogWarning()(_args);
         }
 
+        /// <summary>Logs an error message to the console.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="message">The message text.</param>
+        /// <remarks> By default, errors will appear red in the console.
+        /// </remarks>
         public static void LogError(string message) {
              InternalUnsafeMethods.LogError__Args _args = new InternalUnsafeMethods.LogError__Args() {
                 message = message,
@@ -16686,6 +20322,13 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.LogError()(_args);
         }
 
+        /// <summary>Logs a message to the console.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="message">The message text.</param>
+        /// <remarks> By default, messages will appear white in the console.
+        /// </remarks>
         public static void Log(string message) {
              InternalUnsafeMethods.Log__Args _args = new InternalUnsafeMethods.Log__Args() {
                 message = message,
@@ -16693,6 +20336,13 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.Log()(_args);
         }
 
+        /// <description>
+        /// (string text)
+        /// </description>
+        /// <summary>Set the system clipboard.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool SetClipboard(string text) {
              InternalUnsafeMethods.SetClipboard__Args _args = new InternalUnsafeMethods.SetClipboard__Args() {
                 text = text,
@@ -16701,6 +20351,13 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Get text from the clipboard.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static string GetClipboard() {
              InternalUnsafeMethods.GetClipboard__Args _args = new InternalUnsafeMethods.GetClipboard__Args() {
              };
@@ -16708,12 +20365,27 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Clears the console output.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void Cls() {
              InternalUnsafeMethods.Cls__Args _args = new InternalUnsafeMethods.Cls__Args() {
              };
              InternalUnsafeMethods.Cls()(_args);
         }
 
+        /// <description>
+        /// Dump information about all current SFXSource instances to a string.
+        /// The dump includes information about the playback status for each source, volume levels, virtualization, etc.
+        /// </description>
+        /// <param name="includeGroups">If true, direct instances of SFXSources (which represent logical sound groups) will be included. Otherwise only instances of subclasses of SFXSources are included in the dump.</param>
+        /// <returns>A string containing a dump of information about all currently instantiated SFXSources.</returns>
+        /// <see cref="SFXSource" />
+        /// <see cref="sfxDumpSources" />
         public static string SfxDumpSourcesToString(bool includeGroups = false) {
              InternalUnsafeMethods.SfxDumpSourcesToString__Args _args = new InternalUnsafeMethods.SfxDumpSourcesToString__Args() {
                 includeGroups = includeGroups,
@@ -16722,6 +20394,13 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Dump information about all current SFXSource instances to the console.
+        /// The dump includes information about the playback status for each source, volume levels, virtualization, etc.
+        /// </description>
+        /// <param name="includeGroups">If true, direct instances of SFXSources (which represent logical sound groups) will be included. Otherwise only instances of subclasses of SFXSources are included in the dump.</param>
+        /// <see cref="SFXSource" />
+        /// <see cref="sfxDumpSourcesToString" />
         public static void SfxDumpSources(bool includeGroups = false) {
              InternalUnsafeMethods.SfxDumpSources__Args _args = new InternalUnsafeMethods.SfxDumpSources__Args() {
                 includeGroups = includeGroups,
@@ -16729,6 +20408,15 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.SfxDumpSources()(_args);
         }
 
+        /// <description>
+        /// Set the global scale factor to apply to volume attenuation of 3D sounds in the logarithmic model.
+        /// </description>
+        /// <param name="value">The new scale factor for logarithmic 3D sound falloff curves.</param>
+        /// <remarks> This function has no effect if the currently distance model is set to SFXDistanceModel::Linear.
+        /// 
+        /// </remarks>
+        /// <see cref="sfxGetDistanceModel" />
+        /// <see cref="SFXDistanceModel" />
         public static void SfxSetRolloffFactor(float value) {
              InternalUnsafeMethods.SfxSetRolloffFactor__Args _args = new InternalUnsafeMethods.SfxSetRolloffFactor__Args() {
                 value = value,
@@ -16736,6 +20424,12 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.SfxSetRolloffFactor()(_args);
         }
 
+        /// <description>
+        /// Get the current global scale factor applied to volume attenuation of 3D sounds in the logarithmic model.
+        /// </description>
+        /// <returns>The current scale factor for logarithmic 3D sound falloff curves.</returns>
+        /// <see cref="sfxGetDistanceModel" />
+        /// <see cref="SFXDistanceModel" />
         public static float SfxGetRolloffFactor() {
              InternalUnsafeMethods.SfxGetRolloffFactor__Args _args = new InternalUnsafeMethods.SfxGetRolloffFactor__Args() {
              };
@@ -16743,6 +20437,11 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the global doppler effect scale factor.
+        /// </description>
+        /// <param name="value">The new doppler shift scale factor.</param>
+        /// <see cref="sfxGetDopplerFactor" />
         public static void SfxSetDopplerFactor(float value) {
              InternalUnsafeMethods.SfxSetDopplerFactor__Args _args = new InternalUnsafeMethods.SfxSetDopplerFactor__Args() {
                 value = value,
@@ -16750,6 +20449,11 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.SfxSetDopplerFactor()(_args);
         }
 
+        /// <description>
+        /// Get the current global doppler effect setting.
+        /// </description>
+        /// <returns>The current global doppler effect scale factor (>=0).</returns>
+        /// <see cref="sfxSetDopplerFactor" />
         public static float SfxGetDopplerFactor() {
              InternalUnsafeMethods.SfxGetDopplerFactor__Args _args = new InternalUnsafeMethods.SfxGetDopplerFactor__Args() {
              };
@@ -16757,6 +20461,13 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Set the falloff curve type to use for distance-based volume attenuation of 3D sounds.
+        /// </description>
+        /// <param name="model">The distance model to use for 3D sound.</param>
+        /// <remarks> This setting takes effect globally and is applied to all 3D sounds.
+        /// 
+        /// </remarks>
         public static void SfxSetDistanceModel(SFXDistanceModel model) {
              InternalUnsafeMethods.SfxSetDistanceModel__Args _args = new InternalUnsafeMethods.SfxSetDistanceModel__Args() {
                 model = (int)model,
@@ -16764,6 +20475,10 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.SfxSetDistanceModel()(_args);
         }
 
+        /// <description>
+        /// Get the falloff curve type currently being applied to 3D sounds.
+        /// </description>
+        /// <returns>The current distance model type.</returns>
         public static SFXDistanceModel SfxGetDistanceModel() {
              InternalUnsafeMethods.SfxGetDistanceModel__Args _args = new InternalUnsafeMethods.SfxGetDistanceModel__Args() {
              };
@@ -16771,6 +20486,12 @@ color.Free();             return new ColorI(_engineResult);
              return (SFXDistanceModel)_engineResult;
         }
 
+        /// <description>
+        /// Mark the given<paramref name="" /> source for deletion as soon as it moves into stopped state.
+        /// 
+        /// This function will retroactively turn the given 
+        /// </description>
+        /// <param name="source">A sound source.</param>
         public static void SfxDeleteWhenStopped(SFXSource source) {
              InternalUnsafeMethods.SfxDeleteWhenStopped__Args _args = new InternalUnsafeMethods.SfxDeleteWhenStopped__Args() {
                 source = source.ObjectPtr,
@@ -16778,6 +20499,10 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.SfxDeleteWhenStopped()(_args);
         }
 
+        /// <description>
+        /// Stop playback of the given<paramref name="" /> source (if it is not already stopped) and delete the 
+        /// </description>
+        /// <param name="source">A sound source.</param>
         public static void SfxStopAndDelete(SFXSource source) {
              InternalUnsafeMethods.SfxStopAndDelete__Args _args = new InternalUnsafeMethods.SfxStopAndDelete__Args() {
                 source = source.ObjectPtr,
@@ -16785,6 +20510,13 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.SfxStopAndDelete()(_args);
         }
 
+        /// <description>
+        /// Stop playback of the given<paramref name="" /> source.
+        /// This is equivalent to calling SFXSource::stop().
+        /// 
+        /// 
+        /// </description>
+        /// <param name="source">The source to put into stopped state.</param>
         public static void SfxStop(SFXSource source) {
              InternalUnsafeMethods.SfxStop__Args _args = new InternalUnsafeMethods.SfxStop__Args() {
                 source = source.ObjectPtr,
@@ -16792,6 +20524,9 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.SfxStop()(_args);
         }
 
+        /// <description>
+        /// SFXSource sfxPlayOnce( ( SFXTrack track | SFXDescription description, string filename ) [, float x, float y, float z, float fadeInTime=-1 ] ) Create a new play-once source for the given profile or description+filename and start playback of the source.
+        /// </description>
         public static int SfxPlayOnce(string sfxType, string arg0 = "", string arg1 = "", string arg2 = "", string arg3 = "", string arg4 = "-1.0f") {
              InternalUnsafeMethods.SfxPlayOnce__Args _args = new InternalUnsafeMethods.SfxPlayOnce__Args() {
                 sfxType = sfxType,
@@ -16805,6 +20540,9 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Start playing the given source or create a new source for the given track and play it.
+        /// </description>
         public static int SfxPlay(string trackName, string pointOrX = "", string y = "", string z = "") {
              InternalUnsafeMethods.SfxPlay__Args _args = new InternalUnsafeMethods.SfxPlay__Args() {
                 trackName = trackName,
@@ -16816,6 +20554,9 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// ( SFXTrack track | ( SFXDescription description, string filename ) [, float x, float y, float z ] ) Creates a new paused sound source using a profile or a description and filename.  The return value is the source which must be released by delete().
+        /// </description>
         public static int SfxCreateSource(string sfxType, string arg0 = "", string arg1 = "", string arg2 = "", string arg3 = "") {
              InternalUnsafeMethods.SfxCreateSource__Args _args = new InternalUnsafeMethods.SfxCreateSource__Args() {
                 sfxType = sfxType,
@@ -16828,6 +20569,24 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Return information about the currently active sound device.
+        /// The return value is a tab-delimited string of the following format:
+        /// </description>
+        /// <returns>A tab-separated list of properties of the currently active sound device or the empty string if no sound device has been initialized.</returns>
+        /// <see cref="sfxCreateDevice" />
+        /// <see cref="sfxGetAvailableDevices" />
+        /// <see cref="$SFX::DEVICE_INFO_PROVIDER" />
+        /// <see cref="$SFX::DEVICE_INFO_NAME" />
+        /// <see cref="$SFX::DEVICE_INFO_USEHARDWARE" />
+        /// <see cref="$SFX::DEVICE_INFO_MAXBUFFERS" />
+        /// <see cref="$SFX::DEVICE_INFO_CAPS" />
+        /// <see cref="$SFX::DEVICE_CAPS_REVERB" />
+        /// <see cref="$SFX::DEVICE_CAPS_VOICEMANAGEMENT" />
+        /// <see cref="$SFX::DEVICE_CAPS_OCCLUSION" />
+        /// <see cref="$SFX::DEVICE_CAPS_DSPEFFECTS" />
+        /// <see cref="$SFX::DEVICE_CAPS_MULTILISTENER" />
+        /// <see cref="$SFX::DEVICE_CAPS_FMODDESIGNER" />
         public static string SfxGetDeviceInfo() {
              InternalUnsafeMethods.SfxGetDeviceInfo__Args _args = new InternalUnsafeMethods.SfxGetDeviceInfo__Args() {
              };
@@ -16835,12 +20594,37 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Delete the currently active sound device and release all its resources.
+        /// SFXSources that are still playing will be transitioned to virtualized playback mode. When creating a new device, they will automatically transition back to normal playback.
+        /// 
+        /// In the core scripts, this is done automatically for you during shutdown in the sfxShutdown() function.
+        /// </description>
+        /// <see cref="sfxCreateDevice" />
         public static void SfxDeleteDevice() {
              InternalUnsafeMethods.SfxDeleteDevice__Args _args = new InternalUnsafeMethods.SfxDeleteDevice__Args() {
              };
              InternalUnsafeMethods.SfxDeleteDevice()(_args);
         }
 
+        /// <description>
+        /// Try to create a new sound device using the given properties.
+        /// If a sound device is currently initialized, it will be uninitialized first.  However, be aware that in this case, if this function fails, it will not restore the previously active device but rather leave the sound system in an uninitialized state.
+        /// 
+        /// Sounds that are already playing while the new device is created will be temporarily transitioned to virtualized playback and then resume normal playback once the device has been created.
+        /// 
+        /// In the core scripts, sound is automatically set up during startup in the sfxStartup() function.
+        /// </description>
+        /// <param name="provider">The name of the device provider as returned by sfxGetAvailableDevices().</param>
+        /// <param name="device">The name of the device as returned by sfxGetAvailableDevices().</param>
+        /// <param name="useHardware">Whether to enabled hardware mixing on the device or not.  Only relevant if supported by the given device.</param>
+        /// <param name="maxBuffers">The maximum number of concurrent voices for this device to use or -1 for the device to pick its own reasonable default.</param>
+        /// <returns>True if the initialization was successful, false if not.</returns>
+        /// <remarks> This function must be called before any of the sound playback functions can be used.
+        /// </remarks>
+        /// <see cref="sfxGetAvailableDevices" />
+        /// <see cref="sfxGetDeviceInfo" />
+        /// <see cref="sfxDeleteDevice" />
         public static bool SfxCreateDevice(string provider, string device, bool useHardware, int maxBuffers) {
              InternalUnsafeMethods.SfxCreateDevice__Args _args = new InternalUnsafeMethods.SfxCreateDevice__Args() {
                 provider = provider,
@@ -16852,6 +20636,17 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Get a list of all available sound devices.
+        /// The return value will be a newline-separated list of entries where each line describes one available sound device.  Each such line will have the following format:
+        /// </description>
+        /// <returns>A newline-separated list of information about all available sound devices.</returns>
+        /// <see cref="sfxCreateDevice" />
+        /// <see cref="sfxGetDeviceInfo" />
+        /// <see cref="$SFX::DEVICE_INFO_PROVIDER" />
+        /// <see cref="$SFX::DEVICE_INFO_NAME" />
+        /// <see cref="$SFX::DEVICE_INFO_USEHARDWARE" />
+        /// <see cref="$SFX::DEVICE_INFO_MAXBUFFERS" />
         public static string SfxGetAvailableDevices() {
              InternalUnsafeMethods.SfxGetAvailableDevices__Args _args = new InternalUnsafeMethods.SfxGetAvailableDevices__Args() {
              };
@@ -16859,6 +20654,15 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Return a newline-separated list of all active states.
+        /// </description>
+        /// <returns>A list of the form</returns>
+        /// <code>
+        /// // Disable all active states.
+        /// foreach$( %state in sfxGetActiveStates() )
+        ///    %state.disable();
+        /// </code>
         public static string SfxGetActiveStates() {
              InternalUnsafeMethods.SfxGetActiveStates__Args _args = new InternalUnsafeMethods.SfxGetActiveStates__Args() {
              };
@@ -16866,6 +20670,9 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the type of build, "Debug" or "Release".
+        /// </description>
         public static string GetBuildString() {
              InternalUnsafeMethods.GetBuildString__Args _args = new InternalUnsafeMethods.GetBuildString__Args() {
              };
@@ -16873,6 +20680,9 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the time of compilation.
+        /// </description>
         public static string GetCompileTimeString() {
              InternalUnsafeMethods.GetCompileTimeString__Args _args = new InternalUnsafeMethods.GetCompileTimeString__Args() {
              };
@@ -16880,6 +20690,9 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the name of the engine product that this is running from, as a string.
+        /// </description>
         public static string GetEngineName() {
              InternalUnsafeMethods.GetEngineName__Args _args = new InternalUnsafeMethods.GetEngineName__Args() {
              };
@@ -16887,6 +20700,9 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the version of the aplication build, as a human readable string.
+        /// </description>
         public static string GetAppVersionString() {
              InternalUnsafeMethods.GetAppVersionString__Args _args = new InternalUnsafeMethods.GetAppVersionString__Args() {
              };
@@ -16894,6 +20710,9 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the version of the engine build, as a human readable string.
+        /// </description>
         public static string GetVersionString() {
              InternalUnsafeMethods.GetVersionString__Args _args = new InternalUnsafeMethods.GetVersionString__Args() {
              };
@@ -16901,6 +20720,9 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the version of the application build, as a string.
+        /// </description>
         public static int GetAppVersionNumber() {
              InternalUnsafeMethods.GetAppVersionNumber__Args _args = new InternalUnsafeMethods.GetAppVersionNumber__Args() {
              };
@@ -16908,6 +20730,9 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the version of the engine build, as a string.
+        /// </description>
         public static int GetVersionNumber() {
              InternalUnsafeMethods.GetVersionNumber__Args _args = new InternalUnsafeMethods.GetVersionNumber__Args() {
              };
@@ -16915,6 +20740,9 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// setServerInfo(index);
+        /// </description>
         public static bool SetServerInfo(uint index) {
              InternalUnsafeMethods.SetServerInfo__Args _args = new InternalUnsafeMethods.SetServerInfo__Args() {
                 index = index,
@@ -16923,6 +20751,9 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// getServerCount();
+        /// </description>
         public static int GetServerCount() {
              InternalUnsafeMethods.GetServerCount__Args _args = new InternalUnsafeMethods.GetServerCount__Args() {
              };
@@ -16930,30 +20761,45 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// stopHeartbeat();
+        /// </description>
         public static void StopHeartbeat() {
              InternalUnsafeMethods.StopHeartbeat__Args _args = new InternalUnsafeMethods.StopHeartbeat__Args() {
              };
              InternalUnsafeMethods.StopHeartbeat()(_args);
         }
 
+        /// <description>
+        /// startHeartbeat();
+        /// </description>
         public static void StartHeartbeat() {
              InternalUnsafeMethods.StartHeartbeat__Args _args = new InternalUnsafeMethods.StartHeartbeat__Args() {
              };
              InternalUnsafeMethods.StartHeartbeat()(_args);
         }
 
+        /// <description>
+        /// stopServerQuery();
+        /// </description>
         public static void StopServerQuery() {
              InternalUnsafeMethods.StopServerQuery__Args _args = new InternalUnsafeMethods.StopServerQuery__Args() {
              };
              InternalUnsafeMethods.StopServerQuery()(_args);
         }
 
+        /// <description>
+        /// cancelServerQuery();
+        /// </description>
         public static void CancelServerQuery() {
              InternalUnsafeMethods.CancelServerQuery__Args _args = new InternalUnsafeMethods.CancelServerQuery__Args() {
              };
              InternalUnsafeMethods.CancelServerQuery()(_args);
         }
 
+        /// <description>
+        /// querySingleServer(address, flags);
+        /// </description>
         public static void QuerySingleServer(string addrText, byte flags = 0) {
              InternalUnsafeMethods.QuerySingleServer__Args _args = new InternalUnsafeMethods.QuerySingleServer__Args() {
                 addrText = addrText,
@@ -16962,6 +20808,9 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.QuerySingleServer()(_args);
         }
 
+        /// <description>
+        /// queryMasterServer(...);
+        /// </description>
         public static void QueryMasterServer(uint flags, string gameType, string missionType, uint minPlayers, uint maxPlayers, uint maxBots, uint regionMask, uint maxPing, uint minCPU, uint filterFlags) {
              InternalUnsafeMethods.QueryMasterServer__Args _args = new InternalUnsafeMethods.QueryMasterServer__Args() {
                 flags = flags,
@@ -16978,6 +20827,9 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.QueryMasterServer()(_args);
         }
 
+        /// <description>
+        /// queryLanServers(...);
+        /// </description>
         public static void QueryLanServers(uint lanPort, uint flags, string gameType, string missionType, uint minPlayers, uint maxPlayers, uint maxBots, uint regionMask, uint maxPing, uint minCPU, uint filterFlags) {
              InternalUnsafeMethods.QueryLanServers__Args _args = new InternalUnsafeMethods.QueryLanServers__Args() {
                 lanPort = lanPort,
@@ -16995,6 +20847,9 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.QueryLanServers()(_args);
         }
 
+        /// <description>
+        /// queryAllServers(...);
+        /// </description>
         public static void QueryAllServers(uint lanPort, uint flags, string gameType, string missionType, uint minPlayers, uint maxPlayers, uint maxBots, uint regionMask, uint maxPing, uint minCPU, uint filterFlags) {
              InternalUnsafeMethods.QueryAllServers__Args _args = new InternalUnsafeMethods.QueryAllServers__Args() {
                 lanPort = lanPort,
@@ -17012,6 +20867,27 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.QueryAllServers()(_args);
         }
 
+        /// <description>
+        /// (string format, ...)
+        /// </description>
+        /// <summary>Build a string using the specified tagged string format.</summary>
+        /// <description>
+        /// This function takes an already tagged string (passed in as a tagged string ID) and one or more additional strings.  If the tagged string contains argument tags that range from %%1 through %%9, then each additional string will be substituted into the tagged string.  The final (non-tagged) combined string will be returned.  The maximum length of the tagged string plus any inserted additional strings is 511 characters.
+        /// </description>
+        /// <param name="format">A tagged string ID that contains zero or more argument tags, in the form of %%1 through %%9.</param>
+        /// <param name="...">A variable number of arguments that are insterted into the tagged string based on the argument tags within the format string.</param>
+        /// <returns>An ordinary string that is a combination of the original tagged string with any additional strings passed in inserted in place of each argument tag.</returns>
+        /// <code>
+        /// // Create a tagged string with argument tags
+        /// %taggedStringID = addTaggedString("Welcome %1 to the game!");
+        /// 
+        /// // Some point later, combine the tagged string with some other string
+        /// %string = buildTaggedString(%taggedStringID, %playerName);
+        /// echo(%string);
+        /// </code>
+        /// <see cref="\ref syntaxDataTypes under Tagged %Strings" />
+        /// <see cref="addTaggedString()" />
+        /// <see cref="getTaggedString()" />
         public static string BuildTaggedString(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -17028,6 +20904,15 @@ color.Free();             return new ColorI(_engineResult);
             return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Use the getTaggedString function to convert a tag to a string.</summary>
+        /// <description>
+        /// This is not the same as detag() which can only be used within the context of a function that receives a tag. This function can be used any time and anywhere to convert a tag to a string.
+        /// </description>
+        /// <param name="tag">A numeric tag ID.</param>
+        /// <returns>The string as found in the Net String table.</returns>
+        /// <see cref="\ref syntaxDataTypes under Tagged %Strings" />
+        /// <see cref="addTaggedString()" />
+        /// <see cref="removeTaggedString()" />
         public static string GetTaggedString(string tag = "") {
              InternalUnsafeMethods.GetTaggedString__Args _args = new InternalUnsafeMethods.GetTaggedString__Args() {
                 tag = tag,
@@ -17036,6 +20921,15 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Use the addTaggedString function to tag a new string and add it to the NetStringTable</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="str">The string to be tagged and placed in the NetStringTable. Tagging ignores case, so tagging the same string (excluding case differences) will be ignored as a duplicated tag.</param>
+        /// <returns>Returns a string( containing a numeric value) equivalent to the string ID for the newly tagged string</returns>
+        /// <see cref="\ref syntaxDataTypes under Tagged %Strings" />
+        /// <see cref="removeTaggedString()" />
+        /// <see cref="getTaggedString()" />
         public static string AddTaggedString(string str = "") {
              InternalUnsafeMethods.AddTaggedString__Args _args = new InternalUnsafeMethods.AddTaggedString__Args() {
                 str = str,
@@ -17044,6 +20938,14 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Remove a tagged string from the Net String Table</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="tag">The tag associated with the string</param>
+        /// <see cref="\ref syntaxDataTypes under Tagged %Strings" />
+        /// <see cref="addTaggedString()" />
+        /// <see cref="getTaggedString()" />
         public static void RemoveTaggedString(int tag = -1) {
              InternalUnsafeMethods.RemoveTaggedString__Args _args = new InternalUnsafeMethods.RemoveTaggedString__Args() {
                 tag = tag,
@@ -17051,6 +20953,29 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.RemoveTaggedString()(_args);
         }
 
+        /// <description>
+        /// (NetConnection client, string func, ...)
+        /// </description>
+        /// <summary>Send a command from the server to the client</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="client">The numeric ID of a client GameConnection</param>
+        /// <param name="func">Name of the client function being called</param>
+        /// <param name="...">Various parameters being passed to client command</param>
+        /// <code>
+        /// // Set up the client command.  Needs to be executed on the client, such as
+        /// // within scripts/client/client.cs
+        /// // Update the Ammo Counter with current ammo, if not any then hide the counter.
+        /// function clientCmdSetAmmoAmountHud(%amount)
+        /// {
+        ///    if (!%amount)
+        /// 	  AmmoAmount.setVisible(false);
+        ///    else
+        ///    {
+        /// 	  AmmoAmount.setVisible(true);
+        /// 	  AmmoAmount.setText("Ammo: "
+        /// </code>
         public static void CommandToClient(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -17066,6 +20991,43 @@ color.Free();             return new ColorI(_engineResult);
 
         }
 
+        /// <description>
+        /// (string func, ...)
+        /// </description>
+        /// <summary>Send a command to the server.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="func">Name of the server command being called</param>
+        /// <param name="...">Various parameters being passed to server command</param>
+        /// <code>
+        /// // Create a standard function.  Needs to be executed on the client, such 
+        /// // as within scripts/client/default.bind.cs
+        /// function toggleCamera(%val)
+        /// {
+        /// 	// If key was down, call a server command named 'ToggleCamera'
+        /// 	if (%val)
+        /// 		commandToServer('ToggleCamera');
+        /// }
+        /// 
+        /// // Server command being called from above.  Needs to be executed on the 
+        /// // server, such as within scripts/server/commands.cs
+        /// function serverCmdToggleCamera(%client)
+        /// {
+        ///    if (%client.getControlObject() == %client.player)
+        ///    {
+        /// 	  %client.camera.setVelocity("0 0 0");
+        /// 	  %control = %client.camera;
+        ///    }
+        ///    else
+        ///    {
+        /// 	  %client.player.setVelocity("0 0 0");
+        /// 	  %control = %client.player;
+        ///   }
+        ///    %client.setControlObject(%control);
+        ///    clientCmdSyncEditorGui();
+        /// }
+        /// </code>
         public static void CommandToServer(params string[] args) { 
             List<string> _argList = new List<string>() {""};
             _argList.AddRange(args);
@@ -17081,6 +21043,10 @@ color.Free();             return new ColorI(_engineResult);
 
         }
 
+        /// <summary>Return the current local time as: weekday month day year hour min sec.</summary>
+        /// <description>
+        /// Local time is platform defined.
+        /// </description>
         public static string GetLocalTime() {
              InternalUnsafeMethods.GetLocalTime__Args _args = new InternalUnsafeMethods.GetLocalTime__Args() {
              };
@@ -17088,6 +21054,13 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Return the current real time in milliseconds.</summary>
+        /// <description>
+        /// Real time is platform defined; typically time since the computer booted.
+        /// </description>
         public static int GetRealTime() {
              InternalUnsafeMethods.GetRealTime__Args _args = new InternalUnsafeMethods.GetRealTime__Args() {
              };
@@ -17095,6 +21068,13 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// ()Return the current sim time in milliseconds.
+        /// </description>
+        /// <summary>Sim time is time since the game started.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static int GetSimTime() {
              InternalUnsafeMethods.GetSimTime__Args _args = new InternalUnsafeMethods.GetSimTime__Args() {
              };
@@ -17102,6 +21082,14 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// (string filename)
+        /// </description>
+        /// <summary>Begin playback of a journal from a specified field.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="filename">Name and path of file journal file</param>
         public static void PlayJournal(string filename) {
              InternalUnsafeMethods.PlayJournal__Args _args = new InternalUnsafeMethods.PlayJournal__Args() {
                 filename = filename,
@@ -17109,6 +21097,9 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.PlayJournal()(_args);
         }
 
+        /// <description>
+        /// (string filename)Save the journal to the specified file.
+        /// </description>
         public static void SaveJournal(string filename) {
              InternalUnsafeMethods.SaveJournal__Args _args = new InternalUnsafeMethods.SaveJournal__Args() {
                 filename = filename,
@@ -17116,12 +21107,26 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.SaveJournal()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Closes the current network port</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static void CloseNetPort() {
              InternalUnsafeMethods.CloseNetPort__Args _args = new InternalUnsafeMethods.CloseNetPort__Args() {
              };
              InternalUnsafeMethods.CloseNetPort()(_args);
         }
 
+        /// <description>
+        /// (protocol id)
+        /// </description>
+        /// <summary>Determines if a specified address type can be reached.</summary>
+        /// <description>
+        /// 
+        /// </description>
         public static bool IsAddressTypeAvailable(int addressType) {
              InternalUnsafeMethods.IsAddressTypeAvailable__Args _args = new InternalUnsafeMethods.IsAddressTypeAvailable__Args() {
                 addressType = addressType,
@@ -17130,6 +21135,17 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// (int port, bool bind=true)
+        /// </description>
+        /// <summary>Set the network port for the game to use.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="port">The port to use.</param>
+        /// <param name="bind">True if bind() should be called on the port.</param>
+        /// <returns>True if the port was successfully opened.
+        /// This will trigger a windows firewall prompt.  If you don't have firewall tunneling tech you can set this to false to avoid the prompt.</returns>
         public static bool SetNetPort(int port, bool bind = true) {
              InternalUnsafeMethods.SetNetPort__Args _args = new InternalUnsafeMethods.SetNetPort__Args() {
                 port = port,
@@ -17139,6 +21155,13 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <description>
+        /// (bool isLocked)
+        /// </description>
+        /// <summary>Lock or unlock the mouse to the window.</summary>
+        /// <description>
+        /// When true, prevents the mouse from leaving the bounds of the game window.
+        /// </description>
         public static void LockMouse(bool isLocked) {
              InternalUnsafeMethods.LockMouse__Args _args = new InternalUnsafeMethods.LockMouse__Args() {
                 isLocked = isLocked,
@@ -17146,6 +21169,9 @@ color.Free();             return new ColorI(_engineResult);
              InternalUnsafeMethods.LockMouse()(_args);
         }
 
+        /// <description>
+        /// strToPlayerName(string);
+        /// </description>
         public static string StrToPlayerName(string ptr) {
              InternalUnsafeMethods.StrToPlayerName__Args _args = new InternalUnsafeMethods.StrToPlayerName__Args() {
                 ptr = ptr,
@@ -17154,18 +21180,66 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Activates DirectInput.</summary>
+        /// <description>
+        /// Also activates any connected joysticks.
+        /// </description>
         public static void ActivateDirectInput() {
              InternalUnsafeMethods.ActivateDirectInput__Args _args = new InternalUnsafeMethods.ActivateDirectInput__Args() {
              };
              InternalUnsafeMethods.ActivateDirectInput()(_args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
+        /// <summary>Disables DirectInput.</summary>
+        /// <description>
+        /// Also deactivates any connected joysticks.
+        /// </description>
         public static void DeactivateDirectInput() {
              InternalUnsafeMethods.DeactivateDirectInput__Args _args = new InternalUnsafeMethods.DeactivateDirectInput__Args() {
              };
              InternalUnsafeMethods.DeactivateDirectInput()(_args);
         }
 
+        /// <summary>Checks to see if text is a bad word</summary>
+        /// <description>
+        /// The text is considered to be a bad word if it has been added to the bad word filter.
+        /// </description>
+        /// <param name="text">Text to scan for bad words</param>
+        /// <returns>True if the text has bad word(s), false if it is clean</returns>
+        /// <see cref="addBadWord()" />
+        /// <see cref="filterString()" />
+        /// <code>
+        /// // In this game, "Foobar" is banned
+        /// %badWord = "Foobar";
+        /// 
+        /// // Add a banned word to the bad word filter
+        /// addBadWord(%badWord);
+        /// 
+        /// // Create the base string, can come from anywhere like user chat
+        /// %userText = "Foobar";
+        /// 
+        /// // Create a string of random letters
+        /// %replacementChars = "knqwrtlzs";
+        /// 
+        /// // If the text contains a bad word, filter it before printing
+        /// // Otherwise print the original text
+        /// if(containsBadWords(%userText))
+        /// {
+        ///   // Filter the string
+        ///   %filteredText = filterString(%userText, %replacementChars);
+        /// 
+        ///   // Print filtered text
+        ///   echo(%filteredText);
+        /// }
+        /// else
+        ///   echo(%userText);
+        /// </code>
         public static bool ContainsBadWords(string text) {
              InternalUnsafeMethods.ContainsBadWords__Args _args = new InternalUnsafeMethods.ContainsBadWords__Args() {
                 text = text,
@@ -17174,6 +21248,28 @@ color.Free();             return new ColorI(_engineResult);
              return _engineResult;
         }
 
+        /// <summary>Replaces the characters in a string with designated text</summary>
+        /// <description>
+        /// Uses the bad word filter to determine which characters within the string will be replaced.
+        /// </description>
+        /// <param name="baseString">The original string to filter.</param>
+        /// <param name="replacementChars">A string containing letters you wish to swap in the baseString.</param>
+        /// <returns>The new scrambled string</returns>
+        /// <see cref="addBadWord()" />
+        /// <see cref="containsBadWords()" />
+        /// <code>
+        /// // Create the base string, can come from anywhere
+        /// %baseString = "Foobar";
+        /// 
+        /// // Create a string of random letters
+        /// %replacementChars = "knqwrtlzs";
+        /// 
+        /// // Filter the string
+        /// %newString = filterString(%baseString, %replacementChars);
+        /// 
+        /// // Print the new string to console
+        /// echo(%newString);
+        /// </code>
         public static string FilterString(string baseString = "", string replacementChars = "") {
              InternalUnsafeMethods.FilterString__Args _args = new InternalUnsafeMethods.FilterString__Args() {
                 baseString = baseString,
@@ -17183,6 +21279,23 @@ color.Free();             return new ColorI(_engineResult);
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Add a string to the bad word filter</summary>
+        /// <description>
+        /// The bad word filter is a table containing words which will not be displayed in chat windows. Instead, a designated replacement string will be displayed.  There are already a number of bad words automatically defined.
+        /// </description>
+        /// <param name="badWord">Exact text of the word to restrict.</param>
+        /// <returns>True if word was successfully added, false if the word or a subset of it already exists in the table</returns>
+        /// <see cref="filterString()" />
+        /// <code>
+        /// // In this game, "Foobar" is banned
+        /// %badWord = "Foobar";
+        /// 
+        /// // Returns true, word was successfully added
+        /// addBadWord(%badWord);
+        /// 
+        /// // Returns false, word has already been added
+        /// addBadWord("Foobar");
+        /// </code>
         public static bool AddBadWord(string badWord) {
              InternalUnsafeMethods.AddBadWord__Args _args = new InternalUnsafeMethods.AddBadWord__Args() {
                 badWord = badWord,

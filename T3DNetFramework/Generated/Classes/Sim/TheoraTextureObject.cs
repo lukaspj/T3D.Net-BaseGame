@@ -14,7 +14,31 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Definition of a named texture target playing a Theora video.</summary>
+    /// <description>
+    /// TheoraTextureObject defines a named texture target that may play back a Theora video.  This texture target can, for example, be used by materials to texture objects with videos.
+    /// </description>
+    /// <code>
+    /// // The object that provides the video texture and controls its playback.
+    /// singleton TheoraTextureObject( TheVideo )
+    /// {
+    ///    // Unique name for the texture target for referencing in materials.
+    ///    texTargetName = "video";
+    /// 
+    ///    // Path to the video file.
+    ///    theoraFile = "./MyVideo.ogv";
+    /// };
+    /// 
+    /// // Material that uses the video texture.
+    /// singleton Material( TheVideoMaterial )
+    /// {
+    ///    // This has to reference the named texture target defined by the
+    ///    // TheoraTextureObject's 'texTargetName' property.  Prefix with '#' to
+    ///    // identify as texture target reference.
+    ///    diffuseMap[ 0 ] = "#video";
+    /// };
+    /// </code>
     public unsafe class TheoraTextureObject : SimObject {
         public TheoraTextureObject(bool pRegister = false) 
             : base(pRegister) {
@@ -159,24 +183,37 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Pause playback of the video.
+        /// </description>
         public void Pause() {
              InternalUnsafeMethods.Pause__Args _args = new InternalUnsafeMethods.Pause__Args() {
              };
              InternalUnsafeMethods.Pause()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Stop playback of the video.
+        /// </description>
         public void Stop() {
              InternalUnsafeMethods.Stop__Args _args = new InternalUnsafeMethods.Stop__Args() {
              };
              InternalUnsafeMethods.Stop()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Start playback of the video.
+        /// </description>
         public void Play() {
              InternalUnsafeMethods.Play__Args _args = new InternalUnsafeMethods.Play__Args() {
              };
              InternalUnsafeMethods.Play()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the TheoraTextureObject class.
+        /// </description>
+        /// <returns>The type info object for TheoraTextureObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -184,21 +221,47 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Theora video file to play.
+        /// </description>
+        /// </value>
         public string TheoraFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("theoraFile"));
             set => SetFieldValue("theoraFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of the texture target by which the texture can be referenced in materials.
+        /// </description>
+        /// </value>
         public string TexTargetName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("texTargetName"));
             set => SetFieldValue("texTargetName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sound description to use for the video's audio channel.
+        /// 
+        /// If not set, will use a default one.
+        /// </description>
+        /// </value>
         public SFXDescription SFXDescription {
             get => GenericMarshal.StringTo<SFXDescription>(GetFieldValue("SFXDescription"));
             set => SetFieldValue("SFXDescription", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Should the video loop.
+        /// </description>
+        /// </value>
         public bool Loop {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("loop"));
             set => SetFieldValue("loop", GenericMarshal.ToString(value));

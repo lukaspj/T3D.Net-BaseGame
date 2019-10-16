@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An xmod datablock.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxXM_OscillateData : afxXM_WeightedBaseData {
         public afxXM_OscillateData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxXM_OscillateData class.
+        /// </description>
+        /// <returns>The type info object for afxXM_OscillateData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,36 +114,78 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public int Mask {
             get => GenericMarshal.StringTo<int>(GetFieldValue("mask"));
             set => SetFieldValue("mask", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point3F Min {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("min"));
             set => SetFieldValue("min", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point3F Max {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("max"));
             set => SetFieldValue("max", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Speed {
             get => GenericMarshal.StringTo<float>(GetFieldValue("speed"));
             set => SetFieldValue("speed", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point3F Axis {
             get => GenericMarshal.StringTo<Point3F>(GetFieldValue("axis"));
             set => SetFieldValue("axis", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool AdditiveScale {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("additiveScale"));
             set => SetFieldValue("additiveScale", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public bool LocalOffset {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("localOffset"));
             set => SetFieldValue("localOffset", GenericMarshal.ToString(value));

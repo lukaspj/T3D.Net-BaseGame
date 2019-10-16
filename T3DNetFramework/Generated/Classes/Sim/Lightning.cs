@@ -14,7 +14,12 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An emitter for lightning bolts.</summary>
+    /// <description>
+    /// Lightning strike events are created on the server and transmitted to all clients to render the bolt. The strike may be followed by a random thunder sound. Player or Vehicle objects within the Lightning strike range can be hit and damaged by bolts.
+    /// </description>
+    /// <see cref="LightningData" />
     public unsafe class Lightning : GameBase {
         public Lightning(bool pRegister = false) 
             : base(pRegister) {
@@ -183,6 +188,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Creates a LightningStrikeEvent which strikes a specific object.
+        /// </description>
+        /// <remarks> This method is currently unimplemented.
+        /// </remarks>
         public void StrikeObject(ShapeBase pSB = null) {
              InternalUnsafeMethods.StrikeObject__Args _args = new InternalUnsafeMethods.StrikeObject__Args() {
                 pSB = pSB.ObjectPtr,
@@ -190,18 +200,47 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.StrikeObject()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Creates a LightningStrikeEvent which attempts to strike and damage a random object in range of the Lightning object.
+        /// </description>
+        /// <code>
+        /// // Generate a damaging lightning strike effect on all clients
+        /// %lightning.strikeRandomPoint();
+        /// </code>
         public void StrikeRandomPoint() {
              InternalUnsafeMethods.StrikeRandomPoint__Args _args = new InternalUnsafeMethods.StrikeRandomPoint__Args() {
              };
              InternalUnsafeMethods.StrikeRandomPoint()(ObjectPtr, _args);
         }
 
+        /// <summary>Creates a LightningStrikeEvent that triggers harmless lightning bolts on all clients.</summary>
+        /// <description>
+        /// No objects will be damaged by these bolts.
+        /// </description>
+        /// <code>
+        /// // Generate a harmless lightning strike effect on all clients
+        /// %lightning.warningFlashes();
+        /// </code>
         public void WarningFlashes() {
              InternalUnsafeMethods.WarningFlashes__Args _args = new InternalUnsafeMethods.WarningFlashes__Args() {
              };
              InternalUnsafeMethods.WarningFlashes()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Informs an object that it was hit by a lightning bolt and needs to take damage.
+        /// </description>
+        /// <param name="hitPosition">World position hit by the lightning bolt.</param>
+        /// <param name="hitNormal">Surface normal at<paramref name="" /> hitPosition.
+        /// </param>
+        /// <param name="hitObject">Player or Vehicle object that was hit.</param>
+        /// <code>
+        /// function Lightning::applyDamage( %this, %hitPosition, %hitNormal, %hitObject )
+        /// {
+        ///    // apply damage to the player
+        ///    %hitObject.applyDamage( 25 );
+        /// }
+        /// </code>
         public virtual void ApplyDamage(Point3F hitPosition, Point3F hitNormal, SceneObject hitObject) {
 hitPosition.Alloc();hitNormal.Alloc();             InternalUnsafeMethods.ApplyDamage__Args _args = new InternalUnsafeMethods.ApplyDamage__Args() {
                 hitPosition = hitPosition.internalStructPtr,
@@ -211,6 +250,10 @@ hitPosition.Alloc();hitNormal.Alloc();             InternalUnsafeMethods.ApplyDa
              InternalUnsafeMethods.ApplyDamage()(ObjectPtr, _args);
 hitPosition.Free();hitNormal.Free();        }
 
+        /// <description>
+        /// Get the type info object for the Lightning class.
+        /// </description>
+        /// <returns>The type info object for Lightning</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -218,41 +261,93 @@ hitPosition.Free();hitNormal.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Number of lightning strikes to perform per minute.</summary>
+        /// <description>
+        /// Automatically invokes strikeRandomPoint() at regular intervals.
+        /// </description>
+        /// </value>
         public int StrikesPerMinute {
             get => GenericMarshal.StringTo<int>(GetFieldValue("strikesPerMinute"));
             set => SetFieldValue("strikesPerMinute", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Width of a lightning bolt.
+        /// </description>
+        /// </value>
         public float StrikeWidth {
             get => GenericMarshal.StringTo<float>(GetFieldValue("strikeWidth"));
             set => SetFieldValue("strikeWidth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Horizontal size (XY plane) of the search box used to find and damage Player or Vehicle objects within range of the strike.</summary>
+        /// <description>
+        /// Only the object at highest altitude with a clear line of sight to the bolt will be hit.
+        /// </description>
+        /// </value>
         public float StrikeRadius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("strikeRadius"));
             set => SetFieldValue("strikeRadius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Color to blend the strike texture with.
+        /// </description>
+        /// </value>
         public LinearColorF Color {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("color"));
             set => SetFieldValue("color", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Color to blend the strike texture with when the bolt is fading away.</summary>
+        /// <description>
+        /// Bolts fade away automatically shortly after the strike occurs.
+        /// </description>
+        /// </value>
         public LinearColorF FadeColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("fadeColor"));
             set => SetFieldValue("fadeColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Percentage chance (0-1) that a given lightning bolt will hit something.
+        /// </description>
+        /// </value>
         public float ChanceToHitTarget {
             get => GenericMarshal.StringTo<float>(GetFieldValue("chanceToHitTarget"));
             set => SetFieldValue("chanceToHitTarget", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Radial distance from the center of the Lightning object for the start point of the bolt.</summary>
+        /// <description>
+        /// The actual start point will be a random point within this radius.
+        /// </description>
+        /// </value>
         public float BoltStartRadius {
             get => GenericMarshal.StringTo<float>(GetFieldValue("boltStartRadius"));
             set => SetFieldValue("boltStartRadius", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Controls whether lightning bolts are affected by fog when they are rendered.
+        /// </description>
+        /// </value>
         public bool UseFog {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useFog"));
             set => SetFieldValue("useFog", GenericMarshal.ToString(value));

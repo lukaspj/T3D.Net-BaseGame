@@ -14,7 +14,20 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A collapsable pane control.</summary>
+    /// <description>
+    /// This class wraps a single child control and displays a header with caption above it. If you click the header it will collapse or expand (if <i>collapsable</i> is enabled). The control resizes itself based on its collapsed/expanded size.<br>In the GUI editor, if you just want the header you can make <i>collapsable</i> false. The caption field lets you set the caption; it expects a bitmap (from the GuiControlProfile) that contains two images - the first is displayed when the control is expanded and the second is displayed when it is collapsed. The header is sized based on the first image.
+    /// </description>
+    /// <code>
+    /// new GuiPaneControl()
+    /// {
+    ///    caption = "Example Pane";
+    ///    collapsable = "1";
+    ///    barBehindText = "1";
+    ///    //Properties not specific to this control have been omitted from this example.
+    /// };
+    /// </code>
     public unsafe class GuiPaneControl : GuiControl {
         public GuiPaneControl(bool pRegister = false) 
             : base(pRegister) {
@@ -121,6 +134,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Collapse or un-collapse the control.
+        /// </description>
+        /// <param name="collapse">True to collapse the control, false to un-collapse it</param>
         public void SetCollapsed(bool collapse) {
              InternalUnsafeMethods.SetCollapsed__Args _args = new InternalUnsafeMethods.SetCollapsed__Args() {
                 collapse = collapse,
@@ -128,6 +145,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCollapsed()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiPaneControl class.
+        /// </description>
+        /// <returns>The type info object for GuiPaneControl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -135,21 +156,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Text label to display as the pane header.
+        /// </description>
+        /// </value>
         public string Caption {
             get => GenericMarshal.StringTo<string>(GetFieldValue("caption"));
             set => SetFieldValue("caption", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// String table text ID to use as caption string (overrides 'caption').
+        /// </description>
+        /// </value>
         public string CaptionID {
             get => GenericMarshal.StringTo<string>(GetFieldValue("captionID"));
             set => SetFieldValue("captionID", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the pane can be collapsed by clicking its header.
+        /// </description>
+        /// </value>
         public bool Collapsable {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("collapsable"));
             set => SetFieldValue("collapsable", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to draw the bitmapped pane bar behind the header text, too.
+        /// </description>
+        /// </value>
         public bool BarBehindText {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("barBehindText"));
             set => SetFieldValue("barBehindText", GenericMarshal.ToString(value));

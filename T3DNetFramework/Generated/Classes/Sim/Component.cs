@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class Component : SimObject {
         public Component(bool pRegister = false) 
             : base(pRegister) {
@@ -346,12 +347,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Gets a field description by index</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">The index of the behavior</param>
+        /// <returns>Returns a string representing the description of this field</returns>
         public void SetDirty() {
              InternalUnsafeMethods.SetDirty__Args _args = new InternalUnsafeMethods.SetDirty__Args() {
              };
              InternalUnsafeMethods.SetDirty()(ObjectPtr, _args);
         }
 
+        /// <summary>Gets a field description by index</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">The index of the behavior</param>
+        /// <returns>Returns a string representing the description of this field</returns>
         public void AddDependency(string behaviorName) {
              InternalUnsafeMethods.AddDependency__Args _args = new InternalUnsafeMethods.AddDependency__Args() {
                 behaviorName = behaviorName,
@@ -359,6 +372,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddDependency()(ObjectPtr, _args);
         }
 
+        /// <summary>Gets a field description by index</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">The index of the behavior</param>
+        /// <returns>Returns a string representing the description of this field</returns>
         public string GetComponentFieldDescription(int index) {
              InternalUnsafeMethods.GetComponentFieldDescription__Args _args = new InternalUnsafeMethods.GetComponentFieldDescription__Args() {
                 index = index,
@@ -367,6 +386,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Gets the UserData associated with a field by index in the field list</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">The index of the behavior</param>
+        /// <returns>Returns a string representing the user data of this field</returns>
         public string GetBehaviorFieldUserData(int index) {
              InternalUnsafeMethods.GetBehaviorFieldUserData__Args _args = new InternalUnsafeMethods.GetBehaviorFieldUserData__Args() {
                 index = index,
@@ -375,6 +400,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public string GetComponentFieldType(string fieldName) {
              InternalUnsafeMethods.GetComponentFieldType__Args _args = new InternalUnsafeMethods.GetComponentFieldType__Args() {
                 fieldName = fieldName,
@@ -383,6 +412,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Gets a Tab-Delimited list of information about a ComponentField specified by Index</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">The index of the behavior</param>
+        /// <returns>FieldName, FieldType and FieldDefaultValue, each separated by a TAB character.</returns>
         public string SetComponentield(int index) {
              InternalUnsafeMethods.SetComponentield__Args _args = new InternalUnsafeMethods.SetComponentield__Args() {
                 index = index,
@@ -391,6 +426,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Gets a Tab-Delimited list of information about a ComponentField specified by Index</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="index">The index of the behavior</param>
+        /// <returns>FieldName, FieldType and FieldDefaultValue, each separated by a TAB character.</returns>
         public string GetComponentField(int index) {
              InternalUnsafeMethods.GetComponentField__Args _args = new InternalUnsafeMethods.GetComponentField__Args() {
                 index = index,
@@ -399,6 +440,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Get the number of ComponentField's on this object</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>Returns the number of BehaviorFields as a nonnegative integer</returns>
         public int GetComponentFieldCount() {
              InternalUnsafeMethods.GetComponentFieldCount__Args _args = new InternalUnsafeMethods.GetComponentFieldCount__Args() {
              };
@@ -406,6 +452,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the number of static fields on the object.
+        /// </description>
+        /// <returns>The number of static fields defined on the object.</returns>
         public void AddComponentField(string fieldName = "", string fieldDesc = "", string fieldType = "", string defValue = "", string userData = "", bool hidden = false) {
              InternalUnsafeMethods.AddComponentField__Args _args = new InternalUnsafeMethods.AddComponentField__Args() {
                 fieldName = fieldName,
@@ -418,12 +468,32 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddComponentField()(ObjectPtr, _args);
         }
 
+        /// <summary>Ends the grouping for prior fields being added to be grouped into</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="groupName">The name of this group</param>
+        /// <param name="desc">The Description of this field</param>
+        /// <param name="type">The DataType for this field (default, int, float, Point2F, bool, enum, Object, keybind, color)</param>
+        /// <param name="defaultValue">The Default value for this field</param>
+        /// <param name="userData">An extra data field that can be used for custom data on a per-field basis<br>Usage for default types<br>-enum: a TAB separated list of possible values<br>-object: the T2D object type that are valid choices for the field.  The object types observe inheritance, so if you have a t2dSceneObject field you will be able to choose t2dStaticSrpites, t2dAnimatedSprites, etc.</param>
+        /// <returns>Nothing</returns>
         public void EndGroup() {
              InternalUnsafeMethods.EndGroup__Args _args = new InternalUnsafeMethods.EndGroup__Args() {
              };
              InternalUnsafeMethods.EndGroup()(ObjectPtr, _args);
         }
 
+        /// <summary>Starts the grouping for following fields being added to be grouped into</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="groupName">The name of this group</param>
+        /// <param name="desc">The Description of this field</param>
+        /// <param name="type">The DataType for this field (default, int, float, Point2F, bool, enum, Object, keybind, color)</param>
+        /// <param name="defaultValue">The Default value for this field</param>
+        /// <param name="userData">An extra data field that can be used for custom data on a per-field basis<br>Usage for default types<br>-enum: a TAB separated list of possible values<br>-object: the T2D object type that are valid choices for the field.  The object types observe inheritance, so if you have a t2dSceneObject field you will be able to choose t2dStaticSrpites, t2dAnimatedSprites, etc.</param>
+        /// <returns>Nothing</returns>
         public void BeginGroup(string groupName) {
              InternalUnsafeMethods.BeginGroup__Args _args = new InternalUnsafeMethods.BeginGroup__Args() {
                 groupName = groupName,
@@ -431,6 +501,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.BeginGroup()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the Component class.
+        /// </description>
+        /// <returns>The type info object for Component</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -438,41 +512,85 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The type of behavior.
+        /// </description>
+        /// </value>
         public string ComponentType {
             get => GenericMarshal.StringTo<string>(GetFieldValue("componentType"));
             set => SetFieldValue("componentType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The type of behavior.
+        /// </description>
+        /// </value>
         public string NetworkType {
             get => GenericMarshal.StringTo<string>(GetFieldValue("networkType"));
             set => SetFieldValue("networkType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Human friendly name of this behavior
+        /// </description>
+        /// </value>
         public string FriendlyName {
             get => GenericMarshal.StringTo<string>(GetFieldValue("friendlyName"));
             set => SetFieldValue("friendlyName", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The description of this behavior which can be set to a "string" or a fileName
+        /// </description>
+        /// </value>
         public string Description {
             get => GenericMarshal.StringTo<string>(GetFieldValue("description"));
             set => SetFieldValue("description", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Is this behavior ghosted to clients?
+        /// </description>
+        /// </value>
         public bool Networked {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("networked"));
             set => SetFieldValue("networked", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public SimObject Owner {
             get => GenericMarshal.StringTo<SimObject>(GetFieldValue("Owner"));
             set => SetFieldValue("Owner", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool Enabled {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("enabled"));
             set => SetFieldValue("enabled", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Asset that spawned this component, used for tracking/housekeeping
+        /// </description>
+        /// </value>
         public IntPtr OriginatingAsset {
             get => GenericMarshal.StringTo<IntPtr>(GetFieldValue("originatingAsset"));
             set => SetFieldValue("originatingAsset", GenericMarshal.ToString(value));

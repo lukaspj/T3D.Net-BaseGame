@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Machine Gun effect.</summary>
+    /// <description>
+    /// Machine Gun is a simple but useful effect for rapidly shooting standard Torque Projectile objects. For performance reasons, keep in mind that each bullet is a separate Projectile object, which is not a very lightweight object.
+    /// </description>
     public unsafe class afxMachineGunData : GameBaseData {
         public afxMachineGunData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxMachineGunData class.
+        /// </description>
+        /// <returns>The type info object for afxMachineGunData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,11 +114,25 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// A ProjectileData datablock describing the projectile to be launched.
+        /// </description>
+        /// </value>
         public ProjectileData Projectile {
             get => GenericMarshal.StringTo<ProjectileData>(GetFieldValue("Projectile"));
             set => SetFieldValue("Projectile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specifies the number of projectiles fired over a minute of time. A value of 1200 will create 20 projectiles per second.
+        /// Sample values for real machine guns:
+        ///     AK-47 = 600, M16 = 750-900, UZI = 600
+        /// </description>
+        /// </value>
         public int RoundsPerMinute {
             get => GenericMarshal.StringTo<int>(GetFieldValue("roundsPerMinute"));
             set => SetFieldValue("roundsPerMinute", GenericMarshal.ToString(value));

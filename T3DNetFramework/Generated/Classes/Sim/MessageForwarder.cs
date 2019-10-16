@@ -14,7 +14,19 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Forward messages from one queue to another</summary>
+    /// <description>
+    /// MessageForwarder is a script class that can be used to forward messages from one queue to another.
+    /// </description>
+    /// <code>
+    /// %fwd = new MessageForwarder()
+    /// {
+    /// 	toQueue = "QueueToSendTo";
+    /// };
+    /// 
+    /// registerMessageListener("FromQueue", %fwd);
+    /// </code>
     public unsafe class MessageForwarder : ScriptMsgListener {
         public MessageForwarder(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +111,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the MessageForwarder class.
+        /// </description>
+        /// <returns>The type info object for MessageForwarder</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +122,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Name of queue to forward to
+        /// </description>
+        /// </value>
         public string ToQueue {
             get => GenericMarshal.StringTo<string>(GetFieldValue("toQueue"));
             set => SetFieldValue("toQueue", GenericMarshal.ToString(value));

@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class TurretShape : Item {
         public TurretShape(bool pRegister = false) 
             : base(pRegister) {
@@ -268,6 +269,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Does the turret respawn after it has been destroyed.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>True if the turret respawns.</returns>
         public bool DoRespawn() {
              InternalUnsafeMethods.DoRespawn__Args _args = new InternalUnsafeMethods.DoRespawn__Args() {
              };
@@ -275,6 +281,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Set Euler rotation of this turret's heading and pitch nodes in degrees.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="rot">The rotation in degrees.  The pitch is the X component and the heading is the Z component.  The Y component is ignored.</param>
         public void SetTurretEulerRotation(Point3F rot) {
 rot.Alloc();             InternalUnsafeMethods.SetTurretEulerRotation__Args _args = new InternalUnsafeMethods.SetTurretEulerRotation__Args() {
                 rot = rot.internalStructPtr,
@@ -282,6 +293,11 @@ rot.Alloc();             InternalUnsafeMethods.SetTurretEulerRotation__Args _arg
              InternalUnsafeMethods.SetTurretEulerRotation()(ObjectPtr, _args);
 rot.Free();        }
 
+        /// <summary>Get Euler rotation of this turret's heading and pitch nodes.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>the orientation of the turret's heading and pitch nodes in the form of rotations around the X, Y and Z axes in degrees.</returns>
         public Point3F GetTurretEulerRotation() {
              InternalUnsafeMethods.GetTurretEulerRotation__Args _args = new InternalUnsafeMethods.GetTurretEulerRotation__Args() {
              };
@@ -289,6 +305,13 @@ rot.Free();        }
              return new Point3F(_engineResult);
         }
 
+        /// <summary>Get the name of the turret's current state.</summary>
+        /// <description>
+        /// The state is one of the following:
+        /// 
+        /// <ul><li>Dead - The TurretShape is destroyed.</li><li>Mounted - The TurretShape is mounted to an object such as a vehicle.</li><li>Ready - The TurretShape is free to move.  The usual state.</li></ul>
+        /// </description>
+        /// <returns>The current state; one of: "Dead", "Mounted", "Ready"</returns>
         public string GetState() {
              InternalUnsafeMethods.GetState__Args _args = new InternalUnsafeMethods.GetState__Args() {
              };
@@ -296,6 +319,11 @@ rot.Free();        }
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Set if the turret is allowed to fire through moves.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="allow">If true then the turret may be fired through moves.</param>
         public void SetAllowManualFire(bool allow) {
              InternalUnsafeMethods.SetAllowManualFire__Args _args = new InternalUnsafeMethods.SetAllowManualFire__Args() {
                 allow = allow,
@@ -303,6 +331,11 @@ rot.Free();        }
              InternalUnsafeMethods.SetAllowManualFire()(ObjectPtr, _args);
         }
 
+        /// <summary>Get if the turret is allowed to fire through moves.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>True if the turret is allowed to fire through moves.</returns>
         public bool GetAllowManualFire() {
              InternalUnsafeMethods.GetAllowManualFire__Args _args = new InternalUnsafeMethods.GetAllowManualFire__Args() {
              };
@@ -310,6 +343,11 @@ rot.Free();        }
              return _engineResult;
         }
 
+        /// <summary>Set if the turret is allowed to rotate through moves.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="allow">If true then the turret may be rotated through moves.</param>
         public void SetAllowManualRotation(bool allow) {
              InternalUnsafeMethods.SetAllowManualRotation__Args _args = new InternalUnsafeMethods.SetAllowManualRotation__Args() {
                 allow = allow,
@@ -317,6 +355,11 @@ rot.Free();        }
              InternalUnsafeMethods.SetAllowManualRotation()(ObjectPtr, _args);
         }
 
+        /// <summary>Get if the turret is allowed to rotate through moves.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <returns>True if the turret is allowed to rotate through moves.</returns>
         public bool GetAllowManualRotation() {
              InternalUnsafeMethods.GetAllowManualRotation__Args _args = new InternalUnsafeMethods.GetAllowManualRotation__Args() {
              };
@@ -324,6 +367,10 @@ rot.Free();        }
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the TurretShape class.
+        /// </description>
+        /// <returns>The type info object for TurretShape</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -331,6 +378,13 @@ rot.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>Respawn the turret after it has been destroyed.</summary>
+        /// <description>
+        /// If true, the turret will respawn after it is destroyed.
+        /// </description>
+        /// </value>
         public bool Respawn {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("respawn"));
             set => SetFieldValue("respawn", GenericMarshal.ToString(value));

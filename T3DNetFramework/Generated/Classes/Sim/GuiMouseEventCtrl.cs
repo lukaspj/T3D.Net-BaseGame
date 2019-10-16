@@ -14,7 +14,20 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Used to overlaps a 'hot region' where you want to catch inputs with and have specific events occur based on individual callbacks.</summary>
+    /// <description>
+    /// Mouse event callbacks supported by this control are: onMouseUp, onMouseDown, onMouseMove, onMouseDragged, onMouseEnter, onMouseLeave,
+    /// onRightMouseDown, onRightMouseUp and onRightMouseDragged.
+    /// </description>
+    /// <code>
+    /// new GuiMouseEventCtrl()
+    /// {
+    /// 	lockMouse = "0";
+    /// 	//Properties not specific to this control have been omitted from this example.
+    /// };
+    /// </code>
+    /// <see cref="GuiControl" />
     public unsafe class GuiMouseEventCtrl : GuiControl {
         public GuiMouseEventCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -306,6 +319,37 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Callback that occurs whenever the mouse is dragged in this control while the right mouse button is pressed.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="modifier">Key that was pressed during this callback. Values are:
+        /// 
+        /// $EventModifier::RSHIFT
+        /// 
+        /// $EventModifier::SHIFT
+        /// 
+        /// $EventModifier::LCTRL
+        /// 
+        /// $EventModifier::RCTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::RALT
+        /// 
+        /// $EventModifier::ALT</param>
+        /// <param name="mousePoint">X/Y location of the mouse point</param>
+        /// <param name="mouseClickCount">How many mouse clicks have occured for this event</param>
+        /// <code>
+        /// // Right mouse button was dragged in this control, causing the callback
+        /// GuiMouseEventCtrl::onRightMouseDragged(%this,%modifier,%mousePoint,%mouseClickCount)
+        /// {
+        /// 	// Code to call when a mouse event occurs.
+        /// }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnRightMouseDragged(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseDragged__Args _args = new InternalUnsafeMethods.OnRightMouseDragged__Args() {
                 modifier = modifier,
@@ -315,6 +359,37 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseDragged__Args 
              InternalUnsafeMethods.OnRightMouseDragged()(ObjectPtr, _args);
 mousePoint.Free();        }
 
+        /// <summary>Callback that occurs whenever the right mouse button is released while in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="modifier">Key that was pressed during this callback. Values are:
+        /// 
+        /// $EventModifier::RSHIFT
+        /// 
+        /// $EventModifier::SHIFT
+        /// 
+        /// $EventModifier::LCTRL
+        /// 
+        /// $EventModifier::RCTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::RALT
+        /// 
+        /// $EventModifier::ALT</param>
+        /// <param name="mousePoint">X/Y location of the mouse point</param>
+        /// <param name="mouseClickCount">How many mouse clicks have occured for this event</param>
+        /// <code>
+        /// // Right mouse button was released in this control, causing the callback
+        /// GuiMouseEventCtrl::onRightMouseUp(%this,%modifier,%mousePoint,%mouseClickCount)
+        /// {
+        /// 	// Code to call when a mouse event occurs.
+        /// }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnRightMouseUp(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseUp__Args _args = new InternalUnsafeMethods.OnRightMouseUp__Args() {
                 modifier = modifier,
@@ -324,6 +399,37 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseUp__Args _args
              InternalUnsafeMethods.OnRightMouseUp()(ObjectPtr, _args);
 mousePoint.Free();        }
 
+        /// <summary>Callback that occurs whenever the right mouse button is pressed while in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="modifier">Key that was pressed during this callback. Values are:
+        /// 
+        /// $EventModifier::RSHIFT
+        /// 
+        /// $EventModifier::SHIFT
+        /// 
+        /// $EventModifier::LCTRL
+        /// 
+        /// $EventModifier::RCTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::RALT
+        /// 
+        /// $EventModifier::ALT</param>
+        /// <param name="mousePoint">X/Y location of the mouse point</param>
+        /// <param name="mouseClickCount">How many mouse clicks have occured for this event</param>
+        /// <code>
+        /// // Right mouse button was pressed in this control, causing the callback
+        /// GuiMouseEventCtrl::onRightMouseDown(%this,%modifier,%mousePoint,%mouseClickCount)
+        /// {
+        /// 	// Code to call when a mouse event occurs.
+        /// }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnRightMouseDown(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseDown__Args _args = new InternalUnsafeMethods.OnRightMouseDown__Args() {
                 modifier = modifier,
@@ -333,6 +439,37 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnRightMouseDown__Args _ar
              InternalUnsafeMethods.OnRightMouseDown()(ObjectPtr, _args);
 mousePoint.Free();        }
 
+        /// <summary>Callback that occurs whenever the mouse leaves this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="modifier">Key that was pressed during this callback. Values are:
+        /// 
+        /// $EventModifier::RSHIFT
+        /// 
+        /// $EventModifier::SHIFT
+        /// 
+        /// $EventModifier::LCTRL
+        /// 
+        /// $EventModifier::RCTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::RALT
+        /// 
+        /// $EventModifier::ALT</param>
+        /// <param name="mousePoint">X/Y location of the mouse point</param>
+        /// <param name="mouseClickCount">How many mouse clicks have occured for this event</param>
+        /// <code>
+        /// // Mouse left this control, causing the callback
+        /// GuiMouseEventCtrl::onMouseLeave(%this,%modifier,%mousePoint,%mouseClickCount)
+        /// {
+        /// 	// Code to call when a mouse event occurs.
+        /// }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnMouseLeave(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseLeave__Args _args = new InternalUnsafeMethods.OnMouseLeave__Args() {
                 modifier = modifier,
@@ -342,6 +479,37 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseLeave__Args _args =
              InternalUnsafeMethods.OnMouseLeave()(ObjectPtr, _args);
 mousePoint.Free();        }
 
+        /// <summary>Callback that occurs whenever the mouse enters this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="modifier">Key that was pressed during this callback. Values are:
+        /// 
+        /// $EventModifier::RSHIFT
+        /// 
+        /// $EventModifier::SHIFT
+        /// 
+        /// $EventModifier::LCTRL
+        /// 
+        /// $EventModifier::RCTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::RALT
+        /// 
+        /// $EventModifier::ALT</param>
+        /// <param name="mousePoint">X/Y location of the mouse point</param>
+        /// <param name="mouseClickCount">How many mouse clicks have occured for this event</param>
+        /// <code>
+        /// // Mouse entered this control, causing the callback
+        /// GuiMouseEventCtrl::onMouseEnter(%this,%modifier,%mousePoint,%mouseClickCount)
+        /// {
+        /// 	// Code to call when a mouse event occurs.
+        /// }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnMouseEnter(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseEnter__Args _args = new InternalUnsafeMethods.OnMouseEnter__Args() {
                 modifier = modifier,
@@ -351,6 +519,37 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseEnter__Args _args =
              InternalUnsafeMethods.OnMouseEnter()(ObjectPtr, _args);
 mousePoint.Free();        }
 
+        /// <summary>Callback that occurs whenever the mouse is dragged while in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="modifier">Key that was pressed during this callback. Values are:
+        /// 
+        /// $EventModifier::RSHIFT
+        /// 
+        /// $EventModifier::SHIFT
+        /// 
+        /// $EventModifier::LCTRL
+        /// 
+        /// $EventModifier::RCTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::RALT
+        /// 
+        /// $EventModifier::ALT</param>
+        /// <param name="mousePoint">X/Y location of the mouse point</param>
+        /// <param name="mouseClickCount">How many mouse clicks have occured for this event</param>
+        /// <code>
+        /// // Mouse was dragged in this control, causing the callback
+        /// GuiMouseEventCtrl::onMouseDragged(%this,%modifier,%mousePoint,%mouseClickCount)
+        /// {
+        /// 	// Code to call when a mouse event occurs.
+        /// }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnMouseDragged(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseDragged__Args _args = new InternalUnsafeMethods.OnMouseDragged__Args() {
                 modifier = modifier,
@@ -360,6 +559,37 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseDragged__Args _args
              InternalUnsafeMethods.OnMouseDragged()(ObjectPtr, _args);
 mousePoint.Free();        }
 
+        /// <summary>Callback that occurs whenever the mouse is moved (without dragging) while in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="modifier">Key that was pressed during this callback. Values are:
+        /// 
+        /// $EventModifier::RSHIFT
+        /// 
+        /// $EventModifier::SHIFT
+        /// 
+        /// $EventModifier::LCTRL
+        /// 
+        /// $EventModifier::RCTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::RALT
+        /// 
+        /// $EventModifier::ALT</param>
+        /// <param name="mousePoint">X/Y location of the mouse point</param>
+        /// <param name="mouseClickCount">How many mouse clicks have occured for this event</param>
+        /// <code>
+        /// // Mouse was moved in this control, causing the callback
+        /// GuiMouseEventCtrl::onMouseMove(%this,%modifier,%mousePoint,%mouseClickCount)
+        /// {
+        /// 	// Code to call when a mouse event occurs.
+        /// }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnMouseMove(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseMove__Args _args = new InternalUnsafeMethods.OnMouseMove__Args() {
                 modifier = modifier,
@@ -369,6 +599,37 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseMove__Args _args = 
              InternalUnsafeMethods.OnMouseMove()(ObjectPtr, _args);
 mousePoint.Free();        }
 
+        /// <summary>Callback that occurs whenever the mouse is released while in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="modifier">Key that was pressed during this callback. Values are:
+        /// 
+        /// $EventModifier::RSHIFT
+        /// 
+        /// $EventModifier::SHIFT
+        /// 
+        /// $EventModifier::LCTRL
+        /// 
+        /// $EventModifier::RCTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::RALT
+        /// 
+        /// $EventModifier::ALT</param>
+        /// <param name="mousePoint">X/Y location of the mouse point</param>
+        /// <param name="mouseClickCount">How many mouse clicks have occured for this event</param>
+        /// <code>
+        /// // Mouse was released in this control, causing the callback
+        /// GuiMouseEventCtrl::onMouseUp(%this,%modifier,%mousePoint,%mouseClickCount)
+        /// {
+        /// 	// Code to call when a mouse event occurs.
+        /// }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnMouseUp(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseUp__Args _args = new InternalUnsafeMethods.OnMouseUp__Args() {
                 modifier = modifier,
@@ -378,6 +639,37 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseUp__Args _args = ne
              InternalUnsafeMethods.OnMouseUp()(ObjectPtr, _args);
 mousePoint.Free();        }
 
+        /// <summary>Callback that occurs whenever the mouse is pressed down while in this control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="modifier">Key that was pressed during this callback. Values are:
+        /// 
+        /// $EventModifier::RSHIFT
+        /// 
+        /// $EventModifier::SHIFT
+        /// 
+        /// $EventModifier::LCTRL
+        /// 
+        /// $EventModifier::RCTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::CTRL
+        /// 
+        /// $EventModifier::RALT
+        /// 
+        /// $EventModifier::ALT</param>
+        /// <param name="mousePoint">X/Y location of the mouse point</param>
+        /// <param name="mouseClickCount">How many mouse clicks have occured for this event</param>
+        /// <code>
+        /// // Mouse was pressed down in this control, causing the callback
+        /// GuiMouseEventCtrl::onMouseDown(%this,%modifier,%mousePoint,%mouseClickCount)
+        /// {
+        /// 	// Code to call when a mouse event occurs.
+        /// }
+        /// </code>
+        /// <see cref="GuiControl" />
         public virtual void OnMouseDown(int modifier, Point2I mousePoint, int mouseClickCount) {
 mousePoint.Alloc();             InternalUnsafeMethods.OnMouseDown__Args _args = new InternalUnsafeMethods.OnMouseDown__Args() {
                 modifier = modifier,
@@ -387,6 +679,10 @@ mousePoint.Alloc();             InternalUnsafeMethods.OnMouseDown__Args _args = 
              InternalUnsafeMethods.OnMouseDown()(ObjectPtr, _args);
 mousePoint.Free();        }
 
+        /// <description>
+        /// Get the type info object for the GuiMouseEventCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiMouseEventCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -394,6 +690,12 @@ mousePoint.Free();        }
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the control should lock the mouse between up and down button events.
+        /// </description>
+        /// </value>
         public bool LockMouse {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("lockMouse"));
             set => SetFieldValue("lockMouse", GenericMarshal.ToString(value));

@@ -14,7 +14,14 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>PopupMenu represents a system menu.</summary>
+    /// <description>
+    /// You can add menu items to the menu, but there is no torque object associated with these menu items, they exist only in a  platform specific manner.
+    /// </description>
+    /// <remarks> Internal use only
+    /// 
+    /// </remarks>
     public unsafe class PopupMenu : SimObject {
         public PopupMenu(bool pRegister = false) 
             : base(pRegister) {
@@ -355,6 +362,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// (Canvas,[x, y])
+        /// </description>
         public void ShowPopup(string canvasName, int x = -1, int y = -1) {
              InternalUnsafeMethods.ShowPopup__Args _args = new InternalUnsafeMethods.ShowPopup__Args() {
                 canvasName = canvasName,
@@ -364,12 +374,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ShowPopup()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public void ClearItems() {
              InternalUnsafeMethods.ClearItems__Args _args = new InternalUnsafeMethods.ClearItems__Args() {
              };
              InternalUnsafeMethods.ClearItems()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public int GetItemCount() {
              InternalUnsafeMethods.GetItemCount__Args _args = new InternalUnsafeMethods.GetItemCount__Args() {
              };
@@ -377,6 +393,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (pos)
+        /// </description>
         public bool IsItemChecked(int pos) {
              InternalUnsafeMethods.IsItemChecked__Args _args = new InternalUnsafeMethods.IsItemChecked__Args() {
                 pos = pos,
@@ -385,6 +404,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (firstPos, lastPos, checkPos)
+        /// </description>
         public void CheckRadioItem(int firstPos, int lastPos, int checkPos) {
              InternalUnsafeMethods.CheckRadioItem__Args _args = new InternalUnsafeMethods.CheckRadioItem__Args() {
                 firstPos = firstPos,
@@ -394,6 +416,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.CheckRadioItem()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (pos, checked)
+        /// </description>
         public void CheckItem(int pos, bool _checked) {
              InternalUnsafeMethods.CheckItem__Args _args = new InternalUnsafeMethods.CheckItem__Args() {
                 pos = pos,
@@ -402,6 +427,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.CheckItem()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (pos, enabled)
+        /// </description>
         public void EnableItem(int pos, bool enabled) {
              InternalUnsafeMethods.EnableItem__Args _args = new InternalUnsafeMethods.EnableItem__Args() {
                 pos = pos,
@@ -410,6 +438,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.EnableItem()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (pos, title[, accelerator][, cmd])
+        /// </description>
         public bool SetItem(int pos, string title, string accelerator, string cmd = "") {
              InternalUnsafeMethods.SetItem__Args _args = new InternalUnsafeMethods.SetItem__Args() {
                 pos = pos,
@@ -421,6 +452,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (pos, title, subMenu)
+        /// </description>
         public int InsertSubMenu(int pos, string title, string subMenu) {
              InternalUnsafeMethods.InsertSubMenu__Args _args = new InternalUnsafeMethods.InsertSubMenu__Args() {
                 pos = pos,
@@ -431,6 +465,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (pos)
+        /// </description>
         public void RemoveItem(int pos) {
              InternalUnsafeMethods.RemoveItem__Args _args = new InternalUnsafeMethods.RemoveItem__Args() {
                 pos = pos,
@@ -438,6 +475,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveItem()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (pos[, title][, accelerator][, cmd])
+        /// </description>
         public int InsertItem(int pos, string title = "", string accelerator = "", string cmd = "") {
              InternalUnsafeMethods.InsertItem__Args _args = new InternalUnsafeMethods.InsertItem__Args() {
                 pos = pos,
@@ -449,6 +489,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the PopupMenu class.
+        /// </description>
+        /// <returns>The type info object for PopupMenu</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -456,6 +500,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string BarTitle {
             get => GenericMarshal.StringTo<string>(GetFieldValue("barTitle"));
             set => SetFieldValue("barTitle", GenericMarshal.ToString(value));

@@ -14,7 +14,16 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A container that shows a single child with an optional header bar that can be used to collapse and expand the rollout.</summary>
+    /// <description>
+    /// A rollout is a container that can be collapsed and expanded using smooth animation.  By default, rollouts will display a header with a caption along the top edge of the control which can be clicked by the user to toggle the collapse state of the rollout.
+    /// 
+    /// Rollouts will automatically size themselves to exactly fit around their child control.  They will also automatically position their child control in their upper left corner below the header (if present).
+    /// </description>
+    /// <remarks> GuiRolloutCtrls will only work correctly with a single child control.  To put multiple controls in a rollout, put them in their own group using a new GuiControl which then can be put inside the rollout.
+    /// 
+    /// </remarks>
     public unsafe class GuiRolloutCtrl : GuiControl {
         public GuiRolloutCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -322,24 +331,37 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Resize the rollout to exactly fit around its child control.  This can be used to manually trigger a recomputation of the rollout size.
+        /// </description>
         public void SizeToContents() {
              InternalUnsafeMethods.SizeToContents__Args _args = new InternalUnsafeMethods.SizeToContents__Args() {
              };
              InternalUnsafeMethods.SizeToContents()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Instantly expand the rollout without animation.  To smoothly slide the rollout to expanded state, use expand().
+        /// </description>
         public void InstantExpand() {
              InternalUnsafeMethods.InstantExpand__Args _args = new InternalUnsafeMethods.InstantExpand__Args() {
              };
              InternalUnsafeMethods.InstantExpand()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Instantly collapse the rollout without animation.  To smoothly slide the rollout to collapsed state, use collapse().
+        /// </description>
         public void InstantCollapse() {
              InternalUnsafeMethods.InstantCollapse__Args _args = new InternalUnsafeMethods.InstantCollapse__Args() {
              };
              InternalUnsafeMethods.InstantCollapse()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Toggle the current expansion state of the rollout  If it is currently expanded, then collapse it.  If it is currently collapsed, then expand it.
+        /// </description>
+        /// <param name="instant">If true, the rollout will toggle its state without animation.  Otherwise, the rollout will smoothly slide into the opposite state.</param>
         public void ToggleExpanded(bool instantly = false) {
              InternalUnsafeMethods.ToggleExpanded__Args _args = new InternalUnsafeMethods.ToggleExpanded__Args() {
                 instantly = instantly,
@@ -347,24 +369,39 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.ToggleExpanded()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Toggle the current collapse state of the rollout.  If it is currently expanded, then collapse it.  If it is currently collapsed, then expand it.
+        /// </description>
         public void ToggleCollapse() {
              InternalUnsafeMethods.ToggleCollapse__Args _args = new InternalUnsafeMethods.ToggleCollapse__Args() {
              };
              InternalUnsafeMethods.ToggleCollapse()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Expand the rollout if it is currently collapsed.  This will make the rollout's child control visible.
+        /// </description>
+        /// <remarks> The rollout will animate to expanded state.  To instantly expand without animation, use instantExpand().</remarks>
         public void Expand() {
              InternalUnsafeMethods.Expand__Args _args = new InternalUnsafeMethods.Expand__Args() {
              };
              InternalUnsafeMethods.Expand()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Collapse the rollout if it is currently expanded.  This will make the rollout's child control invisible.
+        /// </description>
+        /// <remarks> The rollout will animate to collapsed state.  To instantly collapse without animation, use instantCollapse().</remarks>
         public void Collapse() {
              InternalUnsafeMethods.Collapse__Args _args = new InternalUnsafeMethods.Collapse__Args() {
              };
              InternalUnsafeMethods.Collapse()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Determine whether the rollout is currently expanded, i.e. whether the child control is visible.
+        /// </description>
+        /// <returns>True if the rollout is expanded, false if not.</returns>
         public bool IsExpanded() {
              InternalUnsafeMethods.IsExpanded__Args _args = new InternalUnsafeMethods.IsExpanded__Args() {
              };
@@ -372,24 +409,37 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Called when the rollout is collapsed.
+        /// </description>
         public virtual void OnCollapsed() {
              InternalUnsafeMethods.OnCollapsed__Args _args = new InternalUnsafeMethods.OnCollapsed__Args() {
              };
              InternalUnsafeMethods.OnCollapsed()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the rollout is expanded.
+        /// </description>
         public virtual void OnExpanded() {
              InternalUnsafeMethods.OnExpanded__Args _args = new InternalUnsafeMethods.OnExpanded__Args() {
              };
              InternalUnsafeMethods.OnExpanded()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the user right-clicks on the rollout's header.  This is useful for implementing context menus for rollouts.
+        /// </description>
         public virtual void OnHeaderRightClick() {
              InternalUnsafeMethods.OnHeaderRightClick__Args _args = new InternalUnsafeMethods.OnHeaderRightClick__Args() {
              };
              InternalUnsafeMethods.OnHeaderRightClick()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiRolloutCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiRolloutCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -397,36 +447,81 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Text label to display on the rollout header.
+        /// </description>
+        /// </value>
         public string Caption {
             get => GenericMarshal.StringTo<string>(GetFieldValue("caption"));
             set => SetFieldValue("caption", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Margin to put around child control.
+        /// </description>
+        /// </value>
         public RectI Margin {
             get => GenericMarshal.StringTo<RectI>(GetFieldValue("margin"));
             set => SetFieldValue("margin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Default height of the client area.  This is used when no child control has been added to the rollout.
+        /// </description>
+        /// </value>
         public int DefaultHeight {
             get => GenericMarshal.StringTo<int>(GetFieldValue("defaultHeight"));
             set => SetFieldValue("defaultHeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// The current rollout expansion state.
+        /// </description>
+        /// </value>
         public bool Expanded {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("expanded"));
             set => SetFieldValue("expanded", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the rollout can be collapsed by clicking its header.
+        /// </description>
+        /// </value>
         public bool ClickCollapse {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("clickCollapse"));
             set => SetFieldValue("clickCollapse", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to render the rollout header.
+        /// </description>
+        /// <remarks> If this is false, the user cannot toggle the rollout state with the mouse.</remarks>
+        /// </value>
         public bool HideHeader {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("hideHeader"));
             set => SetFieldValue("hideHeader", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to automatically collapse sibling rollouts.
+        /// 
+        /// If this is true, the rollout will automatically collapse all sibling rollout controls when it is expanded.  If this is false, the auto-collapse behavior can be triggered by CTRL (CMD on MAC) clicking the rollout header.  CTRL/CMD clicking also works if this is false, in which case the auto-collapsing of sibling controls will be temporarily deactivated.
+        /// </description>
+        /// </value>
         public bool AutoCollapseSiblings {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("autoCollapseSiblings"));
             set => SetFieldValue("autoCollapseSiblings", GenericMarshal.ToString(value));

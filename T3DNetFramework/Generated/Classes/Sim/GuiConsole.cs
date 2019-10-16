@@ -14,7 +14,18 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The on-screen, in-game console. Calls getLog() to get the on-screen console entries, then renders them as needed.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiConsole()
+    /// 		{
+    /// 			//Properties not specific to this control have been omitted from this example.
+    /// 		};
+    /// </code>
+    /// <see cref="GuiControl" />
     public unsafe class GuiConsole : GuiArrayCtrl {
         public GuiConsole(bool pRegister = false) 
             : base(pRegister) {
@@ -314,30 +325,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Refreshes the displayed messages.
+        /// </description>
         public void Refresh() {
              InternalUnsafeMethods.Refresh__Args _args = new InternalUnsafeMethods.Refresh__Args() {
              };
              InternalUnsafeMethods.Refresh()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Toggles the normal messages filter.
+        /// </description>
         public void ToggleNormalFilter() {
              InternalUnsafeMethods.ToggleNormalFilter__Args _args = new InternalUnsafeMethods.ToggleNormalFilter__Args() {
              };
              InternalUnsafeMethods.ToggleNormalFilter()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Toggles the warning filter.
+        /// </description>
         public void ToggleWarnFilter() {
              InternalUnsafeMethods.ToggleWarnFilter__Args _args = new InternalUnsafeMethods.ToggleWarnFilter__Args() {
              };
              InternalUnsafeMethods.ToggleWarnFilter()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Toggles the error filter.
+        /// </description>
         public void ToggleErrorFilter() {
              InternalUnsafeMethods.ToggleErrorFilter__Args _args = new InternalUnsafeMethods.ToggleErrorFilter__Args() {
              };
              InternalUnsafeMethods.ToggleErrorFilter()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Returns if the normal message filter is on or not.
+        /// </description>
         public bool GetNormalFilter() {
              InternalUnsafeMethods.GetNormalFilter__Args _args = new InternalUnsafeMethods.GetNormalFilter__Args() {
              };
@@ -345,6 +371,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns if the warning filter is on or not.
+        /// </description>
         public bool GetWarnFilter() {
              InternalUnsafeMethods.GetWarnFilter__Args _args = new InternalUnsafeMethods.GetWarnFilter__Args() {
              };
@@ -352,6 +381,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns if the error filter is on or not.
+        /// </description>
         public bool GetErrorFilter() {
              InternalUnsafeMethods.GetErrorFilter__Args _args = new InternalUnsafeMethods.GetErrorFilter__Args() {
              };
@@ -359,6 +391,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Sets the current display filters for the console gui. Allows you to indicate if it should display errors, warns and/or normal messages.
+        /// </description>
+        /// <param name="errors">If true, the console gui will display any error messages that were emitted.</param>
+        /// <param name="warns">If true, the console gui will display any warning messages that were emitted.</param>
+        /// <param name="normal">If true, the console gui will display any regular messages that were emitted.</param>
         public void SetDisplayFilters(bool errors = true, bool warns = true, bool normal = true) {
              InternalUnsafeMethods.SetDisplayFilters__Args _args = new InternalUnsafeMethods.SetDisplayFilters__Args() {
                 errors = errors,
@@ -368,6 +406,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetDisplayFilters()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when a new message is logged.
+        /// </description>
+        /// <param name="errorCount">The number of error messages logged.</param>
+        /// <param name="warnCount">The number of warning messages logged.</param>
+        /// <param name="normalCount">The number of normal messages logged.</param>
         public virtual void OnNewMessage(uint errorCount, uint warnCount, uint normalCount) {
              InternalUnsafeMethods.OnNewMessage__Args _args = new InternalUnsafeMethods.OnNewMessage__Args() {
                 errorCount = errorCount,
@@ -377,6 +421,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnNewMessage()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when a message in the log is clicked.
+        /// </description>
+        /// <param name="level">Diagnostic level of the message.</param>
+        /// <param name="message">Message text.</param>
         public virtual void OnMessageSelected(LogLevel level, string message) {
              InternalUnsafeMethods.OnMessageSelected__Args _args = new InternalUnsafeMethods.OnMessageSelected__Args() {
                 level = (int)level,
@@ -385,6 +434,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.OnMessageSelected()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiConsole class.
+        /// </description>
+        /// <returns>The type info object for GuiConsole</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

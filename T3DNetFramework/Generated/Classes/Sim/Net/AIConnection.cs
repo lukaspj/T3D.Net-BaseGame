@@ -14,7 +14,37 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim.Net {    
+namespace T3DNetFramework.Generated.Classes.Sim.Net {
+    /// <summary>Special client connection driven by an AI, rather than a human.</summary>
+    /// <description>
+    /// Unlike other net connections, AIConnection is intended to run unmanned. Rather than gathering input from a human using a device, move events, triggers, and look events are driven through functions like AIConnection::setMove.
+    /// 
+    /// In addition to having its own set of functions for managing client move events, a member variable inherited by GameConnection is toggle: mAIControlled. This is useful for a server to determine if a connection is AI driven via the function GameConnection::isAIControlled
+    /// 
+    /// AIConnection is an alternative to manually creating an AI driven game object. When you want the server to manage AI, you will create a specific one from script using a class like AIPlayer. If you do not want the server managing the AI and wish to simulate a complete client connection, you will use AIConnection
+    /// 
+    /// .To get more specific, if you want a strong alternative to AIPlayer (and wish to make use of the AIConnection structure), consider AIClient. AIClient inherits from AIConnection, contains quite a bit of functionality you will find in AIPlayer, and has its own Player object.
+    /// </description>
+    /// <code>
+    /// // Create a new AI client connection
+    /// %botConnection = aiConnect("MasterBlaster"@ %i, -1, 0.5, false, "SDF", 1.0);
+    /// 
+    /// // In another area of the code, you can locate this and any other AIConnections
+    /// // using the isAIControlled function
+    /// for(%i = 0; %i < ClientGroup.getCount(); %i++)
+    /// {
+    ///    %client = ClientGroup.getObject(%i);
+    ///    if(%client.isAIControlled())
+    ///    {
+    ///       // React to this AI controlled client
+    ///    }
+    /// }
+    /// 
+    /// </code>
+    /// <remarks> This is a legacy class, which you are discouraged from using as it will most likely be deprecated in a future version. For now it has been left in for backwards compatibility with TGE and the old RTS Kit. Use GameConnection and AIPlayer instead.
+    /// 
+    /// </remarks>
+    /// <see cref="GameConnection, NetConnection, AIClient" />
     public unsafe class AIConnection : GameConnection {
         public AIConnection(bool pRegister = false) 
             : base(pRegister) {
@@ -253,6 +283,7 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
         }
         #endregion
 
+        /// 
         public string GetAddress() {
              InternalUnsafeMethods.GetAddress__Args _args = new InternalUnsafeMethods.GetAddress__Args() {
              };
@@ -260,6 +291,9 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (int trigger)Is the given trigger set?
+        /// </description>
         public bool GetTrigger(int idx) {
              InternalUnsafeMethods.GetTrigger__Args _args = new InternalUnsafeMethods.GetTrigger__Args() {
                 idx = idx,
@@ -268,6 +302,9 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <description>
+        /// (int trigger, bool set)Set a trigger.
+        /// </description>
         public void SetTrigger(int idx, bool set) {
              InternalUnsafeMethods.SetTrigger__Args _args = new InternalUnsafeMethods.SetTrigger__Args() {
                 idx = idx,
@@ -276,6 +313,9 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.SetTrigger()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// getFreeLook()Is freelook on for the current move?
+        /// </description>
         public bool GetFreeLook() {
              InternalUnsafeMethods.GetFreeLook__Args _args = new InternalUnsafeMethods.GetFreeLook__Args() {
              };
@@ -283,6 +323,9 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <description>
+        /// (bool isFreeLook)Enable/disable freelook on the current move.
+        /// </description>
         public void SetFreeLook(bool isFreeLook) {
              InternalUnsafeMethods.SetFreeLook__Args _args = new InternalUnsafeMethods.SetFreeLook__Args() {
                 isFreeLook = isFreeLook,
@@ -290,6 +333,11 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.SetFreeLook()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (string field)Get the given field of a move.
+        /// </description>
+        /// <param name="field">One of {'x','y','z','yaw','pitch','roll'}</param>
+        /// <returns>The requested field on the current move.</returns>
         public float GetMove(string field) {
              InternalUnsafeMethods.GetMove__Args _args = new InternalUnsafeMethods.GetMove__Args() {
                 field = field,
@@ -298,6 +346,11 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string field, float value)Set a field on the current move.
+        /// </description>
+        /// <param name="field">One of {'x','y','z','yaw','pitch','roll'}</param>
+        /// <param name="value">Value to set field to.</param>
         public void SetMove(string field, float value) {
              InternalUnsafeMethods.SetMove__Args _args = new InternalUnsafeMethods.SetMove__Args() {
                 field = field,
@@ -306,6 +359,10 @@ namespace T3DNetFramework.Generated.Classes.Sim.Net {
              InternalUnsafeMethods.SetMove()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the AIConnection class.
+        /// </description>
+        /// <returns>The type info object for AIConnection</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

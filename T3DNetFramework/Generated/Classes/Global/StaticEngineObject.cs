@@ -14,7 +14,10 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Global {    
+namespace T3DNetFramework.Generated.Classes.Global {
+    /// <description>
+    /// Abstract base class for objects that are statically allocated in the engine.
+    /// </description>
     public unsafe class StaticEngineObject : EngineObject {
         public StaticEngineObject(bool pRegister = false) 
             : base(pRegister) {
@@ -52,6 +55,10 @@ namespace T3DNetFramework.Generated.Classes.Global {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the StaticEngineObject class.
+        /// </description>
+        /// <returns>The type info object for StaticEngineObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

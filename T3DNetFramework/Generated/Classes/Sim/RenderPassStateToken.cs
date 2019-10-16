@@ -14,7 +14,16 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Abstract base class for RenderFormatToken, used to manipulate what goes on in the render manager</summary>
+    /// <description>
+    /// You cannot actually instantiate RenderPassToken, only its child: RenderFormatToken. RenderFormatToken is an implementation which changes the format of the back buffer and/or the depth buffer.
+    /// 
+    /// The RenderPassStateBin manager changes the rendering state associated with a token it is declared with. In stock Torque 3D, a single example exists in the way of AL_FormatToken (found in renderManager.cs). In that script file, all the render managers are intialized, and a single RenderFormatToken is used. This implementation basically exists to ensure Advanced Lighting works with MSAA.
+    /// </description>
+    /// <see cref="RenderFormatToken" />
+    /// <see cref="RenderPassStateBin" />
+    /// <see cref="game/core/scripts/client/renderManager.cs" />
     public unsafe class RenderPassStateToken : SimObject {
         public RenderPassStateToken(bool pRegister = false) 
             : base(pRegister) {
@@ -159,24 +168,31 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Toggles the token from enabled to disabled or vice versa.</summary>
         public void Toggle() {
              InternalUnsafeMethods.Toggle__Args _args = new InternalUnsafeMethods.Toggle__Args() {
              };
              InternalUnsafeMethods.Toggle()(ObjectPtr, _args);
         }
 
+        /// <summary>Disables the token.</summary>
         public void Disable() {
              InternalUnsafeMethods.Disable__Args _args = new InternalUnsafeMethods.Disable__Args() {
              };
              InternalUnsafeMethods.Disable()(ObjectPtr, _args);
         }
 
+        /// <summary>Enables the token.</summary>
         public void Enable() {
              InternalUnsafeMethods.Enable__Args _args = new InternalUnsafeMethods.Enable__Args() {
              };
              InternalUnsafeMethods.Enable()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the RenderPassStateToken class.
+        /// </description>
+        /// <returns>The type info object for RenderPassStateToken</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -184,6 +200,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Enables or disables this token.
+        /// </description>
+        /// </value>
         public bool Enabled {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("enabled"));
             set => SetFieldValue("enabled", GenericMarshal.ToString(value));

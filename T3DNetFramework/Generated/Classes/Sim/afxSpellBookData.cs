@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A spellbook datablock.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxSpellBookData : GameBaseData {
         public afxSpellBookData(bool pRegister = false) 
             : base(pRegister) {
@@ -140,6 +144,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the capacity (total number of spell slots) in a spellbook.
+        /// </description>
         public int GetCapacity() {
              InternalUnsafeMethods.GetCapacity__Args _args = new InternalUnsafeMethods.GetCapacity__Args() {
              };
@@ -147,6 +154,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ...
+        /// </description>
         public int GetPageSlotIndex(Point2I bookSlot) {
 bookSlot.Alloc();             InternalUnsafeMethods.GetPageSlotIndex__Args _args = new InternalUnsafeMethods.GetPageSlotIndex__Args() {
                 bookSlot = bookSlot.internalStructPtr,
@@ -155,6 +165,10 @@ bookSlot.Alloc();             InternalUnsafeMethods.GetPageSlotIndex__Args _args
 bookSlot.Free();             return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the afxSpellBookData class.
+        /// </description>
+        /// <returns>The type info object for afxSpellBookData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -162,16 +176,34 @@ bookSlot.Free();             return _engineResult;
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public sbyte SpellsPerPage {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("spellsPerPage"));
             set => SetFieldValue("spellsPerPage", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public sbyte PagesPerBook {
             get => GenericMarshal.StringTo<sbyte>(GetFieldValue("pagesPerBook"));
             set => SetFieldValue("pagesPerBook", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public DynamicFieldVector<GameBaseData> Spells {
             get => new DynamicFieldVector<GameBaseData>(
                     this, 
@@ -182,6 +214,12 @@ bookSlot.Free();             return _engineResult;
                 );
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public DynamicFieldVector<GameBaseData> RpgSpells {
             get => new DynamicFieldVector<GameBaseData>(
                     this, 

@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>GUI that will fade the current view in and out.</summary>
+    /// <description>
+    /// Main difference between this and FadeinBitmap is this appears to fade based on the source texture.
+    /// 
+    /// This is going to be deprecated, and any useful code ported to FadeinBitmap
+    /// </description>
     public unsafe class GuiIdleCamFadeBitmapCtrl : GuiBitmapCtrl {
         public GuiIdleCamFadeBitmapCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -139,18 +145,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ()
+        /// </description>
         public void FadeOut() {
              InternalUnsafeMethods.FadeOut__Args _args = new InternalUnsafeMethods.FadeOut__Args() {
              };
              InternalUnsafeMethods.FadeOut()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public void FadeIn() {
              InternalUnsafeMethods.FadeIn__Args _args = new InternalUnsafeMethods.FadeIn__Args() {
              };
              InternalUnsafeMethods.FadeIn()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiIdleCamFadeBitmapCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiIdleCamFadeBitmapCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -158,16 +174,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int FadeInTime {
             get => GenericMarshal.StringTo<int>(GetFieldValue("fadeInTime"));
             set => SetFieldValue("fadeInTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int FadeOutTime {
             get => GenericMarshal.StringTo<int>(GetFieldValue("fadeOutTime"));
             set => SetFieldValue("fadeOutTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool Done {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("done"));
             set => SetFieldValue("done", GenericMarshal.ToString(value));

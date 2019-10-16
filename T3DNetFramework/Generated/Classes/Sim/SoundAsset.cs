@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class SoundAsset : AssetBase {
         public SoundAsset(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the SoundAsset class.
+        /// </description>
+        /// <returns>The type info object for SoundAsset</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +111,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path to the sound file.
+        /// </description>
+        /// </value>
         public string SoundFilePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("soundFilePath"));
             set => SetFieldValue("soundFilePath", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Adjustment of the pitch value
+        /// </description>
+        /// </value>
         public float PitchAdjust {
             get => GenericMarshal.StringTo<float>(GetFieldValue("pitchAdjust"));
             set => SetFieldValue("pitchAdjust", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Adjustment to the volume.
+        /// </description>
+        /// </value>
         public float VolumeAdjust {
             get => GenericMarshal.StringTo<float>(GetFieldValue("volumeAdjust"));
             set => SetFieldValue("volumeAdjust", GenericMarshal.ToString(value));

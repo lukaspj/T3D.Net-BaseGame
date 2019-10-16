@@ -14,7 +14,19 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control that displays a list of files from within a single directory in the game file system.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiDirectoryFileListCtrl()
+    /// {
+    ///    filePath = "art/shapes";
+    ///    fileFilter = "*.dts" TAB "*.dae";
+    ///    //Properties not specific to this control have been omitted from this example.
+    /// };
+    /// </code>
     public unsafe class GuiDirectoryFileListCtrl : GuiListBoxCtrl {
         public GuiDirectoryFileListCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -208,6 +220,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the currently selected filename.
+        /// </description>
+        /// <returns>The filename of the currently selected file</returns>
         public string GetSelectedFile() {
              InternalUnsafeMethods.GetSelectedFile__Args _args = new InternalUnsafeMethods.GetSelectedFile__Args() {
              };
@@ -215,6 +231,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Get the list of selected files.
+        /// </description>
+        /// <returns>A space separated list of selected files</returns>
         public string GetSelectedFiles() {
              InternalUnsafeMethods.GetSelectedFiles__Args _args = new InternalUnsafeMethods.GetSelectedFiles__Args() {
              };
@@ -222,6 +242,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Set the search path and file filter.
+        /// </description>
+        /// <param name="path">Path in game directory from which to list files.</param>
+        /// <param name="filter">Tab-delimited list of file name patterns. Only matched files will be displayed.</param>
         public bool SetPath(string path, string filter) {
              InternalUnsafeMethods.SetPath__Args _args = new InternalUnsafeMethods.SetPath__Args() {
                 path = path,
@@ -231,12 +256,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Update the file list.
+        /// </description>
         public void Reload() {
              InternalUnsafeMethods.Reload__Args _args = new InternalUnsafeMethods.Reload__Args() {
              };
              InternalUnsafeMethods.Reload()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the file filter.
+        /// </description>
+        /// <param name="filter">Tab-delimited list of file name patterns. Only matched files will be displayed.</param>
         public void SetFilter(string filter) {
              InternalUnsafeMethods.SetFilter__Args _args = new InternalUnsafeMethods.SetFilter__Args() {
                 filter = filter,
@@ -244,6 +276,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetFilter()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiDirectoryFileListCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiDirectoryFileListCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -251,11 +287,23 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Path in game directory from which to list files.
+        /// </description>
+        /// </value>
         public string FilePath {
             get => GenericMarshal.StringTo<string>(GetFieldValue("filePath"));
             set => SetFieldValue("filePath", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Tab-delimited list of file name patterns. Only matched files will be displayed.
+        /// </description>
+        /// </value>
         public string FileFilter {
             get => GenericMarshal.StringTo<string>(GetFieldValue("fileFilter"));
             set => SetFieldValue("fileFilter", GenericMarshal.ToString(value));

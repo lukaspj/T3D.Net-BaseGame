@@ -14,7 +14,22 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>GUI control object this displays a single line of text, without TorqueML.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiTextCtrl()
+    ///   {
+    ///      text = "Hello World";
+    ///      textID = ""STR_HELLO"";
+    ///      maxlength = "1024";
+    ///       //Properties not specific to this control have been omitted from this example.
+    ///   };
+    /// </code>
+    /// <see cref="GuiControl" />
+    /// <see cref="Localization" />
     public unsafe class GuiTextCtrl : GuiContainer {
         public GuiTextCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -143,6 +158,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Maps the text ctrl to a variable used in localization, rather than raw text.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="textID">Name of variable text should be mapped to</param>
+        /// <code>
+        /// // Inform the GuiTextCtrl control of the textID to use
+        /// %thisGuiTextCtrl.setTextID("STR_QUIT");
+        /// </code>
+        /// <see cref="GuiControl" />
+        /// <see cref="Localization" />
         public void SetTextID(string textID) {
              InternalUnsafeMethods.SetTextID__Args _args = new InternalUnsafeMethods.SetTextID__Args() {
                 textID = textID,
@@ -150,6 +176,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetTextID()(ObjectPtr, _args);
         }
 
+        /// <summary>Sets the text in the control.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <param name="text">Text to display in the control.</param>
+        /// <code>
+        /// // Set the text to show in the control
+        /// %text = "Gideon - Destroyer of World";
+        /// 
+        /// // Inform the GuiTextCtrl control to change its text to the defined value
+        /// %thisGuiTextCtrl.setText(%text);
+        /// </code>
+        /// <see cref="GuiControl" />
         public void SetText(string text) {
              InternalUnsafeMethods.SetText__Args _args = new InternalUnsafeMethods.SetText__Args() {
                 text = text,
@@ -157,6 +196,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetText()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiTextCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTextCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -164,16 +207,34 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The text to show on the control.
+        /// </description>
+        /// </value>
         public string Text {
             get => GenericMarshal.StringTo<string>(GetFieldValue("text"));
             set => SetFieldValue("text", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Maps the text of this control to a variable used in localization, rather than raw text.
+        /// </description>
+        /// </value>
         public string TextID {
             get => GenericMarshal.StringTo<string>(GetFieldValue("textID"));
             set => SetFieldValue("textID", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Defines the maximum length of the text.  The default is 1024.
+        /// </description>
+        /// </value>
         public int MaxLength {
             get => GenericMarshal.StringTo<int>(GetFieldValue("maxLength"));
             set => SetFieldValue("maxLength", GenericMarshal.ToString(value));

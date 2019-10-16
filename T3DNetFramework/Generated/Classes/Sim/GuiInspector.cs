@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A control that allows to edit the properties of one or more SimObjects.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiInspector : GuiStackControl {
         public GuiInspector(bool pRegister = false) 
             : base(pRegister) {
@@ -316,6 +320,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Returns the id of an awake inspector that is inspecting the passed object if one exists
+        /// </description>
+        /// <param name="object">Object to find away inspector for.</param>
+        /// <returns>id of an awake inspector that is inspecting the passed object if one exists, else NULL or 0.</returns>
         public int FindByObject(SimObject obj) {
              InternalUnsafeMethods.FindByObject__Args _args = new InternalUnsafeMethods.FindByObject__Args() {
                 obj = obj.ObjectPtr,
@@ -324,6 +333,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Set a named fields value on the inspected object if it exists. This triggers all the usual callbacks that would occur if the field had been changed through the gui..
+        /// </description>
+        /// <param name="fieldname">Field name on object we are inspecting we want to change.</param>
+        /// <param name="data">New Value for the given field.</param>
         public void SetObjectField(string fieldname, string data) {
              InternalUnsafeMethods.SetObjectField__Args _args = new InternalUnsafeMethods.SetObjectField__Args() {
                 fieldname = fieldname,
@@ -332,12 +346,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetObjectField()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Force application of inspected object's attributes.
+        /// </description>
         public void Apply() {
              InternalUnsafeMethods.Apply__Args _args = new InternalUnsafeMethods.Apply__Args() {
              };
              InternalUnsafeMethods.Apply()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Rename the object being inspected (first object in inspect list).
+        /// </description>
+        /// <param name="newObjectName">new name for object being inspected.</param>
         public void SetName(string newObjectName) {
              InternalUnsafeMethods.SetName__Args _args = new InternalUnsafeMethods.SetName__Args() {
                 newObjectName = newObjectName,
@@ -345,6 +366,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetName()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Return the number of objects currently being inspected.
+        /// </description>
+        /// <returns>number of objects currently being inspected.</returns>
         public int GetNumInspectObjects() {
              InternalUnsafeMethods.GetNumInspectObjects__Args _args = new InternalUnsafeMethods.GetNumInspectObjects__Args() {
              };
@@ -352,6 +377,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Returns currently inspected object.
+        /// </description>
+        /// <param name="index">Index of object in inspection list you want to get.</param>
+        /// <returns>object being inspected.</returns>
         public string GetInspectObject(int index = 0) {
              InternalUnsafeMethods.GetInspectObject__Args _args = new InternalUnsafeMethods.GetInspectObject__Args() {
                 index = index,
@@ -360,12 +390,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// Re-inspect the currently selected object.
+        /// </description>
         public void Refresh() {
              InternalUnsafeMethods.Refresh__Args _args = new InternalUnsafeMethods.Refresh__Args() {
              };
              InternalUnsafeMethods.Refresh()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Remove the object from the list of objects being inspected.
+        /// </description>
+        /// <param name="simObject">Object to remove from the inspection.</param>
         public void RemoveInspect(string simObject) {
              InternalUnsafeMethods.RemoveInspect__Args _args = new InternalUnsafeMethods.RemoveInspect__Args() {
                 simObject = simObject,
@@ -373,6 +410,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.RemoveInspect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Add the object to the list of objects being inspected.
+        /// </description>
+        /// <param name="simObject">Object to add to the inspection.</param>
+        /// <param name="autoSync">Auto sync the values when they change.</param>
         public void AddInspect(string simObject, bool autoSync = true) {
              InternalUnsafeMethods.AddInspect__Args _args = new InternalUnsafeMethods.AddInspect__Args() {
                 simObject = simObject,
@@ -381,6 +423,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddInspect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Inspect the given object.
+        /// </description>
+        /// <param name="simObject">Object to inspect.</param>
         public void Inspect(string simObject = "") {
              InternalUnsafeMethods.Inspect__Args _args = new InternalUnsafeMethods.Inspect__Args() {
                 simObject = simObject,
@@ -388,6 +434,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Inspect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiInspector class.
+        /// </description>
+        /// <returns>The type info object for GuiInspector</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -395,16 +445,32 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public int DividerMargin {
             get => GenericMarshal.StringTo<int>(GetFieldValue("dividerMargin"));
             set => SetFieldValue("dividerMargin", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specify groups that should be shown or not. Specifying 'shown' implicitly does 'not show' all other groups. Example string: +name -otherName
+        /// </description>
+        /// </value>
         public string GroupFilters {
             get => GenericMarshal.StringTo<string>(GetFieldValue("groupFilters"));
             set => SetFieldValue("groupFilters", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If false the custom fields Name, Id, and Source Class will not be shown.
+        /// </description>
+        /// </value>
         public bool ShowCustomFields {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("showCustomFields"));
             set => SetFieldValue("showCustomFields", GenericMarshal.ToString(value));

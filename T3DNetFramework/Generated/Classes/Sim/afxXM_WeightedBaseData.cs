@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class afxXM_WeightedBaseData : afxXM_BaseData {
         public afxXM_WeightedBaseData(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxXM_WeightedBaseData class.
+        /// </description>
+        /// <returns>The type info object for afxXM_WeightedBaseData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,36 +111,78 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Delay {
             get => GenericMarshal.StringTo<float>(GetFieldValue("delay"));
             set => SetFieldValue("delay", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float Lifetime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("lifetime"));
             set => SetFieldValue("lifetime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float FadeInTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("fadeInTime"));
             set => SetFieldValue("fadeInTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float FadeOutTime {
             get => GenericMarshal.StringTo<float>(GetFieldValue("fadeOutTime"));
             set => SetFieldValue("fadeOutTime", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point2F FadeInEase {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("fadeInEase"));
             set => SetFieldValue("fadeInEase", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public Point2F FadeOutEase {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("fadeOutEase"));
             set => SetFieldValue("fadeOutEase", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public float LifetimeBias {
             get => GenericMarshal.StringTo<float>(GetFieldValue("lifetimeBias"));
             set => SetFieldValue("lifetimeBias", GenericMarshal.ToString(value));

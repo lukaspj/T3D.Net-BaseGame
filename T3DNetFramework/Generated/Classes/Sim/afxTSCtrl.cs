@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A customized variation of GameTSCtrl.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxTSCtrl : GuiTSCtrl {
         public afxTSCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -222,6 +226,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the 3D position of the mouse cursor.
+        /// </description>
         public Point3F GetMouse3DPos() {
              InternalUnsafeMethods.GetMouse3DPos__Args _args = new InternalUnsafeMethods.GetMouse3DPos__Args() {
              };
@@ -229,6 +236,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the 3D direction vector for the mouse cursor.
+        /// </description>
         public Point3F GetMouse3DVec() {
              InternalUnsafeMethods.GetMouse3DVec__Args _args = new InternalUnsafeMethods.GetMouse3DVec__Args() {
              };
@@ -236,6 +246,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new Point3F(_engineResult);
         }
 
+        /// <description>
+        /// Get the current targeting-mode.
+        /// </description>
         public int GetTargetingMode() {
              InternalUnsafeMethods.GetTargetingMode__Args _args = new InternalUnsafeMethods.GetTargetingMode__Args() {
              };
@@ -243,12 +256,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Pop the targeting-mode off a statck of modes.
+        /// </description>
         public void PopTargetingMode() {
              InternalUnsafeMethods.PopTargetingMode__Args _args = new InternalUnsafeMethods.PopTargetingMode__Args() {
              };
              InternalUnsafeMethods.PopTargetingMode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Push a new targeting-mode onto a statck of modes.
+        /// </description>
         public void PushTargetingMode(uint mode = 0, uint checkMethod = 0) {
              InternalUnsafeMethods.PushTargetingMode__Args _args = new InternalUnsafeMethods.PushTargetingMode__Args() {
                 mode = mode,
@@ -257,6 +276,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PushTargetingMode()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Associate a spellbook with an afxTSCtrl.
+        /// </description>
         public void SetSpellBook(afxSpellBook spellbook) {
              InternalUnsafeMethods.SetSpellBook__Args _args = new InternalUnsafeMethods.SetSpellBook__Args() {
                 spellbook = spellbook.ObjectPtr,
@@ -264,6 +286,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetSpellBook()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the afxTSCtrl class.
+        /// </description>
+        /// <returns>The type info object for afxTSCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

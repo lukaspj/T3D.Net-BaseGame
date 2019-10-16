@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A GUI progress bar useful as a spell casting bar.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class afxSpellCastBar : GuiControl {
         public afxSpellCastBar(bool pRegister = false) 
             : base(pRegister) {
@@ -120,6 +124,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Set the progress percentage on the progress-bar.
+        /// </description>
         public void SetProgress(float percentDone) {
              InternalUnsafeMethods.SetProgress__Args _args = new InternalUnsafeMethods.SetProgress__Args() {
                 percentDone = percentDone,
@@ -127,6 +134,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetProgress()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the afxSpellCastBar class.
+        /// </description>
+        /// <returns>The type info object for afxSpellCastBar</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -134,21 +145,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF BackgroundColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("backgroundColor"));
             set => SetFieldValue("backgroundColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF BorderColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("borderColor"));
             set => SetFieldValue("borderColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF FillColor {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("fillColor"));
             set => SetFieldValue("fillColor", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// ...
+        /// </description>
+        /// </value>
         public LinearColorF FillColorFinal {
             get => GenericMarshal.StringTo<LinearColorF>(GetFieldValue("fillColorFinal"));
             set => SetFieldValue("fillColorFinal", GenericMarshal.ToString(value));

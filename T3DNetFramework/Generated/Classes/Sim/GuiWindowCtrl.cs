@@ -14,7 +14,22 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A window with a title bar and an optional set of buttons.</summary>
+    /// <description>
+    /// The GuiWindowCtrl class implements windows that can be freely placed within the render window.  Additionally, the windows can be resized and maximized/minimized.
+    /// </description>
+    /// <code>
+    /// new GuiWindowCtrl( MyWindow )
+    /// {
+    ///    text = "My Window"; // The text that is displayed on the title bar.
+    ///    resizeWidth = true; // Allow horizontal resizing by user via mouse.
+    ///    resizeHeight = true; // Allow vertical resizing by user via mouse.
+    ///    canClose = true; // Display a close button in the title bar.
+    ///    canMinimize = true; // Display a minimize button in the title bar.
+    ///    canMaximize = true; // Display a maximize button in the title bar.
+    /// };
+    /// </code>
     public unsafe class GuiWindowCtrl : GuiContainer {
         public GuiWindowCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -304,6 +319,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Attach<paramref name="" /> bottomWindow to 
+        /// </description>
+        /// <param name="bottomWindow"></param>
+        /// <param name="topWindow"></param>
         public static void Attach(GuiWindowCtrl bottomWindow, GuiWindowCtrl topWindow) {
              InternalUnsafeMethods.Attach__Args _args = new InternalUnsafeMethods.Attach__Args() {
                 bottomWindow = bottomWindow.ObjectPtr,
@@ -312,6 +332,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.Attach()(_args);
         }
 
+        /// 
         public void AttachTo(GuiWindowCtrl window) {
              InternalUnsafeMethods.AttachTo__Args _args = new InternalUnsafeMethods.AttachTo__Args() {
                 window = window.ObjectPtr,
@@ -319,12 +340,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AttachTo()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Toggle the window collapsing.
+        /// </description>
         public void ToggleCollapseGroup() {
              InternalUnsafeMethods.ToggleCollapseGroup__Args _args = new InternalUnsafeMethods.ToggleCollapseGroup__Args() {
              };
              InternalUnsafeMethods.ToggleCollapseGroup()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Set the window's collapsing state.
+        /// </description>
         public void SetCollapseGroup(bool state) {
              InternalUnsafeMethods.SetCollapseGroup__Args _args = new InternalUnsafeMethods.SetCollapseGroup__Args() {
                 state = state,
@@ -332,42 +359,64 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetCollapseGroup()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Bring the window to the front.
+        /// </description>
         public void SelectWindow() {
              InternalUnsafeMethods.SelectWindow__Args _args = new InternalUnsafeMethods.SelectWindow__Args() {
              };
              InternalUnsafeMethods.SelectWindow()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the window is restored from minimized, maximized, or collapsed state.
+        /// </description>
         public virtual void OnRestore() {
              InternalUnsafeMethods.OnRestore__Args _args = new InternalUnsafeMethods.OnRestore__Args() {
              };
              InternalUnsafeMethods.OnRestore()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the window is collapsed by clicking its title bar.
+        /// </description>
         public virtual void OnCollapse() {
              InternalUnsafeMethods.OnCollapse__Args _args = new InternalUnsafeMethods.OnCollapse__Args() {
              };
              InternalUnsafeMethods.OnCollapse()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the window has been maximized.
+        /// </description>
         public virtual void OnMaximize() {
              InternalUnsafeMethods.OnMaximize__Args _args = new InternalUnsafeMethods.OnMaximize__Args() {
              };
              InternalUnsafeMethods.OnMaximize()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the window has been minimized.
+        /// </description>
         public virtual void OnMinimize() {
              InternalUnsafeMethods.OnMinimize__Args _args = new InternalUnsafeMethods.OnMinimize__Args() {
              };
              InternalUnsafeMethods.OnMinimize()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Called when the close button has been pressed.
+        /// </description>
         public virtual void OnClose() {
              InternalUnsafeMethods.OnClose__Args _args = new InternalUnsafeMethods.OnClose__Args() {
              };
              InternalUnsafeMethods.OnClose()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiWindowCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiWindowCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -375,51 +424,111 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Text label to display in titlebar.
+        /// </description>
+        /// </value>
         public string Text {
             get => GenericMarshal.StringTo<string>(GetFieldValue("text"));
             set => SetFieldValue("text", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the window can be resized horizontally.
+        /// </description>
+        /// </value>
         public bool ResizeWidth {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("resizeWidth"));
             set => SetFieldValue("resizeWidth", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the window can be resized vertically.
+        /// </description>
+        /// </value>
         public bool ResizeHeight {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("resizeHeight"));
             set => SetFieldValue("resizeHeight", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the window can be moved by dragging its titlebar.
+        /// </description>
+        /// </value>
         public bool CanMove {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("canMove"));
             set => SetFieldValue("canMove", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the window has a close button.
+        /// </description>
+        /// </value>
         public bool CanClose {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("canClose"));
             set => SetFieldValue("canClose", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the window has a minimize button.
+        /// </description>
+        /// </value>
         public bool CanMinimize {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("canMinimize"));
             set => SetFieldValue("canMinimize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the window has a maximize button.
+        /// </description>
+        /// </value>
         public bool CanMaximize {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("canMaximize"));
             set => SetFieldValue("canMaximize", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the window can be collapsed by clicking its title bar.
+        /// </description>
+        /// </value>
         public bool CanCollapse {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("canCollapse"));
             set => SetFieldValue("canCollapse", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Script code to execute when the window is closed.
+        /// </description>
+        /// </value>
         public string CloseCommand {
             get => GenericMarshal.StringTo<string>(GetFieldValue("closeCommand"));
             set => SetFieldValue("closeCommand", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the window will snap to the edges of other windows when moved close to them.
+        /// </description>
+        /// </value>
         public bool EdgeSnap {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("edgeSnap"));
             set => SetFieldValue("edgeSnap", GenericMarshal.ToString(value));

@@ -14,7 +14,18 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Special type of data block that stores information about a handwritten shader.</summary>
+    /// <description>
+    /// To use hand written shaders, a ShaderData datablock must be used. This datablock refers only to the vertex and pixel shader filenames and a hardware target level. Shaders are API specific, so DirectX and OpenGL shaders must be explicitly identified.
+    /// </description>
+    /// <code>
+    /// // Used for the procedural clould system
+    /// singleton ShaderData( CloudLayerShader )
+    /// {
+    /// 	DXVertexShaderFile   = $Core::CommonShaderPath@ "/cloudLayerV.hlsl";
+    /// 	DXPixelShaderFile    = $Core::CommonShaderPath 
+    /// </code>
     public unsafe class ShaderData : SimObject {
         public ShaderData(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +130,24 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Rebuilds all the vertex and pixel shader instances created from this ShaderData.</summary>
+        /// <description>
+        /// 
+        /// </description>
+        /// <code>
+        /// // Rebuild the shader instances from ShaderData CloudLayerShader
+        /// CloudLayerShader.reload();
+        /// </code>
         public void Reload() {
              InternalUnsafeMethods.Reload__Args _args = new InternalUnsafeMethods.Reload__Args() {
              };
              InternalUnsafeMethods.Reload()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the ShaderData class.
+        /// </description>
+        /// <returns>The type info object for ShaderData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -132,41 +155,103 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <summary>%Path to the DirectX vertex shader file to use for this ShaderData.</summary>
+        /// <description>
+        /// It must contain only one program and no pixel shader, just the vertex shader.It can be either an HLSL or assembly level shader. HLSL's must have a filename extension of .hlsl, otherwise its assumed to be an assembly file.
+        /// </description>
+        /// </value>
         public string DXVertexShaderFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("DXVertexShaderFile"));
             set => SetFieldValue("DXVertexShaderFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>%Path to the DirectX pixel shader file to use for this ShaderData.</summary>
+        /// <description>
+        /// It must contain only one program and no vertex shader, just the pixel shader. It can be either an HLSL or assembly level shader. HLSL's must have a filename extension of .hlsl, otherwise its assumed to be an assembly file.
+        /// </description>
+        /// </value>
         public string DXPixelShaderFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("DXPixelShaderFile"));
             set => SetFieldValue("DXPixelShaderFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>%Path to an OpenGL vertex shader file to use for this ShaderData.</summary>
+        /// <description>
+        /// It must contain only one program and no pixel shader, just the vertex shader.
+        /// </description>
+        /// </value>
         public string OGLVertexShaderFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("OGLVertexShaderFile"));
             set => SetFieldValue("OGLVertexShaderFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>%Path to an OpenGL pixel shader file to use for this ShaderData.</summary>
+        /// <description>
+        /// It must contain only one program and no vertex shader, just the pixel shader.
+        /// </description>
+        /// </value>
         public string OGLPixelShaderFile {
             get => GenericMarshal.StringTo<string>(GetFieldValue("OGLPixelShaderFile"));
             set => SetFieldValue("OGLPixelShaderFile", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>If true, the maximum pixel shader version offered by the graphics card will be used.</summary>
+        /// <description>
+        /// Otherwise, the script-defined pixel shader version will be used.
+        /// </description>
+        /// </value>
         public bool UseDevicePixVersion {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useDevicePixVersion"));
             set => SetFieldValue("useDevicePixVersion", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Indicates target level the shader should be compiled.</summary>
+        /// <description>
+        /// Valid numbers at the time of this writing are 1.1, 1.4, 2.0, and 3.0. The shader will not run properly if the hardware does not support the level of shader compiled.
+        /// </description>
+        /// </value>
         public float PixVersion {
             get => GenericMarshal.StringTo<float>(GetFieldValue("pixVersion"));
             set => SetFieldValue("pixVersion", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>String of case-sensitive defines passed to the shader compiler.</summary>
+        /// <description>
+        /// The string should be delimited by a semicolon, tab, or newline character.
+        /// </description>
+        /// <code>
+        /// singleton ShaderData( FlashShader )
+        /// {
+        /// DXVertexShaderFile 	= $shaderGen::cachePath@ "/postFx/flashV.hlsl";
+        /// DXPixelShaderFile 	= $shaderGen::cachePath 
+        /// </code>
+        /// </value>
         public string Defines {
             get => GenericMarshal.StringTo<string>(GetFieldValue("defines"));
             set => SetFieldValue("defines", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <summary>Indicates names of samplers present in shader. Order is important.</summary>
+        /// <description>
+        /// Order of sampler names are used to assert correct sampler register/locationOther objects (GFXStateBlockData, PostEffect...) use index number to link samplers.
+        /// </description>
+        /// </value>
         public DynamicFieldVector<string> SamplerNames {
             get => new DynamicFieldVector<string>(
                     this, 
@@ -177,6 +262,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
                 );
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public DynamicFieldVector<bool> RtParams {
             get => new DynamicFieldVector<bool>(
                     this, 

@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class AutoloadAssets : SimObject {
         public AutoloadAssets(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +100,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the AutoloadAssets class.
+        /// </description>
+        /// <returns>The type info object for AutoloadAssets</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,16 +111,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string Path {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Path"));
             set => SetFieldValue("Path", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public string AssetType {
             get => GenericMarshal.StringTo<string>(GetFieldValue("AssetType"));
             set => SetFieldValue("AssetType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool Recurse {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("Recurse"));
             set => SetFieldValue("Recurse", GenericMarshal.ToString(value));

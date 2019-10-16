@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Inspector field type for TypeBitMask32.</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiInspectorTypeBitMask32 : GuiInspectorField {
         public GuiInspectorTypeBitMask32(bool pRegister = false) 
             : base(pRegister) {
@@ -119,12 +123,17 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public void ApplyBit() {
              InternalUnsafeMethods.ApplyBit__Args _args = new InternalUnsafeMethods.ApplyBit__Args() {
              };
              InternalUnsafeMethods.ApplyBit()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiInspectorTypeBitMask32 class.
+        /// </description>
+        /// <returns>The type info object for GuiInspectorTypeBitMask32</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

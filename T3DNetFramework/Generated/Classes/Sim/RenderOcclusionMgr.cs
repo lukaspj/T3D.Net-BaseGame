@@ -14,7 +14,13 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A render bin which renders occlusion query requests.</summary>
+    /// <description>
+    /// This render bin gathers occlusion query render instances and renders them. It is currently used by light flares and ShapeBase reflection cubemaps.
+    /// 
+    /// You can type '$RenderOcclusionMgr::debugRender = true' in the console to see debug rendering of the occlusion geometry.
+    /// </description>
     public unsafe class RenderOcclusionMgr : RenderBinManager {
         public RenderOcclusionMgr(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +105,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the RenderOcclusionMgr class.
+        /// </description>
+        /// <returns>The type info object for RenderOcclusionMgr</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

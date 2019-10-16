@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>An undo action that is comprised of other undo actions.</summary>
+    /// <description>
+    /// Not intended for game development, for editors or internal use only.
+    /// </description>
     public unsafe class CompoundUndoAction : UndoAction {
         public CompoundUndoAction(bool pRegister = false) 
             : base(pRegister) {
@@ -121,6 +125,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// addAction( UndoAction )
+        /// </description>
         public void AddAction(string objName) {
              InternalUnsafeMethods.AddAction__Args _args = new InternalUnsafeMethods.AddAction__Args() {
                 objName = objName,
@@ -128,6 +135,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.AddAction()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the CompoundUndoAction class.
+        /// </description>
+        /// <returns>The type info object for CompoundUndoAction</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

@@ -14,7 +14,8 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// 
     public unsafe class Taml : SimObject {
         public Taml(bool pRegister = false) 
             : base(pRegister) {
@@ -489,6 +490,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the Taml class.
+        /// </description>
+        /// <returns>The type info object for Taml</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -496,6 +501,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+        /// <description>
+        /// (filename) - Read an object from a file using Taml.
+        /// </description>
+        /// <param name="filename">The filename to read from.</param>
+        /// <returns>(Object) The object read from the file or an empty string if read failed.</returns>
         public SimObject Read(string filename) {
              InternalUnsafeMethods.Read__Args _args = new InternalUnsafeMethods.Read__Args() {
                 filename = filename,
@@ -504,6 +514,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new SimObject(_engineResult);
         }
 
+        /// <description>
+        /// (object, filename) - Writes an object to a file using Taml.
+        /// </description>
+        /// <param name="object">The object to write.</param>
+        /// <param name="filename">The filename to write to.</param>
+        /// <returns>Whether the write was successful or not.</returns>
         public bool Write(SimObject obj, string filename) {
              InternalUnsafeMethods.Write__Args _args = new InternalUnsafeMethods.Write__Args() {
                 obj = obj.ObjectPtr,
@@ -513,6 +529,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// () - Gets whether to write JSON that is strictly compatible with RFC4627 or not.
+        /// </description>
+        /// <returns>whether to write JSON that is strictly compatible with RFC4627 or not.</returns>
         public bool GetJSONStrict() {
              InternalUnsafeMethods.GetJSONStrict__Args _args = new InternalUnsafeMethods.GetJSONStrict__Args() {
              };
@@ -520,6 +540,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (jsonStrict) - Sets whether to write JSON that is strictly compatible with RFC4627 or not.
+        /// </description>
+        /// <param name="jsonStrict">Whether to write JSON that is strictly compatible with RFC4627 or not.</param>
+        /// <returns>No return value.</returns>
         public void SetJSONStrict(bool strict) {
              InternalUnsafeMethods.SetJSONStrict__Args _args = new InternalUnsafeMethods.SetJSONStrict__Args() {
                 strict = strict,
@@ -527,6 +552,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetJSONStrict()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Gets whether ZIP compression is used on binary formatting or not.
+        /// </description>
+        /// <returns>Whether ZIP compression is used on binary formatting or not.</returns>
         public bool GetBinaryCompression() {
              InternalUnsafeMethods.GetBinaryCompression__Args _args = new InternalUnsafeMethods.GetBinaryCompression__Args() {
              };
@@ -534,6 +563,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (compressed) - Sets whether ZIP compression is used on binary formatting or not.
+        /// </description>
+        /// <param name="compressed">Whether compression is on or off.</param>
+        /// <returns>No return value.</returns>
         public void SetBinaryCompression(bool compressed) {
              InternalUnsafeMethods.SetBinaryCompression__Args _args = new InternalUnsafeMethods.SetBinaryCompression__Args() {
                 compressed = compressed,
@@ -541,6 +575,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetBinaryCompression()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () Gets the extension (end of filename) used to detect the Binary format.
+        /// </description>
+        /// <returns>The extension (end of filename) used to detect the Binary format.</returns>
         public string GetAutoFormatBinaryExtension() {
              InternalUnsafeMethods.GetAutoFormatBinaryExtension__Args _args = new InternalUnsafeMethods.GetAutoFormatBinaryExtension__Args() {
              };
@@ -548,6 +586,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (extension) Sets the extension (end of filename) used to detect the Binary format.
+        /// </description>
+        /// <param name="extension">The extension (end of filename) used to detect the Binary format.</param>
+        /// <returns>No return value.</returns>
         public void SetAutoFormatBinaryExtension(string extension) {
              InternalUnsafeMethods.SetAutoFormatBinaryExtension__Args _args = new InternalUnsafeMethods.SetAutoFormatBinaryExtension__Args() {
                 extension = extension,
@@ -555,6 +598,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAutoFormatBinaryExtension()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () Gets the extension (end of filename) used to detect the XML format.
+        /// </description>
+        /// <returns>The extension (end of filename) used to detect the XML format.</returns>
         public string GetAutoFormatXmlExtension() {
              InternalUnsafeMethods.GetAutoFormatXmlExtension__Args _args = new InternalUnsafeMethods.GetAutoFormatXmlExtension__Args() {
              };
@@ -562,6 +609,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (extension) Sets the extension (end of filename) used to detect the XML format.
+        /// </description>
+        /// <param name="extension">The extension (end of filename) used to detect the XML format.</param>
+        /// <returns>No return value.</returns>
         public void SetAutoFormatXmlExtension(string extension) {
              InternalUnsafeMethods.SetAutoFormatXmlExtension__Args _args = new InternalUnsafeMethods.SetAutoFormatXmlExtension__Args() {
                 extension = extension,
@@ -569,6 +621,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAutoFormatXmlExtension()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () Gets whether to update each type instances file-progenitor or not.
+        /// </description>
+        /// <returns>Whether to update each type instances file-progenitor or not.</returns>
         public bool GetProgenitorUpdate() {
              InternalUnsafeMethods.GetProgenitorUpdate__Args _args = new InternalUnsafeMethods.GetProgenitorUpdate__Args() {
              };
@@ -576,6 +632,12 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (progenitorUpdate) Sets whether to update each type instances file-progenitor or not.
+        /// If not updating then the progenitor stay as the script that executed the call to Taml.
+        /// </description>
+        /// <param name="progenitorUpdate">Whether to update each type instances file-progenitor or not.</param>
+        /// <returns>No return value.</returns>
         public void SetProgenitorUpdate(bool progenitorUpdate) {
              InternalUnsafeMethods.SetProgenitorUpdate__Args _args = new InternalUnsafeMethods.SetProgenitorUpdate__Args() {
                 progenitorUpdate = progenitorUpdate,
@@ -583,6 +645,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetProgenitorUpdate()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () Gets whether to write static fields that are at their default or not.
+        /// </description>
+        /// <returns>Whether to write static fields that are at their default or not.</returns>
         public bool GetWriteDefaults() {
              InternalUnsafeMethods.GetWriteDefaults__Args _args = new InternalUnsafeMethods.GetWriteDefaults__Args() {
              };
@@ -590,6 +656,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (writeDefaults) Sets whether to write static fields that are at their default or not.
+        /// </description>
+        /// <param name="writeDefaults">Whether to write static fields that are at their default or not.</param>
+        /// <returns>No return value.</returns>
         public void SetWriteDefaults(bool writeDefaults) {
              InternalUnsafeMethods.SetWriteDefaults__Args _args = new InternalUnsafeMethods.SetWriteDefaults__Args() {
                 writeDefaults = writeDefaults,
@@ -597,6 +668,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetWriteDefaults()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () Gets whether the format type is automatically determined by the filename extension or not.
+        /// </description>
+        /// <returns>Whether the format type is automatically determined by the filename extension or not.</returns>
         public bool GetAutoFormat() {
              InternalUnsafeMethods.GetAutoFormat__Args _args = new InternalUnsafeMethods.GetAutoFormat__Args() {
              };
@@ -604,6 +679,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (autoFormat) Sets whether the format type is automatically determined by the filename extension or not.
+        /// </description>
+        /// <param name="autoFormat">Whether the format type is automatically determined by the filename extension or not.</param>
+        /// <returns>No return value.</returns>
         public void SetAutoFormat(bool autoFormat) {
              InternalUnsafeMethods.SetAutoFormat__Args _args = new InternalUnsafeMethods.SetAutoFormat__Args() {
                 autoFormat = autoFormat,
@@ -611,6 +691,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetAutoFormat()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// () - Gets the format that Taml should use to read/write.
+        /// </description>
+        /// <returns>The format that Taml should use to read/write.</returns>
         public string GetFormat() {
              InternalUnsafeMethods.GetFormat__Args _args = new InternalUnsafeMethods.GetFormat__Args() {
              };
@@ -618,6 +702,11 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (format) - Sets the format that Taml should use to read/write.
+        /// </description>
+        /// <param name="format">The format to use: 'xml' or 'binary'.</param>
+        /// <returns>No return value.</returns>
         public void SetFormat(string formatName) {
              InternalUnsafeMethods.SetFormat__Args _args = new InternalUnsafeMethods.SetFormat__Args() {
                 formatName = formatName,
@@ -625,46 +714,100 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetFormat()(ObjectPtr, _args);
         }
 
+
+        /// <value>
+        /// <description>
+        /// The read/write format that should be used.
+        /// </description>
+        /// </value>
         public _TamlFormatMode Format {
             get => GenericMarshal.StringTo<_TamlFormatMode>(GetFieldValue("Format"));
             set => SetFieldValue("Format", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to write JSON that is strictly compatible with RFC4627 or not.
+        /// </description>
+        /// </value>
         public bool JSONStrict {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("JSONStrict"));
             set => SetFieldValue("JSONStrict", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether ZIP compression is used on binary formatting or not.
+        /// </description>
+        /// </value>
         public bool BinaryCompression {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("BinaryCompression"));
             set => SetFieldValue("BinaryCompression", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to write static fields that are at their default or not.
+        /// </description>
+        /// </value>
         public bool WriteDefaults {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("WriteDefaults"));
             set => SetFieldValue("WriteDefaults", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether to update each type instances file-progenitor or not.
+        /// </description>
+        /// </value>
         public bool ProgenitorUpdate {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ProgenitorUpdate"));
             set => SetFieldValue("ProgenitorUpdate", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Whether the format type is automatically determined by the filename extension or not.
+        /// </description>
+        /// </value>
         public bool AutoFormat {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("AutoFormat"));
             set => SetFieldValue("AutoFormat", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When using auto-format, this is the extension (end of filename) used to detect the XML format.
+        /// </description>
+        /// </value>
         public string AutoFormatXmlExtension {
             get => GenericMarshal.StringTo<string>(GetFieldValue("AutoFormatXmlExtension"));
             set => SetFieldValue("AutoFormatXmlExtension", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When using auto-format, this is the extension (end of filename) used to detect the BINARY format.
+        /// </description>
+        /// </value>
         public string AutoFormatBinaryExtension {
             get => GenericMarshal.StringTo<string>(GetFieldValue("AutoFormatBinaryExtension"));
             set => SetFieldValue("AutoFormatBinaryExtension", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When using auto-format, this is the extension (end of filename) used to detect the JSON format.
+        /// </description>
+        /// </value>
         public string AutoFormatJSONExtension {
             get => GenericMarshal.StringTo<string>(GetFieldValue("AutoFormatJSONExtension"));
             set => SetFieldValue("AutoFormatJSONExtension", GenericMarshal.ToString(value));

@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The actual Forest Editor control</summary>
+    /// <description>
+    /// Editor use only, should not be modified.
+    /// </description>
     public unsafe class ForestEditorCtrl : EditTSCtrl {
         public ForestEditorCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -226,6 +230,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// ( Forest obj )
+        /// </description>
         public void SetActiveForest(string obj) {
              InternalUnsafeMethods.SetActiveForest__Args _args = new InternalUnsafeMethods.SetActiveForest__Args() {
                 obj = obj,
@@ -233,6 +240,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetActiveForest()(ObjectPtr, _args);
         }
 
+        /// 
         public bool IsDirty() {
              InternalUnsafeMethods.IsDirty__Args _args = new InternalUnsafeMethods.IsDirty__Args() {
              };
@@ -240,6 +248,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( ForestItemData obj )
+        /// </description>
         public void DeleteMeshSafe(string obj) {
              InternalUnsafeMethods.DeleteMeshSafe__Args _args = new InternalUnsafeMethods.DeleteMeshSafe__Args() {
                 obj = obj,
@@ -247,6 +258,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.DeleteMeshSafe()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public int GetActiveTool() {
              InternalUnsafeMethods.GetActiveTool__Args _args = new InternalUnsafeMethods.GetActiveTool__Args() {
              };
@@ -254,6 +268,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// ( ForestTool tool )
+        /// </description>
         public void SetActiveTool(string toolName) {
              InternalUnsafeMethods.SetActiveTool__Args _args = new InternalUnsafeMethods.SetActiveTool__Args() {
                 toolName = toolName,
@@ -261,12 +278,19 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetActiveTool()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// ()
+        /// </description>
         public void UpdateActiveForest() {
              InternalUnsafeMethods.UpdateActiveForest__Args _args = new InternalUnsafeMethods.UpdateActiveForest__Args() {
              };
              InternalUnsafeMethods.UpdateActiveForest()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the ForestEditorCtrl class.
+        /// </description>
+        /// <returns>The type info object for ForestEditorCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

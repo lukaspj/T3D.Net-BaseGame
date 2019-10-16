@@ -14,7 +14,16 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A datablock that specifies a Phrase Effect, a grouping of other effects.</summary>
+    /// <description>
+    /// A Phrase Effect is a grouping or phrase of effects that do nothing until certain trigger events occur. It's like having a whole Effectron organized as an individual effect.
+    /// 
+    /// Phrase effects can respond to a number of different kinds of triggers:
+    ///   -- Player triggers such as footsteps, jumps, landings, and idle triggers.
+    ///   -- Arbitrary animation triggers on dts-based scene objects.
+    ///   -- Arbitrary trigger bits assigned to active choreographer objects.
+    /// </description>
     public unsafe class afxPhraseEffectData : GameBaseData {
         public afxPhraseEffectData(bool pRegister = false) 
             : base(pRegister) {
@@ -120,6 +129,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Push a child effect to a phrase effect datablock. Argument can be an afxEffectWrappperData or an afxEffectGroupData.
+        /// </description>
         public void PushEffect(afxEffectBaseData effectData) {
              InternalUnsafeMethods.PushEffect__Args _args = new InternalUnsafeMethods.PushEffect__Args() {
                 effectData = effectData.ObjectPtr,
@@ -127,6 +139,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.PushEffect()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the afxPhraseEffectData class.
+        /// </description>
+        /// <returns>The type info object for afxPhraseEffectData</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -134,56 +150,122 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specifies a duration for the phrase-effect. If set to infinity, the phrase-effect needs to have a phraseType of continuous. Set infinite duration using $AFX::INFINITE_TIME.
+        /// </description>
+        /// </value>
         public float Duration {
             get => GenericMarshal.StringTo<float>(GetFieldValue("duration"));
             set => SetFieldValue("duration", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Specifies the number of times the phrase-effect should loop. If set to infinity, the phrase-effect needs to have a phraseType of continuous. Set infinite looping using $AFX::INFINITE_REPEATS.
+        /// </description>
+        /// </value>
         public int NumLoops {
             get => GenericMarshal.StringTo<int>(GetFieldValue("numLoops"));
             set => SetFieldValue("numLoops", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Sets which bits to consider in the current trigger-state which consists of 32 trigger-bits combined from (possibly overlapping) player trigger bits, constraint trigger bits, and choreographer trigger bits.
+        /// </description>
+        /// </value>
         public int TriggerMask {
             get => GenericMarshal.StringTo<int>(GetFieldValue("triggerMask"));
             set => SetFieldValue("triggerMask", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Selects what combination of bits in triggerMask lead to a trigger. When set to 'any', any bit in triggerMask matching the current trigger-state will cause a trigger. If set to 'all', every bit in triggerMask must match the trigger-state. Possible values: any or all.
+        /// </description>
+        /// </value>
         public afxPhraseEffect_MatchType MatchType {
             get => GenericMarshal.StringTo<afxPhraseEffect_MatchType>(GetFieldValue("matchType"));
             set => SetFieldValue("matchType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Selects which bit-state(s) of bits in the triggerMask to consider when comparing to the current trigger-state. Possible values: on, off, or both.
+        /// </description>
+        /// </value>
         public afxPhraseEffect_StateType MatchState {
             get => GenericMarshal.StringTo<afxPhraseEffect_StateType>(GetFieldValue("matchState"));
             set => SetFieldValue("matchState", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Selects between triggered and continuous types of phrases. When set to 'triggered', the phrase-effect is triggered when the relevant trigger-bits change state. When set to 'continuous', the phrase-effect will stay active as long as the trigger-bits remain in a matching state. Possible values: triggered or continuous.
+        /// </description>
+        /// </value>
         public afxPhraseEffect_PhraseType PhraseType {
             get => GenericMarshal.StringTo<afxPhraseEffect_PhraseType>(GetFieldValue("phraseType"));
             set => SetFieldValue("phraseType", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When true, trigger-bits on the choreographer will be ignored.
+        /// </description>
+        /// </value>
         public bool IgnoreChoreographerTriggers {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ignoreChoreographerTriggers"));
             set => SetFieldValue("ignoreChoreographerTriggers", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When true, animation triggers from dts-based constraint source objects will be ignored.
+        /// </description>
+        /// </value>
         public bool IgnoreConstraintTriggers {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ignoreConstraintTriggers"));
             set => SetFieldValue("ignoreConstraintTriggers", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// When true, Player-specific triggers from Player-derived constraint source objects will be ignored.
+        /// </description>
+        /// </value>
         public bool IgnorePlayerTriggers {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("ignorePlayerTriggers"));
             set => SetFieldValue("ignorePlayerTriggers", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Like a field substitution statement without the leading '$$' token, this eval statement will be executed when a trigger occurs. Any '%%' and '##'  tokens will be substituted.
+        /// </description>
+        /// </value>
         public string OnTriggerCommand {
             get => GenericMarshal.StringTo<string>(GetFieldValue("onTriggerCommand"));
             set => SetFieldValue("onTriggerCommand", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// A field macro which adds an effect wrapper datablock to a list of effects associated with the phrase-effect's single phrase. Unlike other fields, addEffect follows an unusual syntax. Order is important since the effects will resolve in the order they are added to each list.
+        /// </description>
+        /// </value>
         public afxEffectBaseData AddEffect {
             get => GenericMarshal.StringTo<afxEffectBaseData>(GetFieldValue("addEffect"));
             set => SetFieldValue("addEffect", GenericMarshal.ToString(value));

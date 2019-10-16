@@ -14,7 +14,40 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>The most basic 3D shape with a datablock available in Torque 3D.</summary>
+    /// <description>
+    /// When it comes to placing 3D objects in the scene, you technically have two options:
+    /// 
+    /// 1. TSStatic objects
+    /// 
+    /// 2. ShapeBase derived objects
+    /// 
+    /// Since ShapeBase and ShapeBaseData are not meant to be instantiated in script, you will use one of its child classes instead. Several game related objects are derived from ShapeBase: Player, Vehicle, Item, and so on.
+    /// 
+    /// When you need a 3D object with datablock capabilities, you will use an object derived from ShapeBase. When you need an object with extremely low overhead, and with no other purpose than to be a 3D object in the scene, you will use TSStatic.
+    /// 
+    /// The most basic child of ShapeBase is StaticShape. It does not introduce any of the additional functionality you see in Player, Item, Vehicle or the other game play heavy classes. At its core, it is comparable to a TSStatic, but with a datbalock.  Having a datablock provides a location for common variables as well as having access to various ShapeBaseData, GameBaseData and SimDataBlock callbacks.
+    /// </description>
+    /// <code>
+    /// // Create a StaticShape using a datablock
+    /// datablock StaticShapeData(BasicShapeData)
+    /// {
+    ///   shapeFile = "art/shapes/items/kit/healthkit.dts";
+    ///   testVar = "Simple string, not a stock variable";
+    /// };
+    /// 
+    /// new StaticShape()
+    /// {
+    ///   dataBlock = "BasicShapeData";
+    ///   position = "0.0 0.0 0.0";
+    ///   rotation = "1 0 0 0";
+    ///   scale = "1 1 1";
+    /// };
+    /// </code>
+    /// <see cref="StaticShapeData" />
+    /// <see cref="ShapeBase" />
+    /// <see cref="TSStatic" />
     public unsafe class StaticShape : ShapeBase {
         public StaticShape(bool pRegister = false) 
             : base(pRegister) {
@@ -142,6 +175,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// 
         public bool GetPoweredState() {
              InternalUnsafeMethods.GetPoweredState__Args _args = new InternalUnsafeMethods.GetPoweredState__Args() {
              };
@@ -149,6 +183,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (bool isPowered)
+        /// </description>
         public void SetPoweredState(bool isPowered) {
              InternalUnsafeMethods.SetPoweredState__Args _args = new InternalUnsafeMethods.SetPoweredState__Args() {
                 isPowered = isPowered,
@@ -156,6 +193,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetPoweredState()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the StaticShape class.
+        /// </description>
+        /// <returns>The type info object for StaticShape</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

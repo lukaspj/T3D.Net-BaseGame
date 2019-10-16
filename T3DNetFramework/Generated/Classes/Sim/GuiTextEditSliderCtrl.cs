@@ -14,7 +14,22 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>GUI Control which displays a numerical value which can be increased or decreased using a pair of arrows.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiTextEditSliderCtrl()
+    /// {
+    ///    format = "%3.2f";
+    ///    range = "-1e+03 1e+03";
+    ///    increment = "0.1";
+    ///    focusOnMouseWheel = "0";
+    ///    //Properties not specific to this control have been omitted from this example.
+    /// };
+    /// </code>
+    /// <see cref="GuiTextEditCtrl" />
     public unsafe class GuiTextEditSliderCtrl : GuiTextEditCtrl {
         public GuiTextEditSliderCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +114,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiTextEditSliderCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiTextEditSliderCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,21 +125,45 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// <description>
+        /// Character format type to place in the control.
+        /// </description>
+        /// </value>
         public string Format {
             get => GenericMarshal.StringTo<string>(GetFieldValue("Format"));
             set => SetFieldValue("Format", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Maximum vertical and horizontal range to allow in the control.
+        /// </description>
+        /// </value>
         public Point2F Range {
             get => GenericMarshal.StringTo<Point2F>(GetFieldValue("range"));
             set => SetFieldValue("range", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// How far to increment the slider on each step.
+        /// </description>
+        /// </value>
         public float Increment {
             get => GenericMarshal.StringTo<float>(GetFieldValue("increment"));
             set => SetFieldValue("increment", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// If true, the control will accept giving focus to the user when the mouse wheel is used.
+        /// </description>
+        /// </value>
         public bool FocusOnMouseWheel {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("focusOnMouseWheel"));
             set => SetFieldValue("focusOnMouseWheel", GenericMarshal.ToString(value));

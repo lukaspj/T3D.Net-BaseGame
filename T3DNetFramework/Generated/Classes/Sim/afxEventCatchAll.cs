@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A simple but useful GUI control that propagates all events to its parent control.</summary>
+    /// <description>
+    /// afxEventCatchAll is useful when you want certain events to be handled by its parent afxTSCtrl and not get consumed by certain non-interactive controls like a text HUD.
+    /// </description>
     public unsafe class afxEventCatchAll : GuiControl {
         public afxEventCatchAll(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +103,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the afxEventCatchAll class.
+        /// </description>
+        /// <returns>The type info object for afxEventCatchAll</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

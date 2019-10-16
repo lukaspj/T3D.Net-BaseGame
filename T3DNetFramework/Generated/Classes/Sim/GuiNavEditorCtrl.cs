@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>GUI tool that makes up the Navigation Editor</summary>
+    /// <description>
+    /// Editor use only.
+    /// </description>
     public unsafe class GuiNavEditorCtrl : EditTSCtrl {
         public GuiNavEditorCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -304,6 +308,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// setMode(String mode)
+        /// </description>
         public void SetMode(string mode) {
              InternalUnsafeMethods.SetMode__Args _args = new InternalUnsafeMethods.SetMode__Args() {
                 mode = mode,
@@ -311,6 +318,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMode()(ObjectPtr, _args);
         }
 
+        /// 
         public string GetMode() {
              InternalUnsafeMethods.GetMode__Args _args = new InternalUnsafeMethods.GetMode__Args() {
              };
@@ -318,18 +326,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <summary>Spawn an AIPlayer at the centre of the screen.</summary>
         public void SpawnPlayer() {
              InternalUnsafeMethods.SpawnPlayer__Args _args = new InternalUnsafeMethods.SpawnPlayer__Args() {
              };
              InternalUnsafeMethods.SpawnPlayer()(ObjectPtr, _args);
         }
 
+        /// <summary>Build the currently selected tile.</summary>
         public void BuildTile() {
              InternalUnsafeMethods.BuildTile__Args _args = new InternalUnsafeMethods.BuildTile__Args() {
              };
              InternalUnsafeMethods.BuildTile()(ObjectPtr, _args);
         }
 
+        /// 
         public void SetLinkFlags(uint flags) {
              InternalUnsafeMethods.SetLinkFlags__Args _args = new InternalUnsafeMethods.SetLinkFlags__Args() {
                 flags = flags,
@@ -337,18 +348,21 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetLinkFlags()(ObjectPtr, _args);
         }
 
+        /// <summary>Delete the currently selected link.</summary>
         public void DeleteLink() {
              InternalUnsafeMethods.DeleteLink__Args _args = new InternalUnsafeMethods.DeleteLink__Args() {
              };
              InternalUnsafeMethods.DeleteLink()(ObjectPtr, _args);
         }
 
+        /// <summary>Deselect whatever is currently selected in the editor.</summary>
         public void Deselect() {
              InternalUnsafeMethods.Deselect__Args _args = new InternalUnsafeMethods.Deselect__Args() {
              };
              InternalUnsafeMethods.Deselect()(ObjectPtr, _args);
         }
 
+        /// <summary>Select a NavMesh object.</summary>
         public int GetPlayer() {
              InternalUnsafeMethods.GetPlayer__Args _args = new InternalUnsafeMethods.GetPlayer__Args() {
              };
@@ -356,6 +370,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Select a NavMesh object.</summary>
         public int GetMesh() {
              InternalUnsafeMethods.GetMesh__Args _args = new InternalUnsafeMethods.GetMesh__Args() {
              };
@@ -363,6 +378,7 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <summary>Select a NavMesh object.</summary>
         public void SelectMesh(int id) {
              InternalUnsafeMethods.SelectMesh__Args _args = new InternalUnsafeMethods.SelectMesh__Args() {
                 id = id,
@@ -370,6 +386,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SelectMesh()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the GuiNavEditorCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiNavEditorCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -377,16 +397,32 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool IsDirty {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("isDirty"));
             set => SetFieldValue("isDirty", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Class of object to spawn in test mode.
+        /// </description>
+        /// </value>
         public string SpawnClass {
             get => GenericMarshal.StringTo<string>(GetFieldValue("spawnClass"));
             set => SetFieldValue("spawnClass", GenericMarshal.ToString(value));
         }
 
+
+        /// <value>
+        /// <description>
+        /// Datablock to give new objects in test mode.
+        /// </description>
+        /// </value>
         public string SpawnDatablock {
             get => GenericMarshal.StringTo<string>(GetFieldValue("spawnDatablock"));
             set => SetFieldValue("spawnDatablock", GenericMarshal.ToString(value));

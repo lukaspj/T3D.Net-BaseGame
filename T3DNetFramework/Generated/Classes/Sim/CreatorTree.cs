@@ -14,7 +14,11 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Creator tree from old editor.  Not used in current editor.</summary>
+    /// <description>
+    /// 
+    /// </description>
     public unsafe class CreatorTree : GuiArrayCtrl {
         public CreatorTree(bool pRegister = false) 
             : base(pRegister) {
@@ -305,6 +309,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// (Node n)
+        /// </description>
         public int GetParent(int nodeValue) {
              InternalUnsafeMethods.GetParent__Args _args = new InternalUnsafeMethods.GetParent__Args() {
                 nodeValue = nodeValue,
@@ -313,12 +320,18 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Clear the tree.
+        /// </description>
         public void Clear() {
              InternalUnsafeMethods.Clear__Args _args = new InternalUnsafeMethods.Clear__Args() {
              };
              InternalUnsafeMethods.Clear()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// (Node n)
+        /// </description>
         public string GetValue(int nodeValue) {
              InternalUnsafeMethods.GetValue__Args _args = new InternalUnsafeMethods.GetValue__Args() {
                 nodeValue = nodeValue,
@@ -327,6 +340,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (Node item)
+        /// </description>
         public string GetName(string item) {
              InternalUnsafeMethods.GetName__Args _args = new InternalUnsafeMethods.GetName__Args() {
                 item = item,
@@ -335,6 +351,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return StringMarshal.IntPtrToUtf8String(_engineResult);
         }
 
+        /// <description>
+        /// (Group g)
+        /// </description>
         public bool IsGroup(string group) {
              InternalUnsafeMethods.IsGroup__Args _args = new InternalUnsafeMethods.IsGroup__Args() {
                 group = group,
@@ -343,6 +362,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Return a handle to the currently selected item.
+        /// </description>
         public int GetSelected() {
              InternalUnsafeMethods.GetSelected__Args _args = new InternalUnsafeMethods.GetSelected__Args() {
              };
@@ -350,6 +372,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string world, string type, string filename)
+        /// </description>
         public bool FileNameMatch(string world, string type, string filename) {
              InternalUnsafeMethods.FileNameMatch__Args _args = new InternalUnsafeMethods.FileNameMatch__Args() {
                 world = world,
@@ -360,6 +385,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (Node group, string name, string value)
+        /// </description>
         public int AddItem(int group, string name, string value) {
              InternalUnsafeMethods.AddItem__Args _args = new InternalUnsafeMethods.AddItem__Args() {
                 group = group,
@@ -370,6 +398,9 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// (string group, string name, string value)
+        /// </description>
         public int AddGroup(int group, string name, string value) {
              InternalUnsafeMethods.AddGroup__Args _args = new InternalUnsafeMethods.AddGroup__Args() {
                 group = group,
@@ -380,6 +411,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return _engineResult;
         }
 
+        /// <description>
+        /// Get the type info object for the CreatorTree class.
+        /// </description>
+        /// <returns>The type info object for CreatorTree</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

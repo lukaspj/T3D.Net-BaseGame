@@ -14,7 +14,21 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>A very simple example of a class derived from NetObject.</summary>
+    /// <description>
+    /// This object exists purely for instructional purposes. It is primarily geared toward developers that wish to understand the inner-working of Torque 3D's networking system. This is not intended for actual game development.
+    /// </description>
+    /// <code>
+    /// // On the server, create a new SimpleNetObject.  This is a ghost always
+    /// // object so it will be immediately ghosted to all connected clients.
+    /// $s = new SimpleNetObject();
+    /// 
+    /// // All connected clients will see the following in their console:
+    /// // 
+    /// // Got message: Hello World!
+    /// </code>
+    /// <see cref="NetObject for a full breakdown of this example object" />
     public unsafe class SimpleNetObject : NetObject {
         public SimpleNetObject(bool pRegister = false) 
             : base(pRegister) {
@@ -121,6 +135,28 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <summary>Sets the internal message variable.</summary>
+        /// <description>
+        /// SimpleNetObject is set up to automatically transmit this new message to all connected clients.  It will appear in the clients' console.
+        /// </description>
+        /// <param name="msg">The new message to send</param>
+        /// <code>
+        /// // On the server, create a new SimpleNetObject.  This is a ghost always
+        /// // object so it will be immediately ghosted to all connected clients.
+        /// $s = new SimpleNetObject();
+        /// 
+        /// // All connected clients will see the following in their console:
+        /// // 
+        /// // Got message: Hello World!
+        /// 
+        /// // Now again on the server, change the message.  This will cause it to
+        /// // be sent to all connected clients.
+        /// $s.setMessage("A new message from me!");
+        /// 
+        /// // All connected clients will now see in their console:
+        /// // 
+        /// // Go message: A new message from me!
+        /// </code>
         public void SetMessage(string msg) {
              InternalUnsafeMethods.SetMessage__Args _args = new InternalUnsafeMethods.SetMessage__Args() {
                 msg = msg,
@@ -128,6 +164,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              InternalUnsafeMethods.SetMessage()(ObjectPtr, _args);
         }
 
+        /// <description>
+        /// Get the type info object for the SimpleNetObject class.
+        /// </description>
+        /// <returns>The type info object for SimpleNetObject</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };

@@ -14,7 +14,31 @@ using T3DNetFramework.Generated.Structs.Gui;
 using T3DNetFramework.Generated.Structs.Math;
 using T3DNetFramework.Interop;
 
-namespace T3DNetFramework.Generated.Classes.Sim {    
+namespace T3DNetFramework.Generated.Classes.Sim {
+    /// <summary>Text entry element of a GuiConsole.</summary>
+    /// <description>
+    /// 
+    /// </description>
+    /// <code>
+    /// new GuiConsoleEditCtrl(ConsoleEntry)
+    /// {
+    ///    profile = "ConsoleTextEditProfile";
+    ///    horizSizing = "width";
+    ///    vertSizing = "top";
+    ///    position = "0 462";
+    ///    extent = "640 18";
+    ///    minExtent = "8 8";
+    ///    visible = "1";
+    ///    altCommand = "ConsoleEntry::eval();";
+    ///    helpTag = "0";
+    ///    maxLength = "255";
+    ///    historySize = "40";
+    ///    password = "0";
+    ///    tabComplete = "0";
+    ///    sinkAllKeyEvents = "1";
+    ///    useSiblingScroller = "1";
+    /// };
+    /// </code>
     public unsafe class GuiConsoleEditCtrl : GuiTextEditCtrl {
         public GuiConsoleEditCtrl(bool pRegister = false) 
             : base(pRegister) {
@@ -99,6 +123,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
         }
         #endregion
 
+        /// <description>
+        /// Get the type info object for the GuiConsoleEditCtrl class.
+        /// </description>
+        /// <returns>The type info object for GuiConsoleEditCtrl</returns>
         public static EngineTypeInfo StaticGetType() {
              InternalUnsafeMethods.StaticGetType__Args _args = new InternalUnsafeMethods.StaticGetType__Args() {
              };
@@ -106,6 +134,10 @@ namespace T3DNetFramework.Generated.Classes.Sim {
              return new EngineTypeInfo(_engineResult);
         }
 
+
+        /// <value>
+        /// 
+        /// </value>
         public bool UseSiblingScroller {
             get => GenericMarshal.StringTo<bool>(GetFieldValue("useSiblingScroller"));
             set => SetFieldValue("useSiblingScroller", GenericMarshal.ToString(value));
